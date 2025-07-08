@@ -1,16 +1,29 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
-import "./globals.css";
+import "././styles/globals.css";
+import { AuthProvider } from "./context/AuthContext";
+import { Roboto, Roboto_Mono } from "next/font/google";
+import localFont from 'next/font/local';
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
+const bulletproof = localFont({
+  src: [
+    {
+      path: './fonts/Bulletproof_bb.ttf',
+      weight: '400',
+      style: 'normal',
+    },
+  ],
+  variable: '--font-bulletproof',
 });
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
+
+const geistSans = Roboto({
+  variable: "--font-geist-sans",
+  subsets: ["latin"],
+  weight: ["400", "700"],
+});
+
+const geistMono = Roboto_Mono({
   variable: "--font-geist-mono",
-  weight: "100 900",
+  subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
@@ -25,11 +38,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
-      </body>
+      <AuthProvider>
+        <body
+          className={`${geistSans.variable} ${geistMono.variable} ${bulletproof.variable} antialiased `}
+        >
+          {children}
+        </body>
+      </AuthProvider>
     </html>
   );
 }

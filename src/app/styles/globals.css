@@ -1,0 +1,51 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --family-primary: 'Poppins', sans-serif;
+    --family-inter: 'Inter', sans-serif;
+    --family--mont: 'Montserrat', sans-serif;
+
+    --color-red: #DA2626;
+    --color-yellow: #ECF32C;
+    --color-light-blue: #10EFFF;
+    --color-blue: #2CA7F3;
+    --color-light-green: #10FF9F;
+    --color-orange: #FFB310;
+    --color-green: #BFFF10;
+    --color-purple: #862CF3;
+    --color-white: rgb(255, 255, 255);
+    --color-black: rgba(0, 0, 0, 0.87);
+
+    --color-dark-gray: #515151;
+    --color-light-gray: #7f7f7f;
+    --color-border-gray: #DBDBDB;
+
+    --base-font-size: 16px;
+    --base-line-height: 1.3;
+    --base-spacing: 1rem;
+    --base-radius: 4px;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+
+body,
+html {
+    background: var(--color-white);
+    color: var(--color-black);
+    font-family: var(--family-primary);
+    font-size: var(--base-font-size);
+    line-height: var(--base-line-height);
+    overflow-x: hidden;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    margin: 0;
+    width: 100%;
+    height: 100vh;
+}
