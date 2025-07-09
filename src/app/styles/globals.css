@@ -8,7 +8,7 @@
     --family--mont: 'Montserrat', sans-serif;
 
     --color-red: #DA2626;
-    --color-yellow: #ECF32C;
+    --color-yellow: #FFEB10;
     --color-light-blue: #10EFFF;
     --color-blue: #2CA7F3;
     --color-light-green: #10FF9F;
@@ -19,7 +19,7 @@
     --color-black: rgba(0, 0, 0, 0.87);
 
     --color-dark-gray: #515151;
-    --color-light-gray: #7f7f7f;
+    --color-light-gray: #9C9C9C;
     --color-border-gray: #DBDBDB;
 
     --base-font-size: 16px;
@@ -48,4 +48,8 @@ html {
     margin: 0;
     width: 100%;
     height: 100vh;
+}
+
+.skew-custom {
+    transform: skew(-4deg, 0deg);
 }
