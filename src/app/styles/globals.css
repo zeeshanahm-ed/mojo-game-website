@@ -53,3 +53,11 @@ html {
 .skew-custom {
     transform: skew(-4deg, 0deg);
 }
+
+.skew-custom {
+    transform: skew(-4deg, 0deg);
+}
+
+.boxShadow-custom {
+    box-shadow: 3px 3px 0px rgba(0, 0, 0)
+}

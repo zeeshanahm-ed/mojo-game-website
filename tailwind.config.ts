@@ -33,6 +33,17 @@ const config: Config = {
       borderRadius: {
         base: 'var(--base-radius)',
       },
+      screens: {
+        xsm: '375px',
+        sm: '480px',
+        md: '768px',
+        lg: '1092px',
+        xl: '1280px',
+        '2xl': '1440px',
+        xl1520: '1520px', // 👈 Custom screen at 1520px: '1520px', // 👈 Custom screen at 1520px
+        '3xl': '1700px',
+        '4xl': '1920px',
+      },
       spacing: {
         base: 'var(--base-spacing)',
       },
