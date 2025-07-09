@@ -8,6 +8,7 @@ import EditIcon from '../assets/icons/edit-icon.svg';
 import ContactIcon from '../assets/icons/contact-icon.svg';
 import UserIcon from '../assets/icons/user-icon.svg';
 import FallBackProfileImage from '../assets/images/fallback-profile-image.jpg';
+import Button from '../components/ui/Button';
 
 
 export default function SignUpForm() {
@@ -132,14 +133,9 @@ export default function SignUpForm() {
 
                 {/* SignUp Button */}
                 <div className='flex items-center justify-center mt-10'>
-                    <button
-                        type="submit"
-                        className="w-52 bg-purple text-white pt-3 pb-2 px-6  transform -skew-x-12 border-2 border-black shadow-lg hover:bg-purple transition-colors duration-300"
-                        aria-label="Login"
-                        style={{ boxShadow: '3px 3x 0px rgba(0, 0, 0)' }}
-                    >
+                    <Button type="submit" aria-label="Login" className="w-52 ">
                         <span className="inline-block transform skew-x-12 tracking-wider text-4xl uppercase font-popfun">SIGNUP</span>
-                    </button>
+                    </Button>
                 </div>
 
                 {/* "or Login" link */}

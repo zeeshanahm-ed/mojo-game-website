@@ -3,6 +3,7 @@ import { useAuthModalStore } from '../store/useAuthModalStore';
 //icons
 import PasswordIcon from '../assets/icons/password-icon.svg';
 import EmailIcon from '../assets/icons/email-icon.svg';
+import Button from '../components/ui/Button';
 
 export default function SignInForm() {
     const { closeModal } = useAuthModalStore();
@@ -56,14 +57,17 @@ export default function SignInForm() {
 
                 <div className='flex items-center justify-center mt-10'>
                     {/* Login Button */}
-                    <button
+                    <Button type="submit" aria-label="Login" className="w-52 ">
+                        <span className="inline-block transform skew-x-12 tracking-wider text-4xl uppercase font-popfun">LOGIN</span>
+                    </Button>
+                    {/* <button
                         type="submit"
-                        className="w-52 bg-purple text-white pt-3 pb-2 px-6  transform -skew-x-12 border-2 border-black shadow-lg hover:bg-purple transition-colors duration-300"
+                        className="w-52"
                         aria-label="Login"
                         style={{ boxShadow: '3px 3x 0px rgba(0, 0, 0)' }}
                     >
                         <span className="inline-block transform skew-x-12 tracking-wider text-4xl uppercase font-popfun">LOGIN</span>
-                    </button>
+                    </button> */}
                 </div>
             </form>
         </div>
