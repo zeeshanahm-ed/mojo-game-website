@@ -11,33 +11,35 @@ import KidsGameImage from '../../assets/images/kids-quest.png';
 import StudentGameImage from '../../assets/images/student-quest.png';
 import CreateGameImage from '../../assets/images/create-game.png';
 import RamadanGameImage from '../../assets/images/ramadan-quest.png';
+import { useTranslation } from 'react-i18next';
 
 export default function Banner() {
+    const { t } = useTranslation();
     return (
         <section className="w-full bg-red text-white px-10 py-10">
             <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-8">
                 {/* Left: Text + Buttons */}
                 <div>
-                    <h1 className="text-4xl md:text-5xl lg:text-9xl font-popfun leading-tight">
-                        CHALLENGE YOUR <br />
-                        <span className="text-yellow">MIND</span> WITH ULTIMATE <br />
-                        QUIZ EXPERIENCE
+                    <h1 className="text-4xl md:text-5xl lg:text-9xl font-popfun leading-tight uppercase">
+                        {t("slogan_line_1")} <br />
+                        <span className="text-yellow">{t("slogan_line_2")}</span> {t("withUltimate")} <br />
+                        {t("quizExperience")}
                     </h1>
-                    <p className="text-sm md:text-base">The answer is up to you, and the question is up to us</p>
+                    <p className="text-sm md:text-base">{t("slogan_sub")}</p>
 
                     <div className="mt-10 flex gap-5">
                         <div className={`relative cursor-pointer text-black skew-custom w-[240px] h-[210px] py-4 px-6 border-[6px] border-black bg-yellow flex-col flex justify-center`}>
-                            <div className='font-popfun text-8xl'>CREATE</div>
-                            <div className='font-popfun text-[60px] -mt-5'> A GAME</div>
+                            <div className='font-popfun text-8xl uppercase'>{t("create")}</div>
+                            <div className='font-popfun text-[60px] -mt-5 uppercase'> {t("aGame")}</div>
                             <Image src={CreateGameImage} alt="CREATE" className="absolute w-14 h-14 inline-block mt-auto bottom-9 right-2" />
                         </div>
                         <div className='space-y-2'>
-                            <GameCard image={StudentGameImage} title="MOJO" subtitle="STUDENTS" bgColor="bg-orange" />
-                            <GameCard image={RamadanGameImage} title="MOJO" subtitle="RAMADAN" bgColor="bg-light-green" className="-ml-2" />
+                            <GameCard image={StudentGameImage} title={t("brand")} subtitle={t("students")} bgColor="bg-orange" />
+                            <GameCard image={RamadanGameImage} title={t("brand")} subtitle={t("ramadan")} bgColor="bg-light-green" className="-ml-2" />
                         </div>
                         <div className='space-y-2'>
-                            <GameCard image={KidsGameImage} title="MOJO" subtitle="kIDS QUEST" bgColor="bg-green" />
-                            <GameCard image={PrivateGameImage} title="MOJO" subtitle="PRIVATE GAME" bgColor="bg-light-blue" className="-ml-2" />
+                            <GameCard image={KidsGameImage} title={t("brand")} subtitle={t("kids_quest")} bgColor="bg-green" />
+                            <GameCard image={PrivateGameImage} title={t("brand")} subtitle={t("private_game")} bgColor="bg-light-blue" className="-ml-2" />
                         </div>
                     </div>
                 </div>
@@ -71,7 +73,7 @@ export default function Banner() {
                     <Image
                         src={BookImage}
                         alt="Book"
-                        className="absolute right-[25%] bottom-[5%] w-[120px] lg:w-[220px]"
+                        className="absolute right-[10%] lg:right-[20%] bottom-[5%] w-[120px] lg:w-[220px]"
                     />
                 </div>
             </div>
@@ -103,8 +105,8 @@ function GameCard({
             className={`relative cursor-pointer text-black skew-custom w-[220px] h-[100px] py-4 px-6 border-[6px] border-black ${bgColor} ${className} flex-col flex`}
         >
 
-            <div className='font-bulletproof text-base'>{title}</div>
-            <div className='font-popfun text-5xl'>
+            <div className='font-bulletproof text-base uppercase'>{title}</div>
+            <div className='font-popfun text-5xl uppercase'>
                 {subtitle}
             </div>
             <Image src={image} alt={title} className="absolute w-6 h-6 inline-block mt-auto top-2 right-2" />
