@@ -28,6 +28,7 @@ const config: Config = {
         inter: ['var(--family-inter)', 'sans-serif'],
         mont: ['var(--family--mont)', 'sans-serif'],
         bulletproof: ['var(--font-bulletproof)', 'sans-serif'],
+        popfun: ['var(--font-popfun)', 'sans-serif'],
       },
       borderRadius: {
         base: 'var(--base-radius)',
