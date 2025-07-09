@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import "././styles/globals.css";
 import { AuthProvider } from "./context/AuthContext";
-import { Roboto, Roboto_Mono } from "next/font/google";
 import localFont from 'next/font/local';
+import Providers from './providers';
 
 const bulletproof = localFont({
   src: [
@@ -14,17 +14,17 @@ const bulletproof = localFont({
   ],
   variable: '--font-bulletproof',
 });
-
-const geistSans = Roboto({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-  weight: ["400", "700"],
+const popfun = localFont({
+  src: [
+    {
+      path: './fonts/Popfun.ttf',
+      weight: '400',
+      style: 'normal',
+    },
+  ],
+  variable: '--font-popfun',
 });
 
-const geistMono = Roboto_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -39,10 +39,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <AuthProvider>
-        <body
-          className={`${geistSans.variable} ${geistMono.variable} ${bulletproof.variable} antialiased `}
-        >
-          {children}
+        <body className={`${popfun.variable} ${bulletproof.variable} antialiased `}>
+          <Providers>{children}</Providers>
         </body>
       </AuthProvider>
     </html>
