@@ -3,7 +3,7 @@ import { useAuthModalStore } from '../store/useAuthModalStore';
 //icons
 import PasswordIcon from '../assets/icons/password-icon.svg';
 import EmailIcon from '../assets/icons/email-icon.svg';
-import Button from '../components/ui/Button';
+import Button from '../components/ui/common/Button';
 
 export default function SignInForm() {
     const { closeModal } = useAuthModalStore();

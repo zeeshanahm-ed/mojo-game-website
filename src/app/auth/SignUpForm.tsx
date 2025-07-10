@@ -1,6 +1,7 @@
 'use client';
 import React, { useState } from 'react';
 import { useAuthModalStore } from '../store/useAuthModalStore';
+import Button from '../components/ui/common/Button';
 //icons
 import PasswordIcon from '../assets/icons/password-icon.svg';
 import EmailIcon from '../assets/icons/email-icon.svg';
@@ -8,7 +9,6 @@ import EditIcon from '../assets/icons/edit-icon.svg';
 import ContactIcon from '../assets/icons/contact-icon.svg';
 import UserIcon from '../assets/icons/user-icon.svg';
 import FallBackProfileImage from '../assets/images/fallback-profile-image.jpg';
-import Button from '../components/ui/Button';
 
 
 export default function SignUpForm() {
