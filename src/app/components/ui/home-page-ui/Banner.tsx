@@ -18,9 +18,8 @@ export default function Banner() {
     return (
         <section className="w-full bg-red text-white px-10 py-10">
             <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-8">
-                {/* Left: Text + Buttons */}
                 <div>
-                    <h1 className="text-4xl md:text-5xl lg:text-9xl font-popfun leading-tight uppercase">
+                    <h1 className="text-7xl md:text-9xl font-popfun leading-tight uppercase">
                         {t("slogan_line_1")} <br />
                         <span className="text-yellow">{t("slogan_line_2")}</span> {t("withUltimate")} <br />
                         {t("quizExperience")}
