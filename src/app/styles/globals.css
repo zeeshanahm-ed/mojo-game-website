@@ -48,6 +48,7 @@ html {
     margin: 0;
     width: 100%;
     height: 100vh;
+    letter-spacing: 0.025em;
 }
 
 .skew-custom {
