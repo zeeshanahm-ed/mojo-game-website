@@ -20,6 +20,7 @@ const config: Config = {
         white: 'var(--color-white)',
         black: 'var(--color-black)',
         'dark-gray': 'var(--color-dark-gray)',
+        'dark-orange': 'var(--color-dark-orange)',
         'light-gray': 'var(--color-light-gray)',
         'border-gray': 'var(--color-border-gray)',
       },
@@ -29,6 +30,7 @@ const config: Config = {
         mont: ['var(--family--mont)', 'sans-serif'],
         bulletproof: ['var(--font-bulletproof)', 'sans-serif'],
         popfun: ['var(--font-popfun)', 'sans-serif'],
+        Product_sans: ['var(--font-product_sans)', 'sans-serif'],
       },
       borderRadius: {
         base: 'var(--base-radius)',

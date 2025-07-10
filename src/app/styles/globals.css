@@ -12,7 +12,8 @@
     --color-light-blue: #10EFFF;
     --color-blue: #2CA7F3;
     --color-light-green: #10FF9F;
-    --color-orange: #FFB310;
+    --color-orange: #F3A72C;
+    --color-dark-orange: #F3682C;
     --color-green: #BFFF10;
     --color-purple: #862CF3;
     --color-white: rgb(255, 255, 255);
@@ -39,7 +40,6 @@ body,
 html {
     background: var(--color-white);
     color: var(--color-black);
-    font-family: var(--family-primary);
     font-size: var(--base-font-size);
     line-height: var(--base-line-height);
     overflow-x: hidden;
@@ -48,10 +48,6 @@ html {
     margin: 0;
     width: 100%;
     height: 100vh;
-}
-
-.skew-custom {
-    transform: skew(-4deg, 0deg);
 }
 
 .skew-custom {
