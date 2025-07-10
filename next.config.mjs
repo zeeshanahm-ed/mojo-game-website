@@ -1,7 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     experimental: {
-        turbo: false,
+        turbo: {
+            loaders: {}, // leave it empty or configure only if needed
+        },
     },
     webpack(config) {
         config.module.rules.push({
