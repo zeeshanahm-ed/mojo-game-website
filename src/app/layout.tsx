@@ -3,8 +3,8 @@ import "././styles/globals.css";
 import { AuthProvider } from "./context/AuthContext";
 import localFont from 'next/font/local';
 import Providers from './providers';
-import Footer from "./components/ui/Footer";
-import Header from "./components/ui/Header";
+import Footer from "@/app/components/ui/common/Footer";
+import Header from "@/app/components/ui/common/Header";
 
 const bulletproof = localFont({
   src: [
