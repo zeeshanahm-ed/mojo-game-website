@@ -1,8 +1,8 @@
 'use client';
 
 import Image from 'next/image';
-import BrainImage from '../../assets/images/brain-image.png';
-import QuestionImage from '../../assets/images/question-image.png';
+import BrainImage from '../../../assets/images/brain-image.png';
+import QuestionImage from '../../../assets/images/question-image.png';
 
 export default function AboutMojoSection() {
     return (

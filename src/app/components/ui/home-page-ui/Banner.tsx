@@ -1,16 +1,16 @@
 'use client';
 
 import Image, { StaticImageData } from 'next/image';
-import WorldImage from '../../assets/images/world.png';
-import RocketImage from '../../assets/images/rocket.png';
-import StarImage from '../../assets/images/star.png';
-import LightBulbImage from '../../assets/images/light-bulb.png';
-import BookImage from '../../assets/images/book.png';
-import PrivateGameImage from '../../assets/images/private-game.png';
-import KidsGameImage from '../../assets/images/kids-quest.png';
-import StudentGameImage from '../../assets/images/student-quest.png';
-import CreateGameImage from '../../assets/images/create-game.png';
-import RamadanGameImage from '../../assets/images/ramadan-quest.png';
+import WorldImage from '../../../assets/images/world.png';
+import RocketImage from '../../../assets/images/rocket.png';
+import StarImage from '../../../assets/images/star.png';
+import LightBulbImage from '../../../assets/images/light-bulb.png';
+import BookImage from '../../../assets/images/book.png';
+import PrivateGameImage from '../../../assets/images/private-game.png';
+import KidsGameImage from '../../../assets/images/kids-quest.png';
+import StudentGameImage from '../../../assets/images/student-quest.png';
+import CreateGameImage from '../../../assets/images/create-game.png';
+import RamadanGameImage from '../../../assets/images/ramadan-quest.png';
 import { useTranslation } from 'react-i18next';
 
 export default function Banner() {

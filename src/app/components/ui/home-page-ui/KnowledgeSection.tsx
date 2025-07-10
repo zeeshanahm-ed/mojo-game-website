@@ -1,5 +1,5 @@
 import React from 'react'
-import Button from './Button';
+import Button from '../Button';
 
 const KnowledgeSection = () => {
     return (
@@ -11,7 +11,7 @@ const KnowledgeSection = () => {
                 <p className="text-lg leading-6 text-black max-w-xl">
                     It is a fun cultural game suitable for all ages, testing your group's knowledge. The game includes all types of questions according to the selected category.
                 </p>
-                <Button className='mt-10 px-14 pt-5'>
+                <Button className='mt-10 px-20 pt-5'>
                     <span className="inline-block transform skew-x-12 tracking-wider text-6xl uppercase font-popfun">Create a game</span>
                 </Button>
             </div>

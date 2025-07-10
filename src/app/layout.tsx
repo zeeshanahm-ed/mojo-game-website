@@ -16,6 +16,7 @@ const bulletproof = localFont({
   ],
   variable: '--font-bulletproof',
 });
+
 const popfun = localFont({
   src: [
     {
@@ -25,6 +26,16 @@ const popfun = localFont({
     },
   ],
   variable: '--font-popfun',
+});
+const Product_sans = localFont({
+  src: [
+    {
+      path: './fonts/Product_sans.ttf',
+      weight: '400',
+      style: 'normal',
+    },
+  ],
+  variable: '--font-product_sans',
 });
 
 
@@ -41,7 +52,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <AuthProvider>
-        <body className={`${popfun.variable} ${bulletproof.variable} antialiased `}>
+        <body className={`${popfun.variable} ${bulletproof.variable} ${Product_sans.variable} antialiased font-Product_sans`}>
           <Providers>
             <Header />
             {children}
