@@ -7,7 +7,7 @@ import ScoreStealImage from "../../../assets/images/score-steal-image.png"
 
 const LifeLineSection: React.FC = () => {
     return (
-        <section className="w-full bg-white py-16 px-4 md:px-8 flex flex-col items-center justify-center font-sans relative">
+        <section className="w-full bg-white py-16 px-4 md:px-10 flex flex-col items-center justify-center font-sans relative">
             {/* Main Content */}
             <div className="relative z-10 flex flex-col items-center max-w-5xl text-center">
                 <h2 className="text-black text-6xl lg:text-8xl  leading-tight mb-2 uppercase font-popfun">

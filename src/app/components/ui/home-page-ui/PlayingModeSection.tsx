@@ -3,8 +3,8 @@ import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 
 //icons
-import OfflineImage from "../../../assets/images/offlinemode-image.png"
-import OnlineImage from "../../../assets/images/onlinemode-image.png"
+import OfflineImage from "@/app/assets/images/offlinemode-image.png"
+import OnlineImage from "@/app/assets/images/onlinemode-image.png"
 
 const PlayingModeSection: React.FC = () => {
 
@@ -19,7 +19,7 @@ const PlayingModeSection: React.FC = () => {
   };
 
   return (
-    <section className="w-full bg-orange py-16 px-4 md:px-8 flex flex-col items-center justify-center">
+    <section className="w-full bg-orange py-16 px-4 md:px-10 flex flex-col items-center justify-center">
       <div className="relative z-10 flex flex-col items-center max-w-4xl text-center">
         <h2 className="text-black text-6xl lg:text-8xl font-popfun leading-tight mb-4 uppercase">
           Playing Modes
