@@ -36,8 +36,8 @@
 }
 
 
-body,
-html {
+html,
+body {
     background: var(--color-white);
     color: var(--color-black);
     font-size: var(--base-font-size);
