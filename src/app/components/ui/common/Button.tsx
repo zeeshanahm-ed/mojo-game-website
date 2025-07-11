@@ -1,12 +1,13 @@
 import React, { forwardRef } from 'react';
 
-export interface IButtonProps {
+export interface IButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
     variant?: 'primary' | 'secondary';
     prefixElement?: React.ReactNode;
     suffixElement?: React.ReactNode;
     className?: string;
     type?: 'button' | 'submit' | 'reset';
     children?: any;
+    bgClass?: string;
 }
 
 const Button = forwardRef<HTMLButtonElement, IButtonProps>(
@@ -17,6 +18,7 @@ const Button = forwardRef<HTMLButtonElement, IButtonProps>(
         className,
         children,
         type = 'button',
+        bgClass,
         ...rest
     }, ref) => {
 
@@ -34,7 +36,7 @@ const Button = forwardRef<HTMLButtonElement, IButtonProps>(
                 ref={ref}
                 type={type}
                 {...rest}
-                className={`bg-purple text-white boxShadow-custom pt-3 pb-2 px-6 transform -skew-x-12 border-2 border-black shadow-lg font-popfun hover:bg-purple transition-colors duration-300 ${variant} ${className}`}
+                className={`${bgClass ? bgClass : "bg-purple"} text-white boxShadow-custom pt-3 pb-2 px-6 transform -skew-x-12 border-2 border-black shadow-lg font-popfun ${variant} ${className}`}
                 aria-label="Login"
             >
                 {prefixElement}
