@@ -11,6 +11,7 @@ import GiftIcon from "@/app/assets/icons/gift-icon.svg";
 import FileIcon from "@/app/assets/icons/file-icon.svg";
 import GampadIcon from "@/app/assets/icons/gamepad-icon.svg";
 import { FaPlus } from "react-icons/fa";
+import { useRouter } from 'next/navigation';
 
 const userAvatar = "https://placehold.co/40x40/FFD700/000000?text=HI";
 
@@ -18,14 +19,15 @@ const Header: React.FC = () => {
     const { user } = useAuth();
     const { openModal } = useAuthModalStore();
     const { t } = useTranslation();
+    const router = useRouter();
 
     const handleAuthModal = () => {
         openModal("signin");
     };
 
     return (
-        <header className="w-full overflow-hidden font-sans h-20 flex items-center px-10">
-            <nav className="flex items-center justify-between w-full p-4">
+        <header className="w-full overflow-hidden font-sans h-20 flex items-center px-4 md:px-10">
+            <nav className="flex items-center justify-between w-full py-4">
                 {/* Left section: User avatar and name */}
                 <div className="flex items-center gap-5">
                     <div className='flex items-center'>
@@ -58,7 +60,7 @@ const Header: React.FC = () => {
 
                 {/* Middle section: Icons and MOJO logo */}
                 <div className="flex items-center">
-                    <h1 className="text-5xl text-gray-900 font-bulletproof mt-2 uppercase">
+                    <h1 className="text-5xl text-gray-900 font-bulletproof mt-2 uppercase cursor-pointer" onClick={() => router.push('/')}>
                         {t("brand")}
                     </h1>
                 </div>
