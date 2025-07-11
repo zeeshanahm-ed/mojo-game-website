@@ -56,26 +56,30 @@ function OfflineMode() {
 
     const handleGameName = (value: string) => {
         setGameName(value)
+    };
+
+    const handleStartGame = () => {
+
     }
 
     return (
         <section>
             <Banner />
             <Wrapper>
-                <div className='flex items-center justify-center flex-col h-auto pb-32'>
+                <div className='flex items-center justify-center flex-col h-auto pb-32 px-4 md:px-10'>
                     <CategoriesSection />
                     <div className="text-center flex flex-col items-center justify-center mt-10">
-                        <h2 className="lg:text-6xl text-6xl font-popfun text-black mb-2 uppercase">
+                        <h2 className="md:text-6xl text-5xl font-popfun text-black mb-2 uppercase">
                             Specify team information
                         </h2>
-                        <p className="text-lg leading-6 text-black max-w-2xl">
+                        <p className="text-sm sm:text-base md:text-lg leading-6 text-black max-w-2xl">
                             An interactive group game in which we test your knowledge and culture
                         </p>
                         <Input
                             type="text"
                             placeholder="Type a Game Name"
                             value={gameName}
-                            className='my-10 w-1/2'
+                            className='my-10 md:w-1/2 w-full'
                             inputClassName='text-center pl-0'
                             onChange={(e): void => handleGameName(e.target.value)}
                         />
@@ -156,7 +160,7 @@ function OfflineMode() {
                                 </div>
                             </div>
                         </div>
-                        <Button className='w-1/2 text-5xl mt-10'>Start playing</Button>
+                        <Button className='md:w-1/2 w-3/4 text-5xl mt-10' onClick={() => handleStartGame()}>Start playing</Button>
                     </div>
                 </div>
             </Wrapper>
