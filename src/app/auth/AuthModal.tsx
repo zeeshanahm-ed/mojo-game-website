@@ -14,7 +14,7 @@ export default function AuthModal() {
         <dialog id="auth_modal" className={` modal ${open ? 'modal-open' : ''}`}>
             <div className="modal-box bg-white items-center">
                 <form method="dialog " className="flex items-center justify-center relative">
-                    <h2 className="text-7xl font-popfun">
+                    <h2 className="text-5xl md:text-7xl font-popfun">
                         {mode === 'signin' ? 'SIGN IN' : 'SIGN UP'}
                     </h2>
                     <button

@@ -80,14 +80,14 @@ export default function SignUpForm() {
                     <input
                         type="text"
                         placeholder="First Name"
-                        className="input input-bordered w-1/2 pl-10 pr-2 py-3 text-lg bg-white text-gray-800 border-none focus:outline-none"
+                        className="input input-bordered w-1/2 pl-2 md:pl-10 pr-2 py-3 text-lg bg-white text-gray-800 border-none focus:outline-none"
                         required
                     />
                     <div className='h-[90%] w-[2px] bg-light-gray'></div>
                     <input
                         type="text"
                         placeholder="Last Name"
-                        className="input input-bordered w-1/2 pl-10 pr-2 py-3 text-lg bg-white text-gray-800 border-none focus:outline-none border-l border-gray-300"
+                        className="input input-bordered w-1/2 pl-2 md:pl-10 pr-2 py-3 text-lg bg-white text-gray-800 border-none focus:outline-none border-l border-gray-300"
                         required
                     />
                 </div>
@@ -100,7 +100,7 @@ export default function SignUpForm() {
                     <input
                         type="email"
                         placeholder="Enter your email address"
-                        className="input input-bordered w-full pl-10 pr-4 py-3 text-lg bg-white text-gray-800 border-none focus:outline-none"
+                        className="input input-bordered w-full pl-2 md:pl-10 pr-4 py-3 text-lg bg-white text-gray-800 border-none focus:outline-none"
                         required
                     />
                 </div>
@@ -113,7 +113,7 @@ export default function SignUpForm() {
                     <input
                         type="password"
                         placeholder="Your password"
-                        className="input input-bordered w-full pl-10 pr-4 py-3 text-lg bg-white text-gray-800 border-none focus:outline-none"
+                        className="input input-bordered w-full pl-2 md:pl-10 pr-4 py-3 text-lg bg-white text-gray-800 border-none focus:outline-none"
                         required
                     />
                 </div>
@@ -126,7 +126,7 @@ export default function SignUpForm() {
                     <input
                         type="tel"
                         placeholder="Your Contact Number"
-                        className="input input-bordered w-full pl-10 pr-4 py-3 text-lg bg-white text-gray-800 border-none focus:outline-none"
+                        className="input input-bordered w-full pl-2 md:pl-10 pr-4 py-3 text-lg bg-white text-gray-800 border-none focus:outline-none"
                         required
                     />
                 </div>
