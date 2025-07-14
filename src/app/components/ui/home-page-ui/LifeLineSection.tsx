@@ -20,8 +20,8 @@ const LifeLineSection: React.FC = () => {
                         </p>
 
                         {/* Life Line Cards Container */}
-                        <div className="flex flex-col lg:flex-row space-y-8 lg:space-y-0 lg:space-x-12">
-                            <div className="w-72 h-96 bg-white border-[6px] border-purple skew-custom flex flex-col items-center justify-center p-6 text-center gap-5">
+                        <div className="flex flex-col md:flex-row items-center justify-center gap-5">
+                            <div className="lg:w-72 w-60 h-96 bg-white border-[6px] border-purple skew-custom flex flex-col items-center justify-center p-6 text-center gap-5">
                                 <Image src={CallAFriendImage} alt='Call a Friend' className='w-28 h-28' />
                                 <p className="text-purple text-5xl lg:text-6xl uppercase mb-2 font-popfun">
                                     Call a Friend
@@ -31,7 +31,7 @@ const LifeLineSection: React.FC = () => {
                                 </p>
                             </div>
 
-                            <div className="w-72 h-96 bg-white border-[6px] skew-custom border-dark-orange flex flex-col items-center justify-center p-6 text-center gap-5" >
+                            <div className="lg:w-72 w-60 h-96 bg-white border-[6px] skew-custom border-dark-orange flex flex-col items-center justify-center p-6 text-center gap-5" >
                                 <Image src={SecondChanceImage} alt='2nd Chance' className='w-28 h-28' />
                                 <p className="text-dark-orange text-5xl lg:text-6xl uppercase mb-2 font-popfun">
                                     2nd Chance
@@ -42,7 +42,7 @@ const LifeLineSection: React.FC = () => {
                             </div>
 
                             {/* Score Steal Card */}
-                            <div className="w-72 h-96 bg-white border-[6px] skew-custom border-blue flex flex-col items-center justify-center p-6 text-center gap-5">
+                            <div className="lg:w-72 w-60 h-96 bg-white border-[6px] skew-custom border-blue flex flex-col items-center justify-center p-6 text-center gap-5">
                                 <Image src={ScoreStealImage} alt='Score Steal' className='w-28 h-28' />
                                 <p className="text-blue text-5xl lg:text-6xl  uppercase mb-2 font-popfun">
                                     Score Steal

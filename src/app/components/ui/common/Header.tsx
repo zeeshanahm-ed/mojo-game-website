@@ -31,7 +31,7 @@ const Header: React.FC = () => {
             <Wrapper>
                 <nav className="flex items-center justify-between w-full py-4">
                     {/* Left section: User avatar and name */}
-                    <div className="flex items-center gap-5">
+                    <div className=" items-center gap-5 hidden md:flex">
                         <div className='flex items-center'>
                             {user ?
                                 <>
@@ -62,18 +62,19 @@ const Header: React.FC = () => {
 
                     {/* Middle section: Icons and MOJO logo */}
                     <div className="flex items-center">
-                        <h1 className="text-5xl text-gray-900 font-bulletproof mt-2 uppercase cursor-pointer" onClick={() => router.push('/')}>
+                        <h1 className="text-3xl md:text-5xl text-gray-900 font-bulletproof mt-2 uppercase cursor-pointer" onClick={() => router.push('/')}>
                             {t("brand")}
                         </h1>
                     </div>
 
                     {/* Right section: Navigation links */}
-                    <div className="flex items-center space-x-8 text-gray-800 text-lg font-medium w-fit text-nowrap">
+                    <div className="flex items-center space-x-2 md:space-x-8 text-gray-800 text-sm md:text-lg font-medium w-fit text-nowrap">
                         <Link href="/my-games" className="hover:text-dark-gray transition-colors">{t("my_games")}</Link>
                         <Link href="/contactus" className="hover:text-dark-gray transition-colors">{t("contact_us")}</Link>
-                        <LanguageSwitcher />
+                        {/* <LanguageSwitcher /> */}
                     </div>
                 </nav>
+                <AuthModal />
                 <AuthModal />
             </Wrapper>
         </header>

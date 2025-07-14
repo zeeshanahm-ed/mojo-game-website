@@ -1,8 +1,6 @@
 'use client';
-import { useTranslation } from 'react-i18next';
-import Wrapper from '../common/Wrapper';
-import Image, { StaticImageData } from 'next/image';
 
+import Image, { StaticImageData } from 'next/image';
 import WorldImage from '../../../assets/images/world.png';
 import RocketImage from '../../../assets/images/rocket.png';
 import StarImage from '../../../assets/images/star.png';
@@ -13,74 +11,73 @@ import KidsGameImage from '../../../assets/images/kids-quest.png';
 import StudentGameImage from '../../../assets/images/student-quest.png';
 import CreateGameImage from '../../../assets/images/create-game.png';
 import RamadanGameImage from '../../../assets/images/ramadan-quest.png';
+import { useTranslation } from 'react-i18next';
+import Wrapper from '../common/Wrapper';
 
 export default function Banner() {
     const { t } = useTranslation();
     return (
-        <section className="w-full bg-red text-white px-4 md:px-10 lg:py-10 py-20">
+        <section className="w-full bg-red text-white px-4 md:px-10 py-10">
             <Wrapper>
-                <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-8 relative">
-                    <div className="lg:hidden flex left-0 -top-10 absolute items-center justify-center flex-col lg:justify-start space-x-4 mb-8 lg:mb-0 lg:w-1/4">
-                        <Image src={StarImage} alt='Star' className='w-12 h-12 mr-10' />
-                    </div>
-                    <div>
-                        <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-start text-center lg:text-9xl font-popfun leading-tight uppercase">
-                            {t("slogan_line_1")} <br />
-                            <span className="text-yellow">{t("slogan_line_2")}</span> {t("withUltimate")} {t("quizExperience")}
-                        </h1>
-                        <p className="text-sm md:text-base lg:text-start text-center">{t("slogan_sub")}</p>
-
-                        <div className="mt-10 flex gap-5 flex-col md:flex-row justify-center lg:justify-start items-center">
-                            <div className={`relative cursor-pointer text-black skew-custom h-auto md:w-[240px] md:h-[210px] md:gap-0 gap-5 py-2 md:py-4 px-6 border-4 sm:border-[6px] border-black bg-yellow flex-row items-center justify-between md:items-start md:flex-col flex md:justify-center`}>
-                                <div className='font-popfun text-5xl sm:text-5xl md:text-7xl uppercase'>{t("create")}</div>
-                                <div className='font-popfun text-3xl md:text-5xl mt-2 sm:mt-3 uppercase'> {t("aGame")}</div>
-                                <Image src={CreateGameImage} alt="CREATE" className="md:absolute w-8 h-8 md:w-10 md:h-10 inline-block bottom-10 right-2" />
-                            </div>
-                            <div className='space-y-2 flex md:gap-0 gap-8 flex-row md:flex-col md:items-start items-baseline'>
-                                <GameCard image={StudentGameImage} title={t("brand")} subtitle={t("students")} bgColor="bg-orange" />
-                                <GameCard image={RamadanGameImage} title={t("brand")} subtitle={t("ramadan")} bgColor="bg-light-green" className="-ml-2" />
-                            </div>
-                            <div className='space-y-2 flex md:gap-0 gap-8 flex-row md:flex-col md:items-start items-baseline'>
-                                <GameCard image={KidsGameImage} title={t("brand")} subtitle={t("kids_quest")} bgColor="bg-green" />
-                                <GameCard image={PrivateGameImage} title={t("brand")} subtitle={t("private_game")} bgColor="bg-light-blue" className="-ml-2" />
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* Right: Images */}
-                    <div className="relative h-full hidden lg:block">
+                <div className='relative h-[27.5rem] md:h-[37rem] lg:h-[44rem]'>
+                    <div className="hidden sm:block 2xl:right-0 -right-[4%] md:-right-[40px] top-3 md:top-5 absolute md:w-[150px] md:h-[220px] w-[100px] h-[150px]">
                         <Image
                             src={WorldImage}
                             alt="World"
-                            className="absolute -right-10 -top-14 w-[200px] lg:w-[300px]"
+                            className="w-full h-full object-cover"
                         />
-                        <Image
-                            src={StarImage}
-                            alt="Star"
-                            className="w-[45px] h-[55px]"
-                        />
-                        <div className='flex mt-20'>
-                            <Image
-                                src={RocketImage}
-                                alt="Rocket"
-                                className="w-[200px] h-[200px]"
-                            />
-                            <Image
-                                src={LightBulbImage}
-                                alt="Rocket"
-                                width={180}
-                                height={180}
-                                className="w-[180px] h-[180px] self-end"
-                            />
+                    </div>
+                    <div className="left-64 sm:left-[50%] md:left-[60%] top-3 md:top-5 relative md:w-12 md:h-12 w-8 h-8">
+                        <Image src={StarImage} alt='Star' className='w-full h-full object-contain' />
+                    </div>
+                    <h1 className="text-6xl -mt-8 md:text-8xl text-start lg:text-9xl font-popfun leading-tight uppercase">
+                        {t("slogan_line_1")} <br />
+                        <span className="text-yellow">{t("slogan_line_2")}</span> {t("withUltimate")} <br /> {t("quizExperience")}
+                    </h1>
+                    <p className="text-sm md:text-base text-start">{t("slogan_sub")}</p>
+
+                    <div className="mt-10 flex space-x-3 flex-row justify-start items-center">
+                        <div className={`relative cursor-pointer text-black skew-custom w-[120px]  md:w-[240px] h-[145px] md:h-[210px] md:gap-0 gap-0 py-2 md:py-4 px-2 border-[3px] md:border-[6px] border-black bg-yellow items-start flex-col flex justify-center`}>
+                            <div className='font-popfun text-5xl md:text-8xl uppercase'>{t("create")}</div>
+                            <div className='font-popfun text-3xl md:text-[60px] md:mt-3 uppercase'> {t("aGame")}</div>
+                            <Image src={CreateGameImage} alt="CREATE" className="absolute w-8 h-8 md:w-14 md:h-14 inline-block bottom-8 md:bottom-6 right-2" />
                         </div>
+                        <div className='space-y-1 md:space-y-2 flex flex-col items-start'>
+                            <GameCard image={StudentGameImage} title={t("brand")} subtitle={t("students")} bgColor="bg-orange" />
+                            <GameCard image={RamadanGameImage} title={t("brand")} subtitle={t("ramadan")} bgColor="bg-light-green" className="-ml-2" />
+                        </div>
+                        <div className='space-y-1 md:space-y-2 flex flex-col items-start'>
+                            <GameCard image={KidsGameImage} title={t("brand")} subtitle={t("kids_quest")} bgColor="bg-green" />
+                            <GameCard image={PrivateGameImage} title={t("brand")} subtitle={t("private_game")} bgColor="bg-light-blue" className="-ml-2" />
+                        </div>
+                    </div>
+                    <div className="-rotate-45 w-20 h-20 md:w-44 md:h-44 left-72 sm:left-[60%] md:-top-[70%] md:left-[60%] -top-[360px] relative">
                         <Image
-                            src={BookImage}
-                            alt="Book"
-                            className="absolute right-[10%] lg:right-[20%] bottom-[5%] w-[120px] lg:w-[220px]"
+                            src={RocketImage}
+                            alt="Rocket"
+                            className="w-full h-full object-cover"
+                        />
+                    </div>
+                    <div className="w-20 h-20 md:w-44 md:h-44 left-72 sm:left-[70%] md:-top-[90%] md:left-[80%] -top-[350px] relative">
+                        <Image
+                            src={LightBulbImage}
+                            alt="Rocket"
+                            className="w-full h-full"
                         />
                     </div>
                 </div>
             </Wrapper>
+            {/* Right: Images */}
+            {/* <Image
+                                src={WorldImage}
+                                alt="World"
+                                className="absolute -right-10 -top-14 w-[200px] lg:w-[300px]"
+                            /> */}
+            {/* <Image
+                        src={BookImage}
+                        alt="Book"
+                        className="absolute right-[10%] lg:right-[20%] bottom-[5%] w-[120px] lg:w-[220px]"
+                    /> */}
         </section>
     );
 }
@@ -106,14 +103,14 @@ function GameCard({
     return (
         <div
             onClick={onClick}
-            className={`relative cursor-pointer text-black skew-custom w-40 sm:w-56 h-20 sm:h-[100px] py-2 px-2 sm:py-4 border-4 sm:px-6 sm:border-[6px] border-black ${bgColor} ${className} flex-col flex`}
+            className={`relative cursor-pointer text-black skew-custom md:w-[220px] md:h-[100px] w-[110px] h-[70px] py-1 px-1 md:py-4 md:px-6 md:border-[6px] border-[3px] border-black ${bgColor} ${className} flex-col flex`}
         >
 
-            <div className='font-bulletproof text-sm sm:text-base uppercase'>{title}</div>
-            <div className='font-popfun text-4xl sm:text-5xl uppercase'>
+            <div className='font-bulletproof text-base uppercase'>{title}</div>
+            <div className='font-popfun text-3xl md:text-5xl uppercase'>
                 {subtitle}
             </div>
-            <Image src={image} alt={title} className="absolute w-6 h-6 inline-block mt-auto top-2 right-2" />
+            <Image src={image} alt={title} className="absolute md:w-6 md:h-6 w-5 h-5 inline-block mt-auto top-1 md:top-2 right-2" />
         </div>
     );
 }
