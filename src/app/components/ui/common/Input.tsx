@@ -28,7 +28,7 @@ const Input: React.FC<InputProps> = ({
     return (
         <div
             className={`flex items-center h-14 transform -skew-x-12 border-2 border-black overflow-hidden ${className}`}>
-            {icon && <div className="bg-purple w-16 flex items-center justify-center h-full">
+            {icon && <div className="bg-purple w-16 md:w-20 flex items-center justify-center h-full">
                 {icon}
             </div>}
             <input
@@ -38,7 +38,7 @@ const Input: React.FC<InputProps> = ({
                 onChange={onChange}
                 required={required}
                 name={name}
-                className={`input h-full input-bordered pl-2 sm:pl-10 w-full text-lg bg-white text-gray-800 border-none focus:outline-none ${inputClassName}`}
+                className={`input h-full input-bordered pl-2 md:pl-10 w-full text-lg bg-white text-gray-800 border-none focus:outline-none ${inputClassName}`}
             />
         </div>
     );

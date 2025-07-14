@@ -8,6 +8,8 @@ export interface IButtonProps extends React.ButtonHTMLAttributes<HTMLButtonEleme
     type?: 'button' | 'submit' | 'reset';
     children?: any;
     bgClass?: string;
+    textClass?: string;
+    display?: string;
 }
 
 const Button = forwardRef<HTMLButtonElement, IButtonProps>(
@@ -19,6 +21,8 @@ const Button = forwardRef<HTMLButtonElement, IButtonProps>(
         children,
         type = 'button',
         bgClass,
+        textClass,
+        display,
         ...rest
     }, ref) => {
 
@@ -36,11 +40,11 @@ const Button = forwardRef<HTMLButtonElement, IButtonProps>(
                 ref={ref}
                 type={type}
                 {...rest}
-                className={`${bgClass ? bgClass : "bg-purple"} text-white boxShadow-custom pt-3 pb-2 px-6 transform -skew-x-12 border-2 border-black shadow-lg font-popfun ${variant} ${className}`}
-                aria-label="Login"
+                className={`${variant} ${className} ${bgClass ? bgClass : "bg-purple"} ${textClass ? textClass : "text-white"} pt-2 boxShadow-custom px-4 transform -skew-x-12 border-2 border-black shadow-lg font-popfun`}
+                aria-label="Button"
             >
                 {prefixElement}
-                {children}
+                {display == "none" ? null : children}
                 {suffixElement}
             </button>
         );
