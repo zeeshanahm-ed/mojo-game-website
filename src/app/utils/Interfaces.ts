@@ -2,4 +2,5 @@ export interface Category {
     name: string;
     icon: string;
     color: string;
+    selected?: boolean;
 }
