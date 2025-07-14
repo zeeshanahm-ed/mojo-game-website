@@ -12,6 +12,7 @@ const config: Config = {
         red: 'var(--color-red)',
         yellow: 'var(--color-yellow)',
         'light-blue': 'var(--color-light-blue)',
+        'dark-blue': 'var(--color-dark-blue)',
         blue: 'var(--color-blue)',
         'light-green': 'var(--color-light-green)',
         orange: 'var(--color-orange)',

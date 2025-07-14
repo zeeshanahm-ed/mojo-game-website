@@ -11,11 +11,12 @@
     --color-yellow: #FFEB10;
     --color-light-blue: #10EFFF;
     --color-blue: #2CA7F3;
+    --color-dark-blue: #1078FF;
     --color-light-green: #10FF9F;
     --color-orange: #F3A72C;
     --color-dark-orange: #F3682C;
     --color-green: #BFFF10;
-    --color-purple: #862CF3;
+    --color-purple: #A719FA;
     --color-white: rgb(255, 255, 255);
     --color-black: rgba(0, 0, 0, 0.87);
 
@@ -57,4 +58,22 @@ body {
 
 .boxShadow-custom {
     box-shadow: 3px 3px 0px rgba(0, 0, 0)
+}
+
+/* Hide number input arrows (Chrome, Safari, Edge) */
+input[type='number']::-webkit-outer-spin-button,
+input[type='number']::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type='number'] {
+    -moz-appearance: textfield;
+}
+
+.flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
