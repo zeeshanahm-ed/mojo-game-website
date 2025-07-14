@@ -3,8 +3,7 @@ import "././styles/globals.css";
 import { AuthProvider } from "./context/AuthContext";
 import localFont from 'next/font/local';
 import Providers from './providers';
-import Footer from "@/app/components/ui/common/Footer";
-import Header from "@/app/components/ui/common/Header";
+import ClientLayoutWrapper from "./ClientLayoutWrapper";
 
 const bulletproof = localFont({
   src: [
@@ -49,17 +48,20 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
   return (
     <html lang="en">
-      <AuthProvider>
-        <body className={`${popfun.variable} ${bulletproof.variable} ${Product_sans.variable} antialiased font-Product_sans`}>
+      <body
+        className={`${popfun.variable} ${bulletproof.variable} ${Product_sans.variable} antialiased font-Product_sans`}
+      >
+        <AuthProvider>
           <Providers>
-            <Header />
-            {children}
-            <Footer />
+            <ClientLayoutWrapper>
+              {children}
+            </ClientLayoutWrapper>
           </Providers>
-        </body>
-      </AuthProvider>
+        </AuthProvider>
+      </body>
     </html>
   );
 }
