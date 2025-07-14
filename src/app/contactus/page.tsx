@@ -81,7 +81,7 @@ function ContactUS() {
                             {/* Contact Number Input */}
                             <Input
                                 icon={<ContactIcon />}
-                                type="tel"
+                                type="number"
                                 placeholder="Your Contact Number"
                                 className="w-1/2"
                                 required
@@ -91,7 +91,7 @@ function ContactUS() {
                             />
 
                             <textarea
-                                className="w-1/2 h-[200px] outline-none resize-none bg-white border-2 border-black -skew-x-12 p-5 text-lg"
+                                className="w-1/2 h-28 outline-none resize-none bg-white border-2 border-black -skew-x-12 p-5 text-lg"
                                 placeholder="Your message"
                                 name="message"
                                 onChange={handleChange}

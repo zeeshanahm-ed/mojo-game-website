@@ -1,5 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
+import Wrapper from '../common/Wrapper';
 //icons
 import CallAFriendImage from "../../../assets/images/call-image.png"
 import SecondChanceImage from "../../../assets/images/second-chance-image.png"
@@ -7,50 +8,53 @@ import ScoreStealImage from "../../../assets/images/score-steal-image.png"
 
 const LifeLineSection: React.FC = () => {
     return (
-        <section className="w-full bg-white py-16 px-4 md:px-10 flex flex-col items-center justify-center font-sans relative">
-            {/* Main Content */}
-            <div className="relative z-10 flex flex-col items-center max-w-5xl text-center">
-                <h2 className="text-black text-6xl lg:text-8xl  leading-tight mb-2 uppercase font-popfun">
-                    LIFE LINES
-                </h2>
-                <p className="text-black text-base md:text-lg mb-12">
-                    Use them before you see the question
-                </p>
+        <section className="w-full bg-white">
+            <Wrapper>
+                <div className='py-16 px-4 md:px-10 flex flex-col items-center justify-center font-sans relative'>
+                    <div className="relative z-10 flex flex-col items-center max-w-5xl text-center">
+                        <h2 className="text-black text-6xl lg:text-8xl  leading-tight mb-2 uppercase font-popfun">
+                            LIFE LINES
+                        </h2>
+                        <p className="text-black text-base md:text-lg mb-12">
+                            Use them before you see the question
+                        </p>
 
-                {/* Life Line Cards Container */}
-                <div className="flex flex-col lg:flex-row space-y-8 lg:space-y-0 lg:space-x-12">
-                    <div className="w-72 h-96 bg-white border-[6px] border-purple skew-custom flex flex-col items-center justify-center p-6 text-center gap-5">
-                        <Image src={CallAFriendImage} alt='Call a Friend' className='w-28 h-28' />
-                        <p className="text-purple text-5xl lg:text-6xl uppercase mb-2 font-popfun">
-                            Call a Friend
-                        </p>
-                        <p className="text-sm">
-                            Your friend who knows everything, it's time to call him!
-                        </p>
-                    </div>
+                        {/* Life Line Cards Container */}
+                        <div className="flex flex-col lg:flex-row space-y-8 lg:space-y-0 lg:space-x-12">
+                            <div className="w-72 h-96 bg-white border-[6px] border-purple skew-custom flex flex-col items-center justify-center p-6 text-center gap-5">
+                                <Image src={CallAFriendImage} alt='Call a Friend' className='w-28 h-28' />
+                                <p className="text-purple text-5xl lg:text-6xl uppercase mb-2 font-popfun">
+                                    Call a Friend
+                                </p>
+                                <p className="text-sm">
+                                    Your friend who knows everything, it's time to call him!
+                                </p>
+                            </div>
 
-                    <div className="w-72 h-96 bg-white border-[6px] skew-custom border-dark-orange flex flex-col items-center justify-center p-6 text-center gap-5" >
-                        <Image src={SecondChanceImage} alt='2nd Chance' className='w-28 h-28' />
-                        <p className="text-dark-orange text-5xl lg:text-6xl uppercase mb-2 font-popfun">
-                            2nd Chance
-                        </p>
-                        <p className="text-sm">
-                            in case of wrong option or doubt, you can take another chance to guess right answer.
-                        </p>
-                    </div>
+                            <div className="w-72 h-96 bg-white border-[6px] skew-custom border-dark-orange flex flex-col items-center justify-center p-6 text-center gap-5" >
+                                <Image src={SecondChanceImage} alt='2nd Chance' className='w-28 h-28' />
+                                <p className="text-dark-orange text-5xl lg:text-6xl uppercase mb-2 font-popfun">
+                                    2nd Chance
+                                </p>
+                                <p className="text-sm">
+                                    in case of wrong option or doubt, you can take another chance to guess right answer.
+                                </p>
+                            </div>
 
-                    {/* Score Steal Card */}
-                    <div className="w-72 h-96 bg-white border-[6px] skew-custom border-blue flex flex-col items-center justify-center p-6 text-center gap-5">
-                        <Image src={ScoreStealImage} alt='Score Steal' className='w-28 h-28' />
-                        <p className="text-blue text-5xl lg:text-6xl  uppercase mb-2 font-popfun">
-                            Score Steal
-                        </p>
-                        <p className="text-sm">
-                            This one's for you! <br /> Answer both to secure points.
-                        </p>
+                            {/* Score Steal Card */}
+                            <div className="w-72 h-96 bg-white border-[6px] skew-custom border-blue flex flex-col items-center justify-center p-6 text-center gap-5">
+                                <Image src={ScoreStealImage} alt='Score Steal' className='w-28 h-28' />
+                                <p className="text-blue text-5xl lg:text-6xl  uppercase mb-2 font-popfun">
+                                    Score Steal
+                                </p>
+                                <p className="text-sm">
+                                    This one's for you! <br /> Answer both to secure points.
+                                </p>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </Wrapper>
         </section>
     );
 };

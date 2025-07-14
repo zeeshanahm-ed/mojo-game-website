@@ -11,6 +11,7 @@ import MinusIcon from '@/app/assets/icons/minus.svg';
 import VSIcon from '@/app/assets/images/vs.png';
 import Image from 'next/image';
 import Button from '@/app/components/ui/common/Button';
+import { useRouter } from 'next/navigation';
 
 
 interface TeamState {
@@ -21,6 +22,7 @@ interface TeamState {
 function OfflineMode() {
 
     const [gameName, setGameName] = useState("");
+    const router = useRouter();
 
     const [teams, setTeams] = useState<TeamState>({
         first: { name: '', players: 2 },
@@ -59,7 +61,7 @@ function OfflineMode() {
     };
 
     const handleStartGame = () => {
-
+        router.push("/game-play");
     }
 
     return (
