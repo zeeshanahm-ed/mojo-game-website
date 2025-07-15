@@ -21,6 +21,7 @@ const config: Config = {
         white: 'var(--color-white)',
         black: 'var(--color-black)',
         'dark-gray': 'var(--color-dark-gray)',
+        'fanta': 'var(--color-fanta)',
         'dark-orange': 'var(--color-dark-orange)',
         'light-gray': 'var(--color-light-gray)',
         'border-gray': 'var(--color-border-gray)',
