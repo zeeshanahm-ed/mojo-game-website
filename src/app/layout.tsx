@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import "././styles/globals.css";
-import { AuthProvider } from "./context/AuthContext";
 import localFont from 'next/font/local';
 import Providers from './providers';
 import ClientLayoutWrapper from "./ClientLayoutWrapper";
@@ -15,7 +14,6 @@ const bulletproof = localFont({
   ],
   variable: '--font-bulletproof',
 });
-
 const popfun = localFont({
   src: [
     {
@@ -54,13 +52,9 @@ export default function RootLayout({
       <body
         className={`${popfun.variable} ${bulletproof.variable} ${Product_sans.variable} antialiased font-Product_sans`}
       >
-        <AuthProvider>
-          <Providers>
-            <ClientLayoutWrapper>
-              {children}
-            </ClientLayoutWrapper>
-          </Providers>
-        </AuthProvider>
+        <Providers>
+          {children}
+        </Providers>
       </body>
     </html>
   );

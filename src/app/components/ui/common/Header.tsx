@@ -49,13 +49,13 @@ const Header: React.FC = () => {
                                 <GiftIcon />
                             </div>
                             <div className="relative p-2 h-9 border border-black skew-custom shadow-sm cursor-pointer hover:bg-gray-100 transition-colors">
-                                <FileIcon />
+                                <GampadIcon />
                                 <span className="absolute -top-1 -right-1 bg-red text-white rounded-full w-4 h-4 flex justify-center items-center font-semibold">
                                     <FaPlus className='text-xs' />
                                 </span>
                             </div>
                             <div className="p-2 h-9 border border-black skew-custom shadow-sm cursor-pointer hover:bg-gray-100 transition-colors">
-                                <GampadIcon />
+                                <FileIcon />
                             </div>
                         </div>
                     </div>
