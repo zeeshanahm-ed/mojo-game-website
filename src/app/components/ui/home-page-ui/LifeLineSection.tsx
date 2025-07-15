@@ -31,9 +31,9 @@ const LifeLineSection: React.FC = () => {
                                 </p>
                             </div>
 
-                            <div className="lg:w-72 w-60 h-96 bg-white border-[6px] skew-custom border-dark-orange flex flex-col items-center justify-center p-6 text-center gap-5" >
+                            <div className="lg:w-72 w-60 h-96 bg-white border-[6px] skew-custom border-fanta flex flex-col items-center justify-center p-6 text-center gap-5" >
                                 <Image src={SecondChanceImage} alt='2nd Chance' className='w-28 h-28' />
-                                <p className="text-dark-orange text-5xl lg:text-6xl uppercase mb-2 font-popfun">
+                                <p className="text-fanta text-5xl lg:text-6xl uppercase mb-2 font-popfun">
                                     2nd Chance
                                 </p>
                                 <p className="text-sm">
