@@ -24,7 +24,7 @@ const Header: React.FC = () => {
                             <span className='hidden lg:block'>Exit Game</span>
                         </button>
                         <button
-                            className={`flex items-center text-white text-4xl gap-5 bg-dark-orange pt-2 md:boxShadow-custom px-2 md:px-4 transform skew-custom md:-skew-x-12 border-2 border-black shadow-lg font-popfun`}
+                            className={`flex items-center text-white text-4xl gap-5 bg-fanta pt-2 md:boxShadow-custom px-2 md:px-4 transform skew-custom md:-skew-x-12 border-2 border-black shadow-lg font-popfun`}
                         >
                             <GameOverIcon className="mb-3 md:h-5 w-4 h-4 md:w-5" />
                             <span className='hidden lg:block'>Game Over</span>
