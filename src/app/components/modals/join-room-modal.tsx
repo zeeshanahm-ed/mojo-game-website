@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { useRouter } from 'next/navigation';
 import { MdClose } from 'react-icons/md';
 import Button from '../ui/common/Button';
 import Input from '../ui/common/Input';
