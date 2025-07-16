@@ -51,14 +51,14 @@ export default function Banner() {
                             <GameCard image={PrivateGameImage} title={t("brand")} subtitle={t("private_game")} bgColor="bg-light-blue" className="-ml-2" />
                         </div>
                     </div>
-                    <div className="-rotate-45 w-20 h-20 md:w-44 md:h-44 left-72 sm:left-[60%] md:-top-[70%] md:left-[60%] -top-[360px] relative">
+                    <div className="-rotate-45 w-20 h-20 md:w-44 md:h-44 left-[80%] sm:left-[60%] md:-top-[70%] md:left-[60%] -top-[370px] relative">
                         <Image
                             src={RocketImage}
                             alt="Rocket"
                             className="w-full h-full object-cover"
                         />
                     </div>
-                    <div className="w-20 h-20 md:w-44 md:h-44 left-72 sm:left-[70%] md:-top-[90%] md:left-[80%] -top-[350px] relative">
+                    <div className="w-20 h-20 md:w-44 md:h-44 left-[75%] sm:left-[70%] md:-top-[90%] md:left-[80%] -top-[370px] relative">
                         <Image
                             src={LightBulbImage}
                             alt="Rocket"

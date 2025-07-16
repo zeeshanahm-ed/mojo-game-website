@@ -63,7 +63,7 @@ export default MyGames;
 
 const GameCard = () => {
     return (
-        <div className="relative flex flex-col items-center justify-center w-full lg:w-72 h-80 p-2 px-2 lg:p-4 bg-white border-[6px] border-black skew-custom shadow-md">
+        <div className="relative flex flex-col items-center justify-center w-64 sm:w-56 md:w-64 lg:w-72 h-80 p-2 px-2 lg:p-4 bg-white border-[6px] border-black skew-custom shadow-md">
             {/* Badge */}
             <div className="absolute w-48 text-center -top-1 left-1/2 -translate-x-1/2 bg-black text-white text-xs px-5 py-2 -skew-x-6">
                 No of times played :05

@@ -43,13 +43,13 @@ function ContactUS() {
             <Wrapper>
                 <Wrapper>
                     <div className='h-auto pt-20 pb-20 px-4 md:px-10'>
-                        <form onSubmit={handleSubmit} className="flex flex-col items-center p-6 space-y-6 w-full">
+                        <form onSubmit={handleSubmit} className="flex flex-col items-center sm:p-6 space-y-6 w-full">
                             {/* First Name Input */}
                             <Input
                                 icon={<UserIcon />}
                                 type="text"
                                 placeholder="Full Name"
-                                className="md:w-1/2 w-full mb-0"
+                                className="sm:w-[450px] lg:w-2/3 w-full mb-0"
                                 required
                                 name="fullName"
                                 onChange={handleChange}
@@ -61,7 +61,7 @@ function ContactUS() {
                                 icon={<EmailIcon />}
                                 type="email"
                                 placeholder="Enter your email address"
-                                className="md:w-1/2 w-full"
+                                className="sm:w-[450px] lg:w-2/3 w-full"
                                 required
                                 name="email"
                                 onChange={handleChange}
@@ -75,7 +75,7 @@ function ContactUS() {
                                 onChange={handleChange}
                                 options={countries || []}
                                 placeholder="Select Countery Code"
-                                className="md:w-1/2 w-full"
+                                className="sm:w-[450px] lg:w-2/3 w-full"
                             />
 
                             {/* Contact Number Input */}
@@ -83,7 +83,7 @@ function ContactUS() {
                                 icon={<ContactIcon />}
                                 type="number"
                                 placeholder="Your Contact Number"
-                                className="md:w-1/2 w-full"
+                                className="sm:w-[450px] lg:w-2/3 w-full"
                                 required
                                 name="contact"
                                 onChange={handleChange}
@@ -91,7 +91,7 @@ function ContactUS() {
                             />
 
                             <textarea
-                                className="md:w-1/2 w-full h-28 outline-none resize-none bg-white border-2 border-black -skew-x-12 p-5 text-lg"
+                                className="sm:w-[450px] lg:w-2/3 w-full h-28 outline-none resize-none bg-white border-2 border-black -skew-x-6 md:-skew-x-12 p-5 text-lg"
                                 placeholder="Your message"
                                 name="message"
                                 onChange={handleChange}

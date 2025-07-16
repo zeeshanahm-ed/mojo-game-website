@@ -12,8 +12,8 @@ const Banner: React.FC = () => {
             {/* Main Content */}
             <Wrapper>
                 <div className="relative z-10 flex flex-row items-center justify-center w-full text-center ">
-                    <div className="flex left-0 top-0 absolute items-center justify-center flex-col lg:justify-start space-x-4 mb-8 lg:mb-0 lg:w-1/4">
-                        <Image src={StarImage} alt='Star' className='w-12 h-12 mr-10' />
+                    <div className="flex left-0 sm:left-10 top-0 absolute items-center justify-center">
+                        <Image src={StarImage} alt='Star' className='object-contain md:w-12 w-8 h-12' />
                     </div>
 
                     <div className="flex flex-col text-center items-center lg:w-2/4 px-4 text-white">

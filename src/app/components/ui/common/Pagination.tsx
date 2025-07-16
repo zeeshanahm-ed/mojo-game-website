@@ -49,7 +49,7 @@ const Pagination: React.FC<PaginationProps> = ({ totalPages = 10 }) => {
     };
 
     return (
-        <div className="w-full bg-white my-20 gap-y-8 flex items-center justify-center flex-col md:flex-row">
+        <div className="w-full bg-white my-20 gap-8 flex items-center justify-center flex-row">
             {/* Prev */}
             <div
                 className="text-xl md:mr-10 cursor-pointer hover:text-dark-gray"
