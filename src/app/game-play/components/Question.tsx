@@ -17,14 +17,18 @@ const OPTIONS = [
 export default function QuestionEvent({ questionType = "video", points = 400, onClick }: any) {
     const [timer, setTimer] = useState(0);
     const [isPaused, setIsPaused] = useState(false);
-    const timerRef = useRef();
+    const timerRef = useRef<NodeJS.Timeout | null>(null);
 
     // Timer logic
     React.useEffect(() => {
         if (!isPaused) {
             timerRef.current = setTimeout(() => setTimer(timer + 1), 1000);
         }
-        return () => clearTimeout(timerRef.current);
+        return () => {
+            if (timerRef.current) {
+                clearTimeout(timerRef.current);
+            }
+        };
     }, [timer, isPaused]);
 
     const handlePause = () => setIsPaused(true);
