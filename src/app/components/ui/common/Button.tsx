@@ -6,7 +6,7 @@ export interface IButtonProps extends React.ButtonHTMLAttributes<HTMLButtonEleme
     suffixElement?: React.ReactNode;
     className?: string;
     type?: 'button' | 'submit' | 'reset';
-    children?: any;
+    children?: React.ReactNode;
     bgClass?: string;
     textClass?: string;
     display?: string;

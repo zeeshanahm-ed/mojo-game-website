@@ -16,20 +16,20 @@ import Image from 'next/image';
 function OnlinePlay() {
     const [roomName, setRoomName] = useState('ROOM NAME');
     const [isEditingRoomName, setIsEditingRoomName] = useState(false);
-    const [roomCode, setRoomCode] = useState('0540CV98VZ120I');
+    const [roomCode] = useState('0540CV98VZ120I');
 
     const roomNameInputRef = useRef<HTMLInputElement>(null);
 
     const [isSearching, setIsSearching] = useState(false);
 
-    const handleSearchPlayers = () => {
-        setIsSearching(true);
-        // Simulate a search operation
-        setTimeout(() => {
-            setIsSearching(false);
-            console.log("Search complete!");
-        }, 3000);
-    };
+    // const handleSearchPlayers = () => {
+    //     setIsSearching(true);
+    //     // Simulate a search operation
+    //     setTimeout(() => {
+    //         setIsSearching(false);
+    //         console.log("Search complete!");
+    //     }, 3000);
+    // };
 
     // Function to handle editing room name
     const handleEditRoomName = () => {
@@ -161,14 +161,14 @@ function OnlinePlay() {
 
 export default OnlinePlay;
 
-const CustomButton = ({ handleClick, icon, ariaLabel, team, type }: any) => {
-    return (
-        <button
-            className="flex justify-center items-center bg-yellow text-black text-xl w-12 h-10 boxShadow-custom border-2 border-black"
-            onClick={() => handleClick(team, type)}
-            aria-label={ariaLabel}
-        >
-            {icon}
-        </button>
-    )
-}
+// const CustomButton = ({ handleClick, icon, ariaLabel, team, type }: any) => {
+//     return (
+//         <button
+//             className="flex justify-center items-center bg-yellow text-black text-xl w-12 h-10 boxShadow-custom border-2 border-black"
+//             onClick={() => handleClick(team, type)}
+//             aria-label={ariaLabel}
+//         >
+//             {icon}
+//         </button>
+//     )
+// }

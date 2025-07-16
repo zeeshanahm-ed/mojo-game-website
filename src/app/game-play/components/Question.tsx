@@ -14,7 +14,13 @@ const OPTIONS = [
     { type: "list", label: "Summer", value: "summer" },
 ];
 
-export default function QuestionEvent({ questionType = "video", points = 400, onClick }: any) {
+interface QuestionEventProps {
+    questionType?: "audio" | "video" | "image" | "list";
+    points?: number;
+    onClick: (action: string) => void;
+}
+
+export default function QuestionEvent({ questionType = "video", points = 400, onClick }: QuestionEventProps) {
     const [timer, setTimer] = useState(0);
     const [isPaused, setIsPaused] = useState(false);
     const timerRef = useRef<NodeJS.Timeout | null>(null);

@@ -1,21 +1,14 @@
 "use client"
 import React from 'react'
-import Button from '@/app/components/ui/common/Button';
 import Image from 'next/image';
 import CreateGameModal from '@/app/components/modals/create-game-modal';
 import Wrapper from '../common/Wrapper';
 
 //icons
 import GroupNPerson from "@/app/assets/images/group-image.png"
-import { useCreateGameModalStore } from '@/app/store/useCreateGameModalStore';
 
 const KnowledgeSection = () => {
-    const { openModal } = useCreateGameModalStore();
 
-    const handleOPenModal = () => {
-        console.log("open")
-        openModal();
-    }
 
     return (
         <section className="w-full overflow-hidden md:px-10 px-4">

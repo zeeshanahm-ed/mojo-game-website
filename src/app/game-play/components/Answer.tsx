@@ -11,7 +11,7 @@ const OPTIONS = [
     { type: "list", label: "Summer", value: "summer" },
 ];
 
-export default function AnswerEvnet({ answerType = "image", points = 400, onClick }: any) {
+export default function AnswerEvnet({ answerType = "image", onClick }: any) {
 
     return (
         <div className="flex items-center justify-center">

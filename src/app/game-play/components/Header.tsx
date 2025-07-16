@@ -1,6 +1,4 @@
 import React from 'react';
-import Button from '@/app/components/ui/common/Button';
-
 //icons
 import GameOverIcon from '@/app/assets/icons/gameover-icon.svg';
 import ExitIcon from '@/app/assets/icons/exit-icon.svg';

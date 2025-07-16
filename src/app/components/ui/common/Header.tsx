@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { useAuth } from '@/app/context/AuthContext';
 import AuthModal from '@/app/auth/AuthModal';
 import { useAuthModalStore } from '@/app/store/useAuthModalStore';
-import LanguageSwitcher from '@/app/components/ui/Language-Switcher';
+// import LanguageSwitcher from '@/app/components/ui/Language-Switcher';
 import { useTranslation } from 'react-i18next';
 //icons
 import GiftIcon from "@/app/assets/icons/gift-icon.svg";

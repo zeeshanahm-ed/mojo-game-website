@@ -1,6 +1,6 @@
 import React from "react";
 //icon
-import { BsQuestionCircle } from "react-icons/bs";
+// import { BsQuestionCircle } from "react-icons/bs";
 
 const OPTIONS = [
     { type: "audio", label: "Audio", src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" },
@@ -11,7 +11,14 @@ const OPTIONS = [
     { type: "list", label: "Summer", value: "summer" },
 ];
 
-export default function WhoAnsweredEvent({ answerType = "image", points = 400, onClick }: any) {
+interface WhoAnsweredEventProps {
+    answerType?: "audio" | "video" | "image" | "list";
+    answerValue?: string;
+    points?: number;
+    onClick: (action: string) => void;
+}
+
+export default function WhoAnsweredEvent({ onClick }: WhoAnsweredEventProps) {
 
     return (
         <div className="flex items-center justify-center">

@@ -17,7 +17,7 @@ import Select from '../components/ui/common/Select';
 
 
 function ContactUS() {
-    const { countries, loading, error } = useCountries();
+    const { countries } = useCountries();
 
     const [form, setForm] = useState({
         fullName: '',

@@ -23,7 +23,7 @@ function CategoriesSection() {
             }
         });
         setFilteredCategories(modifyCategories);
-    }, [categories])
+    }, [])
 
     const handleSearch = (value: string) => {
         setSearch(value)

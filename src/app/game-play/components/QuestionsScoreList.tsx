@@ -4,10 +4,10 @@ type QuestionsScoreListProp = {
     imageSrc?: string;
     title?: string;
     scores?: number[]; // Should be 3 scores
-    onScoreClick?: (value: any) => void;
+    onScoreClick?: (value: string) => void;
 };
 
-const QuestionsScoreList: React.FC<QuestionsScoreListProp> = ({ imageSrc, title, scores, onScoreClick }) => {
+const QuestionsScoreList: React.FC<QuestionsScoreListProp> = ({ onScoreClick }) => {
     return (
         <div className='flex justify-center flex-col'>
             <div className='text-start mb-10'>

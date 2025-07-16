@@ -5,7 +5,7 @@ import WorldImage from '../../../assets/images/world.png';
 import RocketImage from '../../../assets/images/rocket.png';
 import StarImage from '../../../assets/images/star.png';
 import LightBulbImage from '../../../assets/images/light-bulb.png';
-import BookImage from '../../../assets/images/book.png';
+// import BookImage from '../../../assets/images/book.png';
 import PrivateGameImage from '../../../assets/images/private-game.png';
 import KidsGameImage from '../../../assets/images/kids-quest.png';
 import StudentGameImage from '../../../assets/images/student-quest.png';

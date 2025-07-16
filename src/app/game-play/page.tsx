@@ -1,8 +1,6 @@
 "use client"
 import React, { useState } from 'react'
 import Wrapper from '@/app/components/ui/common/Wrapper';
-import Input from '@/app/components/ui/common/Input';
-import CategoriesSection from '@/app/components/ui/common/CategoriesSection';
 
 //icons
 import HoleIcon from '@/app/assets/icons/hole-icon.svg';
