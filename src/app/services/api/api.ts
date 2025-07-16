@@ -2,7 +2,7 @@ import axios from 'axios';
 import * as authHelper from './../../helpers/auth-helper';
 // Create an Axios instance
 const api = axios.create({
-    baseURL: process.env.VITE_API_BASE_URL,
+    baseURL: process.env.API_BASE_URL,
     headers: {
         'Content-Type': 'application/json',
     },

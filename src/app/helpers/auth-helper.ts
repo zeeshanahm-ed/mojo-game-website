@@ -1,8 +1,8 @@
 import axios from 'axios';
 
 
-const AUTH_LOCAL_STORAGE_KEY = process.env.VITE_AUTH_LOCAL_STORAGE_KEY as string;
-const USER_LOCAL_STORAGE_KEY = process.env.VITE_USER_LOCAL_STORAGE_KEY as string;
+const AUTH_LOCAL_STORAGE_KEY = process.env.AUTH_LOCAL_STORAGE_KEY as string;
+const USER_LOCAL_STORAGE_KEY = process.env.USER_LOCAL_STORAGE_KEY as string;
 
 const getAuth = (): any | undefined => {
     if (!localStorage) {
@@ -84,7 +84,7 @@ const removeAuth = () => {
 };
 
 export function setupAxios() {
-    axios.defaults.baseURL = process.env.VITE_API_BASE_URL;
+    axios.defaults.baseURL = process.env.API_BASE_URL;
 
     axios.interceptors.request.use((config) => {
         const changedConfig = config;
