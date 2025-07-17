@@ -11,6 +11,7 @@ import QuestionsScoreList from './components/QuestionsScoreList';
 import QuestionEvent from './components/Question';
 import AnswerEvnet from './components/Answer';
 import WhoAnsweredEvent from './components/WhoAnswered';
+import Congratulation from './components/Congratulation';
 
 function GamePlay() {
 
@@ -68,6 +69,10 @@ function GamePlay() {
                 return (
                     <WhoAnsweredEvent onClick={(value: string) => setScreen(value)} />
                 );
+            case "congratulation":
+                return (
+                    <Congratulation onClick={(value: string) => setScreen(value)} />
+                );
 
             default:
                 return null;
@@ -76,19 +81,17 @@ function GamePlay() {
 
     return (
         <section className='w-full'>
-            <Header />
+            <Header onClick={(value: string) => setScreen(value)} />
             <Wrapper>
-                <div className='flex justify-center flex-col h-auto py-10 md:py-10 px-4 md:px-10 xl:px-0'>
+                <div className='flex justify-center flex-col h-auto py-10 md:py-20 px-4 md:px-10'>
                     {getScreenContent(screen)}
                 </div>
-                {screen !== "whoAnswered" ? <div className="mt-40 relative z-10 flex flex-col md:flex-row items-center justify-between w-full gap-10">
+                {(screen !== "whoAnswered" && screen !== "congratulation") ? <div className=" px-4 lg:px-0 lg:t-auto my-10 lg:my-0 md:-skew-x-6 -skew-x-3 lg:-skew-x-0  relative z-10 flex flex-col sm:flex-row items-center justify-between w-full gap-y-10 sm:gap-y-0 lg:gap-10">
                     {/* H1 Team Section (Red) */}
                     <div
-                        style={{ clipPath: "polygon(0 0, 80% 0, 100% 100%, 0% 100%)" }}
-                        className="text-white px-4 md:px-5 h-[170px] lg:h-[200px] bg-red  w-full flex items-center justify-start flex-1 border-r-[0px] border-[2px] border-black">
-
-                        <div className='flex items-center  justify-between w-full md:w-3/4'>
-                            <div className="flex flex-col items-start">
+                        className="custom-clipPath-rightSide text-white px-4 lg:px-5 lg:h-[200px] bg-red flex items-center justify-center lg:justify-start w-[250px] md:w-[320px] lg:flex-1 lg:border-r-[0px] lg:border-[2px] border-4 border-black">
+                        <div className='flex lg:flex-row flex-col items-center justify-center  lg:justify-between w-full lg:md:w-3/4'>
+                            <div className="flex flex-col items-start py-4 lg:py-0">
                                 <h3 className="text-3xl md:text-6xl lg:text-7xl font-popfun uppercase" >
                                     {"Team 1"}
                                 </h3>
@@ -96,7 +99,8 @@ function GamePlay() {
                                     SCORE: {"200".toString().padStart(2, '0')}
                                 </p>
                             </div>
-                            <div className="flex flex-col items-end">
+                            <div className='lg:hidden block w-full h-[1px] bg-white'></div>
+                            <div className="flex flex-col items-center lg:items-end py-4 lg:py-0">
                                 <p className="text-xl lg:text-2xl mb-2">Life lines</p>
                                 <div className="flex space-x-2">
                                     {renderLifelineIcon('hole', team1Lifelines.eye)}
@@ -109,11 +113,10 @@ function GamePlay() {
 
                     {/* H2 Team Section (Blue) */}
                     <div
-                        style={{ clipPath: "polygon(20% 0, 100% 0%, 100% 100%, 0% 100%)" }}
-                        className="text-white px-4 md:px-5 h-[170px] lg:h-[200px] bg-blue flex items-center justify-end w-full flex-1 border-l-[0px] border-[2px] border-black"
+                        className="custom-clipPath-leftSide text-white px-4 lg:px-5 lg:h-[200px] bg-blue flex items-center justify-center lg:justify-end w-[250px] md:w-[320px] lg:flex-1 lg:border-l-[0px] lg:border-[2px] border-4 border-black"
                     >
-                        <div className='flex items-center  justify-between w-full md:w-3/4'>
-                            <div className="flex flex-col items-start">
+                        <div className='flex lg:flex-row flex-col-reverse items-center justify-center  w-full lg:justify-between lg:md:w-3/4'>
+                            <div className="flex flex-col items-center lg:items-start py-4 lg:py-0">
                                 <p className="text-xl lg:text-2xl mb-2">Life lines</p>
                                 <div className="flex space-x-2">
                                     {renderLifelineIcon('hole', team2Lifelines.eye)}
@@ -121,7 +124,8 @@ function GamePlay() {
                                     {renderLifelineIcon('phone', team2Lifelines.phone)}
                                 </div>
                             </div>
-                            <div className="flex flex-col items-end">
+                            <div className='lg:hidden block w-full h-[1px] bg-white'></div>
+                            <div className="flex flex-col items-center lg:items-end py-4 lg:py-0">
                                 <h3 className="text-3xl md:text-6xl lg:text-7xl font-popfun uppercase" >
                                     {"Team 2"}
                                 </h3>
@@ -139,5 +143,5 @@ function GamePlay() {
 
 export default GamePlay;
 
-
+// style={{ clipPath: "polygon(0 0, 80% 0, 100% 100%, 0% 100%)" }}
 //  relative before:absolute before:content-[''] before:w-3 before:left-[3.3rem] before:rotate-[28deg] before:h-[230px] before:-z-10 before:bg-black

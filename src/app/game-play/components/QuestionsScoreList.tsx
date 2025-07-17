@@ -10,7 +10,7 @@ type QuestionsScoreListProp = {
 const QuestionsScoreList: React.FC<QuestionsScoreListProp> = ({ onScoreClick }) => {
     return (
         <div className='flex justify-center flex-col'>
-            <div className='text-start mb-10'>
+            <div className='text-center sm:text-start mb-10'>
                 <h2 className="md:text-8xl text-5xl font-popfun text-black mb-2 uppercase">
                     Questions
                 </h2>
@@ -18,7 +18,7 @@ const QuestionsScoreList: React.FC<QuestionsScoreListProp> = ({ onScoreClick }) 
                     and 3 categories for the opposing team.
                 </p>
             </div>
-            <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 gap-y-10'>
+            <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 gap-y-10 place-items-center'>
                 <ScoreCard onScoreClick={onScoreClick} />
                 <ScoreCard onScoreClick={onScoreClick} />
                 <ScoreCard onScoreClick={onScoreClick} />
@@ -58,7 +58,7 @@ const ScoreCard: React.FC<ScoreCardProps> = ({ imageSrc, title, scores = [200, 4
                     </div>
                 </div>
 
-                <div className="relative left-[60px] -top-[8rem] md:-top-[9.3rem] lg:-top-[12.8rem] md:left-[65px] lg:left-[85px] xl:left-[100px] w-fit flex cursor-pointer flex-col justify-center items-center">
+                <div className="relative left-[60px] -top-[8rem] md:-top-[9.3rem] lg:-top-[12.6rem] md:left-[65px] lg:left-[85px] xl:left-[140px] w-fit flex cursor-pointer flex-col justify-center items-center">
                     <div className={`w-24 h-24 md:w-28 md:h-28 lg:w-40 lg:h-40 bg-white rounded-full lg:border-[12px] md:border-[8px] border-[6px] border-orange flex items-center justify-center`}>
                         <Image src={"/categories-images/horror-movies.png"} alt={"hallo"} width={100} height={100} className='w-1/2 h-1/2' />
                     </div>

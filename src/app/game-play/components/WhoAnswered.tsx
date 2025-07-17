@@ -29,20 +29,20 @@ export default function WhoAnsweredEvent({ onClick }: WhoAnsweredEventProps) {
                 <div className="flex flex-col sm:flex-row w-full items-center justify-center py-2 rounded-b-lg gap-5 md:gap-10 my-5 md:my-10" >
                     <div
                         role="button"
-                        onClick={() => onClick("whoAnswered")}
+                        onClick={() => onClick("scorecard")}
                         className="flex h-16 md:h-20 w-3/4 sm:w-1/2 md:w-64 px-2 md:px-5 py-2 pt-4 items-center justify-center text-white bg-red font-popfun border-2 border-black ">
                         <span className="md:text-6xl text-4xl tracking-wider">H1 Team</span>
                     </div>
                     <div
                         role="button"
-                        onClick={() => onClick("question")}
+                        onClick={() => onClick("scorecard")}
                         className="cursor-pointer flex h-16 md:h-20 w-3/4 sm:w-1/2 md:w-64 px-5 py-2 pt-4 items-center justify-center text-white bg-blue font-popfun border-2 border-black ">
                         <span className="md:text-6xl text-4xl tracking-wider">H2 Team</span>
                     </div>
                 </div>
                 <div
                     role="button"
-                    onClick={() => onClick("question")}
+                    onClick={() => onClick("scorecard")}
                     className="cursor-pointer flex h-16 md:h-20 w-3/4 sm:w-1/2 md:w-64 px-5 py-2 pt-4 items-center justify-center text-black bg-white border-2 border-black font-popfun">
                     <span className="md:text-6xl text-4xl tracking-wider">no one</span>
                 </div>
