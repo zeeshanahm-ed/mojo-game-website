@@ -30,7 +30,7 @@ const Select: React.FC<SelectProps> = ({
         <div
             className={`flex items-center h-14 transform -skew-x-6 md:-skew-x-12 border-2 border-black overflow-hidden ${className}`}>
             {icon && (
-                <div className="bg-purple w-16 flex items-center justify-center h-full">
+                <div className="bg-purple w-16 md:w-20 flex items-center justify-center h-full">
                     {icon}
                 </div>
             )}
@@ -39,7 +39,7 @@ const Select: React.FC<SelectProps> = ({
                 required={required}
                 value={value}
                 onChange={onChange}
-                className={`w-full pl-2 md:pl-10 h-full bg-white text-lg border-none focus:outline-none ${selectClassName}`}>
+                className={`w-full pl-2 md:pl-8 h-full bg-white text-lg border-none focus:outline-none ${selectClassName}`}>
                 {/* <option value="" disabled hidden style={{ color: '#fff' }} className='text-light-gray'>
                     {placeholder}
                 </option> */}
