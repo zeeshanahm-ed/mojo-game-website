@@ -9,12 +9,14 @@ export default function ClientLayoutWrapper({ children }: { children: React.Reac
     const hideHeaderOn = '/game-play';
 
     return (
-        <div className="flex flex-col">
+        <div className="min-h-screen flex flex-col">
             {pathname !== hideHeaderOn && <Header />}
-            {children}
-            <div className='relative bottom-0 left-0 right-0'>
-                <Footer />
-            </div>
+
+            <main className="flex-grow">
+                {children}
+            </main>
+
+            <Footer />
         </div>
     );
 }

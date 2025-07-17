@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import "././styles/globals.css";
 import localFont from 'next/font/local';
 import Providers from './providers';
-import ClientLayoutWrapper from "./ClientLayoutWrapper";
 
 const bulletproof = localFont({
   src: [
