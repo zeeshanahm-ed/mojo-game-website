@@ -93,6 +93,10 @@ const CategoryCard = ({ category, handleCategoriesClick }: Props) => {
             <div className={`w-full mt-6 relative px-4 pb-1 pt-2 text-center text-white font-popfun text-2xl sm:text-3xl md:text-4xl uppercase tracking-wide ${category.selected ? "bg-red" : "bg-orange"} 
             before:w-3 before:bg-orange before:h-8 before:absolute before:-top-8 before:left-[47%] `}>
                 {category.name}
+                {/* Left Triangle */}
+                <div className="absolute -top-[3px] -left-[15px] w-0 h-0 -rotate-[44deg] lg:border-l-[20px] lg:border-r-[20px] lg:border-b-[20px] md:border-l-[15px] md:border-r-[15px] md:border-b-[15px] border-l-transparent border-r-transparent border-b-white" />
+                {/* Right Triangle */}
+                <div className="absolute -top-[3px] rotate-[47deg] -right-[15px] w-0 h-0 lg:border-l-[20px] lg:border-r-[20px] lg:border-b-[20px]  md:border-l-[15px] md:border-r-[15px] md:border-b-[15px] border-l-transparent border-r-transparent border-b-white" />
             </div>
         </div>
     );

@@ -9,6 +9,7 @@ export interface IButtonProps extends React.ButtonHTMLAttributes<HTMLButtonEleme
     children?: React.ReactNode;
     bgClass?: string;
     textClass?: string;
+    boxShadow?: boolean;
     display?: string;
 }
 
@@ -22,6 +23,7 @@ const Button = forwardRef<HTMLButtonElement, IButtonProps>(
         type = 'button',
         bgClass,
         textClass,
+        boxShadow = true,
         display,
         ...rest
     }, ref) => {
@@ -40,7 +42,7 @@ const Button = forwardRef<HTMLButtonElement, IButtonProps>(
                 ref={ref}
                 type={type}
                 {...rest}
-                className={`${variant} ${className} ${bgClass ? bgClass : "bg-purple"} ${textClass ? textClass : "text-white"} pt-2 boxShadow-custom px-4 transform -skew-x-12 border-2 border-black shadow-lg font-popfun`}
+                className={`${variant} ${className} ${bgClass ? bgClass : "bg-purple"} ${textClass ? textClass : "text-white"} ${boxShadow ? "boxShadow-custom" : "shadow-none"} active:shadow-none transition-all duration-300 pt-2 px-4 transform -skew-x-12 border-2 border-black shadow-lg font-popfun`}
                 aria-label="Button"
             >
                 {prefixElement}

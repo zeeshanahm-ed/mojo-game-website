@@ -24,6 +24,7 @@ const Header: React.FC = () => {
 
     const handleAuthModal = () => {
         openModal("signin");
+        // router.push("/profile");
     };
 
     return (
