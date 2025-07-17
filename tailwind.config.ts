@@ -23,6 +23,7 @@ const config: Config = {
         'dark-gray': 'var(--color-dark-gray)',
         'fanta': 'var(--color-fanta)',
         'dark-orange': 'var(--color-dark-orange)',
+        'dark-green': 'var(--color-dark-green)',
         'light-gray': 'var(--color-light-gray)',
         'border-gray': 'var(--color-border-gray)',
       },

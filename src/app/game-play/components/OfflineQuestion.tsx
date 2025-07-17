@@ -14,13 +14,13 @@ const OPTIONS = [
     { type: "list", label: "Summer", value: "summer" },
 ];
 
-interface QuestionEventProps {
+interface OfflineQuestionProps {
     questionType?: "audio" | "video" | "image" | "list";
     points?: number;
     onClick: (action: string) => void;
 }
 
-export default function QuestionEvent({ questionType = "video", points = 400, onClick }: QuestionEventProps) {
+export default function OfflineQuestion({ questionType = "video", points = 400, onClick }: OfflineQuestionProps) {
     const [timer, setTimer] = useState(0);
     const [isPaused, setIsPaused] = useState(false);
     const timerRef = useRef<NodeJS.Timeout | null>(null);

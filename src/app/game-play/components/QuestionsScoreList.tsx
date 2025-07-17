@@ -45,8 +45,8 @@ const ScoreCard: React.FC<ScoreCardProps> = ({ imageSrc, title, scores = [200, 4
             <div className="relative w-full h-full">
                 <div className='w-full'>
                     <div className='flex items-center justify-between'>
-                        <div className='border border-black w-[100px] md:h-10 lg:h-14 md:w-[120px] lg:w-[170px] xl:w-[200px] cursor-pointer hover:bg-gray-200 text-2xl  -skew-x-12  md:text-2xl lg:text-4xl flex items-center justify-start px-4' onClick={() => onScoreClick && onScoreClick("question")}>200</div>
-                        <div className='border border-black w-[100px] md:h-10 lg:h-14 md:w-[120px] lg:w-[170px] xl:w-[200px] cursor-pointer hover:bg-gray-200 -skew-x-12 text-2xl  md:text-2xl lg:text-4xl flex items-center justify-end px-4' onClick={() => onScoreClick && onScoreClick("question")}>200</div>
+                        <div className='border border-black w-[100px] md:h-10 lg:h-14 md:w-[120px] lg:w-[170px] xl:w-[200px] cursor-pointer hover:bg-gray-200 text-2xl  -skew-x-12  md:text-2xl lg:text-4xl flex items-center justify-start px-4' onClick={() => onScoreClick && onScoreClick("onlineQuestion")}>200</div>
+                        <div className='border border-black w-[100px] md:h-10 lg:h-14 md:w-[120px] lg:w-[170px] xl:w-[200px] cursor-pointer hover:bg-gray-200 -skew-x-12 text-2xl  md:text-2xl lg:text-4xl flex items-center justify-end px-4' onClick={() => onScoreClick && onScoreClick("offlineQuestion")}>200</div>
                     </div>
                     <div className='flex items-center justify-between'>
                         <div className='border border-black w-[100px] md:h-10 lg:h-14 md:w-[120px] lg:w-[170px] xl:w-[200px] cursor-pointer hover:bg-gray-200  -skew-x-12 text-2xl  md:text-2xl lg:text-4xl flex items-center justify-start px-4'>400</div>

@@ -1,17 +1,18 @@
 "use client"
 import React, { useState } from 'react'
+//components
 import Wrapper from '@/app/components/ui/common/Wrapper';
-
+import Header from './components/Header';
+import QuestionsScoreList from './components/QuestionsScoreList';
+import OfflineQuestion from './components/OfflineQuestion';
+import Answer from './components/Answer';
+import WhoAnsweredEvent from './components/WhoAnswered';
+import Congratulation from './components/Congratulation';
+import OnlineQuestion from './components/OnlineQuestion';
 //icons
 import HoleIcon from '@/app/assets/icons/hole-icon.svg';
 import SecondChanceIcon from '@/app/assets/icons/second-chance-icon.svg';
 import CallAFriendIcon from '@/app/assets/icons/callAFriend-icon.svg';
-import Header from './components/Header';
-import QuestionsScoreList from './components/QuestionsScoreList';
-import QuestionEvent from './components/Question';
-import AnswerEvnet from './components/Answer';
-import WhoAnsweredEvent from './components/WhoAnswered';
-import Congratulation from './components/Congratulation';
 
 function GamePlay() {
 
@@ -22,24 +23,24 @@ function GamePlay() {
 
     // Helper function to render a lifeline icon with disabled state
     const renderLifelineIcon = (iconType: 'hole' | 'chance' | 'phone', isEnabled: boolean) => {
-        const iconClasses = `h-8 w-8 ${isEnabled ? 'text-black' : 'text-gray-400'}`;
+        const iconClasses = `w-8 h-8 sm:w-10 sm:-h-10`;
         const circleClasses = `w-12 h-12 rounded-full border-2 border-black flex items-center curs justify-center ${isEnabled ? "cursor-pointer" : "cursor-not-allowed"} ${isEnabled ? 'bg-white' : 'bg-gray-200 opacity-60'}`;
 
         let iconSvg;
         switch (iconType) {
             case 'hole':
                 iconSvg = (
-                    <HoleIcon />
+                    <HoleIcon className={iconClasses} />
                 );
                 break;
             case 'chance':
                 iconSvg = (
-                    <SecondChanceIcon />
+                    <SecondChanceIcon className={iconClasses} />
                 );
                 break;
             case 'phone':
                 iconSvg = (
-                    <CallAFriendIcon />
+                    <CallAFriendIcon className={iconClasses} />
                 );
                 break;
         }
@@ -57,13 +58,17 @@ function GamePlay() {
                 return (
                     <QuestionsScoreList onScoreClick={(value) => setScreen(value)} />
                 );
-            case "question":
+            case "offlineQuestion":
                 return (
-                    <QuestionEvent onClick={(value: string) => setScreen(value)} />
+                    <OfflineQuestion onClick={(value: string) => setScreen(value)} />
+                );
+            case "onlineQuestion":
+                return (
+                    <OnlineQuestion onClick={(value: string) => setScreen(value)} />
                 );
             case "answer":
                 return (
-                    <AnswerEvnet onClick={(value: string) => setScreen(value)} />
+                    <Answer onClick={(value: string) => setScreen(value)} />
                 );
             case "whoAnswered":
                 return (
@@ -92,7 +97,7 @@ function GamePlay() {
                         className="custom-clipPath-rightSide text-white px-4 lg:px-5 lg:h-[200px] bg-red flex items-center justify-center lg:justify-start w-[250px] md:w-[320px] lg:flex-1 lg:border-r-[0px] lg:border-[2px] border-4 border-black">
                         <div className='flex lg:flex-row flex-col items-center justify-center  lg:justify-between w-full lg:md:w-3/4'>
                             <div className="flex flex-col items-start py-4 lg:py-0">
-                                <h3 className="text-3xl md:text-6xl lg:text-7xl font-popfun uppercase" >
+                                <h3 className="text-4xl md:text-6xl lg:text-7xl font-popfun uppercase" >
                                     {"Team 1"}
                                 </h3>
                                 <p className="text-lg md:text-3xl font-popfun uppercase" >
@@ -101,7 +106,7 @@ function GamePlay() {
                             </div>
                             <div className='lg:hidden block w-full h-[1px] bg-white'></div>
                             <div className="flex flex-col items-center lg:items-end py-4 lg:py-0">
-                                <p className="text-xl lg:text-2xl mb-2">Life lines</p>
+                                <p className="text-base sm:text-xl lg:text-2xl mb-2">Life lines</p>
                                 <div className="flex space-x-2">
                                     {renderLifelineIcon('hole', team1Lifelines.eye)}
                                     {renderLifelineIcon('chance', team1Lifelines.peace)}
@@ -117,7 +122,7 @@ function GamePlay() {
                     >
                         <div className='flex lg:flex-row flex-col-reverse items-center justify-center  w-full lg:justify-between lg:md:w-3/4'>
                             <div className="flex flex-col items-center lg:items-start py-4 lg:py-0">
-                                <p className="text-xl lg:text-2xl mb-2">Life lines</p>
+                                <p className="text-base sm:text-xl lg:text-2xl mb-2">Life lines</p>
                                 <div className="flex space-x-2">
                                     {renderLifelineIcon('hole', team2Lifelines.eye)}
                                     {renderLifelineIcon('chance', team2Lifelines.peace)}
@@ -126,7 +131,7 @@ function GamePlay() {
                             </div>
                             <div className='lg:hidden block w-full h-[1px] bg-white'></div>
                             <div className="flex flex-col items-center lg:items-end py-4 lg:py-0">
-                                <h3 className="text-3xl md:text-6xl lg:text-7xl font-popfun uppercase" >
+                                <h3 className="text-4xl md:text-6xl lg:text-7xl font-popfun uppercase" >
                                     {"Team 2"}
                                 </h3>
                                 <p className="text-lg md:text-3xl font-popfun uppercase" >
