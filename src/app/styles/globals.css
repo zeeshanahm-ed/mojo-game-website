@@ -78,3 +78,21 @@ input[type='number'] {
     align-items: center;
     justify-content: center;
 }
+
+.custom-clipPath-rightSide {
+    clip-path: polygon(0 0, 80% 0%, 100% 100%, 0% 100%);
+}
+
+.custom-clipPath-leftSide {
+    clip-path: polygon(20% 0, 100% 0%, 100% 100%, 0% 100%);
+}
+
+@media only screen and (max-width: 1100px) {
+    .custom-clipPath-rightSide {
+        clip-path: none
+    }
+
+    .custom-clipPath-leftSide {
+        clip-path: none
+    }
+}
