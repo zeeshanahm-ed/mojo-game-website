@@ -6,19 +6,21 @@ import React, {
     useEffect,
     ReactNode,
 } from 'react';
+import { getAuth } from '../helpers/auth-helper';
+import { IAuthModel } from '../auth/core/_models';
 
 interface AuthContextType {
-    user: string | null;
-    setUser: (user: string | null) => void;
+    user: IAuthModel | null;
+    setUser: (user: IAuthModel | null) => void;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
-    const [user, setUser] = useState<string | null>(null);
+    const [user, setUser] = useState<IAuthModel | null>(null);
 
     useEffect(() => {
-        const storedUser = localStorage.getItem('user');
+        const storedUser = getAuth();
         if (storedUser) setUser(storedUser);
     }, []);
 

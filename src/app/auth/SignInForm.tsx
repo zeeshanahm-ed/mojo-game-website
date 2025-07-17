@@ -32,7 +32,7 @@ export default function SignInForm() {
                     <input
                         type="email"
                         placeholder="Enter your email address"
-                        className="input input-bordered pl-2 md:pl-10 w-full text-lg bg-white text-gray-800 border-none focus:outline-none"
+                        className="input h-full rounded-none input-bordered w-full pl-2 md:pl-8 pr-4 py-3 text-lg bg-white text-gray-800 border-none focus:outline-none"
                         required
                     />
                 </div>
@@ -45,7 +45,7 @@ export default function SignInForm() {
                     <input
                         type="password"
                         placeholder="Your password"
-                        className="input input-bordered pl-2 md:pl-10 w-full text-lg bg-white text-gray-800 border-none focus:outline-none"
+                        className="input h-full rounded-none input-bordered w-full pl-2 md:pl-8 pr-4 py-3 text-lg bg-white text-gray-800 border-none focus:outline-none"
                         required
                     />
                 </div>

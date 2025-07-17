@@ -1,10 +1,11 @@
 import axios from 'axios';
+import { IAuthModel, IUserModel } from '../auth/core/_models';
 
 
 const AUTH_LOCAL_STORAGE_KEY = process.env.AUTH_LOCAL_STORAGE_KEY as string;
 const USER_LOCAL_STORAGE_KEY = process.env.USER_LOCAL_STORAGE_KEY as string;
 
-const getAuth = (): any | undefined => {
+const getAuth = (): IAuthModel | undefined => {
     if (!localStorage) {
         return;
     }
@@ -15,7 +16,7 @@ const getAuth = (): any | undefined => {
     }
 
     try {
-        const auth: any = JSON.parse(lsValue) as any;
+        const auth: IAuthModel = JSON.parse(lsValue) as IAuthModel;
         if (auth) {
             return auth;
         }
@@ -24,7 +25,7 @@ const getAuth = (): any | undefined => {
     }
 };
 
-const setAuth = (auth: any) => {
+const setAuth = (auth: IAuthModel) => {
     if (!localStorage) {
         return;
     }
@@ -36,7 +37,8 @@ const setAuth = (auth: any) => {
         console.error('AUTH LOCAL STORAGE SAVE ERROR', error);
     }
 };
-const getUser = (): any | undefined => {
+
+const getUser = (): IUserModel | undefined => {
     if (!localStorage) {
         return;
     }
@@ -47,7 +49,7 @@ const getUser = (): any | undefined => {
     }
 
     try {
-        const user: any = JSON.parse(lsValue) as any;
+        const user: IUserModel = JSON.parse(lsValue) as IUserModel;
         if (user) {
             // You can easily check auth_token expiration also
             return user;
@@ -57,7 +59,7 @@ const getUser = (): any | undefined => {
     }
 };
 
-const setUser = (user: any) => {
+const setUser = (user: IUserModel) => {
     if (!localStorage) {
         return;
     }
