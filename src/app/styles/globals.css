@@ -1,3 +1,5 @@
+@import url('./custom-scroll-bar.css');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -18,7 +20,7 @@
     --color-orange: #F3A72C;
     --color-fanta: #F3682C;
     --color-green: #BFFF10;
-    --color-purple: #A719FA;
+    --color-purpl: #A719FA;
     --color-white: rgb(255, 255, 255);
     --color-black: rgba(0, 0, 0, 0.87);
 
@@ -96,4 +98,12 @@ input[type='number'] {
     .custom-clipPath-leftSide {
         clip-path: none
     }
+}
+
+@media only screen and (max-width: 510px) {
+
+    /* html,
+    body {
+        letter-spacing: 0.03rem;
+    } */
 }
