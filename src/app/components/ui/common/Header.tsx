@@ -1,5 +1,5 @@
 'use client'
-import React from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import { useAuth } from '@/app/context/AuthContext';
 import AuthModal from '@/app/auth/AuthModal';
@@ -13,6 +13,7 @@ import GampadIcon from "@/app/assets/icons/gamepad-icon.svg";
 import { FaPlus } from "react-icons/fa";
 import { useRouter } from 'next/navigation';
 import Wrapper from './Wrapper';
+import BuyNewGameModal from '../../modals/buy-new-game-modal';
 
 const userAvatar = "https://placehold.co/40x40/FFD700/000000?text=HI";
 
@@ -21,6 +22,7 @@ const Header: React.FC = () => {
     const { openModal } = useAuthModalStore();
     const { t } = useTranslation();
     const router = useRouter();
+    const [openNewGameModal, setOpenNewGameModal] = useState(false);
 
     const handleAuthModal = () => {
         openModal("signin");
@@ -49,7 +51,7 @@ const Header: React.FC = () => {
                             <div className="p-2 h-9 border border-black skew-custom shadow-sm cursor-pointer hover:bg-gray-100 transition-colors">
                                 <GiftIcon />
                             </div>
-                            <div className="relative p-2 h-9 border border-black skew-custom shadow-sm cursor-pointer hover:bg-gray-100 transition-colors">
+                            <div role='button' onClick={() => setOpenNewGameModal(true)} className="relative p-2 h-9 border border-black skew-custom shadow-sm cursor-pointer hover:bg-gray-100 transition-colors">
                                 <GampadIcon />
                                 <span className="absolute -top-1 -right-1 bg-red text-white rounded-full w-4 h-4 flex justify-center items-center font-semibold">
                                     <FaPlus className='text-xs' />
@@ -76,7 +78,7 @@ const Header: React.FC = () => {
                     </div>
                 </nav>
                 <AuthModal />
-                <AuthModal />
+                <BuyNewGameModal open={openNewGameModal} onClose={() => setOpenNewGameModal(false)} />
             </Wrapper>
         </header>
     );

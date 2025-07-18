@@ -23,7 +23,7 @@ function CreateGameModal() {
 
     return (
         <dialog id="create_game_modal" className={` modal ${open ? 'modal-open' : ''}`}>
-            <div className="max-w-2xl modal-box bg-white items-center">
+            <div className="max-w-2xl modal-box bg-white items-center rounded-none border-2 border-black">
                 <form method="dialog " className="flex items-center justify-center relative">
                     <h2 className="text-5xl md:text-7xl font-popfun uppercase">
                         New Game

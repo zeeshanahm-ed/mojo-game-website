@@ -8,7 +8,7 @@ function JoinRoomModal({ open, onClose }: any) {
 
     return (
         <dialog id="create_game_modal" className={` modal ${open ? 'modal-open' : ''}`}>
-            <div className=" modal-box bg-white items-center">
+            <div className=" modal-box bg-white items-center rounded-none border-2 border-black">
                 <form method="dialog " className="flex items-center justify-center relative">
                     <h2 className="text-5xl md:text-7xl font-popfun uppercase">
                         join room

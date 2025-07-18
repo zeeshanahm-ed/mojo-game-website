@@ -21,9 +21,9 @@ const LifeLineSection: React.FC = () => {
 
                         {/* Life Line Cards Container */}
                         <div className="flex flex-col md:flex-row items-center justify-center gap-5">
-                            <div className="lg:w-72 w-60 h-96 bg-white border-[6px] border-purple skew-custom flex flex-col items-center justify-center p-6 text-center gap-5">
+                            <div className="lg:w-72 w-60 h-96 bg-white border-[6px] border-purpl skew-custom flex flex-col items-center justify-center p-6 text-center gap-5">
                                 <Image src={CallAFriendImage} alt='Call a Friend' className='w-28 h-28' />
-                                <p className="text-purple text-5xl lg:text-6xl uppercase mb-2 font-popfun">
+                                <p className="text-purpl text-5xl lg:text-6xl uppercase mb-2 font-popfun">
                                     Call a Friend
                                 </p>
                                 <p className="text-sm">

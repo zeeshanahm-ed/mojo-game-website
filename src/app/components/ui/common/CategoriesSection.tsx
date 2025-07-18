@@ -47,7 +47,7 @@ function CategoriesSection() {
     };
 
     return (
-        <div className='flex items-center justify-center flex-col w-full md:px-10 px-4'>
+        <div className='flex items-center justify-center flex-col w-full'>
             <div className='my-10'>
                 <Input
                     icon={<SearchIcon />}
@@ -66,7 +66,7 @@ function CategoriesSection() {
                     3 categories for your team, and 3 categories for the opposing team, for a total of 6 categories with 36 different questions. Choose the categories carefully to ensure the greatest chance of
                 </p>
             </div>
-            <div className='my-14 w-full max-h-[800px] min-h-[600px] overflow-y-auto'>
+            <div className='my-14 w-full max-h-[800px] min-h-[600px] overflow-hidden overflow-y-scroll'>
                 <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 gap-y-10">
                     {filteredCategories?.map((cat, idx) => (
                         <CategoryCard key={idx} category={cat} handleCategoriesClick={handleCategoriesClick} />
@@ -90,13 +90,13 @@ const CategoryCard = ({ category, handleCategoriesClick }: Props) => {
             <div className={`relative w-28 h-28 sm:w-36 sm:h-36 md:w-44 md:h-44 rounded-full border-[12px] border-orange ${category.selected ? "border-red" : "border-orange"} flex items-center justify-center`}>
                 <Image src={category.icon} alt={category.name} width={100} height={100} className='w-1/2 h-1/2' />
             </div>
-            <div className={`w-full mt-6 relative px-4 pb-1 pt-2 text-center text-white font-popfun text-2xl sm:text-3xl md:text-4xl uppercase tracking-wide ${category.selected ? "bg-red" : "bg-orange"} 
+            <div className={`w-full mt-6 relative pb-1 pt-2 text-center text-white font-popfun text-2xl sm:text-3xl md:text-4xl uppercase ${category.selected ? "bg-red" : "bg-orange"} 
             before:w-3 before:bg-orange before:h-8 before:absolute before:-top-8 before:left-[47%] `}>
                 {category.name}
                 {/* Left Triangle */}
-                <div className="absolute -top-[3px] -left-[15px] w-0 h-0 -rotate-[44deg] lg:border-l-[20px] lg:border-r-[20px] lg:border-b-[20px] md:border-l-[15px] md:border-r-[15px] md:border-b-[15px] border-l-transparent border-r-transparent border-b-white" />
+                <div className="absolute -top-[5px] -left-[11px] md:-top-[5px] md:-left-[15px] w-0 h-0 -rotate-[44deg] lg:border-l-[20px] lg:border-r-[20px] lg:border-b-[20px] border-l-[15px] border-r-[15px] border-b-[15px] border-l-transparent border-r-transparent border-b-white" />
                 {/* Right Triangle */}
-                <div className="absolute -top-[3px] rotate-[47deg] -right-[15px] w-0 h-0 lg:border-l-[20px] lg:border-r-[20px] lg:border-b-[20px]  md:border-l-[15px] md:border-r-[15px] md:border-b-[15px] border-l-transparent border-r-transparent border-b-white" />
+                <div className="absolute -top-[4px] md:-top-[5px] -right-[11px] rotate-[47deg] md:-right-[15px] w-0 h-0 lg:border-l-[20px] lg:border-r-[20px] lg:border-b-[20px]  border-l-[15px] border-r-[15px] border-b-[15px] border-l-transparent border-r-transparent border-b-white" />
             </div>
         </div>
     );

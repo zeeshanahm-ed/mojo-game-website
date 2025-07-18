@@ -27,20 +27,22 @@ export default function Banner() {
                             className="w-full h-full object-cover"
                         />
                     </div>
-                    <div className="left-64 sm:left-[50%] md:left-[60%] top-3 md:top-5 relative md:w-12 md:h-12 w-8 h-8">
+                    <div className="xsm:left-64 left-52 sm:left-[50%] md:left-[60%] top-3 md:top-5 relative md:w-12 md:h-12 w-8 h-8">
                         <Image src={StarImage} alt='Star' className='w-full h-full object-contain' />
                     </div>
-                    <h1 className="text-6xl -mt-8 md:text-8xl text-start lg:text-9xl font-popfun leading-tight uppercase">
+                    <h1 className="xsm:text-6xl text-5xl -mt-8 md:text-8xl text-start lg:text-9xl font-popfun leading-tight uppercase">
                         {t("slogan_line_1")} <br />
                         <span className="text-yellow">{t("slogan_line_2")}</span> {t("withUltimate")} <br /> {t("quizExperience")}
                     </h1>
                     <p className="text-sm md:text-base text-start">{t("slogan_sub")}</p>
 
                     <div className="mt-10 flex space-x-3 flex-row justify-start items-center">
-                        <div className={`relative cursor-pointer text-black skew-custom w-[120px]  md:w-[240px] h-[145px] md:h-[210px] md:gap-0 gap-0 py-2 md:py-4 px-2 border-[3px] md:border-[6px] border-black bg-yellow items-start flex-col flex justify-center`}>
-                            <div className='font-popfun text-5xl md:text-8xl uppercase'>{t("create")}</div>
-                            <div className='font-popfun text-3xl md:text-[60px] md:mt-3 uppercase'> {t("aGame")}</div>
-                            <Image src={CreateGameImage} alt="CREATE" className="absolute w-8 h-8 md:w-14 md:h-14 inline-block bottom-8 md:bottom-6 right-2" />
+                        <div className={`relative cursor-pointer text-black skew-custom w-[110px]  md:w-[240px] h-[145px] md:h-[210px] md:gap-0 gap-0 py-2 md:py-4 px-2 border-[3px] md:border-[6px] border-black bg-yellow items-start flex-col flex justify-center`}>
+                            <div className='font-popfun text-4xl sm:text-5xl md:text-8xl uppercase'>{t("create")}</div>
+                            <div className='font-popfun text-nowrap w-full flex items-center justify-between text-2xl sm:3xl md:text-[60px] md:mt-3 uppercase'>
+                                {t("aGame")}
+                                <Image src={CreateGameImage} alt="CREATE" className=" ml-1 w-5 h-5 sm:w-8 sm:h-8 md:w-14 md:h-14" />
+                            </div>
                         </div>
                         <div className='space-y-1 md:space-y-2 flex flex-col items-start'>
                             <GameCard image={StudentGameImage} title={t("brand")} subtitle={t("students")} bgColor="bg-orange" />
@@ -103,11 +105,11 @@ function GameCard({
     return (
         <div
             onClick={onClick}
-            className={`relative cursor-pointer text-black skew-custom md:w-[220px] md:h-[100px] w-[110px] h-[70px] py-1 px-1 md:py-4 md:px-6 md:border-[6px] border-[3px] border-black ${bgColor} ${className} flex-col flex`}
+            className={`relative cursor-pointer text-black skew-custom md:w-[220px] md:h-[100px] w-[100px] sm:w-[120px] h-[70px] py-1 px-1 md:py-4 md:px-6 md:border-[6px] border-[3px] border-black ${bgColor} ${className} flex-col flex`}
         >
 
             <div className='font-bulletproof text-base uppercase'>{title}</div>
-            <div className='font-popfun text-3xl md:text-5xl uppercase'>
+            <div className='font-popfun text-2xl md:text-5xl uppercase'>
                 {subtitle}
             </div>
             <Image src={image} alt={title} className="absolute md:w-6 md:h-6 w-5 h-5 inline-block mt-auto top-1 md:top-2 right-2" />
