@@ -7,15 +7,20 @@ import ClockIcon from "@/app/assets/icons/clock-icon.svg";
 import Button from "@/app/components/ui/common/Button";
 
 interface OnlineQuestionProps {
-    questionType?: "audio" | "video" | "image" | "list";
+    // questionType?: "audio" | "video" | "image" | "list";
     points?: number;
-    onClick: (action: string) => void;
+    handleScreenChange: (action: string) => void;
+    handleModeChange: (action: string) => void;
 }
 
-export default function OnlineQuestion({ questionType = "video", points = 400, onClick }: OnlineQuestionProps) {
+export default function OnlineQuestion({ points = 400, handleScreenChange, handleModeChange }: OnlineQuestionProps) {
     const [timer, setTimer] = useState(0);
     const [isPaused, setIsPaused] = useState(false);
     const timerRef = useRef<NodeJS.Timeout | null>(null);
+
+    // const [player1Answer, setPlayer1Answer] = useState<string | null>(null);
+    // const [player2Answer, setPlayer2Answer] = useState<string | null>(null);
+    // const [currentPlayer, setCurrentPlayer] = useState<'player1' | 'player2'>('player1');
 
     // Timer logic
     React.useEffect(() => {
@@ -43,7 +48,17 @@ export default function OnlineQuestion({ questionType = "video", points = 400, o
         { option: 4, label: "Hulk Hogan" },
         { option: 5, label: "Ric Flair" },
         { option: 6, label: "Undertaker" },
-    ]
+    ];
+
+    // const handleAnswer = (option: string) => {
+    //     if (currentPlayer === 'player1') {
+    //         setPlayer1Answer(option);
+    //         setCurrentPlayer('player2'); // switch turn
+    //     } else {
+    //         setPlayer2Answer(option);
+    //     }
+    // };
+    // const isAnswerButtonEnabled = player1Answer !== null && player2Answer !== null;
 
     return (
         <div className="flex items-center justify-center">
@@ -64,6 +79,11 @@ export default function OnlineQuestion({ questionType = "video", points = 400, o
                                     className="text-xl ml-5 sm:text-3xl !px-1 sm:!px-4 !border md:!border-2"
                                     bgClass="bg-white"
                                     textClass="text-black"
+                                    // onClick={() => handleAnswer(option.label)}
+                                    // disabled={
+                                    //     (currentPlayer === 'player1' && player1Answer !== null) ||
+                                    //     (currentPlayer === 'player2' && player2Answer !== null)
+                                    // }
                                     boxShadow={false}>
                                     {option.label}
                                 </Button>
@@ -86,21 +106,21 @@ export default function OnlineQuestion({ questionType = "video", points = 400, o
                         {/* Timer controls */}
                         <div className="sm:h-12">
                             {isPaused ?
-                                <button className="bg-purple h-full text-white p-2 -skew-x-12 border-2 border-black" onClick={handleResume} >
+                                <button className="bg-purpl h-full text-white p-2 -skew-x-12 border-2 border-black" onClick={handleResume} >
                                     <IoMdPlay className="text-xl sm:text-2xl" />
                                 </button>
                                 :
-                                <button className="bg-purple h-full text-white p-2 -skew-x-12 border-2 border-black" onClick={handlePause} >
+                                <button className="bg-purpl h-full text-white p-2 -skew-x-12 border-2 border-black" onClick={handlePause} >
                                     <IoMdPause className="text-xl sm:text-2xl" />
                                 </button>
                             }
-                            <button onClick={handleReset} className="text-white h-full bg-purple p-2 -skew-x-12 border-2 border-black">
+                            <button onClick={handleReset} className="text-white h-full bg-purpl p-2 -skew-x-12 border-2 border-black">
                                 <MdRestartAlt className="text-xl sm:text-2xl" />
                             </button>
                         </div>
                         <div
                             role="button"
-                            onClick={() => onClick("answer")}
+                            onClick={() => { handleScreenChange("answer"); handleModeChange("online") }}
                             style={{ clipPath: "polygon(8% 0, 100% 0%, 100% 97%, 0% 100%)" }}
                             className="cursor-pointer sm:h-12 flex px-2 md:px-5 py-1 sm:py-2 pt-2 sm:pt-4 items-center justify-between text-white bg-dark-green font-popfun">
                             <span className="md:text-4xl text-xl sm:text-3xl">See Answer</span>

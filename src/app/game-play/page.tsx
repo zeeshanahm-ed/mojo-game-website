@@ -19,6 +19,7 @@ function GamePlay() {
     const team1Lifelines = { eye: true, peace: false, phone: false };
     const team2Lifelines = { eye: true, peace: false, phone: false };
     const [screen, setScreen] = useState("scorecard");
+    const [mode, setMode] = useState("offline");
 
 
     // Helper function to render a lifeline icon with disabled state
@@ -52,31 +53,38 @@ function GamePlay() {
         );
     };
 
+    const handleScreenChange = (value: string) => {
+        setScreen(value);
+    }
+    const handleModeChange = (value: string) => {
+        setMode(value);
+    }
+
     const getScreenContent = (screen: string) => {
         switch (screen) {
             case "scorecard":
                 return (
-                    <QuestionsScoreList onScoreClick={(value) => setScreen(value)} />
+                    <QuestionsScoreList onScoreClick={handleScreenChange} />
                 );
             case "offlineQuestion":
                 return (
-                    <OfflineQuestion onClick={(value: string) => setScreen(value)} />
+                    <OfflineQuestion handleScreenChange={handleScreenChange} handleModeChange={handleModeChange} />
                 );
             case "onlineQuestion":
                 return (
-                    <OnlineQuestion onClick={(value: string) => setScreen(value)} />
+                    <OnlineQuestion handleScreenChange={handleScreenChange} handleModeChange={handleModeChange} />
                 );
             case "answer":
                 return (
-                    <Answer onClick={(value: string) => setScreen(value)} />
+                    <Answer handleScreenChange={handleScreenChange} answerType={mode === "online" ? "list" : "image"} mode={mode} />
                 );
             case "whoAnswered":
                 return (
-                    <WhoAnsweredEvent onClick={(value: string) => setScreen(value)} />
+                    <WhoAnsweredEvent handleScreenChange={handleScreenChange} mode={mode} />
                 );
             case "congratulation":
                 return (
-                    <Congratulation onClick={(value: string) => setScreen(value)} />
+                    <Congratulation onClick={handleScreenChange} />
                 );
 
             default:

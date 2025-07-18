@@ -17,10 +17,11 @@ const OPTIONS = [
 interface OfflineQuestionProps {
     questionType?: "audio" | "video" | "image" | "list";
     points?: number;
-    onClick: (action: string) => void;
+    handleScreenChange: (action: string) => void;
+    handleModeChange: (action: string) => void;
 }
 
-export default function OfflineQuestion({ questionType = "video", points = 400, onClick }: OfflineQuestionProps) {
+export default function OfflineQuestion({ questionType = "video", points = 400, handleScreenChange, handleModeChange }: OfflineQuestionProps) {
     const [timer, setTimer] = useState(0);
     const [isPaused, setIsPaused] = useState(false);
     const timerRef = useRef<NodeJS.Timeout | null>(null);
@@ -75,37 +76,37 @@ export default function OfflineQuestion({ questionType = "video", points = 400, 
                 </div>
                 {/* Bottom bar */}
                 <div className="flex items-center justify-between py-2 rounded-b-lg ">
-                    <div className="flex h-12 px-2 md:px-5 py-2 pt-4 items-center justify-between text-white bg-dark-orange font-popfun">
-                        <span className="md:text-4xl text-3xl tracking-wider">WRESTLING</span>
-                        <span className="md:text-2xl text-xl tracking-wider md:tracking-widest ml-2 md:ml-10">{points} POINTS</span>
+                    <div className="flex sm:h-12 px-2 md:px-5 py-1 sm:py-2 pt-2 sm:pt-4 items-center justify-between text-white bg-dark-orange font-popfun">
+                        <span className="md:text-4xl text-xl sm:text-3xl">WRESTLING</span>
+                        <span className="md:text-2xl text-base sm:text-xl ml-2 md:ml-10">{points} POINTS</span>
                     </div>
                     {/* Timer */}
                     <div className="flex items-center gap-2">
-                        <div className="-skew-x-12 bg-white border border-dark-orange h-12 text-white flex gap-2 md:gap-5 items-center w-24  md:w-32">
-                            <span className=" text-lg bg-dark-orange w-10 h-full flex-center"><ClockIcon /></span>
-                            <span className="font-popfun text-2xl md:text-3xl text-black mt-2">{timer < 10 ? `00:0${timer}` : `00:${timer}`}</span>
+                        <div className="-skew-x-12 bg-white border border-dark-orange sm:h-12 h-10 text-white flex gap-2 md:gap-5 items-center w-20 sm:w-24  md:w-32">
+                            <span className=" text-lg bg-dark-orange w-8 sm:w-10 h-full flex-center"><ClockIcon className="w-4 h-4 sm:w-6 sm:h-6" /></span>
+                            <span className="font-popfun text-xl sm:text-2xl md:text-3xl text-black mt-2">{timer < 10 ? `00:0${timer}` : `00:${timer}`}</span>
                         </div>
                         {/* Timer controls */}
-                        <div className="h-12">
+                        <div className="sm:h-12">
                             {isPaused ?
-                                <button className="bg-purple h-full text-white p-2 -skew-x-12 border-2 border-black" onClick={handleResume} >
-                                    <IoMdPlay className="text-xl" />
+                                <button className="bg-purpl h-full text-white p-2 -skew-x-12 border-2 border-black" onClick={handleResume} >
+                                    <IoMdPlay className="text-xl sm:text-2xl" />
                                 </button>
                                 :
-                                <button className="bg-purple h-full text-white p-2 -skew-x-12 border-2 border-black" onClick={handlePause} >
-                                    <IoMdPause className="text-xl" />
+                                <button className="bg-purpl h-full text-white p-2 -skew-x-12 border-2 border-black" onClick={handlePause} >
+                                    <IoMdPause className="text-xl sm:text-2xl" />
                                 </button>
                             }
-                            <button onClick={handleReset} className="text-white h-full bg-purple p-2 -skew-x-12 border-2 border-black">
-                                <MdRestartAlt className="text-2xl" />
+                            <button onClick={handleReset} className="text-white h-full bg-purpl p-2 -skew-x-12 border-2 border-black">
+                                <MdRestartAlt className="text-xl sm:text-2xl" />
                             </button>
                         </div>
                         <div
                             role="button"
-                            onClick={() => onClick("answer")}
+                            onClick={() => { handleScreenChange("answer"); handleModeChange("offline") }}
                             style={{ clipPath: "polygon(8% 0, 100% 0%, 100% 97%, 0% 100%)" }}
-                            className="cursor-pointer flex h-12 px-5 py-2 pt-4 items-center justify-between text-white bg-dark-orange font-popfun">
-                            <span className="md:text-3xl text-2xl tracking-wider">See Answer</span>
+                            className="cursor-pointer sm:h-12 flex px-2 md:px-5 py-1 sm:py-2 pt-2 sm:pt-4 items-center justify-between text-white bg-dark-green font-popfun">
+                            <span className="md:text-4xl text-xl sm:text-3xl">See Answer</span>
                         </div>
                     </div>
                 </div>
