@@ -16,7 +16,7 @@ const Banner: React.FC = () => {
                     <div className="hidden lg:flex left-10 top-0 absolute items-center justify-center flex-col lg:justify-start space-x-4 mb-8 lg:mb-0">
                         <Image src={BlackStarImage} alt='Star' className='w-12 h-12 mr-10' />
                     </div>
-                    <div className="flex items-start left-0 -top-[70px] md:top-0 lg:top-20 absolute justify-end space-x-4 mb-8 lg:mb-0">
+                    <div className="flex items-start left-0 -top-10 sm:top-0 lg:top-20 absolute justify-end">
                         <Image src={OfflinePlayImage} alt='Offline Play' className='w-16 h-16 sm:w-20 sm:h-20 lg:w-32 lg:h-32' />
                     </div>
 
@@ -31,8 +31,8 @@ const Banner: React.FC = () => {
                     </div>
 
                     {/* Right Side - Question Mark Icon */}
-                    <div className="flex right-0 lg:top-0 -bottom-28 md:-bottom-10 absolute items-center justify-end mt-8 lg:mt-0">
-                        <Image src={QuizAppImage} alt='Quiz App' className='lg:w-52 lg:h-52 sm:w-24 sm:h-24 w-16 h-16' />
+                    <div className="flex right-0 sm:-top-8 top-0  absolute items-center justify-end lg:w-52 lg:h-52 md:w-32 md:h-32 sm:w-24 sm:h-24 w-16 h-16">
+                        <Image src={QuizAppImage} alt='Quiz App' className='w-full h-full' />
                     </div>
                 </div>
             </Wrapper>

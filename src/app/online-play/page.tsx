@@ -59,7 +59,7 @@ function OnlinePlay() {
         <section>
             <Banner />
             <Wrapper>
-                <div className='flex items-center justify-center flex-col h-auto pb-20 w-full'>
+                <div className='flex items-center justify-center flex-col h-auto pb-20 w-full px-4 md:px-10'>
                     <div className="text-center flex flex-col items-center justify-center mt-10 w-full">
                         <div className="text-center flex flex-col items-center justify-center">
                             <h2 className="sm:text-6xl text-5xl lg:text-8xl font-popfun text-black mb-2 uppercase">
@@ -112,16 +112,16 @@ function OnlinePlay() {
                                 </span>
                             </div>
                             <button
-                                className="btn btn-square bg-yellow text-black w-16 h-auto p-3 md:p-[18px] flex items-center justify-center border-none hover:bg-yellow-500 transition-colors"
+                                className="btn btn-square bg-yellow text-black w-16 h-full p-4 md:p-[18px] flex items-center justify-center border-none"
                                 onClick={handleCopyRoomCode}
                                 aria-label="Copy Room Code"
                             >
                                 <IoIosCopy className='text-2xl md:text-4xl' />
                             </button>
                         </div>
-                        <div className="flex mt-20 flex-col md:flex-row items-center justify-evenly w-full ">
+                        <div className="flex mt-20 flex-col sm:flex-row items-center justify-evenly w-full space-y-14 sm:space-y-0">
                             <div className="flex flex-col items-center text-center">
-                                <div className="skew-custom w-40 h-40 overflow-hidden border-4 border-black flex items-center justify-center mb-4">
+                                <div className="skew-custom md:w-48 md:h-48 w-36 h-36 overflow-hidden border-4 border-black flex items-center justify-center mb-4">
                                     <img
                                         src="https://placehold.co/160x160/FFD700/000000?text=User"
                                         alt="User Profile"
@@ -133,12 +133,12 @@ function OnlinePlay() {
                             </div>
 
                             {/* VS Icon */}
-                            <div className="relative w-24 h-24 flex items-center justify-center">
-                                <Image src={VSIcon} alt='vs' className='w-28 h-36' />
+                            <div className="relative sm:16 md:w-20 h-1/2 flex items-center justify-center">
+                                <Image src={VSIcon} alt='vs' className='w-full h-full' />
                             </div>
 
                             <div className="flex flex-col items-center text-center">
-                                <div className="skew-custom w-40 h-40 overflow-hidden border-4 border-black flex items-center justify-center mb-4">
+                                <div className="skew-custom md:w-48 md:h-48 w-36 h-36 overflow-hidden border-4 border-black flex items-center justify-center mb-4">
                                     {isSearching ? (
                                         <span className="loading loading-spinner loading-lg text-gray-400"></span>
                                     ) : (
@@ -149,9 +149,9 @@ function OnlinePlay() {
                                 <p className="text-gray-600 text-base ">it may take few seconds</p>
                             </div>
                         </div>
-                        <Button className='text-white w-80 my-16 text-4xl tracking-wide' bgClass="bg-black">Search Players</Button>
+                        <Button boxShadow={false} className='text-white w-64 md:w-80 my-16 text-4xl tracking-wide' bgClass="bg-black">Search Players</Button>
                         <CategoriesSection />
-                        <Button className='text-white w-80 my-16 text-5xl tracking-wide'>Create Game</Button>
+                        <Button className='text-white w-64 md:w-80 my-16 text-4xl md:text-5xl tracking-wide'>Start playing</Button>
                     </div>
                 </div>
             </Wrapper>
