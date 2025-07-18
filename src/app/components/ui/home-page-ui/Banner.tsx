@@ -1,4 +1,7 @@
 'use client';
+import { useTranslation } from 'react-i18next';
+import Wrapper from '../common/Wrapper';
+import { useRouter } from 'next/navigation';
 
 import Image, { StaticImageData } from 'next/image';
 import WorldImage from '../../../assets/images/world.png';
@@ -11,11 +14,22 @@ import KidsGameImage from '../../../assets/images/kids-quest.png';
 import StudentGameImage from '../../../assets/images/student-quest.png';
 import CreateGameImage from '../../../assets/images/create-game.png';
 import RamadanGameImage from '../../../assets/images/ramadan-quest.png';
-import { useTranslation } from 'react-i18next';
-import Wrapper from '../common/Wrapper';
 
 export default function Banner() {
     const { t } = useTranslation();
+    const router = useRouter()
+
+    const handleGoTo = (type: string) => {
+        switch (type) {
+            case "students":
+                router.push("/students")
+                break;
+
+            default:
+                break;
+        }
+    }
+
     return (
         <section className="w-full bg-red text-white px-4 md:px-10 py-10">
             <Wrapper>
@@ -45,12 +59,12 @@ export default function Banner() {
                             </div>
                         </div>
                         <div className='space-y-1 md:space-y-2 flex flex-col items-start'>
-                            <GameCard image={StudentGameImage} title={t("brand")} subtitle={t("students")} bgColor="bg-orange" />
-                            <GameCard image={RamadanGameImage} title={t("brand")} subtitle={t("ramadan")} bgColor="bg-light-green" className="-ml-2" />
+                            <GameCard type={"students"} image={StudentGameImage} title={t("brand")} subtitle={t("students")} bgColor="bg-orange" onClick={(v: string) => handleGoTo(v)} />
+                            <GameCard type={"ramadan"} image={RamadanGameImage} title={t("brand")} subtitle={t("ramadan")} bgColor="bg-light-green" className="-ml-2" />
                         </div>
                         <div className='space-y-1 md:space-y-2 flex flex-col items-start'>
-                            <GameCard image={KidsGameImage} title={t("brand")} subtitle={t("kids_quest")} bgColor="bg-green" />
-                            <GameCard image={PrivateGameImage} title={t("brand")} subtitle={t("private_game")} bgColor="bg-light-blue" className="-ml-2" />
+                            <GameCard type={"kidsQuest"} image={KidsGameImage} title={t("brand")} subtitle={t("kids_quest")} bgColor="bg-green" />
+                            <GameCard type={"privateGame"} image={PrivateGameImage} title={t("brand")} subtitle={t("private_game")} bgColor="bg-light-blue" className="-ml-2" />
                         </div>
                     </div>
                     <div className="-rotate-45 w-20 h-20 md:w-44 md:h-44 left-[80%] sm:left-[60%] md:-top-[70%] md:left-[60%] -top-[370px] relative">
@@ -90,8 +104,9 @@ interface GameCardProps {
     title: string;
     subtitle: string;
     centered?: boolean;
-    onClick?: () => void;
+    onClick?: (v: string) => void;
     className?: string;
+    type: string;
 }
 
 function GameCard({
@@ -100,11 +115,12 @@ function GameCard({
     title,
     subtitle,
     onClick,
+    type,
     className
 }: GameCardProps) {
     return (
         <div
-            onClick={onClick}
+            onClick={() => onClick?.(type)}
             className={`relative cursor-pointer text-black skew-custom md:w-[220px] md:h-[100px] w-[100px] sm:w-[120px] h-[70px] py-1 px-1 md:py-4 md:px-6 md:border-[6px] border-[3px] border-black ${bgColor} ${className} flex-col flex`}
         >
 
