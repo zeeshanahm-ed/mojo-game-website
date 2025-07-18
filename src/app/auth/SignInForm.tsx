@@ -23,15 +23,15 @@ export default function SignInForm() {
     return (
         <div>
             {/* Modal Body */}
-            <form onSubmit={handleLogin} className="p-6">
+            <form onSubmit={handleLogin} className="sm:p-6 p-2">
                 {/* Email Input */}
                 <div className="mb-6 flex items-center h-14 w-full transform -skew-x-12 border-2 border-black overflow-hidden">
-                    <div className="bg-purple w-16 flex items-center justify-center h-full">
+                    <div className="bg-purpl w-16 flex items-center justify-center h-full">
                         <EmailIcon className="" />
                     </div>
                     <input
                         type="email"
-                        placeholder="Enter your email address"
+                        placeholder="Enter your email"
                         className="input h-full rounded-none input-bordered w-full pl-2 md:pl-8 pr-4 py-3 text-lg bg-white text-gray-800 border-none focus:outline-none"
                         required
                     />
@@ -39,7 +39,7 @@ export default function SignInForm() {
 
                 {/* Password Input */}
                 <div className="-ml-2 mb-1 flex items-center h-14 w-full transform -skew-x-12 border-2 border-black overflow-hidden">
-                    <div className="bg-purple flex items-center justify-center w-16 h-full">
+                    <div className="bg-purpl flex items-center justify-center w-16 h-full">
                         <PasswordIcon />
                     </div>
                     <input
@@ -60,14 +60,6 @@ export default function SignInForm() {
                     <Button type="submit" aria-label="Login" className="w-52 ">
                         <span className="inline-block transform skew-x-12 tracking-wider text-4xl uppercase font-popfun">LOGIN</span>
                     </Button>
-                    {/* <button
-                        type="submit"
-                        className="w-52"
-                        aria-label="Login"
-                        style={{ boxShadow: '3px 3x 0px rgba(0, 0, 0)' }}
-                    >
-                        <span className="inline-block transform skew-x-12 tracking-wider text-4xl uppercase font-popfun">LOGIN</span>
-                    </button> */}
                 </div>
             </form>
         </div>

@@ -10,6 +10,7 @@ import EditIcon from '../assets/icons/edit-icon.svg';
 import ContactIcon from '../assets/icons/contact-icon.svg';
 import UserIcon from '../assets/icons/user-icon.svg';
 import FallBackProfileImage from '../assets/images/fallback-profile-image.jpg';
+import { setAuth, setUser } from '../helpers/auth-helper';
 
 interface ValidationErrors {
     [key: string]: string;
@@ -34,10 +35,18 @@ export default function SignUpForm() {
             setFormErrors(error)
             return;
         } else {
-            // handleOk(formState);
+            handleOk(formState);
             openModal("signin");
             console.log('Sign Up button clicked!', formState);
         }
+    };
+
+    const handleOk = (formData: ISignUpForm) => {
+        // const obj = {
+        //     data: formData,
+        //     api_token: ""
+        // }
+        // // setUser(obj);
     };
 
     const validateFormData = (formData: ISignUpForm): ValidationErrors => {
@@ -131,7 +140,7 @@ export default function SignUpForm() {
 
                 {/* First Name & Last Name Input */}
                 <div className="mb-6 flex items-center h-14 w-full transform -skew-x-12 border-2 border-black overflow-hidden">
-                    <div className="bg-purple flex items-center justify-center w-16 h-full">
+                    <div className="bg-purpl flex items-center justify-center w-16 h-full">
                         <UserIcon />
                     </div>
                     <input
@@ -158,7 +167,7 @@ export default function SignUpForm() {
 
                 {/* Email Input */}
                 <div className="mb-6 flex items-center h-14 w-full transform -skew-x-12 border-2 border-black overflow-hidden">
-                    <div className="bg-purple flex items-center justify-center w-16 h-full">
+                    <div className="bg-purpl flex items-center justify-center w-16 h-full">
                         <EmailIcon />
                     </div>
                     <input
@@ -175,7 +184,7 @@ export default function SignUpForm() {
 
                 {/* Password Input */}
                 <div className="mb-6 flex items-center h-14 w-full transform -skew-x-12 border-2 border-black overflow-hidden">
-                    <div className="bg-purple flex items-center justify-center w-16 h-full">
+                    <div className="bg-purpl flex items-center justify-center w-16 h-full">
                         <PasswordIcon />
                     </div>
                     <input
@@ -192,7 +201,7 @@ export default function SignUpForm() {
 
                 {/* Contact Number Input */}
                 <div className="mb-6 flex items-center h-14 w-full transform -skew-x-12 border-2 border-black overflow-hidden">
-                    <div className="bg-purple flex items-center justify-center w-16 h-full">
+                    <div className="bg-purpl flex items-center justify-center w-16 h-full">
                         <ContactIcon />
                     </div>
                     <input
