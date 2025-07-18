@@ -1,0 +1,105 @@
+import React, { useState } from 'react'
+import { MdClose } from 'react-icons/md';
+import Button from '../ui/common/Button';
+import Input from '../ui/common/Input';
+//icon
+import RoyalRoundedIcon from "@/app/assets/icons/riyal-rounded-icon.svg"
+import RoyalWalletIcon from "@/app/assets/icons/riyal-wallet-icon.svg"
+
+const Options = [
+    { count: '10', price: "17", bgColor: "bg-[#FA1960]" },
+    { count: '5', price: "10", bgColor: "bg-[#197BFA]" },
+    { count: '3', price: "08", bgColor: "bg-[#FA8219]" },
+    { count: '2', price: "05", bgColor: "bg-[#FA2C19]" },
+]
+
+function BuyNewGameModal({ open, onClose }: any) {
+    const [discountCode, setDiscountCode] = useState('');
+
+    const [selectedOption, setSelectedOption] = useState({
+        count: '10',
+        price: "17",
+        bgColor: "bg-[#FA1960]"
+    })
+
+    const handleSelectOption = (option: any) => {
+        setSelectedOption(option)
+    }
+
+    return (
+        <dialog id="buy_a_new_game_modal" className={` modal ${open ? 'modal-open' : ''}`}>
+            <div className="modal-box p-0 overflow-hidden bg-white items-center max-w-2xl rounded-none border-2 border-black">
+                <form method="dialog " className="px-4 md:px-10 pt-5 flex items-center justify-start relative">
+                    <h2 className="text-4xl sm:text-5xl md:text-7xl font-popfun uppercase flex flex-row sm:flex-row sm:items-center ">
+                        Buy a new game <span className='ml-4 sm:ml-8 flex items-center gap-1 sm:gap-3'><RoyalWalletIcon className="mb-1 sm:w-10 sm:h-10" /> 10.00</span>
+                    </h2>
+                    <button
+                        type="button"
+                        className="absolute right-3 top-3 bg-light-gray focus:outline-none w-8 h-8 flex items-center justify-center rounded-full text-white hover:bg-dark-gray transition-colors duration-300"
+                        onClick={onClose}
+                        aria-label="Close"
+                    >
+                        <MdClose className='text-2xl' />
+                    </button>
+                </form>
+                <div className="divider before:bg-light-gray after:bg-light-gray m-0"></div>
+                {/* Main content */}
+                <div className="w-full">
+                    <div className='flex px-4 md:px-10 items-center flex-col w-full text-white justify-between py-5 uppercase font-popfun space-y-5'>
+                        {Options.map((option, index) => {
+                            return (
+                                <div key={index} onClick={() => handleSelectOption(option)} className={`${selectedOption?.count === option.count && "text-gray-200"} w-full cursor-pointer hover:text-gray-200 transition-all duration-300 ${option.bgColor} flex items-center justify-between py-3 pt-5 px-4 md:px-10 -skew-x-12`}>
+                                    <div className=' text-3xl  md:text-5xl skew-x-12'>{option.count} Games</div>
+                                    <div className=' text-3xl  md:text-5xl flex items-center gap-3 skew-x-12'>{option.price} SAR <RoyalRoundedIcon className="w-8 h-8" /></div>
+                                </div>
+                            )
+                        })}
+                        <div className="bg-white border-2 border-black -skew-x-12 w-full">
+                            <div className="px-4 md:px-10 py-3 pt-5 flex skew-x-12 items-center justify-between" >
+                                <div className="flex-shrink-0 ">
+                                    <label className="text-black text-3xl  md:text-5xl">
+                                        DISCOUNT CODE :
+                                    </label>
+                                </div>
+                                <div className="flex-1 ml-8">
+                                    <input
+                                        type="text"
+                                        value={discountCode}
+                                        onChange={(e) => setDiscountCode(e.target.value)}
+                                        placeholder="1F380H5000"
+                                        className="w-full text-gray-400 text-3xl  md:text-5xl bg-transparent border-none outline-none placeholder-gray-400 text-right"
+                                        style={{ textShadow: '1px 1px 2px rgba(0,0,0,0.1)' }}
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="bg-purpl px-6 md:px-10  py-2 md:py-4 flex items-center justify-between font-popfun">
+                        <div className="">
+                            <button className="bg-transparent border-none text-white text-3xl md:text-6xl  uppercase hover:text-gray-200 transition-colors">
+                                BUY A NEW GAME
+                            </button>
+                        </div>
+
+                        <div className="w-px bg-white h-12"></div>
+
+                        <div className="flex items-center gap-3 sm:gap-6">
+                            <div className="text-white text-3xl md:text-5xl ">
+                                {selectedOption.price} SAR
+                            </div>
+                            <div className="flex items-center gap-2">
+                                <div className={`w-4 h-4 ${selectedOption.bgColor} mb-1 rounded-full border border-white`}></div>
+                                <span className="text-white text-2xl md:text-3xl ">
+                                    {selectedOption.count} GAMES
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </dialog>
+    )
+}
+
+export default BuyNewGameModal;
