@@ -2,31 +2,37 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { useAuth } from '@/app/context/AuthContext';
-import AuthModal from '@/app/auth/AuthModal';
 import { useAuthModalStore } from '@/app/store/useAuthModalStore';
-// import LanguageSwitcher from '@/app/components/ui/Language-Switcher';
 import { useTranslation } from 'react-i18next';
+import { useRouter } from 'next/navigation';
+//components
+// import LanguageSwitcher from '@/app/components/ui/Language-Switcher';
+import Wrapper from './Wrapper';
+import BuyNewGameModal from '../../modals/buy-new-game-modal';
+import WalletModal from '../../modals/wallet-modal';
+import MobileDrawer from '../MobileDrawer';
+import AuthModal from '@/app/auth/AuthModal';
 //icons
 import GiftIcon from "@/app/assets/icons/gift-icon.svg";
 import FileIcon from "@/app/assets/icons/file-icon.svg";
 import GampadIcon from "@/app/assets/icons/gamepad-icon.svg";
 import { FaPlus } from "react-icons/fa";
-import { useRouter } from 'next/navigation';
-import Wrapper from './Wrapper';
-import BuyNewGameModal from '../../modals/buy-new-game-modal';
 
+
+import { FiMenu } from "react-icons/fi";
 const userAvatar = "https://placehold.co/40x40/FFD700/000000?text=HI";
 
 const Header: React.FC = () => {
     const { user } = useAuth();
     const { openModal } = useAuthModalStore();
+    const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+    const [openNewGameModal, setOpenNewGameModal] = useState(false);
+    const [openWalletModal, setOpenWalletModal] = useState(false);
     const { t } = useTranslation();
     const router = useRouter();
-    const [openNewGameModal, setOpenNewGameModal] = useState(false);
 
     const handleAuthModal = () => {
         openModal("signin");
-        // router.push("/profile");
     };
 
     return (
@@ -34,7 +40,7 @@ const Header: React.FC = () => {
             <Wrapper>
                 <nav className="flex items-center justify-between w-full py-4">
                     {/* Left section: User avatar and name */}
-                    <div className=" items-center gap-5 hidden md:flex">
+                    <div className="items-center gap-5 hidden md:flex">
                         <div className='flex items-center'>
                             {user ?
                                 <>
@@ -57,7 +63,7 @@ const Header: React.FC = () => {
                                     <FaPlus className='text-xs' />
                                 </span>
                             </div>
-                            <div className="p-2 h-9 border border-black skew-custom shadow-sm cursor-pointer hover:bg-gray-100 transition-colors">
+                            <div role='button' onClick={() => setOpenWalletModal(true)} className="p-2 h-9 border border-black skew-custom shadow-sm cursor-pointer hover:bg-gray-100 transition-colors">
                                 <FileIcon />
                             </div>
                         </div>
@@ -65,13 +71,16 @@ const Header: React.FC = () => {
 
                     {/* Middle section: Icons and MOJO logo */}
                     <div className="flex items-center">
-                        <h1 className="text-3xl md:text-5xl text-gray-900 font-bulletproof mt-2 uppercase cursor-pointer" onClick={() => router.push('/')}>
+                        <div className='md:hidden' role='button' onClick={() => setIsDrawerOpen(true)}>
+                            <FiMenu className='text-3xl sm:text-4xl' />
+                        </div>
+                        <h1 className="text-3xl sm:text-4xl ml-5 md:ml-0 md:text-5xl text-gray-900 font-bulletproof mt-2 uppercase cursor-pointer" onClick={() => router.push('/')}>
                             {t("brand")}
                         </h1>
                     </div>
 
                     {/* Right section: Navigation links */}
-                    <div className="flex items-center space-x-2 md:space-x-8 text-gray-800 text-sm md:text-lg font-medium w-fit text-nowrap">
+                    <div className="flex items-center space-x-2 md:space-x-8 text-gray-800 text-sm sm:text-base md:text-lg font-medium w-fit text-nowrap">
                         <Link href="/my-games" className="hover:text-dark-gray transition-colors">{t("my_games")}</Link>
                         <Link href="/contactus" className="hover:text-dark-gray transition-colors">{t("contact_us")}</Link>
                         {/* <LanguageSwitcher /> */}
@@ -79,6 +88,13 @@ const Header: React.FC = () => {
                 </nav>
                 <AuthModal />
                 <BuyNewGameModal open={openNewGameModal} onClose={() => setOpenNewGameModal(false)} />
+                <WalletModal open={openWalletModal} onClose={() => setOpenWalletModal(false)} />
+                <MobileDrawer
+                    isOpen={isDrawerOpen}
+                    onClose={() => setIsDrawerOpen(false)}
+                    setOpenWalletModal={setOpenWalletModal}
+                    setOpenNewGameModal={setOpenNewGameModal}
+                />
             </Wrapper>
         </header>
     );
