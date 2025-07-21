@@ -46,7 +46,9 @@ const Button = forwardRef<HTMLButtonElement, IButtonProps>(
                 aria-label="Button"
             >
                 {prefixElement}
-                {display == "none" ? null : children}
+                <span className='inline-block skew-x-0'>
+                    {display == "none" ? null : children}
+                </span>
                 {suffixElement}
             </button>
         );

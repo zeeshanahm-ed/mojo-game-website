@@ -21,9 +21,9 @@ const LifeLineSection: React.FC = () => {
 
                         {/* Life Line Cards Container */}
                         <div className="flex flex-col md:flex-row items-center justify-center gap-5">
-                            <div className="lg:w-72 w-60 h-96 bg-white border-[6px] border-purpl skew-custom flex flex-col items-center justify-center p-6 text-center gap-5">
-                                <Image src={CallAFriendImage} alt='Call a Friend' className='w-28 h-28' />
-                                <p className="text-purpl text-5xl lg:text-6xl uppercase mb-2 font-popfun">
+                            <div className="lg:w-72 w-60 h-1/2 bg-white border-2 md:border-[6px] border-purple skew-custom flex flex-col items-center justify-center p-4 md:p-6 text-center gap-5">
+                                <Image src={CallAFriendImage} alt='Call a Friend' className='w-20 md:w-28 h-1/2' />
+                                <p className="text-purple text-5xl lg:text-6xl uppercase mb-2 font-popfun">
                                     Call a Friend
                                 </p>
                                 <p className="text-sm">
@@ -31,8 +31,8 @@ const LifeLineSection: React.FC = () => {
                                 </p>
                             </div>
 
-                            <div className="lg:w-72 w-60 h-96 bg-white border-[6px] skew-custom border-fanta flex flex-col items-center justify-center p-6 text-center gap-5" >
-                                <Image src={SecondChanceImage} alt='2nd Chance' className='w-28 h-28' />
+                            <div className="lg:w-72 w-60 h-1/2 bg-white border-2 md:border-[6px] skew-custom border-fanta flex flex-col items-center justify-center p-4 md:p-6 text-center gap-5" >
+                                <Image src={SecondChanceImage} alt='2nd Chance' className='w-20 md:w-28 h-1/2' />
                                 <p className="text-fanta text-5xl lg:text-6xl uppercase mb-2 font-popfun">
                                     2nd Chance
                                 </p>
@@ -42,8 +42,8 @@ const LifeLineSection: React.FC = () => {
                             </div>
 
                             {/* Score Steal Card */}
-                            <div className="lg:w-72 w-60 h-96 bg-white border-[6px] skew-custom border-blue flex flex-col items-center justify-center p-6 text-center gap-5">
-                                <Image src={ScoreStealImage} alt='Score Steal' className='w-28 h-28' />
+                            <div className="lg:w-72 w-60 h-1/2 bg-white border-2 md:border-[6px] skew-custom border-blue flex flex-col items-center justify-center p-4 md:p-6 text-center gap-5">
+                                <Image src={ScoreStealImage} alt='Score Steal' className='w-20 md:w-28 h-1/2' />
                                 <p className="text-blue text-5xl lg:text-6xl  uppercase mb-2 font-popfun">
                                     Score Steal
                                 </p>

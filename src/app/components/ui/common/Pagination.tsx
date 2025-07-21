@@ -16,7 +16,7 @@ const Pagination: React.FC<PaginationProps> = ({ totalPages = 10 }) => {
         if (totalPages <= 7) {
             for (let i = 1; i <= totalPages; i++) pages.push(i);
         } else {
-            const showLeftDots = currentPage > 4;
+            const showLeftDots = currentPage > 3;
             const showRightDots = currentPage < totalPages - 3;
 
             pages.push(1);

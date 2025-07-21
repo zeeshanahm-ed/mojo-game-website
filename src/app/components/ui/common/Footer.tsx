@@ -3,11 +3,11 @@ import Wrapper from './Wrapper';
 
 const Footer: React.FC = () => {
     return (
-        <footer className="w-full bg-black text-white p-6 md:p-8">
+        <footer className="w-full bg-black text-white py-6 px-4 sm:p-6 md:p-8">
             <Wrapper>
-                <div className='flex flex-col md:flex-row items-center justify-between'>
+                <div className='flex flex-col sm:flex-row items-center justify-between'>
                     {/* Left Section: MOJO Logo and Copyright */}
-                    <div className="flex flex-col items-center md:items-start mb-4 md:mb-0">
+                    <div className="flex flex-col items-center sm:items-start mb-4 md:mb-0">
                         <h1 className="text-7xl  mb-2 font-bulletproof">
                             MOJO
                         </h1>

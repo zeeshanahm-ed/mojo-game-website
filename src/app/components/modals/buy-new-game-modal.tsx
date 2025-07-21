@@ -13,7 +13,12 @@ const Options = [
     { count: '2', price: "05", bgColor: "bg-[#FA2C19]" },
 ]
 
-function BuyNewGameModal({ open, onClose }: any) {
+interface NewGameModalProps {
+    open: boolean;
+    onClose: () => void;
+}
+
+function BuyNewGameModal({ open, onClose }: NewGameModalProps) {
     const [discountCode, setDiscountCode] = useState('');
 
     const [selectedOption, setSelectedOption] = useState({
@@ -74,7 +79,7 @@ function BuyNewGameModal({ open, onClose }: any) {
                             </div>
                         </div>
                     </div>
-                    <div className="bg-purpl px-6 md:px-10  py-2 md:py-4 flex items-center justify-between font-popfun">
+                    <div className="bg-purple px-6 md:px-10  py-2 md:py-4 flex items-center justify-between font-popfun">
                         <div className="">
                             <button className="bg-transparent border-none text-white text-3xl md:text-6xl  uppercase hover:text-gray-200 transition-colors">
                                 BUY A NEW GAME

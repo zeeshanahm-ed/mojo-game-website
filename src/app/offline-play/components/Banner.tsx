@@ -22,7 +22,7 @@ const Banner: React.FC = () => {
 
                     {/* Middle Section - Heading and Description */}
                     <div className="flex flex-col text-center items-center lg:w-2/4 px-4">
-                        <h2 className="text-7xl md:text-8xl lg:text-9xl leading-tight mb-4 uppercase font-popfun">
+                        <h2 className="text-6xl md:text-8xl lg:text-9xl leading-tight mb-4 uppercase font-popfun">
                             PLAY LOCAL
                         </h2>
                         <p className="text-base md:text-lg max-w-xl">

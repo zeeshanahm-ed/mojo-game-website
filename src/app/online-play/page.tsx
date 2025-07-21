@@ -145,13 +145,13 @@ function OnlinePlay() {
                                         <span className="text-gray-400 text-6xl">?</span>
                                     )}
                                 </div>
-                                <h3 className="text-black text-xl font-semibold tracking-wider">Searching</h3>
+                                <h3 className="text-black text-xl font-semibold">Searching</h3>
                                 <p className="text-gray-600 text-base ">it may take few seconds</p>
                             </div>
                         </div>
-                        <Button boxShadow={false} className='text-white w-64 md:w-80 my-16 text-4xl tracking-wide' bgClass="bg-black">Search Players</Button>
+                        <Button boxShadow={false} className='text-white w-64 md:w-80 my-16 text-4xl' bgClass="bg-black">Search Players</Button>
                         <CategoriesSection />
-                        <Button className='text-white w-64 md:w-80 my-16 text-4xl md:text-5xl tracking-wide'>Start playing</Button>
+                        <Button className='text-white md:w-1/2 w-full sm:w-3/4 my-16 text-4xl md:text-5xl'>Start playing</Button>
                     </div>
                 </div>
             </Wrapper>

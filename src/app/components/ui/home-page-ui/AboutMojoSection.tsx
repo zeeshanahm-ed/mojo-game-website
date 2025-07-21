@@ -7,7 +7,7 @@ import AboutMojoImage from '../../../assets/images/about-mojo-image.png';
 export default function AboutMojoSection() {
     return (
         <section className="relative w-full bg-white py-20 overflow-hidden">
-            <div className="relative z-10 w-full">
+            <div className="relative w-full">
                 <div className="skew-y-[-1deg] bg-[#F7F623] w-full px-4 md:px-10 py-16 overflow-hidden">
                     <Wrapper>
                         <div className="relative skew-y-[1deg] w-full">

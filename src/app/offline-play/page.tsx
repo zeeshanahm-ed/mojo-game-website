@@ -85,9 +85,9 @@ function OfflineMode() {
                             inputClassName='text-center pl-0'
                             onChange={(e): void => handleGameName(e.target.value)}
                         />
-                        <div className="py-10 flex flex-col md:flex-row items-center justify-center space-y-8 md:space-y-0 md:space-x-12 lg:space-x-20 w-full mb-10">
+                        <div className="py-10 flex flex-col md:flex-row items-center justify-center space-y-20 md:space-y-0 md:space-x-12 lg:space-x-20 w-full mb-10">
                             {/* First Team Card */}
-                            <div className="w-72 skew-custom bg-red border-4 border-black flex flex-col items-center py-6 pb-4">
+                            <div className="w-72 -skew-x-3 md:-skew-x-6 bg-red border-4 border-black flex flex-col items-center py-6 pb-4">
                                 <h3 className="text-white text-5xl uppercase mb-4 font-popfun">
                                     First Team
                                 </h3>
@@ -127,7 +127,7 @@ function OfflineMode() {
                             </div>
 
                             {/* Second Team Card */}
-                            <div className="w-72 bg-blue skew-custom border-4 border-black flex flex-col items-center py-6 pb-4">
+                            <div className="w-72 bg-blue -skew-x-3 md:-skew-x-6 border-4 border-black flex flex-col items-center py-6 pb-4">
                                 <h3 className="text-white text-5xl uppercase mb-4 font-popfun">
                                     Second team
                                 </h3>
@@ -162,7 +162,7 @@ function OfflineMode() {
                                 </div>
                             </div>
                         </div>
-                        <Button className='md:w-1/2 w-3/4 text-5xl mt-10' onClick={() => handleStartGame()}>Start playing</Button>
+                        <Button className='md:w-1/2 w-full sm:w-3/4 text-4xl md:text-5xl' onClick={() => handleStartGame()}>Start playing</Button>
                     </div>
                 </div>
             </Wrapper>

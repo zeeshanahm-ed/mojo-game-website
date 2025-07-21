@@ -90,7 +90,7 @@ function ContactUS() {
                         />
 
                         <textarea
-                            className="sm:w-[450px] lg:w-2/3 w-full h-28 outline-none resize-none bg-white border-2 border-black -skew-x-6 md:-skew-x-12 p-5 text-lg"
+                            className="sm:w-[450px] lg:w-2/3 w-full h-28 outline-none resize-none bg-white border-2 border-black -skew-x-[4deg] md:-skew-x-12 p-5 text-lg"
                             placeholder="Your message"
                             name="message"
                             onChange={handleChange}
