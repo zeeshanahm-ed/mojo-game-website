@@ -29,7 +29,7 @@ const Button = forwardRef<HTMLButtonElement, IButtonProps>(
     }, ref) => {
 
         //         const classNames = {
-        //   primary: 'text-white bg-purpl ',
+        //   primary: 'text-white bg-purple ',
         //   secondary: 'text-white bg-secondary py-4 px-10 font-medium tracking-wider transition ',
         //   text: '',
         //   default: 'font-secondary px-10 py-4 text-secondary border font-medium border-secondary bg-white',
@@ -42,7 +42,7 @@ const Button = forwardRef<HTMLButtonElement, IButtonProps>(
                 ref={ref}
                 type={type}
                 {...rest}
-                className={`${variant} ${className} ${bgClass ? bgClass : "bg-purpl"} ${textClass ? textClass : "text-white"} ${boxShadow ? "boxShadow-custom" : "shadow-none"} active:shadow-none transition-all duration-300 pt-2 px-4 transform -skew-x-6 md:-skew-x-12 border-2 border-black shadow-lg font-popfun`}
+                className={`${variant} ${className} ${bgClass ? bgClass : "bg-purple"} ${textClass ? textClass : "text-white"} ${boxShadow ? "boxShadow-custom" : "shadow-none"} active:shadow-none transition-all duration-300 pt-2 px-4 transform -skew-x-6 md:-skew-x-12 border-2 border-black shadow-lg font-popfun`}
                 aria-label="Button"
             >
                 {prefixElement}

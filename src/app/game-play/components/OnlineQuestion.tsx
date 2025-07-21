@@ -106,15 +106,15 @@ export default function OnlineQuestion({ points = 400, handleScreenChange, handl
                         {/* Timer controls */}
                         <div className="sm:h-12">
                             {isPaused ?
-                                <button className="bg-purpl h-full text-white p-2 -skew-x-12 border-2 border-black" onClick={handleResume} >
+                                <button className="bg-purple h-full text-white p-2 -skew-x-12 border-2 border-black" onClick={handleResume} >
                                     <IoMdPlay className="text-xl sm:text-2xl" />
                                 </button>
                                 :
-                                <button className="bg-purpl h-full text-white p-2 -skew-x-12 border-2 border-black" onClick={handlePause} >
+                                <button className="bg-purple h-full text-white p-2 -skew-x-12 border-2 border-black" onClick={handlePause} >
                                     <IoMdPause className="text-xl sm:text-2xl" />
                                 </button>
                             }
-                            <button onClick={handleReset} className="text-white h-full bg-purpl p-2 -skew-x-12 border-2 border-black">
+                            <button onClick={handleReset} className="text-white h-full bg-purple p-2 -skew-x-12 border-2 border-black">
                                 <MdRestartAlt className="text-xl sm:text-2xl" />
                             </button>
                         </div>

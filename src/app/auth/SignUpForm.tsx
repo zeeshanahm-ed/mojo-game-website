@@ -140,7 +140,7 @@ export default function SignUpForm() {
 
                 {/* First Name & Last Name Input */}
                 <div className="mb-6 flex items-center h-14 w-full transform -skew-x-12 border-2 border-black overflow-hidden">
-                    <div className="bg-purpl flex items-center justify-center w-16 h-full">
+                    <div className="bg-purple flex items-center justify-center w-16 h-full">
                         <UserIcon />
                     </div>
                     <input
@@ -167,7 +167,7 @@ export default function SignUpForm() {
 
                 {/* Email Input */}
                 <div className="mb-6 flex items-center h-14 w-full transform -skew-x-12 border-2 border-black overflow-hidden">
-                    <div className="bg-purpl flex items-center justify-center w-16 h-full">
+                    <div className="bg-purple flex items-center justify-center w-16 h-full">
                         <EmailIcon />
                     </div>
                     <input
@@ -184,7 +184,7 @@ export default function SignUpForm() {
 
                 {/* Password Input */}
                 <div className="mb-6 flex items-center h-14 w-full transform -skew-x-12 border-2 border-black overflow-hidden">
-                    <div className="bg-purpl flex items-center justify-center w-16 h-full">
+                    <div className="bg-purple flex items-center justify-center w-16 h-full">
                         <PasswordIcon />
                     </div>
                     <input
@@ -201,7 +201,7 @@ export default function SignUpForm() {
 
                 {/* Contact Number Input */}
                 <div className="mb-6 flex items-center h-14 w-full transform -skew-x-12 border-2 border-black overflow-hidden">
-                    <div className="bg-purpl flex items-center justify-center w-16 h-full">
+                    <div className="bg-purple flex items-center justify-center w-16 h-full">
                         <ContactIcon />
                     </div>
                     <input

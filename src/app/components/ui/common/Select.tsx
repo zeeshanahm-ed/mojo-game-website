@@ -11,8 +11,9 @@ interface SelectProps {
     value?: string;
     onChange?: (e: React.ChangeEvent<HTMLSelectElement>) => void;
     name?: string;
-    options: CountryInfo[];
+    options: any[];
     placeholder?: string;
+    iconBgColor?: string;
 }
 
 const Select: React.FC<SelectProps> = ({
@@ -24,13 +25,14 @@ const Select: React.FC<SelectProps> = ({
     onChange,
     name = '',
     options,
+    iconBgColor,
     placeholder = 'Select an option',
 }) => {
     return (
         <div
             className={`flex items-center h-14 transform -skew-x-6 md:-skew-x-12 border-2 border-black overflow-hidden ${className}`}>
             {icon && (
-                <div className="bg-purpl w-16 md:w-20 flex items-center justify-center h-full">
+                <div className={`${iconBgColor ? iconBgColor : "bg-purple"} w-16 md:w-20 flex items-center justify-center h-full`}>
                     {icon}
                 </div>
             )}
@@ -44,8 +46,8 @@ const Select: React.FC<SelectProps> = ({
                     {placeholder}
                 </option> */}
                 {options.map((opt, index) => (
-                    <option key={index} value={opt.dialCode}>
-                        {opt.name}{opt.dialCode}
+                    <option key={index} value={opt?.dialCode}>
+                        {opt?.name}{opt?.dialCode}
                     </option>
                 ))}
             </select>

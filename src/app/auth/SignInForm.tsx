@@ -26,7 +26,7 @@ export default function SignInForm() {
             <form onSubmit={handleLogin} className="sm:p-6 p-2">
                 {/* Email Input */}
                 <div className="mb-6 flex items-center h-14 w-full transform -skew-x-12 border-2 border-black overflow-hidden">
-                    <div className="bg-purpl w-16 flex items-center justify-center h-full">
+                    <div className="bg-purple w-16 flex items-center justify-center h-full">
                         <EmailIcon className="" />
                     </div>
                     <input
@@ -39,7 +39,7 @@ export default function SignInForm() {
 
                 {/* Password Input */}
                 <div className="-ml-2 mb-1 flex items-center h-14 w-full transform -skew-x-12 border-2 border-black overflow-hidden">
-                    <div className="bg-purpl flex items-center justify-center w-16 h-full">
+                    <div className="bg-purple flex items-center justify-center w-16 h-full">
                         <PasswordIcon />
                     </div>
                     <input

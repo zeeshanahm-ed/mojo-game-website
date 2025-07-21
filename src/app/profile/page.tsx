@@ -94,7 +94,7 @@ function Profile() {
 
                         {/* First Name & Last Name Input */}
                         <div className="flex items-center h-14 sm:w-[450px] lg:w-full w-full transform -skew-x-6 md:-skew-x-12 border-2 border-black overflow-hidden">
-                            <div className="bg-purpl flex items-center justify-center w-[57px] md:w-[70px] h-full">
+                            <div className="bg-purple flex items-center justify-center w-[57px] md:w-[70px] h-full">
                                 <UserIcon />
                             </div>
                             <input

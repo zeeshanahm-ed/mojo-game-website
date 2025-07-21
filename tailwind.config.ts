@@ -17,7 +17,7 @@ const config: Config = {
         'light-green': 'var(--color-light-green)',
         orange: 'var(--color-orange)',
         green: 'var(--color-green)',
-        purpl: 'var(--color-purpl)',
+        purple: 'var(--color-purple)',
         white: 'var(--color-white)',
         black: 'var(--color-black)',
         'dark-gray': 'var(--color-dark-gray)',
@@ -39,7 +39,7 @@ const config: Config = {
         base: 'var(--base-radius)',
       },
       screens: {
-        xsm: '375px',
+        xsm: '410px',
         sm: '510px',
         md: '768px',
         lg: '1092px',
