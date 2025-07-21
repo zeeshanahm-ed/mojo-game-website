@@ -24,6 +24,9 @@ export default function Banner() {
             case "students":
                 router.push("/students")
                 break;
+            case "private":
+                router.push("/private-game")
+                break;
 
             default:
                 break;
