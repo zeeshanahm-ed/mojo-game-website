@@ -24,7 +24,7 @@ export default function Banner() {
             case "students":
                 router.push("/students")
                 break;
-            case "private":
+            case "privateGame":
                 router.push("/private-game")
                 break;
 
@@ -67,7 +67,7 @@ export default function Banner() {
                         </div>
                         <div className='space-y-1 md:space-y-2 flex flex-col items-start'>
                             <GameCard type={"kidsQuest"} image={KidsGameImage} title={t("brand")} subtitle={t("kids_quest")} bgColor="bg-green" />
-                            <GameCard type={"privateGame"} image={PrivateGameImage} title={t("brand")} subtitle={t("private_game")} bgColor="bg-light-blue" className="-ml-2" />
+                            <GameCard type={"privateGame"} image={PrivateGameImage} title={t("brand")} subtitle={t("private_game")} onClick={(v: string) => handleGoTo(v)} bgColor="bg-light-blue" className="-ml-2" />
                         </div>
                     </div>
                     <div className="-rotate-45 w-20 h-20 md:w-44 md:h-44 left-[80%] sm:left-[60%] md:-top-[70%] md:left-[60%] -top-[370px] relative">

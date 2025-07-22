@@ -28,13 +28,6 @@ const Button = forwardRef<HTMLButtonElement, IButtonProps>(
         ...rest
     }, ref) => {
 
-        //         const classNames = {
-        //   primary: 'text-white bg-purple ',
-        //   secondary: 'text-white bg-secondary py-4 px-10 font-medium tracking-wider transition ',
-        //   text: '',
-        //   default: 'font-secondary px-10 py-4 text-secondary border font-medium border-secondary bg-white',
-        //   rounded: 'rounded-full w-18 h-18 bg-gray-150 flex-centered',
-        // };
 
 
         return (
@@ -46,7 +39,7 @@ const Button = forwardRef<HTMLButtonElement, IButtonProps>(
                 aria-label="Button"
             >
                 {prefixElement}
-                <span className='inline-block skew-x-0'>
+                <span className='inline-block skew-x-12'>
                     {display == "none" ? null : children}
                 </span>
                 {suffixElement}

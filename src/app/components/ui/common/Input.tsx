@@ -38,7 +38,7 @@ const Input: React.FC<InputProps> = ({
                 onChange={onChange}
                 required={required}
                 name={name}
-                className={`input h-full input-bordered pl-2 md:pl-8 w-full text-lg bg-white text-gray-800 border-none focus:outline-none ${inputClassName}`}
+                className={`input h-full input-bordered pl-2 md:pl-8 w-full text-base md:text-lg bg-white text-gray-800 border-none focus:outline-none ${inputClassName}`}
             />
         </div>
     );

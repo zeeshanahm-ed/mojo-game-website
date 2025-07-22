@@ -110,10 +110,10 @@ export default function SignUpForm() {
 
     return (
         <section>
-            <div onSubmit={handleSignUp} className="px-6 space-y-6">
+            <div onSubmit={handleSignUp} className="sm:px-6 space-y-6">
                 {/* Upload Picture Section */}
                 <div className="flex items-center justify-center mb-6 gap-5">
-                    <span className="text-gray-700 text-lg mb-2">Upload Picture</span>
+                    <span className="text-gray-700 text-base md:text-lg mb-2">Upload Picture</span>
                     <div className="relative w-24 h-24 border-2 border-gray-300 flex items-center justify-center">
                         {/* Hidden file input */}
                         <input
@@ -139,15 +139,15 @@ export default function SignUpForm() {
                 </div>
 
                 {/* First Name & Last Name Input */}
-                <div className="mb-6 flex items-center h-14 w-full transform -skew-x-12 border-2 border-black overflow-hidden">
-                    <div className="bg-purple flex items-center justify-center w-16 h-full">
+                <div className="mb-6 flex items-center h-12 md:h-14 w-full transform -skew-x-12 border-2 border-black overflow-hidden">
+                    <div className="bg-purple flex items-center justify-center w-12 md:w-16 h-full">
                         <UserIcon />
                     </div>
                     <input
                         type="text"
                         name='firstName'
                         placeholder="First Name"
-                        className="input h-full rounded-none input-bordered w-1/2 pl-2 md:pl-8 pr-2 py-3 text-lg bg-white text-gray-800 border-none focus:outline-none"
+                        className="input h-full rounded-none input-bordered w-1/2 pl-2 md:pl-8 pr-2 py-3 text-base  md:text-lg bg-white text-gray-800 border-none focus:outline-none"
                         required
                         onChange={onInputChange}
                         autoComplete="off"
@@ -157,7 +157,7 @@ export default function SignUpForm() {
                         type="text"
                         name='lastName'
                         placeholder="Last Name"
-                        className="input h-full rounded-none input-bordered w-1/2 pl-2 md:pl-8 pr-2 py-3 text-lg bg-white text-gray-800 border-none focus:outline-none border-l border-gray-300"
+                        className="input h-full rounded-none input-bordered w-1/2 pl-2 md:pl-8 pr-2 py-3 text-base md:text-lg bg-white text-gray-800 border-none focus:outline-none border-l border-gray-300"
                         required
                         onChange={onInputChange}
                         autoComplete="off"
@@ -166,15 +166,15 @@ export default function SignUpForm() {
                 <span className='text-red'>{formErrors?.firstName || formErrors?.lastName}</span>
 
                 {/* Email Input */}
-                <div className="mb-6 flex items-center h-14 w-full transform -skew-x-12 border-2 border-black overflow-hidden">
-                    <div className="bg-purple flex items-center justify-center w-16 h-full">
+                <div className="mb-6 flex items-center h-12 md:h-14 w-full transform -skew-x-12 border-2 border-black overflow-hidden">
+                    <div className="bg-purple flex items-center justify-center w-12 md:w-16 h-full">
                         <EmailIcon />
                     </div>
                     <input
                         type="email"
                         name='email'
                         placeholder="Enter your email address"
-                        className="input h-full rounded-none input-bordered w-full pl-2 md:pl-8 pr-4 py-3 text-lg bg-white text-gray-800 border-none focus:outline-none"
+                        className="input h-full rounded-none input-bordered w-full pl-2 md:pl-8 pr-4 py-3 text-base md:text-lg bg-white text-gray-800 border-none focus:outline-none"
                         required
                         onChange={onInputChange}
                         autoComplete="off"
@@ -183,15 +183,15 @@ export default function SignUpForm() {
                 <span className='text-red'>{formErrors?.email}</span>
 
                 {/* Password Input */}
-                <div className="mb-6 flex items-center h-14 w-full transform -skew-x-12 border-2 border-black overflow-hidden">
-                    <div className="bg-purple flex items-center justify-center w-16 h-full">
+                <div className="mb-6 flex items-center h-12 md:h-14 w-full transform -skew-x-12 border-2 border-black overflow-hidden">
+                    <div className="bg-purple flex items-center justify-center w-12 md:w-16 h-full">
                         <PasswordIcon />
                     </div>
                     <input
                         name='password'
                         type="password"
                         placeholder="Your password"
-                        className="input h-full rounded-none input-bordered w-full pl-2 md:pl-8 pr-4 py-3 text-lg bg-white text-gray-800 border-none focus:outline-none"
+                        className="input h-full rounded-none input-bordered w-full pl-2 md:pl-8 pr-4 py-3 text-base md:text-lg bg-white text-gray-800 border-none focus:outline-none"
                         required
                         onChange={onInputChange}
                         autoComplete="off"
@@ -200,8 +200,8 @@ export default function SignUpForm() {
                 <span className='text-red'>{formErrors?.password}</span>
 
                 {/* Contact Number Input */}
-                <div className="mb-6 flex items-center h-14 w-full transform -skew-x-12 border-2 border-black overflow-hidden">
-                    <div className="bg-purple flex items-center justify-center w-16 h-full">
+                <div className="mb-6 flex items-center h-12 md:h-14 w-full transform -skew-x-12 border-2 border-black overflow-hidden">
+                    <div className="bg-purple flex items-center justify-center w-12 md:w-16 h-full">
                         <ContactIcon />
                     </div>
                     <input
@@ -209,7 +209,7 @@ export default function SignUpForm() {
                         type="number"
                         autoComplete="off"
                         placeholder="Your Contact Number"
-                        className="input h-full rounded-none input-bordered w-full pl-2 md:pl-8 pr-4 py-3 text-lg bg-white text-gray-800 border-none focus:outline-none"
+                        className="input h-full rounded-none input-bordered w-full pl-2 md:pl-8 pr-4 py-3 text-base md:text-lg bg-white text-gray-800 border-none focus:outline-none"
                         required
                         onChange={onInputChange}
                     />
@@ -218,8 +218,8 @@ export default function SignUpForm() {
 
                 {/* SignUp Button */}
                 <div className='flex items-center justify-center mt-10'>
-                    <Button type="submit" aria-label="Login" boxShadow={true} className="w-52" onClick={() => handleSignUp()}>
-                        <span className="inline-block  transform skew-x-12 tracking-wider text-4xl uppercase font-popfun">SIGNUP</span>
+                    <Button type="submit" aria-label="Login" boxShadow={true} className="w-40 md:w-52" onClick={() => handleSignUp()}>
+                        <span className="inline-block  transform skew-x-6 text-4xl uppercase font-popfun">SIGNUP</span>
                     </Button>
                 </div>
 

@@ -74,7 +74,7 @@ const Header: React.FC = () => {
                         <div className='md:hidden' role='button' onClick={() => setIsDrawerOpen(true)}>
                             <FiMenu className='text-3xl sm:text-4xl' />
                         </div>
-                        <h1 className="text-3xl sm:text-4xl ml-5 md:ml-0 md:text-5xl text-gray-900 font-bulletproof mt-2 uppercase cursor-pointer" onClick={() => router.push('/')}>
+                        <h1 className="text-3xl sm:text-4xl ml-3 md:ml-0 md:text-5xl text-gray-900 font-bulletproof mt-1 uppercase cursor-pointer" onClick={() => router.push('/')}>
                             {t("brand")}
                         </h1>
                     </div>

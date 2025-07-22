@@ -1,7 +1,5 @@
 import React, { useState } from 'react'
 import { MdClose } from 'react-icons/md';
-import Button from '../ui/common/Button';
-import Input from '../ui/common/Input';
 //icon
 import RoyalRoundedIcon from "@/app/assets/icons/riyal-rounded-icon.svg"
 import RoyalWalletIcon from "@/app/assets/icons/riyal-wallet-icon.svg"
@@ -33,9 +31,9 @@ function BuyNewGameModal({ open, onClose }: NewGameModalProps) {
 
     return (
         <dialog id="buy_a_new_game_modal" className={` modal ${open ? 'modal-open' : ''}`}>
-            <div className="modal-box p-0 overflow-hidden bg-white items-center max-w-2xl rounded-none border-2 border-black">
+            <div className="modal-box p-0  bg-white items-center max-w-2xl rounded-none border-2 border-black">
                 <form method="dialog " className="px-4 md:px-10 pt-5 flex items-center justify-start relative">
-                    <h2 className="text-4xl sm:text-5xl md:text-7xl font-popfun uppercase flex flex-row sm:flex-row sm:items-center ">
+                    <h2 className="text-4xl sm:text-5xl md:text-6xl font-popfun uppercase flex flex-row sm:flex-row sm:items-center ">
                         Buy a new game <span className='ml-4 sm:ml-8 flex items-center gap-1 sm:gap-3'><RoyalWalletIcon className="mb-1 sm:w-10 sm:h-10" /> 10.00</span>
                     </h2>
                     <button
@@ -53,14 +51,14 @@ function BuyNewGameModal({ open, onClose }: NewGameModalProps) {
                     <div className='flex px-4 md:px-10 items-center flex-col w-full text-white justify-between py-5 uppercase font-popfun space-y-5'>
                         {Options.map((option, index) => {
                             return (
-                                <div key={index} onClick={() => handleSelectOption(option)} className={`${selectedOption?.count === option.count && "text-gray-200"} w-full cursor-pointer hover:text-gray-200 transition-all duration-300 ${option.bgColor} flex items-center justify-between py-3 pt-5 px-4 md:px-10 -skew-x-12`}>
+                                <div key={index} onClick={() => handleSelectOption(option)} className={`${selectedOption?.count === option.count && "text-gray-200"} w-full cursor-pointer hover:text-gray-200 transition-all duration-300 ${option.bgColor} flex items-center justify-between  px-4 md:px-10 pt-4 pb-2 -skew-x-12`}>
                                     <div className=' text-3xl  md:text-5xl skew-x-12'>{option.count} Games</div>
                                     <div className=' text-3xl  md:text-5xl flex items-center gap-3 skew-x-12'>{option.price} SAR <RoyalRoundedIcon className="w-8 h-8" /></div>
                                 </div>
                             )
                         })}
                         <div className="bg-white border-2 border-black -skew-x-12 w-full">
-                            <div className="px-4 md:px-10 py-3 pt-5 flex skew-x-12 items-center justify-between" >
+                            <div className="px-4 md:px-10 pt-3 pb-1 flex skew-x-12 items-center justify-between" >
                                 <div className="flex-shrink-0 ">
                                     <label className="text-black text-3xl  md:text-5xl">
                                         DISCOUNT CODE :
@@ -79,9 +77,10 @@ function BuyNewGameModal({ open, onClose }: NewGameModalProps) {
                             </div>
                         </div>
                     </div>
-                    <div className="bg-purple px-6 md:px-10  py-2 md:py-4 flex items-center justify-between font-popfun">
+
+                    <div className="bg-purple px-4 md:px-10 pt-4 pb-2 flex items-center justify-between font-popfun">
                         <div className="">
-                            <button className="bg-transparent border-none text-white text-3xl md:text-6xl  uppercase hover:text-gray-200 transition-colors">
+                            <button className="bg-transparent border-none text-white text-3xl md:text-5xl  uppercase hover:text-gray-200 transition-colors">
                                 BUY A NEW GAME
                             </button>
                         </div>
@@ -89,7 +88,7 @@ function BuyNewGameModal({ open, onClose }: NewGameModalProps) {
                         <div className="w-px bg-white h-12"></div>
 
                         <div className="flex items-center gap-3 sm:gap-6">
-                            <div className="text-white text-3xl md:text-5xl ">
+                            <div className="text-white text-3xl md:text-4xl ">
                                 {selectedOption.price} SAR
                             </div>
                             <div className="flex items-center gap-2">

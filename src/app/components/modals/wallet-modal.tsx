@@ -29,7 +29,7 @@ function WalletModal({ open, onClose }: WalletModalProps) {
         <dialog id="wallet_modal" className={` modal ${open ? 'modal-open' : ''}`}>
             <div className="max-w-4xl modal-box bg-white items-center rounded-none border-2 border-black">
                 <form method="dialog " className="flex items-center justify-center relative">
-                    <h2 className="text-5xl md:text-7xl font-popfun uppercase">
+                    <h2 className="text-5xl md:text-6xl font-popfun uppercase">
                         wallet
                     </h2>
                     <button

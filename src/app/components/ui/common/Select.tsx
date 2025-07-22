@@ -41,7 +41,7 @@ const Select: React.FC<SelectProps> = ({
                 required={required}
                 value={value}
                 onChange={onChange}
-                className={`w-full pl-2 md:pl-8 h-full bg-white text-lg border-none focus:outline-none ${selectClassName}`}>
+                className={`w-full pl-2 md:pl-8 h-full bg-white text-base md:text-lg border-none focus:outline-none ${selectClassName}`}>
                 {/* <option value="" disabled hidden style={{ color: '#fff' }} className='text-light-gray'>
                     {placeholder}
                 </option> */}
