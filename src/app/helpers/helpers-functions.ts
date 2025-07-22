@@ -11,4 +11,14 @@ export async function copyToClipboard(text: string): Promise<boolean> {
         console.error('Failed to copy:', err);
         return false;
     }
+};
+
+export function scrollToTop(behavior: ScrollBehavior = 'smooth') {
+    if (typeof window !== 'undefined') {
+        window.scrollTo({
+            top: 0,
+            left: 0,
+            behavior,
+        });
+    }
 }
