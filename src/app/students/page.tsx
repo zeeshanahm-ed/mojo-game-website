@@ -11,6 +11,8 @@ import EnglishBookIcon from "@/app/assets/icons/english-book.svg";
 import MathBookIcon from "@/app/assets/icons/math-book.svg";
 import ArabicBookIcon from "@/app/assets/icons/arabic-book.svg";
 import IslamicBookIcon from "@/app/assets/icons/islamic-education-book.svg";
+import SubjectGames from './components/SubjectGames';
+import { scrollToTop } from '../helpers/helpers-functions';
 
 interface state {
     academicLevel: number | null;
@@ -44,65 +46,83 @@ function Students() {
             ...prev,
             [type]: prev[type] === value ? "" : value
         }));
+
+        if (type === "selectedSubject") scrollToTop();
     };
+
+    const handleClearState = () => {
+        setState({
+            academicLevel: null,
+            selectedSemester: null,
+            selectedSubject: "",
+        })
+    }
 
     return (
         <section>
-            <Banner />
+            <Banner title={state?.selectedSubject || "Students"} isSubject={!!state?.selectedSubject} clearState={handleClearState} />
             <Wrapper>
                 <div className='flex items-center justify-center flex-col h-auto pb-32 px-4 md:px-10'>
-                    {/* Academic Level */}
-                    <div className="text-center flex flex-col items-center justify-center mt-10">
-                        <h2 className="md:text-7xl text-5xl font-popfun text-black mb-2 uppercase">Choose your academic level</h2>
-                        <p className="text-sm sm:text-base md:text-lg text-black">You can choose a study stage from the following stages.</p>
-                        <div className='font-popfun gap-y-10 gap-x-5 md:gap-x-10 mt-20 flex items-center justify-center flex-wrap'>
-                            {AcademicLavelOptions.map((v) => (
-                                <CustomCard
-                                    key={v.label}
-                                    label={v.label}
-                                    showBottom={false}
-                                    selected={state.academicLevel === v.label}
-                                    onClick={() => handleClick('academicLevel', v.label)}
-                                />
-                            ))}
-                        </div>
-                    </div>
+                    {!state.selectedSubject ?
+                        <>
+                            {/* Academic Level */}
+                            <div className="text-center flex flex-col items-center justify-center mt-10">
+                                <h2 className="md:text-7xl text-5xl font-popfun text-black mb-2 uppercase">Choose your academic level</h2>
+                                <p className="text-sm sm:text-base md:text-lg text-black">You can choose a study stage from the following stages.</p>
+                                <div className='font-popfun gap-y-10 gap-x-5 md:gap-x-10 mt-20 flex items-center justify-center flex-wrap'>
+                                    {AcademicLavelOptions.map((v) => (
+                                        <CustomCard
+                                            key={v.label}
+                                            label={v.label}
+                                            showBottom={false}
+                                            selected={state.academicLevel === v.label}
+                                            onClick={() => handleClick('academicLevel', v.label)}
+                                        />
+                                    ))}
+                                </div>
+                            </div>
 
-                    {/* Semester */}
-                    <div className="text-center flex flex-col items-center justify-center mt-20">
-                        <h2 className="md:text-7xl text-5xl font-popfun text-black mb-2 uppercase">Select the semester</h2>
-                        <div className='font-popfun gap-10 mt-10 flex items-center justify-center flex-wrap'>
-                            {SemesterOptions.map((v) => (
-                                <CustomCard
-                                    key={v.label}
-                                    label={v.label}
-                                    showBottom={true}
-                                    selected={state.selectedSemester === v.label}
-                                    onClick={() => state.academicLevel && handleClick('selectedSemester', v.label)}
-                                // disabled={!state.academicLevel}
-                                />
-                            ))}
-                        </div>
-                    </div>
+                            {/* Semester */}
+                            <div className="text-center flex flex-col items-center justify-center mt-20">
+                                <h2 className="md:text-7xl text-5xl font-popfun text-black mb-2 uppercase">Select the semester</h2>
+                                <div className='font-popfun gap-10 mt-10 flex items-center justify-center flex-wrap'>
+                                    {SemesterOptions.map((v) => (
+                                        <CustomCard
+                                            key={v.label}
+                                            label={v.label}
+                                            showBottom={true}
+                                            selected={state.selectedSemester === v.label}
+                                            onClick={() => handleClick('selectedSemester', v.label)}
+                                        // disabled={!state.academicLevel}
+                                        />
+                                    ))}
+                                </div>
+                            </div>
 
-                    {/* Subject */}
-                    <div className="text-center flex flex-col items-center justify-center mt-20">
-                        <h2 className="md:text-7xl text-5xl font-popfun text-black mb-2 uppercase">Select the subject</h2>
-                        <p className="text-sm sm:text-base md:text-lg text-black">You can choose the study subject from the following subjects.</p>
-                        <div className='font-popfun gap-10 mt-10 flex items-center justify-center flex-wrap'>
-                            {SubjectOptions.map((v) => (
-                                <CustomCard
-                                    key={v.label}
-                                    label={v.label}
-                                    icon={v.icon}
-                                    showBottom={true}
-                                    selected={state.selectedSubject === v.label}
-                                    onClick={() => state.selectedSemester && handleClick('selectedSubject', v.label)}
-                                // disabled={!state.selectedSemester}
-                                />
-                            ))}
-                        </div>
-                    </div>
+                            {/* Subject */}
+                            <div className="text-center flex flex-col items-center justify-center mt-20">
+                                <h2 className="md:text-7xl text-5xl font-popfun text-black mb-2 uppercase">Select the subject</h2>
+                                <p className="text-sm sm:text-base md:text-lg text-black">You can choose the study subject from the following subjects.</p>
+                                <div className='font-popfun gap-10 mt-10 flex items-center justify-center flex-wrap'>
+                                    {SubjectOptions.map((v) => (
+                                        <CustomCard
+                                            key={v.label}
+                                            label={v.label}
+                                            icon={v.icon}
+                                            showBottom={true}
+                                            selected={state.selectedSubject === v.label}
+                                            onClick={() => handleClick('selectedSubject', v.label)}
+                                        // disabled={!state.selectedSemester}
+                                        />
+                                    ))}
+                                </div>
+                            </div>
+                        </>
+                        :
+                        <>
+                            <SubjectGames />
+                        </>
+                    }
                 </div>
             </Wrapper>
         </section>

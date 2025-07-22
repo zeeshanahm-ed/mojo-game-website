@@ -10,13 +10,50 @@ import CategoriesSection from './components/CategoriesSec';
 //icons
 import SearchIcon from '@/app/assets/icons/search-icon.svg';
 import GameIcon from '@/app/assets/images/quiz-app.png';
-import GamesSection from './components/GamesSec';
+import GamesSection, { GamesCardInterface } from './components/GamesSec';
 
+
+const Data = [
+    {
+        id: "1",
+        title: 'MANCHESTER UNITED',
+        image: 'https://logos-world.net/wp-content/uploads/2020/06/Liverpool-Logo.png',
+        questions: 10,
+        price: 1.5,
+        isSelected: false
+    },
+    {
+        id: "2",
+        title: 'LIVERPOOL',
+        image: 'https://logos-world.net/wp-content/uploads/2020/06/Liverpool-Logo.png',
+        questions: 10,
+        price: 1.5,
+        isSelected: false
+    },
+    {
+        id: "3",
+        title: 'REAL MADRID',
+        image: 'https://logos-world.net/wp-content/uploads/2020/06/Real-Madrid-Logo.png',
+        questions: 10,
+        price: 1.5,
+        isSelected: false
+    },
+    {
+        id: "4",
+        title: 'BARCELONA',
+        image: 'https://logos-world.net/wp-content/uploads/2020/06/Barcelona-Logo.png',
+        questions: 11,
+        price: 1.5,
+        isSelected: false
+    }
+];
 
 
 function PrivateGames() {
     const [searchByName, setSearchByName] = useState('');
     const [selectedCategory, setSelectedCategory] = useState<number | null>(null)
+    const [selectedGames, setSelectedGames] = useState<GamesCardInterface[]>([])
+
 
     return (
         <section>
@@ -36,7 +73,7 @@ function PrivateGames() {
                         </div>
                         <CategoriesSection selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} />
                     </div>
-                    <GamesSection />
+                    <GamesSection data={Data} selectedGames={selectedGames} setSelectedGames={setSelectedGames} />
                 </div>
             </Wrapper>
         </section >
@@ -44,26 +81,3 @@ function PrivateGames() {
 }
 
 export default PrivateGames;
-
-
-const GameCard = () => {
-    return (
-        <div className="relative flex flex-col items-center justify-center w-64 sm:w-56 md:w-64 lg:w-72 h-80 p-2 px-2 lg:p-4 bg-white border-[6px] border-black skew-custom shadow-md">
-            {/* Badge */}
-            <div className="absolute w-48 text-center -top-1 left-1/2 -translate-x-1/2 bg-black text-white text-xs px-5 py-2 -skew-x-6">
-                No of times played :05
-            </div>
-
-            {/* Content */}
-            <div className="flex flex-col items-center text-center gap-y-2 lg:mt-4">
-                <Image src={GameIcon} alt="Game Icon" width={100} height={80} className='w-20 md:w-28' />
-
-                <h2 className="text-5xl lg:text-7xl font-popfun text-dark-blue">GAME 12</h2>
-
-                <p className="text-sm text-black">
-                    Answer correctly, and deduct the number of points you won from the other team's points.
-                </p>
-            </div>
-        </div>
-    );
-};
