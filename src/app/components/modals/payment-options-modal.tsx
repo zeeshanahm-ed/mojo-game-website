@@ -1,15 +1,11 @@
-import React, { useState } from 'react'
+import React, { ReactNode, useState } from 'react'
 import { MdClose } from 'react-icons/md';
 //icon
-import RoyalRoundedIcon from "@/app/assets/icons/riyal-rounded-icon.svg"
-import RoyalWalletIcon from "@/app/assets/icons/riyal-wallet-icon.svg"
+import KnetPayIcon from "@/app/assets/icons/knetPay-icon.svg";
+import GooglePayIcon from "@/app/assets/icons/GooglePay-icon.svg";
+import ApplePayIcon from "@/app/assets/icons/applePay-icon.svg";
+import CreditCardIcon from "@/app/assets/icons/creditCard-icon.svg";
 
-const Options = [
-    { count: '10', price: "17", bgColor: "bg-[#FA1960]" },
-    { count: '5', price: "10", bgColor: "bg-[#197BFA]" },
-    { count: '3', price: "08", bgColor: "bg-[#FA8219]" },
-    { count: '2', price: "05", bgColor: "bg-[#FA2C19]" },
-]
 
 interface PaymentOptionModalProps {
     open: boolean;
@@ -19,7 +15,7 @@ interface PaymentOptionModalProps {
 interface PaymentMethod {
     id: string;
     name: string;
-    icon: string;
+    icon: ReactNode;
     route: string;
 }
 
@@ -30,25 +26,25 @@ const paymentMethods: PaymentMethod[] = [
     {
         id: 'knet',
         name: 'KNET',
-        icon: '💳', // You can replace with actual icon components
+        icon: <KnetPayIcon />,
         route: '/payment/knet'
     },
     {
         id: 'credit-card',
         name: 'Credit Card',
-        icon: '💳',
+        icon: <CreditCardIcon />,
         route: '/payment/credit-card'
     },
     {
         id: 'apple-pay',
         name: 'Apple Pay',
-        icon: '🍎',
+        icon: <ApplePayIcon />,
         route: '/payment/apple-pay'
     },
     {
         id: 'google-pay',
         name: 'Google Pay',
-        icon: '🟡',
+        icon: <GooglePayIcon />,
         route: '/payment/google-pay'
     }
 ];
@@ -66,7 +62,7 @@ function PaymentOptionModal({ open, onClose }: PaymentOptionModalProps) {
             <div className="modal-box p-0  bg-white items-center max-w-2xl rounded-none border-2 border-black">
                 <form method="dialog " className="px-4 md:px-10 pt-5 flex items-center justify-center relative">
                     <h2 className="text-4xl sm:text-5xl md:text-6xl font-popfun uppercase flex flex-row items-center ">
-                        Choose a payment
+                        Choose a payment option
                     </h2>
                     <button
                         type="button"
