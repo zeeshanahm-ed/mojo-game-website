@@ -56,6 +56,10 @@ body {
     letter-spacing: 0.05rem;
 }
 
+p {
+    letter-spacing: normal !important;
+}
+
 .skew-custom {
     transform: skew(-4deg, 0deg);
 }
