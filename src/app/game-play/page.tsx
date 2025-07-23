@@ -108,7 +108,7 @@ function GamePlay() {
                                 <h3 className="text-4xl md:text-6xl lg:text-7xl font-popfun uppercase" >
                                     {"Team 1"}
                                 </h3>
-                                <p className="text-lg md:text-3xl font-popfun uppercase" >
+                                <p className="text-lg md:text-3xl font-popfun uppercase !tracking-wider" >
                                     SCORE: {"200".toString().padStart(2, '0')}
                                 </p>
                             </div>
@@ -142,7 +142,7 @@ function GamePlay() {
                                 <h3 className="text-4xl md:text-6xl lg:text-7xl font-popfun uppercase" >
                                     {"Team 2"}
                                 </h3>
-                                <p className="text-lg md:text-3xl font-popfun uppercase" >
+                                <p className="text-lg md:text-3xl font-popfun uppercase !tracking-wider" >
                                     SCORE: {"400".toString().padStart(2, '0')}
                                 </p>
                             </div>
