@@ -1,23 +1,15 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Image from 'next/image';
+import Wrapper from '@/app/components/ui/common/Wrapper';
 
 import BlackStarImage from "@/app/assets/images/black-star.png"
 import OnlinePlayImage from "@/app/assets/images/onlinemode-image.png"
 import QuizAppImage from "@/app/assets/images/quiz-app-image.png"
-import Button from '@/app/components/ui/common/Button';
-import JoinRoomModal from '@/app/components/modals/join-room-modal';
-import Wrapper from '../components/ui/common/Wrapper';
 
 const Banner: React.FC = () => {
-    const [showModal, setShowModal] = useState(false);
-
-    const handleClose = () => {
-        setShowModal(false);
-    };
-
 
     return (
-        <section className="w-full bg-yellow pb-5 pt-16 px-1 md:px-10 flex flex-col items-center justify-center relative overflow-hidden border-b-4 border-black">
+        <section className="w-full bg-yellow py-20 px-1 md:px-10 flex flex-col items-center justify-center relative overflow-hidden border-b-4 border-black">
             {/* Main Content */}
             <Wrapper>
                 <div className="relative z-10 flex flex-row items-center justify-center w-full text-center ">
@@ -37,12 +29,6 @@ const Banner: React.FC = () => {
                         <p className="text-base md:text-lg max-w-xl">
                             An interactive group game in which we test your knowledge and culture
                         </p>
-                        <div className='w-full my-10'>
-                            <Button className='xl:w-1/2 lg:text-6xl w-64 md:w-72 text-4xl md:text-5xl' onClick={() => setShowModal(true)}>
-                                Join online game
-                            </Button>
-                        </div>
-                        <div className='lg:text-6xl uppercase font-popfun text-4xl'>OR</div>
                     </div>
 
                     {/* Right Side - Question Mark Icon */}
@@ -51,7 +37,6 @@ const Banner: React.FC = () => {
                     </div>
                 </div>
             </Wrapper>
-            <JoinRoomModal open={showModal} onClose={handleClose} />
         </section>
     );
 };
