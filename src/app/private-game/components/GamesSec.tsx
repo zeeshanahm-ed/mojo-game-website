@@ -42,19 +42,19 @@ const GamesSection: React.FC<GamesSectionProps> = ({ data, selectedGames, setSel
     return (
         <div className="font-popfun">
             {/* Cards Grid */}
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-x-2 sm:gap-x-4 gap-y-8 md:gap-x-6 mb-8">
+            <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-x-2 sm:gap-x-4 gap-y-8 md:gap-x-6 mb-8">
                 {data?.map((card) => {
                     const isSelected = selectedGames.find((v: GamesCardInterface) => v.id === card.id) ? true : false
                     return (
                         <div
                             key={card.id}
                             onClick={() => handleCardSelect(card)}
-                            className={`relative cursor-pointer -skew-x-2 md:-skew-x-3 h-80`}
+                            className={`relative cursor-pointer -skew-x-2 md:-skew-x-3 sm:h-80 h-64 md:w-80`}
                         >
-                            <div className={` ${isSelected ? 'border-red' : 'border-dark-orange'} border-2 sm:border-4 lg:border-8 bg-white overflow-hidden w-full h-full flex flex-col`}>
+                            <div className={` ${isSelected ? 'border-red' : 'border-dark-orange'} border-4 sm:border-8 bg-white overflow-hidden w-full h-full flex flex-col`}>
                                 <div className='flex-1 flex flex-col'>
                                     {/* Team Logo */}
-                                    <div className="flex justify-center items-center w-full h-40 p-4">
+                                    <div className="flex justify-center items-center w-full h-1/2 sm:h-40 p-4">
                                         <img
                                             src={card.image}
                                             alt={card.title}
@@ -67,10 +67,10 @@ const GamesSection: React.FC<GamesSectionProps> = ({ data, selectedGames, setSel
 
                                     {/* Team Name */}
                                     <div className="px-1 sm:px-4 pb-2 mt-auto text-start">
-                                        <div className={`flex items-center text-3xl sm:text-3xl md:text-4xl ${isSelected ? 'text-red' : 'text-dark-orange'} `}>
-                                            {card.title}<div className={`w-1 h-7 mb-2 mx-3 ${isSelected ? 'bg-red' : 'bg-dark-orange'}`}></div>{card.position && card.position}
+                                        <div className={`flex items-center text-2xl sm:text-3xl md:text-4xl ${isSelected ? 'text-red' : 'text-dark-orange'} `}>
+                                            {card.title}{card.position && <div className={`w-[2px] h-5 sm:h-7 mb-1 mx-1 sm:mx-3 ${isSelected ? 'bg-red' : 'bg-dark-orange'}`}></div>}{card.position && card.position}
                                         </div>
-                                        <div className='flex text-light-gray text-base xl:text-lg items-center gap-2'>
+                                        <div className='flex text-light-gray flex-wrap text-sm sm:text-base xl:text-lg items-center gap-x-2'>
                                             <p className="">
                                                 page 69 - page 75
                                             </p>
@@ -85,7 +85,7 @@ const GamesSection: React.FC<GamesSectionProps> = ({ data, selectedGames, setSel
                                 </div>
 
                                 {/* Footer Section */}
-                                <div className={`${isSelected ? 'bg-red' : 'bg-dark-orange'} flex items-center justify-between px-4 pt-2 md:pt-3`}>
+                                <div className={`${isSelected ? 'bg-red' : 'bg-dark-orange'} flex items-center justify-between px-1 sm:px-4 pt-2 md:pt-3`}>
                                     <span className="text-white text-3xl sm:text-3xl md:text-4xl">BUY</span>
                                     <div className="flex items-center space-x-2">
                                         <span className="text-white text-xl md:text-2xl">{card.price} SAR</span>
