@@ -44,7 +44,7 @@ function WalletModal({ open, onClose }: WalletModalProps) {
                 <div className="divider before:bg-gray-400 after:bg-gray-400 m-0"></div>
 
                 {/* Wallet Content */}
-                <div className="flex flex-col md:flex-row items-baseline w-full justify-between gap-y-10 gap-x-8 py-8 px-4 font-popfun">
+                <div className="flex flex-col md:flex-row items-baseline w-full justify-between gap-y-10 gap-x-8 py-8 px-4 md:px-10 font-popfun">
 
                     {/* Game Credits Card */}
                     <div className="flex md:flex-col items-start gap-4">

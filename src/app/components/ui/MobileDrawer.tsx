@@ -9,6 +9,7 @@ import LoginIcon from "@/app/assets/icons/login-icon.svg";
 import LogoutIcon from "@/app/assets/icons/logout-icon.svg";
 import { FaPlus } from "react-icons/fa";
 import { MdClose } from 'react-icons/md';
+import { useAuthModalStore } from '@/app/store/useAuthModalStore';
 
 
 
@@ -21,12 +22,16 @@ interface MobileDrawerProps {
 
 const MobileDrawer: React.FC<MobileDrawerProps> = ({ isOpen, onClose, setOpenWalletModal, setOpenNewGameModal }) => {
     const { user } = useAuth();
+    const { openModal } = useAuthModalStore();
     const name = "Zeeshan Ahmed";
     const profileUrl = `https://ui-avatars.com/api/?name=${encodeURIComponent(name)}&background=random`;
 
 
     const handleModales_Navigation = (key: string) => {
         switch (key) {
+            case "auth":
+                openModal("signin");
+                break;
             case "buy-a-new-game":
                 setOpenNewGameModal(true);
                 break;

@@ -1,10 +1,16 @@
 import React, { useState } from 'react'
-import { MdClose } from 'react-icons/md';
 import Button from '../ui/common/Button';
 import Input from '../ui/common/Input';
+import { MdClose } from 'react-icons/md';
 
-function JoinRoomModal({ open, onClose }: any) {
+interface JoinRoomModalProps {
+    open: boolean;
+    onClose: () => void;
+}
+
+function JoinRoomModal({ open, onClose }: JoinRoomModalProps) {
     const [roomCode, setRoomCode] = useState("");
+    const [teamName, setTeamName] = useState("");
 
     return (
         <dialog id="create_game_modal" className={` modal ${open ? 'modal-open' : ''}`}>
@@ -25,14 +31,23 @@ function JoinRoomModal({ open, onClose }: any) {
                 <div className="divider before:bg-light-gray after:bg-light-gray m-0"></div>
                 {/* Main content */}
                 <div className="flex items-center flex-col w-full justify-between px-10 py-5">
-                    <p className='text-lg font-Product_sans'>Enter Room code to participate in it.</p>
+                    <p className='text-lg font-Product_sans text-black'>Enter Room code to participate in it.</p>
                     <Input
                         type="text"
                         placeholder="Enter Room Code"
                         value={roomCode}
-                        className='my-10  w-full'
+                        className='mt-3 mb-7  w-full'
                         inputClassName='text-center pl-0'
                         onChange={(e) => setRoomCode(e.target.value)}
+                    />
+                    <p className='text-lg font-Product_sans text-black'>Enter Your Team Name</p>
+                    <Input
+                        type="text"
+                        placeholder="Team Name"
+                        value={teamName}
+                        className='mt-3 mb-7 w-full'
+                        inputClassName='text-center pl-0'
+                        onChange={(e) => setTeamName(e.target.value)}
                     />
                     <Button className='text-4xl w-64 tracking-wide'>Join now</Button>
                 </div>

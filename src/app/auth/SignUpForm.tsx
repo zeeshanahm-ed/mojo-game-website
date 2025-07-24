@@ -110,7 +110,7 @@ export default function SignUpForm() {
 
     return (
         <section>
-            <div onSubmit={handleSignUp} className="sm:px-6 space-y-6">
+            <div className="tracking-normal md:px-20 sm:px-10 px-5 space-y-6">
                 {/* Upload Picture Section */}
                 <div className="flex items-center justify-center mb-6 gap-5">
                     <span className="text-gray-700 text-base md:text-lg mb-2">Upload Picture</span>
@@ -133,7 +133,7 @@ export default function SignUpForm() {
                             className="absolute -top-2 -right-2 bg-black rounded-full p-1 border-2 border-white cursor-pointer"
                             onClick={triggerFileInput}
                         >
-                            <EditIcon className=" w-4 h-4" />
+                            <EditIcon className="w-4 h-4 fill-white text-white" />
                         </div>
                     </div>
                 </div>
@@ -163,7 +163,7 @@ export default function SignUpForm() {
                         autoComplete="off"
                     />
                 </div>
-                <span className='text-red'>{formErrors?.firstName || formErrors?.lastName}</span>
+                <span className='text-red text-sm md:text-base'>{formErrors?.firstName || formErrors?.lastName}</span>
 
                 {/* Email Input */}
                 <div className="mb-6 flex items-center h-12 md:h-14 w-full transform -skew-x-12 border-2 border-black overflow-hidden">
@@ -180,7 +180,7 @@ export default function SignUpForm() {
                         autoComplete="off"
                     />
                 </div>
-                <span className='text-red'>{formErrors?.email}</span>
+                <span className='text-red text-sm md:text-base'>{formErrors?.email}</span>
 
                 {/* Password Input */}
                 <div className="mb-6 flex items-center h-12 md:h-14 w-full transform -skew-x-12 border-2 border-black overflow-hidden">
@@ -197,7 +197,7 @@ export default function SignUpForm() {
                         autoComplete="off"
                     />
                 </div>
-                <span className='text-red'>{formErrors?.password}</span>
+                <span className='text-red text-sm md:text-base'>{formErrors?.password}</span>
 
                 {/* Contact Number Input */}
                 <div className="mb-6 flex items-center h-12 md:h-14 w-full transform -skew-x-12 border-2 border-black overflow-hidden">
@@ -214,11 +214,11 @@ export default function SignUpForm() {
                         onChange={onInputChange}
                     />
                 </div>
-                <span className='text-red'>{formErrors?.contactNumber}</span>
+                <span className='text-red text-sm md:text-base'>{formErrors?.contactNumber}</span>
 
                 {/* SignUp Button */}
                 <div className='flex items-center justify-center mt-10'>
-                    <Button type="submit" aria-label="Login" boxShadow={true} className="w-40 md:w-52" onClick={() => handleSignUp()}>
+                    <Button type="button" aria-label="Login" boxShadow={true} className="w-40 md:w-52 tracking-wider" onClick={() => handleSignUp()}>
                         <span className="inline-block  transform skew-x-6 text-4xl uppercase font-popfun">SIGNUP</span>
                     </Button>
                 </div>
