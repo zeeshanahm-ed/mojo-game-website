@@ -41,6 +41,7 @@ const config: Config = {
       screens: {
         xsm: '410px',
         sm: '510px',
+        "580px": '580px',// 👈 Custom screen at 580px: '580px', // 👈 Custom screen at 580px
         md: '768px',
         lg: '1092px',
         xl: '1280px',

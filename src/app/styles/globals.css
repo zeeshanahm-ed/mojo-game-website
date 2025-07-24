@@ -60,6 +60,10 @@ p {
     letter-spacing: normal !important;
 }
 
+button:disabled {
+    cursor: not-allowed !important;
+}
+
 .skew-custom {
     transform: skew(-4deg, 0deg);
 }
