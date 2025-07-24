@@ -1,5 +1,6 @@
 'use client';
 import { useAuthModalStore } from '../store/useAuthModalStore';
+import Logout from './Logout';
 import SignInForm from './SignInForm';
 import SignUpForm from './SignUpForm';
 // Icons
@@ -10,12 +11,38 @@ export default function AuthModal() {
     const mode = useAuthModalStore((state) => state.mode);
     const closeModal = useAuthModalStore((state) => state.closeModal);
 
+    const getModalContent = () => {
+        switch (mode) {
+            case 'signin':
+                return <SignInForm />;
+            case 'signup':
+                return <SignUpForm />;
+            case 'logout':
+                return <Logout />;
+            default:
+                return null;
+        }
+    };
+
+    const getTitle = () => {
+        switch (mode) {
+            case 'signin':
+                return 'Sign In';
+            case 'signup':
+                return 'Sign Up';
+            case 'logout':
+                return 'Logout';
+            default:
+                return null;
+        }
+    };
+
     return (
         <dialog id="auth_modal" className={` modal ${open ? 'modal-open' : ''}`}>
             <div className="modal-box bg-white max-w-2xl items-center rounded-none border-2 border-black w-full px-0">
                 <form method="dialog " className="flex items-center justify-center relative">
                     <h2 className="text-4xl sm:text-5xl md:text-7xl font-popfun">
-                        {mode === 'signin' ? 'SIGN IN' : 'SIGN UP'}
+                        {getTitle()}
                     </h2>
                     <button
                         type="button"
@@ -27,7 +54,7 @@ export default function AuthModal() {
                     </button>
                 </form>
                 <div className="divider before:bg-light-gray after:bg-light-gray m-0"></div>
-                {mode === 'signin' ? <SignInForm /> : <SignUpForm />}
+                {getModalContent()}
             </div>
         </dialog>
     );

@@ -7,6 +7,8 @@ import Banner from './components/Banner';
 import Input from '@/app/components/ui/common/Input';
 import Button from '@/app/components/ui/common/Button';
 import Select from '../components/ui/common/Select';
+import Image from 'next/image';
+import { useAuthModalStore } from '../store/useAuthModalStore';
 
 
 //icons
@@ -16,12 +18,12 @@ import ContactIcon from '@/app/assets/icons/contact-icon.svg';
 import UserIcon from '@/app/assets/icons/user-icon.svg';
 import EditIcon from '@/app/assets/icons/edit-icon.svg';
 import FallBackProfileImage from '../assets/images/fallback-profile-image.jpg';
-import Image from 'next/image';
 
 
 
 function Profile() {
     const { countries } = useCountries();
+    const { openModal } = useAuthModalStore();
 
     const [form, setForm] = useState({
         fullName: '',
@@ -53,9 +55,14 @@ function Profile() {
 
     const fileInputRef = React.useRef<HTMLInputElement>(null);
 
+    const handleLogoutModal = () => {
+        openModal("logout")
+    };
+
     const triggerFileInput = () => {
         fileInputRef.current?.click();
     };
+
     const CountriesList = countries?.map((country) => ({
         label: country.name,
         value: country.dialCode,
@@ -91,7 +98,7 @@ function Profile() {
                             </div>
                         </div>
                         <p className="text-lg font-semibold">Your Avatar</p>
-                        <Button boxShadow={false} className="w-52">
+                        <Button boxShadow={false} className="w-52" onClick={handleLogoutModal}>
                             <span className="inline-block  transform skew-x-12 tracking-wider text-4xl uppercase font-popfun">Logout</span>
                         </Button>
                     </div>

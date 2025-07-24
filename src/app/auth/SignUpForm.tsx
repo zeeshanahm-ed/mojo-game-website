@@ -1,17 +1,17 @@
 'use client';
 import React, { useState } from 'react';
 import { useAuthModalStore } from '../store/useAuthModalStore';
-import Button from '../components/ui/common/Button';
+import Button from '@/app/components/ui/common/Button';
+import Image from 'next/image';
 import { ISignUpForm } from './core/_models';
 //icons
-import PasswordIcon from '../assets/icons/password-icon.svg';
-import EmailIcon from '../assets/icons/email-icon.svg';
-import EditIcon from '../assets/icons/edit-icon.svg';
-import ContactIcon from '../assets/icons/contact-icon.svg';
-import UserIcon from '../assets/icons/user-icon.svg';
-import FallBackProfileImage from '../assets/images/fallback-profile-image.jpg';
-import Image from 'next/image';
-// import { setAuth, setUser } from '../helpers/auth-helper';
+import PasswordIcon from '@/app/assets/icons/password-icon.svg';
+import EmailIcon from '@/app/assets/icons/email-icon.svg';
+import EditIcon from '@/app/assets/icons/edit-icon.svg';
+import ContactIcon from '@/app/assets/icons/contact-icon.svg';
+import UserIcon from '@/app/assets/icons/user-icon.svg';
+import AgeIcon from '@/app/assets/icons/age-icon.svg';
+import FallBackProfileImage from '@/app/assets/images/fallback-profile-image.jpg';
 
 interface ValidationErrors {
     [key: string]: string;
@@ -26,6 +26,8 @@ export default function SignUpForm() {
         email: "",
         password: "",
         countryCode: "",
+        age: "",
+        gender: "",
         contactNumber: "",
         profilePicture: "",
     })
@@ -165,6 +167,52 @@ export default function SignUpForm() {
                         onChange={onInputChange}
                         autoComplete="off"
                     />
+                </div>
+                <span className='text-red text-sm md:text-base'>{formErrors?.firstName || formErrors?.lastName}</span>
+
+                {/* First Name & Last Name Input */}
+                <div className='flex items-center gap-x-10 gap-y-5'>
+                    <div className="flex items-center w-1/2 h-12 md:h-14 transform -skew-x-12 border-2 border-black overflow-hidden">
+                        <div className="bg-purple flex items-center justify-center w-12 md:w-16 h-full">
+                            <AgeIcon />
+                        </div>
+                        <input
+                            type="number"
+                            name='age'
+                            placeholder="Your Age"
+                            className="input h-full rounded-none input-bordered w-full pl-2 md:pl-8 pr-2 py-3 text-base  md:text-lg bg-white text-gray-800 border-none focus:outline-none"
+                            required
+                            onChange={onInputChange}
+                            autoComplete="off"
+                        />
+                    </div>
+                    <div className="flex items-center gap-8 h-12 md:h-14">
+                        {/* Male Option */}
+                        <label className="flex items-center gap-3 cursor-pointer">
+                            <input
+                                type="radio"
+                                name="gender"
+                                value="male"
+                                className="radio !bg-white radio-lg border-2 border-black"
+                                onChange={onInputChange}
+                                checked={formState.gender === 'male'}
+                            />
+                            <span className="text-2xl font-normal text-black">Male</span>
+                        </label>
+
+                        {/* Female Option */}
+                        <label className="flex items-center gap-3 cursor-pointer">
+                            <input
+                                type="radio"
+                                name="gender"
+                                value="female"
+                                className="radio !bg-white radio-lg border-2 border-black"
+                                onChange={onInputChange}
+                                checked={formState.gender === 'female'}
+                            />
+                            <span className="text-2xl font-normal text-black">Female</span>
+                        </label>
+                    </div>
                 </div>
                 <span className='text-red text-sm md:text-base'>{formErrors?.firstName || formErrors?.lastName}</span>
 

@@ -20,7 +20,7 @@ const Banner: React.FC = () => {
                         <h2 className="text-6xl md:text-8xl lg:text-9xl leading-tight mb-4 uppercase font-popfun">
                             My account
                         </h2>
-                        <p className="text-sm md:text-base max-w-full md:max-w-xl">
+                        <p className="text-base text-white md:text-lg">
                             Your personal profile on mojo system .
                         </p>
                     </div>

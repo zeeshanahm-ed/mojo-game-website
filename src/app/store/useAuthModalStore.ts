@@ -2,8 +2,8 @@ import { create } from 'zustand';
 
 interface AuthModalStore {
     open: boolean;
-    mode: 'signin' | 'signup';
-    openModal: (mode: 'signin' | 'signup') => void;
+    mode: 'signin' | 'signup' | "logout";
+    openModal: (mode: 'signin' | 'signup' | "logout") => void;
     closeModal: () => void;
 }
 

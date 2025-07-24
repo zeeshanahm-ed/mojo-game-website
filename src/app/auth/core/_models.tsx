@@ -30,6 +30,8 @@ export interface ISignUpForm {
     firstName: string;
     lastName: string;
     email: string;
+    age: string;
+    gender: string;
     countryCode: string;
     password: string;
     profilePicture: string;
