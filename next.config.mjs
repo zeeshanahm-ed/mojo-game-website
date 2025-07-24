@@ -6,7 +6,7 @@ const nextConfig = {
         },
     },
     images: {
-        domains: ['logos-world.net'], // ✅ allow this domain
+        domains: ['logos-world.net', "placehold.co"], // ✅ allow this domain
     },
     webpack(config) {
         config.module.rules.push({

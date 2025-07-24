@@ -12,10 +12,26 @@ export type CountryInfo = {
     flagSvg: string;
 };
 
-const fetchCountries = async (): Promise<CountryInfo[]> => {
-    const { data } = await axios.get('https://restcountries.com/v3.1/all?fields=name,cca2,cca3,flags,idd');
+interface CountryAPIResponse {
+    name: {
+        common: string;
+    };
+    cca2: string;
+    cca3: string;
+    idd?: {
+        root?: string;
+        suffixes?: string[];
+    };
+    flags?: {
+        png?: string;
+        svg?: string;
+    };
+}
 
-    return data.map((c: any) => {
+const fetchCountries = async (): Promise<CountryInfo[]> => {
+    const { data } = await axios.get<CountryAPIResponse[]>('https://restcountries.com/v3.1/all?fields=name,cca2,cca3,flags,idd');
+
+    return data.map((c): CountryInfo => {
         const root = c.idd?.root ?? '';
         const suffix = c.idd?.suffixes?.[0] ?? '';
         return {

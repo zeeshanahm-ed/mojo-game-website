@@ -4,13 +4,14 @@ import Wrapper from '@/app/components/ui/common/Wrapper';
 import CategoriesSection from '@/app/components/ui/common/CategoriesSection';
 import ChooseMode from './components/ChooseMode';
 import JoinRoom from './components/JoinRoom';
+import Image from 'next/image';
+import Timer from './components/Timer';
+import Banner from './components/Banner';
+import Button from '@/app/components/ui/common/Button';
 
 //icons
 import VSIcon from '@/app/assets/images/vs.png';
-import Button from '@/app/components/ui/common/Button';
-import Banner from './components/Banner';
-import Image from 'next/image';
-import Timer from './components/Timer';
+import FallBackProfileImage from '@/app/assets/images/fallback-profile-image.jpg';
 
 type GameMode = 'friendly' | 'challenge' | null;
 
@@ -92,8 +93,10 @@ function OnlinePlay() {
                             <div className="flex flex-col items-center text-center">
                                 <div className="skew-custom md:w-48 md:h-48 w-36 h-36 overflow-hidden border-4 border-black flex items-center justify-center mb-4">
                                     <Image
-                                        src="https://placehold.co/160x160/FFD700/000000?text=User"
+                                        src={(typeof FallBackProfileImage === 'string' ? FallBackProfileImage : FallBackProfileImage.src)}
                                         alt="User Profile"
+                                        width={100}
+                                        height={100}
                                         className="w-full h-full object-cover"
                                     />
                                 </div>

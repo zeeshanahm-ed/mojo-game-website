@@ -8,7 +8,7 @@ import Book from "@/app/assets/images/book.png";
 const OPTIONS = [
     { type: "audio", label: "Audio", src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" },
     { type: "video", label: "Video", src: "https://www.w3schools.com/html/mov_bbb.mp4" },
-    { type: "image", label: "Image", src: Book },
+    { type: "image", label: "Image", src: "" },
     { type: "list", label: "Beach", value: "beach" },
     { type: "list", label: "Wrestling", value: "wrestling" },
     { type: "list", label: "Summer", value: "summer" },
@@ -52,7 +52,7 @@ export default function Answer({ answerType = "image", handleScreenChange, mode 
                             ></video>
                         }
                         {answerType === "image" &&
-                            <Image src={OPTIONS?.find(o => o.type === "image")?.src ?? ""} alt="" width={100} height={100} className="w-full h-full object-contain" />
+                            <Image src={Book?.src ?? ""} alt="" width={100} height={100} className="w-full h-full object-contain" />
                         }
                         {answerType === "list" &&
                             <div className="grid grid-cols-1 items-center justify-center py-4 gap-2 h-[400px]">

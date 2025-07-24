@@ -1,6 +1,9 @@
 
+interface Data {
+    [key: string]: string;
+}
 export interface IAuthModel {
-    data: any;
+    data: Data;
     api_token?: string;
 }
 
@@ -16,7 +19,7 @@ export interface IUserModel {
     firstName: string;
     lastName: string;
     updatedAt?: string;
-    data: any;
+    data: Data;
 }
 
 export interface ISignInForm {
