@@ -42,12 +42,12 @@ export default function OnlineQuestion({ points = 400, handleScreenChange, handl
     };
 
     const Options = [
-        { option: 1, label: "John Cena" },
+        { option: 1, label: "John Cena John Cena John Cena " },
         { option: 2, label: "The Rock" },
-        { option: 3, label: "New Way" },
+        { option: 3, label: "New Way John Cena John Cena" },
         { option: 4, label: "Hulk Hogan" },
-        { option: 5, label: "Ric Flair" },
-        { option: 6, label: "Undertaker" },
+        { option: 5, label: "Ric Flair John Cena" },
+        { option: 6, label: "Undertaker Undertaker Undertaker" },
     ];
 
     // const handleAnswer = (option: string) => {
@@ -62,21 +62,21 @@ export default function OnlineQuestion({ points = 400, handleScreenChange, handl
 
     return (
         <div className="flex items-center justify-center">
-            <div className="w-full md:w-[800px] ">
+            <div className="w-full lg:max-w-5xl">
                 <div className="">
                     {/* Question Header */}
-                    <div className="bg-black text-white text-center py-2 px-2 flex items-center justify-center gap-2">
+                    <div className="bg-black text-white text-start py-2 px-2 flex items-center justify-center gap-2">
                         <BsQuestionCircle className="text-2xl" />
                         <span className="text-base md:text-lg">Who has most championship wins in wrestling ?</span>
                     </div>
 
                     {/* Options (list) */}
-                    <div className="grid grid-cols-3 items-center justify-center py-4 gap-2 h-[400px]">
+                    <div className="grid grid-cols-2 md:grid-cols-3 items-center justify-center py-4 gap-10 h-[400px]">
                         {Options.map((option) => (
-                            <div key={option.option} className="flex items-center justify-center w-full">
+                            <div key={option.option} className="flex items-center w-full">
                                 <span className="text-xl sm:text-2xl md:text-3xl font-popfun">{option.option}.</span>
                                 <Button
-                                    className="text-xl ml-5 sm:text-3xl !px-1 sm:!px-4 !border md:!border-2"
+                                    className="w-full text-xl !pt-1 !md:pt-2 ml-2 md:ml-5 sm:text-3xl !px-1 sm:!px-4 !border md:!border-2"
                                     bgClass="bg-white"
                                     textClass="text-black"
                                     // onClick={() => handleAnswer(option.label)}
@@ -92,13 +92,13 @@ export default function OnlineQuestion({ points = 400, handleScreenChange, handl
                     </div>
                 </div>
                 {/* Bottom bar */}
-                <div className="flex items-center justify-between py-2 rounded-b-lg ">
+                <div className="flex items-center justify-between py-2 rounded-b-lg wrap gap-y-4">
                     <div className="flex sm:h-12 px-2 md:px-5 py-1 sm:py-2 pt-2 sm:pt-4 items-center justify-between text-white bg-dark-orange font-popfun">
                         <span className="md:text-4xl text-xl sm:text-3xl">WRESTLING</span>
                         <span className="md:text-2xl text-base sm:text-xl ml-2 md:ml-10">{points} POINTS</span>
                     </div>
-                    {/* Timer */}
                     <div className="flex items-center gap-2">
+                        {/* Timer */}
                         <div className="-skew-x-12 bg-white border border-dark-orange sm:h-12 h-10 text-white flex gap-2 md:gap-5 items-center w-20 sm:w-24  md:w-32">
                             <span className=" text-lg bg-dark-orange w-8 sm:w-10 h-full flex-center"><ClockIcon className="w-4 h-4 sm:w-6 sm:h-6" /></span>
                             <span className="font-popfun text-xl sm:text-2xl md:text-3xl text-black mt-2">{timer < 10 ? `00:0${timer}` : `00:${timer}`}</span>
@@ -118,13 +118,13 @@ export default function OnlineQuestion({ points = 400, handleScreenChange, handl
                                 <MdRestartAlt className="text-xl sm:text-2xl" />
                             </button>
                         </div>
-                        <div
-                            role="button"
-                            onClick={() => { handleScreenChange("answer"); handleModeChange("online") }}
-                            style={{ clipPath: "polygon(8% 0, 100% 0%, 100% 97%, 0% 100%)" }}
-                            className="cursor-pointer sm:h-12 flex px-2 md:px-5 py-1 sm:py-2 pt-2 sm:pt-4 items-center justify-between text-white bg-dark-green font-popfun">
-                            <span className="md:text-4xl text-xl sm:text-3xl">See Answer</span>
-                        </div>
+                    </div>
+                    <div
+                        role="button"
+                        onClick={() => { handleScreenChange("answer"); handleModeChange("online") }}
+                        // style={{ clipPath: "polygon(8% 0, 100% 0%, 100% 97%, 0% 100%)" }}
+                        className="w-full sm:w-auto -cursor-pointer sm:h-12 flex px-2 md:px-5 py-1 sm:py-2 pt-2 sm:pt-4 items-center justify-center  text-white bg-dark-green font-popfun border-2 border-black">
+                        <span className="md:text-4xl text-xl sm:text-3xl">See Answer</span>
                     </div>
                 </div>
             </div>

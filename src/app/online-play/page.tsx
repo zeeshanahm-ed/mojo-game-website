@@ -120,9 +120,9 @@ function OnlinePlay() {
                         </div>
                         <Button boxShadow={false} className='text-white w-64 md:w-80 my-16 text-4xl' bgClass="bg-black">Search Players</Button>
                         <CategoriesSection />
-                        <Button className='text-white md:w-72 w-full sm:w-3/4 my-16 text-4xl md:text-5xl'>Create Game</Button>
+                        <Button className='text-white md:w-72 w-52 sm:w-64 my-16 text-4xl md:text-5xl'>Create Game</Button>
                         {selectedMode === "challenge" &&
-                            <p className="text-base md:text-lg text-red">
+                            <p className="text-base md:text-lg text-red text-start md:text-center">
                                 <strong className='mr-5 text-black'>Note : </strong>  Creating game requires 1 credit. if you win this game credit will be refunded
                             </p>}
                     </div>

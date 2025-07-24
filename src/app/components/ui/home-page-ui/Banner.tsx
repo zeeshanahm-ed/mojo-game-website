@@ -1,23 +1,28 @@
 'use client';
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import Wrapper from '../common/Wrapper';
 import { useRouter } from 'next/navigation';
 
 import Image, { StaticImageData } from 'next/image';
-import WorldImage from '../../../assets/images/world.png';
-import RocketImage from '../../../assets/images/rocket.png';
-import StarImage from '../../../assets/images/star.png';
-import LightBulbImage from '../../../assets/images/light-bulb.png';
-// import BookImage from '../../../assets/images/book.png';
-import PrivateGameImage from '../../../assets/images/private-game.png';
-import KidsGameImage from '../../../assets/images/kids-quest.png';
-import StudentGameImage from '../../../assets/images/student-quest.png';
-import CreateGameImage from '../../../assets/images/create-game.png';
-import RamadanGameImage from '../../../assets/images/ramadan-quest.png';
+import Wrapper from '../common/Wrapper';
+import { useCreateGameModalStore } from '@/app/store/useCreateGameModalStore';
+import CreateGameModal from '../../modals/create-game-modal';
+//icon
+import WorldImage from '@/app/assets/images/world.png';
+import RocketImage from '@/app/assets/images/rocket.png';
+import StarImage from '@/app/assets/images/star.png';
+import LightBulbImage from '@/app/assets/images/light-bulb.png';
+// import BookImage from '@/app/assets/images/book.png';
+import PrivateGameImage from '@/app/assets/images/private-game.png';
+import KidsGameImage from '@/app/assets/images/kids-quest.png';
+import StudentGameImage from '@/app/assets/images/student-quest.png';
+import CreateGameImage from '@/app/assets/images/create-game.png';
+import RamadanGameImage from '@/app/assets/images/ramadan-quest.png';
 
 export default function Banner() {
     const { t } = useTranslation();
     const router = useRouter()
+    const { openModal } = useCreateGameModalStore();
 
     const handleGoTo = (type: string) => {
         switch (type) {
@@ -26,6 +31,9 @@ export default function Banner() {
                 break;
             case "privateGame":
                 router.push("/private-game")
+                break;
+            case "createAGame":
+                openModal();
                 break;
 
             default:
@@ -54,7 +62,7 @@ export default function Banner() {
                     <p className="text-sm md:text-base text-start">{t("slogan_sub")}</p>
 
                     <div className="mt-10 flex space-x-3 flex-row justify-start items-center">
-                        <div className={`relative cursor-pointer text-black skew-custom w-[110px]  md:w-[240px] h-[145px] md:h-[210px] md:gap-0 gap-0 py-2 md:py-4 px-2 border-[3px] md:border-[6px] border-black bg-yellow items-start flex-col flex justify-center`}>
+                        <div role='button' onClick={() => handleGoTo("createAGame")} className={`relative cursor-pointer text-black skew-custom w-[110px]  md:w-[240px] h-[145px] md:h-[210px] md:gap-0 gap-0 py-2 md:py-4 px-2 border-[3px] md:border-[6px] border-black bg-yellow items-start flex-col flex justify-center`}>
                             <div className='font-popfun text-4xl sm:text-5xl md:text-8xl uppercase'>{t("create")}</div>
                             <div className='font-popfun text-nowrap w-full flex items-center justify-between text-2xl sm:3xl md:text-[60px] md:mt-3 uppercase'>
                                 {t("aGame")}
@@ -86,17 +94,7 @@ export default function Banner() {
                     </div>
                 </div>
             </Wrapper>
-            {/* Right: Images */}
-            {/* <Image
-                                src={WorldImage}
-                                alt="World"
-                                className="absolute -right-10 -top-14 w-[200px] lg:w-[300px]"
-                            /> */}
-            {/* <Image
-                        src={BookImage}
-                        alt="Book"
-                        className="absolute right-[10%] lg:right-[20%] bottom-[5%] w-[120px] lg:w-[220px]"
-                    /> */}
+            <CreateGameModal />
         </section>
     );
 }

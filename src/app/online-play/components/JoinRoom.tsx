@@ -47,13 +47,13 @@ function JoinRoom({ isEditingRoomName, roomName, setRoomName, handleSaveRoomName
             </div>
 
             {/* Room Code Section */}
-            <div className="flex items-center h-16 w-full max-w-md border-2 mt-5 border-black overflow-hidden">
-                <div className="bg-white p-3">
+            <div className="flex items-center h-14 sm:h-16 w-full max-w-md border-2 mt-5 border-black overflow-hidden">
+                <div className="bg-white sm:w-32 w-24">
                     <span className="font-popfun text-black text-2xl md:text-4xl uppercase">
                         Room Name :
                     </span>
                 </div>
-                <div className='p-3 bg-yellow flex-1 border-2 border-black'>
+                <div className='bg-yellow flex-1 h-full border-x-2 border-black'>
                     <input
                         type="text"
                         placeholder='Enter Room Name'
@@ -70,7 +70,7 @@ function JoinRoom({ isEditingRoomName, roomName, setRoomName, handleSaveRoomName
                     />
                 </div>
                 <button
-                    className="btn btn-square bg-yellow text-black w-16 p-3 md:p-[18px] h-full flex items-center justify-center border-none"
+                    className="btn btn-square bg-yellow text-black w-16  h-full flex items-center justify-center border-none"
                     onClick={handleEditRoomName}
                     aria-label="Copy Room Code"
                 >
@@ -80,19 +80,19 @@ function JoinRoom({ isEditingRoomName, roomName, setRoomName, handleSaveRoomName
 
 
             {/* Room Code Section */}
-            <div className="flex items-center w-full max-w-md border-2 mt-5 border-black overflow-hidden">
-                <div className="bg-white p-3 md:p-4">
+            <div className="flex items-center w-full h-14 sm:h-16 max-w-md border-2 mt-5 border-black overflow-hidden">
+                <div className="bg-white sm:w-32 w-24">
                     <span className="font-popfun text-black text-2xl md:text-4xl uppercase">
                         Room Code :
                     </span>
                 </div>
-                <div className="bg-yellow flex-grow p-3 md:p-4 flex border-x-2 border-black items-center justify-center">
+                <div className="bg-yellow flex-grow flex-1 h-full flex border-x-2 border-black items-center justify-center">
                     <span className="font-popfun text-black text-2xl md:text-4xl tracking-wide">
                         {roomCode}
                     </span>
                 </div>
                 <button
-                    className="btn btn-square bg-yellow text-black w-16 h-full p-4 md:p-[18px] flex items-center justify-center border-none"
+                    className="btn btn-square bg-yellow text-black w-16  h-full flex items-center justify-center border-none"
                     onClick={handleCopyRoomCode}
                     aria-label="Copy Room Code"
                 >

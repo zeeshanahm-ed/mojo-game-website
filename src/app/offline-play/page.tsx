@@ -162,7 +162,7 @@ function OfflineMode() {
                                 </div>
                             </div>
                         </div>
-                        <Button className='md:w-1/2 w-full sm:w-3/4 text-4xl md:text-5xl' onClick={() => handleStartGame()}>Start playing</Button>
+                        <Button className='text-white md:w-72 w-52 sm:w-64 my-16 text-4xl md:text-5xl' onClick={() => handleStartGame()}>Start playing</Button>
                     </div>
                 </div>
             </Wrapper>
