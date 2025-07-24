@@ -2,30 +2,20 @@
 import React, { useState } from 'react';
 //icons
 import ReyalIcon from "@/app/assets/icons/riyal-rounded-icon.svg";
-import book from "@/app/assets/images/book.png";
-
-export interface GamesCardInterface {
-    id: string;
-    title: string;
-    image: string;
-    questions: number;
-    price: number;
-    position?: string;
-    isSelected?: boolean;
-}
+import { SelectedGamesPaymentDetailsInterface } from '@/app/utils/Interfaces';
 
 interface GamesSectionProps {
-    data: GamesCardInterface[];
-    selectedGames: GamesCardInterface[];
-    setSelectedGames: (v: any) => any;
+    data: SelectedGamesPaymentDetailsInterface[];
+    selectedGames: SelectedGamesPaymentDetailsInterface[];
+    setSelectedGames: (v: any) => void;
 }
 
 
 const GamesSection: React.FC<GamesSectionProps> = ({ data, selectedGames, setSelectedGames }) => {
 
 
-    const handleCardSelect = (card: GamesCardInterface) => {
-        setSelectedGames((prev: GamesCardInterface[]) => {
+    const handleCardSelect = (card: SelectedGamesPaymentDetailsInterface) => {
+        setSelectedGames((prev: SelectedGamesPaymentDetailsInterface[]) => {
             const isSelected = prev.some((game) => game.id === card.id);
 
             if (isSelected) {
@@ -44,7 +34,7 @@ const GamesSection: React.FC<GamesSectionProps> = ({ data, selectedGames, setSel
             {/* Cards Grid */}
             <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-x-2 sm:gap-x-4 gap-y-8 md:gap-x-6 mb-8">
                 {data?.map((card) => {
-                    const isSelected = selectedGames.find((v: GamesCardInterface) => v.id === card.id) ? true : false
+                    const isSelected = selectedGames.find((v: SelectedGamesPaymentDetailsInterface) => v.id === card.id) ? true : false
                     return (
                         <div
                             key={card.id}

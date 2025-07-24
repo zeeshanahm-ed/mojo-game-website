@@ -3,14 +3,13 @@ import React, { useState } from 'react'
 import Banner from './components/Banner'
 import Wrapper from '@/app/components/ui/common/Wrapper';
 import Input from '@/app/components/ui/common/Input';
-import Button from '@/app/components/ui/common/Button';
-import Image from 'next/image';
 import CategoriesSection from './components/CategoriesSec';
 
 //icons
 import SearchIcon from '@/app/assets/icons/search-icon.svg';
-import GameIcon from '@/app/assets/images/quiz-app.png';
-import GamesSection, { GamesCardInterface } from './components/GamesSec';
+import GamesSection from './components/GamesSec';
+import SelectedGamesPaymentDetails from '../components/ui/common/SelectedGamesPaymentDetails';
+import { SelectedGamesPaymentDetailsInterface } from '../utils/Interfaces';
 
 
 const Data = [
@@ -52,7 +51,7 @@ const Data = [
 function PrivateGames() {
     const [searchByName, setSearchByName] = useState('');
     const [selectedCategory, setSelectedCategory] = useState<number | null>(null)
-    const [selectedGames, setSelectedGames] = useState<GamesCardInterface[]>([])
+    const [selectedGames, setSelectedGames] = useState<SelectedGamesPaymentDetailsInterface[]>([])
 
 
     return (
@@ -75,7 +74,12 @@ function PrivateGames() {
                     </div>
                     <div className='h-auto mt-1'>
                         <GamesSection data={Data} selectedGames={selectedGames} setSelectedGames={setSelectedGames} />
+                        <div className='mt-20'>
+                            <h2 className="md:text-7xl text-5xl text-center font-popfun text-black mb-4 mt-10 uppercase">Selected Games</h2>
+                            <SelectedGamesPaymentDetails selectedGames={selectedGames} setSelectedGames={setSelectedGames} />
+                        </div>
                     </div>
+
                 </div>
             </Wrapper>
         </section >
