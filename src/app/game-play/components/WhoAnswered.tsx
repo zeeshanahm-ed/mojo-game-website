@@ -2,14 +2,14 @@ import React from "react";
 //icon
 // import { BsQuestionCircle } from "react-icons/bs";
 
-const OPTIONS = [
-    { type: "audio", label: "Audio", src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" },
-    { type: "video", label: "Video", src: "https://www.w3schools.com/html/mov_bbb.mp4" },
-    { type: "image", label: "Image", src: "https://picsum.photos/800/400" },
-    { type: "list", label: "Beach", value: "beach" },
-    { type: "list", label: "Wrestling", value: "wrestling" },
-    { type: "list", label: "Summer", value: "summer" },
-];
+// const OPTIONS = [
+//     { type: "audio", label: "Audio", src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" },
+//     { type: "video", label: "Video", src: "https://www.w3schools.com/html/mov_bbb.mp4" },
+//     { type: "image", label: "Image", src: "https://picsum.photos/800/400" },
+//     { type: "list", label: "Beach", value: "beach" },
+//     { type: "list", label: "Wrestling", value: "wrestling" },
+//     { type: "list", label: "Summer", value: "summer" },
+// ];
 
 interface WhoAnsweredEventProps {
     answerType?: "audio" | "video" | "image" | "list";

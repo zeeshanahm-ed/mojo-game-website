@@ -1,5 +1,5 @@
 
-import React, { ReactNode, useState } from 'react';
+import React, { ReactNode } from 'react';
 
 //icon
 import MoonIcon from "@/app/assets/icons/moon-icon.svg";

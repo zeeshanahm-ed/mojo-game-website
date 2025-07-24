@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Button from '../ui/common/Button';
 import Image from 'next/image';
 
@@ -86,7 +86,7 @@ function WalletModal({ open, onClose }: WalletModalProps) {
                                 selectClassName='!pl-0 !text-2xl !sm:text-3xl'
                                 icon={<Image src={SarFlagImage}
                                     alt='Saudia Flag' className='w-8 h-8' />}
-                                options={[{ name: "SAUDI RIYAL", value: "sa" }]}
+                                options={[{ label: "SAUDI RIYAL", value: "sa" }]}
                                 value='SAUDI RIYAL' />
                         </div>
                     </div>

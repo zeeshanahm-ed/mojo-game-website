@@ -36,6 +36,10 @@ function ContactUS() {
         console.log(form);
     };
 
+    const CountriesList = countries?.map((country) => ({
+        label: country.name,
+        value: country.dialCode,
+    }));
 
     return (
         <section>
@@ -70,9 +74,10 @@ function ContactUS() {
                         <Select
                             icon={<CountryCodeIcon />}
                             name="countryCode"
+                            isCountrySelect={true}
                             value={form.countryCode}
                             onChange={handleChange}
-                            options={countries || []}
+                            options={CountriesList || []}
                             placeholder="Select Countery Code"
                             className="sm:w-[450px] lg:w-2/3 w-full"
                         />

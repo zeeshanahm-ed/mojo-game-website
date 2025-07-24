@@ -1,7 +1,7 @@
 
 export interface IAuthModel {
     data: any;
-    api_token?: any;
+    api_token?: string;
 }
 
 export interface IUserModel {
@@ -9,9 +9,9 @@ export interface IUserModel {
     contactNumber: string;
     balance: number;
     maxCreditLimit: number;
-    profilePicture: any;
-    email: any;
-    token: any;
+    profilePicture: string;
+    email: string;
+    token: string;
     createdAt: string;
     firstName: string;
     lastName: string;

@@ -1,15 +1,16 @@
 import React from 'react';
 import { useAuth } from '@/app/context/AuthContext';
+import { useAuthModalStore } from '@/app/store/useAuthModalStore';
+import Image from 'next/image';
 
 //icons
 import GiftIcon from "@/app/assets/icons/gift-icon.svg";
 import FileIcon from "@/app/assets/icons/file-icon.svg";
 import GampadIcon from "@/app/assets/icons/gamepad-icon.svg";
 import LoginIcon from "@/app/assets/icons/login-icon.svg";
-import LogoutIcon from "@/app/assets/icons/logout-icon.svg";
+import FallBackProfileImage from '@/app/assets/images/fallback-profile-image.jpg';
 import { FaPlus } from "react-icons/fa";
 import { MdClose } from 'react-icons/md';
-import { useAuthModalStore } from '@/app/store/useAuthModalStore';
 
 
 
@@ -24,7 +25,6 @@ const MobileDrawer: React.FC<MobileDrawerProps> = ({ isOpen, onClose, setOpenWal
     const { user } = useAuth();
     const { openModal } = useAuthModalStore();
     const name = "Zeeshan Ahmed";
-    const profileUrl = `https://ui-avatars.com/api/?name=${encodeURIComponent(name)}&background=random`;
 
 
     const handleModales_Navigation = (key: string) => {
@@ -93,8 +93,13 @@ const MobileDrawer: React.FC<MobileDrawerProps> = ({ isOpen, onClose, setOpenWal
                                     className="flex items-center gap-4 py-4 px-6 "
                                     onClick={() => handleModales_Navigation('/profile')}
                                 >
-                                    <div className="relative w-9 h-1/2 border border-black skew-custom   ">
-                                        <img src={profileUrl} alt="User Avatar" className="w-full h-full object-cover" />
+                                    <div className="relative w-9 h-9 border border-black skew-custom   ">
+                                        <Image
+                                            src={(typeof FallBackProfileImage === 'string' ? FallBackProfileImage : FallBackProfileImage.src)}
+                                            width={36}
+                                            height={36}
+                                            alt="User Avatar"
+                                            className="w-full h-full object-cover" />
                                     </div>
                                     <span className="text-lg font-medium text-black">{name}</span>
                                 </div>

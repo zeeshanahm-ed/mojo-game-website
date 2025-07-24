@@ -5,6 +5,9 @@ const nextConfig = {
             loaders: {}, // leave it empty or configure only if needed
         },
     },
+    images: {
+        domains: ['logos-world.net'], // ✅ allow this domain
+    },
     webpack(config) {
         config.module.rules.push({
             test: /\.svg$/,

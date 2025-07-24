@@ -1,4 +1,4 @@
-import React, { ReactNode, useState } from 'react'
+import React, { ReactNode } from 'react'
 import { MdClose } from 'react-icons/md';
 //icon
 import KnetPayIcon from "@/app/assets/icons/knetPay-icon.svg";

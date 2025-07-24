@@ -4,7 +4,13 @@ import { MdClose } from 'react-icons/md';
 import RoyalRoundedIcon from "@/app/assets/icons/riyal-rounded-icon.svg"
 import RoyalWalletIcon from "@/app/assets/icons/riyal-wallet-icon.svg"
 
-const Options = [
+interface PaymentOption{
+    count: string;
+    price: string;
+    bgColor: string;
+}
+
+const Options:PaymentOption[] = [
     { count: '10', price: "17", bgColor: "bg-[#FA1960]" },
     { count: '5', price: "10", bgColor: "bg-[#197BFA]" },
     { count: '3', price: "08", bgColor: "bg-[#FA8219]" },
@@ -19,13 +25,13 @@ interface NewGameModalProps {
 function BuyNewGameModal({ open, onClose }: NewGameModalProps) {
     const [discountCode, setDiscountCode] = useState('');
 
-    const [selectedOption, setSelectedOption] = useState({
+    const [selectedOption, setSelectedOption] = useState<PaymentOption>({
         count: '10',
         price: "17",
         bgColor: "bg-[#FA1960]"
     })
 
-    const handleSelectOption = (option: any) => {
+    const handleSelectOption = (option: PaymentOption) => {
         setSelectedOption(option)
     }
 

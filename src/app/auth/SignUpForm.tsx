@@ -10,7 +10,8 @@ import EditIcon from '../assets/icons/edit-icon.svg';
 import ContactIcon from '../assets/icons/contact-icon.svg';
 import UserIcon from '../assets/icons/user-icon.svg';
 import FallBackProfileImage from '../assets/images/fallback-profile-image.jpg';
-import { setAuth, setUser } from '../helpers/auth-helper';
+import Image from 'next/image';
+// import { setAuth, setUser } from '../helpers/auth-helper';
 
 interface ValidationErrors {
     [key: string]: string;
@@ -30,18 +31,18 @@ export default function SignUpForm() {
     })
 
     const handleSignUp = () => {
-        let error = validateFormData(formState)
+        const error = validateFormData(formState)
         if (Object.keys(error).length > 0) {
             setFormErrors(error)
             return;
         } else {
-            handleOk(formState);
+            handleOk();
             openModal("signin");
             console.log('Sign Up button clicked!', formState);
         }
     };
 
-    const handleOk = (formData: ISignUpForm) => {
+    const handleOk = () => {
         // const obj = {
         //     data: formData,
         //     api_token: ""
@@ -82,7 +83,7 @@ export default function SignUpForm() {
     const onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
         setFormState((prev) => ({ ...prev, [name]: value }));
-        setFormErrors((prev: any) => ({ ...prev, [name]: "" }))
+        setFormErrors((prev) => ({ ...prev, [name]: "" }))
     };
 
     const handleGoToLogin = () => {
@@ -124,10 +125,12 @@ export default function SignUpForm() {
                             accept="image/*"
                             className="hidden"
                         />
-                        <img
+                        <Image
                             src={formState.profilePicture || (typeof FallBackProfileImage === 'string' ? FallBackProfileImage : FallBackProfileImage.src)}
                             alt="User Profile"
                             className="w-full h-full object-cover"
+                            width={96}
+                            height={96}
                         />
                         <div
                             className="absolute -top-2 -right-2 bg-black rounded-full p-1 border-2 border-white cursor-pointer"

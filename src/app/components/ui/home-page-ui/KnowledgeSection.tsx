@@ -19,7 +19,7 @@ const KnowledgeSection = () => {
                             Test Your Knowledge
                         </h2>
                         <p className="text-sm md:text-base leading-6 text-black max-w-xl">
-                            It is a fun cultural game suitable for all ages, testing your group's knowledge. The game includes all types of questions according to the selected category.
+                            It is a fun cultural game suitable for all ages, testing your group`s knowledge. The game includes all types of questions according to the selected category.
                         </p>
                         {/* <Button className='mt-10 px-20 pt-3' onClick={() => handleOPenModal()}>
                             <span className="inline-block transform skew-x-12 tracking-wider text-5xl md:text-6xl uppercase font-popfun" >Create a game</span>

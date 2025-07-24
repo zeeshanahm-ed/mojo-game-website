@@ -19,7 +19,7 @@ function OnlinePlay() {
     const [isEditingRoomName, setIsEditingRoomName] = useState(false);
     const [roomCode] = useState('0540CV98VZ120I');
     const [selectedMode, setSelectedMode] = useState<GameMode>("friendly");
-    const [isSearching, setIsSearching] = useState(false);
+    const [isSearching] = useState(false);
 
     const [timer, setTimer] = useState(20);
     const timerRef = useRef<NodeJS.Timeout | null>(null);
@@ -91,7 +91,7 @@ function OnlinePlay() {
                         <div className="flex mt-20 flex-col sm:flex-row items-center justify-evenly w-full space-y-14 sm:space-y-0">
                             <div className="flex flex-col items-center text-center">
                                 <div className="skew-custom md:w-48 md:h-48 w-36 h-36 overflow-hidden border-4 border-black flex items-center justify-center mb-4">
-                                    <img
+                                    <Image
                                         src="https://placehold.co/160x160/FFD700/000000?text=User"
                                         alt="User Profile"
                                         className="w-full h-full object-cover"

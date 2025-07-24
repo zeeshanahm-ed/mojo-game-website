@@ -48,4 +48,7 @@ const Button = forwardRef<HTMLButtonElement, IButtonProps>(
     }
 );
 
+// ✅ Add this to fix the ESLint warning
+Button.displayName = 'Button';
+
 export default Button

@@ -27,7 +27,7 @@ const LifeLineSection: React.FC = () => {
                                     Call a Friend
                                 </p>
                                 <p className="text-sm">
-                                    Your friend who knows everything, it's time to call him!
+                                   {" Your friend who knows everything, it's time to call him!"}
                                 </p>
                             </div>
 
@@ -48,7 +48,7 @@ const LifeLineSection: React.FC = () => {
                                     Score Steal
                                 </p>
                                 <p className="text-sm">
-                                    This one's for you! <br /> Answer both to secure points.
+                                    {"This one's for you!"} <br /> {"Answer both to secure points."}
                                 </p>
                             </div>
                         </div>

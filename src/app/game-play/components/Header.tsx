@@ -16,8 +16,10 @@ const Header: React.FC<HeaderProps> = ({ onClick }) => {
                     {/* Left Section: Exit Game & Game Over Buttons */}
                     <div className="flex items-center gap-x-2">
                         <button
+                            onClick={() => onClick?.("exit")}
                             className={`flex items-center text-white text-4xl gap-5 bg-red py-2 lg:pt-2 lg:py-0 md:boxShadow-custom px-2 md:px-4 transform skew-custom md:-skew-x-12 border-2 border-black shadow-lg font-popfun`}
                         >
+
                             <ExitIcon className="lg:mb-2 md:h-5 w-5 h-4 md:w-6" />
                             <span className='hidden lg:block'>Exit Game</span>
                         </button>

@@ -16,12 +16,12 @@ import AuthModal from '@/app/auth/AuthModal';
 import GiftIcon from "@/app/assets/icons/gift-icon.svg";
 import FileIcon from "@/app/assets/icons/file-icon.svg";
 import GampadIcon from "@/app/assets/icons/gamepad-icon.svg";
+import FallBackProfileImage from '@/app/assets/images/fallback-profile-image.jpg';
 import { FaPlus } from "react-icons/fa";
 
 
 import { FiMenu } from "react-icons/fi";
-const userAvatar = "https://placehold.co/40x40/FFD700/000000?text=HI";
-
+import Image from 'next/image';
 const Header: React.FC = () => {
     const { user } = useAuth();
     const { openModal } = useAuthModalStore();
@@ -45,7 +45,12 @@ const Header: React.FC = () => {
                             {user ?
                                 <>
                                     <div className="w-10 h-10 overflow-hidden border border-black skew-custom">
-                                        <img src={userAvatar} alt="User Avatar" className="w-full h-full object-cover" />
+                                        <Image
+                                            src={(typeof FallBackProfileImage === 'string' ? FallBackProfileImage : FallBackProfileImage.src)}
+                                            width={40}
+                                            height={40}
+                                            alt="User Avatar"
+                                            className="w-full h-full object-cover" />
                                     </div>
                                     <span className="text-gray-800 text-lg font-semibold ml-3">Hamza Iqbal</span>
                                 </>

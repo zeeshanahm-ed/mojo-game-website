@@ -1,12 +1,14 @@
 import Button from "@/app/components/ui/common/Button";
+import Image from "next/image";
 import React from "react";
 //icon
 import { BsQuestionCircle } from "react-icons/bs";
+import Book from "@/app/assets/images/book.png";
 
 const OPTIONS = [
     { type: "audio", label: "Audio", src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" },
     { type: "video", label: "Video", src: "https://www.w3schools.com/html/mov_bbb.mp4" },
-    { type: "image", label: "Image", src: "https://picsum.photos/800/400" },
+    { type: "image", label: "Image", src: Book },
     { type: "list", label: "Beach", value: "beach" },
     { type: "list", label: "Wrestling", value: "wrestling" },
     { type: "list", label: "Summer", value: "summer" },
@@ -30,9 +32,9 @@ export default function Answer({ answerType = "image", handleScreenChange, mode 
             <div className="w-[800px] ">
                 <div className={`border ${answerType === "list" ? "border-black" : "border-dark-orange"}border-dark-orange`}>
                     {/* Question Header */}
-                    <div className={`${answerType === "list" ? "bg-black" : "bg-dark-orange"} text-white text-center py-2 flex items-center justify-center gap-2`}>
+                    <div className={`${answerType === "list" ? "bg-black" : "bg-dark-orange"} text-white text-start py-2 px-2 flex items-center justify-center gap-2`}>
                         <BsQuestionCircle className="text-2xl" />
-                        <span className="text-lg">Who has most championship wins in wrestling ?</span>
+                        <span className="text-base md:text-lg">Who has most championship wins in wrestling ?</span>
                     </div>
 
                     {/* Options (audio/video/list) */}
@@ -50,7 +52,7 @@ export default function Answer({ answerType = "image", handleScreenChange, mode 
                             ></video>
                         }
                         {answerType === "image" &&
-                            <img src={OPTIONS?.find(o => o.type === "image")?.src ?? ""} className="w-full h-full object-contain" />
+                            <Image src={OPTIONS?.find(o => o.type === "image")?.src ?? ""} alt="" width={100} height={100} className="w-full h-full object-contain" />
                         }
                         {answerType === "list" &&
                             <div className="grid grid-cols-1 items-center justify-center py-4 gap-2 h-[400px]">

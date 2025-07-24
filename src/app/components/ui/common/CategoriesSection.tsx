@@ -81,7 +81,7 @@ export default CategoriesSection;
 
 interface Props {
     category: Category;
-    handleCategoriesClick: (category: any) => void;
+    handleCategoriesClick: (category: Category) => void;
 }
 
 const CategoryCard = ({ category, handleCategoriesClick }: Props) => {

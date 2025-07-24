@@ -1,5 +1,6 @@
 "use client"
 import React, { useState } from 'react'
+import { useRouter } from 'next/navigation';
 //components
 import Wrapper from '@/app/components/ui/common/Wrapper';
 import Header from './components/Header';
@@ -20,6 +21,7 @@ function GamePlay() {
     const team2Lifelines = { eye: true, peace: false, phone: false };
     const [screen, setScreen] = useState("scorecard");
     const [mode, setMode] = useState("offline");
+    const router = useRouter();
 
 
     // Helper function to render a lifeline icon with disabled state
@@ -86,6 +88,8 @@ function GamePlay() {
                 return (
                     <Congratulation onClick={handleScreenChange} />
                 );
+            case "exit":
+                router.push("/offline-play")
 
             default:
                 return null;

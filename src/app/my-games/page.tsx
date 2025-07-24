@@ -76,7 +76,7 @@ const GameCard = () => {
                 <h2 className="text-5xl lg:text-7xl font-popfun text-dark-blue">GAME 12</h2>
 
                 <p className="text-sm text-black">
-                    Answer correctly, and deduct the number of points you won from the other team's points.
+                    {"Answer correctly, and deduct the number of points you won from the other team's points."}
                 </p>
             </div>
         </div>

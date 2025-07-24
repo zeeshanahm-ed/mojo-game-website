@@ -92,7 +92,7 @@ export default function OnlineQuestion({ points = 400, handleScreenChange, handl
                     </div>
                 </div>
                 {/* Bottom bar */}
-                <div className="flex items-center justify-between py-2 rounded-b-lg wrap gap-y-4">
+                <div className="flex items-center justify-between py-2 rounded-b-lg flex-wrap gap-y-4">
                     <div className="flex sm:h-12 px-2 md:px-5 py-1 sm:py-2 pt-2 sm:pt-4 items-center justify-between text-white bg-dark-orange font-popfun">
                         <span className="md:text-4xl text-xl sm:text-3xl">WRESTLING</span>
                         <span className="md:text-2xl text-base sm:text-xl ml-2 md:ml-10">{points} POINTS</span>

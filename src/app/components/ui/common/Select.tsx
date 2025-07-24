@@ -1,7 +1,10 @@
 'use client';
-
 import React from 'react';
-import { CountryInfo } from '@/app/hooks/useCountries';
+
+interface Options {
+    label: string;
+    value: string;
+}
 
 interface SelectProps {
     icon?: React.ReactNode;
@@ -11,9 +14,10 @@ interface SelectProps {
     value?: string;
     onChange?: (e: React.ChangeEvent<HTMLSelectElement>) => void;
     name?: string;
-    options: any[];
+    options: Options[];
     placeholder?: string;
     iconBgColor?: string;
+    isCountrySelect?: boolean;
 }
 
 const Select: React.FC<SelectProps> = ({
@@ -25,8 +29,8 @@ const Select: React.FC<SelectProps> = ({
     onChange,
     name = '',
     options,
+    isCountrySelect = false,
     iconBgColor,
-    placeholder = 'Select an option',
 }) => {
     return (
         <div
@@ -46,8 +50,8 @@ const Select: React.FC<SelectProps> = ({
                     {placeholder}
                 </option> */}
                 {options.map((opt, index) => (
-                    <option key={index} value={opt?.dialCode}>
-                        {opt?.name}{opt?.dialCode}
+                    <option key={index} value={opt?.value}>
+                        {opt?.label}{isCountrySelect && opt?.value}
                     </option>
                 ))}
             </select>

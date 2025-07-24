@@ -172,7 +172,14 @@ function OfflineMode() {
 
 export default OfflineMode;
 
-const CustomButton = ({ handleClick, icon, ariaLabel, team, type }: any) => {
+interface CustomButtonProps {
+    handleClick: (team: 'first' | 'second', type: 'plus' | 'minus') => void;
+    icon: React.ReactElement;
+    ariaLabel: string;
+    team: 'first' | 'second'
+   type: 'plus' | 'minus'
+}
+const CustomButton = ({ handleClick, icon, ariaLabel, team, type }: CustomButtonProps) => {
     return (
         <button
             className="flex justify-center items-center bg-yellow text-black text-xl w-12 h-10 boxShadow-custom border-2 border-black"

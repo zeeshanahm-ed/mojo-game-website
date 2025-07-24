@@ -16,6 +16,7 @@ import ContactIcon from '@/app/assets/icons/contact-icon.svg';
 import UserIcon from '@/app/assets/icons/user-icon.svg';
 import EditIcon from '@/app/assets/icons/edit-icon.svg';
 import FallBackProfileImage from '../assets/images/fallback-profile-image.jpg';
+import Image from 'next/image';
 
 
 
@@ -55,7 +56,10 @@ function Profile() {
     const triggerFileInput = () => {
         fileInputRef.current?.click();
     };
-
+    const CountriesList = countries?.map((country) => ({
+        label: country.name,
+        value: country.dialCode,
+    }));
     return (
         <section>
             <Banner />
@@ -72,16 +76,18 @@ function Profile() {
                                 accept="image/*"
                                 className="hidden"
                             />
-                            <img
+                            <Image
                                 src={form.profilePicture || (typeof FallBackProfileImage === 'string' ? FallBackProfileImage : FallBackProfileImage.src)}
                                 alt="User Profile"
                                 className="w-full h-full object-cover"
+                                width={160}
+                                height={160}
                             />
                             <div
                                 className="absolute -top-2 -right-2 bg-black rounded-full p-1 border-2 border-white cursor-pointer"
                                 onClick={triggerFileInput}
                             >
-                                <EditIcon className=" w-4 h-4" />
+                                <EditIcon className=" w-4 h-4 fill-white" />
                             </div>
                         </div>
                         <p className="text-lg font-semibold">Your Avatar</p>
@@ -128,10 +134,11 @@ function Profile() {
 
                         <Select
                             icon={<CountryCodeIcon />}
+                            isCountrySelect={true}
                             name="countryCode"
                             value={form.countryCode}
                             onChange={handleChange}
-                            options={countries || []}
+                            options={CountriesList || []}
                             placeholder="Select Countery Code"
                             className="sm:w-[450px] lg:w-full w-full"
                         />

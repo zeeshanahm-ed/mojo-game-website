@@ -28,8 +28,7 @@ const PlayingModeSection: React.FC = () => {
               Playing Modes
             </h2>
             <p className="text-black text-base lg:text-xl mb-12 max-w-2xl">
-              It is a fun cultural game suitable for all ages, testing your group's knowledge. The
-              game includes all types of questions according to the selected category.
+             { "It is a fun cultural game suitable for all ages, testing your group's knowledge. The game includes all types of questions according to the selected category."}
             </p>
 
             {/* Playing Mode Cards */}

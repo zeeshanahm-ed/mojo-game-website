@@ -58,6 +58,9 @@ const Data = [
 function SubjectGames() {
     const [selectedGames, setSelectedGames] = useState<SelectedGamesPaymentDetailsInterface[]>([])
 
+    const handleRemoveSelectedGame = (id: string) => {
+        setSelectedGames((prev) => prev.filter(card => card.id !== id));
+    };
     return (
         <div className='text-center flex flex-col items-center justify-center mt-10'>
             <h2 className="md:text-7xl text-5xl font-popfun text-black mb-2 uppercase">list of games</h2>
@@ -70,7 +73,7 @@ function SubjectGames() {
             <h2 className="md:text-7xl text-5xl font-popfun text-black mb-4 mt-10 uppercase">Selected Games</h2>
 
             {/* Game Cards */}
-            <SelectedGamesPaymentDetails selectedGames={selectedGames} setSelectedGames={setSelectedGames} />
+            <SelectedGamesPaymentDetails selectedGames={selectedGames} handleRemoveSelectedGame={handleRemoveSelectedGame} />
         </div>
     )
 }

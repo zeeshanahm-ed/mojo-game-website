@@ -12,7 +12,6 @@ interface ValidationErrors {
 }
 
 export default function SignInForm() {
-    const { closeModal } = useAuthModalStore();
     const { openModal } = useAuthModalStore();
 
     const [formErrors, setFormErrors] = useState<ValidationErrors>()
@@ -50,7 +49,7 @@ export default function SignInForm() {
     };
 
     const handleSignIn = () => {
-        let error = validateFormData(formState)
+        const error = validateFormData(formState)
         if (Object.keys(error).length > 0) {
             setFormErrors(error)
             return;
@@ -64,7 +63,7 @@ export default function SignInForm() {
     const onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
         setFormState((prev) => ({ ...prev, [name]: value }));
-        setFormErrors((prev: any) => ({ ...prev, [name]: "" }))
+        setFormErrors((prev) => ({ ...prev, [name]: "" }))
     };
 
     return (

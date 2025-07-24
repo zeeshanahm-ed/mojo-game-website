@@ -3,43 +3,40 @@ import Button from './Button'
 import PaymentOptionModal from '../../modals/payment-options-modal';
 import { MdClose } from 'react-icons/md';
 import { SelectedGamesPaymentDetailsInterface } from '@/app/utils/Interfaces';
+import Image from 'next/image';
 
 
 interface Props {
     selectedGames: SelectedGamesPaymentDetailsInterface[];
-    setSelectedGames: (v: SelectedGamesPaymentDetailsInterface[]) => any;
+    handleRemoveSelectedGame: (v: string) => void;
 }
 
-function SelectedGamesPaymentDetails({ selectedGames, setSelectedGames }: Props) {
+function SelectedGamesPaymentDetails({ selectedGames, handleRemoveSelectedGame }: Props) {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [discountCode, setDiscountCode] = useState<string>('');
-    const [discountApplied, setDiscountApplied] = useState<boolean>(false);
+    const [discountApplied] = useState<boolean>(false);
     const subtotal = selectedGames.reduce((sum, card) => sum + card.price, 0);
     const discountAmount = discountApplied ? subtotal * 0.1 : 0; // 10% discount example
     const total = subtotal - discountAmount;
 
-
-
-    const handleRemoveSelectedGame = (id: string) => {
-        setSelectedGames((prev: SelectedGamesPaymentDetailsInterface[]) => prev.filter(card => card.id !== id));
-    };
-
-    const handleApplyDiscount = () => {
-        if (discountCode.toLowerCase() === 'save10') {
-            setDiscountApplied(true);
-        }
-    };
+    // const handleApplyDiscount = () => {
+    //     if (discountCode.toLowerCase() === 'save10') {
+    //         setDiscountApplied(true);
+    //     }
+    // };
 
     return (
         <div className="w-full flex flex-col items-center">
             <div className="flex gap-4 flex-wrap justify-center mb-6">
                 {selectedGames.map((card, index) => (
-                    <div key={card.id} className="relative">
+                    <div key={index} className="relative">
                         <div className="w-32 h-20 border-4 border-black rounded-sm overflow-hidden bg-gray-100">
-                            <img
+                            <Image
                                 src={card.image}
                                 alt={card.title}
                                 className="w-full h-full object-cover"
+                                width={100}
+                                height={100}
                             />
                         </div>
                         <button
@@ -77,7 +74,7 @@ function SelectedGamesPaymentDetails({ selectedGames, setSelectedGames }: Props)
             {/* Pricing Details */}
             <div className="space-y-3 mb-6 w-full sm:w-3/4 md:w-3/5">
                 {selectedGames.map((card, index) => (
-                    <div key={card.id} className="flex justify-between items-center text-sm">
+                    <div key={index} className="flex justify-between items-center text-sm">
                         <span className="text-black">{card.title}</span>
                         <div className="flex items-center gap-2">
                             <span className="text-gray-400 text-xs">SAR</span>

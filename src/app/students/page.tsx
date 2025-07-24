@@ -1,8 +1,6 @@
 "use client"
 import React, { useState } from 'react';
 import Wrapper from '@/app/components/ui/common/Wrapper';
-import Button from '@/app/components/ui/common/Button';
-import { useRouter } from 'next/navigation';
 import Banner from './components/Banner';
 
 //icons

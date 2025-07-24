@@ -16,7 +16,7 @@ interface Props {
     roomNameInputRef: LegacyRef<HTMLInputElement>;
 }
 
-function JoinRoom({ isEditingRoomName, roomName, setRoomName, handleSaveRoomName, handleEditRoomName, roomCode, roomNameInputRef }: Props) {
+function JoinRoom({ roomName, setRoomName, handleSaveRoomName, handleEditRoomName, roomCode, roomNameInputRef }: Props) {
     const [showModal, setShowModal] = useState(false);
 
     const handleClose = () => {

@@ -36,10 +36,10 @@ type ScoreCardProps = {
     imageSrc?: string;
     title?: string;
     scores?: number[]; // Should be 3 scores
-    onScoreClick?: (value: any) => void;
+    onScoreClick?: (value: string) => void;
 };
 
-const ScoreCard: React.FC<ScoreCardProps> = ({ imageSrc, title, scores = [200, 400, 600], onScoreClick }) => {
+const ScoreCard: React.FC<ScoreCardProps> = ({ onScoreClick }) => {
     return (
         <div className=" flex items-center justify-center font-popfun w-[220px] h-[110px] md:h-[130px] lg:h-[180px] md:w-[240px] lg:w-[320px] xl:w-[440px]">
             <div className="relative w-full h-full">

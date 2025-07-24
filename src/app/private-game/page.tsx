@@ -54,6 +54,10 @@ function PrivateGames() {
     const [selectedGames, setSelectedGames] = useState<SelectedGamesPaymentDetailsInterface[]>([])
 
 
+    const handleRemoveSelectedGame = (id: string) => {
+        setSelectedGames((prev) => prev.filter(card => card.id !== id));
+    };
+
     return (
         <section>
             <Banner />
@@ -76,7 +80,7 @@ function PrivateGames() {
                         <GamesSection data={Data} selectedGames={selectedGames} setSelectedGames={setSelectedGames} />
                         <div className='mt-20'>
                             <h2 className="md:text-7xl text-5xl text-center font-popfun text-black mb-4 mt-10 uppercase">Selected Games</h2>
-                            <SelectedGamesPaymentDetails selectedGames={selectedGames} setSelectedGames={setSelectedGames} />
+                            <SelectedGamesPaymentDetails selectedGames={selectedGames} handleRemoveSelectedGame={handleRemoveSelectedGame} />
                         </div>
                     </div>
 

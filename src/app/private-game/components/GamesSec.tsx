@@ -1,13 +1,14 @@
 
-import React, { useState } from 'react';
+import React from 'react';
 //icons
 import ReyalIcon from "@/app/assets/icons/riyal-rounded-icon.svg";
 import { SelectedGamesPaymentDetailsInterface } from '@/app/utils/Interfaces';
+import Image from 'next/image';
 
 interface GamesSectionProps {
     data: SelectedGamesPaymentDetailsInterface[];
     selectedGames: SelectedGamesPaymentDetailsInterface[];
-    setSelectedGames: (v: any) => void;
+    setSelectedGames: React.Dispatch<React.SetStateAction<SelectedGamesPaymentDetailsInterface[]>>;
 }
 
 
@@ -45,10 +46,12 @@ const GamesSection: React.FC<GamesSectionProps> = ({ data, selectedGames, setSel
                                 <div className='flex-1 flex flex-col'>
                                     {/* Team Logo */}
                                     <div className="flex justify-center items-center w-full h-1/2 sm:h-40 p-4">
-                                        <img
+                                        <Image
                                             src={card.image}
                                             alt={card.title}
-                                            className="max-h-full max-w-full object-contain"
+                                            width={100}
+                                            height={100}
+                                            className="h-full w-full object-contain"
                                             onError={(e) => {
                                                 e.currentTarget.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgdmlld0JveD0iMCAwIDEwMCAxMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiBmaWxsPSIjRjNGNEY2Ii8+CjxjaXJjbGUgY3g9IjUwIiBjeT0iNTAiIHI9IjMwIiBzdHJva2U9IiM5Q0E5QjAiIHN0cm9rZS13aWR0aD0iMiIgZmlsbD0ibm9uZSIvPgo8L3N2Zz4K';
                                             }}
