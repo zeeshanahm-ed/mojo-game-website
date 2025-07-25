@@ -1,7 +1,7 @@
-export interface Category {
+export interface GamesCategoryInterface {
     name: string;
     icon: string;
-    color: string;
+    id: string;
     selected?: boolean;
 }
 export interface SelectedGamesPaymentDetailsInterface {

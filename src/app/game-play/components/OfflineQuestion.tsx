@@ -6,6 +6,7 @@ import { IoMdPause, IoMdPlay } from "react-icons/io";
 import { MdRestartAlt } from "react-icons/md";
 import ClockIcon from "@/app/assets/icons/clock-icon.svg";
 import Book from "@/app/assets/images/book.png";
+import { offlineQuestionsListInterface } from "@/app/constants/constant";
 
 const OPTIONS = [
     { type: "audio", label: "Audio", src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" },
@@ -19,11 +20,11 @@ const OPTIONS = [
 interface OfflineQuestionProps {
     questionType?: "audio" | "video" | "image" | "list";
     points?: number;
+    question: offlineQuestionsListInterface | null;
     handleScreenChange: (action: string) => void;
-    handleModeChange: (action: string) => void;
 }
 
-export default function OfflineQuestion({ questionType = "image", points = 400, handleScreenChange, handleModeChange }: OfflineQuestionProps) {
+export default function OfflineQuestion({ question, points = 400, handleScreenChange }: OfflineQuestionProps) {
     const [timer, setTimer] = useState(0);
     const [isPaused, setIsPaused] = useState(false);
     const timerRef = useRef<NodeJS.Timeout | null>(null);
@@ -54,33 +55,35 @@ export default function OfflineQuestion({ questionType = "image", points = 400, 
                     {/* Question Header */}
                     <div className="bg-dark-orange text-white text-center py-2 flex items-center justify-center gap-2">
                         <BsQuestionCircle className="text-2xl" />
-                        <span className="text-lg">Name the event ?</span>
+                        <span className="text-lg">{question?.text}</span>
                     </div>
 
                     {/* Options (audio/video/list) */}
                     <div className="flex flex-col items-center justify-center py-4 gap-2 h-[400px]">
-                        {questionType === "audio" &&
-                            <audio controls src={OPTIONS?.find(o => o.type === "audio")?.src ?? ""} className="w-56" />
-                        }
-                        {questionType === "video" &&
+                        {question?.mediaType === "audio" && (
+                            <audio controls src={question?.mediaUrl} className="w-56" />
+                        )}
+                        {question?.mediaType === "video" && (
                             <video
-                                src={OPTIONS?.find(o => o.type === "video")?.src ?? ""}
+                                src={question.mediaUrl}
                                 controls
                                 controlsList="nodownload noremoteplayback"
                                 disablePictureInPicture
                                 className="w-full h-full object-contain"
                             ></video>
-                        }
-                        {questionType === "image" &&
-                            <Image src={Book.src ?? ""} width={100} height={100} alt="" className="w-full h-full object-contain" />
-                        }
+                        )}
+                        {question?.mediaType === "image" && (
+                            <Image src={question?.mediaUrl || ""} width={100} height={100} alt="Question Image" className="w-full h-full object-contain" />
+                        )}
+
                     </div>
+
                 </div>
                 {/* Bottom bar */}
                 <div className="flex items-center justify-between py-2 rounded-b-lg flex-wrap gap-y-4">
                     <div className="flex sm:h-12 px-2 md:px-5 py-1 sm:py-2 pt-2 sm:pt-4 items-center justify-between text-white bg-dark-orange font-popfun">
-                        <span className="md:text-4xl text-xl sm:text-3xl">WRESTLING</span>
-                        <span className="md:text-2xl text-base sm:text-xl ml-2 md:ml-10">{points} POINTS</span>
+                        <span className="md:text-4xl text-xl sm:text-3xl">{question?.category.toUpperCase()}</span>
+                        <span className="md:text-2xl text-base sm:text-xl ml-2 md:ml-10">{question?.points} POINTS</span>
                     </div>
                     <div className="flex items-center gap-2">
                         {/* Timer */}
@@ -106,8 +109,7 @@ export default function OfflineQuestion({ questionType = "image", points = 400, 
                     </div>
                     <div
                         role="button"
-                        onClick={() => { handleScreenChange("answer"); handleModeChange("offline") }}
-                        // style={{ clipPath: "polygon(8% 0, 100% 0%, 100% 97%, 0% 100%)" }}
+                        onClick={() => handleScreenChange("answer")}
                         className="w-full sm:w-auto -cursor-pointer sm:h-12 flex px-2 md:px-5 py-1 sm:py-2 pt-2 sm:pt-4 items-center justify-center  text-white bg-dark-green font-popfun border-2 border-black">
                         <span className="md:text-4xl text-xl sm:text-3xl">See Answer</span>
                     </div>

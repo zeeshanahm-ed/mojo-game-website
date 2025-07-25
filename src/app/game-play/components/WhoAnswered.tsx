@@ -1,26 +1,25 @@
 import React from "react";
-//icon
-// import { BsQuestionCircle } from "react-icons/bs";
-
-// const OPTIONS = [
-//     { type: "audio", label: "Audio", src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" },
-//     { type: "video", label: "Video", src: "https://www.w3schools.com/html/mov_bbb.mp4" },
-//     { type: "image", label: "Image", src: "https://picsum.photos/800/400" },
-//     { type: "list", label: "Beach", value: "beach" },
-//     { type: "list", label: "Wrestling", value: "wrestling" },
-//     { type: "list", label: "Summer", value: "summer" },
-// ];
+import { useGameSession } from "@/app/store/gameSession";
+import { offlineQuestionsListInterface } from "@/app/constants/constant";
 
 interface WhoAnsweredEventProps {
-    answerType?: "audio" | "video" | "image" | "list";
-    answerValue?: string;
+    question: offlineQuestionsListInterface | null;
     points?: number;
     handleScreenChange: (action: string) => void;
-    mode?: string;
-
 }
 
-export default function WhoAnsweredEvent({ handleScreenChange }: WhoAnsweredEventProps) {
+export default function WhoAnsweredEvent({ handleScreenChange, question }: WhoAnsweredEventProps) {
+
+    const { addScore } = useGameSession();
+    const { session } = useGameSession();
+
+    const handleAnswer = (team: "team1" | "team2" | "none") => {
+        if (team !== "none") {
+            addScore(team, question?.points);
+        }
+
+        handleScreenChange("questionsList");
+    };
 
     return (
         <div className="flex items-center justify-center">
@@ -31,20 +30,20 @@ export default function WhoAnsweredEvent({ handleScreenChange }: WhoAnsweredEven
                 <div className="flex flex-col sm:flex-row w-full items-center justify-center py-2 rounded-b-lg gap-5 md:gap-10 my-5 md:my-10" >
                     <div
                         role="button"
-                        onClick={() => handleScreenChange("scorecard")}
+                        onClick={() => handleAnswer("team1")}
                         className="flex h-16 md:h-20 w-3/4 sm:w-1/2 md:w-64 px-2 md:px-5 py-2 pt-4 items-center justify-center text-white bg-red font-popfun border-2 border-black ">
-                        <span className="md:text-6xl text-4xl tracking-wider">H1 Team</span>
+                        <span className="md:text-6xl text-4xl tracking-wider">{session?.team1.name || "Team 1"}</span>
                     </div>
                     <div
                         role="button"
-                        onClick={() => handleScreenChange("scorecard")}
+                        onClick={() => handleAnswer("team2")}
                         className="cursor-pointer flex h-16 md:h-20 w-3/4 sm:w-1/2 md:w-64 px-5 py-2 pt-4 items-center justify-center text-white bg-blue font-popfun border-2 border-black ">
-                        <span className="md:text-6xl text-4xl tracking-wider">H2 Team</span>
+                        <span className="md:text-6xl text-4xl tracking-wider">{session?.team2.name || "Team 2"}</span>
                     </div>
                 </div>
                 <div
                     role="button"
-                    onClick={() => handleScreenChange("scorecard")}
+                    onClick={() => handleAnswer("none")}
                     className="cursor-pointer flex h-16 md:h-20 w-3/4 sm:w-1/2 md:w-64 px-5 py-2 pt-4 items-center justify-center text-black bg-white border-2 border-black font-popfun">
                     <span className="md:text-6xl text-4xl tracking-wider">no one</span>
                 </div>

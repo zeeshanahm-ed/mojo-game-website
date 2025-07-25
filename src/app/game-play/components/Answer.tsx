@@ -4,28 +4,20 @@ import React from "react";
 //icon
 import { BsQuestionCircle } from "react-icons/bs";
 import Book from "@/app/assets/images/book.png";
-
-const OPTIONS = [
-    { type: "audio", label: "Audio", src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" },
-    { type: "video", label: "Video", src: "https://www.w3schools.com/html/mov_bbb.mp4" },
-    { type: "image", label: "Image", src: "" },
-    { type: "list", label: "Beach", value: "beach" },
-    { type: "list", label: "Wrestling", value: "wrestling" },
-    { type: "list", label: "Summer", value: "summer" },
-];
+import { offlineQuestionsListInterface } from "@/app/constants/constant";
 
 interface AnswerProps {
-    answerType?: "audio" | "video" | "image" | "list";
-    handleModeChange?: (action: string) => void;
-    handleScreenChange: (action: string) => void;
-    mode?: string;
+    question: offlineQuestionsListInterface | null;
+    mode: string | undefined;
+    answerType: "list" | "image";
+    handleScreenChange: (screen: string) => void;
 }
 
 const Options = [
     { option: 1, label: "John Cena" },
 ]
 
-export default function Answer({ answerType = "image", handleScreenChange, mode }: AnswerProps) {
+export default function Answer({ answerType = "image", handleScreenChange, mode, question }: AnswerProps) {
 
     return (
         <div className="flex items-center justify-center">
@@ -34,23 +26,11 @@ export default function Answer({ answerType = "image", handleScreenChange, mode 
                     {/* Question Header */}
                     <div className={`${answerType === "list" ? "bg-black" : "bg-dark-orange"} text-white text-start py-2 px-2 flex items-center justify-center gap-2`}>
                         <BsQuestionCircle className="text-2xl" />
-                        <span className="text-base md:text-lg">Who has most championship wins in wrestling ?</span>
+                        <span className="text-base md:text-lg">{question?.text}</span>
                     </div>
 
                     {/* Options (audio/video/list) */}
                     <div className="flex flex-col items-center justify-center py-4 gap-2 h-[400px]">
-                        {answerType === "audio" &&
-                            <audio controls src={OPTIONS?.find(o => o.type === "audio")?.src ?? ""} className="w-56" />
-                        }
-                        {answerType === "video" &&
-                            <video
-                                src={OPTIONS?.find(o => o.type === "video")?.src ?? ""}
-                                controls
-                                controlsList="nodownload noremoteplayback"
-                                disablePictureInPicture
-                                className="w-full h-full object-contain"
-                            ></video>
-                        }
                         {answerType === "image" &&
                             <Image src={Book?.src ?? ""} alt="" width={100} height={100} className="w-full h-full object-contain" />
                         }

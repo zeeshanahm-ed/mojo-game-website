@@ -10,22 +10,25 @@ import Answer from './components/Answer';
 import WhoAnsweredEvent from './components/WhoAnswered';
 import Congratulation from './components/Congratulation';
 import OnlineQuestion from './components/OnlineQuestion';
+import { offlineQuestionsList, offlineQuestionsListInterface } from '../constants/constant';
+import { useGameSession } from '../store/gameSession';
 //icons
 import HoleIcon from '@/app/assets/icons/hole-icon.svg';
 import SecondChanceIcon from '@/app/assets/icons/second-chance-icon.svg';
 import CallAFriendIcon from '@/app/assets/icons/callAFriend-icon.svg';
+import CustomModal from '../components/modals/custom-modal';
 
 function GamePlay() {
 
-    const team1Lifelines = { eye: true, peace: false, phone: false };
-    const team2Lifelines = { eye: true, peace: false, phone: false };
-    const [screen, setScreen] = useState("scorecard");
-    const [mode, setMode] = useState("offline");
+    const { session } = useGameSession();
+    const [showModal, setShowModal] = useState(false);
+    const [screen, setScreen] = useState("questionsList");
+    const [selectedQuestion, setSelectedQuestion] = useState<offlineQuestionsListInterface | null>(null);
     const router = useRouter();
 
 
     // Helper function to render a lifeline icon with disabled state
-    const renderLifelineIcon = (iconType: 'hole' | 'chance' | 'phone', isEnabled: boolean) => {
+    const renderLifelineIcon = (iconType: 'hole' | 'chance' | 'phone', isEnabled: boolean | undefined) => {
         const iconClasses = `w-8 h-8 sm:w-10 sm:-h-10`;
         const circleClasses = `w-12 h-12 rounded-full border-2 border-black flex items-center curs justify-center ${isEnabled ? "cursor-pointer" : "cursor-not-allowed"} ${isEnabled ? 'bg-white' : 'bg-gray-200 opacity-60'}`;
 
@@ -55,50 +58,87 @@ function GamePlay() {
         );
     };
 
-    const handleScreenChange = (value: string) => {
-        setScreen(value);
-    }
-    const handleModeChange = (value: string) => {
-        setMode(value);
-    }
+    const handleScreenChange = (screen: string) => {
+        setScreen(screen);
+    };
+
+    const getDifficultyByScore = (score: number): "easy" | "medium" | "hard" => {
+        if (score === 200) return "easy";
+        if (score === 400) return "medium";
+
+        return "hard";
+    };
+
+    const handleScoreClick = (score: number, category: string) => {
+        const difficulty = getDifficultyByScore(score);
+        const categoryQuestions = offlineQuestionsList.filter(
+            (q) => q.category === category && q.difficulty === difficulty && !q.used
+        );
+
+        if (categoryQuestions.length > 0) {
+            const randomQuestion = categoryQuestions[Math.floor(Math.random() * categoryQuestions.length)];
+            setSelectedQuestion(randomQuestion);
+            setScreen("offlineQuestion");
+        } else {
+            alert("No more questions available for this category and difficulty.");
+        }
+    };
 
     const getScreenContent = (screen: string) => {
         switch (screen) {
-            case "scorecard":
+            case "questionsList":
                 return (
-                    <QuestionsScoreList onScoreClick={handleScreenChange} />
+                    <QuestionsScoreList onScoreClick={handleScoreClick} />
                 );
             case "offlineQuestion":
                 return (
-                    <OfflineQuestion handleScreenChange={handleScreenChange} handleModeChange={handleModeChange} />
+                    <OfflineQuestion
+                        question={selectedQuestion}
+                        handleScreenChange={handleScreenChange}
+                    />
                 );
             case "onlineQuestion":
                 return (
-                    <OnlineQuestion handleScreenChange={handleScreenChange} handleModeChange={handleModeChange} />
+                    <OnlineQuestion handleScreenChange={handleScreenChange} />
                 );
             case "answer":
                 return (
-                    <Answer handleScreenChange={handleScreenChange} answerType={mode === "online" ? "list" : "image"} mode={mode} />
+                    <Answer
+                        handleScreenChange={handleScreenChange}
+                        answerType={session?.mode === "online" ? "list" : "image"}
+                        mode={session?.mode}
+                        question={selectedQuestion}
+                    />
                 );
             case "whoAnswered":
                 return (
-                    <WhoAnsweredEvent handleScreenChange={handleScreenChange} mode={mode} />
+                    <WhoAnsweredEvent
+                        handleScreenChange={handleScreenChange}
+                        question={selectedQuestion}
+                    />
                 );
             case "congratulation":
                 return (
-                    <Congratulation onClick={handleScreenChange} />
+                    <Congratulation />
                 );
-            case "exit":
-                router.push("/offline-play")
 
             default:
                 return null;
         }
     };
 
+    const handleExitGame = () => {
+        const url = session?.mode === "offline" ? "/offline-play" : "/online-play";
+        router.push(url);
+    };
+
+    const handleOpenExitModal = () => {
+        setShowModal(true);
+    };
+
     return (
         <section className='w-full'>
-            <Header onClick={(value: string) => setScreen(value)} />
+            <Header handleScreenChange={(value: string) => setScreen(value)} handleOpenExitModal={handleOpenExitModal} />
             <Wrapper>
                 <div className='flex justify-center flex-col h-auto py-10 md:py-20 px-4 md:px-10'>
                     {getScreenContent(screen)}
@@ -110,19 +150,19 @@ function GamePlay() {
                         <div className='flex lg:flex-row flex-col items-center justify-center  lg:justify-between w-full lg:md:w-3/4'>
                             <div className="flex flex-col items-start py-4 lg:py-0">
                                 <h3 className="text-4xl md:text-6xl lg:text-7xl font-popfun uppercase" >
-                                    {"Team 1"}
+                                    {session?.team1.name ?? "Team 1"}
                                 </h3>
                                 <p className="text-lg md:text-3xl font-popfun uppercase !tracking-wider" >
-                                    SCORE: {"200".toString().padStart(2, '0')}
+                                    SCORE: {session?.team1.score?.toString() ?? "00"}
                                 </p>
                             </div>
                             <div className='lg:hidden block w-full h-[1px] bg-white'></div>
                             <div className="flex flex-col items-center lg:items-end py-4 lg:py-0">
                                 <p className="text-base sm:text-xl lg:text-2xl mb-2">Life lines</p>
                                 <div className="flex space-x-2">
-                                    {renderLifelineIcon('hole', team1Lifelines.eye)}
-                                    {renderLifelineIcon('chance', team1Lifelines.peace)}
-                                    {renderLifelineIcon('phone', team1Lifelines.phone)}
+                                    {renderLifelineIcon('hole', session?.team1.lifelines.theHole)}
+                                    {renderLifelineIcon('chance', session?.team1.lifelines.answerToAnswer)}
+                                    {renderLifelineIcon('phone', session?.team1.lifelines.callAFriend)}
                                 </div>
                             </div>
                         </div>
@@ -136,29 +176,28 @@ function GamePlay() {
                             <div className="flex flex-col items-center lg:items-start py-4 lg:py-0">
                                 <p className="text-base sm:text-xl lg:text-2xl mb-2">Life lines</p>
                                 <div className="flex space-x-2">
-                                    {renderLifelineIcon('hole', team2Lifelines.eye)}
-                                    {renderLifelineIcon('chance', team2Lifelines.peace)}
-                                    {renderLifelineIcon('phone', team2Lifelines.phone)}
+                                    {renderLifelineIcon('hole', session?.team2.lifelines.theHole)}
+                                    {renderLifelineIcon('chance', session?.team2.lifelines.answerToAnswer)}
+                                    {renderLifelineIcon('phone', session?.team2.lifelines.callAFriend)}
                                 </div>
                             </div>
                             <div className='lg:hidden block w-full h-[1px] bg-white'></div>
                             <div className="flex flex-col items-center lg:items-end py-4 lg:py-0">
                                 <h3 className="text-4xl md:text-6xl lg:text-7xl font-popfun uppercase" >
-                                    {"Team 2"}
+                                    {session?.team2.name ?? "Team 2"}
                                 </h3>
                                 <p className="text-lg md:text-3xl font-popfun uppercase !tracking-wider" >
-                                    SCORE: {"400".toString().padStart(2, '0')}
+                                    SCORE: {session?.team2.score?.toString() ?? "00"}
                                 </p>
                             </div>
                         </div>
                     </div>
                 </div> : <></>}
             </Wrapper>
+            <CustomModal title='Exit' subTitle='Do you want to exit the game?' open={showModal} closeModal={() => setShowModal(false)} onYasClick={handleExitGame} />
         </section >
     )
 }
 
 export default GamePlay;
 
-// style={{ clipPath: "polygon(0 0, 80% 0, 100% 100%, 0% 100%)" }}
-//  relative before:absolute before:content-[''] before:w-3 before:left-[3.3rem] before:rotate-[28deg] before:h-[230px] before:-z-10 before:bg-black

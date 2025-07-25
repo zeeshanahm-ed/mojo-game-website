@@ -8,6 +8,8 @@ import Image from 'next/image';
 import Timer from './components/Timer';
 import Banner from './components/Banner';
 import Button from '@/app/components/ui/common/Button';
+import { categories } from '../constants/constant';
+import { GamesCategoryInterface } from '../utils/Interfaces';
 
 //icons
 import VSIcon from '@/app/assets/images/vs.png';
@@ -21,10 +23,18 @@ function OnlinePlay() {
     const [roomCode] = useState('0540CV98VZ120I');
     const [selectedMode, setSelectedMode] = useState<GameMode>("friendly");
     const [isSearching] = useState(false);
+    const [selectedCategories, setSelectedCategories] = useState<GamesCategoryInterface[]>([]);
+    const [currentPlayer, setCurrentPlayer] = useState<1 | 2>(1);
 
     const [timer, setTimer] = useState(20);
     const timerRef = useRef<NodeJS.Timeout | null>(null);
     const roomNameInputRef = useRef<HTMLInputElement>(null);
+
+
+    // handle turn switching
+    const handleTurnSwitch = () => {
+        setCurrentPlayer(prev => (prev === 1 ? 2 : 1));
+    };
 
     useEffect(() => {
         if (timer === 0) {
@@ -122,7 +132,14 @@ function OnlinePlay() {
                             </div>
                         </div>
                         <Button boxShadow={false} className='text-white w-64 md:w-80 my-16 text-4xl' bgClass="bg-black">Search Players</Button>
-                        <CategoriesSection />
+                        <CategoriesSection
+                            data={categories}
+                            selectedCategories={selectedCategories}
+                            setSelectedCategories={setSelectedCategories}
+                            mode="online"
+                            currentPlayer={currentPlayer}
+                            onSelect={handleTurnSwitch}
+                        />
                         <Button className='text-white md:w-72 w-52 sm:w-64 my-16 text-4xl md:text-5xl'>Create Game</Button>
                         {selectedMode === "challenge" &&
                             <p className="text-base md:text-lg text-red text-start md:text-center">

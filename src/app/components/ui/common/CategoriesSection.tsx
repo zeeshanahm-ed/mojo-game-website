@@ -2,21 +2,32 @@
 import React, { useEffect, useState } from 'react'
 import Input from '@/app/components/ui/common/Input';
 import Image from 'next/image';
-import { Category } from '@/app/utils/Interfaces';
-import { categories } from '@/app/constants/constant';
+import { GamesCategoryInterface } from '@/app/utils/Interfaces';
 
 //icons
-import SearchIcon from "../../../assets/icons/search-icon.svg"
+import SearchIcon from "@/app/assets/icons/search-icon.svg"
+
+interface CategoriesSectionProps {
+    data: GamesCategoryInterface[];
+    selectedCategories: GamesCategoryInterface[];
+    setSelectedCategories: React.Dispatch<React.SetStateAction<GamesCategoryInterface[]>>;
+    mode: 'offline' | 'online';
+    currentPlayer?: 1 | 2;
+    onSelect?: () => void;
+}
 
 
-
-
-function CategoriesSection() {
+function CategoriesSection({ data, selectedCategories, onSelect, setSelectedCategories, mode, currentPlayer }: CategoriesSectionProps) {
     const [search, setSearch] = useState('');
-    const [filteredCategories, setFilteredCategories] = useState<Category[]>(categories);
+    const [filteredCategories, setFilteredCategories] = useState<GamesCategoryInterface[]>(data);
+    const MAX_SELECTION = 6;
+    const MAX_PER_PLAYER = 3;
+
+    const [player1Categories, setPlayer1Categories] = useState<GamesCategoryInterface[]>([]);
+    const [player2Categories, setPlayer2Categories] = useState<GamesCategoryInterface[]>([]);
 
     useEffect(() => {
-        const modifyCategories = categories?.map((item) => {
+        const modifyCategories = data?.map((item) => {
             return {
                 ...item,
                 selected: false
@@ -29,21 +40,65 @@ function CategoriesSection() {
         setSearch(value)
     };
 
-    const handleCategoriesClick = (value: Category) => {
-        const modifiedCategories = filteredCategories.map((item) => {
-            if (item.name === value.name) {
-                return {
-                    ...item,
-                    selected: !item.selected
-                }
-            } else {
-                return { ...item }
+    const handleCategoriesClick = (value: GamesCategoryInterface) => {
+        const isAlreadySelected = value.selected;
+
+        if (mode === 'offline') {
+            if (isAlreadySelected) {
+                // Deselect logic for offline mode
+                const updated = filteredCategories.map(item =>
+                    item.name === value.name ? { ...item, selected: false } : item
+                );
+                setFilteredCategories(updated);
+
+                setSelectedCategories(prev => prev.filter(cat => cat.name !== value.name));
+                return;
             }
+
+            const alreadySelectedCount = filteredCategories.filter(c => c.selected).length;
+            if (alreadySelectedCount >= MAX_SELECTION) return;
+
+            const updated = filteredCategories.map(item =>
+                item.name === value.name ? { ...item, selected: true } : item
+            );
+            setFilteredCategories(updated);
+            setSelectedCategories(prev => [...prev, value]);
+            onSelect?.();
+        } else if (mode === 'online') {
+            // Don't allow deselect in online mode
+            if (isAlreadySelected) return;
+
+            const alreadySelectedCount = filteredCategories.filter(c => c.selected).length;
+            if (alreadySelectedCount >= MAX_SELECTION) return;
+
+            const updated = filteredCategories.map(item =>
+                item.name === value.name ? { ...item, selected: true } : item
+            );
+            setFilteredCategories(updated);
+
+            if (currentPlayer === 1 && player1Categories.length < MAX_PER_PLAYER) {
+                setPlayer1Categories(prev => [...prev, value]);
+            } else if (currentPlayer === 2 && player2Categories.length < MAX_PER_PLAYER) {
+                setPlayer2Categories(prev => [...prev, value]);
+            }
+
+            onSelect?.();
         }
-        );
-        setFilteredCategories(modifiedCategories);
-        const selectedCategory = modifiedCategories.find((item) => item.selected);
-        localStorage.setItem("selectedCategories", JSON.stringify(selectedCategory))
+    };
+
+
+    const isCategoryDisabled = (category: GamesCategoryInterface): boolean => {
+        const selectedCount = filteredCategories.filter(c => c.selected).length;
+
+        if (category.selected) return false;
+        if (selectedCount >= MAX_SELECTION) return true;
+
+        if (mode === 'online') {
+            if (currentPlayer === 1 && player1Categories.length >= MAX_PER_PLAYER) return true;
+            if (currentPlayer === 2 && player2Categories.length >= MAX_PER_PLAYER) return true;
+        }
+
+        return false;
     };
 
     return (
@@ -69,7 +124,7 @@ function CategoriesSection() {
             <div className='my-14 w-full max-h-[800px] min-h-[600px] overflow-hidden overflow-y-scroll'>
                 <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 gap-y-10">
                     {filteredCategories?.map((cat, idx) => (
-                        <CategoryCard key={idx} category={cat} handleCategoriesClick={handleCategoriesClick} />
+                        <CategoryCard key={idx} category={cat} handleCategoriesClick={handleCategoriesClick} isDisabled={isCategoryDisabled(cat)} />
                     ))}
                 </div>
             </div>
@@ -80,13 +135,14 @@ function CategoriesSection() {
 export default CategoriesSection;
 
 interface Props {
-    category: Category;
-    handleCategoriesClick: (category: Category) => void;
+    category: GamesCategoryInterface;
+    handleCategoriesClick: (category: GamesCategoryInterface) => void;
+    isDisabled: boolean;
 }
 
-const CategoryCard = ({ category, handleCategoriesClick }: Props) => {
+const CategoryCard = ({ category, handleCategoriesClick, isDisabled }: Props) => {
     return (
-        <div className="flex cursor-pointer flex-col justify-center items-center" onClick={() => handleCategoriesClick(category)}>
+        <div className={`flex cursor-pointer flex-col justify-center items-center ${isDisabled ? 'opacity-50 pointer-events-none' : ''}`} onClick={() => handleCategoriesClick(category)}>
             <div className={`relative w-28 h-28 sm:w-36 sm:h-36 md:w-44 md:h-44 rounded-full border-[12px] border-orange ${category.selected ? "border-red" : "border-orange"} flex items-center justify-center`}>
                 <Image src={category.icon} alt={category.name} width={100} height={100} className='w-1/2 h-1/2' />
             </div>

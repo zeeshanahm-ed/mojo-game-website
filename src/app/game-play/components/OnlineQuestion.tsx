@@ -10,10 +10,9 @@ interface OnlineQuestionProps {
     // questionType?: "audio" | "video" | "image" | "list";
     points?: number;
     handleScreenChange: (action: string) => void;
-    handleModeChange: (action: string) => void;
 }
 
-export default function OnlineQuestion({ points = 400, handleScreenChange, handleModeChange }: OnlineQuestionProps) {
+export default function OnlineQuestion({ points = 400, handleScreenChange }: OnlineQuestionProps) {
     const [timer, setTimer] = useState(0);
     const [isPaused, setIsPaused] = useState(false);
     const timerRef = useRef<NodeJS.Timeout | null>(null);
@@ -121,7 +120,7 @@ export default function OnlineQuestion({ points = 400, handleScreenChange, handl
                     </div>
                     <div
                         role="button"
-                        onClick={() => { handleScreenChange("answer"); handleModeChange("online") }}
+                        onClick={() => handleScreenChange("answer")}
                         // style={{ clipPath: "polygon(8% 0, 100% 0%, 100% 97%, 0% 100%)" }}
                         className="w-full sm:w-auto -cursor-pointer sm:h-12 flex px-2 md:px-5 py-1 sm:py-2 pt-2 sm:pt-4 items-center justify-center  text-white bg-dark-green font-popfun border-2 border-black">
                         <span className="md:text-4xl text-xl sm:text-3xl">See Answer</span>

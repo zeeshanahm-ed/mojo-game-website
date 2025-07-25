@@ -4,14 +4,17 @@ import Banner from './components/Banner'
 import Wrapper from '@/app/components/ui/common/Wrapper';
 import Input from '@/app/components/ui/common/Input';
 import CategoriesSection from '@/app/components/ui/common/CategoriesSection';
+import Image from 'next/image';
+import Button from '@/app/components/ui/common/Button';
+import { useRouter } from 'next/navigation';
+import { categories } from '@/app/constants/constant';
+import { GamesCategoryInterface } from '../utils/Interfaces';
+import { useGameSession } from '../store/gameSession';
 
 //icons
 import PlusIcon from '@/app/assets/icons/plus.svg';
 import MinusIcon from '@/app/assets/icons/minus.svg';
 import VSIcon from '@/app/assets/images/vs.png';
-import Image from 'next/image';
-import Button from '@/app/components/ui/common/Button';
-import { useRouter } from 'next/navigation';
 
 
 interface TeamState {
@@ -20,13 +23,15 @@ interface TeamState {
 }
 
 function OfflineMode() {
-
+    const setSession = useGameSession(state => state.setSession);
+    const [selectedCategories, setSelectedCategories] = useState<GamesCategoryInterface[]>([]);
     const [gameName, setGameName] = useState("");
+    const [errors, setErrors] = useState<{ [key: string]: string } | null>(null);
     const router = useRouter();
 
     const [teams, setTeams] = useState<TeamState>({
-        first: { name: '', players: 2 },
-        second: { name: '', players: 2 },
+        first: { name: '', players: 1 },
+        second: { name: '', players: 1 },
     });
 
     const handlePlayerChange = (team: 'first' | 'second', type: 'plus' | 'minus') => {
@@ -53,23 +58,69 @@ function OfflineMode() {
                 name,
             },
         }));
+        setErrors(null);
     };
 
 
     const handleGameName = (value: string) => {
-        setGameName(value)
+        setGameName(value);
+        setErrors(null);
     };
 
     const handleStartGame = () => {
+        if (gameName.trim() === "") {
+            setErrors({ ...errors, gameName: "Game name cannot be empty" });
+            return;
+        }
+        if (teams.first.name.trim() === "") {
+            setErrors({ ...errors, firstTeam: "Team name cannot be empty" });
+            return;
+        }
+        if (teams.second.name.trim() === "") {
+            setErrors({ ...errors, secondTeam: "Team name cannot be empty" });
+            return;
+        }
+        const session = {
+            gameName: gameName || 'My Quiz',
+            mode: "offline",
+            selectedCategories: selectedCategories.map(c => c.name),
+            team1: {
+                name: teams.first.name,
+                players: teams.first.players,
+                score: 0,
+                lifelines: {
+                    theHole: true,
+                    answerToAnswer: true,
+                    callAFriend: true,
+                },
+            },
+            team2: {
+                name: teams.second.name,
+                players: teams.second.players,
+                score: 0,
+                lifelines: {
+                    theHole: true,
+                    answerToAnswer: true,
+                    callAFriend: true,
+                },
+            },
+        };
+
+        setSession(session);
         router.push("/game-play");
-    }
+    };
 
     return (
         <section>
             <Banner />
             <Wrapper>
                 <div className='flex items-center justify-center flex-col h-auto pb-32 px-4 md:px-10'>
-                    <CategoriesSection />
+                    <CategoriesSection
+                        data={categories}
+                        selectedCategories={selectedCategories}
+                        setSelectedCategories={setSelectedCategories}
+                        mode="offline"
+                    />
                     <div className="text-center flex flex-col items-center justify-center mt-10">
                         <h2 className="md:text-6xl text-5xl font-popfun text-black mb-2 uppercase">
                             Specify team information
@@ -77,14 +128,17 @@ function OfflineMode() {
                         <p className="text-sm sm:text-base md:text-lg leading-6 text-black max-w-2xl">
                             An interactive group game in which we test your knowledge and culture
                         </p>
-                        <Input
-                            type="text"
-                            placeholder="Type a Game Name"
-                            value={gameName}
-                            className='my-10 md:w-1/2 w-full'
-                            inputClassName='text-center pl-0'
-                            onChange={(e): void => handleGameName(e.target.value)}
-                        />
+                        <div className='w-full flex flex-col items-center'>
+                            <Input
+                                type="text"
+                                placeholder="Type a Game Name"
+                                value={gameName}
+                                className='mt-10 md:w-1/2 w-full'
+                                inputClassName='text-center pl-0'
+                                onChange={(e): void => handleGameName(e.target.value)}
+                            />
+                            <p className="text-sm sm:text-base mt-1 text-red">{errors?.gameName}</p>
+                        </div>
                         <div className="py-10 flex flex-col md:flex-row items-center justify-center space-y-20 md:space-y-0 md:space-x-12 lg:space-x-20 w-full mb-10">
                             {/* First Team Card */}
                             <div className="w-72 -skew-x-3 md:-skew-x-6 bg-red border-4 border-black flex flex-col items-center py-6 pb-4">
@@ -99,6 +153,7 @@ function OfflineMode() {
                                         value={teams.first.name}
                                         onChange={(e) => handleTeamNameChange("first", e.target.value)}
                                     />
+                                    <p className="text-sm sm:text-base mt-1 text-red">{errors?.firstTeam}</p>
                                 </div>
                                 {/* Player Count Controls */}
                                 <div className="flex items-center justify-center w-full space-x-2 px-6">
@@ -139,6 +194,7 @@ function OfflineMode() {
                                         value={teams.second.name}
                                         onChange={(e) => handleTeamNameChange("second", e.target.value)}
                                     />
+                                    <p className="text-sm sm:text-base mt-1 text-red">{errors?.secondTeam}</p>
                                 </div>
                                 {/* Player Count Controls */}
                                 <div className="flex items-center justify-center w-full space-x-2 px-6">
@@ -177,7 +233,7 @@ interface CustomButtonProps {
     icon: React.ReactElement;
     ariaLabel: string;
     team: 'first' | 'second'
-   type: 'plus' | 'minus'
+    type: 'plus' | 'minus'
 }
 const CustomButton = ({ handleClick, icon, ariaLabel, team, type }: CustomButtonProps) => {
     return (
