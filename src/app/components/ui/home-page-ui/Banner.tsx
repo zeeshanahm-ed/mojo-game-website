@@ -61,9 +61,9 @@ export default function Banner() {
                     <p className="text-sm md:text-base text-start">{t("slogan_sub")}</p>
 
                     <div className="mt-10 flex space-x-3 flex-row justify-start items-center">
-                        <div role='button' onClick={() => handleGoTo("createAGame")} className={`relative cursor-pointer text-black skew-custom w-[110px]  md:w-[240px] h-[145px] md:h-[210px] md:gap-0 gap-0 py-2 md:py-4 px-2 border-[3px] md:border-[6px] border-black bg-yellow items-start flex-col flex justify-center`}>
-                            <div className='font-popfun text-4xl sm:text-5xl md:text-8xl uppercase'>{t("create")}</div>
-                            <div className='font-popfun text-nowrap w-full flex items-center justify-between text-2xl sm:3xl md:text-[60px] md:mt-3 uppercase'>
+                        <div role='button' onClick={() => handleGoTo("createAGame")} className={`relative cursor-pointer text-black skew-custom w-[110px]  md:w-[240px] h-[145px] md:h-[210px] md:gap-0 gap-0 py-2 md:py-4 px-4 border-[3px] md:border-[6px] border-black bg-yellow items-start flex-col flex justify-center`}>
+                            <div className='font-popfun text-4xl sm:text-5xl skew-x-3 md:text-8xl uppercase'>{t("create")}</div>
+                            <div className='font-popfun text-nowrap w-full flex skew-x-3 items-center justify-between text-2xl sm:3xl md:text-[60px] md:-mt-3 uppercase'>
                                 {t("aGame")}
                                 <Image src={CreateGameImage} alt="CREATE" className=" ml-1 w-5 h-5 sm:w-8 sm:h-8 md:w-14 md:h-14" />
                             </div>
@@ -124,11 +124,11 @@ function GameCard({
             className={`relative cursor-pointer text-black skew-custom md:w-[220px] md:h-[100px] w-[100px] sm:w-[120px] h-[70px] py-1 px-1 md:py-4 md:px-6 md:border-[6px] border-[3px] border-black ${bgColor} ${className} flex-col flex`}
         >
 
-            <div className='font-bulletproof text-base uppercase'>{title}</div>
-            <div className='font-popfun text-2xl md:text-5xl uppercase'>
+            <div className='font-bulletproof skew-x-3  text-base uppercase'>{title}</div>
+            <div className='font-popfun text-2xl skew-x-3  md:text-5xl uppercase'>
                 {subtitle}
             </div>
-            <Image src={image} alt={title} className="absolute md:w-6 md:h-6 w-5 h-5 inline-block mt-auto top-1 md:top-2 right-2" />
+            <Image src={image} alt={title} className="skew-x-3  absolute md:w-6 md:h-6 w-5 h-5 inline-block mt-auto top-1 md:top-2 right-2" />
         </div>
     );
 }

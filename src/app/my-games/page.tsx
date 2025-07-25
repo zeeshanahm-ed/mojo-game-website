@@ -20,14 +20,14 @@ function MyGames() {
             <Banner />
             <Wrapper>
                 <div className='h-auto px-4 md:px-10'>
-                    <div className='flex-center gap-y-10 w-full mt-10 mb-20 flex-wrap'>
-                        <div className='flex-center flex-col sm:flex-row h-28 justify-between w-full lg:w-3/4 gap-5'>
+                    <div className='flex items-center lg:flex-row flex-col gap-y-10 w-full mt-10 mb-20 gap-5'>
+                        <div className='flex-center flex-col sm:flex-row w-full lg:w-[79%] justify-between gap-5'>
                             <Input
                                 icon={<SearchIcon />}
                                 type="text"
                                 placeholder="Search by name "
                                 value={searchByName}
-                                className='flex-1'
+                                className='w-full h-14'
                                 onChange={(e) => setSearchByName(e.target.value)}
                             />
                             <Input
@@ -35,11 +35,11 @@ function MyGames() {
                                 type="text"
                                 placeholder="Search by category"
                                 value={searchByName}
-                                className='flex-1'
+                                className='w-full h-14'
                                 onChange={(e) => setSearchByName(e.target.value)}
                             />
                         </div>
-                        <Button className='lg:ml-auto md:text-5xl text-4xl w-64'>
+                        <Button className='md:text-4xl text-3xl w-64'>
                             Buy a new game
                         </Button>
                     </div>
