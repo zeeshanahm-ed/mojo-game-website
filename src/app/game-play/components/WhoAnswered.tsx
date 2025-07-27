@@ -15,7 +15,7 @@ export default function WhoAnsweredEvent({ handleScreenChange, question }: WhoAn
 
     const handleAnswer = (team: "team1" | "team2" | "none") => {
         if (team !== "none") {
-            addScore(team, question?.points);
+            addScore(team, question?.points || 0);
         }
 
         handleScreenChange("questionsList");

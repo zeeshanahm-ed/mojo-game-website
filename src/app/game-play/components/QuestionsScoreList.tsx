@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { offlineQuestionsListInterface, offlineQuestionsList } from "@/app/constants/constant";
 
 const categories = [
     "Horror Movies",

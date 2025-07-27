@@ -5,26 +5,16 @@ import { BsQuestionCircle } from "react-icons/bs";
 import { IoMdPause, IoMdPlay } from "react-icons/io";
 import { MdRestartAlt } from "react-icons/md";
 import ClockIcon from "@/app/assets/icons/clock-icon.svg";
-import Book from "@/app/assets/images/book.png";
 import { offlineQuestionsListInterface } from "@/app/constants/constant";
 
-const OPTIONS = [
-    { type: "audio", label: "Audio", src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" },
-    { type: "video", label: "Video", src: "https://www.w3schools.com/html/mov_bbb.mp4" },
-    { type: "image", label: "Image", src: "" },
-    { type: "list", label: "Beach", value: "beach" },
-    { type: "list", label: "Wrestling", value: "wrestling" },
-    { type: "list", label: "Summer", value: "summer" },
-];
 
 interface OfflineQuestionProps {
     questionType?: "audio" | "video" | "image" | "list";
-    points?: number;
     question: offlineQuestionsListInterface | null;
     handleScreenChange: (action: string) => void;
 }
 
-export default function OfflineQuestion({ question, points = 400, handleScreenChange }: OfflineQuestionProps) {
+export default function OfflineQuestion({ question, handleScreenChange }: OfflineQuestionProps) {
     const [timer, setTimer] = useState(0);
     const [isPaused, setIsPaused] = useState(false);
     const timerRef = useRef<NodeJS.Timeout | null>(null);

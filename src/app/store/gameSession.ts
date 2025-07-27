@@ -27,7 +27,7 @@ type GameSessionStore = {
     session: GameSession | null;
     setSession: (session: GameSession) => void;
     useLifeline: (team: teamType, lifeline: keyof Lifelines) => void;
-    addScore: (team: teamType, score: number | undefined) => void;
+    addScore: (team: teamType, score: number) => void;
     resetSession: () => void;
 };
 
@@ -80,7 +80,7 @@ export const useGameSession = create<GameSessionStore>((set) => ({
                 },
             };
         }),
-    addScore: (team: teamType, score: number | undefined) =>
+    addScore: (team: teamType, score: number) =>
         set((state) => {
             if (!state.session) return state;
 

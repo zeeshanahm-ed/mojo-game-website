@@ -17,7 +17,7 @@ interface CategoriesSectionProps {
 }
 
 
-function CategoriesSection({ data, selectedCategories, onSelect, setSelectedCategories, mode, currentPlayer }: CategoriesSectionProps) {
+function CategoriesSection({ data, onSelect, setSelectedCategories, mode, currentPlayer }: CategoriesSectionProps) {
     const [search, setSearch] = useState('');
     const [filteredCategories, setFilteredCategories] = useState<GamesCategoryInterface[]>(data);
     const MAX_SELECTION = 6;
@@ -34,7 +34,7 @@ function CategoriesSection({ data, selectedCategories, onSelect, setSelectedCate
             }
         });
         setFilteredCategories(modifyCategories);
-    }, [])
+    }, [data])
 
     const handleSearch = (value: string) => {
         setSearch(value)
