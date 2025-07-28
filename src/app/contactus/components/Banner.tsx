@@ -20,7 +20,7 @@ const Banner: React.FC = () => {
                         <h2 className="text-6xl md:text-8xl lg:text-9xl leading-tight mb-4 uppercase font-popfun">
                             Contact us
                         </h2>
-                        <p className="text-base text-white md:text-lg">
+                        <p className="text-sm sm:text-base text-white lg:text-lg">
                             An interactive group game in which we test your knowledge and culture
                         </p>
                     </div>

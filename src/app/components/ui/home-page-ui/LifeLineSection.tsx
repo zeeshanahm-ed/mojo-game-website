@@ -12,10 +12,10 @@ const LifeLineSection: React.FC = () => {
             <Wrapper>
                 <div className='py-16 px-4 md:px-10 flex flex-col items-center justify-center font-sans relative'>
                     <div className="relative z-10 flex flex-col items-center max-w-5xl text-center">
-                        <h2 className="text-black text-6xl lg:text-8xl  leading-tight mb-2 uppercase font-popfun">
+                        <h2 className="text-black text-6xl lg:text-8xl uppercase mb-2 font-popfun">
                             LIFE LINES
                         </h2>
-                        <p className="text-black text-base md:text-lg mb-12">
+                        <p className="text-black text-sm md:text-base xl:text-xl mb-12">
                             Use them before you see the question
                         </p>
 
@@ -27,7 +27,7 @@ const LifeLineSection: React.FC = () => {
                                     Call a Friend
                                 </p>
                                 <p className="text-sm">
-                                   {" Your friend who knows everything, it's time to call him!"}
+                                    {" Your friend who knows everything, it's time to call him!"}
                                 </p>
                             </div>
 

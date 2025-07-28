@@ -39,14 +39,29 @@ function Students() {
         selectedSubject: "",
     });
 
-    const handleClick = (type: 'academicLevel' | 'selectedSemester' | 'selectedSubject', value: string | number) => {
-        setState((prev) => ({
-            ...prev,
-            [type]: prev[type] === value ? "" : value
-        }));
+    const handleClick = (
+        type: 'academicLevel' | 'selectedSemester' | 'selectedSubject',
+        value: string | number
+    ) => {
+        setState((prev) => {
+            const updatedState = {
+                ...prev,
+                [type]: prev[type] === value ? "" : value
+            };
 
-        if (type === "selectedSubject") scrollToTop();
+            // Reset semester if academicLevel changes
+            if (type === "academicLevel") {
+                updatedState.selectedSemester = null;
+            }
+
+            return updatedState;
+        });
+
+        if (type === "selectedSubject") {
+            scrollToTop();
+        }
     };
+
 
     const handleClearState = () => {
         setState({
@@ -91,7 +106,7 @@ function Students() {
                                             showBottom={true}
                                             selected={state.selectedSemester === v.label}
                                             onClick={() => handleClick('selectedSemester', v.label)}
-                                        // disabled={!state.academicLevel}
+                                            disabled={!state.academicLevel}
                                         />
                                     ))}
                                 </div>
@@ -110,7 +125,7 @@ function Students() {
                                             showBottom={true}
                                             selected={state.selectedSubject === v.label}
                                             onClick={() => handleClick('selectedSubject', v.label)}
-                                        // disabled={!state.selectedSemester}
+                                            disabled={!state.academicLevel || !state.selectedSemester}
                                         />
                                     ))}
                                 </div>

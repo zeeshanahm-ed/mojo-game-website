@@ -62,7 +62,7 @@ function PaymentOptionModal({ open, onClose }: PaymentOptionModalProps) {
             <div className="modal-box p-0  bg-white items-center max-w-2xl rounded-none border-2 border-black">
                 <form method="dialog " className="px-4 md:px-10 pt-5 flex items-center justify-center relative">
                     <h2 className="text-4xl sm:text-5xl md:text-6xl font-popfun uppercase flex flex-row items-center ">
-                        Choose a payment option
+                        Payment options
                     </h2>
                     <button
                         type="button"
@@ -76,7 +76,7 @@ function PaymentOptionModal({ open, onClose }: PaymentOptionModalProps) {
                 <div className="divider before:bg-light-gray after:bg-light-gray m-0"></div>
                 {/* Main content */}
                 <div className="w-full">
-                    <div className="max-w-md mx-auto py-6">
+                    <div className="max-w-md mx-auto py-6 px-4 sm:px-0">
                         {/* Payment Methods */}
                         <div className="space-y-3 mb-8">
                             {paymentMethods.map((method) => (
@@ -85,13 +85,13 @@ function PaymentOptionModal({ open, onClose }: PaymentOptionModalProps) {
                                     onClick={() => handleNavigation(method)}
                                     className={`w-full group relative transition-all duration-200`}
                                 >
-                                    <div className="-skew-x-12 relative bg-white border-2 border-gray-300 h-14 group-hover:border-gray-400 transition-colors duration-200">
+                                    <div className="-skew-x-6 md:-skew-x-12 relative bg-white border-2 border-gray-300 h-12 sm:h-14 group-hover:border-gray-400 transition-colors duration-200">
 
-                                        <div className="flex items-center justify-between h-full px-6">
+                                        <div className="flex items-center justify-between h-full px-2 sm:px-6">
                                             {/* Icon and Name */}
                                             <div className="flex items-center gap-3">
                                                 {method.icon}
-                                                <span className="font-medium text-gray-800 text-lg">
+                                                <span className="font-medium text-gray-800 text-base md:text-lg">
                                                     {method.name}
                                                 </span>
                                             </div>
@@ -116,7 +116,7 @@ function PaymentOptionModal({ open, onClose }: PaymentOptionModalProps) {
 
                         {/* Payable Amount */}
                         <div className="text-center">
-                            <div className="inline-flex items-center gap-3 text-xl">
+                            <div className="inline-flex items-center gap-3 text-base md:text-lg">
                                 <span className="font-medium text-gray-800">Payable Amount :</span>
                                 <span className="font-bold text-gray-900">
                                     {payableAmount.toFixed(2)} SAR

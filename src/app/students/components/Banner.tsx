@@ -28,7 +28,7 @@ const Banner: React.FC<BannerProps> = ({ title = "students", isSubject, clearSta
     };
 
     return (
-        <div className="w-full bg-yellow md:py-20 py-10 h-80 md:h-auto px-4 md:px-10 flex flex-col items-center justify-center relative overflow-hidden border-b-4 border-black">
+        <div className="w-full bg-yellow md:py-20 py-14 h-80 md:h-auto px-4 sm:px-6 md:px-10 flex flex-col items-center justify-center relative overflow-hidden border-b-4 border-black">
             {/* Main Content */}
             <Wrapper>
                 <div className="relative -top-8 z-10 flex flex-row items-start justify-start md:justify-center w-full text-center ">
@@ -40,24 +40,24 @@ const Banner: React.FC<BannerProps> = ({ title = "students", isSubject, clearSta
                             className='text-xl lg:text-4xl w-28 lg:w-40 flex items-center'>{isSubject ? "Subjects" : "Main page"}</Button>
                     </div>
 
-                    <div className="flex md:-left-8 -left-5 -bottom-[145px] md:-bottom-[115px] absolute items-center justify-center w-28 lg:w-36">
+                    <div className="flex md:-left-8 -left-0 -bottom-[145px] md:-bottom-[115px] absolute items-center justify-center w-28 lg:w-36">
                         <Image src={BoildTubeImage} alt='Tube Image' className='object-contain w-full h-full' />
                     </div>
-                    <div className="flex left-0 md:left-36 lg:left-48 md:-bottom-16 lg:-bottom-12 absolute items-center justify-center w-14 lg:w-20">
+                    <div className="flex -top-10 left-48 sm:left-64 md:top-auto md:left-36 lg:left-48 md:-bottom-16 lg:-bottom-12 absolute items-center justify-center w-14 sm:w-16 lg:w-20">
                         <Image src={ElectronImage} alt='Electron Image' className='object-contain w-full h-full' />
                     </div>
-                    <div className="flex right-0 md:-right-8 -bottom-32 absolute items-center justify-center w-32 lg:w-40">
+                    <div className="flex right-0 md:-right-8 -bottom-40 md:-bottom-32 absolute items-center justify-center w-32 lg:w-40">
                         <Image src={ScientistImage} alt='Electron Image' className='object-contain w-full h-full' />
                     </div>
-                    <div className="flex right-44 md:right-40 -bottom-28 absolute items-center justify-center w-16 lg:w-20">
+                    <div className="flex right-36 sm:right-44 md:right-40 -bottom-36 md:-bottom-28 absolute items-center justify-center w-16 lg:w-20">
                         <Image src={TubImage} alt='Electron Image' className='object-contain w-full h-full' />
                     </div>
 
                     <div className="flex flex-col items-start md:items-center lg:w-2/4 text-black ">
-                        <h2 className="text-6xl md:text-8xl lg:text-9xl leading-tight uppercase font-popfun">
+                        <h2 className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl leading-tight uppercase font-popfun">
                             {title}
                         </h2>
-                        <p className="text-sm md:text-xl">
+                        <p className="text-xs sm:text-sm md:text-base">
                             A series of questions for students of every age group.
                         </p>
                     </div>

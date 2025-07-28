@@ -114,7 +114,7 @@ function OfflineMode() {
         <section>
             <Banner />
             <Wrapper>
-                <div className='flex items-center justify-center flex-col h-auto pb-32 px-4 md:px-10'>
+                <div className='flex items-center justify-center flex-col h-auto px-4 md:px-10'>
                     <CategoriesSection
                         data={categories}
                         selectedCategories={selectedCategories}
@@ -139,7 +139,7 @@ function OfflineMode() {
                             />
                             <p className="text-sm sm:text-base mt-1 text-red">{errors?.gameName}</p>
                         </div>
-                        <div className="py-10 flex flex-col md:flex-row items-center justify-center space-y-20 md:space-y-0 md:space-x-12 lg:space-x-20 w-full mb-10">
+                        <div className="py-10 flex flex-col md:flex-row items-center justify-center space-y-20 md:space-y-0 md:space-x-12 lg:space-x-20 w-full">
                             {/* First Team Card */}
                             <div className="w-72 -skew-x-3 md:-skew-x-6 bg-red border-4 border-black flex flex-col items-center py-6 pb-4">
                                 <h3 className="text-white text-5xl uppercase mb-4 font-popfun">

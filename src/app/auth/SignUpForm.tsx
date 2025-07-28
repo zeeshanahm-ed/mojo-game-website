@@ -171,7 +171,7 @@ export default function SignUpForm() {
                 <span className='text-red text-sm md:text-base'>{formErrors?.firstName || formErrors?.lastName}</span>
 
                 {/* First Name & Last Name Input */}
-                <div className='flex items-center gap-x-10 gap-y-5'>
+                <div className='flex items-center gap-x-4 sm:gap-x-10 gap-y-5'>
                     <div className="flex items-center w-1/2 h-12 md:h-14 transform -skew-x-12 border-2 border-black overflow-hidden">
                         <div className="bg-purple flex items-center justify-center w-12 md:w-16 h-full">
                             <AgeIcon />
@@ -186,31 +186,31 @@ export default function SignUpForm() {
                             autoComplete="off"
                         />
                     </div>
-                    <div className="flex items-center gap-8 h-12 md:h-14">
+                    <div className="flex items-center gap-4 sm:gap-8 h-12 md:h-14">
                         {/* Male Option */}
-                        <label className="flex items-center gap-3 cursor-pointer">
+                        <label className="flex items-center gap-1 sm:gap-3 cursor-pointer">
                             <input
                                 type="radio"
                                 name="gender"
                                 value="male"
-                                className="radio !bg-white radio-lg border-2 border-black"
+                                className="radio !bg-white radio-sm sm:radio-lg border-2 border-black"
                                 onChange={onInputChange}
                                 checked={formState.gender === 'male'}
                             />
-                            <span className="text-2xl font-normal text-black">Male</span>
+                            <span className="text-base sm:text-2xl font-normal text-black">Male</span>
                         </label>
 
                         {/* Female Option */}
-                        <label className="flex items-center gap-3 cursor-pointer">
+                        <label className="flex items-center gap-1 sm:gap-3 cursor-pointer">
                             <input
                                 type="radio"
                                 name="gender"
                                 value="female"
-                                className="radio !bg-white radio-lg border-2 border-black"
+                                className="radio !bg-white radio-sm sm:radio-lg border-2 border-black"
                                 onChange={onInputChange}
                                 checked={formState.gender === 'female'}
                             />
-                            <span className="text-2xl font-normal text-black">Female</span>
+                            <span className="text-base sm:text-2xl font-normal text-black">Female</span>
                         </label>
                     </div>
                 </div>

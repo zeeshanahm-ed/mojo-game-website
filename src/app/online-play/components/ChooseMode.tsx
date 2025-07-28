@@ -35,7 +35,7 @@ function ChooseMode({ selectedMode, handleModeSelect }: Props) {
                         <h2 className="text-6xl md:text-8xl leading-tight mb-4 uppercase font-popfun">
                             Choose Mode
                         </h2>
-                        <p className="text-base md:text-lg">
+                        <p className="text-sm sm:text-base md:text-lg">
                             make your own Room and invite players to play with you and compete globally.
                         </p>
                     </div>
@@ -56,7 +56,7 @@ function ChooseMode({ selectedMode, handleModeSelect }: Props) {
                                 </div>
 
                                 {/* Mode Title */}
-                                <h2 className={` text-2xl md:text-4xl lg:text-5xl ${selectedMode === mode.id ? 'text-black' : 'text-gray-800'}`}>
+                                <h2 className={` text-3xl md:text-4xl lg:text-5xl ${selectedMode === mode.id ? 'text-black' : 'text-gray-800'}`}>
                                     {mode.title}
                                 </h2>
                             </div>

@@ -43,7 +43,7 @@ export default function Banner() {
     return (
         <section className="w-full bg-red text-white px-4 md:px-10 py-10">
             <Wrapper>
-                <div className='relative h-[27.5rem] md:h-[37rem] lg:h-[44rem]'>
+                <div className='relative h-[23rem] md:h-[37rem] lg:h-[44rem]'>
                     <div className="hidden sm:block 2xl:right-0 -right-[4%] md:-right-[40px] top-3 md:top-5 absolute md:w-[150px] md:h-[220px] w-[100px] h-[150px]">
                         <Image
                             src={WorldImage}
@@ -61,11 +61,11 @@ export default function Banner() {
                     <p className="text-sm md:text-base text-start">{t("slogan_sub")}</p>
 
                     <div className="mt-10 flex space-x-3 flex-row justify-start items-center">
-                        <div role='button' onClick={() => handleGoTo("createAGame")} className={`relative cursor-pointer text-black skew-custom w-[110px]  md:w-[240px] h-[145px] md:h-[210px] md:gap-0 gap-0 py-2 md:py-4 px-4 border-[3px] md:border-[6px] border-black bg-yellow items-start flex-col flex justify-center`}>
+                        <div role='button' onClick={() => handleGoTo("createAGame")} className={`relative cursor-pointer text-black skew-custom w-[110px]  md:w-[240px] h-[125px] md:h-[210px] md:gap-0 gap-0 py-2 md:py-4 px-4 border-[3px] md:border-[6px] border-black bg-yellow items-start flex-col flex justify-center`}>
                             <div className='font-popfun text-4xl sm:text-5xl skew-x-3 md:text-8xl uppercase'>{t("create")}</div>
                             <div className='font-popfun text-nowrap w-full flex skew-x-3 items-center justify-between text-2xl sm:3xl md:text-[60px] md:-mt-3 uppercase'>
                                 {t("aGame")}
-                                <Image src={CreateGameImage} alt="CREATE" className=" ml-1 w-5 h-5 sm:w-8 sm:h-8 md:w-14 md:h-14" />
+                                <Image src={CreateGameImage} alt="CREATE" className=" ml-1 mb-1 w-5 h-5 sm:w-8 sm:h-8 md:w-14 md:h-14" />
                             </div>
                         </div>
                         <div className='space-y-1 md:space-y-2 flex flex-col items-start'>
@@ -121,7 +121,7 @@ function GameCard({
     return (
         <div
             onClick={() => onClick?.(type)}
-            className={`relative cursor-pointer text-black skew-custom md:w-[220px] md:h-[100px] w-[100px] sm:w-[120px] h-[70px] py-1 px-1 md:py-4 md:px-6 md:border-[6px] border-[3px] border-black ${bgColor} ${className} flex-col flex`}
+            className={`relative cursor-pointer text-black skew-custom md:w-[220px] md:h-[100px] w-[100px] sm:w-[120px] h-[60px] py-1 px-1 md:py-4 md:px-6 md:border-[6px] border-[3px] border-black ${bgColor} ${className} flex-col flex`}
         >
 
             <div className='font-bulletproof skew-x-3  text-base uppercase'>{title}</div>

@@ -30,7 +30,7 @@ function JoinRoomModal({ open, onClose }: JoinRoomModalProps) {
                 </form>
                 <div className="divider before:bg-light-gray after:bg-light-gray m-0"></div>
                 {/* Main content */}
-                <div className="flex items-center flex-col w-full justify-between px-10 py-5">
+                <div className="flex items-center flex-col w-full justify-between py-5">
                     <p className='text-lg font-Product_sans text-black'>Enter Room code to participate in it.</p>
                     <Input
                         type="text"

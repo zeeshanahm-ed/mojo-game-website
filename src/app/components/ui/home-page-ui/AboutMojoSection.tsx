@@ -14,10 +14,10 @@ export default function AboutMojoSection() {
                             {/* Left Text */}
                             <div className=" flex items-center justify-between flex-col 580px:flex-row">
                                 <div className='text-center 580px:text-left'>
-                                    <h2 className="text-6xl md:text-7xl lg:text-8xl font-popfun text-black mb-4">
+                                    <h2 className="text-6xl md:text-7xl lg:text-8xl font-popfun text-black mb-2">
                                         ABOUT MOJO
                                     </h2>
-                                    <p className="max-w-full 580px:max-w-xs md:max-w-md lg:max-w-xl text-sm md:text-base text-black leading-6 ">
+                                    <p className="max-w-full 580px:max-w-xs md:max-w-md lg:max-w-xl text-sm md:text-base xl:text-xl text-black leading-6 ">
                                         Lorem ipsum dolor sit amet consectetur. Magna convallis magna
                                         pretium morbi at ut ut adipiscing. Posuere iaculis iaculis etiam
                                         ultrices lectus. Morbi in at blandit potenti vulputate
