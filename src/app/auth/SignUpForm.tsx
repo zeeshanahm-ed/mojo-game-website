@@ -214,7 +214,7 @@ export default function SignUpForm() {
                         </label>
                     </div>
                 </div>
-                <span className='text-red text-sm md:text-base'>{formErrors?.firstName || formErrors?.lastName}</span>
+                {/* <span className='text-red text-sm md:text-base'>{formErrors?.firstName || formErrors?.lastName}</span> */}
 
                 {/* Email Input */}
                 <div className="mb-6 flex items-center h-12 md:h-14 w-full transform -skew-x-12 border-2 border-black overflow-hidden">
