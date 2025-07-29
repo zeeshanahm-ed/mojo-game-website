@@ -14,10 +14,14 @@ interface CategoriesSectionProps {
     mode: 'offline' | 'online';
     currentPlayer?: 1 | 2;
     onSelect?: () => void;
+    title?: boolean;
+    subTitle?: boolean;
+    showInput?: boolean;
+    year?: string;
 }
 
 
-function CategoriesSection({ data, onSelect, setSelectedCategories, mode, currentPlayer }: CategoriesSectionProps) {
+function CategoriesSection({ data, year, onSelect, selectedCategories, setSelectedCategories, mode, currentPlayer, title = true, subTitle = true, showInput = true }: CategoriesSectionProps) {
     const [search, setSearch] = useState('');
     const [filteredCategories, setFilteredCategories] = useState<GamesCategoryInterface[]>(data);
     const MAX_SELECTION = 6;
@@ -34,7 +38,8 @@ function CategoriesSection({ data, onSelect, setSelectedCategories, mode, curren
             }
         });
         setFilteredCategories(modifyCategories);
-    }, [data])
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
 
     const handleSearch = (value: string) => {
         setSearch(value)
@@ -63,7 +68,6 @@ function CategoriesSection({ data, onSelect, setSelectedCategories, mode, curren
             );
             setFilteredCategories(updated);
             setSelectedCategories(prev => [...prev, value]);
-            onSelect?.();
         } else if (mode === 'online') {
             // Don't allow deselect in online mode
             if (isAlreadySelected) return;
@@ -103,7 +107,7 @@ function CategoriesSection({ data, onSelect, setSelectedCategories, mode, curren
 
     return (
         <div className='flex items-center justify-center flex-col w-full'>
-            <div className='my-10'>
+            {showInput && <div className='my-10'>
                 <Input
                     icon={<SearchIcon />}
                     type="text"
@@ -112,17 +116,20 @@ function CategoriesSection({ data, onSelect, setSelectedCategories, mode, curren
                     className='md:w-96 w-full'
                     onChange={(e) => handleSearch(e.target.value)}
                 />
-            </div>
+            </div>}
             <div className="text-center flex flex-col items-center justify-center">
-                <h2 className="sm:text-6xl text-5xl lg:text-7xl font-popfun text-black mb-2 uppercase">
-                    Select your categories
-                </h2>
-                <p className="text-sm sm:text-base md:text-lg leading-6 text-black max-w-2xl">
+                {title && <h2 className="sm:text-6xl text-5xl lg:text-7xl font-popfun text-black mb-2 uppercase">
+                    Select categories
+                </h2>}
+                {subTitle && <p className="text-sm sm:text-base md:text-lg leading-6 text-black max-w-2xl">
                     3 categories for your team, and 3 categories for the opposing team, for a total of 6 categories with 36 different questions. Choose the categories carefully to ensure the greatest chance of
-                </p>
+                </p>}
             </div>
-            <div className='my-14 w-full max-h-[800px] min-h-[600px] overflow-hidden overflow-y-scroll'>
-                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 gap-y-10">
+            {year && <div className='border-2 flex-center text-2xl border-black h-16 w-48 my-10 -skew-x-6'>
+                {year}
+            </div>}
+            <div className='my-14 w-full max-h-[800px] overflow-hidden overflow-y-auto'>
+                <div className="flex-center flex-wrap  gap-6 gap-y-10">
                     {filteredCategories?.map((cat, idx) => (
                         <CategoryCard key={idx} category={cat} handleCategoriesClick={handleCategoriesClick} isDisabled={isCategoryDisabled(cat)} />
                     ))}
@@ -142,17 +149,16 @@ interface Props {
 
 const CategoryCard = ({ category, handleCategoriesClick, isDisabled }: Props) => {
     return (
-        <div className={`flex cursor-pointer flex-col justify-center items-center ${isDisabled ? 'opacity-50 pointer-events-none' : ''}`} onClick={() => handleCategoriesClick(category)}>
-            <div className={`relative w-28 h-28 sm:w-36 sm:h-36 md:w-44 md:h-44 rounded-full border-[12px] border-orange ${category.selected ? "border-red" : "border-orange"} flex items-center justify-center`}>
+        <div role='button' className={`w-32 xsm:w-40 sm:w-52 xl:w-64 flex cursor-pointer flex-col justify-center items-center ${isDisabled ? 'opacity-50 pointer-events-none' : ''}`} onClick={() => handleCategoriesClick(category)}>
+            <div className={`relative w-28 h-28 sm:w-36 sm:h-36 md:w-44 md:h-44 rounded-full border-[8px]  lg:border-[12px] border-orange ${category.selected ? "border-red" : "border-orange"} flex items-center justify-center`}>
                 <Image src={category.icon} alt={category.name} width={100} height={100} className='w-1/2 h-1/2' />
             </div>
-            <div className={`w-full mt-6 relative pb-1 pt-2 text-center text-white font-popfun text-2xl sm:text-3xl md:text-4xl uppercase ${category.selected ? "bg-red" : "bg-orange"} 
-            before:w-3 before:bg-orange before:h-8 before:absolute before:-top-8 before:left-[47%] `}>
+            <div className={`w-full mt-6 relative pb-0 pt-1 text-center text-white font-popfun text-2xl md:text-3xl xl:text-4xl uppercase ${category.selected ? " bg-red before:bg-red" : " bg-orange before:bg-orange"} before:w-2 lg:before:w-3 before:h-8 before:absolute before:-top-8 before:left-[48%] `}>
                 {category.name}
                 {/* Left Triangle */}
-                <div className="absolute -top-[5px] -left-[11px] md:-top-[5px] md:-left-[15px] w-0 h-0 -rotate-[44deg] lg:border-l-[20px] lg:border-r-[20px] lg:border-b-[20px] border-l-[15px] border-r-[15px] border-b-[15px] border-l-transparent border-r-transparent border-b-white" />
+                <div className="absolute -top-[3px] -left-[10px]  md:-top-[3px] lg:-top-[5px] md:-left-[10px] lg:-left-[15px] w-0 h-0 -rotate-[45deg] lg:border-l-[20px] lg:border-r-[20px] lg:border-b-[20px] border-l-[15px] border-r-[15px] border-b-[15px] border-l-transparent border-r-transparent border-b-white" />
                 {/* Right Triangle */}
-                <div className="absolute -top-[4px] md:-top-[5px] -right-[11px] rotate-[47deg] md:-right-[15px] w-0 h-0 lg:border-l-[20px] lg:border-r-[20px] lg:border-b-[20px]  border-l-[15px] border-r-[15px] border-b-[15px] border-l-transparent border-r-transparent border-b-white" />
+                <div className="absolute -top-[3px] -right-[10px] md:-top-[3px]  lg:-top-[5px]  rotate-[45deg] md:-right-[10px] lg:-right-[15px] w-0 h-0 lg:border-l-[20px] lg:border-r-[20px] lg:border-b-[20px]  border-l-[15px] border-r-[15px] border-b-[15px] border-l-transparent border-r-transparent border-b-white" />
             </div>
         </div>
     );

@@ -1,29 +1,28 @@
 "use client"
-import React, { useState } from 'react'
-import Banner from './components/Banner'
+import React, { useState } from 'react';
 import Wrapper from '@/app/components/ui/common/Wrapper';
-import Input from '@/app/components/ui/common/Input';
-import CategoriesSection from '@/app/components/ui/common/CategoriesSection';
-import Image from 'next/image';
-import Button from '@/app/components/ui/common/Button';
-import { useRouter } from 'next/navigation';
-import { categories } from '@/app/constants/constant';
+import Banner from './components/Banner';
+import CategoriesSection from '../components/ui/common/CategoriesSection';
+import { categories } from '../constants/constant';
 import { GamesCategoryInterface } from '../utils/Interfaces';
-import { useGameSession } from '../store/gameSession';
 import TeamInfo from '../components/ui/common/TeamInfo';
+import Button from '../components/ui/common/Button';
+import { useRouter } from 'next/navigation';
+import { useGameSession } from '../store/gameSession';
 
+//icons
 
 interface TeamState {
     first: { name: string; players: number };
     second: { name: string; players: number };
 }
 
-function OfflineMode() {
-    const setSession = useGameSession(state => state.setSession);
+function KidsQuest() {
+    const { setSession } = useGameSession();
+    const router = useRouter();
     const [selectedCategories, setSelectedCategories] = useState<GamesCategoryInterface[]>([]);
     const [gameName, setGameName] = useState("");
     const [errors, setErrors] = useState<{ [key: string]: string } | null>(null);
-    const router = useRouter();
 
     const [teams, setTeams] = useState<TeamState>({
         first: { name: '', players: 1 },
@@ -56,7 +55,6 @@ function OfflineMode() {
         }));
         setErrors(null);
     };
-
 
     const handleGameName = (value: string) => {
         setGameName(value);
@@ -112,10 +110,34 @@ function OfflineMode() {
             <Wrapper>
                 <div className='flex items-center justify-center flex-col h-auto py-16 px-4 md:px-10'>
                     <CategoriesSection
-                        data={categories}
+                        title={true}
+                        subTitle={true}
+                        showInput={false}
+                        data={categories.slice(0, 7)}
                         selectedCategories={selectedCategories}
                         setSelectedCategories={setSelectedCategories}
                         mode="offline"
+                        year="6-8 Years"
+                    />
+                    <CategoriesSection
+                        title={false}
+                        subTitle={false}
+                        showInput={false}
+                        data={categories.slice(7, 13)}
+                        selectedCategories={selectedCategories}
+                        setSelectedCategories={setSelectedCategories}
+                        mode="offline"
+                        year="7-10 Years"
+                    />
+                    <CategoriesSection
+                        title={false}
+                        subTitle={false}
+                        showInput={false}
+                        data={categories.slice(13, 16)}
+                        selectedCategories={selectedCategories}
+                        setSelectedCategories={setSelectedCategories}
+                        mode="offline"
+                        year="9-10 Years"
                     />
                     <TeamInfo
                         teams={teams}
@@ -125,11 +147,11 @@ function OfflineMode() {
                         handlePlayerChange={handlePlayerChange}
                         handleGameName={handleGameName}
                     />
-                    <Button className='text-white md:w-72 w-52 sm:w-64 my-16 text-4xl md:text-5xl' onClick={() => handleStartGame()}>Start playing</Button>
+                    <Button className='text-white md:w-72 w-52 sm:w-64 my-16 text-4xl md:text-5xl' onClick={handleStartGame}>Start playing</Button>
                 </div>
             </Wrapper>
-        </section >
+        </section>
     )
 }
 
-export default OfflineMode;
+export default KidsQuest;
