@@ -57,7 +57,7 @@ const Banner: React.FC<BannerProps> = ({ title = "students", isSubject, clearSta
                         <h2 className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl leading-tight uppercase font-popfun">
                             {title}
                         </h2>
-                        <p className="text-xs sm:text-sm md:text-base">
+                        <p className="text-xs sm:text-sm md:text-base  lg:text-lg">
                             A series of questions for students of every age group.
                         </p>
                     </div>

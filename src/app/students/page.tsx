@@ -75,11 +75,11 @@ function Students() {
         <section>
             <Banner title={state?.selectedSubject || "Students"} isSubject={!!state?.selectedSubject} clearState={handleClearState} />
             <Wrapper>
-                <div className='flex items-center justify-center flex-col h-auto pb-32 px-4 md:px-10'>
+                <div className='flex items-center justify-center flex-col h-auto py-16 px-4 md:px-10'>
                     {!state.selectedSubject ?
                         <>
                             {/* Academic Level */}
-                            <div className="text-center flex flex-col items-center justify-center mt-10">
+                            <div className="text-center flex flex-col items-center justify-center">
                                 <h2 className="md:text-7xl text-5xl font-popfun text-black mb-2 uppercase">Choose your academic level</h2>
                                 <p className="text-sm sm:text-base md:text-lg text-black">You can choose a study stage from the following stages.</p>
                                 <div className='font-popfun gap-y-10 gap-x-5 md:gap-x-10 mt-20 flex items-center justify-center flex-wrap'>

@@ -31,6 +31,9 @@ export default function Banner() {
             case "privateGame":
                 router.push("/private-game")
                 break;
+            case "kidsQuest":
+                router.push("/kids-quest")
+                break;
             case "createAGame":
                 openModal();
                 break;
@@ -73,7 +76,7 @@ export default function Banner() {
                             <GameCard type={"ramadan"} image={RamadanGameImage} title={t("brand")} subtitle={t("ramadan")} bgColor="bg-light-green" className="-ml-2" />
                         </div>
                         <div className='space-y-1 md:space-y-2 flex flex-col items-start'>
-                            <GameCard type={"kidsQuest"} image={KidsGameImage} title={t("brand")} subtitle={t("kids_quest")} bgColor="bg-green" />
+                            <GameCard type={"kidsQuest"} image={KidsGameImage} title={t("brand")} subtitle={t("kids_quest")} onClick={(v: string) => handleGoTo(v)} bgColor="bg-green" />
                             <GameCard type={"privateGame"} image={PrivateGameImage} title={t("brand")} subtitle={t("private_game")} onClick={(v: string) => handleGoTo(v)} bgColor="bg-light-blue" className="-ml-2" />
                         </div>
                     </div>

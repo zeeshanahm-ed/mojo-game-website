@@ -19,8 +19,8 @@ function MyGames() {
         <section>
             <Banner />
             <Wrapper>
-                <div className='h-auto px-4 md:px-10'>
-                    <div className='flex items-center lg:flex-row flex-col gap-y-10 w-full mt-10 mb-20 gap-5'>
+                <div className='flex items-center justify-center flex-col h-auto py-16 px-4 md:px-10'>
+                    <div className='flex items-center lg:flex-row flex-col gap-y-10 w-full mb-20 gap-5'>
                         <div className='flex-center flex-col sm:flex-row w-full lg:w-[79%] justify-between gap-5'>
                             <Input
                                 icon={<SearchIcon />}
@@ -63,14 +63,16 @@ export default MyGames;
 
 const GameCard = () => {
     return (
-        <div className="relative flex flex-col items-center justify-center w-64 sm:w-56 md:w-64 lg:w-72 h-80 p-2 px-2 lg:p-4 bg-white border-[6px] border-black -skew-x-1 md:skew-custom shadow-md">
+        <div className="relative flex flex-col items-center justify-center w-64 sm:w-56 md:w-64 lg:w-72 h-80 p-2 px-2 lg:p-4 bg-white border-[6px] border-black -skew-x-1 md:-skew-x-3 shadow-md">
             {/* Badge */}
-            <div className="absolute w-48 text-center -top-1 left-1/2 -translate-x-1/2 bg-black text-white text-xs px-5 py-2 -skew-x-6">
+            <div
+                style={{ clipPath: "polygon(0 0, 100% 0%, 97% 100%, 7% 100%)" }}
+                className="absolute w-48 text-center -top-1 left-1/2 -translate-x-1/2 bg-black text-white text-xs px-5 py-2">
                 No of times played :05
             </div>
 
             {/* Content */}
-            <div className="flex flex-col items-center text-center gap-y-4 lg:mt-4">
+            <div className="flex flex-col items-center text-center gap-y-4 md:gap-y-1 lg:mt-4">
                 <Image src={GameIcon} alt="Game Icon" width={100} height={80} className='w-20 md:w-28' />
 
                 <h2 className="text-5xl lg:text-7xl font-popfun text-dark-blue">GAME 12</h2>

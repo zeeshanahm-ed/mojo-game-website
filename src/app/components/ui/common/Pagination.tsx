@@ -49,14 +49,15 @@ const Pagination: React.FC<PaginationProps> = ({ totalPages = 10 }) => {
     };
 
     return (
-        <div className="w-full bg-white my-20 gap-8 flex items-center justify-center flex-row">
+        <div className="w-full bg-white mt-20 gap-8 flex items-center justify-center flex-col md:flex-row">
             {/* Prev */}
-            <div
+            <button
+
                 className="text-xl md:mr-10 cursor-pointer hover:text-dark-gray"
                 onClick={() => currentPage > 1 && setCurrentPage((prev) => prev - 1)}
             >
                 Prev
-            </div>
+            </button>
 
             {/* Pages */}
             <div className="flex items-center gap-2">
@@ -78,12 +79,12 @@ const Pagination: React.FC<PaginationProps> = ({ totalPages = 10 }) => {
             </div>
 
             {/* Next */}
-            <div
+            <button
                 className="text-xl md:ml-10 cursor-pointer hover:text-dark-gray"
                 onClick={() => currentPage < totalPages && setCurrentPage((prev) => prev + 1)}
             >
                 Next
-            </div>
+            </button>
         </div>
     );
 };

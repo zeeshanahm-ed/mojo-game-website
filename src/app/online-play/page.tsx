@@ -84,7 +84,7 @@ function OnlinePlay() {
             <Banner />
             <ChooseMode selectedMode={selectedMode} handleModeSelect={handleModeSelect} />
             <Wrapper>
-                <div className='flex items-center justify-center flex-col h-auto w-full px-4 md:px-10'>
+                <div className='flex items-center justify-center flex-col h-auto w-full px-4 md:px-10 py-16'>
                     <div className=" text-center flex-col items-center justify-center mt-10 w-full">
                         {selectedMode === "friendly" ?
                             <JoinRoom

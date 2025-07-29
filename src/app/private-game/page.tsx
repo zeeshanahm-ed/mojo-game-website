@@ -62,8 +62,8 @@ function PrivateGames() {
         <section>
             <Banner />
             <Wrapper>
-                <div className='flex items-center justify-center flex-col h-auto pb-32 px-4 md:px-10'>
-                    <div className='flex-center gap-y-10 w-full mt-10 mb-20 flex-wrap'>
+                <div className='flex items-center justify-center flex-col h-auto py-16 px-4 md:px-10'>
+                    <div className='flex-center gap-y-10 w-full mb-20 flex-wrap'>
                         <div className='flex-center flex-col sm:flex-row justify-between w-full gap-5'>
                             <Input
                                 icon={<SearchIcon />}
