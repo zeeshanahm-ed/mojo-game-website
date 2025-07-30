@@ -62,6 +62,8 @@ p {
 
 button:disabled {
     cursor: not-allowed !important;
+    background-color: rgb(202, 202, 202) !important;
+    color: gray !important;
 }
 
 .skew-custom {

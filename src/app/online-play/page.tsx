@@ -84,8 +84,8 @@ function OnlinePlay() {
             <Banner />
             <ChooseMode selectedMode={selectedMode} handleModeSelect={handleModeSelect} />
             <Wrapper>
-                <div className='flex items-center justify-center flex-col h-auto w-full px-4 md:px-10 py-16'>
-                    <div className=" text-center flex-col items-center justify-center mt-10 w-full">
+                <div className='flex items-center justify-center flex-col h-auto w-full px-4 md:px-10 pb-16'>
+                    <div className=" text-center flex-col items-center justify-center w-full">
                         {selectedMode === "friendly" ?
                             <JoinRoom
                                 isEditingRoomName={isEditingRoomName}
@@ -140,7 +140,7 @@ function OnlinePlay() {
                             currentPlayer={currentPlayer}
                             onSelect={handleTurnSwitch}
                         />
-                        <Button className='text-white md:w-72 w-52 sm:w-64 my-16 text-4xl md:text-5xl'>Create Game</Button>
+                        <Button disabled className='text-white md:w-72 w-52 sm:w-64 my-16 text-4xl md:text-5xl'>Create Game</Button>
                         {selectedMode === "challenge" &&
                             <p className="text-base md:text-lg text-red text-start md:text-center">
                                 <strong className='mr-5 text-black'>Note : </strong>  Creating game requires 1 credit. if you win this game credit will be refunded

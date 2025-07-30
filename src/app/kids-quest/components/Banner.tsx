@@ -36,23 +36,23 @@ const Banner: React.FC<BannerProps> = () => {
                             prefixElement={<IoIosArrowBack className='text-xl lg:text-3xl lg:mb-2 mb-1 mr-0' />}
                             className='text-xl lg:text-4xl w-28 lg:w-40 flex items-center'>Main page</Button>
                     </div>
-                    <div className="flex left-1/2 md:left-0 -bottom-[100px] md:-bottom-[50px] absolute items-center justify-center w-24 h-24 md:w-20 md:h-16 lg:w-28 lg:h-20">
-                        <Image src={kidsToy} alt='Tube Image' className='object-contain w-full h-full' />
+                    <div className="flex left-[35%] xsm:left-[40%] md:left-0 -bottom-[100px] md:-bottom-[50px] absolute items-center justify-center w-20 h-20 xsm:w-20 xsm:h-20 md:w-20 md:h-16 lg:w-28 lg:h-20">
+                        <Image src={kidsToy} alt='Kids Toy' className='object-contain w-full h-full' />
                     </div>
-                    <div className="flex left-[10%] -bottom-[85px] md:-top-5  lg:-top-2 md:left-0 lg:left-5 absolute items-center justify-center w-20 h-20 md:h-16 lg:w-28 lg:h-20">
-                        <Image src={kidsToy2} alt='Electron Image' className='object-contain w-full h-full' />
+                    <div className="flex left-0  xsm:left-[5%] -bottom-[85px] md:-top-5  lg:-top-2 md:left-0 lg:left-5 absolute items-center justify-center w-16 h-16 xsm:w-20  lg:w-28 lg:h-20">
+                        <Image src={kidsToy2} alt='Kids Toy' className='object-contain w-full h-full' />
                     </div>
 
-                    <div className="flex right-[40%] md:left-24 lg:left-36 -top-0 md:top-20 lg:top-14 absolute items-center justify-center w-20 h-20 md:w-20 md:h-16 lg:w-32 lg:h-24">
-                        <Image src={Spiner} alt='Electron Image' className='object-contain w-full h-full' />
+                    <div className="hidden xsm:flex right-[25%] md:left-24 lg:left-36 -top-10 md:top-16 lg:top-14 absolute items-center justify-center w-20 h-16 md:w-20 md:h-16 lg:w-32 lg:h-24">
+                        <Image src={Spiner} alt='Spiner' className='object-contain w-full h-full' />
                     </div>
-                    <div className="flex  -top-5  -right-0 md:-bottom-[50px] absolute items-center justify-center w-20 h-20 md:h-16 lg:w-28 lg:h-24">
+                    <div className="flex  -top-5  -right-0 md:-bottom-[50px] absolute items-center justify-center w-16 h-16 xsm:w-20 xsm:h-20 md:h-16 lg:w-28 lg:h-24">
                         <Image src={Train} alt='Train ' className='object-contain w-full h-full' />
                     </div>
-                    <div className="flex -bottom-[45px] md:-bottom-[65px] right-0  absolute items-center justify-center w-20 h-16 lg:w-28 lg:h-24">
+                    <div className="flex -bottom-[45px] md:-bottom-[65px] right-0  absolute items-center justify-center w-16 h-14 xsm:w-20 xsm:h-16 lg:w-28 lg:h-24">
                         <Image src={Bucket} alt='Bucket' className='object-contain w-full h-full' />
                     </div>
-                    <div className="flex right-24 lg:right-36 top-6 lg:top-14 absolute items-center justify-center w-20 h-16 lg:w-28 lg:h-20">
+                    <div className="hidden xsm:flex right-28 md:right-24 lg:right-36 xsm:top-[75px] lg:top-14 absolute items-center justify-center xsm:w-16 xsm:h-16 lg:w-28 lg:h-20">
                         <Image src={Horse} alt='Horse' className='object-contain w-full h-full' />
                     </div>
 
@@ -61,7 +61,7 @@ const Banner: React.FC<BannerProps> = () => {
                         <h2 className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl leading-tight uppercase font-popfun">
                             kids section
                         </h2>
-                        <p className="text-xs text-start md:text-center sm:text-sm md:text-base max-w-64 lg:text-lg md:max-w-lg lg:max-w-max">
+                        <p className="text-xs text-start md:text-center sm:text-sm md:text-base max-w-64 lg:text-lg md:max-w-md lg:max-w-max">
                             A special interface for children. We test their knowledge according to their ages.
                         </p>
                     </div>

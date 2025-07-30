@@ -23,51 +23,34 @@ interface CategoriesSectionProps {
 
 function CategoriesSection({ data, year, onSelect, selectedCategories, setSelectedCategories, mode, currentPlayer, title = true, subTitle = true, showInput = true }: CategoriesSectionProps) {
     const [search, setSearch] = useState('');
-    const [filteredCategories, setFilteredCategories] = useState<GamesCategoryInterface[]>(data);
+    const filteredCategories = data.map((item) => ({
+        ...item,
+        selected: selectedCategories.some((cat) => cat.name === item.name),
+    }));
     const MAX_SELECTION = 6;
     const MAX_PER_PLAYER = 3;
 
     const [player1Categories, setPlayer1Categories] = useState<GamesCategoryInterface[]>([]);
     const [player2Categories, setPlayer2Categories] = useState<GamesCategoryInterface[]>([]);
 
-    useEffect(() => {
-        const modifyCategories = data?.map((item) => {
-            return {
-                ...item,
-                selected: false
-            }
-        });
-        setFilteredCategories(modifyCategories);
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
 
     const handleSearch = (value: string) => {
         setSearch(value)
     };
 
     const handleCategoriesClick = (value: GamesCategoryInterface) => {
-        const isAlreadySelected = value.selected;
+        const isAlreadySelected = selectedCategories.some((cat) => cat.name === value.name);
 
         if (mode === 'offline') {
             if (isAlreadySelected) {
-                // Deselect logic for offline mode
-                const updated = filteredCategories.map(item =>
-                    item.name === value.name ? { ...item, selected: false } : item
-                );
-                setFilteredCategories(updated);
-
                 setSelectedCategories(prev => prev.filter(cat => cat.name !== value.name));
                 return;
             }
 
-            const alreadySelectedCount = filteredCategories.filter(c => c.selected).length;
-            if (alreadySelectedCount >= MAX_SELECTION) return;
+            if (selectedCategories.length >= MAX_SELECTION) return;
 
-            const updated = filteredCategories.map(item =>
-                item.name === value.name ? { ...item, selected: true } : item
-            );
-            setFilteredCategories(updated);
             setSelectedCategories(prev => [...prev, value]);
+
         } else if (mode === 'online') {
             // Don't allow deselect in online mode
             if (isAlreadySelected) return;
@@ -78,7 +61,7 @@ function CategoriesSection({ data, year, onSelect, selectedCategories, setSelect
             const updated = filteredCategories.map(item =>
                 item.name === value.name ? { ...item, selected: true } : item
             );
-            setFilteredCategories(updated);
+            // setFilteredCategories(updated);
 
             if (currentPlayer === 1 && player1Categories.length < MAX_PER_PLAYER) {
                 setPlayer1Categories(prev => [...prev, value]);
@@ -92,15 +75,10 @@ function CategoriesSection({ data, year, onSelect, selectedCategories, setSelect
 
 
     const isCategoryDisabled = (category: GamesCategoryInterface): boolean => {
-        const selectedCount = filteredCategories.filter(c => c.selected).length;
+        const isSelected = selectedCategories.some((c) => c.name === category.name);
 
-        if (category.selected) return false;
-        if (selectedCount >= MAX_SELECTION) return true;
-
-        if (mode === 'online') {
-            if (currentPlayer === 1 && player1Categories.length >= MAX_PER_PLAYER) return true;
-            if (currentPlayer === 2 && player2Categories.length >= MAX_PER_PLAYER) return true;
-        }
+        if (isSelected) return false;
+        if (selectedCategories.length >= MAX_SELECTION) return true;
 
         return false;
     };

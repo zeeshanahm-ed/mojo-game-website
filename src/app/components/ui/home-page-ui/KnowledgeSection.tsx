@@ -6,8 +6,15 @@ import Wrapper from '../common/Wrapper';
 
 //icons
 import GroupNPerson from "@/app/assets/images/group-image.png"
+import { useCreateGameModalStore } from '@/app/store/useCreateGameModalStore';
+import Button from '../common/Button';
 
 const KnowledgeSection = () => {
+    const { openModal } = useCreateGameModalStore();
+
+    const handleOPenModal = () => {
+        openModal();
+    }
 
 
     return (
@@ -18,15 +25,15 @@ const KnowledgeSection = () => {
                         <h2 className="text-6xl md:text-7xl lg:text-8xl font-popfun text-black mb-2 uppercase">
                             Test Your Knowledge
                         </h2>
-                        <p className="text-sm md:text-base xl:text-xl leading-6 text-black max-w-xl">
+                        <p className="text-sm md:text-base xl:text-xl text-black max-w-xl">
                             It is a fun cultural game suitable for all ages, testing your group`s knowledge. The game includes all types of questions according to the selected category.
                         </p>
-                        {/* <Button className='mt-10 px-20 pt-3' onClick={() => handleOPenModal()}>
-                            <span className="inline-block transform skew-x-12 tracking-wider text-5xl md:text-6xl uppercase font-popfun" >Create a game</span>
-                        </Button> */}
+                        <Button className='my-10 w-44 md:w-64 lg:w-72 text-2xl sm:text-3xl md:text-4xl lg:text-5xl uppercase font-popfun' onClick={() => handleOPenModal()}>
+                            Create a game
+                        </Button>
                     </div>
                     <div className='my-10'>
-                        <Image src={GroupNPerson} alt='Person Image' className='h-1/2 w-[400px] md:w-[700px]' />
+                        <Image src={GroupNPerson} alt='Person Image' className='h-1/2 w-[400px] md:w-[800px]' />
                     </div>
                 </div>
             </Wrapper>

@@ -128,7 +128,7 @@ function GamePlay() {
     };
 
     const handleExitGame = () => {
-        const url = session?.mode === "offline" ? "/offline-play" : "/online-play";
+        const url = "/my-games";
         router.push(url);
     };
 

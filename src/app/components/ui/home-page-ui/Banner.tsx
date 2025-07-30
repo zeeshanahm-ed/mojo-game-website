@@ -11,7 +11,7 @@ import WorldImage from '@/app/assets/images/world.png';
 import RocketImage from '@/app/assets/images/rocket.png';
 import StarImage from '@/app/assets/images/star.png';
 import LightBulbImage from '@/app/assets/images/light-bulb.png';
-// import BookImage from '@/app/assets/images/book.png';
+import BookImage from '@/app/assets/images/book.png';
 import PrivateGameImage from '@/app/assets/images/private-game.png';
 import KidsGameImage from '@/app/assets/images/kids-quest.png';
 import StudentGameImage from '@/app/assets/images/student-quest.png';
@@ -47,14 +47,14 @@ export default function Banner() {
         <section className="w-full bg-red text-white px-4 md:px-10 py-10">
             <Wrapper>
                 <div className='relative h-[23rem] md:h-[37rem] lg:h-[44rem]'>
-                    <div className="hidden sm:block 2xl:right-0 -right-[4%] md:-right-[40px] top-3 md:top-5 absolute md:w-[150px] md:h-[220px] w-[100px] h-[150px]">
+                    <div className="hidden sm:block 2xl:right-0 -right-[4%] md:-right-[40px] top-3 md:top-5 absolute md:w-[150px] md:h-[320px] w-[100px] h-[150px]">
                         <Image
                             src={WorldImage}
                             alt="World"
                             className="w-full h-full object-cover"
                         />
                     </div>
-                    <div className="xsm:left-64 left-52 sm:left-[50%] md:left-[60%] top-3 md:top-5 relative md:w-12 md:h-12 w-8 h-8">
+                    <div className="xsm:left-64 left-52 sm:left-[50%] md:left-[55%] top-3 md:top-5 relative md:w-12 md:h-12 w-8 h-8">
                         <Image src={StarImage} alt='Star' className='w-full h-full object-contain' />
                     </div>
                     <h1 className="xsm:text-6xl text-5xl -mt-8 md:text-8xl text-start lg:text-9xl font-popfun leading-tight uppercase">
@@ -80,17 +80,24 @@ export default function Banner() {
                             <GameCard type={"privateGame"} image={PrivateGameImage} title={t("brand")} subtitle={t("private_game")} onClick={(v: string) => handleGoTo(v)} bgColor="bg-light-blue" className="-ml-2" />
                         </div>
                     </div>
-                    <div className="-rotate-45 w-20 h-20 md:w-44 md:h-44 left-[80%] sm:left-[60%] md:-top-[70%] md:left-[60%] -top-[370px] relative">
+                    <div className="-rotate-45 md:rotate-0 w-20 h-20 lg:w-44 lg:h-44 md:w-40 md:h-40 left-[80%] sm:left-[60%] md:-top-[70%] md:left-[55%] -top-[370px] relative">
                         <Image
                             src={RocketImage}
                             alt="Rocket"
                             className="w-full h-full object-cover"
                         />
                     </div>
-                    <div className="w-20 h-20 md:w-44 md:h-44 left-[75%] sm:left-[70%] md:-top-[90%] md:left-[80%] -top-[370px] relative">
+                    <div className="w-20 h-20 md:w-36 md:h-36 lg:w-44 lg:h-44 left-[75%] sm:left-[70%] md:-top-[90%] md:left-[70%] -top-[370px] relative">
                         <Image
                             src={LightBulbImage}
-                            alt="Rocket"
+                            alt="Bulb"
+                            className="w-full h-full"
+                        />
+                    </div>
+                    <div className="w-20 hidden lg:flex h-20 md:w-48 md:h-48 left-[75%] sm:left-[70%] md:-top-[80%] lg:left-[80%] xl:left-[70%] -top-[370px] relative">
+                        <Image
+                            src={BookImage}
+                            alt="Book"
                             className="w-full h-full"
                         />
                     </div>

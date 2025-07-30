@@ -35,7 +35,7 @@ const Button = forwardRef<HTMLButtonElement, IButtonProps>(
                 ref={ref}
                 type={type}
                 {...rest}
-                className={`${variant} ${className} ${bgClass ? bgClass : "bg-purple"} ${textClass ? textClass : "text-white"} ${boxShadow ? "boxShadow-custom" : "shadow-none"} active:shadow-none transition-all duration-300 pt-2 px-4 transform -skew-x-6 md:-skew-x-12 border-2 border-black shadow-lg font-popfun`}
+                className={`${variant} ${className} ${bgClass ? bgClass : "bg-purple"} ${textClass ? textClass : "text-white"} ${boxShadow ? "boxShadow-custom" : "shadow-none"} pt-2 px-4 transform -skew-x-6 md:-skew-x-12 border-2 border-black shadow-lg font-popfun`}
                 aria-label="Button"
             >
                 {prefixElement}

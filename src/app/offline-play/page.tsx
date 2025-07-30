@@ -2,15 +2,14 @@
 import React, { useState } from 'react'
 import Banner from './components/Banner'
 import Wrapper from '@/app/components/ui/common/Wrapper';
-import Input from '@/app/components/ui/common/Input';
 import CategoriesSection from '@/app/components/ui/common/CategoriesSection';
-import Image from 'next/image';
 import Button from '@/app/components/ui/common/Button';
 import { useRouter } from 'next/navigation';
 import { categories } from '@/app/constants/constant';
 import { GamesCategoryInterface } from '../utils/Interfaces';
 import { useGameSession } from '../store/gameSession';
 import TeamInfo from '../components/ui/common/TeamInfo';
+import { showErrorMessage } from '../utils/messageUtils';
 
 
 interface TeamState {
@@ -63,19 +62,27 @@ function OfflineMode() {
         setErrors(null);
     };
 
-    const handleStartGame = () => {
-        if (gameName.trim() === "") {
+    const handleValidation = () => {
+        let error = null;
+        if (selectedCategories.length === 0 || selectedCategories.length < 6) {
+            showErrorMessage("Please select maximum 6 categories.");
+            error = true;
+        } else if (gameName.trim() === "") {
             setErrors({ ...errors, gameName: "Game name cannot be empty" });
-            return;
-        }
-        if (teams.first.name.trim() === "") {
+            error = true;
+        } else if (teams.first.name.trim() === "") {
             setErrors({ ...errors, firstTeam: "Team name cannot be empty" });
-            return;
-        }
-        if (teams.second.name.trim() === "") {
+            error = true;
+        } else if (teams.second.name.trim() === "") {
             setErrors({ ...errors, secondTeam: "Team name cannot be empty" });
-            return;
+            error = true;
         }
+        return error;
+    }
+
+    const handleStartGame = () => {
+        const error = handleValidation();
+        if (error) return;
         const session = {
             gameName: gameName || 'My Quiz',
             mode: "offline",
