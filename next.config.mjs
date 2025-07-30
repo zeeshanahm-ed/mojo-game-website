@@ -2,8 +2,10 @@
 const nextConfig = {
     experimental: {
         turbo: {
-            loaders: {}, // leave it empty or configure only if needed
-        },
+            rules: {
+                "*.mdx": ["mdx-loader"]
+            }
+        }
     },
     images: {
         domains: ['logos-world.net', "placehold.co"], // ✅ allow this domain
