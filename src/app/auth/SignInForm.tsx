@@ -6,6 +6,7 @@ import { ISignInForm } from './core/_models';
 //icons
 import PasswordIcon from '../assets/icons/password-icon.svg';
 import EmailIcon from '../assets/icons/email-icon.svg';
+import { IoEye, IoEyeOff } from "react-icons/io5";
 
 interface ValidationErrors {
     [key: string]: string;
@@ -13,6 +14,8 @@ interface ValidationErrors {
 
 export default function SignInForm() {
     const { openModal } = useAuthModalStore();
+    const [showPassword, setShowPassword] = useState(false);
+    const togglePasswordVisibility = () => setShowPassword(!showPassword);
 
     const [formErrors, setFormErrors] = useState<ValidationErrors>()
     const [formState, setFormState] = useState<ISignInForm>({
@@ -71,13 +74,14 @@ export default function SignInForm() {
             {/* Modal Body */}
             <div className="tracking-normal md:px-20 sm:px-10 px-5 pt-4 space-y-6">
                 {/* Email Input */}
-                <div className="mb-6 flex items-center h-12 md:h-14 w-full transform -skew-x-12 border-2 border-black overflow-hidden">
+                <div className="flex items-center h-12 md:h-14 w-full transform -skew-x-12 border-2 border-black overflow-hidden">
                     <div className="bg-purple w-12 md:w-16 flex items-center justify-center h-full">
                         <EmailIcon className="" />
                     </div>
                     <input
                         value={formState.email}
                         type="email"
+                        name='email'
                         placeholder="Enter your email"
                         className="input h-full rounded-none input-bordered w-full pl-2 md:pl-8 pr-4 py-3 text-base md:text-lg bg-white text-gray-800 border-none focus:outline-none"
                         onChange={onInputChange}
@@ -86,17 +90,21 @@ export default function SignInForm() {
                 <span className='text-red text-sm md:text-base'>{formErrors?.email}</span>
 
                 {/* Password Input */}
-                <div className="mb-6 flex items-center h-12 md:h-14 w-full transform -skew-x-12 border-2 border-black overflow-hidden">
+                <div className="flex items-center h-12 md:h-14 w-full transform -skew-x-12 border-2 border-black overflow-hidden">
                     <div className="bg-purple flex items-center justify-center w-12 md:w-16 h-full">
                         <PasswordIcon />
                     </div>
                     <input
                         value={formState.password}
-                        type="password"
+                        type={showPassword ? "text" : "password"}
                         placeholder="Your password"
+                        name='password'
                         className="input h-full rounded-none input-bordered w-full pl-2 md:pl-8 pr-4 py-3 text-base md:text-lg bg-white text-gray-800 border-none focus:outline-none"
                         onChange={onInputChange}
                     />
+                    <button onClick={togglePasswordVisibility} className="flex items-center justify-center w-12 md:w-16 h-full">
+                        {showPassword ? <IoEye className='text-2xl' /> : <IoEyeOff className='text-2xl' />}
+                    </button>
                 </div>
                 <span className='text-red text-sm md:text-base'>{formErrors?.password}</span>
                 {/* Create new account link */}

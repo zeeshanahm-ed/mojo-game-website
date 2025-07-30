@@ -12,6 +12,7 @@ import ContactIcon from '@/app/assets/icons/contact-icon.svg';
 import UserIcon from '@/app/assets/icons/user-icon.svg';
 import AgeIcon from '@/app/assets/icons/age-icon.svg';
 import FallBackProfileImage from '@/app/assets/images/fallback-profile-image.jpg';
+import { IoEye, IoEyeOff } from "react-icons/io5";
 
 interface ValidationErrors {
     [key: string]: string;
@@ -20,6 +21,8 @@ interface ValidationErrors {
 export default function SignUpForm() {
     const { openModal } = useAuthModalStore();
     const [formErrors, setFormErrors] = useState<ValidationErrors>()
+    const [showPassword, setShowPassword] = useState(false);
+    const togglePasswordVisibility = () => setShowPassword(!showPassword);
     const [formState, setFormState] = useState<ISignUpForm>({
         firstName: "",
         lastName: "",
@@ -240,13 +243,16 @@ export default function SignUpForm() {
                     </div>
                     <input
                         name='password'
-                        type="password"
+                        type={showPassword ? "text" : "password"}
                         placeholder="Your password"
                         className="input h-full rounded-none input-bordered w-full pl-2 md:pl-8 pr-4 py-3 text-base md:text-lg bg-white text-gray-800 border-none focus:outline-none"
                         required
                         onChange={onInputChange}
                         autoComplete="off"
                     />
+                    <button onClick={togglePasswordVisibility} className="flex items-center justify-center w-12 md:w-16 h-full">
+                        {showPassword ? <IoEye className='text-2xl' /> : <IoEyeOff className='text-2xl' />}
+                    </button>
                 </div>
                 <span className='text-red text-sm md:text-base'>{formErrors?.password}</span>
 

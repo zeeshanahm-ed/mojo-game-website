@@ -40,6 +40,10 @@ const Input: React.FC<InputProps> = ({
                 name={name}
                 className={`input h-full input-bordered pl-2 md:pl-8 w-full text-base md:text-lg bg-white text-gray-800 border-none focus:outline-none ${inputClassName}`}
             />
+            {/* <button onClick={togglePasswordVisibility} className="bg-purple w-16 md:w-20 flex items-center justify-center h-full">
+                {showPassword ? <IoEye /> : <IoEyeOff />}
+            </button> */}
+
         </div>
     );
 };
