@@ -13,12 +13,7 @@ import Horse from "@/app/assets/images/horse.png";
 import Train from "@/app/assets/images/train.png";
 
 
-interface BannerProps {
-
-}
-
-
-const Banner: React.FC<BannerProps> = () => {
+const Banner: React.FC = () => {
     const router = useRouter();
     const handleGoBack = () => {
         router.push("/");

@@ -1,5 +1,5 @@
 "use client"
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import Input from '@/app/components/ui/common/Input';
 import Image from 'next/image';
 import { GamesCategoryInterface } from '@/app/utils/Interfaces';
@@ -58,9 +58,9 @@ function CategoriesSection({ data, year, onSelect, selectedCategories, setSelect
             const alreadySelectedCount = filteredCategories.filter(c => c.selected).length;
             if (alreadySelectedCount >= MAX_SELECTION) return;
 
-            const updated = filteredCategories.map(item =>
-                item.name === value.name ? { ...item, selected: true } : item
-            );
+            // const updated = filteredCategories.map(item =>
+            //     item.name === value.name ? { ...item, selected: true } : item
+            // );
             // setFilteredCategories(updated);
 
             if (currentPlayer === 1 && player1Categories.length < MAX_PER_PLAYER) {
