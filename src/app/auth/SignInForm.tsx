@@ -72,7 +72,7 @@ export default function SignInForm() {
     return (
         <section>
             {/* Modal Body */}
-            <div className="tracking-normal md:px-20 sm:px-10 px-5 pt-4 space-y-6">
+            <div className="tracking-normal md:px-20 sm:px-10 px-5 py-10 space-y-6">
                 {/* Email Input */}
                 <div className="flex items-center h-12 md:h-14 w-full transform -skew-x-12 border-2 border-black overflow-hidden">
                     <div className="bg-purple w-12 md:w-16 flex items-center justify-center h-full">
@@ -108,9 +108,7 @@ export default function SignInForm() {
                 </div>
                 <span className='text-red text-sm md:text-base'>{formErrors?.password}</span>
                 {/* Create new account link */}
-                <div className="text-sm md:text-base text-left -ml-2">
-                    <button onClick={handleNewAccount} className="hover:underline">Create new account ?</button>
-                </div>
+                <button onClick={handleNewAccount} className="font-normal font-Product_sans text-sm md:text-base text-left -ml-2 hover:underline">Create new account ?</button>
 
 
                 <div className='flex items-center justify-center mt-10'>

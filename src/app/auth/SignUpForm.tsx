@@ -116,11 +116,11 @@ export default function SignUpForm() {
 
     return (
         <section>
-            <div className="tracking-normal md:px-20 sm:px-10 px-5 space-y-6">
+            <div className="tracking-normal md:px-20 sm:px-10 px-5 py-10 space-y-6">
                 {/* Upload Picture Section */}
                 <div className="flex items-center justify-center mb-6 gap-5">
-                    <span className="text-gray-700 text-base md:text-lg mb-2">Upload Picture</span>
-                    <div className="relative w-24 h-24 border-2 border-gray-300 flex items-center justify-center">
+                    <span className="text-gray-400 text-base md:text-lg mb-2">Upload Picture</span>
+                    <div className="relative w-28 h-28 border-2 border-gray-300 flex items-center justify-center">
                         {/* Hidden file input */}
                         <input
                             type="file"
@@ -282,7 +282,7 @@ export default function SignUpForm() {
 
                 {/* "or Login" link */}
                 <div className="text-center text-gray-700 text-base mt-4">
-                    <button type='button' onClick={handleGoToLogin} className="hover:underline">or Login</button>
+                    <button type='button' onClick={handleGoToLogin} className="font-normal font-Product_sans hover:underline">or Login</button>
                 </div>
             </div>
         </section>
