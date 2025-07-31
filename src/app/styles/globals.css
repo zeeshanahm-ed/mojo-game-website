@@ -56,6 +56,14 @@ body {
     letter-spacing: 0.05rem;
 }
 
+:where(.modal[open], .modal-open, .modal-toggle:checked + .modal):not(.modal-start, .modal-end) {
+    scrollbar-gutter: inherit;
+}
+
+:where( :root:has(.modal-open, .modal[open], .modal:target, .modal-toggle:checked, .drawer:not(.drawer-open) > .drawer-toggle:checked)) {
+    scrollbar-gutter: inherit;
+}
+
 p {
     letter-spacing: normal !important;
 }
