@@ -9,6 +9,7 @@ import TeamInfo from '../components/ui/common/TeamInfo';
 import Button from '../components/ui/common/Button';
 import { useRouter } from 'next/navigation';
 import { useGameSession } from '../store/gameSession';
+import { showErrorMessage } from '../utils/messageUtils';
 
 //icons
 
@@ -61,19 +62,27 @@ function KidsQuest() {
         setErrors(null);
     };
 
-    const handleStartGame = () => {
-        if (gameName.trim() === "") {
+    const handleValidation = () => {
+        let error = null;
+        if (selectedCategories.length === 0 || selectedCategories.length < 6) {
+            showErrorMessage("Please select maximum 6 categories.");
+            error = true;
+        } else if (gameName.trim() === "") {
             setErrors({ ...errors, gameName: "Game name cannot be empty" });
-            return;
-        }
-        if (teams.first.name.trim() === "") {
+            error = true;
+        } else if (teams.first.name.trim() === "") {
             setErrors({ ...errors, firstTeam: "Team name cannot be empty" });
-            return;
-        }
-        if (teams.second.name.trim() === "") {
+            error = true;
+        } else if (teams.second.name.trim() === "") {
             setErrors({ ...errors, secondTeam: "Team name cannot be empty" });
-            return;
+            error = true;
         }
+        return error;
+    }
+
+    const handleStartGame = () => {
+        const error = handleValidation();
+        if (error) return;
         const session = {
             gameName: gameName || 'My Quiz',
             mode: "offline",
