@@ -1,5 +1,5 @@
 {
-    "brand": "MOJO",
+    "mojo": "MOJO",
     "contact_us": "Contact us",
     "my_games": "My Games",
     "slogan_line_1": "Challenge Your",
@@ -20,5 +20,22 @@
     "create": "Create",
     "aGame": "A Game",
     "withUltimate": "With Ultimate",
-    "quizExperience": "Quiz Experience"
+    "quizExperience": "Quiz Experience",
+    "testKnowledge": "Test Your Knowledge",
+    "playingModeseDescription": "It is a fun cultural game suitable for all ages, testing your group's knowledge. The game includes all types of questions according to the selected category.",
+    "createGame": "Create A Game",
+    "playingModes": "Playing Modes",
+    "lifeLines": "Life Lines",
+    "lifeLinesNote": "Use them before you see the question",
+    "callFriend": "Call a Friend",
+    "secondChance": "2nd Chance",
+    "scoreSteal": "Score Steal",
+    "callFriendNote": "Your friend who knows everything, it's time to call him!",
+    "secondChanceNote": "In case of wrong option or doubt, you can take another chance to guess right answer.",
+    "scoreStealNoteLine1": "This one's for you!",
+    "scoreStealNoteLine2": "Answer both to secure points.",
+    "offline": "offline",
+    "online": "online",
+    "play": "play",
+    "newGame": "New Game"
 }

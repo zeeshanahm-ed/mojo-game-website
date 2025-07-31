@@ -1,5 +1,5 @@
 {
-    "brand": "موجو",
+    "mojo": "موجو",
     "contact_us": "اتصل بنا",
     "my_games": "ألعابي",
     "slogan_line_1": "اعصر مخك",
@@ -24,5 +24,22 @@
     "aboutMojo": "عن موجو",
     "aGame": "لعبة",
     "withUltimate": "مع أقوى",
-    "quizExperience": "تجربة الاختبار"
+    "quizExperience": "تجربة الاختبار",
+    "testKnowledge": "تحدى معلوماتك",
+    "playingModeseDescription": "لعبة حماسية تجمع كل الأعمار، تختبر معلوماتكم العامة حسب التصنيف اللي تختارونه.",
+    "createGame": "إنشاء لعبة",
+    "playingModes": "أوضاع اللعب",
+    "lifeLines": "شغلات تساعدك",
+    "lifeLinesNote": "استخدمها قبل أن ترى السؤال",
+    "callFriend": "شف خويك",
+    "secondChance": "فرصتين",
+    "scoreSteal": "إلعب في العداد",
+    "callFriendNote": "صديقك الذي يعرف كل شيء، حان الوقت للاتصال به!",
+    "secondChanceNote": "في حالة وجود خيار خاطئ أو شك، يمكنك أن تأخذ فرصة أخرى لتخمين الإجابة الصحيحة.",
+    "scoreStealNoteLine1": "هذا لك!",
+    "scoreStealNoteLine2": "جب على كلا السؤالين للحصول على النقاط.",
+    "offline": "غير متصل",
+    "online": "متصل",
+    "play": "اللعب",
+    "newGame": "لعبة جديدة"
 }

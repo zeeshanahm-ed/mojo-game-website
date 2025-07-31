@@ -1,4 +1,5 @@
-import type { Config } from "tailwindcss";
+import type { Config } from 'tailwindcss';
+import plugin from 'tailwindcss/plugin';
 
 const config: Config = {
   content: [
@@ -61,6 +62,29 @@ const config: Config = {
       },
     },
   },
-  plugins: [require('daisyui')],
+  plugins: [
+    require('daisyui'),
+    plugin(({ addVariant, addUtilities }) => {
+      // Custom Variants
+      addVariant('path-stroke', ['&>g>g>line', '&>g>g>path', '&>g>g>rect', '&>g>path', '&>g>line']);
+      addVariant('path-fill', ['&>g>g>line', '&>g>g>path', '&>g>g>rect', '&>g>path', '&>g>line']);
+      addVariant('select-svg', ['&>div>span>svg>g>path']);
+
+      // Custom Utilities
+      addUtilities({
+        '.flex-centered': {
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+        },
+        '.centered-xy': {
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+        },
+      });
+    }),
+  ],
 };
 export default config;
