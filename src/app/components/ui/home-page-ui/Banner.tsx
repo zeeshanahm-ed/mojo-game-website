@@ -8,7 +8,7 @@ import { useCreateGameModalStore } from '@/app/store/useCreateGameModalStore';
 import CreateGameModal from '../../modals/create-game-modal';
 import { useDirection } from '@/app/hooks/useGetDirection';
 //icon
-import WorldImage from '@/app/assets/images/world.png';
+import WorldImage from '@/app/assets/images/world-imag.png';
 import RocketImage from '@/app/assets/images/rocket.png';
 import StarImage from '@/app/assets/images/star.png';
 import LightBulbImage from '@/app/assets/images/light-bulb.png';
@@ -49,11 +49,11 @@ export default function Banner() {
         <section dir={direction} className="w-full bg-red text-white px-4 md:px-10 py-10">
             <Wrapper>
                 <div className='relative h-[23rem] md:h-[37rem] lg:h-[44rem]'>
-                    <div className="hidden sm:block 2xl:end-0 -end-[4%] md:-end-[40px] top-3 md:top-5 absolute md:w-[150px] md:h-[320px] w-[100px] h-[150px]">
+                    <div className="hidden md:block xl:-end-20 -end-[4%] md:-end-48 top-3 md:top-0 absolute md:w-[350px] md:h-[320px] lg:w-[400px]">
                         <Image
                             src={WorldImage}
                             alt="World"
-                            className="w-full h-full object-cover"
+                            className="w-full h-full object-contain"
                         />
                     </div>
                     <div className="xsm:start-64 start-52 sm:start-[50%] md:start-[55%] top-3 md:top-5 relative md:w-12 md:h-12 w-8 h-8">
@@ -84,14 +84,14 @@ export default function Banner() {
                             <GameCard type={"privateGame"} image={PrivateGameImage} title={t("mojo")} subtitle={t("private_game")} onClick={(v: string) => handleGoTo(v)} bgColor="bg-light-blue" className="-ml-2" />
                         </div>
                     </div>
-                    <div className="-rotate-45 md:rotate-0 w-20 h-20 lg:w-44 lg:h-44 md:w-40 md:h-40 start-[80%] sm:start-[60%] md:-top-[70%] md:start-[55%] -top-[370px] relative">
+                    <div className="-rotate-45 md:rotate-0 w-20 h-20 lg:w-44 lg:h-44 md:w-36 md:h-36 start-[80%] sm:start-[60%] md:-top-[65%] lg:-top-[70%] md:start-[55%] -top-[370px] relative">
                         <Image
                             src={RocketImage}
                             alt="Rocket"
                             className="w-full h-full object-cover"
                         />
                     </div>
-                    <div className="w-20 h-20 md:w-36 md:h-36 lg:w-44 lg:h-44 start-[75%] sm:start-[70%] md:-top-[90%] md:start-[70%] -top-[370px] relative">
+                    <div className="w-20 h-20 md:w-28 md:h-28  lg:w-44 lg:h-44 start-[75%] sm:start-[70%]  md:-top-[80%] md:start-[70%] -top-[370px] relative">
                         <Image
                             src={LightBulbImage}
                             alt="Bulb"

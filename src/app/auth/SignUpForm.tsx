@@ -4,6 +4,8 @@ import { useAuthModalStore } from '../store/useAuthModalStore';
 import Button from '@/app/components/ui/common/Button';
 import Image from 'next/image';
 import { ISignUpForm } from './core/_models';
+import { useDirection } from '../hooks/useGetDirection';
+import { useTranslation } from 'react-i18next';
 //icons
 import PasswordIcon from '@/app/assets/icons/password-icon.svg';
 import EmailIcon from '@/app/assets/icons/email-icon.svg';
@@ -20,6 +22,8 @@ interface ValidationErrors {
 
 export default function SignUpForm() {
     const { openModal } = useAuthModalStore();
+    const direction = useDirection();
+    const { t } = useTranslation();
     const [formErrors, setFormErrors] = useState<ValidationErrors>()
     const [showPassword, setShowPassword] = useState(false);
     const togglePasswordVisibility = () => setShowPassword(!showPassword);
@@ -59,26 +63,25 @@ export default function SignUpForm() {
         const errors: ValidationErrors = {};
 
         if (!formData.firstName.trim()) {
-            errors.firstName = 'First name and Last name is required.';
+            errors.firstName = t('formErrors.nameRequired');
         }
         if (!formData.lastName.trim()) {
-            errors.lastName = 'First name and Last name is required.';
+            errors.lastName = t('formErrors.nameRequired');
         }
         if (!formData.contactNumber.trim()) {
-            errors.contactNumber = 'Contact number is required.';
+            errors.contactNumber = t('formErrors.contactRequired');
         }
 
         if (!formData.email.trim()) {
-            errors.email = 'Email address is required.';
+            errors.email = t('formErrors.emailRequired');
         } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-            errors.email = 'Invalid email format.';
+            errors.email = t('formErrors.emailInvalid');
         }
 
         if (!formData.password.trim()) {
-            errors.password = 'Password is required.';
+            errors.password = t('formErrors.passwordRequired');
         } else if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/.test(formData.password)) {
-            errors.password =
-                'Password must be at least 8 characters and include uppercase, lowercase, and number.';
+            errors.password = t('formErrors.passwordInvalid');
         }
 
         return errors;
@@ -116,10 +119,10 @@ export default function SignUpForm() {
 
     return (
         <section>
-            <div className="tracking-normal md:px-20 sm:px-10 px-5 py-10 space-y-6">
+            <div className="tracking-normal md:px-20 sm:px-10 px-5 py-10 space-y-6" dir={direction}>
                 {/* Upload Picture Section */}
                 <div className="flex items-center justify-center mb-6 gap-5">
-                    <span className="text-gray-400 text-base md:text-lg mb-2">Upload Picture</span>
+                    <span className="text-gray-400 text-base md:text-lg mb-2">{t("uploadPicture")}</span>
                     <div className="relative w-28 h-28 border-2 border-gray-300 flex items-center justify-center">
                         {/* Hidden file input */}
                         <input
@@ -154,8 +157,8 @@ export default function SignUpForm() {
                     <input
                         type="text"
                         name='firstName'
-                        placeholder="First Name"
-                        className="input h-full rounded-none input-bordered w-1/2 pl-2 md:pl-8 pr-2 py-3 text-base  md:text-lg bg-white text-gray-800 border-none focus:outline-none"
+                        placeholder={t("firstName")}
+                        className="input h-full rounded-none input-bordered w-1/2 ps-2 md:ps-8 pe-2 py-3 text-base  md:text-lg bg-white text-gray-800 border-none focus:outline-none"
                         required
                         onChange={onInputChange}
                         autoComplete="off"
@@ -164,8 +167,8 @@ export default function SignUpForm() {
                     <input
                         type="text"
                         name='lastName'
-                        placeholder="Last Name"
-                        className="input h-full rounded-none input-bordered w-1/2 pl-2 md:pl-8 pr-2 py-3 text-base md:text-lg bg-white text-gray-800 border-none focus:outline-none border-l border-gray-300"
+                        placeholder={t("lastName")}
+                        className="input h-full rounded-none input-bordered w-1/2 ps-2 md:ps-8 pe-2 py-3 text-base md:text-lg bg-white text-gray-800 border-none focus:outline-none border-l border-gray-300"
                         required
                         onChange={onInputChange}
                         autoComplete="off"
@@ -182,8 +185,8 @@ export default function SignUpForm() {
                         <input
                             type="number"
                             name='age'
-                            placeholder="Your Age"
-                            className="input h-full rounded-none input-bordered w-full pl-2 md:pl-8 pr-2 py-3 text-base  md:text-lg bg-white text-gray-800 border-none focus:outline-none"
+                            placeholder={t("age")}
+                            className="input h-full rounded-none input-bordered w-full ps-2 md:ps-8 pe-2 py-3 text-base  md:text-lg bg-white text-gray-800 border-none focus:outline-none"
                             required
                             onChange={onInputChange}
                             autoComplete="off"
@@ -200,7 +203,7 @@ export default function SignUpForm() {
                                 onChange={onInputChange}
                                 checked={formState.gender === 'male'}
                             />
-                            <span className="text-base sm:text-2xl font-normal text-black">Male</span>
+                            <span className="text-base sm:text-2xl font-normal text-black">{t("male")}</span>
                         </label>
 
                         {/* Female Option */}
@@ -213,7 +216,7 @@ export default function SignUpForm() {
                                 onChange={onInputChange}
                                 checked={formState.gender === 'female'}
                             />
-                            <span className="text-base sm:text-2xl font-normal text-black">Female</span>
+                            <span className="text-base sm:text-2xl font-normal text-black">{t("female")}</span>
                         </label>
                     </div>
                 </div>
@@ -227,8 +230,8 @@ export default function SignUpForm() {
                     <input
                         type="email"
                         name='email'
-                        placeholder="Enter your email address"
-                        className="input h-full rounded-none input-bordered w-full pl-2 md:pl-8 pr-4 py-3 text-base md:text-lg bg-white text-gray-800 border-none focus:outline-none"
+                        placeholder={t("emailPlaceholder")}
+                        className="input h-full rounded-none input-bordered w-full ps-2 md:ps-8 pe-4 py-3 text-base md:text-lg bg-white text-gray-800 border-none focus:outline-none"
                         required
                         onChange={onInputChange}
                         autoComplete="off"
@@ -244,8 +247,8 @@ export default function SignUpForm() {
                     <input
                         name='password'
                         type={showPassword ? "text" : "password"}
-                        placeholder="Your password"
-                        className="input h-full rounded-none input-bordered w-full pl-2 md:pl-8 pr-4 py-3 text-base md:text-lg bg-white text-gray-800 border-none focus:outline-none"
+                        placeholder={t("passwordPlaceholder")}
+                        className="input h-full rounded-none input-bordered w-full ps-2 md:ps-8 pe-4 py-3 text-base md:text-lg bg-white text-gray-800 border-none focus:outline-none"
                         required
                         onChange={onInputChange}
                         autoComplete="off"
@@ -265,8 +268,8 @@ export default function SignUpForm() {
                         name='contactNumber'
                         type="number"
                         autoComplete="off"
-                        placeholder="Your Contact Number"
-                        className="input h-full rounded-none input-bordered w-full pl-2 md:pl-8 pr-4 py-3 text-base md:text-lg bg-white text-gray-800 border-none focus:outline-none"
+                        placeholder={t("contactNumber")}
+                        className="input h-full rounded-none input-bordered w-full ps-2 md:ps-8 pe-4 py-3 text-base md:text-lg bg-white text-gray-800 border-none focus:outline-none"
                         required
                         onChange={onInputChange}
                     />
@@ -276,13 +279,13 @@ export default function SignUpForm() {
                 {/* SignUp Button */}
                 <div className='flex items-center justify-center mt-10'>
                     <Button type="button" aria-label="Login" boxShadow={true} className="w-40 md:w-52 tracking-wider" onClick={() => handleSignUp()}>
-                        <span className="inline-block  transform skew-x-6 text-4xl uppercase font-popfun">SIGNUP</span>
+                        <span className="inline-block  transform skew-x-6 text-4xl uppercase font-popfun">{t("signUp")}</span>
                     </Button>
                 </div>
 
                 {/* "or Login" link */}
                 <div className="text-center text-gray-700 text-base mt-4">
-                    <button type='button' onClick={handleGoToLogin} className="font-normal font-Product_sans hover:underline">or Login</button>
+                    <button type='button' onClick={handleGoToLogin} className="font-normal font-Product_sans hover:underline">{t("orLogin")}</button>
                 </div>
             </div>
         </section>

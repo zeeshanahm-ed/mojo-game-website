@@ -1,4 +1,5 @@
 'use client';
+import { useTranslation } from 'react-i18next';
 import { useAuthModalStore } from '../store/useAuthModalStore';
 import Logout from './Logout';
 import SignInForm from './SignInForm';
@@ -10,6 +11,7 @@ export default function AuthModal() {
     const open = useAuthModalStore((state) => state.open);
     const mode = useAuthModalStore((state) => state.mode);
     const closeModal = useAuthModalStore((state) => state.closeModal);
+    const { t } = useTranslation();
 
     const getModalContent = () => {
         switch (mode) {
@@ -27,11 +29,11 @@ export default function AuthModal() {
     const getTitle = () => {
         switch (mode) {
             case 'signin':
-                return 'Sign In';
+                return t('signIn');
             case 'signup':
-                return 'Sign Up';
+                return t('signUp');
             case 'logout':
-                return 'Logout';
+                return t('logout');
             default:
                 return null;
         }
