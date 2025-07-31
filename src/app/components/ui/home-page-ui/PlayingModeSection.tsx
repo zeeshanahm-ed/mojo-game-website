@@ -1,14 +1,17 @@
 import React from 'react';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
+import Wrapper from '../common/Wrapper';
+import { useTranslation } from 'react-i18next';
 
 //icons
 import OfflineImage from "@/app/assets/images/offlinemode-image.png"
 import OnlineImage from "@/app/assets/images/onlinemode-image.png"
-import Wrapper from '../common/Wrapper';
+import { useDirection } from '@/app/hooks/useGetDirection';
 
 const PlayingModeSection: React.FC = () => {
-
+  const { t } = useTranslation();
+  const direction = useDirection();
   const router = useRouter();
 
   const handleNavigate = (type: string) => {
@@ -25,10 +28,10 @@ const PlayingModeSection: React.FC = () => {
         <div className='w-full py-16 px-4 md:px-10 flex flex-col items-center justify-center'>
           <div className="relative z-10 flex flex-col items-center max-w-4xl text-center">
             <h2 className="text-black text-6xl lg:text-8xl font-popfun mb-2 uppercase">
-              Playing Modes
+              {t("playingModes")}
             </h2>
             <p className="text-black text-sm md:text-base xl:text-xl mb-12 max-w-2xl">
-              {"It is a fun cultural game suitable for all ages, testing your group's knowledge. The game includes all types of questions according to the selected category."}
+              {t("playingModeseDescription")}
             </p>
 
             {/* Playing Mode Cards */}
@@ -36,8 +39,11 @@ const PlayingModeSection: React.FC = () => {
               <div className="w-36 xsm:w-44 sm:w-56 md:w-64 cursor-pointer skew-custom h-44 sm:h-52 md:h-64 bg-green border-[4px] sm:border-[6px] font-popfun border-black flex flex-col items-center justify-center px-4 md:px-6 gap-5"
                 onClick={() => handleNavigate("offline")}>
                 <Image src={OfflineImage} alt='Offline Mode' className='sm:w-20 w-16 h-auto md:w-24 xl:w-28' />
-                <p className="text-black text-5xl md:text-6xl xl:text-7xl uppercase flex">
-                  offline <span className="sm:text-4xl text-3xl md:text-4xl xl:text-5xl mt-2 ml-2 md:mt-4">play</span>
+                <p dir={direction} className="text-black text-5xl md:text-6xl xl:text-7xl uppercase flex">
+                  {t('offline')}
+                  <span className="sm:text-4xl text-3xl md:text-4xl xl:text-5xl mt-2 ml-2 md:mt-4">
+                    {t('play')}
+                  </span>
                 </p>
               </div>
 
@@ -45,8 +51,11 @@ const PlayingModeSection: React.FC = () => {
               <div className="w-36 xsm:w-44 sm:w-56 md:w-64 cursor-pointer h-44 sm:h-52 md:h-64 skew-custom bg-yellow font-popfun border-[4px] sm:border-[6px] border-black flex flex-col items-center justify-center px-4 md:px-6 gap-5"
                 onClick={() => handleNavigate("online")}>
                 <Image src={OnlineImage} alt='Online Mode' className='sm:w-20 w-16 h-auto md:w-24 xl:w-28' />
-                <p className="text-black text-5xl md:text-6xl xl:text-7xl uppercase flex" >
-                  online <span className="sm:text-4xl text-3xl md:text-4xl xl:text-5xl mt-2 ml-2 md:mt-4">play</span>
+                <p dir={direction} className="text-black text-5xl md:text-6xl xl:text-7xl uppercase flex">
+                  {t('online')}
+                  <span className="sm:text-4xl text-3xl md:text-4xl xl:text-5xl mt-2 ml-2 md:mt-4">
+                    {t('play')}
+                  </span>
                 </p>
               </div>
             </div>

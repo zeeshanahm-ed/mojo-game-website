@@ -3,8 +3,10 @@
 import Image from 'next/image';
 import Wrapper from '../common/Wrapper';
 import AboutMojoImage from '@/app/assets/images/about-mojo-image.png';
+import { useTranslation } from 'react-i18next';
 
 export default function AboutMojoSection() {
+    const { t } = useTranslation();
     return (
         <section className="relative w-full bg-white py-20 overflow-hidden">
             <div className="relative w-full">
@@ -14,8 +16,8 @@ export default function AboutMojoSection() {
                             {/* Left Text */}
                             <div className=" flex items-center justify-between flex-col 580px:flex-row">
                                 <div className='text-center 580px:text-left'>
-                                    <h2 className="text-6xl md:text-7xl lg:text-8xl font-popfun text-black mb-2">
-                                        ABOUT MOJO
+                                    <h2 className="text-6xl md:text-7xl uppercase lg:text-8xl font-popfun text-black mb-2">
+                                        {t("aboutMojo")}
                                     </h2>
                                     <p className="max-w-full 580px:max-w-xs md:max-w-md lg:max-w-xl text-sm md:text-base xl:text-xl text-black leading-6 ">
                                         Lorem ipsum dolor sit amet consectetur. Magna convallis magna

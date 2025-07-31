@@ -80,7 +80,7 @@ const Header: React.FC = () => {
                             <FiMenu className='text-3xl sm:text-4xl' />
                         </div>
                         <h1 className="text-3xl sm:text-4xl ml-3 md:ml-0 md:text-5xl text-gray-900 font-bulletproof mt-1 uppercase cursor-pointer" onClick={() => router.push('/')}>
-                            {t("brand")}
+                            {t("mojo")}
                         </h1>
                     </div>
 

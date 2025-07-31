@@ -2,15 +2,19 @@ import React from 'react'
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import { useCreateGameModalStore } from '@/app/store/useCreateGameModalStore';
+import { useTranslation } from 'react-i18next';
 //icons
 import OfflineImage from "@/app/assets/images/offlinemode-image.png"
 import OnlineImage from "@/app/assets/images/onlinemode-image.png"
 import { MdClose } from 'react-icons/md';
+import { useDirection } from '@/app/hooks/useGetDirection';
 
 function CreateGameModal() {
     const { closeModal } = useCreateGameModalStore();
     const { open } = useCreateGameModalStore();
     const router = useRouter();
+    const { t } = useTranslation('');
+    const direction = useDirection();
 
     const handleNavigate = (type: string) => {
         if (type === 'online') {
@@ -26,7 +30,7 @@ function CreateGameModal() {
             <div className="max-w-xl modal-box bg-white items-center rounded-none px-0 border-2 border-black">
                 <form method="dialog " className="flex items-center justify-center relative">
                     <h2 className="text-5xl md:text-6xl font-popfun uppercase">
-                        New Game
+                        {t("newGame")}
                     </h2>
                     <button
                         type="button"
@@ -43,8 +47,8 @@ function CreateGameModal() {
                     <div className="md:w-64 w-64 cursor-pointer skew-custom bg-green border-4 sm:border-[6px] font-popfun border-black flex flex-col items-center justify-center px-6 py-2 md:py-5 gap-5"
                         onClick={() => handleNavigate("offline")}>
                         <Image src={OfflineImage} alt='Offline Mode' className='sm:w-20 w-16 sm:h-20 md:w-20 md:h-20' />
-                        <p className="text-black text-5xl md:text-6xl uppercase">
-                            offline <span className="text-3xl md:text-4xl block text-end -mt-3 md:text-start md:inline-block md:mt-0">play</span>
+                        <p dir={direction} className="text-black text-5xl md:text-6xl uppercase">
+                            {t('offline')} <span className="text-3xl md:text-4xl block text-end -mt-3 md:text-start md:inline-block md:mt-0"> {t('play')}</span>
                         </p>
                     </div>
 
@@ -52,8 +56,8 @@ function CreateGameModal() {
                     <div className="md:w-64 w-64 cursor-pointer skew-custom bg-yellow font-popfun border-4 sm:border-[6px] border-black flex flex-col items-center justify-center px-6 py-2  md:py-5 gap-5"
                         onClick={() => handleNavigate("online")}>
                         <Image src={OnlineImage} alt='Online Mode' className='sm:w-20 w-16 sm:h-20 md:w-20 md:h-20' />
-                        <p className="text-black  text-5xl md:text-6xl uppercase" >
-                            online <span className="text-3xl md:text-4xl block text-end -mt-3 md:text-start md:inline-block md:mt-0">play</span>
+                        <p dir={direction} className="text-black  text-5xl md:text-6xl uppercase" >
+                            {t('online')} <span className="text-3xl md:text-4xl block text-end -mt-3 md:text-start md:inline-block md:mt-0"> {t('play')}</span>
                         </p>
                     </div>
                 </div>
