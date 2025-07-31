@@ -100,12 +100,13 @@ function CategoriesSection({ data, year, onSelect, selectedCategories, setSelect
                     Select categories
                 </h2>}
                 {subTitle && <p className="text-sm sm:text-base md:text-lg leading-6 text-black max-w-2xl">
-                    3 categories for your team, and 3 categories for the opposing team, for a total of 6 categories with 36 different questions. Choose the categories carefully to ensure the greatest chance of
+                    3 categories for your team, and 3 categories for the opposing team, for a total of 6 categories with 36 different questions. Choose the categories carefully to ensure the greatest chance of winning.
                 </p>}
             </div>
-            {year && <div className='border-2 flex-center text-2xl border-black h-16 w-48 my-10 -skew-x-6'>
-                {year}
-            </div>}
+            {year &&
+                <div className='border-2 flex-center text-xl md:text-2xl border-black h-12 w-40 md:h-16 md:w-48 my-10 -skew-x-6'>
+                    {year}
+                </div>}
             <div className='my-14 w-full max-h-[800px] overflow-hidden overflow-y-auto'>
                 <div className="flex-center flex-wrap  gap-6 gap-y-10">
                     {filteredCategories?.map((cat, idx) => (

@@ -44,9 +44,9 @@ const Header: React.FC<HeaderProps> = ({ handleScreenChange, handleOpenExitModal
                     </div>
 
                     {/* Right Section: H1 Team Status */}
-                    <div className="flex items-center h-8 md:h-14 border md:border-2 border-black skew-custom md:-skew-x-12">
-                        <div className="bg-black hidden lg:flex text-white py-2 px-4 h-full items-center">
-                            <span className="font-semibold uppercase text-base md:text-xl">{session?.gameName}</span>
+                    <div className="flex items-center md:h-14 border md:border-2 border-black skew-custom md:-skew-x-12">
+                        <div className="bg-black flex text-white py-2 px-4 h-full items-center">
+                            <span title={session?.gameName} className="font-semibold uppercase text-base md:text-xl">{session?.gameName}</span>
                         </div>
                         {session?.mode === "online" &&
                             <div className="bg-white sm:w-32 md:w-40 text-black py-2 px-1 sm:px-4 flex  h-full flex-col items-center justify-center">

@@ -143,56 +143,57 @@ function GamePlay() {
                 <div className='flex justify-center flex-col h-auto py-10 md:py-20 px-4 md:px-10'>
                     {getScreenContent(screen)}
                 </div>
-                {(screen !== "whoAnswered" && screen !== "congratulation") ? <div className=" px-4 lg:px-0 lg:t-auto my-10 lg:my-0 md:-skew-x-6 -skew-x-3 lg:-skew-x-0  relative z-10 flex flex-col sm:flex-row items-center justify-between w-full gap-y-10 sm:gap-y-0 lg:gap-10">
-                    {/* H1 Team Section (Red) */}
-                    <div
-                        className="custom-clipPath-rightSide text-white px-4 lg:px-5 lg:h-[200px] bg-red flex items-center justify-center lg:justify-start w-[250px] md:w-[320px] lg:flex-1 lg:border-r-[0px] lg:border-[2px] border-4 border-black">
-                        <div className='flex lg:flex-row flex-col items-center justify-center  lg:justify-between w-full lg:md:w-3/4'>
-                            <div className="flex flex-col items-start py-4 lg:py-0">
-                                <h3 className="text-4xl md:text-6xl lg:text-7xl font-popfun uppercase" >
-                                    {session?.team1.name ?? "Team 1"}
-                                </h3>
-                                <p className="text-lg md:text-3xl font-popfun uppercase !tracking-wider" >
-                                    SCORE: {session?.team1.score?.toString() ?? "00"}
-                                </p>
-                            </div>
-                            <div className='lg:hidden block w-full h-[1px] bg-white'></div>
-                            <div className="flex flex-col items-center lg:items-end py-4 lg:py-0">
-                                <p className="text-base sm:text-xl lg:text-2xl mb-2">Life lines</p>
-                                <div className="flex space-x-2">
-                                    {renderLifelineIcon('hole', session?.team1.lifelines.theHole)}
-                                    {renderLifelineIcon('chance', session?.team1.lifelines.answerToAnswer)}
-                                    {renderLifelineIcon('phone', session?.team1.lifelines.callAFriend)}
+                {(screen !== "whoAnswered" && screen !== "congratulation") ?
+                    <div className=" pt-10 pb-10 md:py-20 px-4 md:px-10 lg:px-0 lg:pb-0    relative z-10 flex flex-col sm:flex-row items-center justify-between w-full gap-y-10 sm:gap-y-0 lg:gap-10">
+                        {/* H1 Team Section (Red) */}
+                        <div
+                            className="custom-clipPath-rightSide text-white px-4 md:-skew-x-6 -skew-x-3 lg:-skew-x-0 lg:px-5 lg:h-[200px] bg-red flex items-center justify-center lg:justify-start w-[250px] md:w-[320px] lg:flex-1 lg:border-r-[0px] lg:border-[2px] border-4 border-black">
+                            <div className='flex lg:flex-row flex-col items-center justify-center  lg:justify-between w-full lg:md:w-3/4'>
+                                <div className="flex flex-col items-start py-4 lg:py-0">
+                                    <h3 className="text-4xl md:text-6xl lg:text-7xl font-popfun uppercase" >
+                                        {session?.team1.name ?? "Team 1"}
+                                    </h3>
+                                    <p className="text-lg md:text-3xl font-popfun uppercase !tracking-wider" >
+                                        SCORE: {session?.team1.score?.toString() ?? "00"}
+                                    </p>
+                                </div>
+                                <div className='lg:hidden block w-full h-[1px] bg-white'></div>
+                                <div className="flex flex-col items-center lg:items-end py-4 lg:py-0">
+                                    <p className="text-base sm:text-xl lg:text-2xl mb-2">Life lines</p>
+                                    <div className="flex space-x-2">
+                                        {renderLifelineIcon('hole', session?.team1.lifelines.theHole)}
+                                        {renderLifelineIcon('chance', session?.team1.lifelines.answerToAnswer)}
+                                        {renderLifelineIcon('phone', session?.team1.lifelines.callAFriend)}
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
-                    {/* H2 Team Section (Blue) */}
-                    <div
-                        className="custom-clipPath-leftSide text-white px-4 lg:px-5 lg:h-[200px] bg-blue flex items-center justify-center lg:justify-end w-[250px] md:w-[320px] lg:flex-1 lg:border-l-[0px] lg:border-[2px] border-4 border-black"
-                    >
-                        <div className='flex lg:flex-row flex-col-reverse items-center justify-center  w-full lg:justify-between lg:md:w-3/4'>
-                            <div className="flex flex-col items-center lg:items-start py-4 lg:py-0">
-                                <p className="text-base sm:text-xl lg:text-2xl mb-2">Life lines</p>
-                                <div className="flex space-x-2">
-                                    {renderLifelineIcon('hole', session?.team2.lifelines.theHole)}
-                                    {renderLifelineIcon('chance', session?.team2.lifelines.answerToAnswer)}
-                                    {renderLifelineIcon('phone', session?.team2.lifelines.callAFriend)}
+                        {/* H2 Team Section (Blue) */}
+                        <div
+                            className="custom-clipPath-leftSide md:-skew-x-6 -skew-x-3 lg:-skew-x-0 text-white px-4 lg:px-5 lg:h-[200px] bg-blue flex items-center justify-center lg:justify-end w-[250px] md:w-[320px] lg:flex-1 lg:border-l-[0px] lg:border-[2px] border-4 border-black"
+                        >
+                            <div className='flex lg:flex-row flex-col-reverse items-center justify-center  w-full lg:justify-between lg:md:w-3/4'>
+                                <div className="flex flex-col items-center lg:items-start py-4 lg:py-0">
+                                    <p className="text-base sm:text-xl lg:text-2xl mb-2">Life lines</p>
+                                    <div className="flex space-x-2">
+                                        {renderLifelineIcon('hole', session?.team2.lifelines.theHole)}
+                                        {renderLifelineIcon('chance', session?.team2.lifelines.answerToAnswer)}
+                                        {renderLifelineIcon('phone', session?.team2.lifelines.callAFriend)}
+                                    </div>
+                                </div>
+                                <div className='lg:hidden block w-full h-[1px] bg-white'></div>
+                                <div className="flex flex-col items-center lg:items-end py-4 lg:py-0">
+                                    <h3 className="text-4xl md:text-6xl lg:text-7xl font-popfun uppercase" >
+                                        {session?.team2.name ?? "Team 2"}
+                                    </h3>
+                                    <p className="text-lg md:text-3xl font-popfun uppercase !tracking-wider" >
+                                        SCORE: {session?.team2.score?.toString() ?? "00"}
+                                    </p>
                                 </div>
                             </div>
-                            <div className='lg:hidden block w-full h-[1px] bg-white'></div>
-                            <div className="flex flex-col items-center lg:items-end py-4 lg:py-0">
-                                <h3 className="text-4xl md:text-6xl lg:text-7xl font-popfun uppercase" >
-                                    {session?.team2.name ?? "Team 2"}
-                                </h3>
-                                <p className="text-lg md:text-3xl font-popfun uppercase !tracking-wider" >
-                                    SCORE: {session?.team2.score?.toString() ?? "00"}
-                                </p>
-                            </div>
                         </div>
-                    </div>
-                </div> : <></>}
+                    </div> : <></>}
             </Wrapper>
             <CustomModal title='Exit' subTitle='Do you want to exit the game?' open={showModal} closeModal={() => setShowModal(false)} onYasClick={handleExitGame} />
         </section >
