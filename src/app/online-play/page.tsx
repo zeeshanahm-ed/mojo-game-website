@@ -10,6 +10,7 @@ import Banner from './components/Banner';
 import Button from '@/app/components/ui/common/Button';
 import { categories } from '../constants/constant';
 import { GamesCategoryInterface } from '../utils/Interfaces';
+import { useTranslation } from 'react-i18next';
 
 //icons
 import VSIcon from '@/app/assets/images/vs.png';
@@ -18,7 +19,8 @@ import FallBackProfileImage from '@/app/assets/images/fallback-profile-image.jpg
 type GameMode = 'friendly' | 'challenge' | null;
 
 function OnlinePlay() {
-    const [roomName, setRoomName] = useState('ROOM NAME');
+    const { t } = useTranslation();
+    const [roomName, setRoomName] = useState('');
     const [isEditingRoomName, setIsEditingRoomName] = useState(false);
     const [roomCode] = useState('0540CV98VZ120I');
     const [selectedMode, setSelectedMode] = useState<GameMode>("friendly");
@@ -131,7 +133,7 @@ function OnlinePlay() {
                                 <p className="text-gray-600 text-base ">it may take few seconds</p>
                             </div>
                         </div>
-                        <Button boxShadow={false} className='text-white w-64 md:w-80 my-16 text-4xl' bgClass="bg-black">Search Players</Button>
+                        <Button boxShadow={false} className='text-white w-64 md:w-80 my-16 text-4xl' bgClass="bg-black">{t("searchPlayers")}</Button>
                         <CategoriesSection
                             data={categories}
                             selectedCategories={selectedCategories}
@@ -140,10 +142,10 @@ function OnlinePlay() {
                             currentPlayer={currentPlayer}
                             onSelect={handleTurnSwitch}
                         />
-                        <Button disabled className='text-white md:w-72 w-52 sm:w-64 my-16 text-4xl md:text-5xl'>Create Game</Button>
+                        <Button disabled className='text-white md:w-72 w-52 sm:w-64 my-16 text-4xl md:text-5xl'>{t("startPlaying")}</Button>
                         {selectedMode === "challenge" &&
                             <p className="text-base md:text-lg text-red text-start md:text-center">
-                                <strong className='mr-5 text-black'>Note : </strong>  Creating game requires 1 credit. if you win this game credit will be refunded
+                                <strong className='mr-5 text-black'>{t("note")} </strong>{("creditInfo")}
                             </p>}
                     </div>
                 </div>

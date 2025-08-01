@@ -1,6 +1,8 @@
-import React from 'react'
+import React, { useDebugValue } from 'react'
 import Image from 'next/image';
 import Input from './Input';
+import { useDirection } from '@/app/hooks/useGetDirection';
+import { useTranslation } from 'react-i18next';
 
 //icons
 import PlusIcon from '@/app/assets/icons/plus.svg';
@@ -18,19 +20,22 @@ interface TeamInfoProps {
 }
 
 function TeamInfo({ gameName, handleGameName, teams, errors, handleTeamNameChange, handlePlayerChange }: TeamInfoProps) {
+    const { t } = useTranslation();
+    const direction = useDirection();
+
     return (
 
         <div className="text-center flex flex-col items-center justify-center mt-10">
             <h2 className="md:text-6xl text-5xl font-popfun text-black mb-2 uppercase">
-                Specify team information
+                {t("teamInfoTitle")}
             </h2>
             <p className="text-sm sm:text-base md:text-lg leading-6 text-black max-w-2xl">
-                An interactive group game in which we test your knowledge and culture
+                {t("playLocalNote")}
             </p>
             <div className='w-full flex flex-col items-center'>
                 <Input
                     type="text"
-                    placeholder="Type a Game Name"
+                    placeholder={t("gameNamePlaceholder")}
                     value={gameName}
                     className='mt-10 md:w-1/2 w-full'
                     inputClassName='text-center pl-0'
@@ -42,14 +47,16 @@ function TeamInfo({ gameName, handleGameName, teams, errors, handleTeamNameChang
                 {/* First Team Card */}
                 <div className="w-72 -skew-x-3 md:-skew-x-6 bg-red border-4 border-black flex flex-col items-center py-6 pb-4">
                     <h3 className="text-white text-5xl uppercase mb-4 font-popfun">
-                        First Team
+                        {t("firstTeam")}
                     </h3>
                     <div className="w-full bg-white border-y-2 border-black p-2 mb-4">
                         <input
                             type="text"
-                            placeholder="Your Team Name"
+                            placeholder={t("yourTeamName")}
                             className="input w-full text-lg bg-white border-none focus:outline-none"
                             value={teams.first.name}
+                            maxLength={20}
+                            dir={direction}
                             onChange={(e) => handleTeamNameChange("first", e.target.value)}
                         />
                         <p className="text-sm sm:text-base mt-1 text-red">{errors?.firstTeam}</p>
@@ -58,17 +65,15 @@ function TeamInfo({ gameName, handleGameName, teams, errors, handleTeamNameChang
                     <div className="flex items-center justify-center w-full space-x-2 px-6">
                         <CustomButton
                             handleClick={handlePlayerChange}
-                            ariaLabel="Add player to first team"
                             icon={<PlusIcon />}
                             type="plus"
                             team="first"
                         />
                         <span className="text-white text-lg flex-grow text-center">
-                            {teams.first.players} players
+                            {t("players", { count: teams.first.players })}
                         </span>
                         <CustomButton
                             handleClick={handlePlayerChange}
-                            ariaLabel="Remove player from first team"
                             icon={<MinusIcon />}
                             type="minus"
                             team="first"
@@ -83,12 +88,14 @@ function TeamInfo({ gameName, handleGameName, teams, errors, handleTeamNameChang
                 {/* Second Team Card */}
                 <div className="w-72 bg-blue -skew-x-3 md:-skew-x-6 border-4 border-black flex flex-col items-center py-6 pb-4">
                     <h3 className="text-white text-5xl uppercase mb-4 font-popfun">
-                        Second team
+                        {t("secondTeam")}
                     </h3>
                     <div className="w-full bg-white border-y-2 border-black p-2 mb-4">
                         <input
                             type="text"
-                            placeholder="Your Team Name"
+                            dir={direction}
+                            maxLength={20}
+                            placeholder={t("yourTeamName")}
                             className="input w-full text-lg bg-white text-gray-800 border-none focus:outline-none"
                             value={teams.second.name}
                             onChange={(e) => handleTeamNameChange("second", e.target.value)}
@@ -99,17 +106,15 @@ function TeamInfo({ gameName, handleGameName, teams, errors, handleTeamNameChang
                     <div className="flex items-center justify-center w-full space-x-2 px-6">
                         <CustomButton
                             handleClick={handlePlayerChange}
-                            ariaLabel="Add player to second team"
                             icon={<PlusIcon />}
                             type="plus"
                             team="second"
                         />
                         <span className="text-white text-lg flex-grow text-center">
-                            {teams.second.players} players
+                            {t("players", { count: teams.second.players })}
                         </span>
                         <CustomButton
                             handleClick={handlePlayerChange}
-                            ariaLabel="Remove player from second team"
                             icon={<MinusIcon />}
                             type="minus"
                             team="second"
@@ -126,16 +131,14 @@ export default TeamInfo;
 interface CustomButtonProps {
     handleClick: (team: 'first' | 'second', type: 'plus' | 'minus') => void;
     icon: React.ReactElement;
-    ariaLabel: string;
     team: 'first' | 'second'
     type: 'plus' | 'minus'
 }
-const CustomButton = ({ handleClick, icon, ariaLabel, team, type }: CustomButtonProps) => {
+const CustomButton = ({ handleClick, icon, team, type }: CustomButtonProps) => {
     return (
         <button
             className="flex justify-center items-center bg-yellow text-black text-xl w-12 h-10 boxShadow-custom border-2 border-black"
             onClick={() => handleClick(team, type)}
-            aria-label={ariaLabel}
         >
             {icon}
         </button>

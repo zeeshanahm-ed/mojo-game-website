@@ -4,12 +4,13 @@ import Banner from './components/Banner'
 import Wrapper from '@/app/components/ui/common/Wrapper';
 import CategoriesSection from '@/app/components/ui/common/CategoriesSection';
 import Button from '@/app/components/ui/common/Button';
+import { showErrorMessage } from '../utils/messageUtils';
+import { useTranslation } from 'react-i18next';
 import { useRouter } from 'next/navigation';
 import { categories } from '@/app/constants/constant';
 import { GamesCategoryInterface } from '../utils/Interfaces';
 import { useGameSession } from '../store/gameSession';
 import TeamInfo from '../components/ui/common/TeamInfo';
-import { showErrorMessage } from '../utils/messageUtils';
 
 
 interface TeamState {
@@ -23,6 +24,7 @@ function OfflineMode() {
     const [gameName, setGameName] = useState("");
     const [errors, setErrors] = useState<{ [key: string]: string } | null>(null);
     const router = useRouter();
+    const { t } = useTranslation();
 
     const [teams, setTeams] = useState<TeamState>({
         first: { name: '', players: 1 },
@@ -46,6 +48,7 @@ function OfflineMode() {
     };
 
     const handleTeamNameChange = (team: 'first' | 'second', name: string) => {
+
         setTeams((prev) => ({
             ...prev,
             [team]: {
@@ -64,21 +67,21 @@ function OfflineMode() {
 
     const handleValidation = () => {
         let error = null;
-        if (selectedCategories.length === 0 || selectedCategories.length < 6) {
-            showErrorMessage("Please select maximum 6 categories.");
+        if (selectedCategories.length < 6) {
+            showErrorMessage(t("errors.maxCategories"));
             error = true;
         } else if (gameName.trim() === "") {
-            setErrors({ ...errors, gameName: "Game name cannot be empty" });
+            setErrors({ ...errors, gameName: t("errors.gameNameRequired") });
             error = true;
         } else if (teams.first.name.trim() === "") {
-            setErrors({ ...errors, firstTeam: "Team name cannot be empty" });
+            setErrors({ ...errors, firstTeam: t("errors.teamNameRequired") });
             error = true;
         } else if (teams.second.name.trim() === "") {
-            setErrors({ ...errors, secondTeam: "Team name cannot be empty" });
+            setErrors({ ...errors, secondTeam: t("errors.teamNameRequired") });
             error = true;
         }
         return error;
-    }
+    };
 
     const handleStartGame = () => {
         const error = handleValidation();
@@ -132,7 +135,7 @@ function OfflineMode() {
                         handlePlayerChange={handlePlayerChange}
                         handleGameName={handleGameName}
                     />
-                    <Button className='text-white md:w-72 w-52 sm:w-64 my-16 text-4xl md:text-5xl' onClick={() => handleStartGame()}>Start playing</Button>
+                    <Button className='text-white md:w-72 w-52 sm:w-64 my-16 text-4xl md:text-5xl' onClick={() => handleStartGame()}>{t("startPlaying")}</Button>
                 </div>
             </Wrapper>
         </section >

@@ -9,6 +9,8 @@ import CartImage from "@/app/assets/images/cart-image.png";
 import CreditImage from "@/app/assets/images/credit-image.png";
 import SarFlagImage from "@/app/assets/images/saudia-flag-image.png";
 import { MdClose } from 'react-icons/md';
+import { Currency_Options } from '@/app/constants/constant';
+import { useDirection } from '@/app/hooks/useGetDirection';
 
 
 interface WalletModalProps {
@@ -18,6 +20,7 @@ interface WalletModalProps {
 
 function WalletModal({ open, onClose }: WalletModalProps) {
     const { t } = useTranslation();
+    const direction = useDirection();
 
     const handleNavigate = (type: string) => {
         if (type === 'recharge') {
@@ -46,15 +49,15 @@ function WalletModal({ open, onClose }: WalletModalProps) {
                 <div className="divider before:bg-gray-400 after:bg-gray-400 m-0"></div>
 
                 {/* Wallet Content */}
-                <div className="flex flex-col md:flex-row items-baseline w-full justify-between gap-y-10 gap-x-10 py-8 px-4 md:px-10 font-popfun">
+                <div className="flex flex-col md:flex-row items-baseline w-full justify-between gap-y-10 gap-x-10 py-5 px-5 sm:px-10 font-popfun">
 
                     {/* Game Credits Card */}
                     <div className="flex md:flex-col items-start gap-4">
-                        <div className="w-28 md:w-28 md:h-1/2 relative">
+                        <div className="w-20 sm:w-28 md:w-28 md:h-1/2 relative">
                             <Image src={CreditImage} alt='Credits' className='w-full h-full' />
                         </div>
 
-                        <div className='space-y-2'>
+                        <div className='space-y-2 w-full'>
                             <h3 className="text-4xl sm:text-4xl md:text-5xl lg:text-6xl">
                                 {t("credits")}
                             </h3>
@@ -69,11 +72,11 @@ function WalletModal({ open, onClose }: WalletModalProps) {
 
                     {/* SAR Currency Card */}
                     <div className="flex md:flex-col items-start gap-4">
-                        <div className="w-28 md:w-24 md:h-1/2 relative">
+                        <div className="w-20 sm:w-28 md:w-24 md:h-1/2 relative">
                             <Image src={SarFlagImage} alt='Saudia Flag' className='w-full h-full' />
                         </div>
 
-                        <div className='space-y-2'>
+                        <div className='space-y-2 w-full'>
                             <h3 className="text-4xl sm:text-4xl md:text-5xl lg:text-6xl">
                                 SAR
                             </h3>
@@ -83,30 +86,28 @@ function WalletModal({ open, onClose }: WalletModalProps) {
 
                             {/* Currency Selection Placeholder */}
                             <Select
-                                className="!h-12 w-52"
+                                className="!h-12 !w-40 sm:!w-48 md:!w-52"
                                 iconBgColor="!bg-white"
-                                selectClassName='!pl-0 !text-2xl !sm:text-3xl'
-                                icon={<Image src={SarFlagImage}
-                                    alt='Saudia Flag' className='w-8 h-8' />}
-                                options={[{ label: "SAUDI RIYAL", value: "sa" }]}
-                                value='SAUDI RIYAL' />
+                                selectClassName='!pl-5 !text-2xl !sm:text-3xl'
+                                options={Currency_Options}
+                                value='SAR' />
                         </div>
                     </div>
 
                     {/* History Card */}
                     <div className="flex md:flex-col items-start gap-4">
-                        <div className="w-20 h-auto md:w-16 md:h-1/2 relative">
+                        <div className="w-20 sm:w-28 h-auto md:w-20 md:h-1/2 relative">
                             <Image src={CartImage} alt='Cart' className='w-full h-full' />
                         </div>
 
-                        <div className='space-y-2'>
+                        <div className='space-y-2 w-full'>
                             <h3 className="text-4xl sm:text-4xl md:text-5xl lg:text-6xl">
                                 {t("history")}
                             </h3>
                             <p className="text-sm font-Product_sans max-w-xs">
                                 {t("purchaseHistory")}
                             </p>
-                            <Button className='text-2xl sm:text-3xl w-36 sm:w-48' onClick={() => handleNavigate("history")}>
+                            <Button className={`text-2xl ${direction === "rtl" ? "" : "md:!mt-1"} sm:text-3xl w-36 sm:w-48`} onClick={() => handleNavigate("history")}>
                                 {t("viewHistory")}
                             </Button>
                         </div>

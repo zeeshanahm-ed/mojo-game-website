@@ -63,25 +63,25 @@ export default function SignUpForm() {
         const errors: ValidationErrors = {};
 
         if (!formData.firstName.trim()) {
-            errors.firstName = t('formErrors.nameRequired');
+            errors.firstName = t('errors.nameRequired');
         }
         if (!formData.lastName.trim()) {
-            errors.lastName = t('formErrors.nameRequired');
+            errors.lastName = t('errors.nameRequired');
         }
         if (!formData.contactNumber.trim()) {
-            errors.contactNumber = t('formErrors.contactRequired');
+            errors.contactNumber = t('errors.contactRequired');
         }
 
         if (!formData.email.trim()) {
-            errors.email = t('formErrors.emailRequired');
+            errors.email = t('errors.emailRequired');
         } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-            errors.email = t('formErrors.emailInvalid');
+            errors.email = t('errors.emailInvalid');
         }
 
         if (!formData.password.trim()) {
-            errors.password = t('formErrors.passwordRequired');
+            errors.password = t('errors.passwordRequired');
         } else if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/.test(formData.password)) {
-            errors.password = t('formErrors.passwordInvalid');
+            errors.password = t('errors.passwordInvalid');
         }
 
         return errors;

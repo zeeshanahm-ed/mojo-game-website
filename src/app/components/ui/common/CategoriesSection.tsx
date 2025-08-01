@@ -6,6 +6,7 @@ import { GamesCategoryInterface } from '@/app/utils/Interfaces';
 
 //icons
 import SearchIcon from "@/app/assets/icons/search-icon.svg"
+import { useTranslation } from 'react-i18next';
 
 interface CategoriesSectionProps {
     data: GamesCategoryInterface[];
@@ -22,6 +23,7 @@ interface CategoriesSectionProps {
 
 
 function CategoriesSection({ data, year, onSelect, selectedCategories, setSelectedCategories, mode, currentPlayer, title = true, subTitle = true, showInput = true }: CategoriesSectionProps) {
+    const { t } = useTranslation();
     const [search, setSearch] = useState('');
     const filteredCategories = data.map((item) => ({
         ...item,
@@ -90,17 +92,17 @@ function CategoriesSection({ data, year, onSelect, selectedCategories, setSelect
                     icon={<SearchIcon />}
                     type="text"
                     value={search}
-                    placeholder="Search by category Name"
+                    placeholder={t("searchCategory")}
                     className='md:w-96 w-full'
                     onChange={(e) => handleSearch(e.target.value)}
                 />
             </div>}
             <div className="text-center flex flex-col items-center justify-center">
                 {title && <h2 className="sm:text-6xl text-5xl lg:text-7xl font-popfun text-black mb-2 uppercase">
-                    Select categories
+                    {t("selectCategories")}
                 </h2>}
                 {subTitle && <p className="text-sm sm:text-base md:text-lg leading-6 text-black max-w-2xl">
-                    3 categories for your team, and 3 categories for the opposing team, for a total of 6 categories with 36 different questions. Choose the categories carefully to ensure the greatest chance of winning.
+                    {t("categoryInstructions")}
                 </p>}
             </div>
             {year &&

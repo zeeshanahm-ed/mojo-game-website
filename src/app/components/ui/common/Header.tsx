@@ -22,6 +22,7 @@ import { FaPlus } from "react-icons/fa";
 
 import { FiMenu } from "react-icons/fi";
 import Image from 'next/image';
+import LanguageSwitcher from '../Language-Switcher';
 const Header: React.FC = () => {
     const { user } = useAuth();
     const { openModal } = useAuthModalStore();
@@ -88,7 +89,7 @@ const Header: React.FC = () => {
                     <div className="flex items-center space-x-2 md:space-x-8 text-gray-800 text-sm sm:text-base md:text-lg font-medium w-fit text-nowrap">
                         <Link href="/my-games" className="hover:text-dark-gray transition-colors">{t("my_games")}</Link>
                         <Link href="/contactus" className="hover:text-dark-gray transition-colors">{t("contact_us")}</Link>
-                        {/* <LanguageSwitcher /> */}
+                        <LanguageSwitcher />
                     </div>
                 </nav>
                 <AuthModal />

@@ -1,12 +1,16 @@
 import React from 'react';
 import Image from 'next/image';
+import Wrapper from '@/app/components/ui/common/Wrapper';
+import { useTranslation } from 'react-i18next';
 
 import BlackStarImage from "@/app/assets/images/black-star.png"
 import OfflinePlayImage from "@/app/assets/images/offlinemode-image.png"
 import QuizAppImage from "@/app/assets/images/quiz-app-image.png"
-import Wrapper from '@/app/components/ui/common/Wrapper';
 
 const Banner: React.FC = () => {
+
+    const { t } = useTranslation();
+
     return (
         <section className="w-full bg-yellow py-16 pb-28 md:pb-16 px-1 md:px-10 flex flex-col items-center justify-center relative overflow-hidden border-b-4 border-black">
             {/* Main Content */}
@@ -23,10 +27,10 @@ const Banner: React.FC = () => {
                     {/* Middle Section - Heading and Description */}
                     <div className="flex flex-col text-center items-center lg:w-2/4 px-4">
                         <h2 className="text-6xl md:text-8xl lg:text-9xl leading-tight uppercase font-popfun">
-                            PLAY LOCAL
+                            {t("playLocal")}
                         </h2>
                         <p className="text-sm sm:text-base md:text-lg max-w-xl">
-                            An interactive group game in which we test your knowledge and culture
+                            {t("playLocalNote")}
                         </p>
                     </div>
 

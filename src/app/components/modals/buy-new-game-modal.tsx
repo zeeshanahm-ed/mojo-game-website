@@ -4,13 +4,13 @@ import { MdClose } from 'react-icons/md';
 import RoyalRoundedIcon from "@/app/assets/icons/riyal-rounded-icon.svg"
 import RoyalWalletIcon from "@/app/assets/icons/riyal-wallet-icon.svg"
 
-interface PaymentOption{
+interface PaymentOption {
     count: string;
     price: string;
     bgColor: string;
 }
 
-const Options:PaymentOption[] = [
+const Options: PaymentOption[] = [
     { count: '10', price: "17", bgColor: "bg-[#FA1960]" },
     { count: '5', price: "10", bgColor: "bg-[#197BFA]" },
     { count: '3', price: "08", bgColor: "bg-[#FA8219]" },
@@ -37,8 +37,8 @@ function BuyNewGameModal({ open, onClose }: NewGameModalProps) {
 
     return (
         <dialog id="buy_a_new_game_modal" className={` modal ${open ? 'modal-open' : ''}`}>
-            <div className="modal-box p-0  bg-white items-center max-w-2xl rounded-none border-2 border-black">
-                <form method="dialog " className="px-4 md:px-10 pt-5 flex items-center justify-start relative">
+            <div className="modal-box px-0 pb-0  bg-white items-center max-w-2xl rounded-none border-2 border-black">
+                <form method="dialog " className="px-4 md:px-10 flex items-center justify-start relative">
                     <h2 className="text-4xl sm:text-5xl md:text-6xl font-popfun uppercase flex flex-row sm:flex-row sm:items-center ">
                         Buy a new game <span className='ml-4 sm:ml-8 flex items-center gap-1 sm:gap-3'><RoyalWalletIcon className="mb-1 sm:w-10 sm:h-10" /> 10.00</span>
                     </h2>

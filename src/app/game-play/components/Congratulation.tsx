@@ -36,7 +36,7 @@ const Congratulation: React.FC = () => {
 
             <div className="flex justify-center sm:justify-start flex-row gap-4 sm:gap-8 font-popfun">
                 {/* Blue - Winner Card */}
-                <div className="md:w-60 -skew-x-3 p-4 sm:p-6 flex flex-col items-center justify-center text-center border-4 border-dark-blue text-blue-500">
+                <div className="md:w-fit h-80 md:h-96 -skew-x-3 p-4 sm:p-6 flex flex-col items-center justify-center text-center border-4 border-dark-blue text-blue-500">
                     <div className="mb-4">
                         <GroupIcon className="w-8 h-8 sm:h-12 sm:w-12 text-dark-blue fill-dark-blue" />
                     </div>
@@ -52,7 +52,7 @@ const Congratulation: React.FC = () => {
                 </div>
 
                 {/* Red - Loser Card */}
-                <div className="md:w-60 sm:h-52 -skew-x-3 mt-auto p-4 sm:p-6 flex flex-col items-center justify-center text-center border-4 border-red text-blue-500">
+                <div className="md:w-w-fit h-60 md:h-72 -skew-x-3 mt-auto p-4 sm:p-6 flex flex-col items-center justify-center text-center border-4 border-red text-blue-500">
                     <div className="mb-4">
                         <GroupIcon className="w-8 h-8 sm:h-12 sm:w-12 text-red fill-red" />
                     </div>

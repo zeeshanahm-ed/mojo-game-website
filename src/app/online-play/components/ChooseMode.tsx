@@ -1,5 +1,6 @@
 import Wrapper from '@/app/components/ui/common/Wrapper';
 import React from 'react'
+import { useTranslation } from 'react-i18next';
 
 interface ModeOption {
     id: GameMode;
@@ -18,25 +19,26 @@ interface Props {
 const modes: ModeOption[] = [
     {
         id: 'friendly',
-        title: 'FRIENDLY MODE'
+        title: 'Friendly Mode'
     },
     {
         id: 'challenge',
-        title: 'CHALLENGE MODE'
+        title: 'Challenge Mode'
     }
 ];
 
 function ChooseMode({ selectedMode, handleModeSelect }: Props) {
+    const { t } = useTranslation();
     return (
         <div className='w-full flex flex-col items-center justify-center border-b-2 border-border-gray my-10'>
             <Wrapper>
                 <div className="flex flex-col items-center justify-center w-full text-center">
                     <div className="flex flex-col text-center items-center lg:w-3/4 px-4">
                         <h2 className="text-6xl md:text-8xl leading-tight mb-4 uppercase font-popfun">
-                            Choose Mode
+                            {t("joinRoom")}
                         </h2>
                         <p className="text-sm sm:text-base md:text-lg">
-                            make your own Room and invite players to play with you and compete globally.
+                            {t("playGlobalDescription")}
                         </p>
                     </div>
 
@@ -56,8 +58,8 @@ function ChooseMode({ selectedMode, handleModeSelect }: Props) {
                                 </div>
 
                                 {/* Mode Title */}
-                                <h2 className={` text-3xl md:text-4xl lg:text-5xl ${selectedMode === mode.id ? 'text-black' : 'text-gray-800'}`}>
-                                    {mode.title}
+                                <h2 className={` text-3xl md:text-4xl uppercase lg:text-5xl ${selectedMode === mode.id ? 'text-black' : 'text-gray-800'}`}>
+                                    {t(mode.title)}
                                 </h2>
                             </div>
                         ))}

@@ -1,4 +1,4 @@
-import { GamesCategoryInterface } from "../utils/Interfaces";
+import { currencyOptionsInterface, GamesCategoryInterface } from "../utils/Interfaces";
 
 export const categories: GamesCategoryInterface[] = [
     { id: "1", name: 'Horror Movies', icon: '/categories-images/horror-movies.png' },
@@ -17,6 +17,15 @@ export const categories: GamesCategoryInterface[] = [
     { id: "14", name: 'E Gaming', icon: '/categories-images/e-gaming.png' },
     { id: "15", name: 'Pro Boxing', icon: '/categories-images/pro-boxing.png' },
     { id: "16", name: 'Animal Planet', icon: '/categories-images/animal-planet.png' }
+];
+
+export const Currency_Options: currencyOptionsInterface[] = [
+    { label: 'Kuwaiti Dinar', value: 'KWD', icon: '/images/kuwait.png' },
+    { label: 'Saudi Riyal', value: 'SAR', icon: '/images/saudia.png' },
+    { label: 'Qatari Riyal', value: 'QAR', icon: '/images/qatar.png' },
+    { label: 'Omani Rial', value: 'OMR', icon: '/images/oman.png' },
+    // { label: 'Bahraini Dinar', value: 'BHD', flag: '🇧🇭' },
+    // { label: 'UAE Dirham', value: 'AED', flag: '🇦🇪' }
 ];
 
 

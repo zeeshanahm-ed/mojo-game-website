@@ -4,6 +4,11 @@ export interface GamesCategoryInterface {
     id: string;
     selected?: boolean;
 }
+export interface currencyOptionsInterface {
+    label: string;
+    icon: string;
+    value: string;
+}
 export interface SelectedGamesPaymentDetailsInterface {
     id: string;
     title: string;
