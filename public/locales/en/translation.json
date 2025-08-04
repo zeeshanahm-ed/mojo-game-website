@@ -124,5 +124,17 @@
     "congratulations": "Congratulations",
     "playAgain": "Play Again",
     "wonGame": "has won the game",
-    "points": "Points"
+    "points": "Points",
+    "myGames": "My Games",
+    "buyNewGame": "Buy a new game",
+    "searchByCategory": "Search by category",
+    "searchByName": "Search by name",
+    "timesPlayed": "No of times played",
+    "prev": "Prev",
+    "next": "Next",
+    "contactUs": "Contact us",
+    "yourMessage": "Your Message",
+    "selectCountryCode": "Select Countery Code",
+    "send": "Send",
+    "fullName": "Full Name"
 }

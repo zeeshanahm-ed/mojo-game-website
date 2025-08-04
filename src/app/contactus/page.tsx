@@ -6,6 +6,8 @@ import Wrapper from '@/app/components/ui/common/Wrapper';
 import Banner from './components/Banner';
 import Input from '@/app/components/ui/common/Input';
 import Button from '@/app/components/ui/common/Button';
+import Select from '../components/ui/common/Select';
+import { useTranslation } from 'react-i18next';
 
 
 //icons
@@ -13,11 +15,13 @@ import CountryCodeIcon from '@/app/assets/icons/country-code-icon.svg';
 import EmailIcon from '@/app/assets/icons/email-icon.svg';
 import ContactIcon from '@/app/assets/icons/contact-icon.svg';
 import UserIcon from '@/app/assets/icons/user-icon.svg';
-import Select from '../components/ui/common/Select';
+import { useDirection } from '../hooks/useGetDirection';
 
 
 function ContactUS() {
     const { countries } = useCountries();
+    const { t } = useTranslation();
+    const direction = useDirection();
 
     const [form, setForm] = useState({
         fullName: '',
@@ -51,7 +55,7 @@ function ContactUS() {
                         <Input
                             icon={<UserIcon />}
                             type="text"
-                            placeholder="Full Name"
+                            placeholder={t("fullName")}
                             className="sm:w-[450px] lg:w-2/3 w-full mb-0"
                             required
                             name="fullName"
@@ -63,7 +67,7 @@ function ContactUS() {
                         <Input
                             icon={<EmailIcon />}
                             type="email"
-                            placeholder="Enter your email address"
+                            placeholder={t("emailPlaceholder")}
                             className="sm:w-[450px] lg:w-2/3 w-full"
                             required
                             name="email"
@@ -74,11 +78,12 @@ function ContactUS() {
                         <Select
                             icon={<CountryCodeIcon />}
                             name="countryCode"
+                            direction={direction}
                             isCountrySelect={true}
                             value={form.countryCode}
                             onChange={handleChange}
                             options={CountriesList || []}
-                            placeholder="Select Countery Code"
+                            placeholder={t("selectCountryCode")}
                             className="sm:w-[450px] lg:w-2/3 w-full"
                         />
 
@@ -86,7 +91,7 @@ function ContactUS() {
                         <Input
                             icon={<ContactIcon />}
                             type="number"
-                            placeholder="Your Contact Number"
+                            placeholder={t("contactNumber")}
                             className="sm:w-[450px] lg:w-2/3 w-full"
                             required
                             name="contact"
@@ -96,8 +101,9 @@ function ContactUS() {
 
                         <textarea
                             className="sm:w-[450px] lg:w-2/3 w-full h-28 outline-none resize-none bg-white border-2 border-black -skew-x-[4deg] md:-skew-x-[8deg] p-4 text-base md:text-lg"
-                            placeholder="Your message"
+                            placeholder={t("yourMessage")}
                             name="message"
+                            dir={direction}
                             onChange={handleChange}
                             value={form.message}>
                         </textarea>
@@ -105,7 +111,7 @@ function ContactUS() {
                         {/* SignUp Button */}
                         <div className='flex items-center justify-center mt-10'>
                             <Button type="submit" aria-label="Send" className="w-52 ">
-                                <span className="inline-block transform skew-x-12 tracking-wider text-4xl uppercase font-popfun">Send</span>
+                                <span className="inline-block transform skew-x-12 tracking-wider text-4xl uppercase font-popfun">{t("send")}</span>
                             </Button>
                         </div>
                     </form>

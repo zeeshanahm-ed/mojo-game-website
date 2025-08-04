@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import Button from './Button';
 
 interface PaginationProps {
@@ -9,6 +10,7 @@ interface PaginationProps {
 
 const Pagination: React.FC<PaginationProps> = ({ totalPages = 10 }) => {
     const [currentPage, setCurrentPage] = useState(1);
+    const { t } = useTranslation();
 
     const getPagination = () => {
         const pages: (number | string)[] = [];
@@ -53,10 +55,10 @@ const Pagination: React.FC<PaginationProps> = ({ totalPages = 10 }) => {
             {/* Prev */}
             <button
 
-                className="text-xl md:mr-10 cursor-pointer hover:text-dark-gray"
+                className="text-xl md:mr-5 cursor-pointer hover:text-dark-gray"
                 onClick={() => currentPage > 1 && setCurrentPage((prev) => prev - 1)}
             >
-                Prev
+                {t("prev")}
             </button>
 
             {/* Pages */}
@@ -80,10 +82,10 @@ const Pagination: React.FC<PaginationProps> = ({ totalPages = 10 }) => {
 
             {/* Next */}
             <button
-                className="text-xl md:ml-10 cursor-pointer hover:text-dark-gray"
+                className="text-xl md:ml-5 cursor-pointer hover:text-dark-gray"
                 onClick={() => currentPage < totalPages && setCurrentPage((prev) => prev + 1)}
             >
-                Next
+                {t("next")}
             </button>
         </div>
     );

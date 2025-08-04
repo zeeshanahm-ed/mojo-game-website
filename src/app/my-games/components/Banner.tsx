@@ -1,12 +1,14 @@
 import React from 'react';
 import Image from 'next/image';
+import Button from '@/app/components/ui/common/Button';
+import Wrapper from '@/app/components/ui/common/Wrapper';
+import { useTranslation } from 'react-i18next';
 
 import StarImage from "@/app/assets/images/star.png"
 import QuizAppImage from "@/app/assets/images/question-image-colorful.png"
-import Button from '@/app/components/ui/common/Button';
-import Wrapper from '@/app/components/ui/common/Wrapper';
 
 const Banner: React.FC = () => {
+    const { t } = useTranslation();
     return (
         <section className="w-full bg-[#1078FF] pb-5 py-16 px-4 md:px-10 flex flex-col items-center justify-center relative overflow-hidden border-b-4 border-black">
             {/* Main Content */}
@@ -20,14 +22,14 @@ const Banner: React.FC = () => {
                     {/* Middle Section - Heading and Description */}
                     <div className="flex flex-col text-center items-center lg:w-2/4">
                         <h2 className="text-6xl text-white  md:text-8xl lg:text-9xl leading-tight uppercase font-popfun">
-                            My games
+                            {t("myGames")}
                         </h2>
                         <p className="text-sm sm:text-base text-white lg:text-lg max-w-lg">
-                            An interactive group game in which we test your knowledge and culture.
+                            {t("playLocalNote")}
                         </p>
                         <div className='w-full my-10'>
                             <Button className='md:text-5xl w-44 sm:w-52 md:w-72 text-3xl' bgClass="bg-yellow" boxShadow={false} textClass="text-black">
-                                New Game
+                                {t("newGame")}
                             </Button>
                         </div>
                     </div>
