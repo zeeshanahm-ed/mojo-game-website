@@ -32,18 +32,18 @@ function WalletModal({ open, onClose }: WalletModalProps) {
 
     return (
         <dialog id="wallet_modal" className={` modal ${open ? 'modal-open' : ''}`}>
-            <div className="max-w-4xl modal-box px-0 bg-white items-center rounded-none border-2 border-black">
+            <div className="max-w-4xl modal-box customModalStyle bg-white items-center rounded-none border-2 border-black">
                 <form method="dialog " className="flex items-center justify-center relative">
                     <h2 className="text-5xl md:text-6xl font-popfun uppercase">
                         {t("wallet")}
                     </h2>
                     <button
                         type="button"
-                        className="absolute right-2 top-0 bg-light-gray focus:outline-none w-8 h-8 flex items-center justify-center rounded-full text-white hover:bg-dark-gray transition-colors duration-300"
+                        className="absolute right-3 -top-3 bg-light-gray focus:outline-none w-5 h-5 md:w-8 md:h-8 flex items-center justify-center rounded-full text-white hover:bg-dark-gray transition-colors duration-300"
                         onClick={onClose}
                         aria-label="Close"
                     >
-                        <MdClose className='text-2xl' />
+                        <MdClose className='text-base md:text-2xl' />
                     </button>
                 </form>
                 <div className="divider before:bg-gray-400 after:bg-gray-400 m-0"></div>

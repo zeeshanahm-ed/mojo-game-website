@@ -5,6 +5,7 @@ import { IoIosCopy } from "react-icons/io";
 import Button from '@/app/components/ui/common/Button';
 import JoinRoomModal from '@/app/components/modals/join-room-modal';
 import { showErrorMessage, showSuccessMessage } from '@/app/utils/messageUtils';
+import { useTranslation } from 'react-i18next';
 
 interface Props {
     isEditingRoomName: boolean;
@@ -18,6 +19,7 @@ interface Props {
 
 function JoinRoom({ roomName, setRoomName, handleSaveRoomName, handleEditRoomName, roomCode, roomNameInputRef }: Props) {
     const [showModal, setShowModal] = useState(false);
+    const { t } = useTranslation();
 
     const handleClose = () => {
         setShowModal(false);
@@ -37,12 +39,12 @@ function JoinRoom({ roomName, setRoomName, handleSaveRoomName, handleEditRoomNam
         <div className='flex flex-col items-center'>
             <div className='w-full mb-5'>
                 <Button className=' w-64 md:w-72 text-4xl md:text-5xl' onClick={() => setShowModal(true)}>
-                    Join Room
+                    {t("joinRoom")}
                 </Button>
             </div>
             <div className="text-center flex flex-col items-center justify-center my-5">
                 <h2 className="text-5xl font-popfun text-black uppercase">
-                    or create a room
+                    {t("orCreateRoom")}
                 </h2>
             </div>
 
@@ -50,13 +52,13 @@ function JoinRoom({ roomName, setRoomName, handleSaveRoomName, handleEditRoomNam
             <div className="flex items-center h-14 sm:h-16 w-full max-w-md border-2 mt-5 border-black overflow-hidden">
                 <div className="bg-white sm:w-32 w-24">
                     <span className="font-popfun text-black text-2xl md:text-4xl uppercase">
-                        Room Name :
+                        {t("roomName")}
                     </span>
                 </div>
                 <div className='bg-yellow flex-1 h-full border-x-2 border-black'>
                     <input
                         type="text"
-                        placeholder='Enter Room Name'
+                        placeholder={t("enterRoomName")}
                         ref={roomNameInputRef}
                         className="input w-full h-full input-lg text-black text-2xl md:text-4xl border-x-2 font-popfun uppercase text-center bg-yellow border-none border-black focus:outline-none"
                         value={roomName}
@@ -83,7 +85,7 @@ function JoinRoom({ roomName, setRoomName, handleSaveRoomName, handleEditRoomNam
             <div className="flex items-center w-full h-14 sm:h-16 max-w-md border-2 mt-5 border-black overflow-hidden">
                 <div className="bg-white sm:w-32 w-24">
                     <span className="font-popfun text-black text-2xl md:text-4xl uppercase">
-                        Room Code :
+                        {t("roomCode")}
                     </span>
                 </div>
                 <div className="bg-yellow flex-grow flex-1 h-full flex border-x-2 border-black items-center justify-center">

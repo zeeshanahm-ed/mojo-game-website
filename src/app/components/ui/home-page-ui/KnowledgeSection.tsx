@@ -6,13 +6,16 @@ import Wrapper from '../common/Wrapper';
 import { useCreateGameModalStore } from '@/app/store/useCreateGameModalStore';
 import Button from '../common/Button';
 import { useTranslation } from 'react-i18next';
+import { useDirection } from '@/app/hooks/useGetDirection';
 
 //icons
-import GroupNPerson from "@/app/assets/images/group-image.png"
+import GroupNPerson from "@/app/assets/images/group-image.png";
+import GroupNPersonArabic from "@/app/assets/images/Group-image-arabi.png";
 
 const KnowledgeSection = () => {
     const { openModal } = useCreateGameModalStore();
     const { t } = useTranslation();
+    const direction = useDirection();
 
     const handleOPenModal = () => {
         openModal();
@@ -35,7 +38,7 @@ const KnowledgeSection = () => {
                         </Button>
                     </div>
                     <div className='my-10'>
-                        <Image src={GroupNPerson} alt='Person Image' className='h-1/2 w-[400px] md:w-[800px]' />
+                        <Image src={direction === "rtl" ? GroupNPersonArabic : GroupNPerson} alt='Person Image' className='h-1/2 w-[400px] md:w-[800px]' />
                     </div>
                 </div>
             </Wrapper>

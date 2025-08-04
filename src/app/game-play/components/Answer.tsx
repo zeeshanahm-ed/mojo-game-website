@@ -1,10 +1,12 @@
 import Button from "@/app/components/ui/common/Button";
 import Image from "next/image";
 import React from "react";
+import { offlineQuestionsListInterface } from "@/app/constants/constant";
+import { useTranslation } from "react-i18next";
 //icon
 import { BsQuestionCircle } from "react-icons/bs";
 import Book from "@/app/assets/images/book.png";
-import { offlineQuestionsListInterface } from "@/app/constants/constant";
+import { useDirection } from "@/app/hooks/useGetDirection";
 
 interface AnswerProps {
     question: offlineQuestionsListInterface | null;
@@ -18,6 +20,8 @@ const Options = [
 ]
 
 export default function Answer({ answerType = "image", handleScreenChange, mode, question }: AnswerProps) {
+    const { t } = useTranslation();
+    const direction = useDirection();
 
     return (
         <div className="flex items-center justify-center">
@@ -54,20 +58,20 @@ export default function Answer({ answerType = "image", handleScreenChange, mode,
                 </div>
                 {/* Bottom bar */}
                 <div className="flex items-center justify-between py-2 rounded-b-lg" >
-                    <div
+                    <button
                         role="button"
                         onClick={() => handleScreenChange("whoAnswered")}
                         style={{ clipPath: "polygon(0 0, 92% 0%, 100% 100%, 0% 100%)" }}
-                        className="flex h-12 px-2 md:px-5 py-2 pt-4 items-center justify-between text-white bg-dark-orange font-popfun">
-                        <span className="md:text-4xl text-3xl tracking-wider">who answered </span>
-                    </div>
-                    <div
+                        className={`${direction === "ltr" && "sm:pt-4"} flex h-12 px-2 md:px-5 py-2 items-center justify-between text-white bg-dark-orange font-popfun`}>
+                        <span className="md:text-4xl text-3xl tracking-wider">{t("whoAnswered")} </span>
+                    </button>
+                    <button
                         role="button"
                         onClick={() => handleScreenChange(mode === "online" ? "onlineQuestion" : "offlineQuestion")}
                         style={{ clipPath: "polygon(8% 0, 100% 0%, 100% 100%, 0% 100%)" }}
-                        className="cursor-pointer flex h-12 px-5 py-2 pt-4 items-center justify-between text-white bg-red font-popfun">
-                        <span className="md:text-3xl text-2xl tracking-wider">back to question</span>
-                    </div>
+                        className={`${direction === "ltr" && "sm:pt-4"} cursor-pointer flex h-12 px-5 py-2  items-center justify-between text-white bg-red font-popfun`}>
+                        <span className="md:text-3xl text-2xl tracking-wider">{t("backToQuestion")}</span>
+                    </button>
                 </div>
             </div>
         </div>

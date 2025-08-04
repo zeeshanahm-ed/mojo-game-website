@@ -1,11 +1,13 @@
 import React, { useState, useRef } from "react";
 import Image from "next/image";
+import { offlineQuestionsListInterface } from "@/app/constants/constant";
+import { useTranslation } from "react-i18next";
 //icon
 import { BsQuestionCircle } from "react-icons/bs";
 import { IoMdPause, IoMdPlay } from "react-icons/io";
 import { MdRestartAlt } from "react-icons/md";
 import ClockIcon from "@/app/assets/icons/clock-icon.svg";
-import { offlineQuestionsListInterface } from "@/app/constants/constant";
+import { useDirection } from "@/app/hooks/useGetDirection";
 
 
 interface OfflineQuestionProps {
@@ -17,6 +19,8 @@ interface OfflineQuestionProps {
 export default function OfflineQuestion({ question, handleScreenChange }: OfflineQuestionProps) {
     const [timer, setTimer] = useState(0);
     const [isPaused, setIsPaused] = useState(false);
+    const { t } = useTranslation();
+    const direction = useDirection();
     const timerRef = useRef<NodeJS.Timeout | null>(null);
 
     // Timer logic
@@ -73,7 +77,7 @@ export default function OfflineQuestion({ question, handleScreenChange }: Offlin
                 <div className="flex items-center justify-between py-2 rounded-b-lg flex-wrap gap-y-4">
                     <div className="flex sm:h-12 px-2 md:px-5 py-1 sm:py-2 pt-2 sm:pt-4 items-center justify-between text-white bg-dark-orange font-popfun">
                         <span className="md:text-4xl text-xl sm:text-3xl">{question?.category.toUpperCase()}</span>
-                        <span className="md:text-2xl text-base sm:text-xl ml-2 md:ml-10">{question?.points} POINTS</span>
+                        <span className="md:text-2xl text-base sm:text-xl ml-2 md:ml-10 uppercase">{question?.points} t{("points")}</span>
                     </div>
                     <div className="flex items-center gap-2">
                         {/* Timer */}
@@ -100,8 +104,8 @@ export default function OfflineQuestion({ question, handleScreenChange }: Offlin
                     <div
                         role="button"
                         onClick={() => handleScreenChange("answer")}
-                        className="w-full sm:w-auto -cursor-pointer sm:h-12 flex px-2 md:px-5 py-1 sm:py-2 pt-2 sm:pt-4 items-center justify-center  text-white bg-dark-green font-popfun border-2 border-black">
-                        <span className="md:text-4xl text-xl sm:text-3xl">See Answer</span>
+                        className={`w-full sm:w-auto cursor-pointer sm:h-12 flex px-2 md:px-5 py-1 sm:py-2 pt-2 ${direction === "ltr" && "sm:pt-4"} items-center justify-center  text-white bg-dark-green font-popfun border-2 border-black`}>
+                        <span className="md:text-4xl text-xl sm:text-3xl">{t("seeAnswer")}</span>
                     </div>
                 </div>
             </div>

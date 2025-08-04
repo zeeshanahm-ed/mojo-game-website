@@ -44,17 +44,17 @@ function BuyNewGameModal({ open, onClose }: NewGameModalProps) {
                     </h2>
                     <button
                         type="button"
-                        className="absolute right-3 top-3 bg-light-gray focus:outline-none w-8 h-8 flex items-center justify-center rounded-full text-white hover:bg-dark-gray transition-colors duration-300"
+                        className="absolute right-3 -top-3 bg-light-gray focus:outline-none w-5 h-5 md:w-8 md:h-8 flex items-center justify-center rounded-full text-white hover:bg-dark-gray transition-colors duration-300"
                         onClick={onClose}
                         aria-label="Close"
                     >
-                        <MdClose className='text-2xl' />
+                        <MdClose className='text-base md:text-2xl' />
                     </button>
                 </form>
                 <div className="divider before:bg-light-gray after:bg-light-gray m-0"></div>
                 {/* Main content */}
                 <div className="w-full">
-                    <div className='flex px-4 md:px-10 items-center flex-col w-full text-white justify-between py-5 uppercase font-popfun space-y-5'>
+                    <div className='flex px-5 md:px-10 items-center flex-col w-full text-white justify-between py-5 uppercase font-popfun space-y-5'>
                         {Options.map((option, index) => {
                             return (
                                 <div key={index} onClick={() => handleSelectOption(option)} className={`${selectedOption?.count === option.count && "text-gray-200"} w-full cursor-pointer hover:text-gray-200 transition-all duration-300 ${option.bgColor} flex items-center justify-between  px-4 md:px-10 pt-4 pb-2 -skew-x-12`}>
