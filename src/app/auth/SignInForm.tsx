@@ -15,7 +15,7 @@ interface ValidationErrors {
 }
 
 export default function SignInForm() {
-    const { t, i18n } = useTranslation();
+    const { t } = useTranslation();
     const direction = useDirection();
 
     const { openModal } = useAuthModalStore();

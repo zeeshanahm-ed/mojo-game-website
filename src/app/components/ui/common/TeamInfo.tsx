@@ -1,4 +1,4 @@
-import React, { useDebugValue } from 'react'
+import React from 'react'
 import Image from 'next/image';
 import Input from './Input';
 import { useDirection } from '@/app/hooks/useGetDirection';
