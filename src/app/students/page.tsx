@@ -2,6 +2,9 @@
 import React, { useState } from 'react';
 import Wrapper from '@/app/components/ui/common/Wrapper';
 import Banner from './components/Banner';
+import SubjectGames from './components/SubjectGames';
+import { scrollToTop } from '../helpers/helpers-functions';
+import { useTranslation } from 'react-i18next';
 
 //icons
 import ScienceBookIcon from "@/app/assets/icons/science-book.svg";
@@ -9,8 +12,6 @@ import EnglishBookIcon from "@/app/assets/icons/english-book.svg";
 import MathBookIcon from "@/app/assets/icons/math-book.svg";
 import ArabicBookIcon from "@/app/assets/icons/arabic-book.svg";
 import IslamicBookIcon from "@/app/assets/icons/islamic-education-book.svg";
-import SubjectGames from './components/SubjectGames';
-import { scrollToTop } from '../helpers/helpers-functions';
 
 interface state {
     academicLevel: number | null;
@@ -33,6 +34,7 @@ const SubjectOptions = [
 ];
 
 function Students() {
+    const { t } = useTranslation();
     const [state, setState] = useState<state>({
         academicLevel: null,
         selectedSemester: null,
@@ -73,15 +75,15 @@ function Students() {
 
     return (
         <section>
-            <Banner title={state?.selectedSubject || "Students"} isSubject={!!state?.selectedSubject} clearState={handleClearState} />
+            <Banner title={state?.selectedSubject || "students"} isSubject={!!state?.selectedSubject} clearState={handleClearState} />
             <Wrapper>
                 <div className='flex items-center justify-center flex-col h-auto py-16 px-4 md:px-10'>
                     {!state.selectedSubject ?
                         <>
                             {/* Academic Level */}
                             <div className="text-center flex flex-col items-center justify-center">
-                                <h2 className="md:text-7xl text-5xl font-popfun text-black mb-2 uppercase">Choose your academic level</h2>
-                                <p className="text-sm sm:text-base md:text-lg text-black">You can choose a study stage from the following stages.</p>
+                                <h2 className="md:text-7xl text-5xl font-popfun text-black mb-2 uppercase">{t("chooseAcademicLevel")}</h2>
+                                <p className="text-sm sm:text-base md:text-lg text-black">{t("chooseAcademicLevelDescription")}</p>
                                 <div className='font-popfun gap-y-10 gap-x-5 md:gap-x-10 mt-20 flex items-center justify-center flex-wrap'>
                                     {AcademicLavelOptions.map((v) => (
                                         <CustomCard
@@ -97,7 +99,7 @@ function Students() {
 
                             {/* Semester */}
                             <div className="text-center flex flex-col items-center justify-center mt-20">
-                                <h2 className="md:text-7xl text-5xl font-popfun text-black mb-2 uppercase">Select the semester</h2>
+                                <h2 className="md:text-7xl text-5xl font-popfun text-black mb-2 uppercase">{t("selectSemester")}</h2>
                                 <div className='font-popfun gap-10 mt-10 flex items-center justify-center flex-wrap'>
                                     {SemesterOptions.map((v) => (
                                         <CustomCard
@@ -114,8 +116,8 @@ function Students() {
 
                             {/* Subject */}
                             <div className="text-center flex flex-col items-center justify-center mt-20">
-                                <h2 className="md:text-7xl text-5xl font-popfun text-black mb-2 uppercase">Select the subject</h2>
-                                <p className="text-sm sm:text-base md:text-lg text-black">You can choose the study subject from the following subjects.</p>
+                                <h2 className="md:text-7xl text-5xl font-popfun text-black mb-2 uppercase">{t("selectSubject")}</h2>
+                                <p className="text-sm sm:text-base md:text-lg text-black">{t("chooseAcademicLevelDescription")}</p>
                                 <div className='font-popfun gap-10 mt-10 flex items-center justify-center flex-wrap'>
                                     {SubjectOptions.map((v) => (
                                         <CustomCard

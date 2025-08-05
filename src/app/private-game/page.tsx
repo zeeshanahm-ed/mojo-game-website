@@ -4,12 +4,13 @@ import Banner from './components/Banner'
 import Wrapper from '@/app/components/ui/common/Wrapper';
 import Input from '@/app/components/ui/common/Input';
 import CategoriesSection from './components/CategoriesSec';
-
-//icons
-import SearchIcon from '@/app/assets/icons/search-icon.svg';
 import GamesSection from './components/GamesSec';
 import SelectedGamesPaymentDetails from '../components/ui/common/SelectedGamesPaymentDetails';
 import { SelectedGamesPaymentDetailsInterface } from '../utils/Interfaces';
+import { useTranslation } from 'react-i18next';
+
+//icons
+import SearchIcon from '@/app/assets/icons/search-icon.svg';
 
 
 const Data = [
@@ -49,6 +50,7 @@ const Data = [
 
 
 function PrivateGames() {
+    const { t } = useTranslation();
     const [searchByName, setSearchByName] = useState('');
     const [selectedCategory, setSelectedCategory] = useState<number | null>(null)
     const [selectedGames, setSelectedGames] = useState<SelectedGamesPaymentDetailsInterface[]>([])
@@ -68,7 +70,7 @@ function PrivateGames() {
                             <Input
                                 icon={<SearchIcon />}
                                 type="text"
-                                placeholder="Search by name "
+                                placeholder={t("searchByName")}
                                 value={searchByName}
                                 className=''
                                 onChange={(e) => setSearchByName(e.target.value)}
@@ -79,7 +81,7 @@ function PrivateGames() {
                     <div className='h-auto mt-1'>
                         <GamesSection data={Data} selectedGames={selectedGames} setSelectedGames={setSelectedGames} />
                         <div className='mt-20'>
-                            <h2 className="md:text-7xl text-5xl text-center font-popfun text-black mb-4 mt-10 uppercase">Selected Games</h2>
+                            <h2 className="md:text-7xl text-5xl text-center font-popfun text-black mb-4 mt-10 uppercase">{t("selectedGames")}</h2>
                             <SelectedGamesPaymentDetails selectedGames={selectedGames} handleRemoveSelectedGame={handleRemoveSelectedGame} />
                         </div>
                     </div>

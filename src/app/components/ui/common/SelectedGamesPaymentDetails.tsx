@@ -4,6 +4,7 @@ import PaymentOptionModal from '../../modals/payment-options-modal';
 import { MdClose } from 'react-icons/md';
 import { SelectedGamesPaymentDetailsInterface } from '@/app/utils/Interfaces';
 import Image from 'next/image';
+import { useTranslation } from 'react-i18next';
 
 
 interface Props {
@@ -12,6 +13,7 @@ interface Props {
 }
 
 function SelectedGamesPaymentDetails({ selectedGames, handleRemoveSelectedGame }: Props) {
+    const { t } = useTranslation();
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [discountCode, setDiscountCode] = useState<string>('');
     const [discountApplied] = useState<boolean>(false);
@@ -56,7 +58,7 @@ function SelectedGamesPaymentDetails({ selectedGames, handleRemoveSelectedGame }
                 <div className="flex skew-x-12 items-center justify-between" >
                     <div className="flex-shrink-0 -skew-x-12 bg-black py-2 px-2 sm:px-4">
                         <label className="text-white text-sm tracking-normal">
-                            Discount Code
+                            {t("discountCode")}
                         </label>
                     </div>
                     <div className="flex-1 ml-4 sm:ml-6 md:ml-8">
@@ -64,7 +66,7 @@ function SelectedGamesPaymentDetails({ selectedGames, handleRemoveSelectedGame }
                             type="text"
                             value={discountCode}
                             onChange={(e) => setDiscountCode(e.target.value)}
-                            placeholder="Enter discount code"
+                            placeholder={t("enterDiscountCode")}
                             className="w-full text-base tracking-normal bg-transparent border-none outline-none placeholder-gray-400"
                         />
                     </div>
@@ -86,7 +88,7 @@ function SelectedGamesPaymentDetails({ selectedGames, handleRemoveSelectedGame }
                 <hr className="border-gray-200" />
 
                 <div className="flex justify-between items-center text-sm">
-                    <span className="text-black font-medium">sub total</span>
+                    <span className="text-black font-medium">{t("subTotal")}</span>
                     <div className="flex items-center gap-2">
                         <span className="text-gray-400 text-xs">SAR</span>
                         <span className="text-black font-medium">{subtotal.toFixed(1)}</span>
@@ -95,7 +97,7 @@ function SelectedGamesPaymentDetails({ selectedGames, handleRemoveSelectedGame }
 
                 {discountApplied && (
                     <div className="flex justify-between items-center text-sm">
-                        <span className="text-green-600">Discount (10%)</span>
+                        <span className="text-green-600">{t("Discount")} (10%)</span>
                         <div className="flex items-center gap-2">
                             <span className="text-gray-400 text-xs">SAR</span>
                             <span className="text-green-600 font-medium">-{discountAmount.toFixed(1)}</span>
@@ -106,7 +108,7 @@ function SelectedGamesPaymentDetails({ selectedGames, handleRemoveSelectedGame }
                 <hr className="border-gray-300 border-t-2 mt-1" />
 
                 <div className="flex justify-between items-center text-lg font-bold">
-                    <span>Total</span>
+                    <span>{t("total")}</span>
                     <div className="flex items-center gap-2">
                         <span className=" text-sm">SAR</span>
                         <span>
@@ -118,7 +120,7 @@ function SelectedGamesPaymentDetails({ selectedGames, handleRemoveSelectedGame }
             </div>
 
             {/* Pay Now Button */}
-            <Button disabled={selectedGames.length == 0} boxShadow={false} onClick={() => setIsModalOpen(true)} className='text-3xl sm:text-4xl w-44 sm:w-64'>Pay Now</Button>
+            <Button disabled={selectedGames.length == 0} boxShadow={false} onClick={() => setIsModalOpen(true)} className='text-3xl sm:text-4xl w-44 sm:w-64'>{t("payNow")}</Button>
             <PaymentOptionModal open={isModalOpen} onClose={() => setIsModalOpen(false)} />
         </div>
     )

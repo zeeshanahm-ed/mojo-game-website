@@ -4,6 +4,7 @@ import React, { useState } from 'react'
 import GamesSection from '@/app/private-game/components/GamesSec';
 import SelectedGamesPaymentDetails from '@/app/components/ui/common/SelectedGamesPaymentDetails';
 import { SelectedGamesPaymentDetailsInterface } from '@/app/utils/Interfaces';
+import { useTranslation } from 'react-i18next';
 
 
 const Data = [
@@ -56,6 +57,7 @@ const Data = [
 
 
 function SubjectGames() {
+    const { t } = useTranslation();
     const [selectedGames, setSelectedGames] = useState<SelectedGamesPaymentDetailsInterface[]>([])
 
     const handleRemoveSelectedGame = (id: string) => {
@@ -63,14 +65,14 @@ function SubjectGames() {
     };
     return (
         <div className='text-center flex flex-col items-center justify-center mt-10'>
-            <h2 className="md:text-7xl text-5xl font-popfun text-black mb-2 uppercase">list of games</h2>
-            <p className="text-sm sm:text-base md:text-lg text-black">Review your study of the material through the five available games.</p>
-            <p className="text-sm sm:text-base md:text-lg text-black">You can choose one or more games.</p>
+            <h2 className="md:text-7xl text-5xl font-popfun text-black mb-2 uppercase">{t("listOfGames")}</h2>
+            <p className="text-sm sm:text-base md:text-lg text-black">{t("reviewStudy")}</p>
+            <p className="text-sm sm:text-base md:text-lg text-black">{t("chooseGames")}</p>
             <div className='h-auto mt-10'>
                 <GamesSection data={Data} selectedGames={selectedGames} setSelectedGames={setSelectedGames} />
             </div>
 
-            <h2 className="md:text-7xl text-5xl font-popfun text-black mb-4 mt-10 uppercase">Selected Games</h2>
+            <h2 className="md:text-7xl text-5xl font-popfun text-black mb-4 mt-10 uppercase">{t("selectedGames")}</h2>
 
             {/* Game Cards */}
             <SelectedGamesPaymentDetails selectedGames={selectedGames} handleRemoveSelectedGame={handleRemoveSelectedGame} />

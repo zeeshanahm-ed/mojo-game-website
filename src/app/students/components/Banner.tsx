@@ -2,13 +2,15 @@ import React from 'react';
 import Image from 'next/image';
 import Wrapper from '@/app/components/ui/common/Wrapper';
 import Button from '@/app/components/ui/common/Button';
+import { useRouter } from 'next/navigation';
+import { useTranslation } from 'react-i18next';
 //icons
 import BoildTubeImage from "@/app/assets/images/boild-tube-image.png";
 import ElectronImage from "@/app/assets/images/electron-image.png";
 import ScientistImage from "@/app/assets/images/scientist-image.png";
 import TubImage from "@/app/assets/images/tube-image.png";
 import { IoIosArrowBack } from "react-icons/io";
-import { useRouter } from 'next/navigation';
+import { useDirection } from '@/app/hooks/useGetDirection';
 
 interface BannerProps {
     title: string;
@@ -19,6 +21,8 @@ interface BannerProps {
 
 const Banner: React.FC<BannerProps> = ({ title = "students", isSubject, clearState }) => {
     const router = useRouter();
+    const { t } = useTranslation();
+    const direction = useDirection();
     const handleGoBack = () => {
         if (isSubject) {
             clearState();
@@ -36,8 +40,8 @@ const Banner: React.FC<BannerProps> = ({ title = "students", isSubject, clearSta
                         <Button
                             boxShadow={false}
                             onClick={handleGoBack}
-                            prefixElement={<IoIosArrowBack className='text-xl lg:text-3xl lg:mb-2 mb-1 mr-0' />}
-                            className='text-xl lg:text-4xl w-28 lg:w-40 flex items-center'>{isSubject ? "Subjects" : "Main page"}</Button>
+                            prefixElement={<IoIosArrowBack className={`text-xl lg:text-3xl  mb-1 mr-0 ${direction === "rtl" ? "lg:mb-0" : "lg:mb-2"}`} />}
+                            className='text-xl lg:text-4xl w-28 lg:w-fit flex items-center'>{isSubject ? t("subjects") : t("mainPage")}</Button>
                     </div>
 
                     <div className="flex md:-left-8 -left-0 -bottom-[145px] md:-bottom-[115px] absolute items-center justify-center w-28 lg:w-36">
@@ -55,10 +59,10 @@ const Banner: React.FC<BannerProps> = ({ title = "students", isSubject, clearSta
 
                     <div className="flex flex-col items-start md:items-center lg:w-2/4 text-black ">
                         <h2 className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl leading-tight uppercase font-popfun">
-                            {title}
+                            {t(title)}
                         </h2>
                         <p className="text-xs sm:text-sm md:text-base  lg:text-lg">
-                            A series of questions for students of every age group.
+                            {t("studentsDescription")}
                         </p>
                     </div>
                 </div>

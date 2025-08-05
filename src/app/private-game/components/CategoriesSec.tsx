@@ -1,5 +1,6 @@
 
 import React, { ReactNode } from 'react';
+import { useTranslation } from 'react-i18next';
 
 //icon
 import MoonIcon from "@/app/assets/icons/moon-icon.svg";
@@ -21,28 +22,28 @@ interface PropsInter {
 const categories: CategoryItem[] = [
     {
         id: 1,
-        name: 'Islamic',
+        name: 'islamic',
         iconPlaceholder: <MoonIcon />
     },
     {
         id: 2,
-        name: 'Materials',
+        name: 'materials',
         iconPlaceholder: <MaterialsIcon />
     },
     {
         id: 3,
-        name: 'Soccer',
+        name: 'soccer',
         iconPlaceholder: <SoccerIcon />
     },
     {
         id: 4,
-        name: 'Quran',
+        name: 'quran',
         iconPlaceholder: <QuranIcon />
     }
 ];
 
 const CategoriesSection: React.FC<PropsInter> = ({ setSelectedCategory, selectedCategory }) => {
-
+    const { t } = useTranslation();
 
     const handleCategorySelect = (categoryId: number) => {
         setSelectedCategory(categoryId === selectedCategory ? null : categoryId);
@@ -60,7 +61,7 @@ const CategoriesSection: React.FC<PropsInter> = ({ setSelectedCategory, selected
                         <div className={` h-full flex items-center justify-between px-6 relative `}>
                             {/* Category name */}
                             <span className="text-white text-xl md:text-2xl skew-x-12 font-medium">
-                                {category.name}
+                                {t(category.name)}
                             </span>
 
                             {/* Icon container with white background */}

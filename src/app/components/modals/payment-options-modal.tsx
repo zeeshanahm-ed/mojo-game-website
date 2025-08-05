@@ -1,5 +1,7 @@
 import React, { ReactNode } from 'react'
 import { MdClose } from 'react-icons/md';
+import { useTranslation } from 'react-i18next';
+import { useDirection } from '@/app/hooks/useGetDirection';
 //icon
 import KnetPayIcon from "@/app/assets/icons/knetPay-icon.svg";
 import GooglePayIcon from "@/app/assets/icons/GooglePay-icon.svg";
@@ -50,6 +52,8 @@ const paymentMethods: PaymentMethod[] = [
 ];
 
 function PaymentOptionModal({ open, onClose }: PaymentOptionModalProps) {
+    const { t } = useTranslation();
+    const direction = useDirection();
 
     const handleNavigation = (paymentMethod: PaymentMethod) => {
         console.log(`Navigating to: ${paymentMethod.route}`);
@@ -62,7 +66,7 @@ function PaymentOptionModal({ open, onClose }: PaymentOptionModalProps) {
             <div className="modal-box customModalStyle  bg-white items-center max-w-2xl rounded-none border-2 border-black">
                 <form method="dialog " className=" flex items-center justify-center relative">
                     <h2 className="text-4xl sm:text-5xl md:text-6xl font-popfun uppercase flex flex-row items-center ">
-                        Payment options
+                        {t("paymentOptions")}
                     </h2>
                     <button
                         type="button"
@@ -114,9 +118,9 @@ function PaymentOptionModal({ open, onClose }: PaymentOptionModalProps) {
                     </div>
 
                     {/* Payable Amount */}
-                    <div className="text-center">
+                    <div className="text-center" dir={direction}>
                         <div className="inline-flex items-center gap-3 text-base md:text-lg">
-                            <span className="font-medium text-gray-800">Payable Amount :</span>
+                            <span className="font-medium text-gray-800">{t("payableAmount")} :</span>
                             <span className="font-bold text-gray-900">
                                 {payableAmount.toFixed(2)} SAR
                             </span>

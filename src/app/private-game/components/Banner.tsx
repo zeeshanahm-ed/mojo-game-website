@@ -1,10 +1,12 @@
 import React from 'react';
 import Image from 'next/image';
 import Wrapper from '@/app/components/ui/common/Wrapper';
+import { useTranslation } from 'react-i18next';
 
 import PrivateGameImage from "@/app/assets/images/private-games-images.png"
 
 const Banner: React.FC = () => {
+    const { t } = useTranslation();
     return (
         <section className="w-full bg-purple py-16 px-4 md:px-10 flex flex-col items-center justify-center relative overflow-hidden border-b-4 border-black">
             {/* Main Content */}
@@ -13,13 +15,13 @@ const Banner: React.FC = () => {
                     {/* Middle Section - Heading and Description */}
                     <div className="flex flex-col text-start items-start justify-start md:items-center md:text-center lg:w-2/4">
                         <h2 className="text-6xl text-white  md:text-8xl lg:text-9xl leading-tight mb-4 uppercase font-popfun">
-                            Private game
+                            {t("private_game")}
                         </h2>
                         <p className="text-sm sm:text-base text-white md:text-lg">
-                            Game library, each game has a different field.
+                            {t("game_library")}
                         </p>
                         <p className="text-sm sm:text-base text-white md:text-lg">
-                            The questions in these games are divided into 3 different levels.
+                            {t("questions_divided_levels")}
                         </p>
                     </div>
 
