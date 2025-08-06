@@ -30,7 +30,7 @@ export default function Answer({ answerType = "image", handleScreenChange, mode,
                     {/* Question Header */}
                     <div className={`${answerType === "list" ? "bg-black" : "bg-dark-orange"} text-white text-start py-2 px-2 flex items-center justify-center gap-2`}>
                         <BsQuestionCircle className="text-2xl" />
-                        <span className="text-base md:text-lg">{question?.text}</span>
+                        <span className="text-base md:text-lg font-secondary">{question?.text}</span>
                     </div>
 
                     {/* Options (audio/video/list) */}

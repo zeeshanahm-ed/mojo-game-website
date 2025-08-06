@@ -21,7 +21,7 @@ function Timer({ timer }: Props) {
                     <span className="md:text-4xl text-xl sm:text-3xl">Set Time</span>
                 </div>
             </div>
-            <p className="text-base md:text-lg max-w-3xl tracking-normal mt-5">
+            <p className="text-base font-secondary md:text-lg max-w-3xl tracking-normal mt-5">
                 If the second team does not join within a set time, your credit will be refunded
             </p>
         </div>

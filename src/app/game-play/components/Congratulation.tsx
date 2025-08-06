@@ -31,7 +31,7 @@ const Congratulation: React.FC = () => {
                 <h2 className="md:text-8xl text-5xl  text-[#75C704] mb-2 uppercase">
                     {t("congratulations")}
                 </h2>
-                <p className="text-sm sm:text-base md:text-lg leading-6 text-black max-w-2xl">
+                <p className="text-sm font-secondary sm:text-base md:text-lg leading-6 text-black max-w-2xl">
                     {t("playLocalNote")}
                 </p>
             </div>
@@ -72,7 +72,7 @@ const Congratulation: React.FC = () => {
                     const url = session?.mode === "offline" ? "/offline-play" : "/online-play";
                     router.push(url);
                 }}
-                className="text-3xl sm:text-4xl py-5 px-8 sm:px-16 mt-10 -skew-x-6 w-fit"
+                className="text-3xl sm:text-4xl py-2 px-8 sm:px-16 mt-10 -skew-x-6 w-fit"
                 style={{ boxShadow: "none" }}
             >
                 {t("playAgain")}

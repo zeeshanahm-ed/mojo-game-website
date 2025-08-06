@@ -37,7 +37,7 @@ function ChooseMode({ selectedMode, handleModeSelect }: Props) {
                         <h2 className="text-6xl md:text-8xl leading-tight mb-4 uppercase ">
                             {t("joinRoom")}
                         </h2>
-                        <p className="text-sm sm:text-base md:text-lg">
+                        <p className="text-sm font-secondary sm:text-base md:text-lg">
                             {t("playGlobalDescription")}
                         </p>
                     </div>

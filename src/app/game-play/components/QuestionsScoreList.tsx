@@ -22,7 +22,7 @@ const QuestionsScoreList: React.FC<QuestionsScoreListProp> = ({ onScoreClick }) 
                 <h2 className="md:text-8xl text-5xl  text-black mb-2 uppercase">
                     {t("questions")}
                 </h2>
-                <p className="text-sm sm:text-base md:text-lg leading-6 text-black max-w-2xl">
+                <p className="text-sm font-secondary sm:text-base md:text-lg leading-6 text-black max-w-2xl">
                     {t("opposingCategories")}
                 </p>
             </div>

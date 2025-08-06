@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import { MdClose } from 'react-icons/md';
+import { useTranslation } from 'react-i18next';
+import { useDirection } from '@/app/hooks/useGetDirection';
 //icon
 import RoyalRoundedIcon from "@/app/assets/icons/riyal-rounded-icon.svg"
 import RoyalWalletIcon from "@/app/assets/icons/riyal-wallet-icon.svg"
@@ -24,6 +26,8 @@ interface NewGameModalProps {
 
 function BuyNewGameModal({ open, onClose }: NewGameModalProps) {
     const [discountCode, setDiscountCode] = useState('');
+    const { t } = useTranslation();
+    const direction = useDirection();
 
     const [selectedOption, setSelectedOption] = useState<PaymentOption>({
         count: '10',
@@ -40,7 +44,7 @@ function BuyNewGameModal({ open, onClose }: NewGameModalProps) {
             <div className="modal-box px-0 pb-0 font-primary  bg-white items-center max-w-2xl rounded-none border-2 border-black">
                 <form method="dialog " className="px-4 md:px-10 flex items-center justify-start relative">
                     <h2 className="text-4xl sm:text-5xl md:text-6xl  uppercase flex flex-row sm:flex-row sm:items-center ">
-                        Buy a new game <span className='ml-4 sm:ml-8 flex items-center gap-1 sm:gap-3'><RoyalWalletIcon className="mb-1 sm:w-10 sm:h-10" /> 10.00</span>
+                        {t("buyNewGame")} <span className='ml-4 sm:ml-8 flex items-center gap-1 sm:gap-3'><RoyalWalletIcon className="mb-1 sm:w-10 sm:h-10" /> 10.00</span>
                     </h2>
                     <button
                         type="button"
@@ -58,7 +62,7 @@ function BuyNewGameModal({ open, onClose }: NewGameModalProps) {
                         {Options.map((option, index) => {
                             return (
                                 <div key={index} onClick={() => handleSelectOption(option)} className={`${selectedOption?.count === option.count && "text-gray-200"} w-full cursor-pointer hover:text-gray-200 transition-all duration-300 ${option.bgColor} flex items-center justify-between  px-4 md:px-10 pt-4 pb-2 -skew-x-12`}>
-                                    <div className=' text-3xl  md:text-5xl skew-x-12'>{option.count} Games</div>
+                                    <div dir={direction} className=' text-3xl  md:text-5xl skew-x-12'>{option.count} {t("games")}</div>
                                     <div className=' text-3xl  md:text-5xl flex items-center gap-3 skew-x-12'>{option.price} SAR <RoyalRoundedIcon className="w-8 h-8" /></div>
                                 </div>
                             )
@@ -66,8 +70,8 @@ function BuyNewGameModal({ open, onClose }: NewGameModalProps) {
                         <div className="bg-white border-2 border-black -skew-x-12 w-full">
                             <div className="px-4 md:px-10 pt-3 pb-1 flex skew-x-12 items-center justify-between" >
                                 <div className="flex-shrink-0 ">
-                                    <label className="text-black text-3xl  md:text-5xl">
-                                        DISCOUNT CODE :
+                                    <label className="text-black uppercase text-3xl  md:text-5xl">
+                                        {t("discountCode")}
                                     </label>
                                 </div>
                                 <div className="flex-1 ml-8">

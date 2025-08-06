@@ -27,7 +27,7 @@ const Banner: React.FC = () => {
                         <h2 className="text-6xl md:text-8xl lg:text-9xl leading-tight uppercase ">
                             {t("playGlobal")}
                         </h2>
-                        <p className="text-sm sm:text-base md:text-lg max-w-xl">
+                        <p className="text-sm font-secondary sm:text-base md:text-lg max-w-xl">
                             {t("playLocalNote")}
                         </p>
                     </div>

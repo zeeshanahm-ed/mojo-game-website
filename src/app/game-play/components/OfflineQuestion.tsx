@@ -49,7 +49,7 @@ export default function OfflineQuestion({ question, handleScreenChange }: Offlin
                     {/* Question Header */}
                     <div className="bg-dark-orange text-white text-center py-2 flex items-center justify-center gap-2">
                         <BsQuestionCircle className="text-2xl" />
-                        <span className="text-lg">{question?.text}</span>
+                        <span className="text-lg font-secondary">{question?.text}</span>
                     </div>
 
                     {/* Options (audio/video/list) */}

@@ -68,7 +68,7 @@ export default function OnlineQuestion({ points = 400, handleScreenChange }: Onl
                     {/* Question Header */}
                     <div className="bg-black text-white text-start py-2 px-2 flex items-center justify-center gap-2">
                         <BsQuestionCircle className="text-2xl" />
-                        <span className="text-base md:text-lg">Who has most championship wins in wrestling ?</span>
+                        <span className="text-base md:text-lg font-secondary">Who has most championship wins in wrestling ?</span>
                     </div>
 
                     {/* Options (list) */}

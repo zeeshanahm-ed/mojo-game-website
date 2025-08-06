@@ -160,7 +160,7 @@ function GamePlay() {
                                 </div>
                                 <div className='lg:hidden block w-full h-[1px] bg-white'></div>
                                 <div className="flex flex-col items-center lg:items-end py-4 lg:py-0">
-                                    <p className="text-base sm:text-xl lg:text-2xl mb-2">{t("lifeLines")}</p>
+                                    <p className="text-base font-secondary sm:text-xl lg:text-2xl mb-2">{t("lifeLines")}</p>
                                     <div className="flex space-x-2">
                                         {renderLifelineIcon('hole', session?.team1.lifelines.theHole)}
                                         {renderLifelineIcon('chance', session?.team1.lifelines.answerToAnswer)}
@@ -176,7 +176,7 @@ function GamePlay() {
                         >
                             <div className='flex lg:flex-row flex-col-reverse items-center justify-center  w-full lg:justify-between lg:md:w-3/4'>
                                 <div className="flex flex-col items-center lg:items-start py-4 lg:py-0">
-                                    <p className="text-base sm:text-xl lg:text-2xl mb-2">{t("lifeLines")}</p>
+                                    <p className="text-base font-secondary sm:text-xl lg:text-2xl mb-2">{t("lifeLines")}</p>
                                     <div className="flex space-x-2">
                                         {renderLifelineIcon('hole', session?.team2.lifelines.theHole)}
                                         {renderLifelineIcon('chance', session?.team2.lifelines.answerToAnswer)}

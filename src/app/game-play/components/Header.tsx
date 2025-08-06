@@ -25,17 +25,17 @@ const Header: React.FC<HeaderProps> = ({ handleScreenChange, handleOpenExitModal
                     <div className="flex items-center gap-x-2">
                         <button
                             onClick={() => handleOpenExitModal?.()}
-                            className={`flex items-center text-white text-4xl gap-5 bg-red py-2 ${direction ? "lg:py-2" : "lg:pt-2 lg:py-0"} md:boxShadow-custom px-2 md:px-4 transform skew-custom md:-skew-x-12 border-2 border-black shadow-lg `}
+                            className={`flex items-center text-white text-4xl gap-5 bg-red py-2 ${direction === "rtl" ? "lg:py-2" : "lg:pt-2 lg:py-0"} md:boxShadow-custom px-2 md:px-4 transform skew-custom md:-skew-x-12 border-2 border-black shadow-lg `}
                         >
 
-                            <ExitIcon className={`${direction ? "lg:mb-0" : "lg:mb-2"}  md:h-5 w-5 h-4 md:w-6`} />
+                            <ExitIcon className={`${direction === "rtl" ? "lg:mb-0" : "lg:mb-2"}  md:h-5 w-5 h-4 md:w-6`} />
                             <span className='hidden lg:block'>{t("exitGame")}</span>
                         </button>
                         <button
                             onClick={() => handleScreenChange?.("congratulation")}
-                            className={`flex items-center text-white text-4xl gap-5 bg-fanta py-2 ${direction ? "lg:py-2" : "lg:pt-2 lg:py-0"} md:boxShadow-custom px-2 md:px-4 transform skew-custom md:-skew-x-12 border-2 border-black shadow-lg `}
+                            className={`flex items-center text-white text-4xl gap-5 bg-fanta py-2 ${direction === "rtl" ? "lg:py-2" : "lg:pt-2 lg:py-0"} md:boxShadow-custom px-2 md:px-4 transform skew-custom md:-skew-x-12 border-2 border-black shadow-lg `}
                         >
-                            <GameOverIcon className={`${direction ? "lg:mb-0" : "lg:mb-2"} md:h-5 w-4 h-4 md:w-5`} />
+                            <GameOverIcon className={`${direction === "rtl" ? "lg:mb-0" : "lg:mb-2"} md:h-5 w-4 h-4 md:w-5`} />
                             <span className='hidden lg:block'>{t("gameOver")}</span>
                         </button>
                     </div>
@@ -48,7 +48,7 @@ const Header: React.FC<HeaderProps> = ({ handleScreenChange, handleOpenExitModal
                     </div>
 
                     {/* Right Section: H1 Team Status */}
-                    <div className="flex items-center lg:h-14 border md:border-2 border-black skew-custom md:-skew-x-12">
+                    <div className="flex font-secondary items-center lg:h-14 border md:border-2 border-black skew-custom md:-skew-x-12">
                         <div className="bg-black w-28 lg:w-44 flex text-white py-2 px-2 lg:px-3 h-full items-center">
                             <span title={session?.gameName} className="truncate max-w-[98%] font-semibold uppercase text-sm lg:text-lg">{session?.gameName}</span>
                         </div>

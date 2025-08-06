@@ -49,7 +49,7 @@ function JoinRoom({ roomName, setRoomName, handleSaveRoomName, handleEditRoomNam
             </div>
 
             {/* Room Code Section */}
-            <div className="flex items-center h-14 sm:h-16 w-full max-w-md border-2 mt-5 border-black overflow-hidden">
+            <div className="flex items-center  h-14 sm:h-16 w-full max-w-md border-2 mt-5 border-black overflow-hidden">
                 <div className="bg-white sm:w-32 w-24">
                     <span className=" text-black text-2xl md:text-4xl uppercase">
                         {t("roomName")}
@@ -60,7 +60,7 @@ function JoinRoom({ roomName, setRoomName, handleSaveRoomName, handleEditRoomNam
                         type="text"
                         placeholder={t("enterRoomName")}
                         ref={roomNameInputRef}
-                        className="input w-full h-full input-lg text-black text-2xl md:text-4xl border-x-2  uppercase text-center bg-yellow border-none border-black focus:outline-none"
+                        className="input w-full  h-full input-lg text-black text-2xl md:text-4xl border-x-2  uppercase text-center bg-yellow border-none border-black focus:outline-none"
                         value={roomName}
                         onChange={(e) => setRoomName(e.target.value)}
                         onBlur={handleSaveRoomName} // Save on blur
