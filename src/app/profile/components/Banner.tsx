@@ -17,7 +17,7 @@ const Banner: React.FC = () => {
                     </div>
 
                     <div className="flex flex-col text-center items-center lg:w-2/4 px-4 text-white">
-                        <h2 className="text-6xl md:text-8xl lg:text-9xl leading-tight mb-4 uppercase font-popfun">
+                        <h2 className="text-6xl md:text-8xl lg:text-9xl leading-tight mb-4 uppercase ">
                             My account
                         </h2>
                         <p className="text-base text-white md:text-lg">

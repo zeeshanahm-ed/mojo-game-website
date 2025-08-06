@@ -82,9 +82,9 @@ function Students() {
                         <>
                             {/* Academic Level */}
                             <div className="text-center flex flex-col items-center justify-center">
-                                <h2 className="md:text-7xl text-5xl font-popfun text-black mb-2 uppercase">{t("chooseAcademicLevel")}</h2>
-                                <p className="text-sm sm:text-base md:text-lg text-black">{t("chooseAcademicLevelDescription")}</p>
-                                <div className='font-popfun gap-y-10 gap-x-5 md:gap-x-10 mt-20 flex items-center justify-center flex-wrap'>
+                                <h2 className="md:text-7xl text-5xl  text-black mb-2 uppercase">{t("chooseAcademicLevel")}</h2>
+                                <p className="text-sm sm:text-base font-secondary md:text-lg text-black">{t("chooseAcademicLevelDescription")}</p>
+                                <div className=' gap-y-10 gap-x-5 md:gap-x-10 mt-20 flex items-center justify-center flex-wrap'>
                                     {AcademicLavelOptions.map((v) => (
                                         <CustomCard
                                             key={v.label}
@@ -99,8 +99,8 @@ function Students() {
 
                             {/* Semester */}
                             <div className="text-center flex flex-col items-center justify-center mt-20">
-                                <h2 className="md:text-7xl text-5xl font-popfun text-black mb-2 uppercase">{t("selectSemester")}</h2>
-                                <div className='font-popfun gap-10 mt-10 flex items-center justify-center flex-wrap'>
+                                <h2 className="md:text-7xl text-5xl  text-black mb-2 uppercase">{t("selectSemester")}</h2>
+                                <div className=' gap-10 mt-10 flex items-center justify-center flex-wrap'>
                                     {SemesterOptions.map((v) => (
                                         <CustomCard
                                             key={v.label}
@@ -116,9 +116,9 @@ function Students() {
 
                             {/* Subject */}
                             <div className="text-center flex flex-col items-center justify-center mt-20">
-                                <h2 className="md:text-7xl text-5xl font-popfun text-black mb-2 uppercase">{t("selectSubject")}</h2>
-                                <p className="text-sm sm:text-base md:text-lg text-black">{t("chooseAcademicLevelDescription")}</p>
-                                <div className='font-popfun gap-10 mt-10 flex items-center justify-center flex-wrap'>
+                                <h2 className="md:text-7xl text-5xl  text-black mb-2 uppercase">{t("selectSubject")}</h2>
+                                <p className="text-sm font-secondary sm:text-base md:text-lg text-black">{t("chooseAcademicLevelDescription")}</p>
+                                <div className=' gap-10 mt-10 flex items-center justify-center flex-wrap'>
                                     {SubjectOptions.map((v) => (
                                         <CustomCard
                                             key={v.label}

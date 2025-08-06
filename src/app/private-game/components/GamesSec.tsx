@@ -31,7 +31,7 @@ const GamesSection: React.FC<GamesSectionProps> = ({ data, selectedGames, setSel
     };
 
     return (
-        <div className="font-popfun">
+        <div className="">
             {/* Cards Grid */}
             <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-x-2 sm:gap-x-4 gap-y-8 md:gap-x-6 mb-8">
                 {data?.map((card) => {

@@ -25,7 +25,7 @@ const Header: React.FC<HeaderProps> = ({ handleScreenChange, handleOpenExitModal
                     <div className="flex items-center gap-x-2">
                         <button
                             onClick={() => handleOpenExitModal?.()}
-                            className={`flex items-center text-white text-4xl gap-5 bg-red py-2 ${direction ? "lg:py-2" : "lg:pt-2 lg:py-0"} md:boxShadow-custom px-2 md:px-4 transform skew-custom md:-skew-x-12 border-2 border-black shadow-lg font-popfun`}
+                            className={`flex items-center text-white text-4xl gap-5 bg-red py-2 ${direction ? "lg:py-2" : "lg:pt-2 lg:py-0"} md:boxShadow-custom px-2 md:px-4 transform skew-custom md:-skew-x-12 border-2 border-black shadow-lg `}
                         >
 
                             <ExitIcon className={`${direction ? "lg:mb-0" : "lg:mb-2"}  md:h-5 w-5 h-4 md:w-6`} />
@@ -33,7 +33,7 @@ const Header: React.FC<HeaderProps> = ({ handleScreenChange, handleOpenExitModal
                         </button>
                         <button
                             onClick={() => handleScreenChange?.("congratulation")}
-                            className={`flex items-center text-white text-4xl gap-5 bg-fanta py-2 ${direction ? "lg:py-2" : "lg:pt-2 lg:py-0"} md:boxShadow-custom px-2 md:px-4 transform skew-custom md:-skew-x-12 border-2 border-black shadow-lg font-popfun`}
+                            className={`flex items-center text-white text-4xl gap-5 bg-fanta py-2 ${direction ? "lg:py-2" : "lg:pt-2 lg:py-0"} md:boxShadow-custom px-2 md:px-4 transform skew-custom md:-skew-x-12 border-2 border-black shadow-lg `}
                         >
                             <GameOverIcon className={`${direction ? "lg:mb-0" : "lg:mb-2"} md:h-5 w-4 h-4 md:w-5`} />
                             <span className='hidden lg:block'>{t("gameOver")}</span>

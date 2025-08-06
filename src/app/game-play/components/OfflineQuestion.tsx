@@ -75,7 +75,7 @@ export default function OfflineQuestion({ question, handleScreenChange }: Offlin
                 </div>
                 {/* Bottom bar */}
                 <div className="flex items-center justify-between py-2 rounded-b-lg flex-wrap gap-y-4">
-                    <div className="flex sm:h-12 px-2 md:px-5 py-1 sm:py-2 pt-2 sm:pt-4 items-center justify-between text-white bg-dark-orange font-popfun">
+                    <div className="flex sm:h-12 px-2 md:px-5 py-1 sm:py-2 pt-2 sm:pt-4 items-center justify-between text-white bg-dark-orange ">
                         <span className="md:text-4xl text-xl sm:text-3xl">{question?.category.toUpperCase()}</span>
                         <span className="md:text-2xl text-base sm:text-xl ml-2 md:ml-10 uppercase">{question?.points} t{("points")}</span>
                     </div>
@@ -83,7 +83,7 @@ export default function OfflineQuestion({ question, handleScreenChange }: Offlin
                         {/* Timer */}
                         <div className="-skew-x-12 bg-white border border-dark-orange sm:h-12 h-10 text-white flex gap-2 md:gap-5 items-center w-20 sm:w-24  md:w-32">
                             <span className=" text-lg bg-dark-orange w-8 sm:w-10 h-full flex-center"><ClockIcon className="w-4 h-4 sm:w-6 sm:h-6" /></span>
-                            <span className="font-popfun text-xl sm:text-2xl md:text-3xl text-black mt-2">{timer < 10 ? `00:0${timer}` : `00:${timer}`}</span>
+                            <span className=" text-xl sm:text-2xl md:text-3xl text-black mt-2">{timer < 10 ? `00:0${timer}` : `00:${timer}`}</span>
                         </div>
                         {/* Timer controls */}
                         <div className="sm:h-12">
@@ -104,7 +104,7 @@ export default function OfflineQuestion({ question, handleScreenChange }: Offlin
                     <div
                         role="button"
                         onClick={() => handleScreenChange("answer")}
-                        className={`w-full sm:w-auto cursor-pointer sm:h-12 flex px-2 md:px-5 py-1 sm:py-2 pt-2 ${direction === "ltr" && "sm:pt-4"} items-center justify-center  text-white bg-dark-green font-popfun border-2 border-black`}>
+                        className={`w-full sm:w-auto cursor-pointer sm:h-12 flex px-2 md:px-5 py-1 sm:py-2 pt-2 ${direction === "ltr" && "sm:pt-4"} items-center justify-center  text-white bg-dark-green  border-2 border-black`}>
                         <span className="md:text-4xl text-xl sm:text-3xl">{t("seeAnswer")}</span>
                     </div>
                 </div>

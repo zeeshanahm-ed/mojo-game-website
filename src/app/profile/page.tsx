@@ -99,7 +99,7 @@ function Profile() {
                         </div>
                         <p className="text-lg font-semibold">Your Avatar</p>
                         <Button boxShadow={false} className="w-52" onClick={handleLogoutModal}>
-                            <span className="inline-block  transform skew-x-12 tracking-wider text-4xl uppercase font-popfun">Logout</span>
+                            <span className="inline-block  transform skew-x-12 tracking-wider text-4xl uppercase ">Logout</span>
                         </Button>
                     </div>
 
@@ -165,7 +165,7 @@ function Profile() {
                         {/* SignUp Button */}
                         <div className='flex items-center justify-center mt-10'>
                             <Button type="submit" aria-label="Save" className="w-52" boxShadow={false}>
-                                <span className="inline-block transform skew-x-12 tracking-wider text-4xl uppercase font-popfun">Save Changes</span>
+                                <span className="inline-block transform skew-x-12 tracking-wider text-4xl uppercase ">Save Changes</span>
                             </Button>
                         </div>
                     </form>

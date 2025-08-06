@@ -54,8 +54,7 @@ const Pagination: React.FC<PaginationProps> = ({ totalPages = 10 }) => {
         <div className="w-full bg-white mt-20 gap-8 flex items-center justify-center flex-col md:flex-row">
             {/* Prev */}
             <button
-
-                className="text-xl md:mr-5 cursor-pointer hover:text-dark-gray"
+                className="font-secondary text-xl md:mr-5 cursor-pointer hover:text-dark-gray"
                 onClick={() => currentPage > 1 && setCurrentPage((prev) => prev - 1)}
             >
                 {t("prev")}
@@ -82,7 +81,7 @@ const Pagination: React.FC<PaginationProps> = ({ totalPages = 10 }) => {
 
             {/* Next */}
             <button
-                className="text-xl md:ml-5 cursor-pointer hover:text-dark-gray"
+                className="font-secondary text-xl md:ml-5 cursor-pointer hover:text-dark-gray"
                 onClick={() => currentPage < totalPages && setCurrentPage((prev) => prev + 1)}
             >
                 {t("next")}

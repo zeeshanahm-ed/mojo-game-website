@@ -21,10 +21,10 @@ const Banner: React.FC = () => {
 
                     {/* Middle Section - Heading and Description */}
                     <div className="flex flex-col text-center items-center lg:w-2/4">
-                        <h2 className="text-6xl text-white  md:text-8xl lg:text-9xl leading-tight uppercase font-popfun">
+                        <h2 className="text-6xl text-white  md:text-8xl lg:text-9xl leading-tight uppercase ">
                             {t("myGames")}
                         </h2>
-                        <p className="text-sm sm:text-base text-white lg:text-lg max-w-lg">
+                        <p className="text-sm font-secondary sm:text-base text-white lg:text-lg max-w-lg">
                             {t("playLocalNote")}
                         </p>
                         <div className='w-full my-10'>

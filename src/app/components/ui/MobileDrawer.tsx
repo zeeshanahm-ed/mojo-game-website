@@ -11,6 +11,7 @@ import LoginIcon from "@/app/assets/icons/login-icon.svg";
 import FallBackProfileImage from '@/app/assets/images/fallback-profile-image.jpg';
 import { FaPlus } from "react-icons/fa";
 import { MdClose } from 'react-icons/md';
+import LanguageSwitcher from './Language-Switcher';
 
 
 
@@ -165,6 +166,13 @@ const MobileDrawer: React.FC<MobileDrawerProps> = ({ isOpen, onClose, setOpenWal
                                 <span className="text-lg font-medium text-black">Wallet</span>
                             </div>
                             {user && <div className="divider my-0"></div>}
+                        </div>
+
+
+                        <div className="menu-item border-b border-border-gray">
+                            <div className="flex items-center gap-4 py-4 px-6 ">
+                                <LanguageSwitcher />
+                            </div>
                         </div>
 
                         {/* Logout (Only when authenticated) */}

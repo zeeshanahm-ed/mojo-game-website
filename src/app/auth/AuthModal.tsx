@@ -41,9 +41,9 @@ export default function AuthModal() {
 
     return (
         <dialog id="auth_modal" className={` modal ${open ? 'modal-open' : ''}`}>
-            <div className="modal-box bg-white max-w-2xl items-center rounded-none border-2 border-black w-full customModalStyle">
+            <div className="modal-box font-primary bg-white max-w-2xl items-center rounded-none border-2 border-black w-full customModalStyle">
                 <form method="dialog " className="flex items-center justify-center relative">
-                    <h2 className="text-5xl md:text-6xl uppercase font-popfun">
+                    <h2 className="text-5xl md:text-6xl uppercase ">
                         {getTitle()}
                     </h2>
                     <button

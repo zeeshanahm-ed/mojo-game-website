@@ -26,10 +26,10 @@ function TeamInfo({ gameName, handleGameName, teams, errors, handleTeamNameChang
     return (
 
         <div className="text-center flex flex-col items-center justify-center mt-10">
-            <h2 className="md:text-6xl text-5xl font-popfun text-black mb-2 uppercase">
+            <h2 className="md:text-6xl text-5xl   text-black mb-2 uppercase">
                 {t("teamInfoTitle")}
             </h2>
-            <p className="text-sm sm:text-base md:text-lg leading-6 text-black max-w-2xl">
+            <p className="text-sm font-secondary sm:text-base md:text-lg leading-6 text-black max-w-2xl">
                 {t("playLocalNote")}
             </p>
             <div className='w-full flex flex-col items-center'>
@@ -41,12 +41,12 @@ function TeamInfo({ gameName, handleGameName, teams, errors, handleTeamNameChang
                     inputClassName='text-center pl-0'
                     onChange={(e): void => handleGameName(e.target.value)}
                 />
-                <p className="text-sm sm:text-base mt-1 text-red">{errors?.gameName}</p>
+                <p className="text-sm font-secondary sm:text-base mt-1 text-red">{errors?.gameName}</p>
             </div>
             <div className="py-10 flex flex-col md:flex-row items-center justify-center space-y-20 md:space-y-0 md:space-x-12 lg:space-x-20 w-full">
                 {/* First Team Card */}
-                <div className="w-72 -skew-x-3 md:-skew-x-6 bg-red border-4 border-black flex flex-col items-center py-6 pb-4">
-                    <h3 className="text-white text-5xl uppercase mb-4 font-popfun">
+                <div className="w-72 font-secondary -skew-x-3 md:-skew-x-6 bg-red border-4 border-black flex flex-col items-center py-6 pb-4">
+                    <h3 className="text-white font-primary text-5xl uppercase mb-4 ">
                         {t("firstTeam")}
                     </h3>
                     <div className="w-full bg-white border-y-2 border-black p-2 mb-4">
@@ -86,8 +86,8 @@ function TeamInfo({ gameName, handleGameName, teams, errors, handleTeamNameChang
                 </div>
 
                 {/* Second Team Card */}
-                <div className="w-72 bg-blue -skew-x-3 md:-skew-x-6 border-4 border-black flex flex-col items-center py-6 pb-4">
-                    <h3 className="text-white text-5xl uppercase mb-4 font-popfun">
+                <div className="w-72 bg-blue font-secondary -skew-x-3 md:-skew-x-6 border-4 border-black flex flex-col items-center py-6 pb-4">
+                    <h3 className="text-white font-primary text-5xl uppercase mb-4 ">
                         {t("secondTeam")}
                     </h3>
                     <div className="w-full bg-white border-y-2 border-black p-2 mb-4">

@@ -32,20 +32,20 @@ export default function WhoAnsweredEvent({ handleScreenChange, question }: WhoAn
                     <div
                         role="button"
                         onClick={() => handleAnswer("team1")}
-                        className="flex h-16 md:h-20 w-3/4 sm:w-1/2 md:w-96 px-2 md:px-5 py-2 pt-4 items-center justify-center text-white bg-red font-popfun border-2 border-black ">
+                        className="flex h-16 md:h-20 w-3/4 sm:w-1/2 md:w-96 px-2 md:px-5 py-2 pt-4 items-center justify-center text-white bg-red  border-2 border-black ">
                         <span className="truncate md:text-6xl text-4xl tracking-wider">{session?.team1.name || "Team 1"}</span>
                     </div>
                     <div
                         role="button"
                         onClick={() => handleAnswer("team2")}
-                        className="cursor-pointer flex h-16 md:h-20 w-3/4 sm:w-1/2 md:w-96 px-5 py-2 pt-4 items-center justify-center text-white bg-blue font-popfun border-2 border-black ">
+                        className="cursor-pointer flex h-16 md:h-20 w-3/4 sm:w-1/2 md:w-96 px-5 py-2 pt-4 items-center justify-center text-white bg-blue  border-2 border-black ">
                         <span className="truncate md:text-6xl text-4xl tracking-wider">{session?.team2.name || "Team 2"}</span>
                     </div>
                 </div>
                 <div
                     role="button"
                     onClick={() => handleAnswer("none")}
-                    className="cursor-pointer flex h-16 md:h-20 w-3/4 sm:w-1/2 md:w-64 px-5 py-2 pt-4 items-center justify-center text-black bg-white border-2 border-black font-popfun">
+                    className="cursor-pointer flex h-16 md:h-20 w-3/4 sm:w-1/2 md:w-64 px-5 py-2 pt-4 items-center justify-center text-black bg-white border-2 border-black ">
                     <span className="truncate md:text-6xl text-4xl tracking-wider">{t("noOne")}</span>
                 </div>
             </div>

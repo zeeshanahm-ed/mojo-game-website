@@ -3,6 +3,8 @@ import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import Wrapper from '@/app/components/ui/common/Wrapper';
 import Button from '@/app/components/ui/common/Button';
+import { useTranslation } from 'react-i18next';
+import { useDirection } from '@/app/hooks/useGetDirection';
 //icons
 import { IoIosArrowBack } from "react-icons/io";
 import kidsToy from "@/app/assets/images/kids-toy.png";
@@ -15,6 +17,8 @@ import Train from "@/app/assets/images/train.png";
 
 const Banner: React.FC = () => {
     const router = useRouter();
+    const { t } = useTranslation();
+    const direction = useDirection();
     const handleGoBack = () => {
         router.push("/");
     };
@@ -28,8 +32,8 @@ const Banner: React.FC = () => {
                         <Button
                             boxShadow={false}
                             onClick={handleGoBack}
-                            prefixElement={<IoIosArrowBack className='text-xl lg:text-3xl lg:mb-2 mb-1 mr-0' />}
-                            className='text-xl lg:text-4xl w-28 lg:w-40 flex items-center'>Main page</Button>
+                            prefixElement={<IoIosArrowBack className={`text-xl lg:text-3xl  mb-1 mr-0 ${direction === "rtl" ? "lg:mb-0" : "lg:mb-2"}`} />}
+                            className='text-xl lg:text-4xl w-28 lg:w-fit flex items-center'>{t("mainPage")}</Button>
                     </div>
                     <div className="flex left-[35%] xsm:left-[40%] md:left-0 -bottom-[100px] md:-bottom-[50px] absolute items-center justify-center w-20 h-20 xsm:w-20 xsm:h-20 md:w-20 md:h-16 lg:w-28 lg:h-20">
                         <Image src={kidsToy} alt='Kids Toy' className='object-contain w-full h-full' />
@@ -53,11 +57,11 @@ const Banner: React.FC = () => {
 
 
                     <div className="flex flex-col items-start md:items-center lg:w-2/4 text-black -top-5 md:-top-0 relative ">
-                        <h2 className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl leading-tight uppercase font-popfun">
-                            kids section
+                        <h2 className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl leading-tight uppercase ">
+                            {t("kidsSection")}
                         </h2>
-                        <p className="text-xs text-start md:text-center sm:text-sm md:text-base max-w-64 lg:text-lg md:max-w-md lg:max-w-max">
-                            A special interface for children. We test their knowledge according to their ages.
+                        <p className="text-xs font-secondary text-start md:text-center sm:text-sm md:text-base max-w-64 lg:text-lg md:max-w-md lg:max-w-max">
+                            {t("kidsSectionDescription")}
                         </p>
                     </div>
                 </div>

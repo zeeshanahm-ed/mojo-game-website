@@ -32,9 +32,9 @@ function WalletModal({ open, onClose }: WalletModalProps) {
 
     return (
         <dialog id="wallet_modal" className={` modal ${open ? 'modal-open' : ''}`}>
-            <div className="max-w-4xl modal-box customModalStyle bg-white items-center rounded-none border-2 border-black">
+            <div className="max-w-4xl font-primary modal-box customModalStyle bg-white items-center rounded-none border-2 border-black">
                 <form method="dialog " className="flex items-center justify-center relative">
-                    <h2 className="text-5xl md:text-6xl font-popfun uppercase">
+                    <h2 className="text-5xl md:text-6xl  uppercase">
                         {t("wallet")}
                     </h2>
                     <button
@@ -49,7 +49,7 @@ function WalletModal({ open, onClose }: WalletModalProps) {
                 <div className="divider before:bg-gray-400 after:bg-gray-400 m-0"></div>
 
                 {/* Wallet Content */}
-                <div className="flex flex-col md:flex-row items-baseline w-full justify-between gap-y-10 gap-x-10 py-5 px-5 sm:px-10 font-popfun">
+                <div className="flex flex-col md:flex-row items-baseline w-full justify-between gap-y-10 gap-x-10 py-5 px-5 sm:px-10 ">
 
                     {/* Game Credits Card */}
                     <div className="flex md:flex-col items-start gap-4">
@@ -61,7 +61,7 @@ function WalletModal({ open, onClose }: WalletModalProps) {
                             <h3 className="text-4xl sm:text-4xl md:text-5xl lg:text-6xl">
                                 {t("credits")}
                             </h3>
-                            <p className="text-sm max-w-xs font-Product_sans">
+                            <p className="text-sm max-w-xs font-secondary">
                                 {t("creditsInfo")}
                             </p>
                             <Button className='text-2xl sm:text-3xl w-36 sm:w-48' onClick={() => handleNavigate("recharge")}>
@@ -80,7 +80,7 @@ function WalletModal({ open, onClose }: WalletModalProps) {
                             <h3 className="text-4xl sm:text-4xl md:text-5xl lg:text-6xl">
                                 SAR
                             </h3>
-                            <p className="text-sm font-Product_sans max-w-xs">
+                            <p className="text-sm font-secondary max-w-xs">
                                 {t("currencyInfo")}
                             </p>
 
@@ -104,7 +104,7 @@ function WalletModal({ open, onClose }: WalletModalProps) {
                             <h3 className="text-4xl sm:text-4xl md:text-5xl lg:text-6xl">
                                 {t("history")}
                             </h3>
-                            <p className="text-sm font-Product_sans max-w-xs">
+                            <p className="text-sm font-secondary max-w-xs">
                                 {t("purchaseHistory")}
                             </p>
                             <Button className={`text-2xl ${direction === "rtl" ? "" : "md:!mt-1"} sm:text-3xl w-36 sm:w-48`} onClick={() => handleNavigate("history")}>

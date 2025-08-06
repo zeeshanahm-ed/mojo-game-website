@@ -34,7 +34,7 @@ function ChooseMode({ selectedMode, handleModeSelect }: Props) {
             <Wrapper>
                 <div className="flex flex-col items-center justify-center w-full text-center">
                     <div className="flex flex-col text-center items-center lg:w-3/4 px-4">
-                        <h2 className="text-6xl md:text-8xl leading-tight mb-4 uppercase font-popfun">
+                        <h2 className="text-6xl md:text-8xl leading-tight mb-4 uppercase ">
                             {t("joinRoom")}
                         </h2>
                         <p className="text-sm sm:text-base md:text-lg">
@@ -43,7 +43,7 @@ function ChooseMode({ selectedMode, handleModeSelect }: Props) {
                     </div>
 
                     {/* Mode Selection */}
-                    <div className="flex flex-row items-center justify-center gap-5 sm:gap-8 md:gap-16 my-12 font-popfun">
+                    <div className="flex flex-row items-center justify-center gap-5 sm:gap-8 md:gap-16 my-12 ">
                         {modes.map((mode) => (
                             <div
                                 key={mode.id}

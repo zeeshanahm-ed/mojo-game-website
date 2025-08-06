@@ -3,10 +3,11 @@ import React, { useState } from 'react'
 import Input from '@/app/components/ui/common/Input';
 import Image from 'next/image';
 import { GamesCategoryInterface } from '@/app/utils/Interfaces';
+import { useTranslation } from 'react-i18next';
+import { useDirection } from '@/app/hooks/useGetDirection';
 
 //icons
 import SearchIcon from "@/app/assets/icons/search-icon.svg"
-import { useTranslation } from 'react-i18next';
 
 interface CategoriesSectionProps {
     data: GamesCategoryInterface[];
@@ -24,6 +25,7 @@ interface CategoriesSectionProps {
 
 function CategoriesSection({ data, year, onSelect, selectedCategories, setSelectedCategories, mode, currentPlayer, title = true, subTitle = true, showInput = true }: CategoriesSectionProps) {
     const { t } = useTranslation();
+    const direction = useDirection();
     const [search, setSearch] = useState('');
     const filteredCategories = data.map((item) => ({
         ...item,
@@ -98,16 +100,16 @@ function CategoriesSection({ data, year, onSelect, selectedCategories, setSelect
                 />
             </div>}
             <div className="text-center flex flex-col items-center justify-center">
-                {title && <h2 className="sm:text-6xl text-5xl lg:text-7xl font-popfun text-black mb-2 uppercase">
+                {title && <h2 className="sm:text-6xl text-5xl lg:text-7xl  text-black mb-2 uppercase">
                     {t("selectCategories")}
                 </h2>}
-                {subTitle && <p className="text-sm sm:text-base md:text-lg leading-6 text-black max-w-2xl">
+                {subTitle && <p className="text-sm font-secondary sm:text-base md:text-lg leading-6 text-black max-w-2xl">
                     {t("categoryInstructions")}
                 </p>}
             </div>
             {year &&
-                <div className='border-2 flex-center text-xl md:text-2xl border-black h-12 w-40 md:h-16 md:w-48 my-10 -skew-x-6'>
-                    {year}
+                <div dir={direction} className='border-2 font-secondary flex-center text-xl md:text-2xl border-black h-12 w-40 md:h-16 md:w-48 my-10 -skew-x-6'>
+                    {`${year} ${t("years")}`}
                 </div>}
             <div className='my-14 w-full max-h-[800px] overflow-hidden overflow-y-auto'>
                 <div className="flex-center flex-wrap  gap-6 gap-y-10">
@@ -134,7 +136,7 @@ const CategoryCard = ({ category, handleCategoriesClick, isDisabled }: Props) =>
             <div className={`relative w-28 h-28 sm:w-36 sm:h-36 md:w-44 md:h-44 rounded-full border-[8px]  lg:border-[12px] border-orange ${category.selected ? "border-red" : "border-orange"} flex items-center justify-center`}>
                 <Image src={category.icon} alt={category.name} width={100} height={100} className='w-1/2 h-1/2' />
             </div>
-            <div className={`w-full mt-6 relative pb-0 pt-1 text-center text-white font-popfun text-2xl md:text-3xl xl:text-4xl uppercase ${category.selected ? " bg-red before:bg-red" : " bg-orange before:bg-orange"} before:w-2 lg:before:w-3 before:h-8 before:absolute before:-top-8 before:left-[48%] `}>
+            <div className={`w-full mt-6 relative pb-0 pt-1 text-center text-white  text-2xl md:text-3xl xl:text-4xl uppercase ${category.selected ? " bg-red before:bg-red" : " bg-orange before:bg-orange"} before:w-2 lg:before:w-3 before:h-8 before:absolute before:-top-8 before:left-[48%] `}>
                 {category.name}
                 {/* Left Triangle */}
                 <div className="absolute -top-[3px] -left-[10px]  md:-top-[3px] lg:-top-[5px] md:-left-[10px] lg:-left-[15px] w-0 h-0 -rotate-[45deg] lg:border-l-[20px] lg:border-r-[20px] lg:border-b-[20px] border-l-[15px] border-r-[15px] border-b-[15px] border-l-transparent border-r-transparent border-b-white" />

@@ -54,7 +54,7 @@ function SelectedGamesPaymentDetails({ selectedGames, handleRemoveSelectedGame }
             </div>
 
             {/* Discount Code */}
-            <div className="bg-white border-2 border-black -skew-x-12 w-full sm:w-3/4 md:w-1/2 mb-6">
+            <div className="bg-white border-2 font-secondary border-black -skew-x-12 w-full sm:w-3/4 md:w-1/2 mb-6">
                 <div className="flex skew-x-12 items-center justify-between" >
                     <div className="flex-shrink-0 -skew-x-12 bg-black py-2 px-2 sm:px-4">
                         <label className="text-white text-sm tracking-normal">
@@ -74,7 +74,7 @@ function SelectedGamesPaymentDetails({ selectedGames, handleRemoveSelectedGame }
             </div>
 
             {/* Pricing Details */}
-            <div className="space-y-3 mb-6 w-full sm:w-3/4 md:w-3/5">
+            <div className="space-y-3 mb-6 w-full sm:w-3/4 md:w-3/5 font-secondary">
                 {selectedGames.map((card, index) => (
                     <div key={index} className="flex justify-between items-center text-sm">
                         <span className="text-black">{card.title}</span>

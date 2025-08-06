@@ -14,13 +14,13 @@ const Banner: React.FC = () => {
                 <div className="relative z-10 flex flex-row items-center justify-start md:justify-center w-full text-center ">
                     {/* Middle Section - Heading and Description */}
                     <div className="flex flex-col text-start items-start justify-start md:items-center md:text-center lg:w-2/4">
-                        <h2 className="text-6xl text-white  md:text-8xl lg:text-9xl leading-tight mb-4 uppercase font-popfun">
+                        <h2 className="text-6xl text-white  md:text-8xl lg:text-9xl leading-tight mb-4 uppercase ">
                             {t("private_game")}
                         </h2>
-                        <p className="text-sm sm:text-base text-white md:text-lg">
+                        <p className="text-sm font-secondary sm:text-base text-white md:text-lg">
                             {t("game_library")}
                         </p>
-                        <p className="text-sm sm:text-base text-white md:text-lg">
+                        <p className="text-sm font-secondary sm:text-base text-white md:text-lg">
                             {t("questions_divided_levels")}
                         </p>
                     </div>

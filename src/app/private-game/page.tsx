@@ -81,7 +81,7 @@ function PrivateGames() {
                     <div className='h-auto mt-1'>
                         <GamesSection data={Data} selectedGames={selectedGames} setSelectedGames={setSelectedGames} />
                         <div className='mt-20'>
-                            <h2 className="md:text-7xl text-5xl text-center font-popfun text-black mb-4 mt-10 uppercase">{t("selectedGames")}</h2>
+                            <h2 className="md:text-7xl text-5xl text-center  text-black mb-4 mt-10 uppercase">{t("selectedGames")}</h2>
                             <SelectedGamesPaymentDetails selectedGames={selectedGames} handleRemoveSelectedGame={handleRemoveSelectedGame} />
                         </div>
                     </div>

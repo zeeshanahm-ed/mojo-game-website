@@ -65,14 +65,14 @@ function SubjectGames() {
     };
     return (
         <div className='text-center flex flex-col items-center justify-center mt-10'>
-            <h2 className="md:text-7xl text-5xl font-popfun text-black mb-2 uppercase">{t("listOfGames")}</h2>
-            <p className="text-sm sm:text-base md:text-lg text-black">{t("reviewStudy")}</p>
-            <p className="text-sm sm:text-base md:text-lg text-black">{t("chooseGames")}</p>
+            <h2 className="md:text-7xl text-5xl  text-black mb-2 uppercase">{t("listOfGames")}</h2>
+            <p className="text-sm font-secondary sm:text-base md:text-lg text-black">{t("reviewStudy")}</p>
+            <p className="text-sm font-secondary sm:text-base md:text-lg text-black">{t("chooseGames")}</p>
             <div className='h-auto mt-10'>
                 <GamesSection data={Data} selectedGames={selectedGames} setSelectedGames={setSelectedGames} />
             </div>
 
-            <h2 className="md:text-7xl text-5xl font-popfun text-black mb-4 mt-10 uppercase">{t("selectedGames")}</h2>
+            <h2 className="md:text-7xl text-5xl  text-black mb-4 mt-10 uppercase">{t("selectedGames")}</h2>
 
             {/* Game Cards */}
             <SelectedGamesPaymentDetails selectedGames={selectedGames} handleRemoveSelectedGame={handleRemoveSelectedGame} />

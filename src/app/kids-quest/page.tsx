@@ -10,6 +10,7 @@ import Button from '../components/ui/common/Button';
 import { useRouter } from 'next/navigation';
 import { useGameSession } from '../store/gameSession';
 import { showErrorMessage } from '../utils/messageUtils';
+import { useTranslation } from 'react-i18next';
 
 //icons
 
@@ -21,6 +22,7 @@ interface TeamState {
 function KidsQuest() {
     const { setSession } = useGameSession();
     const router = useRouter();
+    const { t } = useTranslation();
     const [selectedCategories, setSelectedCategories] = useState<GamesCategoryInterface[]>([]);
     const [gameName, setGameName] = useState("");
     const [errors, setErrors] = useState<{ [key: string]: string } | null>(null);
@@ -64,21 +66,21 @@ function KidsQuest() {
 
     const handleValidation = () => {
         let error = null;
-        if (selectedCategories.length === 0 || selectedCategories.length < 6) {
-            showErrorMessage("Please select maximum 6 categories.");
+        if (selectedCategories.length < 6) {
+            showErrorMessage(t("formErrors.maxCategories"));
             error = true;
         } else if (gameName.trim() === "") {
-            setErrors({ ...errors, gameName: "Game name cannot be empty" });
+            setErrors({ ...errors, gameName: t("formErrors.gameNameRequired") });
             error = true;
         } else if (teams.first.name.trim() === "") {
-            setErrors({ ...errors, firstTeam: "Team name cannot be empty" });
+            setErrors({ ...errors, firstTeam: t("formErrors.teamNameRequired") });
             error = true;
         } else if (teams.second.name.trim() === "") {
-            setErrors({ ...errors, secondTeam: "Team name cannot be empty" });
+            setErrors({ ...errors, secondTeam: t("formErrors.teamNameRequired") });
             error = true;
         }
         return error;
-    }
+    };
 
     const handleStartGame = () => {
         const error = handleValidation();
@@ -126,7 +128,7 @@ function KidsQuest() {
                         selectedCategories={selectedCategories}
                         setSelectedCategories={setSelectedCategories}
                         mode="offline"
-                        year="6-8 Years"
+                        year="6-8"
                     />
                     <CategoriesSection
                         title={false}
@@ -136,7 +138,7 @@ function KidsQuest() {
                         selectedCategories={selectedCategories}
                         setSelectedCategories={setSelectedCategories}
                         mode="offline"
-                        year="7-10 Years"
+                        year="7-10"
                     />
                     <CategoriesSection
                         title={false}
@@ -146,7 +148,7 @@ function KidsQuest() {
                         selectedCategories={selectedCategories}
                         setSelectedCategories={setSelectedCategories}
                         mode="offline"
-                        year="9-10 Years"
+                        year="9-10"
                     />
                     <TeamInfo
                         teams={teams}
@@ -156,7 +158,7 @@ function KidsQuest() {
                         handlePlayerChange={handlePlayerChange}
                         handleGameName={handleGameName}
                     />
-                    <Button className='text-white md:w-72 w-52 sm:w-64 my-16 text-4xl md:text-5xl' onClick={handleStartGame}>Start playing</Button>
+                    <Button className='text-white md:w-72 w-52 sm:w-64 my-16 text-4xl md:text-5xl' onClick={handleStartGame}>{t("startPlaying")}</Button>
                 </div>
             </Wrapper>
         </section>

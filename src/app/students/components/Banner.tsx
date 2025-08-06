@@ -58,10 +58,10 @@ const Banner: React.FC<BannerProps> = ({ title = "students", isSubject, clearSta
                     </div>
 
                     <div className="flex flex-col items-start md:items-center lg:w-2/4 text-black ">
-                        <h2 className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl leading-tight uppercase font-popfun">
+                        <h2 className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl leading-tight uppercase ">
                             {t(title)}
                         </h2>
-                        <p className="text-xs sm:text-sm md:text-base  lg:text-lg">
+                        <p className="text-xs font-secondary sm:text-sm md:text-base  lg:text-lg">
                             {t("studentsDescription")}
                         </p>
                     </div>

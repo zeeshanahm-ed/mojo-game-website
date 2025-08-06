@@ -59,17 +59,17 @@ export default function Banner() {
                     <div className="xsm:start-64 start-52 sm:start-[50%] md:start-[55%] top-3 md:top-5 relative md:w-12 md:h-12 w-8 h-8">
                         <Image src={StarImage} alt='Star' className='w-full h-full object-contain' />
                     </div>
-                    <h1 className="xsm:text-6xl text-5xl -mt-8 md:text-8xl text-start lg:text-9xl font-popfun leading-tight uppercase">
+                    <h1 className="xsm:text-6xl text-5xl -mt-8 md:text-8xl text-start lg:text-9xl  leading-tight uppercase">
                         {t("slogan_line_1")} <br />
-                        <span className="text-yellow">{t("slogan_line_2")}</span> {t("withUltimate")} <br /> {t("quizExperience")}
+                        <span className="text-yellow">{t("slogan_line_2")}</span>  {t("withUltimate")} <br /> {t("quizExperience")}
                     </h1>
-                    <p className="text-sm md:text-base text-start">{t("slogan_sub")}</p>
+                    <p className="text-sm md:text-base text-start font-secondary">{t("slogan_sub")}</p>
 
                     <div className="mt-10 flex flex-row justify-start items-center">
 
                         <div role='button' onClick={() => handleGoTo("createAGame")} className={`relative cursor-pointer text-black skew-custom sm:w-40 w-28  md:w-60 lg:w-72 h-[125px] md:h-[210px] md:gap-0 gap-0 py-2 md:py-4 px-4 border-[3px] md:border-[6px] border-black bg-yellow items-start flex-col flex justify-center`}>
-                            <div className='font-popfun text-4xl sm:text-5xl skew-x-3 md:text-8xl uppercase'>{t("create")}</div>
-                            <div className='font-popfun text-nowrap w-full flex skew-x-3 items-center justify-between text-2xl sm:3xl md:text-[60px] -mt-2 md:-mt-3 uppercase'>
+                            <div className=' text-4xl sm:text-5xl skew-x-3 md:text-8xl uppercase'>{t("create")}</div>
+                            <div className=' text-nowrap w-full flex skew-x-3 items-center justify-between text-2xl sm:3xl md:text-[60px] -mt-2 md:-mt-3 uppercase'>
                                 {t("aGame")}
                                 <Image src={CreateGameImage} alt="CREATE" className=" ml-1 mb-1 w-5 h-5 sm:w-8 sm:h-8 md:w-14 md:h-14" />
                             </div>
@@ -140,7 +140,7 @@ function GameCard({
         >
 
             <div className='font-bulletproof skew-x-3  text-base uppercase'>{title}</div>
-            <div className='font-popfun text-2xl skew-x-3  md:text-5xl uppercase'>
+            <div className=' text-2xl skew-x-3  md:text-5xl uppercase'>
                 {subtitle}
             </div>
             <Image src={image} alt={title} className="skew-x-3  absolute md:w-6 md:h-6 w-5 h-5 inline-block mt-auto top-1 md:top-2 end-2" />

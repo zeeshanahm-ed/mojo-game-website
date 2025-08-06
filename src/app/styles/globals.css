@@ -5,9 +5,6 @@
 @tailwind utilities;
 
 :root {
-    --family-primary: 'Poppins', sans-serif;
-    --family-inter: 'Inter', sans-serif;
-    --family--mont: 'Montserrat', sans-serif;
 
     --color-red: #DA2626;
     --color-yellow: #FFEB10;

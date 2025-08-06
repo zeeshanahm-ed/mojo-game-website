@@ -29,7 +29,7 @@ function CreateGameModal() {
         <dialog id="create_game_modal" className={` modal ${open ? 'modal-open' : ''}`}>
             <div className="max-w-xl modal-box bg-white items-center rounded-none px-0 border-2 border-black">
                 <form method="dialog " className="flex items-center justify-center relative">
-                    <h2 className="text-5xl md:text-6xl font-popfun uppercase">
+                    <h2 className="text-5xl md:text-6xl  uppercase">
                         {t("newGame")}
                     </h2>
                     <button
@@ -44,7 +44,7 @@ function CreateGameModal() {
                 <div className="divider before:bg-light-gray after:bg-light-gray m-0"></div>
                 {/* Playing Mode Cards */}
                 <div className="flex items-center w-full justify-evenly md:px-10 py-5 px-5 sm:px-10 gap-5">
-                    <div className="md:w-64 w-64 cursor-pointer skew-custom bg-green border-4 sm:border-[6px] font-popfun border-black flex flex-col items-center justify-center px-6 py-2 md:py-5 gap-5"
+                    <div className="md:w-64 w-64 cursor-pointer skew-custom bg-green border-4 sm:border-[6px]  border-black flex flex-col items-center justify-center px-6 py-2 md:py-5 gap-5"
                         onClick={() => handleNavigate("offline")}>
                         <Image src={OfflineImage} alt='Offline Mode' className='sm:w-20 w-16 sm:h-20 md:w-20 md:h-20' />
                         <p dir={direction} className="text-black text-5xl md:text-6xl uppercase">
@@ -53,7 +53,7 @@ function CreateGameModal() {
                     </div>
 
                     {/* Online Play Card */}
-                    <div className="md:w-64 w-64 cursor-pointer skew-custom bg-yellow font-popfun border-4 sm:border-[6px] border-black flex flex-col items-center justify-center px-6 py-2  md:py-5 gap-5"
+                    <div className="md:w-64 w-64 cursor-pointer skew-custom bg-yellow  border-4 sm:border-[6px] border-black flex flex-col items-center justify-center px-6 py-2  md:py-5 gap-5"
                         onClick={() => handleNavigate("online")}>
                         <Image src={OnlineImage} alt='Online Mode' className='sm:w-20 w-16 sm:h-20 md:w-20 md:h-20' />
                         <p dir={direction} className="text-black  text-5xl md:text-6xl uppercase" >

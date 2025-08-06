@@ -11,14 +11,14 @@ const Footer: React.FC = () => {
                         <h1 className="text-7xl  mb-2 font-bulletproof">
                             MOJO
                         </h1>
-                        <p className="text-sm text-gray-400">
+                        <p className="text-sm text-gray-400 font-secondary">
                             © Copyright 2025 MOJO - All Rights Reserved
                         </p>
                     </div>
 
                     {/* Right Section: Follow Us and Social Icons */}
                     <div className="flex flex-col items-center md:items-end">
-                        <p className="text-lg font-semibold mb-3">Follow us</p>
+                        <p className="text-lg font-medium mb-3 font-secondary">Follow us</p>
                         <div className="flex space-x-4">
                             <a
                                 href="#"

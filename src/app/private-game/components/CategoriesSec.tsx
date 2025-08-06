@@ -50,7 +50,7 @@ const CategoriesSection: React.FC<PropsInter> = ({ setSelectedCategory, selected
     };
 
     return (
-        <div className="flex flex-col items-center justify-center">
+        <div className="flex flex-col items-center justify-center font-secondary">
             <div className="flex gap-4 flex-wrap justify-center">
                 {categories.map((category) => (
                     <div

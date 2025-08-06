@@ -28,7 +28,7 @@ const Congratulation: React.FC = () => {
                 <Image src={CongratulationImage} alt='Congratulation' className='object-contain w-full h-full' />
             </div>
             <div className='text-center sm:text-start mb-10'>
-                <h2 className="md:text-8xl text-5xl font-popfun text-[#75C704] mb-2 uppercase">
+                <h2 className="md:text-8xl text-5xl  text-[#75C704] mb-2 uppercase">
                     {t("congratulations")}
                 </h2>
                 <p className="text-sm sm:text-base md:text-lg leading-6 text-black max-w-2xl">
@@ -36,7 +36,7 @@ const Congratulation: React.FC = () => {
                 </p>
             </div>
 
-            <div className="flex w-full justify-center sm:justify-start flex-row gap-2 sm:gap-8 font-popfun">
+            <div className="flex w-full justify-center sm:justify-start flex-row gap-2 sm:gap-8 ">
                 {/* Blue - Winner Card */}
                 <div className="w-full sm:w-56 md:w-64 h-64 md:h-80 -skew-x-3 p-4 sm:p-6 flex flex-col items-center justify-center text-center border-4 border-dark-blue text-blue-500">
                     <div className="mb-4">

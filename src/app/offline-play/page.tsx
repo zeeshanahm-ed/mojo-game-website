@@ -68,16 +68,16 @@ function OfflineMode() {
     const handleValidation = () => {
         let error = null;
         if (selectedCategories.length < 6) {
-            showErrorMessage(t("errors.maxCategories"));
+            showErrorMessage(t("formErrors.maxCategories"));
             error = true;
         } else if (gameName.trim() === "") {
-            setErrors({ ...errors, gameName: t("errors.gameNameRequired") });
+            setErrors({ ...errors, gameName: t("formErrors.gameNameRequired") });
             error = true;
         } else if (teams.first.name.trim() === "") {
-            setErrors({ ...errors, firstTeam: t("errors.teamNameRequired") });
+            setErrors({ ...errors, firstTeam: t("formErrors.teamNameRequired") });
             error = true;
         } else if (teams.second.name.trim() === "") {
-            setErrors({ ...errors, secondTeam: t("errors.teamNameRequired") });
+            setErrors({ ...errors, secondTeam: t("formErrors.teamNameRequired") });
             error = true;
         }
         return error;

@@ -37,9 +37,9 @@ function BuyNewGameModal({ open, onClose }: NewGameModalProps) {
 
     return (
         <dialog id="buy_a_new_game_modal" className={` modal ${open ? 'modal-open' : ''}`}>
-            <div className="modal-box px-0 pb-0  bg-white items-center max-w-2xl rounded-none border-2 border-black">
+            <div className="modal-box px-0 pb-0 font-primary  bg-white items-center max-w-2xl rounded-none border-2 border-black">
                 <form method="dialog " className="px-4 md:px-10 flex items-center justify-start relative">
-                    <h2 className="text-4xl sm:text-5xl md:text-6xl font-popfun uppercase flex flex-row sm:flex-row sm:items-center ">
+                    <h2 className="text-4xl sm:text-5xl md:text-6xl  uppercase flex flex-row sm:flex-row sm:items-center ">
                         Buy a new game <span className='ml-4 sm:ml-8 flex items-center gap-1 sm:gap-3'><RoyalWalletIcon className="mb-1 sm:w-10 sm:h-10" /> 10.00</span>
                     </h2>
                     <button
@@ -54,7 +54,7 @@ function BuyNewGameModal({ open, onClose }: NewGameModalProps) {
                 <div className="divider before:bg-light-gray after:bg-light-gray m-0"></div>
                 {/* Main content */}
                 <div className="w-full">
-                    <div className='flex px-5 md:px-10 items-center flex-col w-full text-white justify-between py-5 uppercase font-popfun space-y-5'>
+                    <div className='flex px-5 md:px-10 items-center flex-col w-full text-white justify-between py-5 uppercase  space-y-5'>
                         {Options.map((option, index) => {
                             return (
                                 <div key={index} onClick={() => handleSelectOption(option)} className={`${selectedOption?.count === option.count && "text-gray-200"} w-full cursor-pointer hover:text-gray-200 transition-all duration-300 ${option.bgColor} flex items-center justify-between  px-4 md:px-10 pt-4 pb-2 -skew-x-12`}>
@@ -84,7 +84,7 @@ function BuyNewGameModal({ open, onClose }: NewGameModalProps) {
                         </div>
                     </div>
 
-                    <div className="bg-purple px-4 md:px-10 pt-4 pb-2 flex items-center justify-between font-popfun">
+                    <div className="bg-purple px-4 md:px-10 pt-4 pb-2 flex items-center justify-between ">
                         <div className="">
                             <button className="bg-transparent border-none text-white text-3xl md:text-5xl  uppercase hover:text-gray-200 transition-colors">
                                 BUY A NEW GAME

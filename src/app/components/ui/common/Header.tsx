@@ -37,7 +37,7 @@ const Header: React.FC = () => {
     };
 
     return (
-        <header className="w-full overflow-hidden font-sans h-20 flex items-center px-4 md:px-10">
+        <header className="w-full font-sans h-20 flex items-center px-4 md:px-10">
             <Wrapper>
                 <nav className="flex items-center justify-between w-full py-4">
                     {/* Left section: User avatar and name */}
@@ -86,10 +86,10 @@ const Header: React.FC = () => {
                     </div>
 
                     {/* Right section: Navigation links */}
-                    <div className="flex items-center space-x-2 md:space-x-8 text-gray-800 text-sm sm:text-base md:text-lg font-medium w-fit text-nowrap">
+                    <div className="flex items-center space-x-2 font-secondary md:space-x-8 text-gray-800 text-sm sm:text-base md:text-lg font-medium w-fit text-nowrap">
+                        <div className='hidden md:block'><LanguageSwitcher /></div>
                         <Link href="/my-games" className="hover:text-dark-gray transition-colors">{t("my_games")}</Link>
                         <Link href="/contactus" className="hover:text-dark-gray transition-colors">{t("contact_us")}</Link>
-                        <LanguageSwitcher />
                     </div>
                 </nav>
                 <AuthModal />

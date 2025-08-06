@@ -65,7 +65,7 @@ function PaymentOptionModal({ open, onClose }: PaymentOptionModalProps) {
         <dialog id="buy_a_new_game_modal" className={` modal ${open ? 'modal-open' : ''}`}>
             <div className="modal-box customModalStyle  bg-white items-center max-w-2xl rounded-none border-2 border-black">
                 <form method="dialog " className=" flex items-center justify-center relative">
-                    <h2 className="text-4xl sm:text-5xl md:text-6xl font-popfun uppercase flex flex-row items-center ">
+                    <h2 className="text-4xl sm:text-5xl md:text-6xl  uppercase flex flex-row items-center ">
                         {t("paymentOptions")}
                     </h2>
                     <button
@@ -79,7 +79,7 @@ function PaymentOptionModal({ open, onClose }: PaymentOptionModalProps) {
                 </form>
                 <div className="divider before:bg-light-gray after:bg-light-gray m-0"></div>
                 {/* Main content */}
-                <div className="w-full py-5 px-4 md:px-10">
+                <div className="w-full py-5 font-secondary px-4 md:px-10">
                     {/* Payment Methods */}
                     <div className="space-y-3 mb-8">
                         {paymentMethods.map((method) => (

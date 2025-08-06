@@ -71,7 +71,7 @@ const GameCard = () => {
             {/* Badge */}
             <div
                 style={{ clipPath: "polygon(0 0, 100% 0%, 97% 100%, 7% 100%)" }}
-                className="absolute w-48 text-center -top-1 left-1/2 -translate-x-1/2 bg-black text-white text-xs px-5 py-2">
+                className="absolute font-secondary w-48 text-center -top-1 left-1/2 -translate-x-1/2 bg-black text-white text-xs px-5 py-2">
                 {t("timesPlayed")} : 05
             </div>
 
@@ -79,9 +79,9 @@ const GameCard = () => {
             <div className="flex flex-col items-center text-center gap-y-4 md:gap-y-1 lg:mt-4">
                 <Image src={GameIcon} alt="Game Icon" width={100} height={80} className='w-20 md:w-28' />
 
-                <h2 className="text-5xl lg:text-7xl font-popfun text-dark-blue">GAME 12</h2>
+                <h2 className="text-5xl lg:text-7xl  text-dark-blue">GAME 12</h2>
 
-                <p className="text-sm text-black">
+                <p className="text-sm text-black font-secondary">
                     {"Answer correctly, and deduct the number of points you won from the other team's points."}
                 </p>
             </div>

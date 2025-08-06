@@ -42,7 +42,7 @@ const Select: React.FC<SelectProps> = ({
     return (
         <div
             dir={direction}
-            className={` flex items-center h-14 transform -skew-x-6 md:-skew-x-12 border-2 border-black overflow-hidden ${className}`}
+            className={` flex items-center font-primary h-14 transform -skew-x-6 md:-skew-x-12 border-2 border-black overflow-hidden ${className}`}
         >
             {/* Icon Section - Preserved from original */}
             {icon && (
@@ -63,7 +63,7 @@ const Select: React.FC<SelectProps> = ({
                     required={required}
                     value={value}
                     onChange={onChange}
-                    className={`w-full pl-2 md:ps-8 pe-10 py-2 h-full bg-white text-base md:text-lg border-none focus:outline-none appearance-none cursor-pointer ${selectClassName}`}
+                    className={`w-full pl-2 font-secondary md:ps-8 pe-10 py-2 h-full bg-white text-base md:text-lg border-none focus:outline-none appearance-none cursor-pointer ${selectClassName}`}
                 >
                     {/* Placeholder option */}
                     <option value="" disabled hidden className="text-gray-500">

@@ -29,12 +29,9 @@ const config: Config = {
         'border-gray': 'var(--color-border-gray)',
       },
       fontFamily: {
-        primary: ['var(--family-primary)', 'sans-serif'],
-        inter: ['var(--family-inter)', 'sans-serif'],
-        mont: ['var(--family--mont)', 'sans-serif'],
+        primary: ['var(--font-popfun)', 'sans-serif'],
+        secondary: ['var(--font-product_sans)', 'sans-serif'],
         bulletproof: ['var(--font-bulletproof)', 'sans-serif'],
-        popfun: ['var(--font-popfun)', 'sans-serif'],
-        Product_sans: ['var(--font-product_sans)', 'sans-serif'],
       },
       borderRadius: {
         base: 'var(--base-radius)',
