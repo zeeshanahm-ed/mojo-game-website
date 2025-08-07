@@ -8,7 +8,9 @@ import Input from '@/app/components/ui/common/Input';
 import Button from '@/app/components/ui/common/Button';
 import Select from '../components/ui/common/Select';
 import Image from 'next/image';
+import { useTranslation } from 'react-i18next';
 import { useAuthModalStore } from '../store/useAuthModalStore';
+import { useDirection } from '../hooks/useGetDirection';
 
 
 //icons
@@ -17,13 +19,15 @@ import EmailIcon from '@/app/assets/icons/email-icon.svg';
 import ContactIcon from '@/app/assets/icons/contact-icon.svg';
 import UserIcon from '@/app/assets/icons/user-icon.svg';
 import EditIcon from '@/app/assets/icons/edit-icon.svg';
-import FallBackProfileImage from '../assets/images/fallback-profile-image.jpg';
+import FallBackProfileImage from '@/app/assets/images/fallback-profile-image.jpg';
 
 
 
 function Profile() {
     const { countries } = useCountries();
     const { openModal } = useAuthModalStore();
+    const { t } = useTranslation();
+    const direction = useDirection();
 
     const [form, setForm] = useState({
         fullName: '',
@@ -67,6 +71,7 @@ function Profile() {
         label: country.name,
         value: country.dialCode,
     }));
+
     return (
         <section>
             <Banner />
@@ -97,23 +102,23 @@ function Profile() {
                                 <EditIcon className=" w-4 h-4 fill-white" />
                             </div>
                         </div>
-                        <p className="text-lg font-semibold">Your Avatar</p>
+                        <p className="font-secondary text-lg font-semibold">{t("yourAvatar")}</p>
                         <Button boxShadow={false} className="w-52" onClick={handleLogoutModal}>
-                            <span className="inline-block  transform skew-x-12 tracking-wider text-4xl uppercase ">Logout</span>
+                            <span className="inline-block  transform skew-x-12 tracking-wider text-4xl uppercase ">{t("logout")}</span>
                         </Button>
                     </div>
 
                     <form onSubmit={handleSubmit} className="flex flex-col items-center sm:p-6 space-y-6">
 
                         {/* First Name & Last Name Input */}
-                        <div className="flex items-center h-14 sm:w-[450px] lg:w-full w-full transform -skew-x-6 md:-skew-x-12 border-2 border-black overflow-hidden">
+                        <div dir={direction} className="flex font-secondary items-center h-14 sm:w-[450px] lg:w-full w-full transform -skew-x-6 md:-skew-x-12 border-2 border-black overflow-hidden">
                             <div className="bg-purple flex items-center justify-center w-[57px] md:w-[70px] h-full">
                                 <UserIcon />
                             </div>
                             <input
                                 type="text"
                                 name='firstName'
-                                placeholder="First Name"
+                                placeholder={t("firstName")}
                                 className="flex-1 input h-full rounded-none input-bordered  pl-2 md:pl-8 pr-2 text-lg bg-white text-gray-800 border-none focus:outline-none"
                                 autoComplete="off"
                             />
@@ -121,7 +126,7 @@ function Profile() {
                             <input
                                 type="text"
                                 name='lastName'
-                                placeholder="Last Name"
+                                placeholder={t("lastName")}
                                 className="flex-1 input h-full rounded-none input-bordered  pl-2 md:pl-8 pr-2 text-lg bg-white text-gray-800 border-none focus:outline-none border-l border-gray-300"
                                 autoComplete="off"
                             />
@@ -131,7 +136,7 @@ function Profile() {
                         <Input
                             icon={<EmailIcon />}
                             type="email"
-                            placeholder="Enter your email address"
+                            placeholder={t("emailPlaceholder")}
                             className="sm:w-[450px] lg:w-full w-full"
                             required
                             name="email"
@@ -146,15 +151,16 @@ function Profile() {
                             value={form.countryCode}
                             onChange={handleChange}
                             options={CountriesList || []}
-                            placeholder="Select Countery Code"
+                            placeholder={t("selectCountryCode")}
                             className="sm:w-[450px] lg:w-full w-full"
+                            direction={direction}
                         />
 
                         {/* Contact Number Input */}
                         <Input
                             icon={<ContactIcon />}
                             type="number"
-                            placeholder="Your Contact Number"
+                            placeholder={t("contactNumber")}
                             className="sm:w-[450px] lg:w-full w-full"
                             required
                             name="contact"
@@ -165,7 +171,7 @@ function Profile() {
                         {/* SignUp Button */}
                         <div className='flex items-center justify-center mt-10'>
                             <Button type="submit" aria-label="Save" className="w-52" boxShadow={false}>
-                                <span className="inline-block transform skew-x-12 tracking-wider text-4xl uppercase ">Save Changes</span>
+                                <span className="inline-block transform skew-x-12 tracking-wider text-4xl uppercase ">{t("saveChanges")}</span>
                             </Button>
                         </div>
                     </form>

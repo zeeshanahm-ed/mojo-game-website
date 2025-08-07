@@ -3,9 +3,11 @@ import Image from 'next/image';
 //icons
 import StarImage from "@/app/assets/images/star.png"
 import Wrapper from '@/app/components/ui/common/Wrapper';
+import { useTranslation } from 'react-i18next';
 
 
 const Banner: React.FC = () => {
+    const { t } = useTranslation();
 
     return (
         <div className="w-full bg-black py-16 px-4 md:px-10 flex flex-col items-center justify-center relative overflow-hidden border-b-4 border-black">
@@ -18,10 +20,10 @@ const Banner: React.FC = () => {
 
                     <div className="flex flex-col text-center items-center lg:w-2/4 px-4 text-white">
                         <h2 className="text-6xl md:text-8xl lg:text-9xl leading-tight mb-4 uppercase ">
-                            My account
+                            {t("myAccount")}
                         </h2>
-                        <p className="text-base text-white md:text-lg">
-                            Your personal profile on mojo system .
+                        <p className="text-base font-secondary text-white md:text-lg">
+                            {t("profileDescription")}
                         </p>
                     </div>
                 </div>

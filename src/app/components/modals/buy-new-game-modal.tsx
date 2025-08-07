@@ -68,7 +68,7 @@ function BuyNewGameModal({ open, onClose }: NewGameModalProps) {
                             )
                         })}
                         <div className="bg-white border-2 border-black -skew-x-12 w-full">
-                            <div className="px-4 md:px-10 pt-3 pb-1 flex skew-x-12 items-center justify-between" >
+                            <div className={`px-4 md:px-10 ${direction === "rtl" ? "pt-0" : "pt-3"} pb-1 flex skew-x-12 items-center justify-between`} >
                                 <div className="flex-shrink-0 ">
                                     <label className="text-black uppercase text-3xl  md:text-5xl">
                                         {t("discountCode")}
@@ -80,7 +80,7 @@ function BuyNewGameModal({ open, onClose }: NewGameModalProps) {
                                         value={discountCode}
                                         onChange={(e) => setDiscountCode(e.target.value)}
                                         placeholder="1F380H5000"
-                                        className="w-full text-gray-400 text-3xl  md:text-5xl bg-transparent border-none outline-none placeholder-gray-400 text-right"
+                                        className={`w-full text-gray-400 ${direction === "rtl" ? "font-secondary" : "font-primary md:text-4xl"} text-3xl  bg-transparent border-none outline-none placeholder-gray-400 text-right`}
                                         style={{ textShadow: '1px 1px 2px rgba(0,0,0,0.1)' }}
                                     />
                                 </div>
@@ -88,23 +88,23 @@ function BuyNewGameModal({ open, onClose }: NewGameModalProps) {
                         </div>
                     </div>
 
-                    <div className="bg-purple px-4 md:px-10 pt-4 pb-2 flex items-center justify-between ">
+                    <div className={`bg-purple px-4 md:px-10 ${direction === "rtl" ? "pt-2 pb-2" : "pt-4 pb-2"}  flex items-center justify-between `}>
                         <div className="">
                             <button className="bg-transparent border-none text-white text-3xl md:text-5xl  uppercase hover:text-gray-200 transition-colors">
-                                BUY A NEW GAME
+                                {t("buyNewGame")}
                             </button>
                         </div>
 
                         <div className="w-px bg-white h-12"></div>
 
-                        <div className="flex items-center gap-3 sm:gap-6">
+                        <div className={`flex items-center gap-3  sm:gap-6 ${direction === "rtl" && "mt-2"}`}>
                             <div className="text-white text-3xl md:text-4xl ">
                                 {selectedOption.price} SAR
                             </div>
                             <div className="flex items-center gap-2">
                                 <div className={`w-4 h-4 ${selectedOption.bgColor} mb-1 rounded-full border border-white`}></div>
                                 <span className="text-white text-2xl md:text-3xl ">
-                                    {selectedOption.count} GAMES
+                                    {selectedOption.count}  {t("games")}
                                 </span>
                             </div>
                         </div>

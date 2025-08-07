@@ -6,7 +6,7 @@ import i18n from 'i18next';
 type Direction = 'ltr' | 'rtl';
 
 const resolveDirection = (lang: string | null): Direction =>
-    lang === 'sa' || lang?.startsWith('ar') ? 'rtl' : 'ltr';
+    lang === 'ar' || lang?.startsWith('ar') ? 'rtl' : 'ltr';
 
 export function useDirection(): Direction {
     const [direction, setDirection] = useState<Direction>(

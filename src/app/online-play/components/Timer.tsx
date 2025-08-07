@@ -1,12 +1,14 @@
 import React from 'react';
 
 import ClockIcon from "@/app/assets/icons/clock-icon.svg";
+import { useTranslation } from 'react-i18next';
 
 interface Props {
     timer: number;
 }
 
 function Timer({ timer }: Props) {
+    const { t } = useTranslation();
     return (
         <div className='flex items-center flex-col gap-2 justify-center'>
             <div className='flex items-center gap-2 justify-center'>
@@ -18,12 +20,11 @@ function Timer({ timer }: Props) {
                     role="button"
                     style={{ clipPath: "polygon(8% 0, 100% 0%, 100% 97%, 0% 100%)" }}
                     className="w-44 cursor-pointer sm:h-12 flex px-2 md:px-5 py-1 sm:py-2 pt-2 sm:pt-4 items-center justify-center text-white bg-orange ">
-                    <span className="md:text-4xl text-xl sm:text-3xl">Set Time</span>
+                    <span className="md:text-4xl text-xl sm:text-3xl">{t("setTime")}</span>
                 </div>
             </div>
             <p className="text-base font-secondary md:text-lg max-w-3xl tracking-normal mt-5">
-                If the second team does not join within a set time, your credit will be refunded
-            </p>
+                {t("refundIfTeamNotJoined")}</p>
         </div>
     )
 }
