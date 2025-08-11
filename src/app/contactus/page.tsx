@@ -91,7 +91,7 @@ function ContactUS() {
                         <Input
                             icon={<ContactIcon />}
                             type="number"
-                            placeholder={t("contactNumber")}
+                            placeholder={t("phoneNumber")}
                             className="sm:w-[450px] lg:w-2/3 w-full"
                             required
                             name="contact"

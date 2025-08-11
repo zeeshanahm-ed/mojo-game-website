@@ -137,7 +137,7 @@ interface CustomButtonProps {
 const CustomButton = ({ handleClick, icon, team, type }: CustomButtonProps) => {
     return (
         <button
-            className="flex justify-center items-center bg-yellow text-black text-xl w-12 h-10 boxShadow-custom border-2 border-black"
+            className="flex justify-center items-center bg-[#FCFFAF] text-black text-xl w-12 h-10 boxShadow-custom border-2 border-black"
             onClick={() => handleClick(team, type)}
         >
             {icon}

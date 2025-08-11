@@ -11,6 +11,7 @@ export interface IButtonProps extends React.ButtonHTMLAttributes<HTMLButtonEleme
     bgClass?: string;
     textClass?: string;
     boxShadow?: boolean;
+    loading?: boolean;
     display?: string;
 }
 
@@ -25,6 +26,7 @@ const Button = forwardRef<HTMLButtonElement, IButtonProps>(
         bgClass,
         textClass,
         boxShadow = true,
+        loading = false,
         display,
         ...rest
     }, ref) => {
@@ -36,13 +38,17 @@ const Button = forwardRef<HTMLButtonElement, IButtonProps>(
                 ref={ref}
                 type={type}
                 {...rest}
+                disabled={loading}
                 className={`${variant} ${className} ${bgClass ? bgClass : "bg-purple"} ${textClass ? textClass : "text-white"} ${boxShadow ? "boxShadow-custom" : "shadow-none"} ${direction === "ltr" && " pt-2 "} px-4 transform font-primary -skew-x-6 md:-skew-x-12 border-2 border-black shadow-lg `}
                 aria-label="Button"
             >
                 {prefixElement}
-                <span className='inline-block skew-x-0 text-inherit'>
-                    {display == "none" ? null : children}
-                </span>
+                {loading ?
+                    <span className="loading loading-dots loading-xl"></span> :
+                    <span className='inline-block skew-x-0 text-inherit'>
+                        {display == "none" ? null : children}
+                    </span>
+                }
                 {suffixElement}
             </button>
         );

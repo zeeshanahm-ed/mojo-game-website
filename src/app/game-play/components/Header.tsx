@@ -18,7 +18,7 @@ const Header: React.FC<HeaderProps> = ({ handleScreenChange, handleOpenExitModal
     const direction = useDirection();
 
     return (
-        <header className="w-full bg-yellow relative z-40">
+        <header className="w-full bg-yellow relative z-40 border-b-2 md:border-b-4 border-black">
             <Wrapper>
                 <div className='py-4 px-4 md:px-10 flex items-center justify-between relative'>
                     {/* Left Section: Exit Game & Game Over Buttons */}
@@ -48,8 +48,8 @@ const Header: React.FC<HeaderProps> = ({ handleScreenChange, handleOpenExitModal
                     </div>
 
                     {/* Right Section: H1 Team Status */}
-                    <div className="flex font-secondary items-center lg:h-14 border md:border-2 border-black skew-custom md:-skew-x-12">
-                        <div className="bg-black w-28 lg:w-44 flex text-white py-2 px-2 lg:px-3 h-full items-center">
+                    <div className="flex font-secondary items-center  lg:h-14 border md:border-2 border-black skew-custom md:-skew-x-12">
+                        <div className="bg-black w-28 lg:w-44 flex justify-center text-white py-2 px-2 lg:px-3 h-full items-center">
                             <span title={session?.gameName} className="truncate max-w-[98%] font-semibold uppercase text-sm lg:text-lg">{session?.gameName}</span>
                         </div>
                         {session?.mode === "online" &&

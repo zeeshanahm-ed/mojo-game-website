@@ -12,7 +12,7 @@ const Banner: React.FC = () => {
     const { t } = useTranslation();
 
     return (
-        <section className="w-full bg-yellow py-16 pb-28 md:pb-16 px-1 md:px-10 flex flex-col items-center justify-center relative overflow-hidden border-b-4 border-black">
+        <section className="w-full bg-yellow py-16 px-1 md:px-10 flex flex-col items-center justify-center relative overflow-hidden border-b-4 border-black">
             {/* Main Content */}
             <Wrapper>
                 <div className="relative z-10 flex flex-row items-center justify-center w-full text-center ">
@@ -29,7 +29,7 @@ const Banner: React.FC = () => {
                         <h2 className="text-6xl md:text-8xl lg:text-9xl leading-tight uppercase ">
                             {t("playLocal")}
                         </h2>
-                        <p className="text-sm sm:text-base md:text-lg max-w-xl">
+                        <p className="text-sm font-secondary sm:text-base md:text-lg max-w-xl">
                             {t("playLocalNote")}
                         </p>
                     </div>

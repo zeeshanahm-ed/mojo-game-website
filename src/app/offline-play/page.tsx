@@ -68,16 +68,16 @@ function OfflineMode() {
     const handleValidation = () => {
         let error = null;
         if (selectedCategories.length < 6) {
-            showErrorMessage(t("formErrors.maxCategories"));
+            showErrorMessage(t("errors.maxCategories"));
             error = true;
         } else if (gameName.trim() === "") {
-            setErrors({ ...errors, gameName: t("formErrors.gameNameRequired") });
+            setErrors({ ...errors, gameName: t("errors.gameNameRequired") });
             error = true;
         } else if (teams.first.name.trim() === "") {
-            setErrors({ ...errors, firstTeam: t("formErrors.teamNameRequired") });
+            setErrors({ ...errors, firstTeam: t("errors.teamNameRequired") });
             error = true;
         } else if (teams.second.name.trim() === "") {
-            setErrors({ ...errors, secondTeam: t("formErrors.teamNameRequired") });
+            setErrors({ ...errors, secondTeam: t("errors.teamNameRequired") });
             error = true;
         }
         return error;
@@ -120,7 +120,7 @@ function OfflineMode() {
         <section>
             <Banner />
             <Wrapper>
-                <div className='flex items-center justify-center flex-col h-auto py-16 px-4 md:px-10'>
+                <div className='flex items-center justify-center flex-col h-auto pb-16 px-4 md:px-10'>
                     <CategoriesSection
                         data={categories}
                         selectedCategories={selectedCategories}

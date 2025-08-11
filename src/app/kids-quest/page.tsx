@@ -67,16 +67,16 @@ function KidsQuest() {
     const handleValidation = () => {
         let error = null;
         if (selectedCategories.length < 6) {
-            showErrorMessage(t("formErrors.maxCategories"));
+            showErrorMessage(t("errors.maxCategories"));
             error = true;
         } else if (gameName.trim() === "") {
-            setErrors({ ...errors, gameName: t("formErrors.gameNameRequired") });
+            setErrors({ ...errors, gameName: t("errors.gameNameRequired") });
             error = true;
         } else if (teams.first.name.trim() === "") {
-            setErrors({ ...errors, firstTeam: t("formErrors.teamNameRequired") });
+            setErrors({ ...errors, firstTeam: t("errors.teamNameRequired") });
             error = true;
         } else if (teams.second.name.trim() === "") {
-            setErrors({ ...errors, secondTeam: t("formErrors.teamNameRequired") });
+            setErrors({ ...errors, secondTeam: t("errors.teamNameRequired") });
             error = true;
         }
         return error;

@@ -25,8 +25,8 @@ export default function WhoAnsweredEvent({ handleScreenChange, question }: WhoAn
     return (
         <div className="flex items-center justify-center">
             <div className="w-full flex flex-col items-center">
-                <h2 className="text-3xl md:text-4xl mb-2">{t("whoAnsweredCorrectly")}</h2>
-                <p className="md:text-xl text-base text-light-gray">( {t("selectOneOption")} )</p>
+                <h2 className="text-3xl md:text-4xl mb-2 font-secondary">{t("whoAnsweredCorrectly")}</h2>
+                <p className="md:text-xl text-base text-light-gray font-secondary">( {t("selectOneOption")} )</p>
                 {/* Bottom bar */}
                 <div className="flex flex-col sm:flex-row w-full items-center justify-center py-2 rounded-b-lg gap-5 md:gap-10 my-5 md:my-10" >
                     <div
