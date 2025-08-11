@@ -2,7 +2,7 @@ import axios from 'axios';
 import * as authHelper from './../../helpers/auth-helper';
 // Create an Axios instance
 const api = axios.create({
-    baseURL: process.env.API_BASE_URL,
+    baseURL: process.env.NEXT_PUBLIC_API_BASE_URL,
     headers: {
         'Content-Type': 'application/json',
     },
@@ -12,7 +12,7 @@ const api = axios.create({
 api.interceptors.request.use(
     (config) => {
 
-        const token = authHelper.getAuth(); //localStorage.getItem('token');
+        const token = authHelper.getAuth()?.api_token; //localStorage.getItem('token');
         if (token) {
             config.headers.Authorization = `Bearer ${token}`;
         }

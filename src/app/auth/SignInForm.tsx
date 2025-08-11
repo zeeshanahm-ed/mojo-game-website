@@ -5,10 +5,14 @@ import Button from '../components/ui/common/Button';
 import { ISignInForm } from './core/_models';
 import { useTranslation } from 'react-i18next';
 import { useDirection } from '../hooks/useGetDirection';
+import useSignIn from './core/hooks/useSignIn';
+import { showErrorMessage, showSuccessMessage } from '../utils/messageUtils';
 //icons
 import PasswordIcon from '../assets/icons/password-icon.svg';
 import EmailIcon from '../assets/icons/email-icon.svg';
 import { IoEye, IoEyeOff } from "react-icons/io5";
+import useVerifyAuthToken from './core/hooks/useVerifyAuthToken';
+import { useAuth } from '../context/AuthContext';
 
 interface ValidationErrors {
     [key: string]: string;
@@ -17,11 +21,13 @@ interface ValidationErrors {
 export default function SignInForm() {
     const { t } = useTranslation();
     const direction = useDirection();
+    const { setCurrentUser } = useAuth();
 
-    const { openModal } = useAuthModalStore();
+    const { openModal, closeModal } = useAuthModalStore();
     const [showPassword, setShowPassword] = useState(false);
     const togglePasswordVisibility = () => setShowPassword(!showPassword);
-
+    const { signInMutate, isLoading } = useSignIn();
+    const { mutateVerifyToken, isLoading: verifyTokenLoading } = useVerifyAuthToken();
     const [formErrors, setFormErrors] = useState<ValidationErrors>();
     const [formState, setFormState] = useState<ISignInForm>({
         email: "",
@@ -51,7 +57,37 @@ export default function SignInForm() {
     };
 
     const handleOk = () => {
-        console.log('Login button clicked!');
+        const payload: ISignInForm = {
+            email: formState.email,
+            password: formState.password,
+        };
+
+        signInMutate(payload, {
+            onSuccess: async (res) => {
+                if (res) {
+                    const apiToken = res.data.data.data.token;
+                    if (apiToken) {
+                        mutateVerifyToken(apiToken, {
+                            onSuccess: (res) => {
+                                showSuccessMessage('User signed in successfully.');
+                                const authData = {
+                                    api_token: apiToken,
+                                    data: res?.data?.data?.data,
+                                };
+                                setCurrentUser(authData);
+                                closeModal();
+                            },
+                        });
+                    }
+                }
+                resetState();
+            },
+            onError: (error: any) => {
+                showErrorMessage(error?.response?.data?.message);
+                console.error('Failed to sign in user:', error);
+            },
+        });
+
     };
 
     const handleSignIn = () => {
@@ -61,7 +97,6 @@ export default function SignInForm() {
             return;
         } else {
             handleOk();
-            console.log('Sign Up button clicked!', formState);
         }
     };
 
@@ -69,6 +104,14 @@ export default function SignInForm() {
         const { name, value } = e.target;
         setFormState((prev) => ({ ...prev, [name]: value }));
         setFormErrors((prev) => ({ ...prev, [name]: "" }));
+    };
+
+
+    const resetState = () => {
+        setFormState({
+            email: "",
+            password: "",
+        })
     };
 
     return (
@@ -117,13 +160,13 @@ export default function SignInForm() {
                 </div>
 
                 {/* Create new account link */}
-                <button onClick={handleNewAccount} className="w-full text-start font-normal font-Product_sans text-sm md:text-base -ml-2 hover:underline">
+                <button onClick={handleNewAccount} className="w-fit text-start font-normal font-Product_sans text-sm md:text-base -ml-2 hover:underline">
                     {t('createAccount')}
                 </button>
 
                 <div className='flex items-center justify-center'>
                     {/* Login Button */}
-                    <Button type="button" onClick={handleSignIn} aria-label="Login" className="w-40 md:w-52 tracking-wider">
+                    <Button loading={isLoading || verifyTokenLoading} type="button" onClick={handleSignIn} aria-label="Login" className="w-40 md:w-52 tracking-wider">
                         <span className="inline-block transform skew-x-6 text-4xl uppercase ">{t('login')}</span>
                     </Button>
                 </div>

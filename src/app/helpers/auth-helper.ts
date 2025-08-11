@@ -2,37 +2,32 @@ import axios from 'axios';
 import { IAuthModel, IUserModel } from '../auth/core/_models';
 
 
-const AUTH_LOCAL_STORAGE_KEY = process.env.AUTH_LOCAL_STORAGE_KEY as string;
-const USER_LOCAL_STORAGE_KEY = process.env.USER_LOCAL_STORAGE_KEY as string;
+const NEXT_PUBLIC_AUTH_LOCAL_STORAGE_KEY = process.env.NEXT_PUBLIC_AUTH_LOCAL_STORAGE_KEY as string;
+const NEXT_PUBLIC_USER_LOCAL_STORAGE_KEY = process.env.NEXT_PUBLIC_USER_LOCAL_STORAGE_KEY as string;
+
 
 const getAuth = (): IAuthModel | undefined => {
-    if (!localStorage) {
-        return;
-    }
-
-    const lsValue: string | null = localStorage.getItem(AUTH_LOCAL_STORAGE_KEY);
-    if (!lsValue) {
-        return;
-    }
-
     try {
-        const auth: IAuthModel = JSON.parse(lsValue) as IAuthModel;
-        if (auth) {
-            return auth;
-        }
+        const lsValue = localStorage.getItem(NEXT_PUBLIC_AUTH_LOCAL_STORAGE_KEY);
+        if (!lsValue) return undefined;
+
+        const auth = JSON.parse(lsValue) as IAuthModel;
+        return auth ?? undefined;
     } catch (error) {
-        console.error('AUTH LOCAL STORAGE PARSE ERROR', error);
+        console.error("AUTH LOCAL STORAGE PARSE ERROR", error);
+        return undefined;
     }
 };
 
-const setAuth = (auth: IAuthModel) => {
+
+const setAuth = (user: IAuthModel) => {
     if (!localStorage) {
         return;
     }
 
     try {
-        const lsValue = JSON.stringify(auth);
-        localStorage.setItem(AUTH_LOCAL_STORAGE_KEY, lsValue);
+        const lsValue = JSON.stringify(user);
+        localStorage.setItem(NEXT_PUBLIC_AUTH_LOCAL_STORAGE_KEY, lsValue);
     } catch (error) {
         console.error('AUTH LOCAL STORAGE SAVE ERROR', error);
     }
@@ -43,7 +38,7 @@ const getUser = (): IUserModel | undefined => {
         return;
     }
 
-    const lsValue: string | null = localStorage.getItem(USER_LOCAL_STORAGE_KEY);
+    const lsValue: string | null = localStorage.getItem(NEXT_PUBLIC_USER_LOCAL_STORAGE_KEY);
     if (!lsValue) {
         return;
     }
@@ -66,7 +61,7 @@ const setUser = (user: IUserModel) => {
 
     try {
         const lsValue = JSON.stringify(user);
-        localStorage.setItem(USER_LOCAL_STORAGE_KEY, lsValue);
+        localStorage.setItem(NEXT_PUBLIC_USER_LOCAL_STORAGE_KEY, lsValue);
     } catch (error) {
         console.error('AUTH LOCAL STORAGE SAVE ERROR', error);
     }
@@ -78,15 +73,15 @@ const removeAuth = () => {
     }
 
     try {
-        localStorage.removeItem(AUTH_LOCAL_STORAGE_KEY);
-        localStorage.removeItem(USER_LOCAL_STORAGE_KEY);
+        localStorage.removeItem(NEXT_PUBLIC_AUTH_LOCAL_STORAGE_KEY);
+        localStorage.removeItem(NEXT_PUBLIC_USER_LOCAL_STORAGE_KEY);
     } catch (error) {
         console.error('AUTH LOCAL STORAGE REMOVE ERROR', error);
     }
 };
 
 export function setupAxios() {
-    axios.defaults.baseURL = process.env.API_BASE_URL;
+    axios.defaults.baseURL = process.env.NEXT_PUBLIC_API_BASE_URL;
 
     axios.interceptors.request.use((config) => {
         const changedConfig = config;
@@ -112,4 +107,4 @@ export function setupAxios() {
     );
 }
 
-export { getAuth, setUser, getUser, setAuth, removeAuth, AUTH_LOCAL_STORAGE_KEY };
+export { getAuth, setUser, getUser, setAuth, removeAuth, NEXT_PUBLIC_AUTH_LOCAL_STORAGE_KEY };

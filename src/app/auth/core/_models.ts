@@ -1,25 +1,25 @@
 
-interface Data {
-    [key: string]: string;
-}
 export interface IAuthModel {
-    data: Data;
+    data: IUserModel;
     api_token?: string;
 }
 
 export interface IUserModel {
     _id: string;
-    contactNumber: string;
-    balance: number;
-    maxCreditLimit: number;
-    profilePicture: string;
+    phoneNumber: string;
     email: string;
-    token: string;
+    role: string;
+    age: number;
     createdAt: string;
     firstName: string;
     lastName: string;
+    imageUrl: string | null;
+    gender: string;
+    status: string;
+    creditsBalance: number;
+    gamesPlayed: number;
+    isDeleted: boolean;
     updatedAt?: string;
-    data: Data;
 }
 
 export interface ISignInForm {
@@ -32,30 +32,30 @@ export interface ISignUpForm {
     email: string;
     age: string;
     gender: string;
-    countryCode: string;
+    countryCode?: string;
     password: string;
-    profilePicture: string;
-    contactNumber: string;
+    avatar?: File | string | null;
+    phoneNumber: string;
 }
 
 export interface IForgotPasswordForm {
-    contactNumber: number | string;
+    phoneNumber: number | string;
 }
 
 export interface IVerifyOtpRequestBody {
-    contactNumber: number | string;
+    phoneNumber: number | string;
     otp: string;
 }
 
 export interface IChangePasswordForm {
     newPassword: string;
     otp: string;
-    contactNumber: number | string;
+    phoneNumber: number | string;
 }
 export interface IUpdateProfileForm {
     firstName: string;
     lastName: string;
     email: string;
     countryCode: string;
-    contactNumber: string;
+    phoneNumber: string;
 }

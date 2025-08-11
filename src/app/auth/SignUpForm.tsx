@@ -6,6 +6,9 @@ import Image from 'next/image';
 import { ISignUpForm } from './core/_models';
 import { useDirection } from '../hooks/useGetDirection';
 import { useTranslation } from 'react-i18next';
+import useSignUp from './core/hooks/useSignUp';
+import { showErrorMessage, showSuccessMessage } from '../utils/messageUtils';
+import Select from '../components/ui/common/Select';
 //icons
 import PasswordIcon from '@/app/assets/icons/password-icon.svg';
 import EmailIcon from '@/app/assets/icons/email-icon.svg';
@@ -15,18 +18,23 @@ import UserIcon from '@/app/assets/icons/user-icon.svg';
 import AgeIcon from '@/app/assets/icons/age-icon.svg';
 import FallBackProfileImage from '@/app/assets/images/fallback-profile-image.jpg';
 import { IoEye, IoEyeOff } from "react-icons/io5";
+import CountryCodeIcon from '@/app/assets/icons/country-code-icon.svg';
+import { useCountries } from '../hooks/useCountries';
+
 
 interface ValidationErrors {
     [key: string]: string;
 }
 
 export default function SignUpForm() {
+    const { countries } = useCountries();
     const { openModal } = useAuthModalStore();
     const direction = useDirection();
     const { t } = useTranslation();
     const [formErrors, setFormErrors] = useState<ValidationErrors>()
     const [showPassword, setShowPassword] = useState(false);
-    const togglePasswordVisibility = () => setShowPassword(!showPassword);
+    const { signUpMutate, isLoading } = useSignUp();
+    const [profilePicObj, setProfilePicObj] = useState<File | null>(null);
     const [formState, setFormState] = useState<ISignUpForm>({
         firstName: "",
         lastName: "",
@@ -35,9 +43,11 @@ export default function SignUpForm() {
         countryCode: "",
         age: "",
         gender: "",
-        contactNumber: "",
-        profilePicture: "",
-    })
+        phoneNumber: "",
+        avatar: "",
+    });
+
+    const togglePasswordVisibility = () => setShowPassword(!showPassword);
 
     const handleSignUp = () => {
         const error = validateFormData(formState)
@@ -46,18 +56,36 @@ export default function SignUpForm() {
             return;
         } else {
             handleOk();
-            openModal("signin");
-            console.log('Sign Up button clicked!', formState);
         }
     };
 
     const handleOk = () => {
-        // const obj = {
-        //     data: formData,
-        //     api_token: ""
-        // }
-        // // setUser(obj);
+        const formData = new FormData();
+        formData.append("firstName", formState.firstName);
+        formData.append("lastName", formState.lastName);
+        formData.append("email", formState.email);
+        formData.append("password", formState.password);
+        formData.append("age", formState.age);
+        formData.append("gender", formState.gender);
+        formData.append("phoneNumber", formState.countryCode + formState.phoneNumber);
+
+        if (formState.avatar && profilePicObj instanceof File) {
+            formData.append("avatar", profilePicObj);
+        }
+
+        signUpMutate(formData, {
+            onSuccess: async () => {
+                showSuccessMessage('User signed up successfully. You can now sign in with your credentials.');
+                openModal("signin");
+                resetState();
+            },
+            onError: (error: any) => {
+                showErrorMessage(error?.response?.data?.message);
+                console.error('Failed to sign up user:', error);
+            },
+        });
     };
+
 
     const validateFormData = (formData: ISignUpForm): ValidationErrors => {
         const errors: ValidationErrors = {};
@@ -68,8 +96,8 @@ export default function SignUpForm() {
         if (!formData.lastName.trim()) {
             errors.lastName = t('errors.nameRequired');
         }
-        if (!formData.contactNumber.trim()) {
-            errors.contactNumber = t('errors.contactRequired');
+        if (!formData.phoneNumber.trim()) {
+            errors.phoneNumber = t('errors.contactRequired');
         }
 
         if (!formData.email.trim()) {
@@ -101,9 +129,10 @@ export default function SignUpForm() {
     const handleProfilePictureChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const file = event.target.files?.[0];
         if (file) {
+            setProfilePicObj(file);
             const reader = new FileReader();
             reader.onloadend = () => {
-                setFormState((prev) => ({ ...prev, profilePicture: reader.result as string }));
+                setFormState((prev) => ({ ...prev, avatar: reader.result as string }));
             };
             reader.readAsDataURL(file);
         }
@@ -117,6 +146,30 @@ export default function SignUpForm() {
         fileInputRef.current?.click();
     };
 
+    const handleChangeSelect = (e: React.ChangeEvent<HTMLSelectElement>) => {
+        setFormState({ ...formState, [e.target.name]: e.target.value });
+    };
+
+
+    const CountriesList = countries?.map((country) => ({
+        label: country.name,
+        value: country.dialCode,
+    }));
+
+    const resetState = () => {
+        setFormState({
+            firstName: "",
+            lastName: "",
+            email: "",
+            password: "",
+            countryCode: "",
+            age: "",
+            gender: "",
+            phoneNumber: "",
+            avatar: "",
+        })
+    };
+
     return (
         <section>
             <div className="tracking-normal font-secondary md:px-20 sm:px-10 px-5 py-10 space-y-6" dir={direction}>
@@ -128,13 +181,13 @@ export default function SignUpForm() {
                         <input
                             type="file"
                             ref={fileInputRef}
-                            name="profilePicture"
+                            name="avatar"
                             onChange={handleProfilePictureChange}
                             accept="image/*"
                             className="hidden"
                         />
                         <Image
-                            src={formState.profilePicture || (typeof FallBackProfileImage === 'string' ? FallBackProfileImage : FallBackProfileImage.src)}
+                            src={(typeof formState.avatar === 'string' ? formState.avatar : FallBackProfileImage.src)}
                             alt="User Profile"
                             className="w-full h-full object-cover"
                             width={96}
@@ -259,26 +312,39 @@ export default function SignUpForm() {
                 </div>
                 <span className='text-red text-sm md:text-base'>{formErrors?.password}</span>
 
+                <Select
+                    icon={<CountryCodeIcon />}
+                    iconClassName="!w-14"
+                    isCountrySelect={true}
+                    name="countryCode"
+                    value={formState.countryCode}
+                    onChange={handleChangeSelect}
+                    options={CountriesList || []}
+                    placeholder={t("selectCountryCode")}
+                    className="sm:w-[450px] lg:w-full w-full"
+                    direction={direction}
+                />
+
                 {/* Contact Number Input */}
                 <div className="mb-6 flex items-center h-12 md:h-14 w-full transform -skew-x-12 border-2 border-black overflow-hidden">
                     <div className="bg-purple flex items-center justify-center w-12 md:w-16 h-full">
                         <ContactIcon />
                     </div>
                     <input
-                        name='contactNumber'
+                        name='phoneNumber'
                         type="number"
                         autoComplete="off"
-                        placeholder={t("contactNumber")}
+                        placeholder={t("phoneNumber")}
                         className="input h-full rounded-none input-bordered w-full ps-2 md:ps-8 pe-4 py-3 text-base md:text-lg bg-white text-gray-800 border-none focus:outline-none"
                         required
                         onChange={onInputChange}
                     />
                 </div>
-                <span className='text-red text-sm md:text-base'>{formErrors?.contactNumber}</span>
+                <span className='text-red text-sm md:text-base'>{formErrors?.phoneNumber}</span>
 
                 {/* SignUp Button */}
                 <div className='flex items-center justify-center mt-10'>
-                    <Button type="button" aria-label="Login" boxShadow={true} className="w-40 md:w-52 tracking-wider" onClick={() => handleSignUp()}>
+                    <Button loading={isLoading} type="button" aria-label="Login" boxShadow={true} className="w-40 md:w-52 tracking-wider" onClick={() => handleSignUp()}>
                         <span className="inline-block  transform skew-x-6 text-4xl uppercase ">{t("signUp")}</span>
                     </Button>
                 </div>
