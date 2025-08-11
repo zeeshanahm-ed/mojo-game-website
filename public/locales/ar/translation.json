@@ -49,7 +49,7 @@
     "firstName": "الاسم الأول",
     "lastName": "اسم العائلة",
     "age": "عمرك",
-    "contactNumber": "رقم الاتصال الخاص بك",
+    "phoneNumber": "رقم الاتصال الخاص بك",
     "male": "ذكر",
     "female": "أنثى",
     "signUp": "إنشاء حساب",

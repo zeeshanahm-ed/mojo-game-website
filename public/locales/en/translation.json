@@ -46,11 +46,11 @@
     "firstName": "First Name",
     "lastName": "Last Name",
     "age": "Your Age",
-    "contactNumber": "Your Contact Number",
+    "phoneNumber": "Your Contact Number",
     "male": "Male",
     "female": "Female",
     "orLogin": "or Login",
-    "formErrors": {
+    "errors": {
         "emailRequired": "Email address is required.",
         "emailInvalid": "Invalid email format.",
         "passwordRequired": "Password is required.",
