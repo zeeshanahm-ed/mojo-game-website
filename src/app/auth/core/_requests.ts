@@ -2,21 +2,21 @@
 
 import api from '@/app/services/api/api';
 import authApi from '@/app/services/api/authApi';
-import { IAuthModel, ISignInForm } from './_models';
+import { ISignInForm } from './_models';
 
 const SIGNIN_URL = '/auth/login';
 const SIGNUP_URL = '/auth/register';
-const FORGOT_PASSWORD_URL = '/auth/forgot-password';
-const VERIFY_OTP = '/auth/verify-email';
+// const FORGOT_PASSWORD_URL = '/auth/forgot-password';
+// const VERIFY_OTP = '/auth/verify-email';
 const VERIFY_TOKEN_URL = '/auth/verify-token';
-const RESET_PASS_CODE = '/auth/reset-password';
+// const RESET_PASS_CODE = '/auth/reset-password';
 
 export function signIn(body: ISignInForm) {
-    return api.post<IAuthModel>(SIGNIN_URL, body);
+    return api.post(SIGNIN_URL, body);
 }
 
 export function signUp(body: FormData) {
-    return api.post<IAuthModel>(SIGNUP_URL, body, {
+    return api.post(SIGNUP_URL, body, {
         headers: {
             'Content-Type': 'multipart/form-data',
         },

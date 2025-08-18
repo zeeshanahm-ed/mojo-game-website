@@ -24,6 +24,7 @@ import { useAuth } from '../context/AuthContext';
 import { useRouter } from 'next/navigation';
 import { showErrorMessage, showSuccessMessage } from '../utils/messageUtils';
 import useUpdateUserProfile from './core/hooks/useUpdateUserProfile';
+import { AxiosError } from 'axios';
 
 interface FormState {
     firstName: string,
@@ -69,7 +70,7 @@ function Profile() {
         else {
             router.push("/")
         }
-    }, [user])
+    }, [user, router])
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
         setFormState({ ...formState, [e.target.name]: e.target.value });
@@ -90,9 +91,10 @@ function Profile() {
             onSuccess: async () => {
                 showSuccessMessage('Profile update successful.');
             },
-            onError: (error: any) => {
-                showErrorMessage(error?.response?.data?.message);
-                console.error('Failed to update rofile:', error);
+            onError: (error: unknown) => {
+                if (error instanceof AxiosError) {
+                    showErrorMessage(error?.response?.data?.message);
+                }
             },
         });
     };

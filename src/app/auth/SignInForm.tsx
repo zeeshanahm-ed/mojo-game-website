@@ -13,6 +13,7 @@ import EmailIcon from '../assets/icons/email-icon.svg';
 import { IoEye, IoEyeOff } from "react-icons/io5";
 import useVerifyAuthToken from './core/hooks/useVerifyAuthToken';
 import { useAuth } from '../context/AuthContext';
+import { AxiosError } from 'axios';
 
 interface ValidationErrors {
     [key: string]: string;
@@ -82,8 +83,12 @@ export default function SignInForm() {
                 }
                 resetState();
             },
-            onError: (error: any) => {
-                showErrorMessage(error?.response?.data?.message);
+            onError: (error: unknown) => {
+                if (error instanceof AxiosError) {
+                    showErrorMessage(error?.response?.data?.message);
+                } else {
+                    showErrorMessage('An unexpected error occurred.');
+                }
                 console.error('Failed to sign in user:', error);
             },
         });

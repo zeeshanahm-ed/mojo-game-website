@@ -20,6 +20,7 @@ import FallBackProfileImage from '@/app/assets/images/fallback-profile-image.jpg
 import { IoEye, IoEyeOff } from "react-icons/io5";
 import CountryCodeIcon from '@/app/assets/icons/country-code-icon.svg';
 import { useCountries } from '../hooks/useCountries';
+import { AxiosError } from 'axios';
 
 
 interface ValidationErrors {
@@ -79,8 +80,12 @@ export default function SignUpForm() {
                 openModal("signin");
                 resetState();
             },
-            onError: (error: any) => {
-                showErrorMessage(error?.response?.data?.message);
+            onError: (error: unknown) => {
+                if (error instanceof AxiosError) {
+                    showErrorMessage(error?.response?.data?.message);
+                } else {
+                    showErrorMessage('An unexpected error occurred.');
+                }
                 console.error('Failed to sign up user:', error);
             },
         });
