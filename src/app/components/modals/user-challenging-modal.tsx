@@ -1,0 +1,166 @@
+import React, { useState } from 'react'
+import { MdClose } from 'react-icons/md';
+import { useTranslation } from 'react-i18next';
+import { useDirection } from '@/app/hooks/useGetDirection';
+//icon
+import FallBackProfileImage from '@/app/assets/images/fallback-profile-image.jpg';
+import Button from '../ui/common/Button';
+
+
+
+interface UserChallengModalProps {
+    open: boolean;
+    onClose: () => void;
+}
+
+function UserChallengModal({ open, onClose }: UserChallengModalProps) {
+    const { t } = useTranslation();
+
+    return (
+        <dialog id="user-challenge_modal" className={` modal ${open ? 'modal-open' : ''}`}>
+            <div className="modal-box px-0 pb-0 font-primary  bg-white items-center max-w-3xl rounded-none border border-black">
+                <form method="dialog " className="px-4 md:px-10 flex items-center justify-center relative">
+                    <h2 className="text-4xl sm:text-5xl md:text-6xl  uppercase flex flex-row sm:flex-row sm:items-center ">
+                        Users Challenging
+                    </h2>
+                    <button
+                        type="button"
+                        className="absolute right-3 -top-3 bg-light-gray focus:outline-none w-5 h-5 md:w-8 md:h-8 flex items-center justify-center rounded-full text-white hover:bg-dark-gray transition-colors duration-300"
+                        onClick={onClose}
+                        aria-label="Close"
+                    >
+                        <MdClose className='text-base md:text-2xl' />
+                    </button>
+                </form>
+                <div className="divider before:bg-light-gray after:bg-light-gray m-0"></div>
+                {/* Main content */}
+                <div className="w-full pb-10 pt-5 px-10 space-y-5 overflow-y-auto h-auto max-h-[500px]">
+                    <div className='-skew-x-12 flex justify-between items-center py-2 px-8 md:py-2 border border-black'>
+                        <div className='flex items-center gap-5'>
+                            <span className='w-10 h-10 border border-light-gray'>
+                                <img src={FallBackProfileImage.src} alt='User profile Picture' className='w-full h-full object-contain' />
+                            </span>
+                            <p className='text-lg font-secondary'>User15992</p>
+                        </div>
+                        <div className='skew-x-12'>
+                            <Button bgClass='bg-[#10CD65]' className='w-36 text-3xl'>Play</Button>
+                        </div>
+                    </div>
+                    <div className='-skew-x-12 flex justify-between items-center py-2 px-8 md:py-2 border border-black'>
+                        <div className='flex items-center gap-5'>
+                            <span className='w-10 h-10 border border-light-gray'>
+                                <img src={FallBackProfileImage.src} alt='User profile Picture' className='w-full h-full object-contain' />
+                            </span>
+                            <p className='text-lg font-secondary'>User15992</p>
+                        </div>
+                        <div className='skew-x-12'>
+                            <Button bgClass='bg-[#10CD65]' className='w-36 text-3xl'>Play</Button>
+                        </div>
+                    </div>
+                    <div className='-skew-x-12 flex justify-between items-center py-2 px-8 md:py-2 border border-black'>
+                        <div className='flex items-center gap-5'>
+                            <span className='w-10 h-10 border border-light-gray'>
+                                <img src={FallBackProfileImage.src} alt='User profile Picture' className='w-full h-full object-contain' />
+                            </span>
+                            <p className='text-lg font-secondary'>User15992</p>
+                        </div>
+                        <div className='skew-x-12'>
+                            <Button bgClass='bg-[#10CD65]' className='w-36 text-3xl'>Play</Button>
+                        </div>
+                    </div>
+                    <div className='-skew-x-12 flex justify-between items-center py-2 px-8 md:py-2 border border-black'>
+                        <div className='flex items-center gap-5'>
+                            <span className='w-10 h-10 border border-light-gray'>
+                                <img src={FallBackProfileImage.src} alt='User profile Picture' className='w-full h-full object-contain' />
+                            </span>
+                            <p className='text-lg font-secondary'>User15992</p>
+                        </div>
+                        <div className='skew-x-12'>
+                            <Button bgClass='bg-[#10CD65]' className='w-36 text-3xl'>Play</Button>
+                        </div>
+                    </div>
+                    <div className='-skew-x-12 flex justify-between items-center py-2 px-8 md:py-2 border border-black'>
+                        <div className='flex items-center gap-5'>
+                            <span className='w-10 h-10 border border-light-gray'>
+                                <img src={FallBackProfileImage.src} alt='User profile Picture' className='w-full h-full object-contain' />
+                            </span>
+                            <p className='text-lg font-secondary'>User15992</p>
+                        </div>
+                        <div className='skew-x-12'>
+                            <Button bgClass='bg-[#10CD65]' className='w-36 text-3xl'>Play</Button>
+                        </div>
+                    </div>
+                    <div className='-skew-x-12 flex justify-between items-center py-2 px-8 md:py-2 border border-black'>
+                        <div className='flex items-center gap-5'>
+                            <span className='w-10 h-10 border border-light-gray'>
+                                <img src={FallBackProfileImage.src} alt='User profile Picture' className='w-full h-full object-contain' />
+                            </span>
+                            <p className='text-lg font-secondary'>User15992</p>
+                        </div>
+                        <div className='skew-x-12'>
+                            <Button bgClass='bg-[#10CD65]' className='w-36 text-3xl'>Play</Button>
+                        </div>
+                    </div>
+                    <div className='-skew-x-12 flex justify-between items-center py-2 px-8 md:py-2 border border-black'>
+                        <div className='flex items-center gap-5'>
+                            <span className='w-10 h-10 border border-light-gray'>
+                                <img src={FallBackProfileImage.src} alt='User profile Picture' className='w-full h-full object-contain' />
+                            </span>
+                            <p className='text-lg font-secondary'>User15992</p>
+                        </div>
+                        <div className='skew-x-12'>
+                            <Button bgClass='bg-[#10CD65]' className='w-36 text-3xl'>Play</Button>
+                        </div>
+                    </div>
+                    <div className='-skew-x-12 flex justify-between items-center py-2 px-8 md:py-2 border border-black'>
+                        <div className='flex items-center gap-5'>
+                            <span className='w-10 h-10 border border-light-gray'>
+                                <img src={FallBackProfileImage.src} alt='User profile Picture' className='w-full h-full object-contain' />
+                            </span>
+                            <p className='text-lg font-secondary'>User15992</p>
+                        </div>
+                        <div className='skew-x-12'>
+                            <Button bgClass='bg-[#10CD65]' className='w-36 text-3xl'>Play</Button>
+                        </div>
+                    </div>
+                    <div className='-skew-x-12 flex justify-between items-center py-2 px-8 md:py-2 border border-black'>
+                        <div className='flex items-center gap-5'>
+                            <span className='w-10 h-10 border border-light-gray'>
+                                <img src={FallBackProfileImage.src} alt='User profile Picture' className='w-full h-full object-contain' />
+                            </span>
+                            <p className='text-lg font-secondary'>User15992</p>
+                        </div>
+                        <div className='skew-x-12'>
+                            <Button bgClass='bg-[#10CD65]' className='w-36 text-3xl'>Play</Button>
+                        </div>
+                    </div>
+                    <div className='-skew-x-12 flex justify-between items-center py-2 px-8 md:py-2 border border-black'>
+                        <div className='flex items-center gap-5'>
+                            <span className='w-10 h-10 border border-light-gray'>
+                                <img src={FallBackProfileImage.src} alt='User profile Picture' className='w-full h-full object-contain' />
+                            </span>
+                            <p className='text-lg font-secondary'>User15992</p>
+                        </div>
+                        <div className='skew-x-12'>
+                            <Button bgClass='bg-[#10CD65]' className='w-36 text-3xl'>Play</Button>
+                        </div>
+                    </div>
+                    <div className='-skew-x-12 flex justify-between items-center py-2 px-8 md:py-2 border border-black'>
+                        <div className='flex items-center gap-5'>
+                            <span className='w-10 h-10 border border-light-gray'>
+                                <img src={FallBackProfileImage.src} alt='User profile Picture' className='w-full h-full object-contain' />
+                            </span>
+                            <p className='text-lg font-secondary'>User15992</p>
+                        </div>
+                        <div className='skew-x-12'>
+                            <Button bgClass='bg-[#10CD65]' className='w-36 text-3xl'>Play</Button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </dialog>
+    )
+}
+
+export default UserChallengModal;

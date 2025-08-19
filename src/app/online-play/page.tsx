@@ -15,6 +15,7 @@ import { useTranslation } from 'react-i18next';
 //icons
 import VSIcon from '@/app/assets/images/vs.png';
 import FallBackProfileImage from '@/app/assets/images/fallback-profile-image.jpg';
+import UserChallengModal from '../components/modals/user-challenging-modal';
 
 type GameMode = 'friendly' | 'challenge' | null;
 
@@ -27,6 +28,8 @@ function OnlinePlay() {
     const [isSearching] = useState(false);
     const [selectedCategories, setSelectedCategories] = useState<GamesCategoryInterface[]>([]);
     const [currentPlayer, setCurrentPlayer] = useState<1 | 2>(1);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
 
     const [timer, setTimer] = useState(20);
     const timerRef = useRef<NodeJS.Timeout | null>(null);
@@ -38,19 +41,19 @@ function OnlinePlay() {
         setCurrentPlayer(prev => (prev === 1 ? 2 : 1));
     };
 
-    useEffect(() => {
-        if (timer === 0) {
-            setTimer(0)
-        } else {
-            timerRef.current = setTimeout(() => setTimer(timer - 1), 1000);
-        }
+    // useEffect(() => {
+    //     if (timer === 0) {
+    //         setTimer(0)
+    //     } else {
+    //         timerRef.current = setTimeout(() => setTimer(timer - 1), 1000);
+    //     }
 
-        return () => {
-            if (timerRef.current) {
-                clearTimeout(timerRef.current);
-            }
-        };
-    }, [timer]);
+    //     return () => {
+    //         if (timerRef.current) {
+    //             clearTimeout(timerRef.current);
+    //         }
+    //     };
+    // }, [timer]);
 
 
     // const handleSearchPlayers = () => {
@@ -99,7 +102,11 @@ function OnlinePlay() {
                                 roomNameInputRef={roomNameInputRef}
                             />
                             :
-                            <Timer timer={timer} />
+                            // <Timer timer={timer} />
+
+                            <Button className='w-64 md:w-80 text-4xl' onClick={() => setIsModalOpen(true)}>
+                                JOIN challenge
+                            </Button>
                         }
                         <div className="font-secondary flex mt-20 flex-col sm:flex-row items-center justify-evenly w-full space-y-14 sm:space-y-0">
                             <div className="flex flex-col items-center text-center">
@@ -150,6 +157,8 @@ function OnlinePlay() {
                     </div>
                 </div>
             </Wrapper>
+
+            <UserChallengModal open={isModalOpen} onClose={() => setIsModalOpen(false)} />
         </section >
     )
 }

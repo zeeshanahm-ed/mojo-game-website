@@ -94,6 +94,7 @@ function OfflineMode() {
                 name: teams.first.name,
                 players: teams.first.players,
                 score: 0,
+                teamTurnOn: true,
                 lifelines: {
                     theHole: true,
                     answerToAnswer: true,
@@ -104,6 +105,7 @@ function OfflineMode() {
                 name: teams.second.name,
                 players: teams.second.players,
                 score: 0,
+                teamTurnOn: false,
                 lifelines: {
                     theHole: true,
                     answerToAnswer: true,
