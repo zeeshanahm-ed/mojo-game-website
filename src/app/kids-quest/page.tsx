@@ -92,6 +92,7 @@ function KidsQuest() {
             team1: {
                 name: teams.first.name,
                 players: teams.first.players,
+                teamTurnOn: true,
                 score: 0,
                 lifelines: {
                     theHole: true,
@@ -102,6 +103,7 @@ function KidsQuest() {
             team2: {
                 name: teams.second.name,
                 players: teams.second.players,
+                teamTurnOn: false,
                 score: 0,
                 lifelines: {
                     theHole: true,

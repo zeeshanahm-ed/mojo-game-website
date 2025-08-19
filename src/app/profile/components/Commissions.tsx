@@ -1,13 +1,7 @@
 import React from 'react'
-import DynamicTable from './Table';
+import DynamicTable, { CommissionData } from './Table';
 
-// Types for the table data
-interface CommissionData {
-  date: string;
-  category: string;
-  totalUsage: string;
-  commissionEarned: string;
-}
+// Types for the table 
 
 interface TableColumn {
   key: string;

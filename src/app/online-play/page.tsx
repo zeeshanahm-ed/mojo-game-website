@@ -1,11 +1,10 @@
 "use client"
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useRef, useState } from 'react'
 import Wrapper from '@/app/components/ui/common/Wrapper';
 import CategoriesSection from '@/app/components/ui/common/CategoriesSection';
 import ChooseMode from './components/ChooseMode';
 import JoinRoom from './components/JoinRoom';
 import Image from 'next/image';
-import Timer from './components/Timer';
 import Banner from './components/Banner';
 import Button from '@/app/components/ui/common/Button';
 import { categories } from '../constants/constant';
@@ -31,8 +30,8 @@ function OnlinePlay() {
     const [isModalOpen, setIsModalOpen] = useState(false);
 
 
-    const [timer, setTimer] = useState(20);
-    const timerRef = useRef<NodeJS.Timeout | null>(null);
+    // const [timer, setTimer] = useState(20);
+    // const timerRef = useRef<NodeJS.Timeout | null>(null);
     const roomNameInputRef = useRef<HTMLInputElement>(null);
 
 

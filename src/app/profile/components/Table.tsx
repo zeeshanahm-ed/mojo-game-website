@@ -6,11 +6,22 @@ interface TableColumn {
     width?: string;
 }
 
+export interface CommissionData {
+    date?: string;
+    category?: string;
+    totalUsage?: string;
+    commissionEarned?: string;
+    purchaseDate?: string;
+    gamePack?: string;
+    discount?: string;
+    packPrice?: string;
+}
+
 interface DynamicTableProps {
     title: string;
     subtitle?: string;
     columns: TableColumn[];
-    data: any[];
+    data: CommissionData[];
     className?: string;
 }
 
@@ -47,10 +58,10 @@ const DynamicTable: React.FC<DynamicTableProps> = ({
                         </tr>
                     </thead>
                     <tbody className="divide-y divide-gray-200">
-                        {data.map((row, index) => (
+                        {data.map((row: CommissionData, index) => (
                             <tr key={index} className="hover:bg-gray-50 transition-colors duration-150">
                                 <td className="px-6 py-4 text-base  w-1/4">
-                                    {row.purchaseDate || row.date || '-'}
+                                    {'purchaseDate' in row ? row.purchaseDate : row.date || '-'}
                                 </td>
                                 <td className="px-6 py-4 text-base  w-1/4">
                                     {row.gamePack || row.category || '-'}

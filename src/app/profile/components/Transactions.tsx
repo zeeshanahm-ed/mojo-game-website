@@ -1,13 +1,6 @@
 import React from 'react'
-import DynamicTable from './Table';
+import DynamicTable, { CommissionData } from './Table';
 
-// Types for the table data
-interface TransactionData {
-    purchaseDate: string;
-    gamePack: string;
-    discount: string;
-    packPrice: string;
-}
 
 interface TableColumn {
     key: string;
@@ -16,7 +9,7 @@ interface TableColumn {
 }
 
 // Sample data and usage examples
-const transactionData: TransactionData[] = [
+const transactionData: CommissionData[] = [
     {
         purchaseDate: '02/03/2025',
         gamePack: 'Games Pack 05',

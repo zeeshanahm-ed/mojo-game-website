@@ -1,10 +1,9 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { MdClose } from 'react-icons/md';
-import { useTranslation } from 'react-i18next';
-import { useDirection } from '@/app/hooks/useGetDirection';
 //icon
 import FallBackProfileImage from '@/app/assets/images/fallback-profile-image.jpg';
 import Button from '../ui/common/Button';
+import Image from 'next/image';
 
 
 
@@ -14,7 +13,6 @@ interface UserChallengModalProps {
 }
 
 function UserChallengModal({ open, onClose }: UserChallengModalProps) {
-    const { t } = useTranslation();
 
     return (
         <dialog id="user-challenge_modal" className={` modal ${open ? 'modal-open' : ''}`}>
@@ -38,7 +36,7 @@ function UserChallengModal({ open, onClose }: UserChallengModalProps) {
                     <div className='-skew-x-12 flex justify-between items-center py-2 px-8 md:py-2 border border-black'>
                         <div className='flex items-center gap-5'>
                             <span className='w-10 h-10 border border-light-gray'>
-                                <img src={FallBackProfileImage.src} alt='User profile Picture' className='w-full h-full object-contain' />
+                                <Image src={FallBackProfileImage.src} alt='User profile Picture' width={40} height={40} className='w-full h-full object-contain' />
                             </span>
                             <p className='text-lg font-secondary'>User15992</p>
                         </div>
@@ -49,7 +47,7 @@ function UserChallengModal({ open, onClose }: UserChallengModalProps) {
                     <div className='-skew-x-12 flex justify-between items-center py-2 px-8 md:py-2 border border-black'>
                         <div className='flex items-center gap-5'>
                             <span className='w-10 h-10 border border-light-gray'>
-                                <img src={FallBackProfileImage.src} alt='User profile Picture' className='w-full h-full object-contain' />
+                                <Image src={FallBackProfileImage.src} alt='User profile Picture' width={40} height={40} className='w-full h-full object-contain' />
                             </span>
                             <p className='text-lg font-secondary'>User15992</p>
                         </div>
@@ -60,7 +58,7 @@ function UserChallengModal({ open, onClose }: UserChallengModalProps) {
                     <div className='-skew-x-12 flex justify-between items-center py-2 px-8 md:py-2 border border-black'>
                         <div className='flex items-center gap-5'>
                             <span className='w-10 h-10 border border-light-gray'>
-                                <img src={FallBackProfileImage.src} alt='User profile Picture' className='w-full h-full object-contain' />
+                                <Image src={FallBackProfileImage.src} alt='User profile Picture' width={40} height={40} className='w-full h-full object-contain' />
                             </span>
                             <p className='text-lg font-secondary'>User15992</p>
                         </div>
@@ -71,7 +69,7 @@ function UserChallengModal({ open, onClose }: UserChallengModalProps) {
                     <div className='-skew-x-12 flex justify-between items-center py-2 px-8 md:py-2 border border-black'>
                         <div className='flex items-center gap-5'>
                             <span className='w-10 h-10 border border-light-gray'>
-                                <img src={FallBackProfileImage.src} alt='User profile Picture' className='w-full h-full object-contain' />
+                                <Image src={FallBackProfileImage.src} alt='User profile Picture' width={40} height={40} className='w-full h-full object-contain' />
                             </span>
                             <p className='text-lg font-secondary'>User15992</p>
                         </div>
@@ -82,7 +80,7 @@ function UserChallengModal({ open, onClose }: UserChallengModalProps) {
                     <div className='-skew-x-12 flex justify-between items-center py-2 px-8 md:py-2 border border-black'>
                         <div className='flex items-center gap-5'>
                             <span className='w-10 h-10 border border-light-gray'>
-                                <img src={FallBackProfileImage.src} alt='User profile Picture' className='w-full h-full object-contain' />
+                                <Image src={FallBackProfileImage.src} alt='User profile Picture' width={40} height={40} className='w-full h-full object-contain' />
                             </span>
                             <p className='text-lg font-secondary'>User15992</p>
                         </div>
@@ -93,7 +91,7 @@ function UserChallengModal({ open, onClose }: UserChallengModalProps) {
                     <div className='-skew-x-12 flex justify-between items-center py-2 px-8 md:py-2 border border-black'>
                         <div className='flex items-center gap-5'>
                             <span className='w-10 h-10 border border-light-gray'>
-                                <img src={FallBackProfileImage.src} alt='User profile Picture' className='w-full h-full object-contain' />
+                                <Image src={FallBackProfileImage.src} alt='User profile Picture' width={40} height={40} className='w-full h-full object-contain' />
                             </span>
                             <p className='text-lg font-secondary'>User15992</p>
                         </div>
@@ -104,7 +102,7 @@ function UserChallengModal({ open, onClose }: UserChallengModalProps) {
                     <div className='-skew-x-12 flex justify-between items-center py-2 px-8 md:py-2 border border-black'>
                         <div className='flex items-center gap-5'>
                             <span className='w-10 h-10 border border-light-gray'>
-                                <img src={FallBackProfileImage.src} alt='User profile Picture' className='w-full h-full object-contain' />
+                                <Image src={FallBackProfileImage.src} alt='User profile Picture' width={40} height={40} className='w-full h-full object-contain' />
                             </span>
                             <p className='text-lg font-secondary'>User15992</p>
                         </div>
@@ -115,7 +113,7 @@ function UserChallengModal({ open, onClose }: UserChallengModalProps) {
                     <div className='-skew-x-12 flex justify-between items-center py-2 px-8 md:py-2 border border-black'>
                         <div className='flex items-center gap-5'>
                             <span className='w-10 h-10 border border-light-gray'>
-                                <img src={FallBackProfileImage.src} alt='User profile Picture' className='w-full h-full object-contain' />
+                                <Image src={FallBackProfileImage.src} alt='User profile Picture' width={40} height={40} className='w-full h-full object-contain' />
                             </span>
                             <p className='text-lg font-secondary'>User15992</p>
                         </div>
@@ -126,7 +124,7 @@ function UserChallengModal({ open, onClose }: UserChallengModalProps) {
                     <div className='-skew-x-12 flex justify-between items-center py-2 px-8 md:py-2 border border-black'>
                         <div className='flex items-center gap-5'>
                             <span className='w-10 h-10 border border-light-gray'>
-                                <img src={FallBackProfileImage.src} alt='User profile Picture' className='w-full h-full object-contain' />
+                                <Image src={FallBackProfileImage.src} alt='User profile Picture' width={40} height={40} className='w-full h-full object-contain' />
                             </span>
                             <p className='text-lg font-secondary'>User15992</p>
                         </div>
@@ -137,7 +135,7 @@ function UserChallengModal({ open, onClose }: UserChallengModalProps) {
                     <div className='-skew-x-12 flex justify-between items-center py-2 px-8 md:py-2 border border-black'>
                         <div className='flex items-center gap-5'>
                             <span className='w-10 h-10 border border-light-gray'>
-                                <img src={FallBackProfileImage.src} alt='User profile Picture' className='w-full h-full object-contain' />
+                                <Image src={FallBackProfileImage.src} alt='User profile Picture' width={40} height={40} className='w-full h-full object-contain' />
                             </span>
                             <p className='text-lg font-secondary'>User15992</p>
                         </div>
@@ -148,7 +146,7 @@ function UserChallengModal({ open, onClose }: UserChallengModalProps) {
                     <div className='-skew-x-12 flex justify-between items-center py-2 px-8 md:py-2 border border-black'>
                         <div className='flex items-center gap-5'>
                             <span className='w-10 h-10 border border-light-gray'>
-                                <img src={FallBackProfileImage.src} alt='User profile Picture' className='w-full h-full object-contain' />
+                                <Image src={FallBackProfileImage.src} alt='User profile Picture' width={40} height={40} className='w-full h-full object-contain' />
                             </span>
                             <p className='text-lg font-secondary'>User15992</p>
                         </div>
