@@ -14,10 +14,27 @@ import { offlineQuestionsList, offlineQuestionsListInterface } from '../constant
 import { useGameSession } from '../store/gameSession';
 import CustomModal from '../components/modals/custom-modal';
 import { useTranslation } from 'react-i18next';
+import LifelineCard from './components/LifeLinesCard';
+import Image from 'next/image';
 //icons
 import HoleIcon from '@/app/assets/icons/hole-icon.svg';
 import SecondChanceIcon from '@/app/assets/icons/second-chance-icon.svg';
 import CallAFriendIcon from '@/app/assets/icons/callAFriend-icon.svg';
+import CallAFriendImage from "@/app/assets/images/call-image.png"
+import SecondChanceImage from "@/app/assets/images/second-chance-image.png"
+import ScoreStealImage from "@/app/assets/images/score-steal-image.png"
+
+
+type Lifeline = 'theHole' | 'answerToAnswer' | 'callAFriend';
+
+interface LifelineData {
+    title: string;
+    type: Lifeline;
+    description: string;
+    textColor: string;
+    bgColor: string;
+    icon: React.ReactNode;
+}
 
 function GamePlay() {
     const { t } = useTranslation();
@@ -26,38 +43,83 @@ function GamePlay() {
     const [screen, setScreen] = useState("questionsList");
     const [selectedQuestion, setSelectedQuestion] = useState<offlineQuestionsListInterface | null>(null);
     const router = useRouter();
+    const [currentLifeline, setCurrentLifeline] = useState<LifelineData | undefined>();
+
+    const LifelinesData: LifelineData[] = [
+        {
+            title: "Call a Friend",
+            type: "callAFriend",
+            description: "Your friend who knows everything, it's time to call him!",
+            bgColor: "bg-[#862CF3]",
+            textColor: "text-[#862CF3]",
+            icon: <Image src={CallAFriendImage} alt={t("callFriend")} className='w-20 md:w-24 h-1/2 object-contain' />
+            ,
+        },
+        {
+            title: "2nd Chance",
+            type: "answerToAnswer",
+            description:
+                "You want to take 2 turns in case of any doubt or wrong answer? Use this.",
+            textColor: "text-[#F3682C]",
+            bgColor: "bg-[#F3682C]",
+            icon: <Image src={SecondChanceImage} alt={t("secondChance")} className='w-20 md:w-24 h-1/2 object-contain' />
+
+        },
+        {
+            title: "Score Steal",
+            type: "theHole",
+            description:
+                "Steal points from your opponent if you answer correctly. Use wisely!",
+            textColor: "text-[#2CA7F3]",
+            bgColor: "bg-[#2CA7F3]",
+            icon: <Image src={ScoreStealImage} alt={t("scoreSteal")} className='w-20 md:w-24 h-1/2 object-contain' />
+        },
+    ];
 
 
     // Helper function to render a lifeline icon with disabled state
-    const renderLifelineIcon = (iconType: 'hole' | 'chance' | 'phone', isEnabled: boolean | undefined) => {
-        const iconClasses = `w-8 h-8 sm:w-10 sm:-h-10`;
-        const circleClasses = `w-12 h-12 rounded-full border-2 border-black flex items-center curs justify-center ${isEnabled ? "cursor-pointer" : "cursor-not-allowed"} ${isEnabled ? 'bg-white' : 'bg-gray-200 opacity-60'}`;
+    const renderLifelineIcon = (
+        iconType: Lifeline,
+        isEnabled: boolean | undefined,
+        teamTurnOn: boolean | undefined
+    ) => {
+        let isDisabled = screen !== "questionsList" && !isEnabled || !teamTurnOn;
+
+        if (screen === "questionsList") {
+            isDisabled = true;
+        } else if (!isEnabled || !teamTurnOn) {
+            isDisabled = !isEnabled || !teamTurnOn;
+        }
+
+        const iconClasses = `w-5 h-5 sm:w-8 sm:h-8`;
+        const circleClasses = `w-12 h-12 rounded-full border-2 border-black flex items-center justify-center
+    ${isDisabled ? "cursor-not-allowed bg-gray-200 opacity-60" : "cursor-pointer bg-white"}`;
 
         let iconSvg;
         switch (iconType) {
-            case 'hole':
-                iconSvg = (
-                    <HoleIcon className={iconClasses} />
-                );
+            case 'theHole':
+                iconSvg = <HoleIcon className={iconClasses} />;
                 break;
-            case 'chance':
-                iconSvg = (
-                    <SecondChanceIcon className={iconClasses} />
-                );
+            case 'answerToAnswer':
+                iconSvg = <SecondChanceIcon className={iconClasses} />;
                 break;
-            case 'phone':
-                iconSvg = (
-                    <CallAFriendIcon className={iconClasses} />
-                );
+            case 'callAFriend':
+                iconSvg = <CallAFriendIcon className={iconClasses} />;
                 break;
         }
 
         return (
-            <button className={circleClasses}>
+            <button disabled={isDisabled} className={circleClasses} onClick={() => handleLifelineClick(iconType)}>
                 {iconSvg}
             </button>
         );
     };
+
+    const handleLifelineClick = (iconType: Lifeline) => {
+        const CurrentLiflineData = LifelinesData.find(lifeline => lifeline.type === iconType);
+        setCurrentLifeline(CurrentLiflineData)
+    };
+
 
     const handleScreenChange = (screen: string) => {
         setScreen(screen);
@@ -137,12 +199,31 @@ function GamePlay() {
         setShowModal(true);
     };
 
+    const handleYes = () => { }
+    const handleNo = () => {
+        setCurrentLifeline(undefined);
+    }
+
     return (
         <section className='w-full'>
-            <Header handleScreenChange={(value: string) => setScreen(value)} handleOpenExitModal={handleOpenExitModal} />
+            <Header handleScreenChange={(value: string) => setScreen(value)} handleOpenExitModal={handleOpenExitModal} setCurrentLifeline={setCurrentLifeline} />
             <Wrapper>
-                <div className='flex justify-center flex-col h-auto py-10 md:py-20 px-4 md:px-10'>
-                    {getScreenContent(screen)}
+                <div className='flex w-full h-auto gap-5 py-10 md:py-20 px-4 md:px-10'>
+                    <div className='w-full'>
+                        {getScreenContent(screen)}
+                    </div>
+                    {currentLifeline ?
+                        <div className=''>
+                            <LifelineCard
+                                title={currentLifeline.title}
+                                description={currentLifeline.description}
+                                textColor={currentLifeline.textColor}
+                                bgColor={currentLifeline.bgColor}
+                                icon={currentLifeline.icon}
+                                onYes={() => handleYes()}
+                                onNo={() => handleNo()}
+                            />
+                        </div> : null}
                 </div>
                 {(screen !== "whoAnswered" && screen !== "congratulation") ?
                     <div className=" pt-10 pb-10 md:py-20 px-4 md:px-10 lg:px-0 lg:pb-0 relative z-10 flex flex-col sm:flex-row items-center justify-between w-full gap-y-10 sm:gap-y-0 lg:gap-10">
@@ -162,10 +243,11 @@ function GamePlay() {
                                 <div className="flex flex-col items-center lg:items-end py-4 lg:py-0">
                                     <p className="text-base font-secondary sm:text-xl lg:text-2xl mb-2">{t("lifeLines")}</p>
                                     <div className="flex space-x-2">
-                                        {renderLifelineIcon('hole', session?.team1.lifelines.theHole)}
-                                        {renderLifelineIcon('chance', session?.team1.lifelines.answerToAnswer)}
-                                        {renderLifelineIcon('phone', session?.team1.lifelines.callAFriend)}
+                                        {renderLifelineIcon("theHole", session?.team1.lifelines.theHole, session?.team1.teamTurnOn)}
+                                        {renderLifelineIcon("answerToAnswer", session?.team1.lifelines.answerToAnswer, session?.team1.teamTurnOn)}
+                                        {renderLifelineIcon("callAFriend", session?.team1.lifelines.callAFriend, session?.team1.teamTurnOn)}
                                     </div>
+
                                 </div>
                             </div>
                         </div>
@@ -178,9 +260,9 @@ function GamePlay() {
                                 <div className="flex flex-col items-center lg:items-start py-4 lg:py-0">
                                     <p className="text-base font-secondary sm:text-xl lg:text-2xl mb-2">{t("lifeLines")}</p>
                                     <div className="flex space-x-2">
-                                        {renderLifelineIcon('hole', session?.team2.lifelines.theHole)}
-                                        {renderLifelineIcon('chance', session?.team2.lifelines.answerToAnswer)}
-                                        {renderLifelineIcon('phone', session?.team2.lifelines.callAFriend)}
+                                        {renderLifelineIcon("theHole", session?.team2.lifelines.theHole, session?.team2.teamTurnOn)}
+                                        {renderLifelineIcon("answerToAnswer", session?.team2.lifelines.answerToAnswer, session?.team2.teamTurnOn)}
+                                        {renderLifelineIcon("callAFriend", session?.team2.lifelines.callAFriend, session?.team2.teamTurnOn)}
                                     </div>
                                 </div>
                                 <div className='lg:hidden block w-full h-[1px] bg-white'></div>

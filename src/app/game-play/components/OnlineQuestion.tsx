@@ -105,7 +105,7 @@ export default function OnlineQuestion({ points = 400, handleScreenChange }: Onl
                             <span className=" text-xl sm:text-2xl md:text-3xl text-black mt-2">{timer < 10 ? `00:0${timer}` : `00:${timer}`}</span>
                         </div>
                         {/* Timer controls */}
-                        <div className="sm:h-12">
+                        <div className="sm:h-12 hidden">
                             {isPaused ?
                                 <button className="bg-purple h-full text-white p-2 -skew-x-12 border-2 border-black" onClick={handleResume} >
                                     <IoMdPlay className="text-xl sm:text-2xl" />

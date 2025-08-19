@@ -72,7 +72,7 @@ const Congratulation: React.FC = () => {
                     const url = session?.mode === "offline" ? "/offline-play" : "/online-play";
                     router.push(url);
                 }}
-                className="text-3xl sm:text-4xl py-2 px-8 sm:px-16 mt-10 -skew-x-6 w-fit"
+                className="text-3xl sm:text-4xl pt-2 px-8 sm:px-16 mt-10 -skew-x-6 w-fit"
                 style={{ boxShadow: "none" }}
             >
                 {t("playAgain")}

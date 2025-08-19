@@ -42,12 +42,19 @@ export default function OfflineQuestion({ question, handleScreenChange }: Offlin
         setIsPaused(false);
     };
 
+    const formatTime = (totalSeconds: number): string => {
+        // const hours = String(Math.floor(totalSeconds / 3600)).padStart(2, "0");
+        const minutes = String(Math.floor((totalSeconds % 3600) / 60)).padStart(2, "0");
+        const seconds = String(totalSeconds % 60).padStart(2, "0");
+        return `${minutes}:${seconds}`;
+    };
+
     return (
         <div className="flex items-center justify-center">
             <div className="w-full lg:max-w-5xl">
                 <div className="border border-dark-orange">
                     {/* Question Header */}
-                    <div className="bg-dark-orange text-white text-center py-2 flex items-center justify-center gap-2">
+                    <div className="bg-dark-orange text-white py-2 px-2 flex items-center justify-center gap-5">
                         <BsQuestionCircle className="text-2xl" />
                         <span className="text-lg font-secondary">{question?.text}</span>
                     </div>
@@ -81,9 +88,9 @@ export default function OfflineQuestion({ question, handleScreenChange }: Offlin
                     </div>
                     <div className="flex items-center gap-2">
                         {/* Timer */}
-                        <div className="-skew-x-12 bg-white border border-dark-orange sm:h-12 h-10 text-white flex gap-2 md:gap-5 items-center w-20 sm:w-24  md:w-32">
+                        <div className="-skew-x-12 bg-white border border-dark-orange sm:h-12 h-10 text-white flex gap-2 items-center w-20 sm:w-24  md:w-32">
                             <span className=" text-lg bg-dark-orange w-8 sm:w-10 h-full flex-center"><ClockIcon className="w-4 h-4 sm:w-6 sm:h-6" /></span>
-                            <span className=" text-xl sm:text-2xl md:text-3xl text-black mt-2">{timer < 10 ? `00:0${timer}` : `00:${timer}`}</span>
+                            <span className=" text-xl sm:text-2xl md:text-3xl text-black mx-auto mt-2">{formatTime(timer)}</span>
                         </div>
                         {/* Timer controls */}
                         <div className="sm:h-12">
