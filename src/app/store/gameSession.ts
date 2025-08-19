@@ -11,6 +11,7 @@ type Team = {
     players: number;
     lifelines: Lifelines;
     score: number;
+    teamTurnOn: boolean
 };
 
 type teamType = 'team1' | 'team2';
@@ -29,6 +30,7 @@ type GameSessionStore = {
     useLifeline: (team: teamType, lifeline: keyof Lifelines) => void;
     addScore: (team: teamType, score: number) => void;
     resetSession: () => void;
+    toggleTeamTurn: (team: teamType) => void;
 };
 
 // Define initial values for reuse
@@ -40,6 +42,7 @@ const initialSession: GameSession = {
         name: 'Team 1',
         players: 1,
         score: 0,
+        teamTurnOn: true,
         lifelines: {
             theHole: true,
             answerToAnswer: true,
@@ -50,6 +53,7 @@ const initialSession: GameSession = {
         name: 'Team 2',
         players: 1,
         score: 0,
+        teamTurnOn: false,
         lifelines: {
             theHole: true,
             answerToAnswer: true,
@@ -97,4 +101,24 @@ export const useGameSession = create<GameSessionStore>((set) => ({
             };
         }),
     resetSession: () => set({ session: initialSession }),
+    toggleTeamTurn: (team) =>
+        set((state) => {
+            if (!state.session) return state;
+
+            const otherTeam = team === 'team1' ? 'team2' : 'team1';
+
+            return {
+                session: {
+                    ...state.session,
+                    [team]: {
+                        ...state.session[team],
+                        teamTurnOn: true,
+                    },
+                    [otherTeam]: {
+                        ...state.session[otherTeam],
+                        teamTurnOn: false,
+                    },
+                },
+            };
+        }),
 }));
