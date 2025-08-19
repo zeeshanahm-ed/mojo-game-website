@@ -154,7 +154,7 @@ function ProfileContent() {
                 </div>
                 <p className="font-secondary text-lg font-semibold">{t("yourAvatar")}</p>
                 <Button boxShadow={false} className="w-52" onClick={handleLogoutModal}>
-                    <span className="inline-block  transform skew-x-12 tracking-wider text-4xl uppercase ">{t("logout")}</span>
+                    <span className="inline-block  transform tracking-wider text-4xl uppercase ">{t("logout")}</span>
                 </Button>
             </div>
 
@@ -223,7 +223,7 @@ function ProfileContent() {
                 {/* SignUp Button */}
                 <div className='flex items-center justify-center mt-10'>
                     <Button onClick={handleProfileChange} aria-label="Save" className="w-52" boxShadow={false}>
-                        <span className="inline-block transform skew-x-12 tracking-wider text-4xl uppercase ">{t("saveChanges")}</span>
+                        <span className="inline-block transform tracking-wider text-4xl uppercase ">{t("saveChanges")}</span>
                     </Button>
                 </div>
             </div>
