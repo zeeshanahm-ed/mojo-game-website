@@ -25,8 +25,8 @@ export default function Logout() {
                     {t("logoutTitle")}
                 </h2>
                 <div className='flex justify-evenly '>
-                    <Button className='text-5xl w-44' onClick={closeModal}>{t("no")}</Button>
-                    <Button className='text-5xl w-44' onClick={handleLogout}>{t("yes")}</Button>
+                    <Button className='md:text-5xl text-2xl w-32 md:w-44' onClick={closeModal}>{t("no")}</Button>
+                    <Button className='md:text-5xl text-2xl w-32 md:w-44' onClick={handleLogout}>{t("yes")}</Button>
                 </div>
             </div>
         </section>

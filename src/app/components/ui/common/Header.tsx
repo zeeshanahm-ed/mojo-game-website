@@ -39,11 +39,11 @@ const Header: React.FC = () => {
     };
 
     return (
-        <header className="w-full font-sans h-20 flex items-center px-4 md:px-10">
+        <header className="w-full font-sans h-20 flex items-center px-4 lg:px-10 md:px-6">
             <Wrapper>
                 <nav className="flex items-center justify-between w-full py-4">
                     {/* Left section: User avatar and name */}
-                    <div className="items-center gap-5 hidden md:flex">
+                    <div className="items-center gap-2 lg:gap-5 hidden md:flex">
                         <div className='flex items-center'>
                             {user ?
                                 <button className='w-44 flex items-center' onClick={handleGoToProfile}>
@@ -61,7 +61,7 @@ const Header: React.FC = () => {
                                 <button className='btn btn-soft skew-custom h-9' onClick={handleAuthModal}>SignIn</button>
                             }
                         </div>
-                        <div className="flex items-center space-x-6 text-gray-700">
+                        <div className="flex items-center space-x-3 lg:space-x-6 text-gray-700">
                             <div className="p-2 h-9 border border-black skew-custom shadow-sm cursor-pointer hover:bg-gray-100 transition-colors">
                                 <GiftIcon />
                             </div>
@@ -88,7 +88,7 @@ const Header: React.FC = () => {
                     </div>
 
                     {/* Right section: Navigation links */}
-                    <div className="flex items-center space-x-2 font-secondary md:space-x-8 text-gray-800 text-sm sm:text-base md:text-lg font-medium w-fit text-nowrap">
+                    <div className="flex items-center space-x-2 font-secondary md:space-x-4 lg:space-x-8 text-gray-800 text-sm sm:text-base md:text-lg font-medium w-fit text-nowrap">
                         <div className='hidden md:block'><LanguageSwitcher /></div>
                         <Link href="/my-games" className="hover:text-dark-gray transition-colors">{t("my_games")}</Link>
                         <Link href="/contactus" className="hover:text-dark-gray transition-colors">{t("contact_us")}</Link>

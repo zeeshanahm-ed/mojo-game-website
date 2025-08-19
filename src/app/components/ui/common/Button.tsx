@@ -45,7 +45,7 @@ const Button = forwardRef<HTMLButtonElement, IButtonProps>(
                 {prefixElement}
                 {loading ?
                     <span className="loading loading-dots loading-xl"></span> :
-                    <span className='inline-block skew-x-0 text-inherit'>
+                    <span className='inline-block text-inherit'>
                         {display == "none" ? null : children}
                     </span>
                 }

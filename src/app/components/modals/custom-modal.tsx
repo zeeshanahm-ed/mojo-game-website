@@ -43,8 +43,8 @@ export default function CustomModal({ showButton, confirmButtonTile, cancelButto
                         </h2>
                         {showButton &&
                             <div className='flex justify-evenly '>
-                                <Button className='text-5xl w-44' onClick={onCancelButtonClick}>{cancelButtonTitle}</Button>
-                                <Button className='text-5xl w-44' onClick={onConfirmButtonClick}>{confirmButtonTile}</Button>
+                                <Button className='md:text-5xl text-2xl w-32 md:w-44' onClick={onCancelButtonClick}>{cancelButtonTitle}</Button>
+                                <Button className='md:text-5xl text-2xl w-32 md:w-44' onClick={onConfirmButtonClick}>{confirmButtonTile}</Button>
                             </div>
                         }
                     </div>
