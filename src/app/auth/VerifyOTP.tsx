@@ -2,9 +2,10 @@
 import React, { useEffect, useRef, useState } from 'react';
 import Button from '../components/ui/common/Button';
 import { useAuthModalStore } from '../store/useAuthModalStore';
-import { useTranslation } from 'react-i18next';
+// import { useTranslation } from 'react-i18next';
 import { showErrorMessage, showSuccessMessage } from '../utils/messageUtils';
 import { forgotPassCode, verifyOtp } from './core/_requests';
+import { AxiosError } from 'axios';
 
 
 interface ForgotPasswordProps {
@@ -12,15 +13,11 @@ interface ForgotPasswordProps {
     loading: boolean;
 }
 
-interface ValidationErrors {
-    [key: string]: string;
-}
-
 const length = 6;
 
 export default function VerifyOTP({ setLoading, loading }: ForgotPasswordProps) {
-    const { closeModal, openModal } = useAuthModalStore((state) => state);
-    const { t } = useTranslation();
+    const { openModal } = useAuthModalStore((state) => state);
+    // const { t } = useTranslation();
     const [otp, setOtp] = useState<string[]>(new Array(length).fill(''));
     const [error, setError] = useState<string>('');
     const [timer, setTimer] = useState<number>(60);
@@ -89,8 +86,12 @@ export default function VerifyOTP({ setLoading, loading }: ForgotPasswordProps) 
             showSuccessMessage('Otp has been varified.');
             localStorage.setItem('verifiedOtp', otpValue);
             openModal("resetPassword")
-        } catch (error: any) {
-            showErrorMessage(error.response.data.message);
+        } catch (error: unknown) {
+            if (error instanceof AxiosError) {
+                showErrorMessage(error.message);
+            } else {
+                showErrorMessage('An unknown error occurred');
+            }
         } finally {
             setLoading(false);
         }

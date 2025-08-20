@@ -7,6 +7,7 @@ import Input from '../components/ui/common/Input';
 import EmailIcon from '../assets/icons/email-icon.svg';
 import { showErrorMessage, showSuccessMessage } from '../utils/messageUtils';
 import { forgotPassCode } from './core/_requests';
+import { AxiosError } from 'axios';
 
 
 interface ForgotPasswordProps {
@@ -44,8 +45,12 @@ export default function ForgotPassword({ setLoading, loading }: ForgotPasswordPr
             await forgotPassCode(body);
             showSuccessMessage("Password reset OTP has been sent to your email.");
             openModal("verifyOtp");
-        } catch (error: any) {
-            showErrorMessage(error.response.data.message);
+        } catch (error: unknown) {
+            if (error instanceof AxiosError) {
+                showErrorMessage(error.message);
+            } else {
+                showErrorMessage('An unknown error occurred');
+            }
             console.error("Error:", error);
         } finally {
             setLoading(false);

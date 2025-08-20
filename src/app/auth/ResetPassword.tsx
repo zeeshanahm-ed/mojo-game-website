@@ -6,7 +6,8 @@ import { useTranslation } from 'react-i18next';
 import Input from '../components/ui/common/Input';
 import EmailIcon from '../assets/icons/email-icon.svg';
 import { showErrorMessage, showSuccessMessage } from '../utils/messageUtils';
-import { forgotPassCode, resetPassword } from './core/_requests';
+import { resetPassword } from './core/_requests';
+import { AxiosError } from 'axios';
 
 
 interface ForgotPasswordProps {
@@ -57,8 +58,12 @@ export default function ResetPassword({ setLoading, loading }: ForgotPasswordPro
             await resetPassword(body);
             showSuccessMessage("Password reset successfully.");
             openModal("signin");
-        } catch (error: any) {
-            showErrorMessage(error.response.data.message);
+        } catch (error: unknown) {
+            if (error instanceof AxiosError) {
+                showErrorMessage(error.message);
+            } else {
+                showErrorMessage('An unknown error occurred');
+            }
         } finally {
             setLoading(false);
         }

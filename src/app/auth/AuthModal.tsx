@@ -14,7 +14,7 @@ import ResetPassword from './ResetPassword';
 
 export default function AuthModal() {
     const open = useAuthModalStore((state) => state.open);
-    const { mode, history, goBack } = useAuthModalStore((state) => state);
+    const { mode, goBack } = useAuthModalStore((state) => state);
     const closeModal = useAuthModalStore((state) => state.closeModal);
     const { t } = useTranslation();
     const [loading, setLoading] = useState(false);
