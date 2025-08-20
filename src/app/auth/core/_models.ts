@@ -39,18 +39,19 @@ export interface ISignUpForm {
 }
 
 export interface IForgotPasswordForm {
-    phoneNumber: number | string;
+    email: string | null;
 }
 
 export interface IVerifyOtpRequestBody {
-    phoneNumber: number | string;
+    email: string | null;
     otp: string;
 }
 
 export interface IChangePasswordForm {
     newPassword: string;
-    otp: string;
-    phoneNumber: number | string;
+    confirmPassword: string;
+    otp: string | null;
+    email: string | null;
 }
 export interface IUpdateProfileForm {
     firstName: string;

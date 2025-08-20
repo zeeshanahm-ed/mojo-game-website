@@ -19,7 +19,12 @@ interface ValidationErrors {
     [key: string]: string;
 }
 
-export default function SignInForm() {
+interface SignInFormProps {
+    setLoading: (loading: boolean) => void;
+    loading: boolean;
+}
+
+export default function SignInForm({ setLoading, loading }: SignInFormProps) {
     const { t } = useTranslation();
     const direction = useDirection();
     const { setCurrentUser } = useAuth();
@@ -27,8 +32,8 @@ export default function SignInForm() {
     const { openModal, closeModal } = useAuthModalStore();
     const [showPassword, setShowPassword] = useState(false);
     const togglePasswordVisibility = () => setShowPassword(!showPassword);
-    const { signInMutate, isLoading } = useSignIn();
-    const { mutateVerifyToken, isLoading: verifyTokenLoading } = useVerifyAuthToken();
+    const { signInMutate } = useSignIn();
+    const { mutateVerifyToken } = useVerifyAuthToken();
     const [formErrors, setFormErrors] = useState<ValidationErrors>();
     const [formState, setFormState] = useState<ISignInForm>({
         email: "",
@@ -37,6 +42,10 @@ export default function SignInForm() {
 
     const handleNewAccount = () => {
         openModal("signup");
+    };
+
+    const handleForgotPassword = () => {
+        openModal("forgotPassword");
     };
 
     const validateFormData = (formData: ISignInForm): ValidationErrors => {
@@ -62,6 +71,7 @@ export default function SignInForm() {
             email: formState.email,
             password: formState.password,
         };
+        setLoading(true);
 
         signInMutate(payload, {
             onSuccess: async (res) => {
@@ -76,6 +86,7 @@ export default function SignInForm() {
                                     data: res?.data?.data?.data,
                                 };
                                 setCurrentUser(authData);
+                                setLoading(false);
                                 closeModal();
                             },
                         });
@@ -89,7 +100,7 @@ export default function SignInForm() {
                 } else {
                     showErrorMessage('An unexpected error occurred.');
                 }
-                console.error('Failed to sign in user:', error);
+                setLoading(false);
             },
         });
 
@@ -164,14 +175,18 @@ export default function SignInForm() {
                     <p className={`text-start w-full text-red text-sm md:text-base`}>{formErrors?.password}</p>
                 </div>
 
-                {/* Create new account link */}
-                <button onClick={handleNewAccount} className="w-fit text-start font-normal font-Product_sans text-sm md:text-base -ml-2 hover:underline">
-                    {t('createAccount')}
-                </button>
+                <div className='flex justify-between items-center'>
+                    <button onClick={handleNewAccount} className="w-fit text-start font-normal font-Product_sans text-sm md:text-base -ml-2 hover:underline">
+                        {t('createAccount')}
+                    </button>
+                    <button onClick={handleForgotPassword} className="w-fit text-start font-normal font-Product_sans text-sm md:text-base -ml-2 hover:underline">
+                        Forgot Password?
+                    </button>
+                </div>
 
                 <div className='flex items-center justify-center'>
                     {/* Login Button */}
-                    <Button loading={isLoading || verifyTokenLoading} type="button" onClick={handleSignIn} aria-label="Login" className="w-40 md:w-52 tracking-wider">
+                    <Button disabled={loading} type="button" onClick={handleSignIn} aria-label="Login" className="w-40 md:w-52 tracking-wider">
                         <span className="inline-block transform skew-x-6 text-4xl uppercase ">{t('login')}</span>
                     </Button>
                 </div>

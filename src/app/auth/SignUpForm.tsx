@@ -27,14 +27,19 @@ interface ValidationErrors {
     [key: string]: string;
 }
 
-export default function SignUpForm() {
+interface SignUpFormProps {
+    setLoading: (loading: boolean) => void;
+    loading: boolean;
+}
+
+export default function SignUpForm({ setLoading, loading }: SignUpFormProps) {
     const { countries } = useCountries();
     const { openModal } = useAuthModalStore();
     const direction = useDirection();
     const { t } = useTranslation();
     const [formErrors, setFormErrors] = useState<ValidationErrors>()
     const [showPassword, setShowPassword] = useState(false);
-    const { signUpMutate, isLoading } = useSignUp();
+    const { signUpMutate } = useSignUp();
     const [profilePicObj, setProfilePicObj] = useState<File | null>(null);
     const [formState, setFormState] = useState<ISignUpForm>({
         firstName: "",
@@ -61,6 +66,7 @@ export default function SignUpForm() {
     };
 
     const handleOk = () => {
+        setLoading(true);
         const formData = new FormData();
         formData.append("firstName", formState.firstName);
         formData.append("lastName", formState.lastName);
@@ -79,6 +85,7 @@ export default function SignUpForm() {
                 showSuccessMessage('User signed up successfully. You can now sign in with your credentials.');
                 openModal("signin");
                 resetState();
+                setLoading(false);
             },
             onError: (error: unknown) => {
                 if (error instanceof AxiosError) {
@@ -86,7 +93,7 @@ export default function SignUpForm() {
                 } else {
                     showErrorMessage('An unexpected error occurred.');
                 }
-                console.error('Failed to sign up user:', error);
+                setLoading(false);
             },
         });
     };
@@ -349,7 +356,7 @@ export default function SignUpForm() {
 
                 {/* SignUp Button */}
                 <div className='flex items-center justify-center mt-10'>
-                    <Button loading={isLoading} type="button" aria-label="Login" boxShadow={true} className="w-40 md:w-52 tracking-wider" onClick={() => handleSignUp()}>
+                    <Button disabled={loading} type="button" aria-label="Login" boxShadow={true} className="w-40 md:w-52 tracking-wider" onClick={() => handleSignUp()}>
                         <span className="inline-block  transform skew-x-6 text-4xl uppercase ">{t("signUp")}</span>
                     </Button>
                 </div>
