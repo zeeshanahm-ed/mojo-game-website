@@ -11,6 +11,7 @@ import { categories } from '@/app/constants/constant';
 import { GamesCategoryInterface } from '../utils/Interfaces';
 import { useGameSession } from '../store/gameSession';
 import TeamInfo from '../components/ui/common/TeamInfo';
+import SuggestCategoryNQuestionModal from '../components/modals/suggest-category-N-question-modal';
 
 
 interface TeamState {
@@ -125,6 +126,7 @@ function OfflineMode() {
                 <div className='flex items-center justify-center flex-col h-auto pb-16 px-4 md:px-10'>
                     <CategoriesSection
                         data={categories}
+                        suggestCategoryNQuestions={true}
                         selectedCategories={selectedCategories}
                         setSelectedCategories={setSelectedCategories}
                         mode="offline"

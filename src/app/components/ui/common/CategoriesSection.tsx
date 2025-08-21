@@ -8,6 +8,8 @@ import { useDirection } from '@/app/hooks/useGetDirection';
 
 //icons
 import SearchIcon from "@/app/assets/icons/search-icon.svg"
+import Button from './Button';
+import SuggestCategoryNQuestionModal from '../../modals/suggest-category-N-question-modal';
 
 interface CategoriesSectionProps {
     data: GamesCategoryInterface[];
@@ -19,11 +21,13 @@ interface CategoriesSectionProps {
     title?: boolean;
     subTitle?: boolean;
     showInput?: boolean;
+    suggestCategoryNQuestions: boolean;
     year?: string;
 }
 
 
-function CategoriesSection({ data, year, onSelect, selectedCategories, setSelectedCategories, mode, currentPlayer, title = true, subTitle = true, showInput = true }: CategoriesSectionProps) {
+function CategoriesSection({ data, year, suggestCategoryNQuestions, onSelect, selectedCategories, setSelectedCategories, mode, currentPlayer, title = true, subTitle = true, showInput = true }: CategoriesSectionProps) {
+    const [suggestCategoryModal, setsuggestCategoryModal] = useState(false);
     const { t } = useTranslation();
     const direction = useDirection();
     const [search, setSearch] = useState('');
@@ -87,6 +91,12 @@ function CategoriesSection({ data, year, onSelect, selectedCategories, setSelect
         return false;
     };
 
+
+    const handleSuggestCategoryModal = () => {
+        setsuggestCategoryModal(true);
+    };
+
+
     return (
         <div className='flex items-center justify-center flex-col w-full'>
             {showInput && <div className='my-10'>
@@ -106,6 +116,8 @@ function CategoriesSection({ data, year, onSelect, selectedCategories, setSelect
                 {subTitle && <p className="text-sm font-secondary sm:text-base md:text-lg leading-6 text-black max-w-2xl">
                     {t("categoryInstructions")}
                 </p>}
+                <Button className='text-white md:w-72 w-52 sm:w-64 my-8 text-4xl md:text-5xl' onClick={() => handleSuggestCategoryModal()}>Suggest A Category</Button>
+
             </div>
             {year &&
                 <div dir={direction} className='border-2 font-secondary flex-center text-xl md:text-2xl border-black h-12 w-40 md:h-16 md:w-48 my-10 -skew-x-6'>
@@ -118,6 +130,8 @@ function CategoriesSection({ data, year, onSelect, selectedCategories, setSelect
                     ))}
                 </div>
             </div>
+            {suggestCategoryNQuestions && <SuggestCategoryNQuestionModal mode={mode} open={suggestCategoryModal} onClose={() => setsuggestCategoryModal(false)} />}
+
         </div>
     )
 }

@@ -15,6 +15,7 @@ import { useTranslation } from 'react-i18next';
 import VSIcon from '@/app/assets/images/vs.png';
 import FallBackProfileImage from '@/app/assets/images/fallback-profile-image.jpg';
 import UserChallengModal from '../components/modals/user-challenging-modal';
+import SuggestCategoryNQuestionModal from '../components/modals/suggest-category-N-question-modal';
 
 type GameMode = 'friendly' | 'challenge' | null;
 
@@ -143,6 +144,7 @@ function OnlinePlay() {
                         <CategoriesSection
                             data={categories}
                             selectedCategories={selectedCategories}
+                            suggestCategoryNQuestions={true}
                             setSelectedCategories={setSelectedCategories}
                             mode="online"
                             currentPlayer={currentPlayer}
