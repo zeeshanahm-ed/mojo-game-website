@@ -90,11 +90,11 @@ export default function ResetPassword({ setLoading, loading }: ForgotPasswordPro
             <div className="text-center md:px-20 sm:px-10 px-5 py-10 space-y-6">
                 <div >
                     <Input name="newPassword" onChange={handleInputChange} icon={<EmailIcon />} type='email' placeholder="New password" />
-                    {formErrors.newPassword && <p className='font-secondary text-start text-error mt-1'>{formErrors.newPassword}</p>}
+                    {formErrors.newPassword && <p className='font-secondary text-start text-red mt-1'>{formErrors.newPassword}</p>}
                 </div>
                 <div>
                     <Input name="confirmPassword" onChange={handleInputChange} icon={<EmailIcon />} type='email' placeholder='Confirm password' />
-                    {formErrors.confirmPassword && <p className='font-secondary text-start text-error mt-1'>{formErrors.confirmPassword}</p>}
+                    {formErrors.confirmPassword && <p className='font-secondary text-start text-red mt-1'>{formErrors.confirmPassword}</p>}
                 </div>
                 <Button disabled={loading} className='md:text-4xl text-2xl w-32 md:w-52' onClick={handleChangePass}>Change Password</Button>
             </div>

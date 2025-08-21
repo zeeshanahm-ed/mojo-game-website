@@ -10,7 +10,7 @@ import QuizAppImage from "@/app/assets/images/quiz-app-image.png"
 const Banner: React.FC = () => {
     const { t } = useTranslation();
     return (
-        <section className="w-full bg-yellow py-20 px-1 md:px-10 flex flex-col items-center justify-center relative overflow-hidden border-b-4 border-black">
+        <section className="w-full bg-yellow py-16 sm:py-24 px-1 md:px-10 flex flex-col items-center justify-center relative overflow-hidden border-b-4 border-black">
             {/* Main Content */}
             <Wrapper>
                 <div className="relative z-10 flex flex-row items-center justify-center w-full text-center ">
@@ -18,7 +18,7 @@ const Banner: React.FC = () => {
                     <div className="md:left-10 right-28 -top-12 md:top-0 absolute md:w-12 md:h-12 w-8 h-8">
                         <Image src={BlackStarImage} alt='Star' className='w-full h-full object-contain' />
                     </div>
-                    <div className="flex items-start left-0 -top-10 sm:-top-5 md:top-20 absolute justify-end sm:w-20 sm:h-20 w-16 h-16 lg:w-32 lg:h-32">
+                    <div className="flex items-start left-0 -top-10 md:top-20 absolute justify-end sm:w-20 sm:h-20 w-16 h-16 lg:w-32 lg:h-32">
                         <Image src={OnlinePlayImage} alt='Offline Play' className='s-full h-full' />
                     </div>
 

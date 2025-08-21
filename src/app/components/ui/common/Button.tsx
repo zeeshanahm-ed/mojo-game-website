@@ -12,6 +12,7 @@ export interface IButtonProps extends React.ButtonHTMLAttributes<HTMLButtonEleme
     textClass?: string;
     boxShadow?: boolean;
     loading?: boolean;
+    disabled?: boolean;
     display?: string;
 }
 
@@ -27,6 +28,7 @@ const Button = forwardRef<HTMLButtonElement, IButtonProps>(
         textClass,
         boxShadow = true,
         loading = false,
+        disabled = false,
         display,
         ...rest
     }, ref) => {
@@ -38,7 +40,7 @@ const Button = forwardRef<HTMLButtonElement, IButtonProps>(
                 ref={ref}
                 type={type}
                 {...rest}
-                disabled={loading}
+                disabled={disabled || loading}
                 className={`${variant} ${className} ${bgClass ? bgClass : "bg-purple"} ${textClass ? textClass : "text-white"} ${boxShadow ? "boxShadow-custom" : "shadow-none"} ${direction === "ltr" && " pt-2 "} px-4 transform font-primary -skew-x-6 md:-skew-x-12 border-2 border-black shadow-lg `}
                 aria-label="Button"
             >

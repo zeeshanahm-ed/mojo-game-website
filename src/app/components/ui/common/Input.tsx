@@ -6,6 +6,7 @@ import React from 'react';
 interface InputProps {
     icon?: React.ReactNode;
     type: string;
+    readOnly?: boolean;
     placeholder: string;
     className?: string;
     inputClassName?: string;
@@ -23,6 +24,7 @@ const Input: React.FC<InputProps> = ({
     inputClassName = '',
     required = false,
     value,
+    readOnly = false,
     onChange,
     name = ''
 }) => {
@@ -35,6 +37,7 @@ const Input: React.FC<InputProps> = ({
                 {icon}
             </div>}
             <input
+                readOnly={readOnly}
                 type={type}
                 placeholder={placeholder}
                 value={value}

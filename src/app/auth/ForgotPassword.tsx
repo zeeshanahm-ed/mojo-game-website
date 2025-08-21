@@ -78,7 +78,7 @@ export default function ForgotPassword({ setLoading, loading }: ForgotPasswordPr
             <div className="text-center md:px-20 sm:px-10 px-5 py-10 space-y-6">
                 <div>
                     <Input name="email" onChange={handleInputChange} icon={<EmailIcon />} type='email' placeholder={t('emailPlaceholder')} />
-                    {formErrors.email && <p className='font-secondary text-start text-error mt-1'>{formErrors.email}</p>}
+                    {formErrors.email && <p className='font-secondary text-start text-red mt-1'>{formErrors.email}</p>}
                 </div>
                 <p className='font-secondary'>We will email you an OTP to reset your password.</p>
                 <Button disabled={loading} className='md:text-4xl text-2xl w-32 md:w-44' onClick={handleSendEmail}>Send</Button>

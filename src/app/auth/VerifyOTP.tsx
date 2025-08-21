@@ -178,7 +178,7 @@ export default function VerifyOTP({ setLoading, loading }: ForgotPasswordProps) 
                             />
                         ))}
                     </div>
-                    {error && <p className='text-error font-secondary'>{error}</p>}
+                    {error && <p className='text-red font-secondary'>{error}</p>}
 
                 </div>
                 <p className='font-secondary'>Enter the OTP we sent to your email.</p>

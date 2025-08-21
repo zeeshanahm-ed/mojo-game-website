@@ -12,7 +12,7 @@ const Banner: React.FC = () => {
     const { t } = useTranslation();
 
     return (
-        <section className="w-full bg-yellow py-16 px-1 md:px-10 flex flex-col items-center justify-center relative overflow-hidden border-b-4 border-black">
+        <section className="w-full bg-yellow py-16 sm:py-24 px-1 md:px-10 flex flex-col items-center justify-center relative overflow-hidden border-b-4 border-black">
             {/* Main Content */}
             <Wrapper>
                 <div className="relative z-10 flex flex-row items-center justify-center w-full text-center ">
@@ -20,7 +20,7 @@ const Banner: React.FC = () => {
                     <div className="hidden lg:flex left-10 top-0 absolute items-center justify-center flex-col lg:justify-start space-x-4 mb-8 lg:mb-0">
                         <Image src={BlackStarImage} alt='Star' className='w-12 h-12 mr-10' />
                     </div>
-                    <div className="flex items-start left-0 -top-10 sm:top-0 lg:top-20 absolute justify-end">
+                    <div className="flex items-start left-0 -top-10 md:top-0 lg:top-20 absolute justify-end">
                         <Image src={OfflinePlayImage} alt='Offline Play' className='w-16 h-16 sm:w-20 sm:h-20 lg:w-32 lg:h-32' />
                     </div>
 
