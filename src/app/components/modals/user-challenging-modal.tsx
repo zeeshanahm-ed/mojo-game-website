@@ -4,6 +4,7 @@ import { MdClose } from 'react-icons/md';
 import FallBackProfileImage from '@/app/assets/images/fallback-profile-image.jpg';
 import Button from '../ui/common/Button';
 import Image from 'next/image';
+import Divider from '../ui/common/Divider';
 
 
 
@@ -23,138 +24,25 @@ function UserChallengModal({ open, onClose }: UserChallengModalProps) {
                     </h2>
                     <button
                         type="button"
-                        className="absolute right-3 -top-3 bg-light-gray focus:outline-none w-5 h-5 md:w-8 md:h-8 flex items-center justify-center rounded-full text-white hover:bg-dark-gray transition-colors duration-300"
+                        className="absolute right-3 -top-0 bg-light-gray focus:outline-none w-5 h-5 md:w-8 md:h-8 flex items-center justify-center rounded-full text-white hover:bg-dark-gray transition-colors duration-300"
                         onClick={onClose}
                         aria-label="Close"
                     >
                         <MdClose className='text-base md:text-2xl' />
                     </button>
                 </form>
-                <div className="divider before:bg-light-gray after:bg-light-gray m-0"></div>
+                <Divider />
                 {/* Main content */}
-                <div className="w-full pb-10 pt-5 px-10 space-y-5 overflow-y-auto h-auto max-h-[500px]">
-                    <div className='-skew-x-12 flex justify-between items-center py-2 px-8 md:py-2 border border-black'>
-                        <div className='flex items-center gap-5'>
+                <div className="w-full pb-10 pt-5 px-4 md:px-10 space-y-5 overflow-y-auto h-auto max-h-[500px]">
+                    <div className='-skew-x-6 md:-skew-x-12 flex justify-between items-center py-2 px-4 md:px-8 md:py-2 border border-black'>
+                        <div className='flex w-3/4 items-center gap-x-2 md:gap-x-5'>
                             <span className='w-10 h-10 border border-light-gray'>
                                 <Image src={FallBackProfileImage.src} alt='User profile Picture' width={40} height={40} className='w-full h-full object-contain' />
                             </span>
-                            <p className='text-lg font-secondary'>User15992</p>
+                            <p className='text-lg font-secondary truncate max-w-[80%]'>User15992 User15992 User15992 User15992</p>
                         </div>
-                        <div className='skew-x-12'>
-                            <Button bgClass='bg-[#10CD65]' className='w-36 text-3xl'>Play</Button>
-                        </div>
+                        <Button bgClass='bg-[#10CD65]' className='md:w-36 w-fit text-2xl md:text-3xl'>Play</Button>
                     </div>
-                    <div className='-skew-x-12 flex justify-between items-center py-2 px-8 md:py-2 border border-black'>
-                        <div className='flex items-center gap-5'>
-                            <span className='w-10 h-10 border border-light-gray'>
-                                <Image src={FallBackProfileImage.src} alt='User profile Picture' width={40} height={40} className='w-full h-full object-contain' />
-                            </span>
-                            <p className='text-lg font-secondary'>User15992</p>
-                        </div>
-                        <div className='skew-x-12'>
-                            <Button bgClass='bg-[#10CD65]' className='w-36 text-3xl'>Play</Button>
-                        </div>
-                    </div>
-                    <div className='-skew-x-12 flex justify-between items-center py-2 px-8 md:py-2 border border-black'>
-                        <div className='flex items-center gap-5'>
-                            <span className='w-10 h-10 border border-light-gray'>
-                                <Image src={FallBackProfileImage.src} alt='User profile Picture' width={40} height={40} className='w-full h-full object-contain' />
-                            </span>
-                            <p className='text-lg font-secondary'>User15992</p>
-                        </div>
-                        <div className='skew-x-12'>
-                            <Button bgClass='bg-[#10CD65]' className='w-36 text-3xl'>Play</Button>
-                        </div>
-                    </div>
-                    <div className='-skew-x-12 flex justify-between items-center py-2 px-8 md:py-2 border border-black'>
-                        <div className='flex items-center gap-5'>
-                            <span className='w-10 h-10 border border-light-gray'>
-                                <Image src={FallBackProfileImage.src} alt='User profile Picture' width={40} height={40} className='w-full h-full object-contain' />
-                            </span>
-                            <p className='text-lg font-secondary'>User15992</p>
-                        </div>
-                        <div className='skew-x-12'>
-                            <Button bgClass='bg-[#10CD65]' className='w-36 text-3xl'>Play</Button>
-                        </div>
-                    </div>
-                    <div className='-skew-x-12 flex justify-between items-center py-2 px-8 md:py-2 border border-black'>
-                        <div className='flex items-center gap-5'>
-                            <span className='w-10 h-10 border border-light-gray'>
-                                <Image src={FallBackProfileImage.src} alt='User profile Picture' width={40} height={40} className='w-full h-full object-contain' />
-                            </span>
-                            <p className='text-lg font-secondary'>User15992</p>
-                        </div>
-                        <div className='skew-x-12'>
-                            <Button bgClass='bg-[#10CD65]' className='w-36 text-3xl'>Play</Button>
-                        </div>
-                    </div>
-                    <div className='-skew-x-12 flex justify-between items-center py-2 px-8 md:py-2 border border-black'>
-                        <div className='flex items-center gap-5'>
-                            <span className='w-10 h-10 border border-light-gray'>
-                                <Image src={FallBackProfileImage.src} alt='User profile Picture' width={40} height={40} className='w-full h-full object-contain' />
-                            </span>
-                            <p className='text-lg font-secondary'>User15992</p>
-                        </div>
-                        <div className='skew-x-12'>
-                            <Button bgClass='bg-[#10CD65]' className='w-36 text-3xl'>Play</Button>
-                        </div>
-                    </div>
-                    <div className='-skew-x-12 flex justify-between items-center py-2 px-8 md:py-2 border border-black'>
-                        <div className='flex items-center gap-5'>
-                            <span className='w-10 h-10 border border-light-gray'>
-                                <Image src={FallBackProfileImage.src} alt='User profile Picture' width={40} height={40} className='w-full h-full object-contain' />
-                            </span>
-                            <p className='text-lg font-secondary'>User15992</p>
-                        </div>
-                        <div className='skew-x-12'>
-                            <Button bgClass='bg-[#10CD65]' className='w-36 text-3xl'>Play</Button>
-                        </div>
-                    </div>
-                    <div className='-skew-x-12 flex justify-between items-center py-2 px-8 md:py-2 border border-black'>
-                        <div className='flex items-center gap-5'>
-                            <span className='w-10 h-10 border border-light-gray'>
-                                <Image src={FallBackProfileImage.src} alt='User profile Picture' width={40} height={40} className='w-full h-full object-contain' />
-                            </span>
-                            <p className='text-lg font-secondary'>User15992</p>
-                        </div>
-                        <div className='skew-x-12'>
-                            <Button bgClass='bg-[#10CD65]' className='w-36 text-3xl'>Play</Button>
-                        </div>
-                    </div>
-                    <div className='-skew-x-12 flex justify-between items-center py-2 px-8 md:py-2 border border-black'>
-                        <div className='flex items-center gap-5'>
-                            <span className='w-10 h-10 border border-light-gray'>
-                                <Image src={FallBackProfileImage.src} alt='User profile Picture' width={40} height={40} className='w-full h-full object-contain' />
-                            </span>
-                            <p className='text-lg font-secondary'>User15992</p>
-                        </div>
-                        <div className='skew-x-12'>
-                            <Button bgClass='bg-[#10CD65]' className='w-36 text-3xl'>Play</Button>
-                        </div>
-                    </div>
-                    <div className='-skew-x-12 flex justify-between items-center py-2 px-8 md:py-2 border border-black'>
-                        <div className='flex items-center gap-5'>
-                            <span className='w-10 h-10 border border-light-gray'>
-                                <Image src={FallBackProfileImage.src} alt='User profile Picture' width={40} height={40} className='w-full h-full object-contain' />
-                            </span>
-                            <p className='text-lg font-secondary'>User15992</p>
-                        </div>
-                        <div className='skew-x-12'>
-                            <Button bgClass='bg-[#10CD65]' className='w-36 text-3xl'>Play</Button>
-                        </div>
-                    </div>
-                    <div className='-skew-x-12 flex justify-between items-center py-2 px-8 md:py-2 border border-black'>
-                        <div className='flex items-center gap-5'>
-                            <span className='w-10 h-10 border border-light-gray'>
-                                <Image src={FallBackProfileImage.src} alt='User profile Picture' width={40} height={40} className='w-full h-full object-contain' />
-                            </span>
-                            <p className='text-lg font-secondary'>User15992</p>
-                        </div>
-                        <div className='skew-x-12'>
-                            <Button bgClass='bg-[#10CD65]' className='w-36 text-3xl'>Play</Button>
-                        </div>
-                    </div>
-
                 </div>
             </div>
         </dialog>

@@ -150,7 +150,7 @@ function OnlinePlay() {
                             currentPlayer={currentPlayer}
                             onSelect={handleTurnSwitch}
                         />
-                        <Button disabled className='text-white md:w-72 w-52 sm:w-64 my-16 text-4xl md:text-5xl'>{t("startPlaying")}</Button>
+                        <Button disabled className='text-white md:w-72 w-64 my-16 text-4xl md:text-5xl'>{t("startPlaying")}</Button>
                         {selectedMode === "challenge" &&
                             <p className="text-base font-secondary md:text-lg text-red text-start md:text-center">
                                 <strong className='ms-5 text-black'>{t("note")} </strong> {t("creditInfo")}

@@ -116,7 +116,7 @@ function CategoriesSection({ data, year, suggestCategoryNQuestions, onSelect, se
                 {subTitle && <p className="text-sm font-secondary sm:text-base md:text-lg leading-6 text-black max-w-2xl">
                     {t("categoryInstructions")}
                 </p>}
-                <Button className='text-white md:w-72 w-52 sm:w-64 my-8 text-4xl md:text-5xl' onClick={() => handleSuggestCategoryModal()}>Suggest A Category</Button>
+                <Button className='text-white md:w-72 w-64 sm:w-64 my-8 text-4xl md:text-5xl' onClick={() => handleSuggestCategoryModal()}>Suggest A Category</Button>
 
             </div>
             {year &&
