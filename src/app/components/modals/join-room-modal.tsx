@@ -33,7 +33,7 @@ function JoinRoomModal({ open, onClose }: JoinRoomModalProps) {
                 <div className="divider before:bg-light-gray after:bg-light-gray m-0"></div>
                 {/* Main content */}
                 <div className="flex items-center flex-col w-full justify-between py-5 px-5 md:px-10">
-                    <p className='text-lg font-Product_sans text-black'>{t("roomModalNote")}</p>
+                    <p className='text-lg font-secondary text-black'>{t("roomModalNote")}</p>
                     <Input
                         type="text"
                         placeholder={t("enterRoomCode")}
@@ -42,7 +42,7 @@ function JoinRoomModal({ open, onClose }: JoinRoomModalProps) {
                         inputClassName='text-center pl-0'
                         onChange={(e) => setRoomCode(e.target.value)}
                     />
-                    <p className='text-lg font-Product_sans text-black'>{t("enterTeamName")}</p>
+                    <p className='text-lg font-secondary text-black'>{t("enterTeamName")}</p>
                     <Input
                         type="text"
                         placeholder={t("teamName")}
