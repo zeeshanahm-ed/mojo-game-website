@@ -22,7 +22,7 @@ interface CategoriesSectionProps {
     title?: boolean;
     subTitle?: boolean;
     showInput?: boolean;
-    suggestCategoryNQuestions: boolean;
+    suggestCategoryNQuestions?: boolean;
     year?: string;
 }
 

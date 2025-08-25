@@ -1,10 +1,6 @@
-import React, { useState, useRef } from "react";
+import React from "react";
 //icon
 import { BsQuestionCircle } from "react-icons/bs";
-import { IoMdPause, IoMdPlay } from "react-icons/io";
-import { MdRestartAlt } from "react-icons/md";
-import ClockIcon from "@/app/assets/icons/clock-icon.svg";
-import Button from "@/app/components/ui/common/Button";
 import { useTranslation } from "react-i18next";
 
 interface OnlineQuestionProps {

@@ -11,7 +11,6 @@ import { categories } from '@/app/constants/constant';
 import { GamesCategoryInterface } from '../utils/Interfaces';
 import { useGameSession } from '../store/gameSession';
 import TeamInfo from '../components/ui/common/TeamInfo';
-import SuggestCategoryNQuestionModal from '../components/modals/suggest-category-N-question-modal';
 
 
 interface TeamState {

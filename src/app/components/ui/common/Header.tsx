@@ -43,7 +43,7 @@ const Header: React.FC = () => {
     return (
         <header className="w-full font-sans h-20 flex items-center px-4 lg:px-10 md:px-6">
             <Wrapper>
-                <nav className="flex items-center justify-between w-full py-4">
+                <nav className="flex items-center justify-between w-full py-4 gap-x-5">
                     {/* Left section: User avatar and name */}
                     <div className="flex-1 items-center gap-2 lg:gap-5 hidden md:flex">
                         <div className='flex items-center'>

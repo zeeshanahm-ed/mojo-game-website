@@ -1,5 +1,5 @@
 "use client"
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { AxiosError } from 'axios';
 
 import Input from '@/app/components/ui/common/Input';
@@ -10,8 +10,6 @@ import Image from 'next/image';
 //hooks
 import { useCountries } from '../../hooks/useCountries';
 import { useTranslation } from 'react-i18next';
-import { useAuth } from '@/app/context/AuthContext';
-import { useRouter } from 'next/navigation';
 import { showErrorMessage, showSuccessMessage } from '@/app/utils/messageUtils';
 import useUpdateUserProfile from '../core/hooks/useUpdateUserProfile';
 import { useAuthModalStore } from '@/app/store/useAuthModalStore';
@@ -39,8 +37,6 @@ function ProfileContent() {
     const { openModal } = useAuthModalStore();
     const { t } = useTranslation();
     const direction = useDirection();
-    const { user } = useAuth();
-    const router = useRouter();
     const { mutateUpdateUserProfile } = useUpdateUserProfile();
     const [profilePicObj, setProfilePicObj] = useState<File | null>(null);
 

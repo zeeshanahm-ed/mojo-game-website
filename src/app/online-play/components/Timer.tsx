@@ -1,14 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react';
 
 import ClockIcon from "@/app/assets/icons/clock-icon.svg";
-import { useTranslation } from 'react-i18next';
 
 interface Props {
     showTime: boolean;
 }
 
 function Timer({ showTime }: Props) {
-    const { t } = useTranslation();
     const [timer, setTimer] = useState(20);
     const timerRef = useRef<NodeJS.Timeout | null>(null);
     useEffect(() => {
@@ -24,7 +22,7 @@ function Timer({ showTime }: Props) {
                 clearTimeout(timerRef.current);
             }
         };
-    }, [timer]);
+    }, [timer, showTime]);
     return (
         <div className='flex items-center flex-col gap-2 justify-center'>
             <div className='flex items-center gap-2 justify-center'>
