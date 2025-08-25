@@ -45,7 +45,7 @@ const Header: React.FC = () => {
             <Wrapper>
                 <nav className="flex items-center justify-between w-full py-4">
                     {/* Left section: User avatar and name */}
-                    <div className="items-center gap-2 lg:gap-5 hidden md:flex">
+                    <div className="flex-1 items-center gap-2 lg:gap-5 hidden md:flex">
                         <div className='flex items-center'>
                             {user ?
                                 <button className='w-44 flex items-center' onClick={handleGoToProfile}>
@@ -100,9 +100,10 @@ const Header: React.FC = () => {
                     </div>
 
                     {/* Right section: Navigation links */}
-                    <div className="flex items-center space-x-2 font-secondary md:space-x-4  text-gray-800 text-sm sm:text-base md:text-lg font-medium w-fit text-nowrap">
+                    <div className="flex-1 justify-end flex items-center space-x-2 font-secondary md:space-x-4  text-gray-800 text-sm sm:text-base md:text-lg font-medium w-fit text-nowrap">
                         <div className='hidden md:block'><LanguageSwitcher /></div>
                         <Link href="/my-games" className="hover:text-dark-gray transition-colors">{t("my_games")}</Link>
+                        <Link href="/subscription" className="hover:text-dark-gray transition-colors">Subscription</Link>
                         <Link href="/contactus" className="hover:text-dark-gray transition-colors">{t("contact_us")}</Link>
                     </div>
                 </nav>
