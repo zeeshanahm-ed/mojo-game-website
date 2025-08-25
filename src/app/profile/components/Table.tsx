@@ -14,7 +14,10 @@ export interface CommissionData {
     purchaseDate?: string;
     gamePack?: string;
     discount?: string;
-    packPrice?: string;
+    price?: string;
+    product?: string;
+    renewalDate?: string;
+    paymentType?: string;
 }
 
 interface DynamicTableProps {
@@ -64,13 +67,16 @@ const DynamicTable: React.FC<DynamicTableProps> = ({
                                     {'purchaseDate' in row ? row.purchaseDate : row.date || '-'}
                                 </td>
                                 <td className="px-6 py-4 text-base  w-1/4">
-                                    {row.gamePack || row.category || '-'}
+                                    {row.product || row.category || '-'}
                                 </td>
                                 <td className="px-6 py-4 text-base  w-1/4">
-                                    {row.discount || row.totalUsage || '-'}
+                                    {row.paymentType || row.totalUsage || '-'}
                                 </td>
+                                {row.renewalDate && <td className="px-6 py-4 text-base  w-1/4">
+                                    {row.renewalDate || '-'}
+                                </td>}
                                 <td className="px-6  py-4 w-1/4 text-base ">
-                                    <span className='flex gap-3 items-baseline'> {row.packPrice && <p className='!text-sm text-light-gray'>SAR</p>} {row.packPrice || row.commissionEarned || '-'}</span>
+                                    <span className='flex gap-3 items-baseline'> {row.price && <p className='!text-sm text-light-gray'>SAR</p>} {row.price || row.commissionEarned || '-'}</span>
                                 </td>
                             </tr>
                         ))}

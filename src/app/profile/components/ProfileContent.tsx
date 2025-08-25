@@ -53,23 +53,23 @@ function ProfileContent() {
         countryCode: '',
     });
 
-    useEffect(() => {
-        if (user) {
-            setFormState(prev => (
-                {
-                    ...prev,
-                    firstName: user.data.firstName,
-                    lastName: user.data.lastName,
-                    email: user.data.email,
-                    avatar: user.data.imageUrl,
-                    phoneNumber: user.data.phoneNumber
-                }
-            ));
-        }
-        else {
-            router.push("/")
-        }
-    }, [user, router])
+    // useEffect(() => {
+    //     if (user) {
+    //         setFormState(prev => (
+    //             {
+    //                 ...prev,
+    //                 firstName: user.data.firstName,
+    //                 lastName: user.data.lastName,
+    //                 email: user.data.email,
+    //                 avatar: user.data.imageUrl,
+    //                 phoneNumber: user.data.phoneNumber
+    //             }
+    //         ));
+    //     }
+    //     else {
+    //         router.push("/")
+    //     }
+    // }, [user, router])
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
         setFormState({ ...formState, [e.target.name]: e.target.value });

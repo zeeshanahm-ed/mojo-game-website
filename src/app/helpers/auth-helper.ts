@@ -1,4 +1,5 @@
 import axios from 'axios';
+import Cookies from "js-cookie";
 import { IAuthModel, IUserModel } from '../auth/core/_models';
 
 
@@ -27,11 +28,27 @@ const setAuth = (user: IAuthModel) => {
 
     try {
         const lsValue = JSON.stringify(user);
-        localStorage.setItem(NEXT_PUBLIC_AUTH_LOCAL_STORAGE_KEY, lsValue);
+
+        // ✅ Save in localStorage
+        localStorage.setItem(
+            process.env.NEXT_PUBLIC_AUTH_LOCAL_STORAGE_KEY!,
+            lsValue
+        );
+
+        // ✅ Save in cookie (for middleware & SSR protection)
+        if (user?.api_token) {
+            Cookies.set("authToken", user.api_token, {
+                expires: 7, // 7 days
+                secure: process.env.NODE_ENV === "production", // only HTTPS in prod
+                sameSite: "strict", // CSRF protection
+                path: "/", // available everywhere
+            });
+        }
     } catch (error) {
-        console.error('AUTH LOCAL STORAGE SAVE ERROR', error);
+        console.error("AUTH LOCAL STORAGE SAVE ERROR", error);
     }
 };
+
 
 const getUser = (): IUserModel | undefined => {
     if (!localStorage) {
@@ -75,6 +92,7 @@ const removeAuth = () => {
     try {
         localStorage.removeItem(NEXT_PUBLIC_AUTH_LOCAL_STORAGE_KEY);
         localStorage.removeItem(NEXT_PUBLIC_USER_LOCAL_STORAGE_KEY);
+        Cookies.remove("authToken", { path: "/" });
     } catch (error) {
         console.error('AUTH LOCAL STORAGE REMOVE ERROR', error);
     }

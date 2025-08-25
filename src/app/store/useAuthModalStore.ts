@@ -21,7 +21,11 @@ export const useAuthModalStore = create<AuthModalStore>((set) => ({
             history: [...state.history, state.mode],
         }));
     },
-    closeModal: () => set({ open: false }),
+    closeModal: () => {
+        set({ open: false });
+        localStorage.removeItem("forgotEmail");
+        localStorage.removeItem("verifiedOtp");
+    },
     goBack: () => set((state) => {
         const newHistory = [...state.history];
         const previousMode = newHistory.pop();

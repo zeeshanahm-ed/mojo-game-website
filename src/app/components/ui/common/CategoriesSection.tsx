@@ -10,6 +10,7 @@ import { useDirection } from '@/app/hooks/useGetDirection';
 import SearchIcon from "@/app/assets/icons/search-icon.svg"
 import Button from './Button';
 import SuggestCategoryNQuestionModal from '../../modals/suggest-category-N-question-modal';
+import { showSuccessMessage } from '@/app/utils/messageUtils';
 
 interface CategoriesSectionProps {
     data: GamesCategoryInterface[];
@@ -59,26 +60,36 @@ function CategoriesSection({ data, year, suggestCategoryNQuestions, onSelect, se
 
             setSelectedCategories(prev => [...prev, value]);
 
-        } else if (mode === 'online') {
+        } else if (mode === "online") {
             // Don't allow deselect in online mode
             if (isAlreadySelected) return;
 
-            const alreadySelectedCount = filteredCategories.filter(c => c.selected).length;
+            const alreadySelectedCount = filteredCategories.filter((c) => c.selected).length;
             if (alreadySelectedCount >= MAX_SELECTION) return;
 
-            // const updated = filteredCategories.map(item =>
-            //     item.name === value.name ? { ...item, selected: true } : item
-            // );
-            // setFilteredCategories(updated);
+            setSelectedCategories((prev) => [...prev, value]);
 
-            if (currentPlayer === 1 && player1Categories.length < MAX_PER_PLAYER) {
-                setPlayer1Categories(prev => [...prev, value]);
-            } else if (currentPlayer === 2 && player2Categories.length < MAX_PER_PLAYER) {
-                setPlayer2Categories(prev => [...prev, value]);
+            if (currentPlayer === 1) {
+                if (player1Categories.length < MAX_PER_PLAYER) {
+                    setPlayer1Categories((prev) => [...prev, value]);
+
+
+                    if (player1Categories.length + 1 === MAX_PER_PLAYER) {
+                        showSuccessMessage("Player 1 has reached the maximum category limit. Now Player 2's turn.");
+                        onSelect?.();
+                    }
+                }
+            } else if (currentPlayer === 2) {
+                if (player2Categories.length < MAX_PER_PLAYER) {
+                    setPlayer2Categories((prev) => [...prev, value]);
+
+                    if (player2Categories.length + 1 === MAX_PER_PLAYER) {
+                        showSuccessMessage("Player 2 has reached the maximum category limit. Now start the game.");
+                    }
+                }
             }
-
-            onSelect?.();
         }
+
     };
 
 
@@ -116,7 +127,7 @@ function CategoriesSection({ data, year, suggestCategoryNQuestions, onSelect, se
                 {subTitle && <p className="text-sm font-secondary sm:text-base md:text-lg leading-6 text-black max-w-2xl">
                     {t("categoryInstructions")}
                 </p>}
-                <Button className='text-white md:w-72 w-64 sm:w-64 my-8 text-4xl md:text-5xl' onClick={() => handleSuggestCategoryModal()}>Suggest A Category</Button>
+                <Button className='text-white md:w-80 w-64 h-16 sm:w-72 my-8 text-3xl sm:text-4xl md:text-5xl' onClick={() => handleSuggestCategoryModal()}>Suggest A Category</Button>
 
             </div>
             {year &&

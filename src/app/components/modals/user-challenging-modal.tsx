@@ -35,13 +35,13 @@ function UserChallengModal({ open, onClose }: UserChallengModalProps) {
                 {/* Main content */}
                 <div className="w-full pb-10 pt-5 px-4 md:px-10 space-y-5 overflow-y-auto h-auto max-h-[500px]">
                     <div className='-skew-x-6 md:-skew-x-12 flex justify-between items-center py-2 px-4 md:px-8 md:py-2 border border-black'>
-                        <div className='flex w-3/4 items-center gap-x-2 md:gap-x-5'>
+                        <div className='flex w-3/4 items-center gap-x-2 md:gap-x-5 !skew-x-6 md:!skew-x-12'>
                             <span className='w-10 h-10 border border-light-gray'>
                                 <Image src={FallBackProfileImage.src} alt='User profile Picture' width={40} height={40} className='w-full h-full object-contain' />
                             </span>
                             <p className='text-lg font-secondary truncate max-w-[80%]'>User15992 User15992 User15992 User15992</p>
                         </div>
-                        <Button bgClass='bg-[#10CD65]' className='md:w-36 w-fit text-2xl md:text-3xl'>Play</Button>
+                        <Button bgClass='bg-[#10CD65]' className='md:w-32 w-fit text-2xl md:text-4xl !skew-x-6 md:!skew-x-12'>Play</Button>
                     </div>
                 </div>
             </div>

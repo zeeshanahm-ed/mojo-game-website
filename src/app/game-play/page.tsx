@@ -141,7 +141,7 @@ function GamePlay() {
         if (categoryQuestions.length > 0) {
             const randomQuestion = categoryQuestions[Math.floor(Math.random() * categoryQuestions.length)];
             setSelectedQuestion(randomQuestion);
-            setScreen("offlineQuestion");
+            setScreen(session?.mode === "offline" ? "offlineQuestion" : "onlineQuestion");
         } else {
             alert("No more questions available for this category and difficulty.");
         }

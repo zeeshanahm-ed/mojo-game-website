@@ -199,9 +199,9 @@ export default function SignUpForm({ setLoading, loading }: SignUpFormProps) {
                             className="hidden"
                         />
                         <Image
-                            src={(typeof formState.avatar === 'string' ? formState.avatar : FallBackProfileImage.src)}
+                            src={(typeof formState.avatar === 'string' ? formState.avatar : FallBackProfileImage)}
                             alt="User Profile"
-                            className="w-full h-full object-cover"
+                            className="w-full h-full object-contain"
                             width={96}
                             height={96}
                         />

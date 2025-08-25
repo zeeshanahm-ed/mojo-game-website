@@ -122,7 +122,6 @@ export default function VerifyOTP({ setLoading, loading }: ForgotPasswordProps) 
         try {
             await forgotPassCode({ email: forgotEmail });
             showSuccessMessage('OTP resent successfully!');
-            localStorage.setItem('resendTimestamp', Date.now().toString());
         } catch (error) {
             showErrorMessage('Error while resending OTP!');
             console.error('Resend OTP Error:', error);

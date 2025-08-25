@@ -20,6 +20,8 @@ import GampadIcon from "@/app/assets/icons/gamepad-icon.svg";
 import FallBackProfileImage from '@/app/assets/images/fallback-profile-image.jpg';
 import { FaPlus } from "react-icons/fa";
 import { FiMenu } from "react-icons/fi";
+import LoginIcon from "@/app/assets/icons/login-icon.svg";
+
 
 
 const Header: React.FC = () => {
@@ -58,11 +60,21 @@ const Header: React.FC = () => {
                                     <span className="text-gray-800 text-lg font-semibold ml-3 max-w-[90%] truncate">{user.data.firstName} {user.data.lastName}</span>
                                 </button>
                                 :
-                                <button className='btn btn-soft skew-custom h-9' onClick={handleAuthModal}>SignIn</button>
+                                <button className="skew-custom">
+                                    <div
+                                        className="flex items-center gap-2 "
+                                        onClick={handleAuthModal}
+                                    >
+                                        <div className="bg-yellow p-2 h-1/2 border border-black skew-custom   ">
+                                            <LoginIcon />
+                                        </div>
+                                        <span className="text-lg font-medium text-black">Login/Signup</span>
+                                    </div>
+                                </button>
                             }
                         </div>
-                        <div className="flex items-center space-x-3 lg:space-x-6 text-gray-700">
-                            <div className="p-2 h-9 border border-black skew-custom shadow-sm cursor-pointer hover:bg-gray-100 transition-colors">
+                        <div className="flex items-center space-x-3 lg:space-x-4 text-gray-700">
+                            <div className="p-2 border border-black skew-custom shadow-sm cursor-pointer hover:bg-gray-100 transition-colors">
                                 <GiftIcon />
                             </div>
                             <div role='button' onClick={() => setOpenNewGameModal(true)} className="relative p-2 h-9 border border-black skew-custom shadow-sm cursor-pointer hover:bg-gray-100 transition-colors">
@@ -88,7 +100,7 @@ const Header: React.FC = () => {
                     </div>
 
                     {/* Right section: Navigation links */}
-                    <div className="flex items-center space-x-2 font-secondary md:space-x-4 lg:space-x-8 text-gray-800 text-sm sm:text-base md:text-lg font-medium w-fit text-nowrap">
+                    <div className="flex items-center space-x-2 font-secondary md:space-x-4  text-gray-800 text-sm sm:text-base md:text-lg font-medium w-fit text-nowrap">
                         <div className='hidden md:block'><LanguageSwitcher /></div>
                         <Link href="/my-games" className="hover:text-dark-gray transition-colors">{t("my_games")}</Link>
                         <Link href="/contactus" className="hover:text-dark-gray transition-colors">{t("contact_us")}</Link>

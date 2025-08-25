@@ -36,7 +36,7 @@ const CommissionsColumns: TableColumn[] = [
   { key: 'dated', header: 'Dated' },
   { key: 'category ', header: 'Category' },
   { key: 'totalUsage', header: 'Total usage' },
-  { key: 'comissionEarned', header: 'Comission Earned' }
+  { key: 'comissionEarned', header: 'Comission Earned (20 %)' }
 ];
 
 function CommissionsContent() {

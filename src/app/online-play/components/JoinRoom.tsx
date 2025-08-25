@@ -38,7 +38,7 @@ function JoinRoom({ roomName, setRoomName, handleSaveRoomName, handleEditRoomNam
     return (
         <div className='flex flex-col items-center'>
             <div className='w-full mb-5'>
-                <Button className=' w-64 md:w-72 text-4xl md:text-5xl' onClick={() => setShowModal(true)}>
+                <Button className=' w-64 md:w-72 text-3xl sm:text-4xl md:text-5xl' onClick={() => setShowModal(true)}>
                     {t("joinRoom")}
                 </Button>
             </div>

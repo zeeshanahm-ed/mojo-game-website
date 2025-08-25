@@ -12,35 +12,40 @@ interface TableColumn {
 const transactionData: CommissionData[] = [
     {
         purchaseDate: '02/03/2025',
-        gamePack: 'Games Pack 05',
-        discount: '10%',
-        packPrice: '1.5'
+        product: 'Subscription plan',
+        paymentType: 'Card payment',
+        price: '1.5',
+        renewalDate: '03/03/2025',
     },
     {
         purchaseDate: '02/03/2025',
-        gamePack: 'Games Pack 03',
-        discount: '15%',
-        packPrice: '1.5'
+        product: 'Subscription plan',
+        paymentType: 'Card payment',
+        price: '1.5',
+        renewalDate: '03/03/2025',
     },
     {
         purchaseDate: '02/03/2025',
-        gamePack: 'Games Pack 05',
-        discount: '-',
-        packPrice: '0.0'
+        product: 'Subscription plan',
+        paymentType: 'Card payment',
+        price: '1.5',
+        renewalDate: '03/03/2025',
     },
     {
         purchaseDate: '02/03/2025',
-        gamePack: 'Games Pack 03',
-        discount: '15%',
-        packPrice: '1.5'
+        product: 'Subscription plan',
+        paymentType: 'Card payment',
+        price: '1.5',
+        renewalDate: '03/03/2025',
     }
 ];
 
 
 const transactionColumns: TableColumn[] = [
     { key: 'purchaseDate', header: 'Purchase Date' },
-    { key: 'gamePack', header: 'Game Pack' },
-    { key: 'discount', header: 'Discount' },
+    { key: 'product', header: 'Product' },
+    { key: 'paymentType', header: 'Payment Type' },
+    { key: 'renewalDate', header: 'Renewal Date' },
     { key: 'packPrice', header: 'Pack Price' }
 ];
 

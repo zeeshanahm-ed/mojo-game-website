@@ -15,24 +15,37 @@ import { useTranslation } from 'react-i18next';
 import VSIcon from '@/app/assets/images/vs.png';
 import FallBackProfileImage from '@/app/assets/images/fallback-profile-image.jpg';
 import UserChallengModal from '../components/modals/user-challenging-modal';
-import SuggestCategoryNQuestionModal from '../components/modals/suggest-category-N-question-modal';
+import Timer from './components/Timer';
+import { useGameSession } from '../store/gameSession';
+import { useRouter } from 'next/navigation';
 
 type GameMode = 'friendly' | 'challenge' | null;
+type WhoCanAnswer = 'bothTeams' | 'oneTeamPerTurn' | null;
+const WhoCanAnswerType = [
+    {
+        id: 'bothTeams',
+        title: 'Both Teams'
+    },
+    {
+        id: 'oneTeamPerTurn',
+        title: 'One Team Per Turn'
+    }
+];
 
 function OnlinePlay() {
     const { t } = useTranslation();
+    const setSession = useGameSession(state => state.setSession);
+    const router = useRouter();
     const [roomName, setRoomName] = useState('');
     const [isEditingRoomName, setIsEditingRoomName] = useState(false);
     const [roomCode] = useState('0540CV98VZ120I');
     const [selectedMode, setSelectedMode] = useState<GameMode>("friendly");
+    const [selectedWhoCanAnswer, setSelectedWhoCanAnswer] = useState<WhoCanAnswer>("bothTeams");
     const [isSearching] = useState(false);
     const [selectedCategories, setSelectedCategories] = useState<GamesCategoryInterface[]>([]);
     const [currentPlayer, setCurrentPlayer] = useState<1 | 2>(1);
     const [isModalOpen, setIsModalOpen] = useState(false);
 
-
-    // const [timer, setTimer] = useState(20);
-    // const timerRef = useRef<NodeJS.Timeout | null>(null);
     const roomNameInputRef = useRef<HTMLInputElement>(null);
 
 
@@ -40,20 +53,6 @@ function OnlinePlay() {
     const handleTurnSwitch = () => {
         setCurrentPlayer(prev => (prev === 1 ? 2 : 1));
     };
-
-    // useEffect(() => {
-    //     if (timer === 0) {
-    //         setTimer(0)
-    //     } else {
-    //         timerRef.current = setTimeout(() => setTimer(timer - 1), 1000);
-    //     }
-
-    //     return () => {
-    //         if (timerRef.current) {
-    //             clearTimeout(timerRef.current);
-    //         }
-    //     };
-    // }, [timer]);
 
 
     // const handleSearchPlayers = () => {
@@ -69,6 +68,9 @@ function OnlinePlay() {
     const handleModeSelect = (mode: GameMode) => {
         setSelectedMode(mode);
     };
+    const handleWhoCanAnswerSelect = (whoCanAnswer: WhoCanAnswer) => {
+        setSelectedWhoCanAnswer(whoCanAnswer);
+    };
 
     // Function to handle editing room name
     const handleEditRoomName = () => {
@@ -81,7 +83,39 @@ function OnlinePlay() {
     // Function to save room name after editing
     const handleSaveRoomName = () => {
         setIsEditingRoomName(false);
-        console.log('Room Name updated to:', roomName);
+    };
+
+    const handleStartGame = () => {
+        const session = {
+            gameName: roomName || 'My Quiz',
+            mode: "online",
+            selectedCategories: selectedCategories.map(c => c.name),
+            team1: {
+                name: "Zeeshan",
+                players: 1,
+                score: 0,
+                teamTurnOn: true,
+                lifelines: {
+                    theHole: true,
+                    answerToAnswer: true,
+                    callAFriend: true,
+                },
+            },
+            team2: {
+                name: "Adil Khan",
+                players: 1,
+                score: 0,
+                teamTurnOn: false,
+                lifelines: {
+                    theHole: true,
+                    answerToAnswer: true,
+                    callAFriend: true,
+                },
+            },
+        };
+
+        setSession(session);
+        router.push("/game-play");
     };
 
     return (
@@ -102,9 +136,7 @@ function OnlinePlay() {
                                 roomNameInputRef={roomNameInputRef}
                             />
                             :
-                            // <Timer timer={timer} />
-
-                            <Button className='w-64 md:w-80 text-4xl' onClick={() => setIsModalOpen(true)}>
+                            <Button className='w-64 md:w-80 text-3xl sm:text-4xl md:text-5xl' onClick={() => setIsModalOpen(true)}>
                                 JOIN challenge
                             </Button>
                         }
@@ -150,11 +182,45 @@ function OnlinePlay() {
                             currentPlayer={currentPlayer}
                             onSelect={handleTurnSwitch}
                         />
-                        <Button disabled className='text-white md:w-72 w-64 my-16 text-4xl md:text-5xl'>{t("startPlaying")}</Button>
-                        {selectedMode === "challenge" &&
-                            <p className="text-base font-secondary md:text-lg text-red text-start md:text-center">
-                                <strong className='ms-5 text-black'>{t("note")} </strong> {t("creditInfo")}
-                            </p>}
+                        <div className='flex items-center md:flex-row flex-col gap-8  justify-between my-10'>
+                            {selectedMode === "friendly" ?
+                                <div className='flex-1 flex flex-col items-start'>
+                                    <h2 className="text-3xl md:text-5xl ">who can answer :</h2>
+                                    {/* Mode Selection */}
+                                    <div className="flex flex-row items-center justify-center gap-5 sm:gap-8 md:gap-16 mt-5 ">
+                                        {WhoCanAnswerType.map((mode) => (
+                                            <div
+                                                key={mode.id}
+                                                onClick={() => handleWhoCanAnswerSelect(mode.id as WhoCanAnswer)}
+                                                className={`px-4 py-2 pt-3 flex items-center gap-2 cursor-pointer group border border-black justify-center ${selectedWhoCanAnswer === mode.id ? 'bg-yellow' : ''}`}
+                                            >
+                                                {/* Checkbox */}
+                                                <div className={`w-6 h-6 border-2 p-1 border-black bg-white flex items-center justify-center mb-2`}>
+                                                    {selectedWhoCanAnswer === mode.id && (
+                                                        <div className="w-full h-full bg-black"></div>
+                                                    )}
+                                                </div>
+
+                                                {/* Mode Title */}
+                                                <h2 className={` text-2xl md:text-3xl uppercase lg:text-4xl ${selectedMode === mode.id ? 'text-black' : 'text-gray-800'}`}>
+                                                    {t(mode.title)}
+                                                </h2>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                                :
+                                <Timer showTime={true} />
+                            }
+                            <div>
+                                <Button disabled={selectedCategories.length < 6} className=' text-white md:w-72 md:text-4xl lg:w-[450px] w-64 text-3xl lg:text-6xl' onClick={handleStartGame}>{t("startPlaying")}</Button>
+                                {selectedMode === "challenge" &&
+                                    <p className="text-base mt-3 font-secondary md:text-lg text-red text-start md:text-center">
+                                        <strong className='ms-5 text-black'>{t("note")} </strong> {t("creditInfo")}
+                                    </p>
+                                }
+                            </div>
+                        </div>
                     </div>
                 </div>
             </Wrapper>
