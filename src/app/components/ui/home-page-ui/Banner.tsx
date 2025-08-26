@@ -46,17 +46,17 @@ export default function Banner() {
     }
 
     return (
-        <section dir={direction} className="w-full bg-red text-white px-4 md:px-10 py-10">
+        <section dir={direction} className="w-full bg-red text-white px-4 md:px-10 py-8 md:py-10">
             <Wrapper>
-                <div className='relative h-[23rem] md:h-[30.5rem] lg:h-[31.5rem] xl:h-[33.5rem]'>
-                    <div className="block md:-end-48 -end-36 -top-5  absolute w-[250px] h-[200px] md:w-[350px] md:h-[280px] xl:w-[400px]">
+                <div className='relative h-[16.5rem] xsm:h-[18.5rem] sm:h-[20rem] md:h-[30.5rem] lg:h-[31.5rem] xl:h-[33.5rem]'>
+                    <div className="hidden sm:block md:-end-48 -end-36 -top-5  absolute w-[250px] h-[200px] md:w-[350px] md:h-[280px] xl:w-[400px]">
                         <Image
                             src={WorldImage}
                             alt="World"
                             className="w-full h-full object-contain"
                         />
                     </div>
-                    <div className="xsm:start-64 start-52 sm:start-[50%] md:start-[55%] top-0 relative lg:w-10 lg:h-10 w-8 h-8">
+                    <div className="xsm:start-64 start-52 sm:start-[50%] md:start-[55%] -top-5 md:top-0 relative lg:w-10 lg:h-10 sm:w-8 sm:h-8 w-5 h-5">
                         <Image src={StarImage} alt='Star' className='w-full h-full object-contain' />
                     </div>
                     <h1 className="xsm:text-6xl text-5xl -mt-8 text-start md:text-8xl xl:text-[7rem]  !leading-[0.85] uppercase">
@@ -65,7 +65,7 @@ export default function Banner() {
                     </h1>
                     <p className="text-sm md:text-base text-start font-secondary">{t("slogan_sub")}</p>
 
-                    <div className="mt-10 flex flex-row justify-start items-center">
+                    <div className="mt-5 md:mt-10 flex flex-row justify-start items-center">
 
                         <button
                             role='button'
@@ -87,14 +87,14 @@ export default function Banner() {
                             <GameCard type={"privateGame"} image={PrivateGameImage} title={t("mojo")} subtitle={t("private_game")} onClick={(v: string) => handleGoTo(v)} bgColor="bg-light-blue" className="-ml-2" />
                         </div>
                     </div>
-                    <div className="-rotate-45 md:rotate-0 w-20 h-20 lg:w-44 lg:h-44 md:w-36 md:h-36 start-[80%] sm:start-[60%]  md:start-[50%] absolute bottom-[45%]">
+                    <div className="-rotate-45 md:rotate-0 w-20 h-20 lg:w-44 lg:h-44 md:w-36 md:h-36 start-[80%] sm:start-[55%]  md:start-[50%] absolute bottom-[70%] sm:bottom-[60%] top-0 xsm:top-[unset] md:bottom-[45%]">
                         <Image
                             src={RocketImage}
                             alt="Rocket"
                             className="w-full h-full object-cover"
                         />
                     </div>
-                    <div className="w-20 h-20 md:w-36 md:h-36  lg:w-40 lg:h-40 start-[75%] sm:start-[70%] md:start-[70%] absolute bottom-[40%]">
+                    <div className="w-16 h-16 sm:w-20 sm:h-20 md:w-36 md:h-36  lg:w-40 lg:h-40 start-[70%] sm:start-[70%] md:start-[70%] absolute bottom-[65%] xsm:bottom-[55%] sm:bottom-[50%] md:bottom-[40%]">
                         <Image
                             src={LightBulbImage}
                             alt="Bulb"
