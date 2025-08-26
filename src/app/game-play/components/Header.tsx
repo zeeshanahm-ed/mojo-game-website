@@ -57,8 +57,9 @@ const Header: React.FC<HeaderProps> = ({ handleScreenChange, handleOpenExitModal
 
                     {/* Right Section: H1 Team Status */}
                     <div className="flex font-secondary items-center  lg:h-14 border md:border-2 border-black skew-custom md:-skew-x-12">
-                        <div className="bg-black w-28 lg:w-44 flex justify-center text-white py-2 px-2 lg:px-3 h-full items-center">
-                            <span title={session?.gameName} className="truncate max-w-[98%] font-semibold uppercase text-sm lg:text-lg">{session?.gameName}</span>
+
+                        <div data-tip={session?.gameName} className="tooltip tooltip-bottom bg-black w-28 lg:w-44 flex justify-center text-white py-2 px-2 lg:px-3 h-full items-center">
+                            <span className="truncate max-w-[98%] font-semibold uppercase text-sm lg:text-lg">{session?.gameName}</span>
                         </div>
 
                         <button onClick={handleChangeTeamTurn} className="bg-white sm:w-32 md:w-40 text-black py-[1px] lg:pt-2 lg:py-2 px-1 sm:px-4 flex  h-full flex-col items-center justify-center">

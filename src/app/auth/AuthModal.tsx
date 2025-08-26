@@ -47,11 +47,11 @@ export default function AuthModal() {
             case 'logout':
                 return t('logout');
             case 'forgotPassword':
-                return "Forgot Password";
+                return t('forgotPassword');
             case 'verifyOtp':
-                return "Verify OTP";
+                return t('verifyOtp');
             case 'resetPassword':
-                return "Add New Password";
+                return t('resetPassword');
             default:
                 return null;
         }

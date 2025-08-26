@@ -24,11 +24,11 @@ type WhoCanAnswer = 'bothTeams' | 'oneTeamPerTurn' | null;
 const WhoCanAnswerType = [
     {
         id: 'bothTeams',
-        title: 'Both Teams'
+        title: 'bothTeams'
     },
     {
         id: 'oneTeamPerTurn',
-        title: 'One Team Per Turn'
+        title: 'oneTeamPerTurn'
     }
 ];
 
@@ -96,8 +96,8 @@ function OnlinePlay() {
                 score: 0,
                 teamTurnOn: true,
                 lifelines: {
-                    theHole: true,
-                    answerToAnswer: true,
+                    scoreSteal: true,
+                    secondChance: true,
                     callAFriend: true,
                 },
             },
@@ -107,8 +107,8 @@ function OnlinePlay() {
                 score: 0,
                 teamTurnOn: false,
                 lifelines: {
-                    theHole: true,
-                    answerToAnswer: true,
+                    scoreSteal: true,
+                    secondChance: true,
                     callAFriend: true,
                 },
             },
@@ -137,7 +137,7 @@ function OnlinePlay() {
                             />
                             :
                             <Button className='w-64 md:w-80 text-3xl sm:text-4xl md:text-5xl' onClick={() => setIsModalOpen(true)}>
-                                JOIN challenge
+                                {t("joinChallenge")}
                             </Button>
                         }
                         <div className="font-secondary flex mt-20 flex-col sm:flex-row items-center justify-evenly w-full space-y-14 sm:space-y-0">
@@ -168,8 +168,8 @@ function OnlinePlay() {
                                         <span className="text-gray-400 text-6xl">?</span>
                                     )}
                                 </div>
-                                <h3 className="text-black text-xl font-semibold">Searching</h3>
-                                <p className="text-gray-600 text-base ">it may take few seconds</p>
+                                <h3 className="text-black text-xl font-semibold">{t("searching")}</h3>
+                                <p className="text-gray-600 text-base ">{t("searchingNote")}</p>
                             </div>
                         </div>
                         <Button boxShadow={false} className='text-white w-64 md:w-80 my-16 text-4xl' bgClass="bg-black">{t("searchPlayers")}</Button>
@@ -185,7 +185,7 @@ function OnlinePlay() {
                         <div className='flex items-center md:flex-row flex-col gap-8  justify-between my-10'>
                             {selectedMode === "friendly" ?
                                 <div className='flex-1 flex flex-col items-start'>
-                                    <h2 className="text-3xl md:text-5xl ">who can answer :</h2>
+                                    <h2 className="text-3xl md:text-5xl ">{t("whoCanAnswer")}</h2>
                                     {/* Mode Selection */}
                                     <div className="flex flex-row items-center justify-center gap-5 sm:gap-8 md:gap-16 mt-5 ">
                                         {WhoCanAnswerType.map((mode) => (

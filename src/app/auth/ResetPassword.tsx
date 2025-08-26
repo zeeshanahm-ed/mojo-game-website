@@ -31,17 +31,17 @@ export default function ResetPassword({ setLoading, loading }: ForgotPasswordPro
         const errors: ValidationErrors = {};
 
         if (!values.newPassword.trim()) {
-            errors.newPassword = 'New password is required.';
+            errors.newPassword = t("newPasswordRequired");
         } else if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/.test(values.newPassword)) {
             errors.newPassword = t('errors.passwordInvalid');
         }
         if (!values.confirmPassword.trim()) {
-            errors.confirmPassword = 'Confirm password is required.';
+            errors.confirmPassword = t("confirmPasswordRequired");
         } else if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/.test(values.confirmPassword)) {
             errors.confirmPassword = t('errors.passwordInvalid');
         }
         if (values.newPassword !== values.confirmPassword) {
-            errors.confirmPassword = 'Confirm password does not match to new password.';
+            errors.confirmPassword = t('confirmPasswordMismatch');
         }
         return errors;
     }
@@ -56,13 +56,13 @@ export default function ResetPassword({ setLoading, loading }: ForgotPasswordPro
         }
         try {
             await resetPassword(body);
-            showSuccessMessage("Password reset successfully.");
+            showSuccessMessage(t("passwordResetSuccess"));
             openModal("signin");
         } catch (error: unknown) {
             if (error instanceof AxiosError) {
                 showErrorMessage(error.message);
             } else {
-                showErrorMessage('An unknown error occurred');
+                showErrorMessage(t('unknownError'));
             }
         } finally {
             setLoading(false);
@@ -89,14 +89,14 @@ export default function ResetPassword({ setLoading, loading }: ForgotPasswordPro
         <section>
             <div className="text-center md:px-20 sm:px-10 px-5 py-10 space-y-6">
                 <div >
-                    <Input name="newPassword" onChange={handleInputChange} icon={<EmailIcon />} type='email' placeholder="New password" />
+                    <Input name="newPassword" onChange={handleInputChange} icon={<EmailIcon />} type='password' placeholder={t("newPassword")} />
                     {formErrors.newPassword && <p className='font-secondary text-start text-red mt-1'>{formErrors.newPassword}</p>}
                 </div>
                 <div>
-                    <Input name="confirmPassword" onChange={handleInputChange} icon={<EmailIcon />} type='email' placeholder='Confirm password' />
+                    <Input name="confirmPassword" onChange={handleInputChange} icon={<EmailIcon />} type='password' placeholder={t("confirmPassword")} />
                     {formErrors.confirmPassword && <p className='font-secondary text-start text-red mt-1'>{formErrors.confirmPassword}</p>}
                 </div>
-                <Button disabled={loading} className='md:text-4xl text-2xl w-32 md:w-52' onClick={handleChangePass}>Change Password</Button>
+                <Button disabled={loading} className='md:text-4xl text-2xl w-32 md:w-52' onClick={handleChangePass}>{t("changePassword")}</Button>
             </div>
         </section>
     );

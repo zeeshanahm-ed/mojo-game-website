@@ -1,5 +1,4 @@
 import React from 'react'
-import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import { useCreateGameModalStore } from '@/app/store/useCreateGameModalStore';
 import { useTranslation } from 'react-i18next';
@@ -8,22 +7,15 @@ import OfflineImage from "@/app/assets/images/offlinemode-image.png"
 import OnlineImage from "@/app/assets/images/onlinemode-image.png"
 import { MdClose } from 'react-icons/md';
 import { useDirection } from '@/app/hooks/useGetDirection';
+import Link from 'next/link';
 
 function CreateGameModal() {
     const { closeModal } = useCreateGameModalStore();
     const { open } = useCreateGameModalStore();
-    const router = useRouter();
     const { t } = useTranslation('');
     const direction = useDirection();
 
-    const handleNavigate = (type: string) => {
-        if (type === 'online') {
-            router.push('/online-play');
-        } else if (type === 'offline') {
-            router.push('/offline-play');
-        }
-        closeModal();
-    };
+
 
     return (
         <dialog id="create_game_modal" className={` modal ${open ? 'modal-open' : ''}`}>
@@ -44,22 +36,20 @@ function CreateGameModal() {
                 <div className="divider before:bg-light-gray after:bg-light-gray m-0"></div>
                 {/* Playing Mode Cards */}
                 <div className="flex items-center w-full justify-evenly md:px-10 py-5 px-5 sm:px-10 gap-5">
-                    <div className="md:w-64 w-64 cursor-pointer skew-custom bg-green border-4 sm:border-[6px]  border-black flex flex-col items-center justify-center px-6 py-2 md:py-5 gap-5"
-                        onClick={() => handleNavigate("offline")}>
+                    <Link href="/offline-play" onClick={closeModal} className="md:w-64 w-64 cursor-pointer skew-custom bg-green border-4 sm:border-[6px]  border-black flex flex-col items-center justify-center px-6 py-2 md:py-5 gap-5">
                         <Image src={OfflineImage} alt='Offline Mode' className='sm:w-20 w-16 sm:h-20 md:w-20 md:h-20' />
                         <p dir={direction} className="text-black text-5xl md:text-6xl uppercase">
                             {t('offline')} <span className="text-3xl md:text-4xl block text-end -mt-3 md:text-start md:inline-block md:mt-0"> {t('play')}</span>
                         </p>
-                    </div>
+                    </Link>
 
                     {/* Online Play Card */}
-                    <div className="md:w-64 w-64 cursor-pointer skew-custom bg-yellow  border-4 sm:border-[6px] border-black flex flex-col items-center justify-center px-6 py-2  md:py-5 gap-5"
-                        onClick={() => handleNavigate("online")}>
+                    <Link href="/online-play" onClick={closeModal} className="md:w-64 w-64 cursor-pointer skew-custom bg-yellow  border-4 sm:border-[6px] border-black flex flex-col items-center justify-center px-6 py-2  md:py-5 gap-5">
                         <Image src={OnlineImage} alt='Online Mode' className='sm:w-20 w-16 sm:h-20 md:w-20 md:h-20' />
                         <p dir={direction} className="text-black  text-5xl md:text-6xl uppercase" >
                             {t('online')} <span className="text-3xl md:text-4xl block text-end -mt-3 md:text-start md:inline-block md:mt-0"> {t('play')}</span>
                         </p>
-                    </div>
+                    </Link>
                 </div>
             </div>
         </dialog>

@@ -80,7 +80,7 @@ export default function SignInForm({ setLoading, loading }: SignInFormProps) {
                     if (apiToken) {
                         mutateVerifyToken(apiToken, {
                             onSuccess: (res) => {
-                                showSuccessMessage('User signed in successfully.');
+                                showSuccessMessage(t('userSignedUp'));
                                 const authData = {
                                     api_token: apiToken,
                                     data: res?.data?.data?.data,
@@ -98,7 +98,7 @@ export default function SignInForm({ setLoading, loading }: SignInFormProps) {
                 if (error instanceof AxiosError) {
                     showErrorMessage(error?.response?.data?.message);
                 } else {
-                    showErrorMessage('An unexpected error occurred.');
+                    showErrorMessage(t('unknownError'));
                 }
                 setLoading(false);
             },
@@ -180,7 +180,7 @@ export default function SignInForm({ setLoading, loading }: SignInFormProps) {
                         {t('createAccount')}
                     </button>
                     <button onClick={handleForgotPassword} className="w-fit text-start font-normal font-Product_sans text-sm md:text-base -ml-2 hover:underline">
-                        Forgot Password?
+                        {t("forgotPassword")}?
                     </button>
                 </div>
 

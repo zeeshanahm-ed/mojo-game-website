@@ -4,7 +4,6 @@ import Link from 'next/link';
 import { useAuth } from '@/app/context/AuthContext';
 import { useAuthModalStore } from '@/app/store/useAuthModalStore';
 import { useTranslation } from 'react-i18next';
-import { useRouter } from 'next/navigation';
 //components
 import Wrapper from './Wrapper';
 import BuyNewGameModal from '../../modals/buy-new-game-modal';
@@ -31,13 +30,9 @@ const Header: React.FC = () => {
     const [openNewGameModal, setOpenNewGameModal] = useState(false);
     const [openWalletModal, setOpenWalletModal] = useState(false);
     const { t } = useTranslation();
-    const router = useRouter();
 
     const handleAuthModal = () => {
         openModal("signin");
-    };
-    const handleGoToProfile = () => {
-        router.push("/profile");
     };
 
     return (
@@ -48,7 +43,7 @@ const Header: React.FC = () => {
                     <div className="flex-1 items-center gap-2 lg:gap-5 hidden md:flex">
                         <div className='flex items-center'>
                             {user ?
-                                <button className='w-44 flex items-center' onClick={handleGoToProfile}>
+                                <Link href="/profile" className='w-44 flex items-center'>
                                     <div className="w-10 h-10 overflow-hidden border border-black skew-custom">
                                         <Image
                                             src={(typeof FallBackProfileImage === 'string' ? FallBackProfileImage : FallBackProfileImage.src)}
@@ -58,7 +53,7 @@ const Header: React.FC = () => {
                                             className="w-full h-full object-cover" />
                                     </div>
                                     <span className="text-gray-800 text-lg font-semibold ml-3 max-w-[90%] truncate">{user.data.firstName} {user.data.lastName}</span>
-                                </button>
+                                </Link>
                                 :
                                 <button className="skew-custom">
                                     <div
@@ -68,7 +63,7 @@ const Header: React.FC = () => {
                                         <div className="bg-yellow p-2 h-1/2 border border-black skew-custom   ">
                                             <LoginIcon />
                                         </div>
-                                        <span className="text-lg font-medium text-black">Login/Signup</span>
+                                        <span className="text-lg font-medium text-black">{t("loginSignup")}</span>
                                     </div>
                                 </button>
                             }
@@ -94,17 +89,17 @@ const Header: React.FC = () => {
                         <div className='md:hidden' role='button' onClick={() => setIsDrawerOpen(true)}>
                             <FiMenu className='text-3xl sm:text-4xl' />
                         </div>
-                        <h1 className="text-3xl sm:text-4xl ml-3 md:ml-0 md:text-5xl text-gray-900 font-bulletproof mt-1 uppercase cursor-pointer" onClick={() => router.push('/')}>
+                        <Link href="/" className="text-3xl sm:text-4xl ml-3 md:ml-0 md:text-5xl text-gray-900 font-bulletproof mt-1 uppercase cursor-pointer">
                             {t("mojo")}
-                        </h1>
+                        </Link>
                     </div>
 
                     {/* Right section: Navigation links */}
                     <div className="flex-1 justify-end flex items-center space-x-2 font-secondary md:space-x-4  text-gray-800 text-sm sm:text-base md:text-lg font-medium w-fit text-nowrap">
                         <div className='hidden md:block'><LanguageSwitcher /></div>
-                        <Link href="/my-games" className="hover:text-dark-gray transition-colors">{t("my_games")}</Link>
-                        <Link href="/subscription" className="hover:text-dark-gray transition-colors">Subscription</Link>
-                        <Link href="/contactus" className="hover:text-dark-gray transition-colors">{t("contact_us")}</Link>
+                        <Link href="/my-games" className="hover:text-dark-gray transition-colors">{t("myGames")}</Link>
+                        <Link href="/subscription" className="hover:text-dark-gray transition-colors">{t("subscription")}</Link>
+                        <Link href="/contactus" className="hover:text-dark-gray transition-colors">{t("contactUs")}</Link>
                     </div>
                 </nav>
                 <AuthModal />

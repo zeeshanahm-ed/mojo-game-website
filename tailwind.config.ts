@@ -32,6 +32,7 @@ const config: Config = {
         primary: ['var(--font-popfun)', 'sans-serif'],
         secondary: ['var(--font-product_sans)', 'sans-serif'],
         bulletproof: ['var(--font-bulletproof)', 'sans-serif'],
+        arabic: ['var(--font-arabic)', 'sans-serif'],
       },
       borderRadius: {
         base: 'var(--base-radius)',

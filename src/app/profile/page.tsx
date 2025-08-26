@@ -17,9 +17,9 @@ const TABS = [
 ]
 
 function Profile() {
-    const [selectedTab, setSelectedTab] = useState("Profile");
+    const [selectedTab, setSelectedTab] = useState<number>(0);
 
-    const handleTabChange = (tab: string) => {
+    const handleTabChange = (tab: number) => {
         setSelectedTab(tab);
     };
 
@@ -30,9 +30,9 @@ function Profile() {
                 <div className='h-auto pt-5 pb-20'>
                     <TabSwitcher selectedTab={selectedTab} onSelectTab={handleTabChange} tabs={TABS} />
                     <div className='flex-1'>
-                        {selectedTab === "Profile" && <ProfileContent />}
-                        {selectedTab === "Transactions" && <TransactionsContent />}
-                        {selectedTab === "Commissions" && <CommissionsContent />}
+                        {selectedTab === 0 && <ProfileContent />}
+                        {selectedTab === 1 && <TransactionsContent />}
+                        {selectedTab === 2 && <CommissionsContent />}
                     </div>
                 </div>
             </Wrapper>

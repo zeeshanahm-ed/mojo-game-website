@@ -9,6 +9,8 @@ import UploadImageIcon from "@/app/assets/icons/upload-image-icon.svg";
 import VideoIcon from "@/app/assets/icons/video-icon.svg";
 import AudioIcon from "@/app/assets/icons/audio-icon.svg";
 import { MdDelete } from "react-icons/md";
+import { useTranslation } from "react-i18next";
+import { useDirection } from "@/app/hooks/useGetDirection";
 
 interface QuestionNAnswerProps {
     editQuestionData: OfflineQuestionNAnswerData | null;
@@ -31,6 +33,8 @@ const initialOptions: Option[] = [
 ];
 
 const QuestionNAnswer = ({ editQuestionData, setQuestionsData, goBack, mode }: QuestionNAnswerProps) => {
+    const { t } = useTranslation();
+    const direction = useDirection();
     const [questionState, setQuestionState] = useState<OfflineQuestionNAnswerData | null>({
         questionEN: editQuestionData?.questionEN || "",
         questionAR: editQuestionData?.questionAR || "",
@@ -142,26 +146,26 @@ const QuestionNAnswer = ({ editQuestionData, setQuestionsData, goBack, mode }: Q
             <div className='px-4 md:px-10 space-y-5 overflow-y-auto h-auto max-h-[600px]'>
                 {/* Question */}
                 <div>
-                    <h2 className='w-full  text-lg mb-5 flex items-center gap-x-5'>Add Question <span className='h-[2px] flex-1 bg-border-gray'></span></h2>
+                    <h2 className='w-full  text-lg mb-5 flex items-center gap-x-5'>{t("addQuestion")} <span className='h-[2px] flex-1 bg-border-gray'></span></h2>
                     <div className='space-y-5'>
                         <Input
                             name='questionEN'
                             type='text'
-                            placeholder="Question"
+                            placeholder={t("question")}
                             value={questionState?.questionEN}
                             onChange={(e) => handleOnChange(e)}
                             className="w-full !border"
                             inputClassName='!px-4'
                         />
                         <div className='relative'>
-                            <button className='absolute top-4 left-5 z-50  underline hover:no-underline'>
-                                Translate
+                            <button dir={direction} className='absolute top-4 start-5 z-50  underline hover:no-underline'>
+                                {t("translate")}
                             </button>
                             <Input
                                 type='text'
                                 name='questionAR'
                                 readOnly
-                                placeholder="Question Translation"
+                                placeholder={t("questionTranslation")}
                                 value={questionState?.questionAR}
                                 onChange={(e) => handleOnChange(e)}
                                 className="w-full !border"
@@ -225,26 +229,26 @@ const QuestionNAnswer = ({ editQuestionData, setQuestionsData, goBack, mode }: Q
                 </div>
                 {/* Answer */}
                 <div>
-                    <h2 className='w-full  text-lg mb-5 flex items-center gap-x-5'>Add Answer <span className='h-[2px] flex-1 bg-border-gray'></span></h2>
+                    <h2 className='w-full  text-lg mb-5 flex items-center gap-x-5'>{t("addAnswer")} <span className='h-[2px] flex-1 bg-border-gray'></span></h2>
                     <div className='space-y-5'>
                         <Input
                             name='answerEN'
                             type='text'
-                            placeholder="Answer"
+                            placeholder={t("answer")}
                             value={questionState?.answerEN}
                             onChange={(e) => handleOnChange(e)}
                             className="w-full !border"
                             inputClassName='!px-4'
                         />
                         <div className='relative'>
-                            <button className='absolute top-4 left-5 z-50  underline hover:no-underline'>
-                                Translate
+                            <button dir={direction} className='absolute top-4 start-5 z-50  underline hover:no-underline'>
+                                {t("translate")}
                             </button>
                             <Input
                                 type='text'
                                 name='answerAR'
                                 readOnly
-                                placeholder="Answer Translation"
+                                placeholder={t("answerTranslation")}
                                 value={questionState?.answerAR}
                                 onChange={(e) => handleOnChange(e)}
                                 className="w-full !border"
@@ -309,19 +313,19 @@ const QuestionNAnswer = ({ editQuestionData, setQuestionsData, goBack, mode }: Q
                 </div>
                 {/* <MCQOptions /> */}
                 <div className={`${mode === 'offline' ? 'hidden' : ''}`}>
-                    <h2 className='w-full  text-lg mb-5 flex items-center gap-x-5'>{"Add MCQ’s"} <span className='h-[2px] flex-1 bg-border-gray'></span></h2>
+                    <h2 className='w-full  text-lg mb-5 flex items-center gap-x-5'>{t("addMcqs")} <span className='h-[2px] flex-1 bg-border-gray'></span></h2>
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-6 w-full">
                         {questionState?.options.map((option, index) => (
                             <div key={index} className="flex flex-col items-center space-y-2">
                                 {/* Label */}
-                                <label className="font-medium mb-1">Option {index + 1}</label>
+                                <label className="font-medium mb-1">{t("option")} {index + 1}</label>
 
                                 {/* Input */}
                                 <Input
                                     type="text"
                                     value={option.text}
                                     onChange={(e) => handleChange(index, e.target.value)}
-                                    placeholder="Type option"
+                                    placeholder={t("typeOption")}
                                     inputClassName='!px-4 text-center'
                                     className="w-36 h-12 !border text-center"
                                 />
@@ -331,7 +335,7 @@ const QuestionNAnswer = ({ editQuestionData, setQuestionsData, goBack, mode }: Q
                                     onClick={() => handleTranslate()}
                                     className="w-36  h-12 border border-black underline font-medium -skew-x-6 md:-skew-x-12 hover:no-underline"
                                 >
-                                    Translate
+                                    {t("translate")}
                                 </button>
                             </div>
                         ))}
@@ -342,7 +346,7 @@ const QuestionNAnswer = ({ editQuestionData, setQuestionsData, goBack, mode }: Q
             <Divider />
             <div className='flex-centered mt-5'>
                 <Button className='w-80 text-4xl' onClick={handleAddQuestion}>
-                    Add Question
+                    {t("addQuestion")}
                 </Button>
             </div>
         </div>

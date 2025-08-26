@@ -2,7 +2,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import Button from '../components/ui/common/Button';
 import { useAuthModalStore } from '../store/useAuthModalStore';
-// import { useTranslation } from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 import { showErrorMessage, showSuccessMessage } from '../utils/messageUtils';
 import { forgotPassCode, verifyOtp } from './core/_requests';
 import { AxiosError } from 'axios';
@@ -17,7 +17,7 @@ const length = 6;
 
 export default function VerifyOTP({ setLoading, loading }: ForgotPasswordProps) {
     const { openModal } = useAuthModalStore((state) => state);
-    // const { t } = useTranslation();
+    const { t } = useTranslation();
     const [otp, setOtp] = useState<string[]>(new Array(length).fill(''));
     const [error, setError] = useState<string>('');
     const [timer, setTimer] = useState<number>(60);
@@ -67,14 +67,8 @@ export default function VerifyOTP({ setLoading, loading }: ForgotPasswordProps) 
         }
     };
 
-    const handleOk = async () => {
+    const handleOk = async (otpValue: string) => {
         setLoading(true);
-        const otpValue = otp.join('')
-        if (otpValue.length < length) {
-            setError('OTP is incomplete');
-            setLoading(false);
-            return;
-        }
 
         const body = {
             email: forgotEmail,
@@ -83,14 +77,14 @@ export default function VerifyOTP({ setLoading, loading }: ForgotPasswordProps) 
 
         try {
             await verifyOtp(body);
-            showSuccessMessage('Otp has been varified.');
+            showSuccessMessage(t('otpVerified'));
             localStorage.setItem('verifiedOtp', otpValue);
             openModal("resetPassword")
         } catch (error: unknown) {
             if (error instanceof AxiosError) {
                 showErrorMessage(error.message);
             } else {
-                showErrorMessage('An unknown error occurred');
+                showErrorMessage(t('unknownError'));
             }
         } finally {
             setLoading(false);
@@ -102,11 +96,11 @@ export default function VerifyOTP({ setLoading, loading }: ForgotPasswordProps) 
     const handleVerifyOtp = () => {
         const otpValue = otp.join('')
         if (otpValue.length < length) {
-            setError('OTP is incomplete');
+            setError(t('otpIncomplete'));
             setLoading(false);
             return;
         } else {
-            handleOk();
+            handleOk(otpValue);
         }
     };
 
@@ -121,10 +115,10 @@ export default function VerifyOTP({ setLoading, loading }: ForgotPasswordProps) 
         }
         try {
             await forgotPassCode({ email: forgotEmail });
-            showSuccessMessage('OTP resent successfully!');
+            showSuccessMessage(t('otpResent'));
         } catch (error) {
-            showErrorMessage('Error while resending OTP!');
-            console.error('Resend OTP Error:', error);
+            showErrorMessage(t('otpResendError'));
+            console.error(error);
         }
     };
 
@@ -173,17 +167,16 @@ export default function VerifyOTP({ setLoading, loading }: ForgotPasswordProps) 
                                 onKeyDown={(e) => handleKeyDown(index, e)}
                                 onPaste={(e) => handlePaste(e)}
                                 className={`w-14 font-secondary bg-gray-200 h-14 rounded-lg text-center text-lg focus:outline-none focus:border-dark-gray focus:border-2`}
-                                placeholder="0"
                             />
                         ))}
                     </div>
                     {error && <p className='text-red font-secondary'>{error}</p>}
 
                 </div>
-                <p className='font-secondary'>Enter the OTP we sent to your email.</p>
+                <p className='font-secondary'>{t("enterOtp")}</p>
                 <div className='flex gap-x-6 items-center justify-center'>
-                    <Button disabled={loading} className='md:text-4xl text-2xl w-32 md:w-44' onClick={handleVerifyOtp}>Submit</Button>
-                    <Button className={`${timer ? "cursor-not-allowed pointer-events-none" : ""} md:text-4xl text-2xl w-32 md:w-44`} onClick={handleResendOTP}>{timer ? timer : "Resend OTP"}</Button>
+                    <Button disabled={loading} className='md:text-4xl text-2xl w-32 md:w-44' onClick={handleVerifyOtp}>{t("submit")}</Button>
+                    <Button className={`${timer ? "cursor-not-allowed pointer-events-none" : ""} md:text-4xl text-2xl w-32 md:w-44`} onClick={handleResendOTP}>{timer ? timer : t("resendOtp")}</Button>
                 </div>
             </div>
         </section>

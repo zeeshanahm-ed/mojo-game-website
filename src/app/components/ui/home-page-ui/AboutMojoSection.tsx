@@ -1,5 +1,3 @@
-'use client';
-
 import Image from 'next/image';
 import Wrapper from '../common/Wrapper';
 import AboutMojoImage from '@/app/assets/images/about-mojo-image.png';

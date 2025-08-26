@@ -82,7 +82,7 @@ export default function SignUpForm({ setLoading, loading }: SignUpFormProps) {
 
         signUpMutate(formData, {
             onSuccess: async () => {
-                showSuccessMessage('User signed up successfully. You can now sign in with your credentials.');
+                showSuccessMessage(t('userSignedUp'));
                 openModal("signin");
                 resetState();
                 setLoading(false);
@@ -91,7 +91,7 @@ export default function SignUpForm({ setLoading, loading }: SignUpFormProps) {
                 if (error instanceof AxiosError) {
                     showErrorMessage(error?.response?.data?.message);
                 } else {
-                    showErrorMessage('An unexpected error occurred.');
+                    showErrorMessage(t('unknownError'));
                 }
                 setLoading(false);
             },

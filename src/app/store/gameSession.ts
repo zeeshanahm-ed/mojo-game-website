@@ -1,8 +1,8 @@
 import { create } from 'zustand';
 
 type Lifelines = {
-    theHole: boolean;
-    answerToAnswer: boolean;
+    scoreSteal: boolean;
+    secondChance: boolean;
     callAFriend: boolean;
 };
 
@@ -44,8 +44,8 @@ const initialSession: GameSession = {
         score: 0,
         teamTurnOn: true,
         lifelines: {
-            theHole: true,
-            answerToAnswer: true,
+            scoreSteal: true,
+            secondChance: true,
             callAFriend: true,
         },
     },
@@ -55,8 +55,8 @@ const initialSession: GameSession = {
         score: 0,
         teamTurnOn: false,
         lifelines: {
-            theHole: true,
-            answerToAnswer: true,
+            scoreSteal: true,
+            secondChance: true,
             callAFriend: true,
         },
     },

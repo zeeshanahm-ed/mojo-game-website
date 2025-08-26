@@ -75,7 +75,7 @@ function CategoriesSection({ data, year, suggestCategoryNQuestions, onSelect, se
 
 
                     if (player1Categories.length + 1 === MAX_PER_PLAYER) {
-                        showSuccessMessage("Player 1 has reached the maximum category limit. Now Player 2's turn.");
+                        showSuccessMessage(t("player1MaxCategory"));
                         onSelect?.();
                     }
                 }
@@ -84,7 +84,7 @@ function CategoriesSection({ data, year, suggestCategoryNQuestions, onSelect, se
                     setPlayer2Categories((prev) => [...prev, value]);
 
                     if (player2Categories.length + 1 === MAX_PER_PLAYER) {
-                        showSuccessMessage("Player 2 has reached the maximum category limit. Now start the game.");
+                        showSuccessMessage(t("player2MaxCategory"));
                     }
                 }
             }
@@ -127,7 +127,7 @@ function CategoriesSection({ data, year, suggestCategoryNQuestions, onSelect, se
                 {subTitle && <p className="text-sm font-secondary sm:text-base md:text-lg leading-6 text-black max-w-2xl">
                     {t("categoryInstructions")}
                 </p>}
-                <Button className='text-white md:w-80 w-64 h-16 sm:w-72 my-8 text-3xl sm:text-4xl md:text-5xl' onClick={() => handleSuggestCategoryModal()}>Suggest A Category</Button>
+                <Button className='text-white md:w-80 w-64 h-16 sm:w-72 my-8 text-3xl sm:text-4xl md:text-5xl' onClick={() => handleSuggestCategoryModal()}>{t("suggestCategory")}</Button>
 
             </div>
             {year &&

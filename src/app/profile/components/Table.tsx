@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 
 interface TableColumn {
     key: string;
@@ -35,13 +36,14 @@ const DynamicTable: React.FC<DynamicTableProps> = ({
     data,
     className = ""
 }) => {
+    const { t } = useTranslation();
     return (
         <div className={`font-secondary ${className}`}>
             {/* Header */}
             <div className="py-6 px-4 md:px-10 border-b border-black">
-                <h2 className="md:text-4xl text-xl font-semibold">{title}</h2>
+                <h2 className="md:text-4xl text-xl font-semibold">{t(title)}</h2>
                 {subtitle && (
-                    <p className="text-sm mt-2 text-gray-600">{subtitle}</p>
+                    <p className="text-sm mt-2 text-gray-600">{t(subtitle)}</p>
                 )}
             </div>
 
@@ -53,9 +55,9 @@ const DynamicTable: React.FC<DynamicTableProps> = ({
                             {columns.map((column) => (
                                 <th
                                     key={column.key}
-                                    className={`px-6 py-5 w-1/4 text-left font-medium text-dark-gray ${column.width || ''}`}
+                                    className={`px-6 py-5 capitalize flex-1 text-left font-medium text-dark-gray ${column.width || ''}`}
                                 >
-                                    {column.header}
+                                    {t(column.header)}
                                 </th>
                             ))}
                         </tr>
@@ -63,19 +65,20 @@ const DynamicTable: React.FC<DynamicTableProps> = ({
                     <tbody className="divide-y divide-gray-200">
                         {data.map((row: CommissionData, index) => (
                             <tr key={index} className="hover:bg-gray-50 transition-colors duration-150">
-                                <td className="px-6 py-4 text-base  w-1/4">
+                                <td className="px-6 py-4 text-base  flex-1">
                                     {'purchaseDate' in row ? row.purchaseDate : row.date || '-'}
                                 </td>
-                                <td className="px-6 py-4 text-base  w-1/4">
+                                <td className="px-6 py-4 text-base  flex-1">
                                     {row.product || row.category || '-'}
                                 </td>
-                                <td className="px-6 py-4 text-base  w-1/4">
+                                <td className="px-6 py-4 text-base  flex-1">
                                     {row.paymentType || row.totalUsage || '-'}
                                 </td>
-                                {row.renewalDate && <td className="px-6 py-4 text-base  w-1/4">
-                                    {row.renewalDate || '-'}
-                                </td>}
-                                <td className="px-6  py-4 w-1/4 text-base ">
+                                {row.renewalDate &&
+                                    <td className="px-6 py-4 text-base  flex-1">
+                                        {row.renewalDate || '-'}
+                                    </td>}
+                                <td className="px-6  py-4 flex-1 text-base ">
                                     <span className='flex gap-3 items-baseline'> {row.price && <p className='!text-sm text-light-gray'>SAR</p>} {row.price || row.commissionEarned || '-'}</span>
                                 </td>
                             </tr>

@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import ClockIcon from "@/app/assets/icons/clock-icon.svg";
 
@@ -7,6 +8,7 @@ interface Props {
 }
 
 function Timer({ showTime }: Props) {
+    const { t } = useTranslation();
     const [timer, setTimer] = useState(20);
     const timerRef = useRef<NodeJS.Timeout | null>(null);
     useEffect(() => {
@@ -38,7 +40,7 @@ function Timer({ showTime }: Props) {
                 </div> */}
             </div>
             <p className="text-base font-secondary md:text-lg max-w-3xl tracking-normal mt-5">
-                if user does not select categories in this time , game will restart searching.
+                {t("refundIfTeamNotJoined")}
             </p>
         </div>
     )

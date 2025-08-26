@@ -95,8 +95,8 @@ function KidsQuest() {
                 teamTurnOn: true,
                 score: 0,
                 lifelines: {
-                    theHole: true,
-                    answerToAnswer: true,
+                    scoreSteal: true,
+                    secondChance: true,
                     callAFriend: true,
                 },
             },
@@ -106,8 +106,8 @@ function KidsQuest() {
                 teamTurnOn: false,
                 score: 0,
                 lifelines: {
-                    theHole: true,
-                    answerToAnswer: true,
+                    scoreSteal: true,
+                    secondChance: true,
                     callAFriend: true,
                 },
             },

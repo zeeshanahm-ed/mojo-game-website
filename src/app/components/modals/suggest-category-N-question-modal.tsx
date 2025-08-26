@@ -5,6 +5,7 @@ import Input from '../ui/common/Input';
 import Divider from '../ui/common/Divider';
 import Image from 'next/image';
 import QuestionNAnswer from './components/QuestionNAnswerModalUI';
+import { useTranslation } from 'react-i18next';
 //icon
 import { IoIosAddCircleOutline } from "react-icons/io";
 import UploadImageIcon from "@/app/assets/icons/upload-image-icon.svg";
@@ -33,6 +34,7 @@ export interface OfflineQuestionNAnswerData {
 
 function SuggestCategoryNQuestionModal({ open, onClose, mode }: SuggestCategoryNQuestionModalProps) {
     const [categoryName, setCategoryName] = useState("");
+    const { t } = useTranslation();
     const [file, setFile] = useState<string>("");
     const [fileObj, setFileObj] = useState<File | null>(null);
     const [step, setStep] = useState(1);
@@ -102,7 +104,7 @@ function SuggestCategoryNQuestionModal({ open, onClose, mode }: SuggestCategoryN
                             <MdArrowBack className='text-base md:text-2xl' />
                         </button>}
                     <h2 className="text-4xl sm:text-5xl md:text-6xl  uppercase flex flex-row sm:flex-row sm:items-center ">
-                        Suggest A Category/Question
+                        {t("suggestCategoryQuestion")}
                     </h2>
                     <button
                         type="button"
@@ -120,7 +122,7 @@ function SuggestCategoryNQuestionModal({ open, onClose, mode }: SuggestCategoryN
                         <div className="flex md:flex-row flex-col gap-6 px-4 md:px-10">
                             {/* Upload Photo */}
                             <div className="flex flex-1 flex-col gap-4">
-                                <span className=" text-lg w-full text-center ">Category Picture</span>
+                                <span className=" text-lg w-full text-center ">{t("categoryPicture")}</span>
                                 <div className="relative  px-4 w-full h-14 transform -skew-x-6 md:-skew-x-12 overflow-hidden border border-black flex items-center justify-center">
                                     {/* Hidden file input */}
                                     <input
@@ -156,17 +158,17 @@ function SuggestCategoryNQuestionModal({ open, onClose, mode }: SuggestCategoryN
                                             onClick={triggerFileInput}
                                         >
                                             <UploadImageIcon />
-                                            <span className="text-base ">Upload Image</span>
+                                            <span className="text-base ">{t("uploadImage")}</span>
                                         </button>
                                     }
                                 </div>
                             </div>
                             {/* Category Name */}
                             <div className="flex flex-1 flex-col gap-4">
-                                <p className="w-full text-center text-lg ">Category Name</p>
+                                <p className="w-full text-center text-lg ">{t("categoryName")}</p>
                                 <Input
                                     type='text'
-                                    placeholder="Category name"
+                                    placeholder={t("categoryName")}
                                     value={categoryName}
                                     onChange={(e) => setCategoryName(e.target.value)}
                                     className="w-full !border"
@@ -181,12 +183,12 @@ function SuggestCategoryNQuestionModal({ open, onClose, mode }: SuggestCategoryN
                             <button onClick={handleGoToAddQuestion} className='w-full hover:text-light-gray transition-colors duration-300 -skew-x-6 md:-skew-x-12 flex justify-between items-center py-4 px-4 border border-black'>
                                 <div className='flex items-center gap-x-2'>
                                     <IoIosAddCircleOutline size={24} />
-                                    <span className='text-base md:text-lg '>Add Question</span>
+                                    <span className='text-base md:text-lg '>{t("addQuestion")}</span>
                                 </div>
                             </button>
                             {questionsData?.map((question, index) => (
                                 <button key={index} onClick={() => handleEditQuestion(index)} className='w-full hover:text-light-gray transition-colors duration-300 -skew-x-6 md:-skew-x-12 flex justify-between items-center py-4 px-4 border border-black'>
-                                    <span>Question {index + 1}</span>
+                                    <span>{t("question")} {index + 1}</span>
                                     <span>{question.questionEN}</span>
                                     <button>
                                         <FaArrowRight size={24} />
@@ -198,7 +200,7 @@ function SuggestCategoryNQuestionModal({ open, onClose, mode }: SuggestCategoryN
                         {/* Foooter */}
                         <div className='flex-centered'>
                             <Button className='md:w-80 w-64 text-3xl md:text-4xl'>
-                                Submit your suggestion
+                                {t("submitSuggestion")}
                             </Button>
                         </div>
                     </div>

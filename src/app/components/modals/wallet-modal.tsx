@@ -90,6 +90,7 @@ function WalletModal({ open, onClose }: WalletModalProps) {
                                 iconBgColor="!bg-white"
                                 selectClassName='!pl-5 !text-2xl !sm:text-3xl'
                                 options={Currency_Options}
+                                onChange={() => { }}
                                 value='SAR' />
                         </div>
                     </div>

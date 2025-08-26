@@ -33,18 +33,18 @@ const commissionData: CommissionData[] = [
 
 
 const CommissionsColumns: TableColumn[] = [
-  { key: 'dated', header: 'Dated' },
-  { key: 'category ', header: 'Category' },
-  { key: 'totalUsage', header: 'Total usage' },
-  { key: 'comissionEarned', header: 'Comission Earned (20 %)' }
+  { key: 'date', header: 'date' },
+  { key: 'category', header: 'category' },
+  { key: 'totalUsage', header: 'totalUsage' },
+  { key: 'comissionEarned', header: 'commissionEarned' }
 ];
 
 function CommissionsContent() {
   return (
     <div>
       <DynamicTable
-        title="Commissions on your suggestions"
-        subtitle='you will get the credits as a commission on your categories usage '
+        title="commissionsOnSuggestions"
+        subtitle='commissionNote'
         columns={CommissionsColumns}
         data={commissionData}
       />

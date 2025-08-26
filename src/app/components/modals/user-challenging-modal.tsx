@@ -1,5 +1,6 @@
 import React from 'react'
 import { MdClose } from 'react-icons/md';
+import { useTranslation } from 'react-i18next';
 //icon
 import FallBackProfileImage from '@/app/assets/images/fallback-profile-image.jpg';
 import Button from '../ui/common/Button';
@@ -14,13 +15,14 @@ interface UserChallengModalProps {
 }
 
 function UserChallengModal({ open, onClose }: UserChallengModalProps) {
+    const { t } = useTranslation();
 
     return (
         <dialog id="user-challenge_modal" className={` modal ${open ? 'modal-open' : ''}`}>
             <div className="modal-box px-0 pb-0 font-primary  bg-white items-center max-w-3xl rounded-none border border-black">
                 <form method="dialog " className="px-4 md:px-10 flex items-center justify-center relative">
                     <h2 className="text-4xl sm:text-5xl md:text-6xl  uppercase flex flex-row sm:flex-row sm:items-center ">
-                        Users Challenging
+                        {t("usersChallenging")}
                     </h2>
                     <button
                         type="button"
@@ -41,7 +43,7 @@ function UserChallengModal({ open, onClose }: UserChallengModalProps) {
                             </span>
                             <p className='text-lg font-secondary truncate max-w-[80%]'>User15992 User15992 User15992 User15992</p>
                         </div>
-                        <Button bgClass='bg-[#10CD65]' className='md:w-32 w-fit text-2xl md:text-4xl !skew-x-6 md:!skew-x-12'>Play</Button>
+                        <Button bgClass='bg-[#10CD65]' className='md:w-32 w-fit text-2xl md:text-4xl !skew-x-6 md:!skew-x-12'>{t("play")}</Button>
                     </div>
                 </div>
             </div>

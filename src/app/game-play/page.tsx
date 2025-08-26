@@ -25,7 +25,7 @@ import SecondChanceImage from "@/app/assets/images/second-chance-image.png"
 import ScoreStealImage from "@/app/assets/images/score-steal-image.png"
 
 
-type Lifeline = 'theHole' | 'answerToAnswer' | 'callAFriend';
+type Lifeline = 'scoreSteal' | 'secondChance' | 'callAFriend';
 
 interface LifelineData {
     title: string;
@@ -47,29 +47,27 @@ function GamePlay() {
 
     const LifelinesData: LifelineData[] = [
         {
-            title: "Call a Friend",
+            title: "callFriend",
             type: "callAFriend",
-            description: "Your friend who knows everything, it's time to call him!",
+            description: "callFriendNote",
             bgColor: "bg-[#862CF3]",
             textColor: "text-[#862CF3]",
             icon: <Image src={CallAFriendImage} alt={t("callFriend")} className='w-20 md:w-24 h-1/2 object-contain' />
             ,
         },
         {
-            title: "2nd Chance",
-            type: "answerToAnswer",
-            description:
-                "You want to take 2 turns in case of any doubt or wrong answer? Use this.",
+            title: "secondChance",
+            type: "secondChance",
+            description: "secondChanceNote2",
             textColor: "text-[#F3682C]",
             bgColor: "bg-[#F3682C]",
             icon: <Image src={SecondChanceImage} alt={t("secondChance")} className='w-20 md:w-24 h-1/2 object-contain' />
 
         },
         {
-            title: "Score Steal",
-            type: "theHole",
-            description:
-                "Steal points from your opponent if you answer correctly. Use wisely!",
+            title: "scoreSteal",
+            type: "scoreSteal",
+            description: "secondChanceNote2",
             textColor: "text-[#2CA7F3]",
             bgColor: "bg-[#2CA7F3]",
             icon: <Image src={ScoreStealImage} alt={t("scoreSteal")} className='w-20 md:w-24 h-1/2 object-contain' />
@@ -97,10 +95,10 @@ function GamePlay() {
 
         let iconSvg;
         switch (iconType) {
-            case 'theHole':
+            case 'scoreSteal':
                 iconSvg = <HoleIcon className={iconClasses} />;
                 break;
-            case 'answerToAnswer':
+            case 'secondChance':
                 iconSvg = <SecondChanceIcon className={iconClasses} />;
                 break;
             case 'callAFriend':
@@ -243,8 +241,8 @@ function GamePlay() {
                                 <div className="flex flex-col items-center lg:items-end py-4 lg:py-0">
                                     <p className="text-base font-secondary sm:text-xl lg:text-2xl mb-2">{t("lifeLines")}</p>
                                     <div className="flex space-x-2">
-                                        {renderLifelineIcon("theHole", session?.team1.lifelines.theHole, session?.team1.teamTurnOn)}
-                                        {renderLifelineIcon("answerToAnswer", session?.team1.lifelines.answerToAnswer, session?.team1.teamTurnOn)}
+                                        {renderLifelineIcon("scoreSteal", session?.team1.lifelines.scoreSteal, session?.team1.teamTurnOn)}
+                                        {renderLifelineIcon("secondChance", session?.team1.lifelines.secondChance, session?.team1.teamTurnOn)}
                                         {renderLifelineIcon("callAFriend", session?.team1.lifelines.callAFriend, session?.team1.teamTurnOn)}
                                     </div>
 
@@ -260,8 +258,8 @@ function GamePlay() {
                                 <div className="flex flex-col items-center lg:items-start py-4 lg:py-0">
                                     <p className="text-base font-secondary sm:text-xl lg:text-2xl mb-2">{t("lifeLines")}</p>
                                     <div className="flex space-x-2">
-                                        {renderLifelineIcon("theHole", session?.team2.lifelines.theHole, session?.team2.teamTurnOn)}
-                                        {renderLifelineIcon("answerToAnswer", session?.team2.lifelines.answerToAnswer, session?.team2.teamTurnOn)}
+                                        {renderLifelineIcon("scoreSteal", session?.team2.lifelines.scoreSteal, session?.team2.teamTurnOn)}
+                                        {renderLifelineIcon("secondChance", session?.team2.lifelines.secondChance, session?.team2.teamTurnOn)}
                                         {renderLifelineIcon("callAFriend", session?.team2.lifelines.callAFriend, session?.team2.teamTurnOn)}
                                     </div>
                                 </div>

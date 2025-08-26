@@ -96,8 +96,8 @@ function OfflineMode() {
                 score: 0,
                 teamTurnOn: true,
                 lifelines: {
-                    theHole: true,
-                    answerToAnswer: true,
+                    scoreSteal: true,
+                    secondChance: true,
                     callAFriend: true,
                 },
             },
@@ -107,8 +107,8 @@ function OfflineMode() {
                 score: 0,
                 teamTurnOn: false,
                 lifelines: {
-                    theHole: true,
-                    answerToAnswer: true,
+                    scoreSteal: true,
+                    secondChance: true,
                     callAFriend: true,
                 },
             },

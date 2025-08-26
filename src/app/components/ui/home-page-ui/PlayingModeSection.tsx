@@ -1,5 +1,4 @@
 import React from 'react';
-import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import Wrapper from '../common/Wrapper';
 import { useTranslation } from 'react-i18next';
@@ -8,19 +7,11 @@ import { useTranslation } from 'react-i18next';
 import OfflineImage from "@/app/assets/images/offlinemode-image.png"
 import OnlineImage from "@/app/assets/images/onlinemode-image.png"
 import { useDirection } from '@/app/hooks/useGetDirection';
+import Link from 'next/link';
 
 const PlayingModeSection: React.FC = () => {
   const { t } = useTranslation();
   const direction = useDirection();
-  const router = useRouter();
-
-  const handleNavigate = (type: string) => {
-    if (type === 'online') {
-      router.push('/online-play'); // ✅ client-side navigation
-    } else if (type === 'offline') {
-      router.push('/offline-play'); // ✅ client-side navigation
-    }
-  };
 
   return (
     <section className="w-full bg-orange">
@@ -36,8 +27,7 @@ const PlayingModeSection: React.FC = () => {
 
             {/* Playing Mode Cards */}
             <div className="flex flex-row items-center gap-5">
-              <div className="w-36 xsm:w-44 sm:w-56 md:w-64 cursor-pointer skew-custom h-44 sm:h-52 md:h-64 bg-green border-[4px] sm:border-[6px]  border-black flex flex-col items-center justify-center px-4 md:px-6 gap-5"
-                onClick={() => handleNavigate("offline")}>
+              <Link href="/offline-play" className="w-36 xsm:w-44 sm:w-56 md:w-64 cursor-pointer skew-custom h-44 sm:h-52 md:h-64 bg-green border-[4px] sm:border-[6px]  border-black flex flex-col items-center justify-center px-4 md:px-6 gap-5">
                 <Image src={OfflineImage} alt='Offline Mode' className='sm:w-20 w-16 h-auto md:w-24 xl:w-28' />
                 <p dir={direction} className="text-black text-5xl md:text-6xl xl:text-7xl uppercase flex">
                   {t('offline')}
@@ -45,11 +35,10 @@ const PlayingModeSection: React.FC = () => {
                     {t('play')}
                   </span>
                 </p>
-              </div>
+              </Link>
 
               {/* Online Play Card */}
-              <div className="w-36 xsm:w-44 sm:w-56 md:w-64 cursor-pointer h-44 sm:h-52 md:h-64 skew-custom bg-yellow  border-[4px] sm:border-[6px] border-black flex flex-col items-center justify-center px-4 md:px-6 gap-5"
-                onClick={() => handleNavigate("online")}>
+              <Link href="/online-play" className="w-36 xsm:w-44 sm:w-56 md:w-64 cursor-pointer h-44 sm:h-52 md:h-64 skew-custom bg-yellow  border-[4px] sm:border-[6px] border-black flex flex-col items-center justify-center px-4 md:px-6 gap-5">
                 <Image src={OnlineImage} alt='Online Mode' className='sm:w-20 w-16 h-auto md:w-24 xl:w-28' />
                 <p dir={direction} className="text-black text-5xl md:text-6xl xl:text-7xl uppercase flex">
                   {t('online')}
@@ -57,7 +46,7 @@ const PlayingModeSection: React.FC = () => {
                     {t('play')}
                   </span>
                 </p>
-              </div>
+              </Link>
             </div>
           </div>
         </div>

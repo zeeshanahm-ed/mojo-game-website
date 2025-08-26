@@ -42,18 +42,18 @@ const transactionData: CommissionData[] = [
 
 
 const transactionColumns: TableColumn[] = [
-    { key: 'purchaseDate', header: 'Purchase Date' },
-    { key: 'product', header: 'Product' },
-    { key: 'paymentType', header: 'Payment Type' },
-    { key: 'renewalDate', header: 'Renewal Date' },
-    { key: 'packPrice', header: 'Pack Price' }
+    { key: 'purchaseDate', header: 'purchaseDate' },
+    { key: 'product', header: 'product' },
+    { key: 'paymentType', header: 'paymentType' },
+    { key: 'renewalDate', header: 'renewalDate' },
+    { key: 'packPrice', header: 'packPrice' }
 ];
 
 function TransactionsContent() {
     return (
         <div>
             <DynamicTable
-                title="Transaction history"
+                title="transactionHistory"
                 columns={transactionColumns}
                 data={transactionData}
             />

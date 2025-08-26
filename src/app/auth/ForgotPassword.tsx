@@ -43,13 +43,13 @@ export default function ForgotPassword({ setLoading, loading }: ForgotPasswordPr
         const body = { email };
         try {
             await forgotPassCode(body);
-            showSuccessMessage("Password reset OTP has been sent to your email.");
+            showSuccessMessage(t("passwordResetOtpSent"));
             openModal("verifyOtp");
         } catch (error: unknown) {
             if (error instanceof AxiosError) {
                 showErrorMessage(error.message);
             } else {
-                showErrorMessage('An unknown error occurred');
+                showErrorMessage(t('unknownError'));
             }
             console.error("Error:", error);
         } finally {
@@ -80,8 +80,8 @@ export default function ForgotPassword({ setLoading, loading }: ForgotPasswordPr
                     <Input name="email" onChange={handleInputChange} icon={<EmailIcon />} type='email' placeholder={t('emailPlaceholder')} />
                     {formErrors.email && <p className='font-secondary text-start text-red mt-1'>{formErrors.email}</p>}
                 </div>
-                <p className='font-secondary'>We will email you an OTP to reset your password.</p>
-                <Button disabled={loading} className='md:text-4xl text-2xl w-32 md:w-44' onClick={handleSendEmail}>Send</Button>
+                <p className='font-secondary'>{t("resetPasswordNote")}</p>
+                <Button disabled={loading} className='md:text-4xl text-2xl w-32 md:w-44' onClick={handleSendEmail}>{t("send")}</Button>
             </div>
         </section>
     );
