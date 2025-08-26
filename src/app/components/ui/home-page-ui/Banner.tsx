@@ -48,18 +48,18 @@ export default function Banner() {
     return (
         <section dir={direction} className="w-full bg-red text-white px-4 md:px-10 py-10">
             <Wrapper>
-                <div className='relative h-[23rem] md:h-[37rem] lg:h-[44rem]'>
-                    <div className="hidden md:block xl:-end-20 -end-[4%] md:-end-48 top-3 md:top-0 absolute md:w-[350px] md:h-[320px] lg:w-[400px]">
+                <div className='relative h-[23rem] md:h-[30.5rem] lg:h-[31.5rem] xl:h-[33.5rem]'>
+                    <div className="block md:-end-48 -end-36 -top-5  absolute w-[250px] h-[200px] md:w-[350px] md:h-[280px] xl:w-[400px]">
                         <Image
                             src={WorldImage}
                             alt="World"
                             className="w-full h-full object-contain"
                         />
                     </div>
-                    <div className="xsm:start-64 start-52 sm:start-[50%] md:start-[55%] top-3 md:top-5 relative md:w-12 md:h-12 w-8 h-8">
+                    <div className="xsm:start-64 start-52 sm:start-[50%] md:start-[55%] top-0 relative lg:w-10 lg:h-10 w-8 h-8">
                         <Image src={StarImage} alt='Star' className='w-full h-full object-contain' />
                     </div>
-                    <h1 className="xsm:text-6xl text-5xl -mt-8 md:text-8xl text-start lg:text-9xl  leading-tight uppercase">
+                    <h1 className="xsm:text-6xl text-5xl -mt-8 text-start md:text-8xl xl:text-[7rem]  !leading-[0.85] uppercase">
                         {t("slogan_line_1")} <br />
                         <span className="text-yellow">{t("slogan_line_2")}</span>  {t("withUltimate")} <br /> {t("quizExperience")}
                     </h1>
@@ -67,13 +67,16 @@ export default function Banner() {
 
                     <div className="mt-10 flex flex-row justify-start items-center">
 
-                        <div role='button' onClick={() => handleGoTo("createAGame")} className={`relative cursor-pointer text-black skew-custom sm:w-40 w-28  md:w-60 lg:w-72 h-[125px] md:h-[210px] md:gap-0 gap-0 py-2 md:py-4 px-4 border-[3px] md:border-[6px] border-black bg-yellow items-start flex-col flex justify-center`}>
-                            <div className=' text-4xl sm:text-5xl skew-x-3 md:text-8xl uppercase'>{t("create")}</div>
-                            <div className=' text-nowrap w-full flex skew-x-3 items-center justify-between text-2xl sm:3xl md:text-[60px] -mt-2 md:-mt-3 uppercase'>
+                        <button
+                            role='button'
+                            onClick={() => handleGoTo("createAGame")}
+                            className={`relative cursor-pointer text-black skew-custom sm:w-40 w-28  md:w-60 lg:w-56 h-[125px] md:h-[180px] md:gap-0 gap-0 py-2 md:py-4 px-4 border-[3px] md:border-[6px] border-black bg-yellow items-start flex-col flex justify-center`}>
+                            <div className=' text-4xl sm:text-5xl skew-x-3 md:text-7xl uppercase'>{t("create")}</div>
+                            <div className=' text-nowrap w-full flex skew-x-3 items-center justify-between text-2xl sm:3xl md:text-[50px] -mt-2 uppercase'>
                                 {t("aGame")}
-                                <Image src={CreateGameImage} alt="CREATE" className=" ml-1 mb-1 w-5 h-5 sm:w-8 sm:h-8 md:w-14 md:h-14" />
+                                <Image src={CreateGameImage} alt="CREATE" className=" ml-1 mb-1 w-5 h-5 sm:w-8 sm:h-8 md:w-10 md:h-10" />
                             </div>
-                        </div>
+                        </button>
 
                         <div className='space-y-1 ms-3 md:space-y-2 flex flex-col items-start'>
                             <GameCard type={"students"} image={StudentGameImage} title={t("mojo")} subtitle={t("students")} bgColor="bg-orange" onClick={(v: string) => handleGoTo(v)} />
@@ -84,21 +87,21 @@ export default function Banner() {
                             <GameCard type={"privateGame"} image={PrivateGameImage} title={t("mojo")} subtitle={t("private_game")} onClick={(v: string) => handleGoTo(v)} bgColor="bg-light-blue" className="-ml-2" />
                         </div>
                     </div>
-                    <div className="-rotate-45 md:rotate-0 w-20 h-20 lg:w-44 lg:h-44 md:w-36 md:h-36 start-[80%] sm:start-[60%] md:-top-[65%] lg:-top-[70%] md:start-[55%] -top-[370px] relative">
+                    <div className="-rotate-45 md:rotate-0 w-20 h-20 lg:w-44 lg:h-44 md:w-36 md:h-36 start-[80%] sm:start-[60%]  md:start-[50%] absolute bottom-[45%]">
                         <Image
                             src={RocketImage}
                             alt="Rocket"
                             className="w-full h-full object-cover"
                         />
                     </div>
-                    <div className="w-20 h-20 md:w-28 md:h-28  lg:w-44 lg:h-44 start-[75%] sm:start-[70%]  md:-top-[80%] md:start-[70%] -top-[370px] relative">
+                    <div className="w-20 h-20 md:w-36 md:h-36  lg:w-40 lg:h-40 start-[75%] sm:start-[70%] md:start-[70%] absolute bottom-[40%]">
                         <Image
                             src={LightBulbImage}
                             alt="Bulb"
                             className="w-full h-full"
                         />
                     </div>
-                    <div className="w-20 hidden lg:flex h-20 md:w-48 md:h-48 start-[75%] sm:start-[70%] md:-top-[80%] lg:start-[80%] xl:start-[70%] -top-[370px] relative">
+                    <div className="w-20 hidden lg:flex h-20 lg:w-40 lg:h-40 start-[75%] sm:start-[70%]  lg:start-[80%] xl:start-[70%] absolute lg:bottom-[5%]">
                         <Image
                             src={BookImage}
                             alt="Book"
@@ -136,11 +139,11 @@ function GameCard({
         <div
             role='button'
             onClick={() => onClick?.(type)}
-            className={`relative text-black skew-custom md:w-[220px] md:h-[100px] w-[100px] sm:w-[120px] h-[60px] py-1 px-1 md:py-4 md:px-6 md:border-[6px] border-[3px] border-black ${bgColor} ${className} ${type === "ramadan" ? "cursor-not-allowed" : "cursor-pointer"} flex-col flex`}
+            className={`relative text-black skew-custom md:w-[220px] md:h-[85px] w-[100px] sm:w-[120px] h-[60px] py-1 px-1 md:py-3 md:px-3 md:border-[6px] border-[3px] border-black ${bgColor} ${className} ${type === "ramadan" ? "cursor-not-allowed" : "cursor-pointer"} flex-col flex`}
         >
 
             <div className='font-bulletproof skew-x-3  text-base uppercase'>{title}</div>
-            <div className=' text-2xl skew-x-3  md:text-5xl uppercase'>
+            <div className=' text-2xl skew-x-3  md:text-4xl uppercase'>
                 {subtitle}
             </div>
             <Image src={image} alt={title} className="skew-x-3  absolute md:w-6 md:h-6 w-5 h-5 inline-block mt-auto top-1 md:top-2 end-2" />
