@@ -18,6 +18,7 @@ import KidsGameImage from '@/app/assets/images/kids-quest.png';
 import StudentGameImage from '@/app/assets/images/student-quest.png';
 import CreateGameImage from '@/app/assets/images/create-game.png';
 import RamadanGameImage from '@/app/assets/images/ramadan-quest.png';
+import Link from 'next/link';
 
 export default function Banner() {
     const { t } = useTranslation();
@@ -79,22 +80,22 @@ export default function Banner() {
                         </button>
 
                         <div className='space-y-1 ms-3 md:space-y-2 flex flex-col items-start'>
-                            <GameCard type={"students"} image={StudentGameImage} title={t("mojo")} subtitle={t("students")} bgColor="bg-orange" onClick={(v: string) => handleGoTo(v)} />
-                            <GameCard type={"ramadan"} image={RamadanGameImage} title={t("mojo")} subtitle={t("ramadan")} bgColor="bg-light-green" className="-ml-2" />
+                            <GameCard type={"students"} image={StudentGameImage} title={t("mojo")} subtitle={t("students")} bgColor="bg-orange" href='/students' />
+                            <GameCard type={"ramadan"} image={RamadanGameImage} title={t("mojo")} subtitle={t("ramadan")} bgColor="bg-light-green" className="-ml-2" href='/' />
                         </div>
                         <div className='space-y-1 ms-3 md:space-y-2 flex flex-col items-start'>
-                            <GameCard type={"kidsQuest"} image={KidsGameImage} title={t("mojo")} subtitle={t("kids_quest")} onClick={(v: string) => handleGoTo(v)} bgColor="bg-green" />
-                            <GameCard type={"privateGame"} image={PrivateGameImage} title={t("mojo")} subtitle={t("private_game")} onClick={(v: string) => handleGoTo(v)} bgColor="bg-light-blue" className="-ml-2" />
+                            <GameCard type={"kidsQuest"} image={KidsGameImage} title={t("mojo")} subtitle={t("kids_quest")} href='/kids-quest' bgColor="bg-green" />
+                            <GameCard type={"privateGame"} image={PrivateGameImage} title={t("mojo")} subtitle={t("private_game")} href='/private-game' bgColor="bg-light-blue" className="-ml-2" />
                         </div>
                     </div>
-                    <div className="-rotate-45 md:rotate-0 w-20 h-20 lg:w-44 lg:h-44 md:w-36 md:h-36 start-[80%] sm:start-[55%]  md:start-[50%] absolute bottom-[70%] sm:bottom-[60%] top-0 xsm:top-[unset] md:bottom-[45%]">
+                    <div className="-rotate-45 md:rotate-0 w-20 h-20 lg:w-44 lg:h-44 md:w-36 md:h-36 start-[80%] sm:start-[55%]  md:start-[50%] absolute bottom-[65%] sm:bottom-[60%] top-0 xsm:top-[unset] md:bottom-[45%]">
                         <Image
                             src={RocketImage}
                             alt="Rocket"
                             className="w-full h-full object-cover"
                         />
                     </div>
-                    <div className="w-16 h-16 sm:w-20 sm:h-20 md:w-36 md:h-36  lg:w-40 lg:h-40 start-[70%] sm:start-[70%] md:start-[70%] absolute bottom-[65%] xsm:bottom-[55%] sm:bottom-[50%] md:bottom-[40%]">
+                    <div className="w-16 h-16 sm:w-20 sm:h-20 md:w-36 md:h-36  lg:w-40 lg:h-40 start-[70%] sm:start-[70%] md:start-[70%] absolute bottom-[57%] xsm:bottom-[52%] sm:bottom-[50%] md:bottom-[40%]">
                         <Image
                             src={LightBulbImage}
                             alt="Bulb"
@@ -121,9 +122,9 @@ interface GameCardProps {
     title: string;
     subtitle: string;
     centered?: boolean;
-    onClick?: (v: string) => void;
     className?: string;
     type: string;
+    href: string;
 }
 
 function GameCard({
@@ -131,14 +132,13 @@ function GameCard({
     bgColor,
     title,
     subtitle,
-    onClick,
     type,
+    href,
     className
 }: GameCardProps) {
     return (
-        <div
-            role='button'
-            onClick={() => onClick?.(type)}
+        <Link
+            href={href}
             className={`relative text-black skew-custom md:w-[220px] md:h-[85px] w-[100px] sm:w-[120px] h-[60px] py-1 px-1 md:py-3 md:px-3 md:border-[6px] border-[3px] border-black ${bgColor} ${className} ${type === "ramadan" ? "cursor-not-allowed" : "cursor-pointer"} flex-col flex`}
         >
 
@@ -147,6 +147,6 @@ function GameCard({
                 {subtitle}
             </div>
             <Image src={image} alt={title} className="skew-x-3  absolute md:w-6 md:h-6 w-5 h-5 inline-block mt-auto top-1 md:top-2 end-2" />
-        </div>
+        </Link>
     );
 }

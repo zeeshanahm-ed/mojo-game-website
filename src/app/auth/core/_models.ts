@@ -34,7 +34,7 @@ export interface ISignUpForm {
     gender: string;
     countryCode?: string;
     password: string;
-    avatar?: File | string | null;
+    avatar?: string | null;
     phoneNumber: string;
 }
 

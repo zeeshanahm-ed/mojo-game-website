@@ -121,13 +121,13 @@ function CategoriesSection({ data, year, suggestCategoryNQuestions, onSelect, se
                 />
             </div>}
             <div className="text-center flex flex-col items-center justify-center">
-                {title && <h2 className="sm:text-6xl text-5xl lg:text-7xl  text-black mb-2 uppercase">
+                {title && <h2 className="sm:text-6xl text-5xl lg:text-6xl  text-black mb-2 uppercase">
                     {t("selectCategories")}
                 </h2>}
-                {subTitle && <p className="text-sm font-secondary sm:text-base md:text-lg leading-6 text-black max-w-2xl">
+                {subTitle && <p className="text-sm font-secondary sm:text-base leading-6 text-black max-w-2xl">
                     {t("categoryInstructions")}
                 </p>}
-                <Button className='text-white md:w-80 w-64 h-16 sm:w-72 my-8 text-3xl sm:text-4xl md:text-5xl' onClick={() => handleSuggestCategoryModal()}>{t("suggestCategory")}</Button>
+                <Button className='text-white md:w-80 w-64 h-16 sm:w-72 my-8 text-3xl sm:text-4xl md:text-[2.5rem]' onClick={() => handleSuggestCategoryModal()}>{t("suggestCategory")}</Button>
 
             </div>
             {year &&
@@ -158,10 +158,10 @@ interface Props {
 const CategoryCard = ({ category, handleCategoriesClick, isDisabled }: Props) => {
     return (
         <div role='button' className={`w-32 xsm:w-40 sm:w-52 xl:w-64 flex cursor-pointer flex-col justify-center items-center ${isDisabled ? 'opacity-50 pointer-events-none' : ''}`} onClick={() => handleCategoriesClick(category)}>
-            <div className={`relative w-28 h-28 sm:w-36 sm:h-36 md:w-44 md:h-44 rounded-full border-[8px]  lg:border-[12px] border-orange ${category.selected ? "border-red" : "border-orange"} flex items-center justify-center`}>
+            <div className={`relative w-28 h-28 sm:w-36 sm:h-36 md:w-36 md:h-36 rounded-full border-[8px]  lg:border-[12px] border-orange ${category.selected ? "border-red" : "border-orange"} flex items-center justify-center`}>
                 <Image src={category.icon} alt={category.name} width={100} height={100} className='w-1/2 h-1/2' />
             </div>
-            <div className={`w-full mt-6 relative pb-0 pt-1 text-center text-white  text-2xl md:text-3xl xl:text-4xl uppercase ${category.selected ? " bg-red before:bg-red" : " bg-orange before:bg-orange"} before:w-2 lg:before:w-3 before:h-8 before:absolute before:-top-8 before:left-[48%] `}>
+            <div className={`w-full mt-4 relative pb-0 pt-1 text-center text-white  text-2xl md:text-3xl xl:text-4xl uppercase ${category.selected ? " bg-red before:bg-red" : " bg-orange before:bg-orange"} before:w-2 lg:before:w-3 before:h-6 before:absolute before:-top-5 before:left-[48%] `}>
                 {category.name}
                 {/* Left Triangle */}
                 <div className="absolute -top-[3px] -left-[10px]  md:-top-[3px] lg:-top-[5px] md:-left-[10px] lg:-left-[15px] w-0 h-0 -rotate-[45deg] lg:border-l-[20px] lg:border-r-[20px] lg:border-b-[20px] border-l-[15px] border-r-[15px] border-b-[15px] border-l-transparent border-r-transparent border-b-white" />

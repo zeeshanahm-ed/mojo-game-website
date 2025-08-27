@@ -142,7 +142,7 @@ function OnlinePlay() {
                         }
                         <div className="font-secondary flex mt-20 flex-col sm:flex-row items-center justify-evenly w-full space-y-14 sm:space-y-0">
                             <div className="flex flex-col items-center text-center">
-                                <div className="skew-custom md:w-48 md:h-48 w-36 h-36 overflow-hidden border-4 border-black flex items-center justify-center mb-4">
+                                <div className="skew-custom md:w-40 md:h-40 w-36 h-36 overflow-hidden border-4 border-black flex items-center justify-center mb-4">
                                     <Image
                                         src={(typeof FallBackProfileImage === 'string' ? FallBackProfileImage : FallBackProfileImage.src)}
                                         alt="User Profile"
@@ -161,7 +161,7 @@ function OnlinePlay() {
                             </div>
 
                             <div className="flex flex-col items-center text-center">
-                                <div className="skew-custom md:w-48 md:h-48 w-36 h-36 overflow-hidden border-4 border-black flex items-center justify-center mb-4">
+                                <div className="skew-custom md:w-40 md:h-40 w-36 h-36 overflow-hidden border-4 border-black flex items-center justify-center mb-4">
                                     {isSearching ? (
                                         <span className="loading loading-spinner loading-lg text-gray-400"></span>
                                     ) : (

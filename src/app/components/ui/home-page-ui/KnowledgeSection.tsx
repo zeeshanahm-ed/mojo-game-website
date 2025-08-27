@@ -27,18 +27,18 @@ const KnowledgeSection = () => {
             <Wrapper>
                 <div className='flex items-center justify-center flex-col'>
                     <div className="text-center flex flex-col items-center justify-center">
-                        <h2 className="text-6xl md:text-7xl lg:text-8xl  text-black mb-2 uppercase">
+                        <h2 className="text-6xl md:text-7xl text-black mb-2 uppercase">
                             {t("testKnowledge")}
                         </h2>
-                        <p className="text-sm font-secondary md:text-base xl:text-xl text-black max-w-xl">
+                        <p className="text-sm font-secondary md:text-base  text-black max-w-xl">
                             {t("playingModeseDescription")}
                         </p>
-                        <Button className='my-10 w-44 md:w-64 lg:w-72 text-2xl sm:text-3xl md:text-4xl lg:text-5xl uppercase ' onClick={() => handleOPenModal()}>
+                        <Button className='my-10 w-44 md:w-64 lg:w-72 text-2xl sm:text-3xl md:text-4xl ' onClick={() => handleOPenModal()}>
                             {t("createGame")}
                         </Button>
                     </div>
                     <div className='my-10'>
-                        <Image src={direction === "rtl" ? GroupNPersonArabic : GroupNPerson} alt='Person Image' className='h-1/2 w-[400px] md:w-[800px]' />
+                        <Image src={direction === "rtl" ? GroupNPersonArabic : GroupNPerson} alt='Person Image' className='h-auto w-[400px] md:w-[500px]' />
                     </div>
                 </div>
             </Wrapper>

@@ -34,10 +34,10 @@ function ChooseMode({ selectedMode, handleModeSelect }: Props) {
             <Wrapper>
                 <div className="flex flex-col items-center justify-center w-full text-center">
                     <div className="flex flex-col text-center items-center lg:w-3/4 px-4">
-                        <h2 className="text-6xl md:text-8xl leading-tight mb-4 uppercase ">
+                        <h2 className="text-6xl md:text-7xl leading-tight mb-4 uppercase ">
                             {t("joinRoom")}
                         </h2>
-                        <p className="text-sm font-secondary sm:text-base md:text-lg">
+                        <p className="text-sm font-secondary sm:text-base">
                             {t("playGlobalDescription")}
                         </p>
                     </div>
@@ -51,14 +51,14 @@ function ChooseMode({ selectedMode, handleModeSelect }: Props) {
                                 className="flex items-center gap-2 sm:gap-4 cursor-pointer group"
                             >
                                 {/* Checkbox */}
-                                <div className={`sm:w-8 w-6 h-6 sm:h-8 border-2 p-1 border-black bg-white flex items-center justify-center mb-2`}>
+                                <div className={` w-6 h-6  border-2 p-1 border-black bg-white flex items-center justify-center mb-2`}>
                                     {selectedMode === mode.id && (
                                         <div className="w-full h-full bg-black"></div>
                                     )}
                                 </div>
 
                                 {/* Mode Title */}
-                                <h2 className={` text-3xl md:text-4xl uppercase lg:text-5xl ${selectedMode === mode.id ? 'text-black' : 'text-gray-800'}`}>
+                                <h2 className={` text-3xl md:text-4xl uppercase ${selectedMode === mode.id ? 'text-black' : 'text-gray-800'}`}>
                                     {t(mode.title)}
                                 </h2>
                             </div>

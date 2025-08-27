@@ -26,10 +26,10 @@ function TeamInfo({ gameName, handleGameName, teams, errors, handleTeamNameChang
     return (
 
         <div className="text-center flex flex-col items-center justify-center mt-10">
-            <h2 className="md:text-6xl text-5xl   text-black mb-2 uppercase">
+            <h2 className="md:text-6xl text-5xl text-black mb-2 uppercase">
                 {t("teamInfoTitle")}
             </h2>
-            <p className="text-sm font-secondary sm:text-base md:text-lg leading-6 text-black max-w-2xl">
+            <p className="text-sm font-secondary sm:text-base leading-6 text-black max-w-2xl">
                 {t("playLocalNote")}
             </p>
             <div className='w-full flex flex-col items-center'>
@@ -137,7 +137,7 @@ interface CustomButtonProps {
 const CustomButton = ({ handleClick, icon, team, type }: CustomButtonProps) => {
     return (
         <button
-            className="flex justify-center items-center bg-[#FCFFAF] text-black text-xl w-12 h-10 boxShadow-custom border-2 border-black"
+            className="flex justify-center items-center bg-[#FCFFAF] text-black text-xl w-10 h-8 boxShadow-custom border-2 border-black"
             onClick={() => handleClick(team, type)}
         >
             {icon}

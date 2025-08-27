@@ -138,7 +138,7 @@ function OfflineMode() {
                         handlePlayerChange={handlePlayerChange}
                         handleGameName={handleGameName}
                     />
-                    <Button className='text-white md:w-80 w-52 sm:w-64 my-16 text-3xl sm:text-4xl md:text-5xl' onClick={() => handleStartGame()}>{t("startPlaying")}</Button>
+                    <Button className='text-white md:w-80 w-52 sm:w-64 my-16 text-3xl sm:text-4xl md:text-[2.5rem]' onClick={() => handleStartGame()}>{t("startPlaying")}</Button>
                 </div>
             </Wrapper>
         </section >
