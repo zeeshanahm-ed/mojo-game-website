@@ -95,11 +95,25 @@ const Header: React.FC = () => {
                     </div>
 
                     {/* Right section: Navigation links */}
-                    <div className="flex-1 justify-end flex items-center space-x-2 font-secondary md:space-x-4  text-gray-800 text-sm sm:text-base md:text-lg font-medium w-fit text-nowrap">
+                    <div className="flex-1 hidden justify-end md:flex items-center space-x-2 font-secondary md:space-x-4  text-gray-800 text-sm sm:text-base md:text-lg font-medium w-fit text-nowrap">
                         <div className='hidden md:block'><LanguageSwitcher /></div>
                         <Link href="/my-games" className="hover:text-dark-gray transition-colors">{t("myGames")}</Link>
                         <Link href="/subscription" className="hover:text-dark-gray transition-colors">{t("subscription")}</Link>
                         <Link href="/contactus" className="hover:text-dark-gray transition-colors">{t("contactUs")}</Link>
+                    </div>
+                    <div className="md:hidden flex items-center space-x-3 lg:space-x-4 text-gray-700">
+                        <div className="p-2 border border-black skew-custom shadow-sm cursor-pointer hover:bg-gray-100 transition-colors">
+                            <GiftIcon />
+                        </div>
+                        <div role='button' onClick={() => setOpenNewGameModal(true)} className="relative p-2 h-9 border border-black skew-custom shadow-sm cursor-pointer hover:bg-gray-100 transition-colors">
+                            <GampadIcon />
+                            <span className="absolute -top-1 -right-1 bg-red text-white rounded-full w-4 h-4 flex justify-center items-center font-semibold">
+                                <FaPlus className='text-xs' />
+                            </span>
+                        </div>
+                        <div role='button' onClick={() => setOpenWalletModal(true)} className="p-2 h-9 border border-black skew-custom shadow-sm cursor-pointer hover:bg-gray-100 transition-colors">
+                            <FileIcon />
+                        </div>
                     </div>
                 </nav>
                 <AuthModal />

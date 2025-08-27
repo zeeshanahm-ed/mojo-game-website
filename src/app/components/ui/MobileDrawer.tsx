@@ -12,6 +12,8 @@ import FallBackProfileImage from '@/app/assets/images/fallback-profile-image.jpg
 import { FaPlus } from "react-icons/fa";
 import { MdClose } from 'react-icons/md';
 import LanguageSwitcher from './Language-Switcher';
+import Link from 'next/link';
+import { useTranslation } from 'react-i18next';
 
 
 
@@ -26,6 +28,7 @@ const MobileDrawer: React.FC<MobileDrawerProps> = ({ isOpen, onClose, setOpenWal
     const { user } = useAuth();
     const { openModal } = useAuthModalStore();
     const name = "Zeeshan Ahmed";
+    const { t } = useTranslation();
 
 
     const handleModales_Navigation = (key: string) => {
@@ -33,16 +36,6 @@ const MobileDrawer: React.FC<MobileDrawerProps> = ({ isOpen, onClose, setOpenWal
             case "auth":
                 openModal("signin");
                 break;
-            case "buy-a-new-game":
-                setOpenNewGameModal(true);
-                break;
-            case "wallet":
-                setOpenWalletModal(true);
-                break;
-            case "gift-centre":
-
-                break;
-
             default:
                 break;
         }
@@ -125,55 +118,27 @@ const MobileDrawer: React.FC<MobileDrawerProps> = ({ isOpen, onClose, setOpenWal
                         )}
 
                         <div className="menu-item border-b border-border-gray">
-                            <div
-                                className="flex items-center gap-4 py-4 px-6 "
-                                onClick={() => handleModales_Navigation('gift-centre')}
-                            >
-                                <div className="p-2 h-1/2 border border-black skew-custom   ">
-                                    <GiftIcon />
-                                </div>
-                                <span className="text-lg font-medium text-black">Gift centre</span>
-                            </div>
-                        </div>
-
-                        {/* Buy a New Game */}
-                        <div className="menu-item border-b border-border-gray">
-                            <div
-                                role='button'
-                                className="flex items-center gap-4 py-4 px-6  relative"
-                                onClick={() => handleModales_Navigation("buy-a-new-game")}
-                            >
-                                <div className="relative p-2 h-1/2 border border-black skew-custom   ">
-                                    <GampadIcon />
-                                    <span className="absolute -top-1 -right-1 bg-red text-white rounded-full w-4 h-4 flex justify-center items-center font-semibold">
-                                        <FaPlus className='text-xs' />
-                                    </span>
-                                </div>
-                                <span className="text-lg font-medium text-black">Buy a new game</span>
-                            </div>
-                        </div>
-
-                        {/* Wallet */}
-                        <div className="menu-item border-b border-border-gray">
-                            <div
-                                className="flex items-center gap-4 py-4 px-6 "
-                                role='button'
-                                onClick={() => handleModales_Navigation("wallet")}
-                            >
-                                <div className="p-2 h-1/2 border border-black skew-custom   ">
-                                    <FileIcon />
-                                </div>
-                                <span className="text-lg font-medium text-black">Wallet</span>
-                            </div>
-                            {user && <div className="divider my-0"></div>}
-                        </div>
-
-
-                        <div className="menu-item border-b border-border-gray">
                             <div className="flex items-center gap-4 py-4 px-6 ">
                                 <LanguageSwitcher />
                             </div>
                         </div>
+
+
+                        <Link href="/my-games" className="menu-item border-b border-border-gray">
+                            <div className="flex items-center gap-4 py-4 px-6 ">
+                                <span className="text-lg font-medium text-black">{t("myGames")}</span>
+                            </div>
+                        </Link>
+                        <Link href="/subscription" className="menu-item border-b border-border-gray">
+                            <div className="flex items-center gap-4 py-4 px-6 ">
+                                <span className="text-lg font-medium text-black">{t("subscription")}</span>
+                            </div>
+                        </Link>
+                        <Link href="/contactus" className="menu-item border-b border-border-gray">
+                            <div className="flex items-center gap-4 py-4 px-6 ">
+                                <span className="text-lg font-medium text-black">{t("contactUs")}</span>
+                            </div>
+                        </Link>
 
                         {/* Logout (Only when authenticated) */}
                         {user && (

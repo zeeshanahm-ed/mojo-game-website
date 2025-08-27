@@ -134,7 +134,7 @@ function CategoriesSection({ data, year, suggestCategoryNQuestions, onSelect, se
                 <div dir={direction} className='border-2 font-secondary flex-center text-xl md:text-2xl border-black h-12 w-40 md:h-16 md:w-48 my-10 -skew-x-6'>
                     {`${year} ${t("years")}`}
                 </div>}
-            <div className='my-14 w-full max-h-[800px] overflow-hidden overflow-y-auto'>
+            <div className='my-14 w-full h-auto'>
                 <div className="flex-center flex-wrap  gap-6 gap-y-10">
                     {filteredCategories?.map((cat, idx) => (
                         <CategoryCard key={idx} category={cat} handleCategoriesClick={handleCategoriesClick} isDisabled={isCategoryDisabled(cat)} />

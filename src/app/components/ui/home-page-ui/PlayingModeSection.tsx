@@ -16,7 +16,7 @@ const PlayingModeSection: React.FC = () => {
   return (
     <section className="w-full bg-orange">
       <Wrapper>
-        <div className='w-full py-16 px-4 md:px-10 flex flex-col items-center justify-center'>
+        <div className='w-full py-10 px-4 md:px-10 flex flex-col items-center justify-center'>
           <div className="relative z-10 flex flex-col items-center max-w-4xl text-center">
             <h2 className="text-black text-6xl md:text-7xl  mb-2 uppercase">
               {t("playingModes")}

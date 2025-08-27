@@ -6,9 +6,9 @@ import { useTranslation } from 'react-i18next';
 export default function AboutMojoSection() {
     const { t } = useTranslation();
     return (
-        <section className="relative w-full bg-white py-20 overflow-hidden">
+        <section className="relative w-full bg-white py-10 overflow-hidden">
             <div className="relative w-full">
-                <div className="skew-y-[-1deg] bg-[#F7F623] w-full px-4 md:px-10 py-16 overflow-hidden">
+                <div className="skew-y-[-1deg] bg-[#F7F623] w-full px-4 md:px-10 py-8 overflow-hidden">
                     <Wrapper>
                         <div className="relative skew-y-[1deg] w-full">
                             {/* Left Text */}
@@ -25,7 +25,7 @@ export default function AboutMojoSection() {
                                     </p>
                                 </div>
 
-                                <div className="w-[240px] lg:w-[350px] relative top-[75px]">
+                                <div className="w-[240px] lg:w-[350px] relative top-[70px]">
                                     <Image
                                         src={AboutMojoImage}
                                         alt="About Mojo"
