@@ -66,7 +66,7 @@ export default function Banner() {
                     </h1>
                     <p className="text-sm md:text-base text-start font-secondary">{t("slogan_sub")}</p>
 
-                    <div className="mt-5 md:mt-10 flex flex-row justify-start items-center">
+                    <div className={`mt-5 md:mt-10 flex ${direction === "rtl" ? "font-bold" : ""} flex-row justify-start items-center`}>
 
                         <button
                             role='button'
