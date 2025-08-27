@@ -126,6 +126,7 @@ function KidsQuest() {
                         title={true}
                         subTitle={true}
                         showInput={false}
+                        suggestCategoryNQuestions={false}
                         data={categories.slice(0, 7)}
                         selectedCategories={selectedCategories}
                         setSelectedCategories={setSelectedCategories}
@@ -137,6 +138,7 @@ function KidsQuest() {
                         subTitle={false}
                         showInput={false}
                         data={categories.slice(7, 13)}
+                        suggestCategoryNQuestions={false}
                         selectedCategories={selectedCategories}
                         setSelectedCategories={setSelectedCategories}
                         mode="offline"
@@ -147,6 +149,7 @@ function KidsQuest() {
                         subTitle={false}
                         showInput={false}
                         data={categories.slice(13, 16)}
+                        suggestCategoryNQuestions={false}
                         selectedCategories={selectedCategories}
                         setSelectedCategories={setSelectedCategories}
                         mode="offline"
@@ -160,7 +163,7 @@ function KidsQuest() {
                         handlePlayerChange={handlePlayerChange}
                         handleGameName={handleGameName}
                     />
-                    <Button className='text-white md:w-72 w-52 sm:w-64 my-16 text-4xl md:text-5xl' onClick={handleStartGame}>{t("startPlaying")}</Button>
+                    <Button className='text-white md:w-80 sm:w-64 my-16 sm:text-4xl  md:text-4xl lg:w-[450px] w-64 text-3xl lg:text-5xl' onClick={handleStartGame}>{t("startPlaying")}</Button>
                 </div>
             </Wrapper>
         </section>

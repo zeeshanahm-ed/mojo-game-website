@@ -41,7 +41,7 @@ const Banner: React.FC<BannerProps> = ({ title = "students", isSubject, clearSta
                             boxShadow={false}
                             onClick={handleGoBack}
                             prefixElement={<IoIosArrowBack className={`text-xl lg:text-3xl  mb-1 mr-0 ${direction === "rtl" ? "lg:mb-0" : "lg:mb-2"}`} />}
-                            className='text-xl lg:text-4xl w-28 lg:w-fit flex items-center'>{isSubject ? t("subjects") : t("mainPage")}</Button>
+                            className='text-xl lg:text-3xl w-28 lg:w-fit flex items-center'>{isSubject ? t("subjects") : t("mainPage")}</Button>
                     </div>
 
                     <div className="flex md:-left-8 -left-0 -bottom-[145px] md:-bottom-[115px] absolute items-center justify-center w-28 lg:w-36">
@@ -58,10 +58,10 @@ const Banner: React.FC<BannerProps> = ({ title = "students", isSubject, clearSta
                     </div>
 
                     <div className="flex flex-col items-start md:items-center lg:w-2/4 text-black ">
-                        <h2 className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl leading-tight uppercase ">
+                        <h2 className="text-6xl sm:text-7xl md:text-8xl leading-tight uppercase ">
                             {t(title)}
                         </h2>
-                        <p className="text-xs font-secondary sm:text-sm md:text-base  lg:text-lg">
+                        <p className="text-xs font-secondary sm:text-sm md:text-base ">
                             {t("studentsDescription")}
                         </p>
                     </div>

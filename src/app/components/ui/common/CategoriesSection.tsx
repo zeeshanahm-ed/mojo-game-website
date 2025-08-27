@@ -127,7 +127,7 @@ function CategoriesSection({ data, year, suggestCategoryNQuestions, onSelect, se
                 {subTitle && <p className="text-sm font-secondary sm:text-base leading-6 text-black max-w-2xl">
                     {t("categoryInstructions")}
                 </p>}
-                <Button className='text-white md:w-80 w-64 h-16 sm:w-72 my-8 text-3xl sm:text-4xl md:text-[2.5rem]' onClick={() => handleSuggestCategoryModal()}>{t("suggestCategory")}</Button>
+                {suggestCategoryNQuestions && <Button className='text-white md:w-80 w-64 h-16 sm:w-72 my-8 text-3xl sm:text-4xl md:text-[2.5rem]' onClick={() => handleSuggestCategoryModal()}>{t("suggestCategory")}</Button>}
 
             </div>
             {year &&

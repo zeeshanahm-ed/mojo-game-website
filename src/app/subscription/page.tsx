@@ -67,7 +67,7 @@ function Subscription() {
                         {/* Footer note */}
                         <div className="mt-6 flex items-center text-light-gray ">
                             <MdOutlineInfo className='w-10 h-10 sm:w-6 sm:h-6' />
-                            <span className='ml-4 text-sm sm:text-base md:text-lg'>
+                            <span className='ml-4 text-sm sm:text-base'>
                                 Lorem ipsum dolor sit amet consectetur. Nisi scelerisque vitae viverrami. Elit
                             </span>
 

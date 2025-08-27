@@ -10,7 +10,7 @@ const Banner: React.FC = () => {
     const { t } = useTranslation();
 
     return (
-        <div className="w-full bg-black py-16 px-4 md:px-10 flex flex-col items-center justify-center relative overflow-hidden border-b-4 border-black">
+        <div className="w-full bg-black py-10 px-4 md:px-10 flex flex-col items-center justify-center relative overflow-hidden border-b-4 border-black">
             {/* Main Content */}
             <Wrapper>
                 <div className="relative z-10 flex flex-row items-center justify-center w-full text-center ">
@@ -19,10 +19,10 @@ const Banner: React.FC = () => {
                     </div>
 
                     <div className="flex flex-col text-center items-center lg:w-2/4 px-4 text-white">
-                        <h2 className="text-6xl md:text-8xl lg:text-9xl leading-tight mb-4 uppercase ">
+                        <h2 className="text-6xl md:text-8xl leading-tight mb-4 uppercase ">
                             {t("contactUs")}
                         </h2>
-                        <p className="text-sm font-secondary sm:text-base text-white lg:text-lg">
+                        <p className="text-sm font-secondary sm:text-base text-white">
                             {t("playLocalNote")}
                         </p>
                     </div>
