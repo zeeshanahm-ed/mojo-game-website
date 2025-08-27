@@ -122,8 +122,6 @@ const Header: React.FC = () => {
                 <MobileDrawer
                     isOpen={isDrawerOpen}
                     onClose={() => setIsDrawerOpen(false)}
-                    setOpenWalletModal={setOpenWalletModal}
-                    setOpenNewGameModal={setOpenNewGameModal}
                 />
             </Wrapper>
         </header>

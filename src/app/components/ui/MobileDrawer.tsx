@@ -4,12 +4,8 @@ import { useAuthModalStore } from '@/app/store/useAuthModalStore';
 import Image from 'next/image';
 
 //icons
-import GiftIcon from "@/app/assets/icons/gift-icon.svg";
-import FileIcon from "@/app/assets/icons/file-icon.svg";
-import GampadIcon from "@/app/assets/icons/gamepad-icon.svg";
 import LoginIcon from "@/app/assets/icons/login-icon.svg";
 import FallBackProfileImage from '@/app/assets/images/fallback-profile-image.jpg';
-import { FaPlus } from "react-icons/fa";
 import { MdClose } from 'react-icons/md';
 import LanguageSwitcher from './Language-Switcher';
 import Link from 'next/link';
@@ -20,11 +16,9 @@ import { useTranslation } from 'react-i18next';
 interface MobileDrawerProps {
     isOpen: boolean;
     onClose: () => void;
-    setOpenNewGameModal: (v: boolean) => void;
-    setOpenWalletModal: (v: boolean) => void;
 }
 
-const MobileDrawer: React.FC<MobileDrawerProps> = ({ isOpen, onClose, setOpenWalletModal, setOpenNewGameModal }) => {
+const MobileDrawer: React.FC<MobileDrawerProps> = ({ isOpen, onClose }) => {
     const { user } = useAuth();
     const { openModal } = useAuthModalStore();
     const name = "Zeeshan Ahmed";
