@@ -104,6 +104,7 @@ const QuestionNAnswer = ({ editQuestionData, setQuestionsData, goBack, mode }: Q
         const file = event.target.files?.[0];
         const name = event.target.name;
         const error = validateUploadedFile(file);
+        console.log("error", error, uploadedFileType);
         if (file) {
             if (name === "questionMedia") {
                 setQuestionMediaObj(file);
