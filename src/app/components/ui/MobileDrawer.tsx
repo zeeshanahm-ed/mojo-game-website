@@ -81,7 +81,7 @@ const MobileDrawer: React.FC<MobileDrawerProps> = ({ isOpen, onClose }) => {
                                     className="flex items-center gap-4 py-4 px-6 "
                                     onClick={() => handleModales_Navigation('/profile')}
                                 >
-                                    <div className="relative w-9 h-9 border border-black skew-custom   ">
+                                    <div className="relative w-9 h-9 border border-black">
                                         <Image
                                             src={(typeof FallBackProfileImage === 'string' ? FallBackProfileImage : FallBackProfileImage.src)}
                                             width={36}
@@ -102,10 +102,10 @@ const MobileDrawer: React.FC<MobileDrawerProps> = ({ isOpen, onClose }) => {
                                         className="flex items-center gap-4 py-4 px-6 "
                                         onClick={() => handleModales_Navigation('auth')}
                                     >
-                                        <div className="bg-yellow p-2 h-1/2 border border-black skew-custom   ">
+                                        <div className="bg-yellow p-2 h-1/2 border border-black">
                                             <LoginIcon />
                                         </div>
-                                        <span className="text-lg font-medium text-black">Login/Signup</span>
+                                        <span className="text-lg font-medium text-black">{t("loginSignup")}</span>
                                     </div>
                                 </div>
                             </>

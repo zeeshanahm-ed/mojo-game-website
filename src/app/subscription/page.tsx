@@ -8,10 +8,12 @@ import Banner from './components/Banner';
 import CrownIcon from "@/app/assets/icons/crown-icon.svg";
 import { MdOutlineInfo } from "react-icons/md";
 import Button from '../components/ui/common/Button';
+import PaymentOptionModal from '../components/modals/payment-options-modal';
 
 
 
 function Subscription() {
+    const [isModalOpen, setIsModalOpen] = React.useState(false);
 
     return (
         <section>
@@ -59,7 +61,7 @@ function Subscription() {
                             </p>
 
                             {/* Buy Now Button */}
-                            <Button boxShadow={false} className="!skew-x-0 text-3xl md:text-4xl w-36" bgClass='bg-dark-orange'>
+                            <Button onClick={() => setIsModalOpen(true)} boxShadow={false} className="!skew-x-0 text-3xl md:text-4xl w-36" bgClass='bg-dark-orange'>
                                 BUY NOW
                             </Button>
                         </div>
@@ -75,6 +77,7 @@ function Subscription() {
                     </div>
                 </div>
             </Wrapper>
+            <PaymentOptionModal open={isModalOpen} onClose={() => setIsModalOpen(false)} />
         </section >
     )
 }

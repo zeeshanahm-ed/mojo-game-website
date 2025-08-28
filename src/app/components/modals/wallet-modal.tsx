@@ -39,7 +39,7 @@ function WalletModal({ open, onClose }: WalletModalProps) {
                     </h2>
                     <button
                         type="button"
-                        className="absolute right-3 -top-3 bg-light-gray focus:outline-none w-5 h-5 md:w-8 md:h-8 flex items-center justify-center rounded-full text-white hover:bg-dark-gray transition-colors duration-300"
+                        className="absolute right-3 -top-0 bg-light-gray focus:outline-none w-5 h-5 md:w-8 md:h-8 flex items-center justify-center rounded-full text-white hover:bg-dark-gray transition-colors duration-300"
                         onClick={onClose}
                         aria-label="Close"
                     >

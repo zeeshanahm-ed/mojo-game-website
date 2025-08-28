@@ -25,6 +25,8 @@ type Option = {
     translated: string;
 };
 
+type UploadedFileType = "image" | "video" | "audio";
+
 const initialOptions: Option[] = [
     { text: "", translated: "" },
     { text: "", translated: "" },
@@ -46,13 +48,34 @@ const QuestionNAnswer = ({ editQuestionData, setQuestionsData, goBack, mode }: Q
     });
     const [questionMediaObj, setQuestionMediaObj] = useState<File | null>(null);
     const [answerMediaObj, setAnswerMediaObj] = useState<File | null>(null);
+    const [uploadedFileType, setUploadedFileType] = useState<UploadedFileType>();
 
     const questionFileInputRef = useRef<HTMLInputElement>(null);
-    const triggerQuestionFileInput = () => {
+    const triggerQuestionFileInput = (type: UploadedFileType) => {
+        setUploadedFileType(type);
+        if (!questionFileInputRef.current) return;
+
+        if (type === "image") {
+            questionFileInputRef.current.accept = ".jpg,.jpeg,.png,.gif,.webp";
+        } else if (type === "video") {
+            questionFileInputRef.current.accept = ".mp4,.webm,.ogg";
+        } else if (type === "audio") {
+            questionFileInputRef.current.accept = ".mp3,.wav,.ogg";
+        }
         questionFileInputRef.current?.click();
     };
     const answerFileInputRef = useRef<HTMLInputElement>(null);
-    const triggerAnswerFileInput = () => {
+    const triggerAnswerFileInput = (type: UploadedFileType) => {
+        setUploadedFileType(type);
+        if (!answerFileInputRef.current) return;
+
+        if (type === "image") {
+            answerFileInputRef.current.accept = ".jpg,.jpeg,.png,.gif,.webp";
+        } else if (type === "video") {
+            answerFileInputRef.current.accept = ".mp4,.webm,.ogg";
+        } else if (type === "audio") {
+            answerFileInputRef.current.accept = ".mp3,.wav,.ogg";
+        }
         answerFileInputRef.current?.click();
     };
 
@@ -66,9 +89,21 @@ const QuestionNAnswer = ({ editQuestionData, setQuestionsData, goBack, mode }: Q
         });
     };
 
+    const validateUploadedFile = (file: File | undefined) => {
+        if (!file) return "No file selected";
+        if (!["image/jpeg", "image/png", "video/mp4", "audio/mpeg"].includes(file.type)) {
+            return "Invalid file type";
+        }
+        if (file.size > 5 * 1024 * 1024) {
+            return "File size exceeds 5MB";
+        }
+        return null;
+    }
+
     const handleProfilePictureChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const file = event.target.files?.[0];
         const name = event.target.name;
+        const error = validateUploadedFile(file);
         if (file) {
             if (name === "questionMedia") {
                 setQuestionMediaObj(file);
@@ -180,7 +215,6 @@ const QuestionNAnswer = ({ editQuestionData, setQuestionsData, goBack, mode }: Q
                                     ref={questionFileInputRef}
                                     name="questionMedia"
                                     onChange={handleProfilePictureChange}
-                                    accept="image/*"
                                     className="hidden"
                                 />
                                 {questionState?.questionMedia ?
@@ -202,26 +236,26 @@ const QuestionNAnswer = ({ editQuestionData, setQuestionsData, goBack, mode }: Q
                                     </>
                                     :
 
-                                    <button
-                                        className="w-full h-full  cursor-pointer flex items-center justify-between gap-x-5 bg-white hover:text-light-gray transition-colors duration-300"
-                                        onClick={triggerQuestionFileInput}
+                                    <div
+                                        className="w-full h-full flex items-center justify-between gap-x-5 bg-white"
+
                                     >
                                         <span className="border-r h-full pe-4 flex-centered border-border-gray text-lg text-center ">Upload Media</span>
                                         <div className='flex items-center justify-between flex-1 px-8'>
-                                            <div className='flex-centered gap-x-4'>
+                                            <button className='flex-centered gap-x-4 hover:text-light-gray transition-colors duration-300' onClick={() => triggerQuestionFileInput("image")}>
                                                 <UploadImageIcon />
-                                                <span className="text-base ">Photo</span>
-                                            </div>
-                                            <div className='flex-centered gap-x-4'>
+                                                <span className="text-base ">Image</span>
+                                            </button>
+                                            <button className='flex-centered gap-x-4 hover:text-light-gray transition-colors duration-300' onClick={() => triggerQuestionFileInput("video")}>
                                                 <VideoIcon />
                                                 <span className="text-base ">Video</span>
-                                            </div>
-                                            <div className='flex-centered gap-x-4'>
+                                            </button>
+                                            <button className='flex-centered gap-x-4 hover:text-light-gray transition-colors duration-300' onClick={() => triggerQuestionFileInput("audio")}>
                                                 <AudioIcon />
                                                 <span className="text-base ">Audio</span>
-                                            </div>
+                                            </button>
                                         </div>
-                                    </button>
+                                    </div>
                                 }
                             </div>
                         </div>
@@ -263,7 +297,6 @@ const QuestionNAnswer = ({ editQuestionData, setQuestionsData, goBack, mode }: Q
                                     ref={answerFileInputRef}
                                     name="answerMedia"
                                     onChange={handleProfilePictureChange}
-                                    accept="image/*"
                                     className="hidden"
                                 />
                                 {questionState?.answerMedia ?
@@ -286,26 +319,25 @@ const QuestionNAnswer = ({ editQuestionData, setQuestionsData, goBack, mode }: Q
 
                                     :
 
-                                    <button
-                                        className="w-full h-full  cursor-pointer flex items-center justify-between gap-x-5 bg-white hover:text-light-gray transition-colors duration-300"
-                                        onClick={triggerAnswerFileInput}
+                                    <div
+                                        className="w-full h-full flex items-center justify-between gap-x-5 bg-white"
                                     >
                                         <span className="border-r h-full pe-4 flex-centered border-border-gray text-lg text-center ">Upload Media</span>
                                         <div className='flex items-center justify-between flex-1 px-8'>
-                                            <div className='flex-centered gap-x-4'>
+                                            <button className='flex-centered gap-x-4 hover:text-light-gray transition-colors duration-300' onClick={() => triggerAnswerFileInput("image")}>
                                                 <UploadImageIcon />
-                                                <span className="text-base ">Photo</span>
-                                            </div>
-                                            <div className='flex-centered gap-x-4'>
+                                                <span className="text-base ">Image</span>
+                                            </button>
+                                            <button className='flex-centered gap-x-4 hover:text-light-gray transition-colors duration-300' onClick={() => triggerAnswerFileInput("video")}>
                                                 <VideoIcon />
                                                 <span className="text-base ">Video</span>
-                                            </div>
-                                            <div className='flex-centered gap-x-4'>
+                                            </button>
+                                            <button className='flex-centered gap-x-4 hover:text-light-gray transition-colors duration-300' onClick={() => triggerAnswerFileInput("audio")}>
                                                 <AudioIcon />
                                                 <span className="text-base ">Audio</span>
-                                            </div>
+                                            </button>
                                         </div>
-                                    </button>
+                                    </div>
                                 }
                             </div>
                         </div>
