@@ -67,14 +67,19 @@ export default function SignUpForm({ setLoading, loading }: SignUpFormProps) {
 
     const handleOk = () => {
         setLoading(true);
+
         const formData = new FormData();
-        formData.append("firstName", formState.firstName);
-        formData.append("lastName", formState.lastName);
-        formData.append("email", formState.email);
-        formData.append("password", formState.password);
-        formData.append("age", formState.age);
-        formData.append("gender", formState.gender);
-        formData.append("phoneNumber", formState.countryCode + formState.phoneNumber);
+        const fields = [
+            { key: "firstName", value: formState.firstName },
+            { key: "lastName", value: formState.lastName },
+            { key: "email", value: formState.email },
+            { key: "password", value: formState.password },
+            { key: "age", value: formState.age },
+            { key: "gender", value: formState.gender },
+            { key: "phoneNumber", value: formState.countryCode + formState.phoneNumber }
+        ];
+
+        fields.forEach(field => formData.append(field.key, field.value));
 
         if (formState.avatar && profilePicObj instanceof File) {
             formData.append("avatar", profilePicObj);
