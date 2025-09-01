@@ -81,9 +81,9 @@ function GamePlay() {
         isEnabled: boolean | undefined,
         teamTurnOn: boolean | undefined
     ) => {
-        let isDisabled = screen !== "questionsList" && !isEnabled || !teamTurnOn;
+        let isDisabled = false;
 
-        if (screen === "questionsList") {
+        if (["questionsList", "answer", "whoAnswered", "congratulation"].includes(screen)) {
             isDisabled = true;
         } else if (!isEnabled || !teamTurnOn) {
             isDisabled = !isEnabled || !teamTurnOn;
@@ -156,11 +156,12 @@ function GamePlay() {
                     <OfflineQuestion
                         question={selectedQuestion}
                         handleScreenChange={handleScreenChange}
+                        setCurrentLifeline={setCurrentLifeline}
                     />
                 );
             case "onlineQuestion":
                 return (
-                    <OnlineQuestion handleScreenChange={handleScreenChange} />
+                    <OnlineQuestion handleScreenChange={handleScreenChange} setCurrentLifeline={setCurrentLifeline} />
                 );
             case "answer":
                 return (

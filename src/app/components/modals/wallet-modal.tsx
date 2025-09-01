@@ -1,5 +1,4 @@
-import React from 'react';
-import Button from '../ui/common/Button';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import Select from '../ui/common/Select';
 import { useTranslation } from 'react-i18next';
@@ -10,7 +9,7 @@ import CreditImage from "@/app/assets/images/credit-image.png";
 import SarFlagImage from "@/app/assets/images/saudia-flag-image.png";
 import { MdClose } from 'react-icons/md';
 import { Currency_Options } from '@/app/constants/constant';
-import { useDirection } from '@/app/hooks/useGetDirection';
+import Link from 'next/link';
 
 
 interface WalletModalProps {
@@ -20,14 +19,10 @@ interface WalletModalProps {
 
 function WalletModal({ open, onClose }: WalletModalProps) {
     const { t } = useTranslation();
-    const direction = useDirection();
+    const [currency, setCurrency] = useState('SAR');
 
-    const handleNavigate = (type: string) => {
-        if (type === 'recharge') {
-            console.log('Navigate to recharge wallet');
-        } else if (type === 'history') {
-            console.log('Navigate to purchase history');
-        }
+    const handleCurrencyChange = (value: string) => {
+        setCurrency(value);
     };
 
     return (
@@ -58,15 +53,15 @@ function WalletModal({ open, onClose }: WalletModalProps) {
                         </div>
 
                         <div className='space-y-2 w-full'>
-                            <h3 className="text-4xl sm:text-4xl md:text-5xl lg:text-6xl">
+                            <h3 className="text-4xl md:text-5xl">
                                 {t("credits")}
                             </h3>
                             <p className="text-sm max-w-xs font-secondary">
                                 {t("creditsInfo")}
                             </p>
-                            <Button className='text-2xl sm:text-3xl w-36 sm:w-48' onClick={() => handleNavigate("recharge")}>
+                            {/* <Button className='text-2xl sm:text-3xl w-36 sm:w-48' onClick={() => handleNavigate("recharge")}>
                                 {t("rechargeWallet")}
-                            </Button>
+                            </Button> */}
                         </div>
                     </div>
 
@@ -77,7 +72,7 @@ function WalletModal({ open, onClose }: WalletModalProps) {
                         </div>
 
                         <div className='space-y-2 w-full'>
-                            <h3 className="text-4xl sm:text-4xl md:text-5xl lg:text-6xl">
+                            <h3 className="text-4xl md:text-5xl">
                                 SAR
                             </h3>
                             <p className="text-sm font-secondary max-w-xs">
@@ -88,10 +83,11 @@ function WalletModal({ open, onClose }: WalletModalProps) {
                             <Select
                                 className="!h-12 !w-40 sm:!w-48 md:!w-52"
                                 iconBgColor="!bg-white"
-                                selectClassName='!pl-5 !text-2xl !sm:text-3xl'
+                                selectClassName='!pl-5 !text-xl'
                                 options={Currency_Options}
-                                onChange={() => { }}
-                                value='SAR' />
+                                onChange={(e) => handleCurrencyChange(e.target.value)}
+                                value={currency}
+                            />
                         </div>
                     </div>
 
@@ -102,15 +98,22 @@ function WalletModal({ open, onClose }: WalletModalProps) {
                         </div>
 
                         <div className='space-y-2 w-full'>
-                            <h3 className="text-4xl sm:text-4xl md:text-5xl lg:text-6xl">
+                            <h3 className="text-4xl md:text-5xl">
                                 {t("history")}
                             </h3>
                             <p className="text-sm font-secondary max-w-xs">
                                 {t("purchaseHistory")}
                             </p>
-                            <Button className={`text-2xl ${direction === "rtl" ? "" : "md:!mt-1"} sm:text-3xl w-36 sm:w-48`} onClick={() => handleNavigate("history")}>
+                            {/* <Button className={`text-2xl ${direction === "rtl" ? "" : "md:!mt-1"} sm:text-3xl w-36 sm:w-48`} onClick={() => handleNavigate("history")}>
                                 {t("viewHistory")}
-                            </Button>
+                            </Button> */}
+                            <Link
+                                href='/profile'
+                                onClick={onClose}
+                                className='boxShadow-custom bg-purple text-white flex-centered pt-2 w-36 sm:w-48 text-4xl px-4 transform font-primary -skew-x-6 md:-skew-x-12 border-2 border-black shadow-lg '>
+                                {t("viewHistory")}
+                            </Link>
+
                         </div>
                     </div>
                 </div>

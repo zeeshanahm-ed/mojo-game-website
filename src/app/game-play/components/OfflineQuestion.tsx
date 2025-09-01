@@ -14,9 +14,10 @@ interface OfflineQuestionProps {
     questionType?: "audio" | "video" | "image" | "list";
     question: offlineQuestionsListInterface | null;
     handleScreenChange: (action: string) => void;
+    setCurrentLifeline: (v: undefined) => void;
 }
 
-export default function OfflineQuestion({ question, handleScreenChange }: OfflineQuestionProps) {
+export default function OfflineQuestion({ question, handleScreenChange, setCurrentLifeline }: OfflineQuestionProps) {
     const [timer, setTimer] = useState(0);
     const [isPaused, setIsPaused] = useState(false);
     const { t } = useTranslation();
@@ -62,7 +63,7 @@ export default function OfflineQuestion({ question, handleScreenChange }: Offlin
                     {/* Options (audio/video/list) */}
                     <div className="flex flex-col items-center justify-center py-4 gap-2 h-[400px]">
                         {question?.mediaType === "audio" && (
-                            <audio controls src={question?.mediaUrl} className="w-56" />
+                            <audio controls src={question?.mediaUrl} className="w-full md:w-1/2" />
                         )}
                         {question?.mediaType === "video" && (
                             <video
@@ -110,7 +111,10 @@ export default function OfflineQuestion({ question, handleScreenChange }: Offlin
                     </div>
                     <div
                         role="button"
-                        onClick={() => handleScreenChange("answer")}
+                        onClick={() => {
+                            setCurrentLifeline(undefined);
+                            handleScreenChange("answer");
+                        }}
                         className={`w-full sm:w-auto cursor-pointer sm:h-12 flex px-2 md:px-5 py-1 sm:py-2 pt-2 ${direction === "ltr" && "sm:pt-4"} items-center justify-center  text-white bg-dark-green  border-2 border-black`}>
                         <span className="md:text-4xl text-xl sm:text-3xl">{t("seeAnswer")}</span>
                     </div>

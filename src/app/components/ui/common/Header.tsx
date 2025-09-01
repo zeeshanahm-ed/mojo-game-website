@@ -13,7 +13,6 @@ import AuthModal from '@/app/auth/AuthModal';
 import Image from 'next/image';
 import LanguageSwitcher from '../Language-Switcher';
 //icons
-import GiftIcon from "@/app/assets/icons/gift-icon.svg";
 import FileIcon from "@/app/assets/icons/file-icon.svg";
 import GampadIcon from "@/app/assets/icons/gamepad-icon.svg";
 import FallBackProfileImage from '@/app/assets/images/fallback-profile-image.jpg';
@@ -69,9 +68,6 @@ const Header: React.FC = () => {
                             }
                         </div>
                         <div className="flex items-center space-x-3 lg:space-x-4 text-gray-700">
-                            <div className="p-2 border border-black skew-custom shadow-sm cursor-pointer hover:bg-gray-100 transition-colors">
-                                <GiftIcon />
-                            </div>
                             <div role='button' onClick={() => setOpenNewGameModal(true)} className="relative p-2 h-9 border border-black skew-custom shadow-sm cursor-pointer hover:bg-gray-100 transition-colors">
                                 <GampadIcon />
                                 <span className="absolute -top-1 -right-1 bg-red text-white rounded-full w-4 h-4 flex justify-center items-center font-semibold">
@@ -102,9 +98,6 @@ const Header: React.FC = () => {
                         <Link href="/contactus" className="hover:text-dark-gray transition-colors">{t("contactUs")}</Link>
                     </div>
                     <div className="md:hidden flex items-center space-x-3 lg:space-x-4 text-gray-700">
-                        <div className="p-2 border border-black skew-custom shadow-sm cursor-pointer hover:bg-gray-100 transition-colors">
-                            <GiftIcon />
-                        </div>
                         <div role='button' onClick={() => setOpenNewGameModal(true)} className="relative p-2 h-9 border border-black skew-custom shadow-sm cursor-pointer hover:bg-gray-100 transition-colors">
                             <GampadIcon />
                             <span className="absolute -top-1 -right-1 bg-red text-white rounded-full w-4 h-4 flex justify-center items-center font-semibold">

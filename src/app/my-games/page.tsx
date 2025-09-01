@@ -3,7 +3,6 @@ import React, { useState } from 'react'
 import Banner from './components/Banner'
 import Wrapper from '@/app/components/ui/common/Wrapper';
 import Input from '@/app/components/ui/common/Input';
-import Button from '@/app/components/ui/common/Button';
 import Image from 'next/image';
 import Pagination from '../components/ui/common/Pagination';
 import { useTranslation } from 'react-i18next';
@@ -24,13 +23,13 @@ function MyGames() {
             <Wrapper>
                 <div className='flex items-center justify-center flex-col h-auto py-16 px-4 md:px-10'>
                     <div className='flex items-center lg:flex-row flex-col gap-y-10 w-full mb-20 gap-5'>
-                        <div className='flex-center flex-col sm:flex-row w-full lg:w-[79%] justify-between gap-5'>
+                        <div className='flex-center flex-col sm:flex-row w-full justify-between gap-5'>
                             <Input
                                 icon={<SearchIcon />}
                                 type="text"
                                 placeholder={t("searchByName")}
                                 value={searchByName}
-                                className='w-full h-14'
+                                className='flex-1 h-14'
                                 onChange={(e) => setSearchByName(e.target.value)}
                             />
                             <Input
@@ -38,13 +37,10 @@ function MyGames() {
                                 type="text"
                                 placeholder={t("searchByCategory")}
                                 value={searchByCategory}
-                                className='w-full h-14'
+                                className='flex-1 h-14'
                                 onChange={(e) => setSearchByCategory(e.target.value)}
                             />
                         </div>
-                        <Button boxShadow={false} className='md:text-4xl text-3xl w-64 py-[6px]'>
-                            {t("buyNewGame")}
-                        </Button>
                     </div>
                     <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-6 place-items-center'>
                         <GameCard />

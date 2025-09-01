@@ -7,9 +7,10 @@ interface OnlineQuestionProps {
     // questionType?: "audio" | "video" | "image" | "list";
     points?: number;
     handleScreenChange: (action: string) => void;
+    setCurrentLifeline: (v: undefined) => void;
 }
 
-export default function OnlineQuestion({ points = 400, handleScreenChange }: OnlineQuestionProps) {
+export default function OnlineQuestion({ points = 400, handleScreenChange, setCurrentLifeline }: OnlineQuestionProps) {
     const { t } = useTranslation();
 
     // const [player1Answer, setPlayer1Answer] = useState<string | null>(null);
@@ -71,7 +72,10 @@ export default function OnlineQuestion({ points = 400, handleScreenChange }: Onl
                     </div>
                     <button
                         role="button"
-                        onClick={() => handleScreenChange("answer")}
+                        onClick={() => {
+                            setCurrentLifeline(undefined);
+                            handleScreenChange("answer");
+                        }}
                         className="w-fit -cursor-pointer sm:h-12 flex px-5 pt-1 items-center justify-center  text-white bg-dark-green  border-2 border-black">
                         <span className="md:text-4xl text-2xl sm:text-3xl">{t("seeAnswer")}</span>
                     </button>

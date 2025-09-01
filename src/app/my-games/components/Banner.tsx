@@ -6,9 +6,12 @@ import { useTranslation } from 'react-i18next';
 
 import StarImage from "@/app/assets/images/star.png"
 import QuizAppImage from "@/app/assets/images/question-image-colorful.png"
+import CreateGameModal from '@/app/components/modals/create-game-modal';
+import { useCreateGameModalStore } from '@/app/store/useCreateGameModalStore';
 
 const Banner: React.FC = () => {
     const { t } = useTranslation();
+    const { openModal } = useCreateGameModalStore();
     return (
         <section className="w-full bg-[#1078FF] pb-5 py-10 px-4 md:px-10 flex flex-col items-center justify-center relative overflow-hidden border-b-4 border-black">
             {/* Main Content */}
@@ -28,7 +31,7 @@ const Banner: React.FC = () => {
                             {t("playLocalNote")}
                         </p>
                         <div className='w-full my-10'>
-                            <Button className='md:text-4xl w-44 sm:w-52 md:w-72 text-3xl' bgClass="bg-yellow" boxShadow={false} textClass="text-black">
+                            <Button onClick={openModal} className='md:text-4xl w-44 sm:w-52 md:w-72 text-3xl' bgClass="bg-yellow" boxShadow={false} textClass="text-black">
                                 {t("newGame")}
                             </Button>
                         </div>
@@ -40,6 +43,7 @@ const Banner: React.FC = () => {
                     </div>
                 </div>
             </Wrapper>
+            <CreateGameModal />
         </section>
     );
 };
