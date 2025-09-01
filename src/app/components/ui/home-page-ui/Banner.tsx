@@ -2,7 +2,7 @@
 import { useTranslation } from 'react-i18next';
 import { useRouter } from 'next/navigation';
 
-import Image, { StaticImageData } from 'next/image';
+import Image from 'next/image';
 import Wrapper from '../common/Wrapper';
 import { useCreateGameModalStore } from '@/app/store/useCreateGameModalStore';
 import CreateGameModal from '../../modals/create-game-modal';
@@ -13,12 +13,12 @@ import RocketImage from '@/app/assets/images/rocket.png';
 import StarImage from '@/app/assets/images/star.png';
 import LightBulbImage from '@/app/assets/images/light-bulb.png';
 import BookImage from '@/app/assets/images/book.png';
-import PrivateGameImage from '@/app/assets/images/private-game.png';
-import KidsGameImage from '@/app/assets/images/kids-quest.png';
-import StudentGameImage from '@/app/assets/images/student-quest.png';
+// import PrivateGameImage from '@/app/assets/images/private-game.png';
+// import KidsGameImage from '@/app/assets/images/kids-quest.png';
+// import StudentGameImage from '@/app/assets/images/student-quest.png';
 import CreateGameImage from '@/app/assets/images/create-game.png';
-import RamadanGameImage from '@/app/assets/images/ramadan-quest.png';
-import Link from 'next/link';
+// import RamadanGameImage from '@/app/assets/images/ramadan-quest.png';
+// import Link from 'next/link';
 
 export default function Banner() {
     const { t } = useTranslation();
@@ -79,14 +79,14 @@ export default function Banner() {
                             </div>
                         </button>
 
-                        <div className='space-y-1 ms-3 md:space-y-2 flex flex-col items-start'>
+                        {/* <div className='space-y-1 ms-3 md:space-y-2 flex flex-col items-start'>
                             <GameCard type={"students"} image={StudentGameImage} title={t("mojo")} subtitle={t("students")} bgColor="bg-orange" href='/students' />
                             <GameCard type={"ramadan"} image={RamadanGameImage} title={t("mojo")} subtitle={t("ramadan")} bgColor="bg-light-green" className="-ml-2" href='/' />
                         </div>
                         <div className='space-y-1 ms-3 md:space-y-2 flex flex-col items-start'>
                             <GameCard type={"kidsQuest"} image={KidsGameImage} title={t("mojo")} subtitle={t("kids_quest")} href='/kids-quest' bgColor="bg-green" />
                             <GameCard type={"privateGame"} image={PrivateGameImage} title={t("mojo")} subtitle={t("private_game")} href='/private-game' bgColor="bg-light-blue" className="-ml-2" />
-                        </div>
+                        </div> */}
                     </div>
                     <div className="-rotate-45 md:rotate-0 w-20 h-20 lg:w-44 lg:h-44 md:w-36 md:h-36 start-[80%] sm:start-[55%]  md:start-[50%] absolute bottom-[65%] sm:bottom-[60%] top-0 xsm:top-[unset] md:bottom-[45%]">
                         <Image
@@ -116,37 +116,37 @@ export default function Banner() {
     );
 }
 
-interface GameCardProps {
-    image: StaticImageData;
-    bgColor: string;
-    title: string;
-    subtitle: string;
-    centered?: boolean;
-    className?: string;
-    type: string;
-    href: string;
-}
+// interface GameCardProps {
+//     image: StaticImageData;
+//     bgColor: string;
+//     title: string;
+//     subtitle: string;
+//     centered?: boolean;
+//     className?: string;
+//     type: string;
+//     href: string;
+// }
 
-function GameCard({
-    image,
-    bgColor,
-    title,
-    subtitle,
-    type,
-    href,
-    className
-}: GameCardProps) {
-    return (
-        <Link
-            href={href}
-            className={`relative text-black skew-custom md:w-[220px] md:h-[85px] w-[100px] sm:w-[120px] h-[60px] py-1 px-1 md:py-3 md:px-3 md:border-[6px] border-[3px] border-black ${bgColor} ${className} ${type === "ramadan" ? "cursor-not-allowed" : "cursor-pointer"} flex-col flex`}
-        >
+// function GameCard({
+//     image,
+//     bgColor,
+//     title,
+//     subtitle,
+//     type,
+//     href,
+//     className
+// }: GameCardProps) {
+//     return (
+//         <Link
+//             href={href}
+//             className={`relative text-black skew-custom md:w-[220px] md:h-[85px] w-[100px] sm:w-[120px] h-[60px] py-1 px-1 md:py-3 md:px-3 md:border-[6px] border-[3px] border-black ${bgColor} ${className} ${type === "ramadan" ? "cursor-not-allowed" : "cursor-pointer"} flex-col flex`}
+//         >
 
-            <div className='font-bulletproof skew-x-3  text-base uppercase'>{title}</div>
-            <div className=' text-2xl skew-x-3  md:text-4xl uppercase'>
-                {subtitle}
-            </div>
-            <Image src={image} alt={title} className="skew-x-3  absolute md:w-6 md:h-6 w-5 h-5 inline-block mt-auto top-1 md:top-2 end-2" />
-        </Link>
-    );
-}
+//             <div className='font-bulletproof skew-x-3  text-base uppercase'>{title}</div>
+//             <div className=' text-2xl skew-x-3  md:text-4xl uppercase'>
+//                 {subtitle}
+//             </div>
+//             <Image src={image} alt={title} className="skew-x-3  absolute md:w-6 md:h-6 w-5 h-5 inline-block mt-auto top-1 md:top-2 end-2" />
+//         </Link>
+//     );
+// }
