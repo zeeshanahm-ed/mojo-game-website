@@ -7,11 +7,11 @@ import { scrollToTop } from '../helpers/helpers-functions';
 import { useTranslation } from 'react-i18next';
 
 //icons
-import ScienceBookIcon from "@/app/assets/icons/science-book.svg";
-import EnglishBookIcon from "@/app/assets/icons/english-book.svg";
-import MathBookIcon from "@/app/assets/icons/math-book.svg";
-import ArabicBookIcon from "@/app/assets/icons/arabic-book.svg";
-import IslamicBookIcon from "@/app/assets/icons/islamic-education-book.svg";
+import ScienceBookIcon from "/images/icons/science-book.svg";
+import EnglishBookIcon from "/images/icons/english-book.svg";
+import MathBookIcon from "/images/icons/math-book.svg";
+import ArabicBookIcon from "/images/icons/arabic-book.svg";
+import IslamicBookIcon from "/images/icons/islamic-education-book.svg";
 
 interface state {
     academicLevel: number | null;

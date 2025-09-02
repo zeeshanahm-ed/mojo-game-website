@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import Button from '../ui/common/Button';
 import Input from '../ui/common/Input';
+//icons
 import { MdClose } from 'react-icons/md';
 import { useTranslation } from 'react-i18next';
 

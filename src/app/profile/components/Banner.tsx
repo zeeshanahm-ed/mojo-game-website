@@ -1,9 +1,9 @@
 import React from 'react';
 import Image from 'next/image';
-//icons
-import StarImage from "@/app/assets/images/star.png"
 import Wrapper from '@/app/components/ui/common/Wrapper';
 import { useTranslation } from 'react-i18next';
+//icons
+import StarImage from "/images/star.png"
 
 
 const Banner: React.FC = () => {

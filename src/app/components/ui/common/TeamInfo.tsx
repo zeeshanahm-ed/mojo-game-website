@@ -4,11 +4,6 @@ import Input from './Input';
 import { useDirection } from '@/app/hooks/useGetDirection';
 import { useTranslation } from 'react-i18next';
 
-//icons
-import PlusIcon from '@/app/assets/icons/plus.svg';
-import MinusIcon from '@/app/assets/icons/minus.svg';
-import VSIcon from '@/app/assets/images/vs.png';
-
 
 interface TeamInfoProps {
     teams: { first: { name: string; players: number }; second: { name: string; players: number } };
@@ -65,7 +60,7 @@ function TeamInfo({ gameName, handleGameName, teams, errors, handleTeamNameChang
                     <div className="flex items-center justify-center w-full space-x-2 px-6">
                         <CustomButton
                             handleClick={handlePlayerChange}
-                            icon={<PlusIcon />}
+                            icon={<Image src="/images/icons/plus.svg" alt='plus' width={20} height={20} />}
                             type="plus"
                             team="first"
                         />
@@ -74,7 +69,7 @@ function TeamInfo({ gameName, handleGameName, teams, errors, handleTeamNameChang
                         </span>
                         <CustomButton
                             handleClick={handlePlayerChange}
-                            icon={<MinusIcon />}
+                            icon={<Image src="/images/icons/minus.svg" alt='minus' width={20} height={20} />}
                             type="minus"
                             team="first"
                         />
@@ -82,7 +77,7 @@ function TeamInfo({ gameName, handleGameName, teams, errors, handleTeamNameChang
                 </div>
 
                 <div className="relative w-24 h-24 flex items-center justify-center">
-                    <Image src={VSIcon} alt='vs' className='w-28 h-36' />
+                    <Image src="/images/vs.png" alt='vs' className='w-28 h-36' />
                 </div>
 
                 {/* Second Team Card */}
@@ -106,7 +101,7 @@ function TeamInfo({ gameName, handleGameName, teams, errors, handleTeamNameChang
                     <div className="flex items-center justify-center w-full space-x-2 px-6">
                         <CustomButton
                             handleClick={handlePlayerChange}
-                            icon={<PlusIcon />}
+                            icon={<Image src="/images/icons/plus.svg" alt='plus' width={20} height={20} />}
                             type="plus"
                             team="second"
                         />
@@ -115,7 +110,7 @@ function TeamInfo({ gameName, handleGameName, teams, errors, handleTeamNameChang
                         </span>
                         <CustomButton
                             handleClick={handlePlayerChange}
-                            icon={<MinusIcon />}
+                            icon={<Image src="/images/icons/minus.svg" alt='minus' width={20} height={20} />}
                             type="minus"
                             team="second"
                         />

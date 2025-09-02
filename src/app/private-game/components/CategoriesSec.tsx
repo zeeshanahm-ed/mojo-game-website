@@ -1,12 +1,11 @@
-
 import React, { ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
 
 //icon
-import MoonIcon from "@/app/assets/icons/moon-icon.svg";
-import MaterialsIcon from "@/app/assets/icons/mojo-icon.svg";
-import QuranIcon from "@/app/assets/icons/quran-icon.svg";
-import SoccerIcon from "@/app/assets/icons/football-icon.svg"
+import MoonIcon from "/images/icons/moon-icon.svg";
+import MaterialsIcon from "/images/icons/mojo-icon.svg";
+import QuranIcon from "/images/icons/quran-icon.svg";
+import SoccerIcon from "/images/icons/football-icon.svg"
 
 interface CategoryItem {
     id: number;

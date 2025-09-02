@@ -9,18 +9,10 @@ import { useTranslation } from 'react-i18next';
 import useSignUp from './core/hooks/useSignUp';
 import { showErrorMessage, showSuccessMessage } from '../utils/messageUtils';
 import Select from '../components/ui/common/Select';
-//icons
-import PasswordIcon from '@/app/assets/icons/password-icon.svg';
-import EmailIcon from '@/app/assets/icons/email-icon.svg';
-import EditIcon from '@/app/assets/icons/edit-icon.svg';
-import ContactIcon from '@/app/assets/icons/contact-icon.svg';
-import UserIcon from '@/app/assets/icons/user-icon.svg';
-import AgeIcon from '@/app/assets/icons/age-icon.svg';
-import FallBackProfileImage from '@/app/assets/images/fallback-profile-image.jpg';
-import { IoEye, IoEyeOff } from "react-icons/io5";
-import CountryCodeIcon from '@/app/assets/icons/country-code-icon.svg';
 import { useCountries } from '../hooks/useCountries';
 import { AxiosError } from 'axios';
+//icons
+import { IoEye, IoEyeOff } from "react-icons/io5";
 
 
 interface ValidationErrors {
@@ -204,7 +196,7 @@ export default function SignUpForm({ setLoading, loading }: SignUpFormProps) {
                             className="hidden"
                         />
                         <Image
-                            src={formState.avatar ? formState.avatar : FallBackProfileImage}
+                            src={formState.avatar ? formState.avatar : "/images/fallback-profile-image.jpg"}
                             alt="User Profile"
                             className="w-full h-full object-contain"
                             width={96}
@@ -214,7 +206,7 @@ export default function SignUpForm({ setLoading, loading }: SignUpFormProps) {
                             className="absolute -top-2 -right-2 bg-black rounded-full p-1 border-2 border-white cursor-pointer"
                             onClick={triggerFileInput}
                         >
-                            <EditIcon className="w-4 h-4 fill-white text-white" />
+                            <Image src="/images/icons/edit-icon-white.svg" alt='edit-icon' width={20} height={20} />
                         </div>
                     </div>
                 </div>
@@ -222,7 +214,7 @@ export default function SignUpForm({ setLoading, loading }: SignUpFormProps) {
                 {/* First Name & Last Name Input */}
                 <div className="mb-6 flex items-center h-12 md:h-14 w-full transform -skew-x-12 border-2 border-black overflow-hidden">
                     <div className="bg-purple flex items-center justify-center w-12 md:w-16 h-full">
-                        <UserIcon />
+                        <Image src="/images/icons/user-icon.svg" alt='user-icon' width={20} height={20} />
                     </div>
                     <input
                         type="text"
@@ -250,7 +242,7 @@ export default function SignUpForm({ setLoading, loading }: SignUpFormProps) {
                 <div className='flex items-center gap-x-4 sm:gap-x-10 gap-y-5'>
                     <div className="flex items-center w-1/2 h-12 md:h-14 transform -skew-x-12 border-2 border-black overflow-hidden">
                         <div className="bg-purple flex items-center justify-center w-12 md:w-16 h-full">
-                            <AgeIcon />
+                            <Image src="/images/icons/age-icon.svg" alt='age-icon' width={20} height={20} />
                         </div>
                         <input
                             type="number"
@@ -295,7 +287,7 @@ export default function SignUpForm({ setLoading, loading }: SignUpFormProps) {
                 {/* Email Input */}
                 <div className="mb-6 flex items-center h-12 md:h-14 w-full transform -skew-x-12 border-2 border-black overflow-hidden">
                     <div className="bg-purple flex items-center justify-center w-12 md:w-16 h-full">
-                        <EmailIcon />
+                        <Image src="/images/icons/email-icon.svg" alt='email-icon' width={20} height={20} />
                     </div>
                     <input
                         type="email"
@@ -312,7 +304,7 @@ export default function SignUpForm({ setLoading, loading }: SignUpFormProps) {
                 {/* Password Input */}
                 <div className="mb-6 flex items-center h-12 md:h-14 w-full transform -skew-x-12 border-2 border-black overflow-hidden">
                     <div className="bg-purple flex items-center justify-center w-12 md:w-16 h-full">
-                        <PasswordIcon />
+                        <Image src="/images/icons/password-icon.svg" alt='password-icon' width={20} height={20} />
                     </div>
                     <input
                         name='password'
@@ -330,7 +322,7 @@ export default function SignUpForm({ setLoading, loading }: SignUpFormProps) {
                 <span className='text-red text-sm md:text-base'>{formErrors?.password}</span>
 
                 <Select
-                    icon={<CountryCodeIcon />}
+                    icon={<Image src="/images/icons/country-code-icon.svg" alt='country-code-icon' width={20} height={20} />}
                     iconClassName="!w-14"
                     isCountrySelect={true}
                     name="countryCode"
@@ -345,7 +337,7 @@ export default function SignUpForm({ setLoading, loading }: SignUpFormProps) {
                 {/* Contact Number Input */}
                 <div className="mb-6 flex items-center h-12 md:h-14 w-full transform -skew-x-12 border-2 border-black overflow-hidden">
                     <div className="bg-purple flex items-center justify-center w-12 md:w-16 h-full">
-                        <ContactIcon />
+                        <Image src="/images/icons/contact-icon.svg" alt='contact-icon' width={20} height={20} />
                     </div>
                     <input
                         name='phoneNumber'

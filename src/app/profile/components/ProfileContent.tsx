@@ -16,12 +16,12 @@ import { useAuthModalStore } from '@/app/store/useAuthModalStore';
 import { useDirection } from '@/app/hooks/useGetDirection';
 
 //icons
-import CountryCodeIcon from '@/app/assets/icons/country-code-icon.svg';
-import EmailIcon from '@/app/assets/icons/email-icon.svg';
-import ContactIcon from '@/app/assets/icons/contact-icon.svg';
-import UserIcon from '@/app/assets/icons/user-icon.svg';
-import EditIcon from '@/app/assets/icons/edit-icon.svg';
-import FallBackProfileImage from '@/app/assets/images/fallback-profile-image.jpg';
+import CountryCodeIcon from '/images/icons/country-code-icon.svg';
+import EmailIcon from '/images/icons/email-icon.svg';
+import ContactIcon from '/images/icons/contact-icon.svg';
+import UserIcon from '/images/icons/user-icon.svg';
+import EditIcon from '/images/icons/edit-icon.svg';
+import FallBackProfileImage from '/images/fallback-profile-image.jpg';
 
 interface FormState {
     firstName: string,

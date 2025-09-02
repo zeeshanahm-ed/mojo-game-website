@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Wrapper from '@/app/components/ui/common/Wrapper';
 import { useTranslation } from 'react-i18next';
 
-import PrivateGameImage from "@/app/assets/images/private-games-images.png"
+import PrivateGameImage from "/images/private-games-images.png"
 
 const Banner: React.FC = () => {
     const { t } = useTranslation();

@@ -1,5 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+    output: "export",
+    trailingSlash: false,
     experimental: {
         turbo: {
             rules: {
@@ -8,7 +10,8 @@ const nextConfig = {
         },
     },
     images: {
-        domains: ["logos-world.net", "placehold.co"], // ✅ allow this domain
+        unoptimized: true, // ✅ required for static export
+        domains: ["logos-world.net", "placehold.co"], // ✅ external domains
     },
     webpack(config, { dev }) {
         // ✅ SVG loader

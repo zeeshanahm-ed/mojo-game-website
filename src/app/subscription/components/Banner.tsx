@@ -1,9 +1,9 @@
 import React from 'react';
 import Image from 'next/image';
-//icons
-import QuestionImage from "@/app/assets/images/question-image-colorful.png";
-import CrownImage from "@/app/assets/images/crown-image.png";
 import Wrapper from '@/app/components/ui/common/Wrapper';
+//icons
+import QuestionImage from "/images/question-image-colorful.png";
+import CrownImage from "/images/crown-image.png";
 
 
 const Banner: React.FC = () => {

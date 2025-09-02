@@ -1,7 +1,7 @@
 
 import React from 'react';
 //icons
-import ReyalIcon from "@/app/assets/icons/riyal-rounded-icon.svg";
+import ReyalIcon from "/images/icons/riyal-rounded-icon.svg";
 import { SelectedGamesPaymentDetailsInterface } from '@/app/utils/Interfaces';
 import Image from 'next/image';
 

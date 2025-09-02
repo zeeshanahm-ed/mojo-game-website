@@ -1,6 +1,6 @@
 import React, { LegacyRef, useState } from 'react'
 import { copyToClipboard } from '@/app/helpers/helpers-functions';
-import EditIcon from '@/app/assets//icons/edit-icon.svg';
+import EditIcon from '/images/icons/edit-icon.svg';
 import { IoIosCopy } from "react-icons/io";
 import Button from '@/app/components/ui/common/Button';
 import JoinRoomModal from '@/app/components/modals/join-room-modal';

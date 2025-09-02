@@ -2,7 +2,7 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import TranslateIcon from "@/app/assets/icons/translate-icon.svg";
+import Image from 'next/image';
 
 export default function LanguageSwitcher() {
     const { i18n } = useTranslation();
@@ -50,7 +50,7 @@ export default function LanguageSwitcher() {
                 onClick={toggleMenu}
             >
                 {/* Globe Icon */}
-                <TranslateIcon />
+                <Image src="/images/icons/translate-icon.svg" alt='translate-icon' width={20} height={20} />
 
                 {/* Language Text */}
                 <span className="text-black font-bold text-lg">

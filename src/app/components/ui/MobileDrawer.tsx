@@ -2,14 +2,12 @@ import React from 'react';
 import { useAuth } from '@/app/context/AuthContext';
 import { useAuthModalStore } from '@/app/store/useAuthModalStore';
 import Image from 'next/image';
-
-//icons
-import LoginIcon from "@/app/assets/icons/login-icon.svg";
-import FallBackProfileImage from '@/app/assets/images/fallback-profile-image.jpg';
-import { MdClose } from 'react-icons/md';
 import LanguageSwitcher from './Language-Switcher';
 import Link from 'next/link';
 import { useTranslation } from 'react-i18next';
+
+//icons
+import { MdClose } from 'react-icons/md';
 
 
 
@@ -83,7 +81,7 @@ const MobileDrawer: React.FC<MobileDrawerProps> = ({ isOpen, onClose }) => {
                                 >
                                     <div className="relative w-9 h-9 border border-black">
                                         <Image
-                                            src={(typeof FallBackProfileImage === 'string' ? FallBackProfileImage : FallBackProfileImage.src)}
+                                            src="/images/fallback-profile-image.jpg"
                                             width={36}
                                             height={36}
                                             alt="User Avatar"
@@ -103,7 +101,7 @@ const MobileDrawer: React.FC<MobileDrawerProps> = ({ isOpen, onClose }) => {
                                         onClick={() => handleModales_Navigation('auth')}
                                     >
                                         <div className="bg-yellow p-2 h-1/2 border border-black">
-                                            <LoginIcon />
+                                            <Image src="/images/icons/login-icon.svg" alt='login-icon' width={20} height={20} />
                                         </div>
                                         <span className="text-lg font-medium text-black">{t("loginSignup")}</span>
                                     </div>
@@ -141,8 +139,8 @@ const MobileDrawer: React.FC<MobileDrawerProps> = ({ isOpen, onClose }) => {
                                     className="flex items-center gap-4 py-4 px-6 "
                                     onClick={handleLogout}
                                 >
-                                    <div className="p-2 h-1/2 border border-black skew-custom   ">
-                                        <LoginIcon className="rotate-180" />
+                                    <div className="p-2 h-1/2 border border-black skew-custom ">
+                                        <Image src="/images/icons/login-icon.svg" alt='login-icon' width={20} height={20} className="rotate-180" />
                                     </div>
                                     <span className="text-lg font-medium text-black">Logout</span>
                                 </div>

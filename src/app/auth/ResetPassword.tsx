@@ -4,10 +4,10 @@ import Button from '../components/ui/common/Button';
 import { useAuthModalStore } from '../store/useAuthModalStore';
 import { useTranslation } from 'react-i18next';
 import Input from '../components/ui/common/Input';
-import EmailIcon from '../assets/icons/email-icon.svg';
 import { showErrorMessage, showSuccessMessage } from '../utils/messageUtils';
 import { resetPassword } from './core/_requests';
 import { AxiosError } from 'axios';
+import Image from 'next/image';
 
 
 interface ForgotPasswordProps {
@@ -89,11 +89,11 @@ export default function ResetPassword({ setLoading, loading }: ForgotPasswordPro
         <section>
             <div className="text-center md:px-20 sm:px-10 px-5 py-10 space-y-6">
                 <div >
-                    <Input name="newPassword" onChange={handleInputChange} icon={<EmailIcon />} type='password' placeholder={t("newPassword")} />
+                    <Input name="newPassword" onChange={handleInputChange} icon={<Image src="/images/icons/email-icon.svg" alt='email-icon' width={20} height={20} />} type='password' placeholder={t("newPassword")} />
                     {formErrors.newPassword && <p className='font-secondary text-start text-red mt-1'>{formErrors.newPassword}</p>}
                 </div>
                 <div>
-                    <Input name="confirmPassword" onChange={handleInputChange} icon={<EmailIcon />} type='password' placeholder={t("confirmPassword")} />
+                    <Input name="confirmPassword" onChange={handleInputChange} icon={<Image src="/images/icons/email-icon.svg" alt='email-icon' width={20} height={20} />} type='password' placeholder={t("confirmPassword")} />
                     {formErrors.confirmPassword && <p className='font-secondary text-start text-red mt-1'>{formErrors.confirmPassword}</p>}
                 </div>
                 <Button disabled={loading} className='md:text-4xl text-2xl w-32 md:w-52' onClick={handleChangePass}>{t("changePassword")}</Button>

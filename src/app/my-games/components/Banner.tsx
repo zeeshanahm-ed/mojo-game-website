@@ -3,11 +3,11 @@ import Image from 'next/image';
 import Button from '@/app/components/ui/common/Button';
 import Wrapper from '@/app/components/ui/common/Wrapper';
 import { useTranslation } from 'react-i18next';
-
-import StarImage from "@/app/assets/images/star.png"
-import QuizAppImage from "@/app/assets/images/question-image-colorful.png"
 import CreateGameModal from '@/app/components/modals/create-game-modal';
 import { useCreateGameModalStore } from '@/app/store/useCreateGameModalStore';
+
+import StarImage from "/images/star.png"
+import QuizAppImage from "/images/question-image-colorful.png"
 
 const Banner: React.FC = () => {
     const { t } = useTranslation();

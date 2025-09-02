@@ -6,8 +6,6 @@ import { GamesCategoryInterface } from '@/app/utils/Interfaces';
 import { useTranslation } from 'react-i18next';
 import { useDirection } from '@/app/hooks/useGetDirection';
 
-//icons
-import SearchIcon from "@/app/assets/icons/search-icon.svg"
 import Button from './Button';
 import SuggestCategoryNQuestionModal from '../../modals/suggest-category-N-question-modal';
 import { showSuccessMessage } from '@/app/utils/messageUtils';
@@ -112,7 +110,7 @@ function CategoriesSection({ data, year, suggestCategoryNQuestions, onSelect, se
         <div className='flex items-center justify-center flex-col w-full'>
             {showInput && <div className='my-10'>
                 <Input
-                    icon={<SearchIcon />}
+                    icon={<Image src="/images/icons/search-icon.svg" alt='search-icon' width={20} height={20} />}
                     type="text"
                     value={search}
                     placeholder={t("searchCategory")}

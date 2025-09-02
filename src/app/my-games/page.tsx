@@ -8,8 +8,8 @@ import Pagination from '../components/ui/common/Pagination';
 import { useTranslation } from 'react-i18next';
 
 //icons
-import SearchIcon from '@/app/assets/icons/search-icon.svg';
-import GameIcon from '@/app/assets/images/quiz-app.png';
+import SearchIcon from '/images/icons/search-icon.svg';
+import GameIcon from '/images/quiz-app.png';
 
 
 function MyGames() {

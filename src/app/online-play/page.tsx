@@ -7,17 +7,18 @@ import JoinRoom from './components/JoinRoom';
 import Image from 'next/image';
 import Banner from './components/Banner';
 import Button from '@/app/components/ui/common/Button';
+import UserChallengModal from '../components/modals/user-challenging-modal';
+import Timer from './components/Timer';
+//HOOKS & UTILS
+import { useGameSession } from '../store/gameSession';
+import { useRouter } from 'next/navigation';
 import { categories } from '../constants/constant';
 import { GamesCategoryInterface } from '../utils/Interfaces';
 import { useTranslation } from 'react-i18next';
 
 //icons
-import VSIcon from '@/app/assets/images/vs.png';
-import FallBackProfileImage from '@/app/assets/images/fallback-profile-image.jpg';
-import UserChallengModal from '../components/modals/user-challenging-modal';
-import Timer from './components/Timer';
-import { useGameSession } from '../store/gameSession';
-import { useRouter } from 'next/navigation';
+import VSIcon from '/images/vs.png';
+import FallBackProfileImage from '/images/fallback-profile-image.jpg';
 
 type GameMode = 'friendly' | 'challenge' | null;
 type WhoCanAnswer = 'bothTeams' | 'oneTeamPerTurn' | null;
@@ -213,7 +214,7 @@ function OnlinePlay() {
                                 <Timer showTime={true} />
                             }
                             <div>
-                                <Button disabled={selectedCategories.length < 6} className=' text-white md:w-72 md:text-4xl lg:w-[450px] w-64 text-3xl lg:text-6xl' onClick={handleStartGame}>{t("startPlaying")}</Button>
+                                <Button disabled={selectedCategories.length < 6} className=' text-white md:w-72 md:text-4xl lg:w-[450px] w-64 text-3xl lg:text-6xl' onClick={handleStartGame}>{t("createGame")}</Button>
                                 {selectedMode === "challenge" &&
                                     <p className="text-base mt-3 font-secondary md:text-lg text-red text-start md:text-center">
                                         <strong className='ms-5 text-black'>{t("note")} </strong> {t("creditInfo")}

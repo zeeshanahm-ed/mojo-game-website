@@ -1,22 +1,22 @@
 import { currencyOptionsInterface, GamesCategoryInterface } from "../utils/Interfaces";
 
 export const categories: GamesCategoryInterface[] = [
-    { id: "1", name: 'Horror Movies', icon: '/categories-images/horror-movies.png' },
-    { id: "2", name: 'Cinema', icon: '/categories-images/cinema.png' },
-    { id: "3", name: 'Wrestling', icon: '/categories-images/wrestling.png' },
-    { id: "4", name: 'Currency', icon: '/categories-images/currency.png' },
-    { id: "5", name: 'Qatar', icon: '/categories-images/qatar.png' },
-    { id: "6", name: 'Cars', icon: '/categories-images/cars.png' },
-    { id: "7", name: 'Moto Bikes', icon: '/categories-images/motor-bike.png' },
-    { id: "8", name: 'Football', icon: '/categories-images/football.png' },
-    { id: "9", name: 'Fast Food', icon: '/categories-images/fast-food.png' },
+    { id: "1", name: 'Horror Movies', icon: '/images/categories-images/horror-movies.png' },
+    { id: "2", name: 'Cinema', icon: '/images/categories-images/cinema.png' },
+    { id: "3", name: 'Wrestling', icon: '/images/categories-images/wrestling.png' },
+    { id: "4", name: 'Currency', icon: '/images/categories-images/currency.png' },
+    { id: "5", name: 'Qatar', icon: '/images/categories-images/qatar.png' },
+    { id: "6", name: 'Cars', icon: '/images/categories-images/cars.png' },
+    { id: "7", name: 'Moto Bikes', icon: '/images/categories-images/motor-bike.png' },
+    { id: "8", name: 'Football', icon: '/images/categories-images/football.png' },
+    { id: "9", name: 'Fast Food', icon: '/images/categories-images/fast-food.png' },
     { id: "10", name: 'Saudi Arabia', icon: '/categories-images/saudi-arabia.png' },
-    { id: "11", name: 'Basket Ball', icon: '/categories-images/basket-ball.png' },
-    { id: "12", name: 'General Info', icon: '/categories-images/general-info.png' },
-    { id: "13", name: 'Music', icon: '/categories-images/music.png' },
-    { id: "14", name: 'E Gaming', icon: '/categories-images/e-gaming.png' },
-    { id: "15", name: 'Pro Boxing', icon: '/categories-images/pro-boxing.png' },
-    { id: "16", name: 'Animal Planet', icon: '/categories-images/animal-planet.png' }
+    { id: "11", name: 'Basket Ball', icon: '/images/categories-images/basket-ball.png' },
+    { id: "12", name: 'General Info', icon: '/images/categories-images/general-info.png' },
+    { id: "13", name: 'Music', icon: '/images/categories-images/music.png' },
+    { id: "14", name: 'E Gaming', icon: '/images/categories-images/e-gaming.png' },
+    { id: "15", name: 'Pro Boxing', icon: '/images/categories-images/pro-boxing.png' },
+    { id: "16", name: 'Animal Planet', icon: '/images/categories-images/animal-planet.png' }
 ];
 
 export const Currency_Options: currencyOptionsInterface[] = [

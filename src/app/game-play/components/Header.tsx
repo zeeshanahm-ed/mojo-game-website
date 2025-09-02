@@ -1,11 +1,11 @@
 import React from 'react';
-import Wrapper from '@/app/components/ui/common/Wrapper';
-import { useGameSession } from '@/app/store/gameSession';
 import { useTranslation } from 'react-i18next';
+import { useGameSession } from '@/app/store/gameSession';
 import { useDirection } from '@/app/hooks/useGetDirection';
+import Wrapper from '@/app/components/ui/common/Wrapper';
 //icons
-import GameOverIcon from '@/app/assets/icons/gameover-icon.svg';
-import ExitIcon from '@/app/assets/icons/exit-icon.svg';
+import GameOverIcon from '/images/icons/gameover-icon.svg';
+import ExitIcon from '/images/icons/exit-icon.svg';
 
 interface HeaderProps {
     handleScreenChange?: (value: string) => void;

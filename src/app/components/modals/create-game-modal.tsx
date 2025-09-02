@@ -2,12 +2,10 @@ import React from 'react'
 import Image from 'next/image';
 import { useCreateGameModalStore } from '@/app/store/useCreateGameModalStore';
 import { useTranslation } from 'react-i18next';
-//icons
-import OfflineImage from "@/app/assets/images/offlinemode-image.png"
-import OnlineImage from "@/app/assets/images/onlinemode-image.png"
-import { MdClose } from 'react-icons/md';
 import { useDirection } from '@/app/hooks/useGetDirection';
 import Link from 'next/link';
+//icons
+import { MdClose } from 'react-icons/md';
 
 function CreateGameModal() {
     const { closeModal } = useCreateGameModalStore();
@@ -37,7 +35,7 @@ function CreateGameModal() {
                 {/* Playing Mode Cards */}
                 <div className="flex items-center w-full justify-evenly md:px-10 py-5 px-5 sm:px-10 gap-5">
                     <Link href="/offline-play" onClick={closeModal} className="md:w-64 w-64 cursor-pointer skew-custom bg-green border-4 sm:border-[6px]  border-black flex flex-col items-center justify-center px-6 py-2 md:py-5 gap-5">
-                        <Image src={OfflineImage} alt='Offline Mode' className='sm:w-20 w-16 sm:h-20 md:w-20 md:h-20' />
+                        <Image src="/images/offlinemode-image.png" alt='Offline Mode' className='sm:w-20 w-16 sm:h-20 md:w-20 md:h-20' width={100} height={100} />
                         <p dir={direction} className="text-black text-5xl md:text-6xl uppercase">
                             {t('offline')} <span className="text-3xl md:text-4xl block text-end -mt-3 md:text-start md:inline-block md:mt-0"> {t('play')}</span>
                         </p>
@@ -45,7 +43,7 @@ function CreateGameModal() {
 
                     {/* Online Play Card */}
                     <Link href="/online-play" onClick={closeModal} className="md:w-64 w-64 cursor-pointer skew-custom bg-yellow  border-4 sm:border-[6px] border-black flex flex-col items-center justify-center px-6 py-2  md:py-5 gap-5">
-                        <Image src={OnlineImage} alt='Online Mode' className='sm:w-20 w-16 sm:h-20 md:w-20 md:h-20' />
+                        <Image src="/images/onlinemode-image.png" alt='Online Mode' className='sm:w-20 w-16 sm:h-20 md:w-20 md:h-20' width={100} height={100} />
                         <p dir={direction} className="text-black  text-5xl md:text-6xl uppercase" >
                             {t('online')} <span className="text-3xl md:text-4xl block text-end -mt-3 md:text-start md:inline-block md:mt-0"> {t('play')}</span>
                         </p>

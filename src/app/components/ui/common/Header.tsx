@@ -13,12 +13,8 @@ import AuthModal from '@/app/auth/AuthModal';
 import Image from 'next/image';
 import LanguageSwitcher from '../Language-Switcher';
 //icons
-import FileIcon from "@/app/assets/icons/file-icon.svg";
-import GampadIcon from "@/app/assets/icons/gamepad-icon.svg";
-import FallBackProfileImage from '@/app/assets/images/fallback-profile-image.jpg';
 import { FaPlus } from "react-icons/fa";
 import { FiMenu } from "react-icons/fi";
-import LoginIcon from "@/app/assets/icons/login-icon.svg";
 
 
 
@@ -45,7 +41,7 @@ const Header: React.FC = () => {
                                 <Link href="/profile" className='w-44 flex items-center'>
                                     <div className="w-10 h-10 overflow-hidden border border-black skew-custom">
                                         <Image
-                                            src={(typeof FallBackProfileImage === 'string' ? FallBackProfileImage : FallBackProfileImage.src)}
+                                            src="/images/fallback-profile-image.jpg"
                                             width={40}
                                             height={40}
                                             alt="User Avatar"
@@ -60,7 +56,7 @@ const Header: React.FC = () => {
                                         onClick={handleAuthModal}
                                     >
                                         <div className="bg-yellow p-2 h-1/2 border border-black skew-custom   ">
-                                            <LoginIcon />
+                                            <Image src="/images/icons/login-icon.svg" alt='login-icon' width={20} height={20} />
                                         </div>
                                         <span className="text-lg font-medium text-black">{t("loginSignup")}</span>
                                     </div>
@@ -69,13 +65,13 @@ const Header: React.FC = () => {
                         </div>
                         <div className="flex items-center space-x-3 lg:space-x-4 text-gray-700">
                             <div role='button' onClick={() => setOpenNewGameModal(true)} className="relative p-2 h-9 border border-black skew-custom shadow-sm cursor-pointer hover:bg-gray-100 transition-colors">
-                                <GampadIcon />
+                                <Image src="/images/icons/gamepad-icon.svg" alt='gamepad-icon' width={20} height={20} />
                                 <span className="absolute -top-1 -right-1 bg-red text-white rounded-full w-4 h-4 flex justify-center items-center font-semibold">
                                     <FaPlus className='text-xs' />
                                 </span>
                             </div>
                             <div role='button' onClick={() => setOpenWalletModal(true)} className="p-2 h-9 border border-black skew-custom shadow-sm cursor-pointer hover:bg-gray-100 transition-colors">
-                                <FileIcon />
+                                <Image src="/images/icons/file-icon.svg" alt='file-icon' width={20} height={20} />
                             </div>
                         </div>
                     </div>
@@ -99,13 +95,13 @@ const Header: React.FC = () => {
                     </div>
                     <div className="md:hidden flex items-center space-x-3 lg:space-x-4 text-gray-700">
                         <div role='button' onClick={() => setOpenNewGameModal(true)} className="relative p-2 h-9 border border-black skew-custom shadow-sm cursor-pointer hover:bg-gray-100 transition-colors">
-                            <GampadIcon />
+                            <Image src="/images/icons/gamepad-icon.svg" alt='gamepad-icon' width={20} height={20} />
                             <span className="absolute -top-1 -right-1 bg-red text-white rounded-full w-4 h-4 flex justify-center items-center font-semibold">
                                 <FaPlus className='text-xs' />
                             </span>
                         </div>
                         <div role='button' onClick={() => setOpenWalletModal(true)} className="p-2 h-9 border border-black skew-custom shadow-sm cursor-pointer hover:bg-gray-100 transition-colors">
-                            <FileIcon />
+                            <Image src="/images/icons/file-icon.svg" alt='file-icon' width={20} height={20} />
                         </div>
                     </div>
                 </nav>

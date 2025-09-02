@@ -1,7 +1,6 @@
 import React from 'react'
 import { MdClose } from 'react-icons/md';
 //icon
-import CrownImage from "@/app/assets/images/crown-image.png";
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -33,7 +32,7 @@ function BuyNewGameModal({ open, onClose }: NewGameModalProps) {
                 {/* Main content */}
                 <div className="w-full flex flex-col items-center justify-evenly h-[400px]">
                     <div className="md:w-24 w-16 flex items-center justify-center">
-                        <Image src={CrownImage} alt='Crown' className='object-contain w-full h-full' />
+                        <Image src="/images/crown-image.png" alt='Crown' width={100} height={100} className='object-contain w-full h-full' />
                     </div>
                     <div className='flex flex-col items-center justify-center font-secondary'>
                         <p >You’re on Free Mode </p>

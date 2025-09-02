@@ -7,13 +7,12 @@ import { useTranslation } from 'react-i18next';
 import { useDirection } from '../hooks/useGetDirection';
 import useSignIn from './core/hooks/useSignIn';
 import { showErrorMessage, showSuccessMessage } from '../utils/messageUtils';
-//icons
-import PasswordIcon from '../assets/icons/password-icon.svg';
-import EmailIcon from '../assets/icons/email-icon.svg';
-import { IoEye, IoEyeOff } from "react-icons/io5";
 import useVerifyAuthToken from './core/hooks/useVerifyAuthToken';
 import { useAuth } from '../context/AuthContext';
 import { AxiosError } from 'axios';
+//icons
+import { IoEye, IoEyeOff } from "react-icons/io5";
+import Image from 'next/image';
 
 interface ValidationErrors {
     [key: string]: string;
@@ -138,7 +137,7 @@ export default function SignInForm({ setLoading, loading }: SignInFormProps) {
                 <div>
                     <div className="flex items-center h-12 md:h-14 w-full transform -skew-x-12 border-2 border-black overflow-hidden">
                         <div className="bg-purple w-12 md:w-16 flex items-center justify-center h-full">
-                            <EmailIcon className="" />
+                            <Image src="/images/icons/email-icon.svg" alt='email-icon' width={20} height={20} />
                         </div>
                         <input
                             value={formState.email}
@@ -157,7 +156,7 @@ export default function SignInForm({ setLoading, loading }: SignInFormProps) {
                 <div>
                     <div className="flex items-center h-12 md:h-14 w-full transform -skew-x-12 border-2 border-black overflow-hidden">
                         <div className="bg-purple flex items-center justify-center w-12 md:w-16 h-full">
-                            <PasswordIcon />
+                            <Image src="/images/icons/password-icon.svg" alt='password-icon' width={20} height={20} />
                         </div>
                         <input
                             value={formState.password}

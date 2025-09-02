@@ -8,7 +8,6 @@ import QuestionNAnswer from './components/QuestionNAnswerModalUI';
 import { useTranslation } from 'react-i18next';
 //icon
 import { IoIosAddCircleOutline } from "react-icons/io";
-import UploadImageIcon from "@/app/assets/icons/upload-image-icon.svg";
 import { MdDelete } from "react-icons/md";
 import { FaArrowRight } from "react-icons/fa6";
 
@@ -157,7 +156,7 @@ function SuggestCategoryNQuestionModal({ open, onClose, mode }: SuggestCategoryN
                                             className="cursor-pointer flex items-center justify-start gap-x-5 bg-white hover:text-light-gray transition-colors duration-300"
                                             onClick={triggerFileInput}
                                         >
-                                            <UploadImageIcon />
+                                            <Image src="/images/icons/upload-image-icon.svg" alt='upload-image-icon' width={20} height={20} />
                                             <span className="text-base ">{t("uploadImage")}</span>
                                         </button>
                                     }

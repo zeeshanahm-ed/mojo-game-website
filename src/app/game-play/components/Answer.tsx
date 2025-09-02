@@ -3,10 +3,10 @@ import Image from "next/image";
 import React from "react";
 import { offlineQuestionsListInterface } from "@/app/constants/constant";
 import { useTranslation } from "react-i18next";
+import { useDirection } from "@/app/hooks/useGetDirection";
 //icon
 import { BsQuestionCircle } from "react-icons/bs";
-import Book from "@/app/assets/images/book.png";
-import { useDirection } from "@/app/hooks/useGetDirection";
+import Book from "/images/book.png";
 
 interface AnswerProps {
     question: offlineQuestionsListInterface | null;

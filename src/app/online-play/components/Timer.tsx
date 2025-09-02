@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import ClockIcon from "@/app/assets/icons/clock-icon.svg";
+import ClockIcon from "/images/icons/clock-icon.svg";
 
 interface Props {
     showTime: boolean;

@@ -4,6 +4,7 @@ import Banner from './components/Banner'
 import Wrapper from '@/app/components/ui/common/Wrapper';
 import CategoriesSection from '@/app/components/ui/common/CategoriesSection';
 import Button from '@/app/components/ui/common/Button';
+//HOOKS & UTILS
 import { showErrorMessage } from '../utils/messageUtils';
 import { useTranslation } from 'react-i18next';
 import { useRouter } from 'next/navigation';

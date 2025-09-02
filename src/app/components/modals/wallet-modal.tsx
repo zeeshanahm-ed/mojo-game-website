@@ -2,14 +2,11 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import Select from '../ui/common/Select';
 import { useTranslation } from 'react-i18next';
-
-//icons
-import CartImage from "@/app/assets/images/cart-image.png";
-import CreditImage from "@/app/assets/images/credit-image.png";
-import SarFlagImage from "@/app/assets/images/saudia-flag-image.png";
-import { MdClose } from 'react-icons/md';
 import { Currency_Options } from '@/app/constants/constant';
 import Link from 'next/link';
+
+//icons
+import { MdClose } from 'react-icons/md';
 
 
 interface WalletModalProps {
@@ -49,7 +46,7 @@ function WalletModal({ open, onClose }: WalletModalProps) {
                     {/* Game Credits Card */}
                     <div className="flex md:flex-col items-start gap-4">
                         <div className="w-20 sm:w-28 md:w-28 md:h-1/2 relative">
-                            <Image src={CreditImage} alt='Credits' className='w-full h-full' />
+                            <Image src="/images/credit-image.png" width={100} height={100} alt='Credits' className='w-full h-full' />
                         </div>
 
                         <div className='space-y-2 w-full'>
@@ -68,7 +65,7 @@ function WalletModal({ open, onClose }: WalletModalProps) {
                     {/* SAR Currency Card */}
                     <div className="flex md:flex-col items-start gap-4">
                         <div className="w-20 sm:w-28 md:w-24 md:h-1/2 relative">
-                            <Image src={SarFlagImage} alt='Saudia Flag' className='w-full h-full' />
+                            <Image src="/images/saudia-flag-image.png" width={100} height={100} alt='Saudia Flag' className='w-full h-full' />
                         </div>
 
                         <div className='space-y-2 w-full'>
@@ -94,7 +91,7 @@ function WalletModal({ open, onClose }: WalletModalProps) {
                     {/* History Card */}
                     <div className="flex md:flex-col items-start gap-4">
                         <div className="w-20 sm:w-28 h-auto md:w-20 md:h-1/2 relative">
-                            <Image src={CartImage} alt='Cart' className='w-full h-full' />
+                            <Image src="/images/cart-image.png" width={100} height={100} alt='Cart' className='w-full h-full' />
                         </div>
 
                         <div className='space-y-2 w-full'>

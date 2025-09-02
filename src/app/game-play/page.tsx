@@ -17,12 +17,12 @@ import { useTranslation } from 'react-i18next';
 import LifelineCard from './components/LifeLinesCard';
 import Image from 'next/image';
 //icons
-import HoleIcon from '@/app/assets/icons/hole-icon.svg';
-import SecondChanceIcon from '@/app/assets/icons/second-chance-icon.svg';
-import CallAFriendIcon from '@/app/assets/icons/callAFriend-icon.svg';
-import CallAFriendImage from "@/app/assets/images/call-image.png"
-import SecondChanceImage from "@/app/assets/images/second-chance-image.png"
-import ScoreStealImage from "@/app/assets/images/score-steal-image.png"
+import HoleIcon from '/images/icons/hole-icon.svg';
+import SecondChanceIcon from '/images/icons/second-chance-icon.svg';
+import CallAFriendIcon from '/images/icons/callAFriend-icon.svg';
+import CallAFriendImage from "/images/call-image.png"
+import SecondChanceImage from "/images/second-chance-image.png"
+import ScoreStealImage from "/images/score-steal-image.png"
 
 
 type Lifeline = 'scoreSteal' | 'secondChance' | 'callAFriend';

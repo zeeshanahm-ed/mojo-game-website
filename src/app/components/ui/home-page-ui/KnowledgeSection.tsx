@@ -8,10 +8,6 @@ import Button from '../common/Button';
 import { useTranslation } from 'react-i18next';
 import { useDirection } from '@/app/hooks/useGetDirection';
 
-//icons
-import GroupNPerson from "@/app/assets/images/group-image.png";
-import GroupNPersonArabic from "@/app/assets/images/Group-image-arabi.png";
-
 const KnowledgeSection = () => {
     const { openModal } = useCreateGameModalStore();
     const { t } = useTranslation();
@@ -38,7 +34,7 @@ const KnowledgeSection = () => {
                         </Button>
                     </div>
                     <div className='my-10'>
-                        <Image src={direction === "rtl" ? GroupNPersonArabic : GroupNPerson} alt='Person Image' className='h-auto w-[400px] md:w-[500px]' />
+                        <Image src={direction === "rtl" ? "/images/Group-image-arabi.png" : "/images/group-image.png"} width={100} height={100} alt='Person Image' className='h-auto w-[400px] md:w-[500px]' />
                     </div>
                 </div>
             </Wrapper>

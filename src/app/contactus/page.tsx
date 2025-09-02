@@ -1,21 +1,21 @@
 "use client"
 import React, { useState } from 'react'
 import { useCountries } from '../hooks/useCountries';
+import { useTranslation } from 'react-i18next';
+import { useDirection } from '../hooks/useGetDirection';
 
 import Wrapper from '@/app/components/ui/common/Wrapper';
 import Banner from './components/Banner';
 import Input from '@/app/components/ui/common/Input';
 import Button from '@/app/components/ui/common/Button';
 import Select from '../components/ui/common/Select';
-import { useTranslation } from 'react-i18next';
 
 
 //icons
-import CountryCodeIcon from '@/app/assets/icons/country-code-icon.svg';
-import EmailIcon from '@/app/assets/icons/email-icon.svg';
-import ContactIcon from '@/app/assets/icons/contact-icon.svg';
-import UserIcon from '@/app/assets/icons/user-icon.svg';
-import { useDirection } from '../hooks/useGetDirection';
+import CountryCodeIcon from '/images/icons/country-code-icon.svg';
+import EmailIcon from '/images/icons/email-icon.svg';
+import ContactIcon from '/images/icons/contact-icon.svg';
+import UserIcon from '/images/icons/user-icon.svg';
 
 
 function ContactUS() {

@@ -3,12 +3,12 @@ import React from 'react'
 
 import Wrapper from '@/app/components/ui/common/Wrapper';
 import Banner from './components/Banner';
-
-//icons
-import CrownIcon from "@/app/assets/icons/crown-icon.svg";
-import { MdOutlineInfo } from "react-icons/md";
 import Button from '../components/ui/common/Button';
 import PaymentOptionModal from '../components/modals/payment-options-modal';
+
+//icons
+import CrownIcon from "/images/icons/crown-icon.svg";
+import { MdOutlineInfo } from "react-icons/md";
 
 
 

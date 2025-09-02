@@ -2,10 +2,6 @@ import React from 'react';
 import Image from 'next/image';
 import Wrapper from '../common/Wrapper';
 import { useTranslation } from 'react-i18next';
-//icons
-import CallAFriendImage from "../../../assets/images/call-image.png"
-import SecondChanceImage from "../../../assets/images/second-chance-image.png"
-import ScoreStealImage from "../../../assets/images/score-steal-image.png"
 
 const LifeLineSection: React.FC = () => {
     const { t } = useTranslation();
@@ -24,7 +20,7 @@ const LifeLineSection: React.FC = () => {
                         {/* Life Line Cards Container */}
                         <div className="flex flex-col md:flex-row items-center justify-center gap-5">
                             <div className="lg:w-72 w-60 h-72 bg-white border-2 md:border-[6px] border-purple skew-custom flex flex-col items-center justify-center p-4 md:p-6 text-center gap-3">
-                                <Image src={CallAFriendImage} alt={t("callFriend")} className='w-16 md:w-20 h-1/2 object-contain' />
+                                <Image src="/images/call-image.png" width={100} height={100} alt={t("callFriend")} className='w-16 md:w-20 h-1/2 object-contain' />
                                 <p className="text-purple text-4xl md:text-5xl uppercase">
                                     {t("callFriend")}
                                 </p>
@@ -34,7 +30,7 @@ const LifeLineSection: React.FC = () => {
                             </div>
 
                             <div className="lg:w-72 w-60 h-72 bg-white border-2 md:border-[6px] skew-custom border-fanta flex flex-col items-center justify-center p-4 md:p-6 text-center gap-3" >
-                                <Image src={SecondChanceImage} alt={t("secondChance")} className='w-16 md:w-20 h-1/2 object-contain' />
+                                <Image src="/images/second-chance-image.png" width={100} height={100} alt={t("secondChance")} className='w-16 md:w-20 h-1/2 object-contain' />
                                 <p className="text-fanta text-4xl md:text-5xl uppercase">
                                     {t("secondChance")}
                                 </p>
@@ -45,7 +41,7 @@ const LifeLineSection: React.FC = () => {
 
                             {/* Score Steal Card */}
                             <div className="lg:w-72 w-60 h-72 bg-white border-2 md:border-[6px] skew-custom border-blue flex flex-col items-center justify-center p-4 md:p-6 text-center gap-3">
-                                <Image src={ScoreStealImage} alt={t("scoreSteal")} className='w-16 md:w-20 h-1/2 object-contain' />
+                                <Image src="/images/score-steal-image.png" width={100} height={100} alt={t("scoreSteal")} className='w-16 md:w-20 h-1/2 object-contain' />
                                 <p className="text-blue text-4xl md:text-5xl  uppercase">
                                     {t("scoreSteal")}
                                 </p>

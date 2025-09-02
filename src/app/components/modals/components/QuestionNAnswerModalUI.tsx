@@ -4,13 +4,13 @@ import Divider from "../../ui/common/Divider";
 import Input from "../../ui/common/Input";
 import { OfflineQuestionNAnswerData } from "../suggest-category-N-question-modal";
 import Image from "next/image";
-//icons
-import UploadImageIcon from "@/app/assets/icons/upload-image-icon.svg";
-import VideoIcon from "@/app/assets/icons/video-icon.svg";
-import AudioIcon from "@/app/assets/icons/audio-icon.svg";
-import { MdDelete } from "react-icons/md";
 import { useTranslation } from "react-i18next";
 import { useDirection } from "@/app/hooks/useGetDirection";
+//icons
+import UploadImageIcon from "/images/icons/upload-image-icon.svg";
+import VideoIcon from "/images/icons/video-icon.svg";
+import AudioIcon from "/images/icons/audio-icon.svg";
+import { MdDelete } from "react-icons/md";
 
 interface QuestionNAnswerProps {
     editQuestionData: OfflineQuestionNAnswerData | null;

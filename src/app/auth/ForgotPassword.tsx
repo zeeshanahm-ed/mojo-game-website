@@ -4,10 +4,10 @@ import Button from '../components/ui/common/Button';
 import { useAuthModalStore } from '../store/useAuthModalStore';
 import { useTranslation } from 'react-i18next';
 import Input from '../components/ui/common/Input';
-import EmailIcon from '../assets/icons/email-icon.svg';
 import { showErrorMessage, showSuccessMessage } from '../utils/messageUtils';
 import { forgotPassCode } from './core/_requests';
 import { AxiosError } from 'axios';
+import Image from 'next/image';
 
 
 interface ForgotPasswordProps {
@@ -77,7 +77,14 @@ export default function ForgotPassword({ setLoading, loading }: ForgotPasswordPr
         <section>
             <div className="text-center md:px-20 sm:px-10 px-5 py-10 space-y-6">
                 <div>
-                    <Input name="email" onChange={handleInputChange} icon={<EmailIcon />} type='email' placeholder={t('emailPlaceholder')} />
+                    <Input
+                        name="email"
+                        onChange={handleInputChange}
+                        icon={<Image src="/images/icons/email-icon.svg"
+                            alt='email-icon' width={20} height={20} />}
+                        type='email'
+                        placeholder={t('emailPlaceholder')}
+                    />
                     {formErrors.email && <p className='font-secondary text-start text-red mt-1'>{formErrors.email}</p>}
                 </div>
                 <p className='font-secondary'>{t("resetPasswordNote")}</p>

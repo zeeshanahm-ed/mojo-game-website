@@ -7,12 +7,12 @@ import { useTranslation } from 'react-i18next';
 import { useDirection } from '@/app/hooks/useGetDirection';
 //icons
 import { IoIosArrowBack } from "react-icons/io";
-import kidsToy from "@/app/assets/images/kids-toy.png";
-import kidsToy2 from "@/app/assets/images/kids-toy2.png";
-import Bucket from "@/app/assets/images/bucket.png";
-import Spiner from "@/app/assets/images/spiner.png";
-import Horse from "@/app/assets/images/horse.png";
-import Train from "@/app/assets/images/train.png";
+import kidsToy from "/images/kids-toy.png";
+import kidsToy2 from "/images/kids-toy2.png";
+import Bucket from "/images/bucket.png";
+import Spiner from "/images/spiner.png";
+import Horse from "/images/horse.png";
+import Train from "/images/train.png";
 
 
 const Banner: React.FC = () => {

@@ -10,7 +10,7 @@ import { SelectedGamesPaymentDetailsInterface } from '../utils/Interfaces';
 import { useTranslation } from 'react-i18next';
 
 //icons
-import SearchIcon from '@/app/assets/icons/search-icon.svg';
+import SearchIcon from '/images/icons/search-icon.svg';
 
 
 const Data = [

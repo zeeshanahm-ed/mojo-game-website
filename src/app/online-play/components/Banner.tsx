@@ -3,9 +3,9 @@ import Image from 'next/image';
 import Wrapper from '@/app/components/ui/common/Wrapper';
 import { useTranslation } from 'react-i18next';
 
-import BlackStarImage from "@/app/assets/images/black-star.png"
-import OnlinePlayImage from "@/app/assets/images/onlinemode-image.png"
-import QuizAppImage from "@/app/assets/images/quiz-app-image.png"
+import BlackStarImage from "/images/black-star.png"
+import OnlinePlayImage from "/images/onlinemode-image.png"
+import QuizAppImage from "/images/quiz-app-image.png"
 
 const Banner: React.FC = () => {
     const { t } = useTranslation();

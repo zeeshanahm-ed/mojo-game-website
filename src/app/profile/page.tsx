@@ -1,5 +1,5 @@
 "use client"
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import Wrapper from '@/app/components/ui/common/Wrapper';
 import Banner from './components/Banner';
@@ -8,6 +8,8 @@ import TabSwitcher from '../components/ui/common/TabSwitcher';
 import ProfileContent from './components/ProfileContent';
 import TransactionsContent from './components/Transactions';
 import CommissionsContent from './components/Commissions';
+import { useAuth } from '../context/AuthContext';
+import { useRouter } from 'next/navigation';
 
 
 const TABS = [
@@ -18,10 +20,18 @@ const TABS = [
 
 function Profile() {
     const [selectedTab, setSelectedTab] = useState<number>(0);
+    const { user } = useAuth();
+    const router = useRouter();
 
     const handleTabChange = (tab: number) => {
         setSelectedTab(tab);
     };
+
+    useEffect(() => {
+        if (!user) {
+            router.push("/");
+        }
+    }, [user]);
 
     return (
         <section>

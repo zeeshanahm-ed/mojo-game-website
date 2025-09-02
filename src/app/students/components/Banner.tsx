@@ -4,13 +4,13 @@ import Wrapper from '@/app/components/ui/common/Wrapper';
 import Button from '@/app/components/ui/common/Button';
 import { useRouter } from 'next/navigation';
 import { useTranslation } from 'react-i18next';
-//icons
-import BoildTubeImage from "@/app/assets/images/boild-tube-image.png";
-import ElectronImage from "@/app/assets/images/electron-image.png";
-import ScientistImage from "@/app/assets/images/scientist-image.png";
-import TubImage from "@/app/assets/images/tube-image.png";
-import { IoIosArrowBack } from "react-icons/io";
 import { useDirection } from '@/app/hooks/useGetDirection';
+//icons
+import BoildTubeImage from "/images/boild-tube-image.png";
+import ElectronImage from "/images/electron-image.png";
+import ScientistImage from "/images/scientist-image.png";
+import TubImage from "/images/tube-image.png";
+import { IoIosArrowBack } from "react-icons/io";
 
 interface BannerProps {
     title: string;

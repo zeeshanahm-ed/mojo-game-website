@@ -1,13 +1,13 @@
 import React, { useState, useRef } from "react";
 import Image from "next/image";
 import { offlineQuestionsListInterface } from "@/app/constants/constant";
+import { useDirection } from "@/app/hooks/useGetDirection";
 import { useTranslation } from "react-i18next";
 //icon
 import { BsQuestionCircle } from "react-icons/bs";
 import { IoMdPause, IoMdPlay } from "react-icons/io";
 import { MdRestartAlt } from "react-icons/md";
-import ClockIcon from "@/app/assets/icons/clock-icon.svg";
-import { useDirection } from "@/app/hooks/useGetDirection";
+import ClockIcon from "/images/icons/clock-icon.svg";
 
 
 interface OfflineQuestionProps {

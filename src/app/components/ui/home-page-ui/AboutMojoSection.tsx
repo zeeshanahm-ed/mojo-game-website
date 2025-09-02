@@ -1,6 +1,5 @@
 import Image from 'next/image';
 import Wrapper from '../common/Wrapper';
-import AboutMojoImage from '@/app/assets/images/about-mojo-image.png';
 import { useTranslation } from 'react-i18next';
 
 export default function AboutMojoSection() {
@@ -27,7 +26,9 @@ export default function AboutMojoSection() {
 
                                 <div className="w-[240px] lg:w-[350px] relative top-[70px]">
                                     <Image
-                                        src={AboutMojoImage}
+                                        src="/images/about-mojo-image.png"
+                                        width={100}
+                                        height={100}
                                         alt="About Mojo"
                                         className="w-full object-cover h-full"
                                     />

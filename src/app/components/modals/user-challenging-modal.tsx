@@ -1,12 +1,9 @@
 import React from 'react'
 import { MdClose } from 'react-icons/md';
 import { useTranslation } from 'react-i18next';
-//icon
-import FallBackProfileImage from '@/app/assets/images/fallback-profile-image.jpg';
 import Button from '../ui/common/Button';
 import Image from 'next/image';
 import Divider from '../ui/common/Divider';
-
 
 
 interface UserChallengModalProps {
@@ -39,7 +36,7 @@ function UserChallengModal({ open, onClose }: UserChallengModalProps) {
                     <div className='-skew-x-6 md:-skew-x-12 flex justify-between items-center py-2 px-4 md:px-8 md:py-2 border border-black'>
                         <div className='flex w-3/4 items-center gap-x-2 md:gap-x-5 !skew-x-6 md:!skew-x-12'>
                             <span className='w-10 h-10 border border-light-gray'>
-                                <Image src={FallBackProfileImage.src} alt='User profile Picture' width={40} height={40} className='w-full h-full object-contain' />
+                                <Image src="/images/fallback-profile-image.jpg" alt='User profile Picture' width={40} height={40} className='w-full h-full object-contain' />
                             </span>
                             <p className='text-lg font-secondary truncate max-w-[80%]'>User15992 User15992 User15992 User15992</p>
                         </div>

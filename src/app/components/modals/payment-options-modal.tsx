@@ -2,11 +2,7 @@ import React, { ReactNode } from 'react'
 import { MdClose } from 'react-icons/md';
 import { useTranslation } from 'react-i18next';
 import { useDirection } from '@/app/hooks/useGetDirection';
-//icon
-import KnetPayIcon from "@/app/assets/icons/knetPay-icon.svg";
-import GooglePayIcon from "@/app/assets/icons/GooglePay-icon.svg";
-import ApplePayIcon from "@/app/assets/icons/applePay-icon.svg";
-import CreditCardIcon from "@/app/assets/icons/creditCard-icon.svg";
+import Image from 'next/image';
 
 
 interface PaymentOptionModalProps {
@@ -28,25 +24,25 @@ const paymentMethods: PaymentMethod[] = [
     {
         id: 'knet',
         name: 'KNET',
-        icon: <KnetPayIcon />,
+        icon: <Image src="/images/icons/knetPay-icon.svg" alt='knet-pay-icon' width={20} height={20} />,
         route: '/payment/knet'
     },
     {
         id: 'credit-card',
         name: 'Credit Card',
-        icon: <CreditCardIcon />,
+        icon: <Image src="/images/icons/creditCard-icon.svg" alt='credit-card-icon' width={20} height={20} />,
         route: '/payment/credit-card'
     },
     {
         id: 'apple-pay',
         name: 'Apple Pay',
-        icon: <ApplePayIcon />,
+        icon: <Image src="/images/icons/applePay-icon.svg" alt='apple-pay-icon' width={20} height={20} />,
         route: '/payment/apple-pay'
     },
     {
         id: 'google-pay',
         name: 'Google Pay',
-        icon: <GooglePayIcon />,
+        icon: <Image src="/images/icons/GooglePay-icon.svg" alt='google-pay-icon' width={20} height={20} />,
         route: '/payment/google-pay'
     }
 ];

@@ -1,6 +1,6 @@
-import Button from "@/app/components/ui/common/Button";
 import React from "react";
 import { useTranslation } from "react-i18next";
+import Button from "@/app/components/ui/common/Button";
 
 type LifelineProps = {
     title: string;
@@ -32,17 +32,17 @@ const LifelineCard: React.FC<LifelineProps> = ({
                     {t(title)}
                 </h3>
                 <p className="text-sm text-gray-600 font-secondary">{t(description)}</p>
-                <div className="mt-4 flex flex-col gap-2 w-full">
+                <div className="mt-4 flex flex-col items-center gap-2 w-full">
                     <Button
                         bgClass={bgColor}
-                        className={`w-full text-3xl`}
+                        className={`w-32 text-3xl`}
                         onClick={onYes}
                     >
                         {t("yes")}
                     </Button>
                     <Button
                         bgClass={bgColor}
-                        className={`w-full text-3xl`}
+                        className={`w-32 text-3xl`}
                         onClick={onNo}
                     >
                         {t("no")}
