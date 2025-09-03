@@ -4,10 +4,8 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useGameSession } from "@/app/store/gameSession";
 import { useTranslation } from "react-i18next";
-//icon
-import GroupIcon from "/images/icons/group-icon.svg";
 import Button from "@/app/components/ui/common/Button";
-import CongratulationImage from "/images/congratulation-image.png";
+
 
 const Congratulation: React.FC = () => {
     const { session } = useGameSession();

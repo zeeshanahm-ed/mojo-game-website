@@ -31,7 +31,7 @@ function Profile() {
         if (!user) {
             router.push("/");
         }
-    }, [user]);
+    }, [user, router]);
 
     return (
         <section>

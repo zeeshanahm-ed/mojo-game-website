@@ -11,7 +11,6 @@ import { useDirection } from '@/app/hooks/useGetDirection';
 // import PrivateGameImage from '@/app/assets/images/private-game.png';
 // import KidsGameImage from '@/app/assets/images/kids-quest.png';
 // import StudentGameImage from '@/app/assets/images/student-quest.png';
-import CreateGameImage from '/images/create-game.png';
 // import RamadanGameImage from '@/app/assets/images/ramadan-quest.png';
 // import Link from 'next/link';
 
