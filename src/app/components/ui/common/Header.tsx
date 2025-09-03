@@ -42,7 +42,7 @@ const Header: React.FC = () => {
         if (userData) {
             setUserProfile(userData);
         }
-    }, [userData]);
+    }, [setUserProfile, userData]);
 
     return (
         <header className="w-full font-sans h-20 flex items-center px-4 lg:px-10 md:px-6">

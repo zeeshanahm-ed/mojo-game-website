@@ -15,7 +15,6 @@ import useUpdateUserProfile from '../core/hooks/useUpdateUserProfile';
 import { useAuthModalStore } from '@/app/store/useAuthModalStore';
 import { useDirection } from '@/app/hooks/useGetDirection';
 import useGetUserProfile from '../core/hooks/useGetUserProfile';
-import { useAuth } from '@/app/context/AuthContext';
 import { useUserProfile } from '@/app/store/userProfile';
 
 
@@ -89,8 +88,8 @@ function ProfileContent() {
         if (profilePicObj) {
             formData.append("avatar", profilePicObj);
         }
-
         mutateUpdateUserProfile(formData, {
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             onSuccess: async (data: any) => {
                 showSuccessMessage('Profile update successful.');
                 const localUserData = JSON.parse(localStorage.getItem("user") || "{}");
@@ -170,6 +169,7 @@ function ProfileContent() {
             formState.lastName === userData.lastName &&
             formState.email === userData.email &&
             formState.phoneNumber === userData.phoneNumber &&
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             formState.countryCode === (userData as any).countryCode; // countryCode may not exist on userProfile, adjust as needed
 
         return isSame;

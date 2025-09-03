@@ -72,7 +72,7 @@ function OfflineMode() {
     };
 
     const handleValidation = () => {
-        let error = null;
+        let error = false;
         if (selectedCategories.length < 6) {
             showErrorMessage(t("errors.maxCategories"));
             error = true;

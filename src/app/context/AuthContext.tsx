@@ -8,7 +8,7 @@ import React, {
     useRef,
 } from 'react';
 import { getAuth, setAuth, setUser } from '../helpers/auth-helper';
-import { IAuthModel, IUserModel } from '../auth/core/_models';
+import { IAuthModel } from '../auth/core/_models';
 import { getUserByToken } from '../auth/core/_requests';
 
 interface AuthContextType {
@@ -22,6 +22,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     const [user, setCurrentUser] = useState<IAuthModel | null>(null);
     const didRequest = useRef(false);
     const [showSplashScreen, setShowSplashScreen] = useState(true);
+    console.log(showSplashScreen);
 
     // 1. On mount, get user from localStorage and set in context state
     useEffect(() => {
@@ -55,9 +56,11 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
                         setUser(user.data);
                     }
                 }
-            } catch (error) {
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            } catch (error: any) {
+                console.log(error);
                 if (!didRequest.current) {
-                    // Optionally handle logout or removeAuth here
+
                 }
             } finally {
                 setShowSplashScreen(false);

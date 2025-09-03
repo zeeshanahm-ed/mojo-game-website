@@ -12,9 +12,10 @@ import Timer from './components/Timer';
 //HOOKS & UTILS
 import { useGameSession } from '../store/gameSession';
 import { useRouter } from 'next/navigation';
-import { categories } from '../constants/constant';
 import { GamesCategoryInterface } from '../utils/Interfaces';
 import { useTranslation } from 'react-i18next';
+import { getLanguage } from '../helpers/helpers-functions';
+import useGetAllCategories from '../game-play/core/hooks/useGetAllCategories';
 
 type GameMode = 'friendly' | 'challenge' | null;
 type WhoCanAnswer = 'bothTeams' | 'oneTeamPerTurn' | null;
@@ -40,6 +41,8 @@ function OnlinePlay() {
     const [selectedCategories, setSelectedCategories] = useState<GamesCategoryInterface[]>([]);
     const [currentPlayer, setCurrentPlayer] = useState<1 | 2>(1);
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const lang = getLanguage();
+    const { categoriesData } = useGetAllCategories(lang);
 
 
 
@@ -150,7 +153,7 @@ function OnlinePlay() {
                         </div>
                         <Button boxShadow={false} className='text-white w-64 md:w-80 my-16 text-4xl' bgClass="bg-black">{t("searchPlayers")}</Button>
                         <CategoriesSection
-                            data={categories}
+                            data={categoriesData || []}
                             selectedCategories={selectedCategories}
                             suggestCategoryNQuestions={true}
                             setSelectedCategories={setSelectedCategories}

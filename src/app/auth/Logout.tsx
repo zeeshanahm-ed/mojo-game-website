@@ -4,13 +4,11 @@ import Button from '../components/ui/common/Button';
 import { useAuthModalStore } from '../store/useAuthModalStore';
 import { useTranslation } from 'react-i18next';
 import { removeAuth } from '../helpers/auth-helper';
-import { useRouter } from 'next/navigation';
 
 
 export default function Logout() {
     const closeModal = useAuthModalStore((state) => state.closeModal);
     const { t } = useTranslation();
-    const router = useRouter()
 
     const handleLogout = () => {
         removeAuth();
