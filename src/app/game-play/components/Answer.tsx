@@ -6,7 +6,6 @@ import { useTranslation } from "react-i18next";
 import { useDirection } from "@/app/hooks/useGetDirection";
 //icon
 import { BsQuestionCircle } from "react-icons/bs";
-import Book from "/images/book.png";
 
 interface AnswerProps {
     question: offlineQuestionsListInterface | null;
@@ -36,7 +35,7 @@ export default function Answer({ answerType = "image", handleScreenChange, mode,
                     {/* Options (audio/video/list) */}
                     <div className="flex flex-col items-center justify-center py-4 gap-2 h-[400px]">
                         {answerType === "image" &&
-                            <Image src={Book?.src ?? ""} alt="" width={100} height={100} className="w-full h-full object-contain" />
+                            <Image src="/images/book.png" alt="book" width={100} height={100} className="w-full h-full object-contain" />
                         }
                         {answerType === "list" &&
                             <div className="grid grid-cols-1 items-center justify-center py-4 gap-2 h-[400px]">

@@ -10,7 +10,7 @@ export const categories: GamesCategoryInterface[] = [
     { id: "7", name: 'Moto Bikes', icon: '/images/categories-images/motor-bike.png' },
     { id: "8", name: 'Football', icon: '/images/categories-images/football.png' },
     { id: "9", name: 'Fast Food', icon: '/images/categories-images/fast-food.png' },
-    { id: "10", name: 'Saudi Arabia', icon: '/categories-images/saudi-arabia.png' },
+    { id: "10", name: 'Saudi Arabia', icon: '/images/categories-images/saudi-arabia.png' },
     { id: "11", name: 'Basket Ball', icon: '/images/categories-images/basket-ball.png' },
     { id: "12", name: 'General Info', icon: '/images/categories-images/general-info.png' },
     { id: "13", name: 'Music', icon: '/images/categories-images/music.png' },

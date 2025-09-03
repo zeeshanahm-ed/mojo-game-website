@@ -15,13 +15,6 @@ import useUpdateUserProfile from '../core/hooks/useUpdateUserProfile';
 import { useAuthModalStore } from '@/app/store/useAuthModalStore';
 import { useDirection } from '@/app/hooks/useGetDirection';
 
-//icons
-import CountryCodeIcon from '/images/icons/country-code-icon.svg';
-import EmailIcon from '/images/icons/email-icon.svg';
-import ContactIcon from '/images/icons/contact-icon.svg';
-import UserIcon from '/images/icons/user-icon.svg';
-import EditIcon from '/images/icons/edit-icon.svg';
-import FallBackProfileImage from '/images/fallback-profile-image.jpg';
 
 interface FormState {
     firstName: string,
@@ -135,7 +128,7 @@ function ProfileContent() {
                         className="hidden"
                     />
                     <Image
-                        src={formState.avatar || (typeof FallBackProfileImage === 'string' ? FallBackProfileImage : FallBackProfileImage.src)}
+                        src={formState.avatar || "/images/fallback-profile-image.jpg"}
                         alt="User Profile"
                         className="w-full h-full object-cover"
                         width={160}
@@ -145,7 +138,8 @@ function ProfileContent() {
                         className="absolute -top-2 -right-2 bg-black rounded-full p-1 border-2 border-white cursor-pointer"
                         onClick={triggerFileInput}
                     >
-                        <EditIcon className=" w-4 h-4 fill-white" />
+                        <Image src="/images/icons/edit-icon.svg" alt='edit-icon' width={18} height={18} className=" w-4 h-4 fill-white" />
+
                     </div>
                 </div>
                 <p className="font-secondary text-lg font-semibold">{t("yourAvatar")}</p>
@@ -159,7 +153,7 @@ function ProfileContent() {
                 {/* First Name & Last Name Input */}
                 <div dir={direction} className="flex font-secondary items-center h-14 sm:w-[450px] lg:w-full w-full transform -skew-x-6 md:-skew-x-12 border-2 border-black overflow-hidden">
                     <div className="bg-purple flex items-center justify-center w-[57px] md:w-[70px] h-full">
-                        <UserIcon />
+                        <Image src="/images/icons/user-icon.svg" alt='user-icon' width={24} height={24} />
                     </div>
                     <input
                         type="text"
@@ -182,7 +176,7 @@ function ProfileContent() {
 
                 {/* Email Input */}
                 <Input
-                    icon={<EmailIcon />}
+                    icon={<Image src="/images/icons/email-icon.svg" alt='email-icon' width={24} height={24} />}
                     type="email"
                     placeholder={t("emailPlaceholder")}
                     className="sm:w-[450px] lg:w-full w-full"
@@ -193,7 +187,7 @@ function ProfileContent() {
                 />
 
                 <Select
-                    icon={<CountryCodeIcon />}
+                    icon={<Image src="/images/icons/country-code-icon.svg" alt='country-code-icon' width={24} height={24} />}
                     isCountrySelect={true}
                     name="countryCode"
                     value={formState.countryCode}
@@ -206,7 +200,7 @@ function ProfileContent() {
 
                 {/* Contact Number Input */}
                 <Input
-                    icon={<ContactIcon />}
+                    icon={<Image src="/images/icons/contact-icon.svg" alt='contact-icon' width={24} height={24} />}
                     type="number"
                     placeholder={t("phoneNumber")}
                     className="sm:w-[450px] lg:w-full w-full"

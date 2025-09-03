@@ -7,7 +7,6 @@ import { useTranslation } from "react-i18next";
 import { BsQuestionCircle } from "react-icons/bs";
 import { IoMdPause, IoMdPlay } from "react-icons/io";
 import { MdRestartAlt } from "react-icons/md";
-import ClockIcon from "/images/icons/clock-icon.svg";
 
 
 interface OfflineQuestionProps {
@@ -90,7 +89,9 @@ export default function OfflineQuestion({ question, handleScreenChange, setCurre
                     <div className="flex items-center gap-2">
                         {/* Timer */}
                         <div className="-skew-x-12 bg-white border border-dark-orange sm:h-12 h-10 text-white flex gap-2 items-center w-20 sm:w-24  md:w-32">
-                            <span className=" text-lg bg-dark-orange w-8 sm:w-10 h-full flex-center"><ClockIcon className="w-4 h-4 sm:w-6 sm:h-6" /></span>
+                            <span className=" text-lg bg-dark-orange w-8 sm:w-10 h-full flex-center">
+                                <Image src="/images/icons/clock-icon.svg" alt='clock-icon' width={100} height={100} className="w-4 h-4 sm:w-6 sm:h-6" />
+                            </span>
                             <span className=" text-xl sm:text-2xl md:text-3xl text-black mx-auto mt-2">{formatTime(timer)}</span>
                         </div>
                         {/* Timer controls */}

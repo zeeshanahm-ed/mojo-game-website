@@ -1,9 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
 import Wrapper from '@/app/components/ui/common/Wrapper';
-//icons
-import QuestionImage from "/images/question-image-colorful.png";
-import CrownImage from "/images/crown-image.png";
 
 
 const Banner: React.FC = () => {
@@ -14,7 +11,7 @@ const Banner: React.FC = () => {
             <Wrapper>
                 <div className="relative z-10 flex flex-row items-center justify-center w-full text-center ">
                     <div className="md:w-48 w-20 sm:w-28 flex left-0  top-0 absolute items-center justify-center">
-                        <Image src={QuestionImage} alt='Question' className='object-contain w-full h-full' />
+                        <Image src="/images/question-image-colorful.png" alt='question-image' className='object-contain w-full h-full' width={100} height={100} />
                     </div>
 
                     <div className="flex flex-col text-center items-center lg:w-2/4 px-4">
@@ -29,7 +26,7 @@ const Banner: React.FC = () => {
                         </p>
                     </div>
                     <div className="md:w-24 w-16 flex -right-0 -top-0  absolute items-center justify-center">
-                        <Image src={CrownImage} alt='Crown' className='object-contain w-full h-full' />
+                        <Image src="/images/crown-image.png" alt='crown-image' className='object-contain w-full h-full' width={100} height={100} />
                     </div>
                 </div>
             </Wrapper>

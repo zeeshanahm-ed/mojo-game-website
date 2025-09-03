@@ -3,10 +3,6 @@ import Image from 'next/image';
 import Wrapper from '@/app/components/ui/common/Wrapper';
 import { useTranslation } from 'react-i18next';
 
-import BlackStarImage from "/images/black-star.png"
-import OnlinePlayImage from "/images/onlinemode-image.png"
-import QuizAppImage from "/images/quiz-app-image.png"
-
 const Banner: React.FC = () => {
     const { t } = useTranslation();
     return (
@@ -16,10 +12,10 @@ const Banner: React.FC = () => {
                 <div className="relative z-10 flex flex-row items-center justify-center w-full text-center ">
                     {/* Left Side - Icon and Star */}
                     <div className="md:left-10 right-28 -top-12 md:-top-10 absolute w-5 h-5 md:w-8 md:h-8">
-                        <Image src={BlackStarImage} alt='Star' className='w-full h-full object-contain' />
+                        <Image src="/images/black-star.png" alt='Star' className='w-full h-full object-contain' width={100} height={100} />
                     </div>
                     <div className="flex items-start left-3 -top-8 md:top-14 absolute justify-end w-12 h-12 md:w-20 md:h-20">
-                        <Image src={OnlinePlayImage} alt='Offline Play' className='w-full h-full' />
+                        <Image src="/images/onlinemode-image.png" alt='Offline Play' className='w-full h-full' width={100} height={100} />
                     </div>
 
                     {/* Middle Section - Heading and Description */}
@@ -34,7 +30,7 @@ const Banner: React.FC = () => {
 
                     {/* Right Side - Question Mark Icon */}
                     <div className="flex right-3 -top-5 md:-top-5 absolute items-center justify-end lg:w-36 lg:h-36 md:w-32 md:h-32  w-16 h-16">
-                        <Image src={QuizAppImage} alt='Quiz App' className='w-full h-full' />
+                        <Image src="/images/quiz-app-image.png" alt='Quiz App' className='w-full h-full' width={100} height={100} />
                     </div>
                 </div>
             </Wrapper>

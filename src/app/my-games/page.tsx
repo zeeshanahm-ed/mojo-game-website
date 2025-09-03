@@ -7,11 +7,6 @@ import Image from 'next/image';
 import Pagination from '../components/ui/common/Pagination';
 import { useTranslation } from 'react-i18next';
 
-//icons
-import SearchIcon from '/images/icons/search-icon.svg';
-import GameIcon from '/images/quiz-app.png';
-
-
 function MyGames() {
     const [searchByName, setSearchByName] = useState('');
     const [searchByCategory, setSearchByCategory] = useState('');
@@ -25,7 +20,7 @@ function MyGames() {
                     <div className='flex items-center lg:flex-row flex-col gap-y-10 w-full mb-20 gap-5'>
                         <div className='flex-center flex-col sm:flex-row w-full justify-between gap-5'>
                             <Input
-                                icon={<SearchIcon />}
+                                icon={<Image src="/images/icons/search-icon.svg" alt='search-icon' width={24} height={24} />}
                                 type="text"
                                 placeholder={t("searchByName")}
                                 value={searchByName}
@@ -33,7 +28,7 @@ function MyGames() {
                                 onChange={(e) => setSearchByName(e.target.value)}
                             />
                             <Input
-                                icon={<SearchIcon />}
+                                icon={<Image src="/images/icons/search-icon.svg" alt='search-icon' width={24} height={24} />}
                                 type="text"
                                 placeholder={t("searchByCategory")}
                                 value={searchByCategory}
@@ -73,7 +68,7 @@ const GameCard = () => {
 
             {/* Content */}
             <div className="flex flex-col items-center text-center gap-y-4 md:gap-y-1 lg:mt-4">
-                <Image src={GameIcon} alt="Game Icon" width={100} height={80} className='w-20 md:w-28' />
+                <Image src="/images/quiz-app.png" alt="Game Icon" width={100} height={80} className='w-20 md:w-28' />
 
                 <h2 className="text-5xl lg:text-7xl  text-dark-blue">GAME 12</h2>
 

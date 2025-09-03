@@ -6,8 +6,6 @@ import { useTranslation } from 'react-i18next';
 import CreateGameModal from '@/app/components/modals/create-game-modal';
 import { useCreateGameModalStore } from '@/app/store/useCreateGameModalStore';
 
-import StarImage from "/images/star.png"
-import QuizAppImage from "/images/question-image-colorful.png"
 
 const Banner: React.FC = () => {
     const { t } = useTranslation();
@@ -19,7 +17,7 @@ const Banner: React.FC = () => {
                 <div className="relative z-10 flex flex-row items-center justify-center w-full text-center ">
                     {/* Left Side - Icon and Star */}
                     <div className="flex left-0 md:left-10 -top-5 absolute items-center justify-center">
-                        <Image src={StarImage} alt='Star' className='object-contain md:w-10 w-5 h-10' />
+                        <Image src="/images/star.png" alt='Star' width={100} height={100} className='object-contain md:w-10 w-5 h-10' />
                     </div>
 
                     {/* Middle Section - Heading and Description */}
@@ -39,7 +37,7 @@ const Banner: React.FC = () => {
 
                     {/* Right Side - Question Mark Icon */}
                     <div className="flex -right-10 -top-6 md:right-0 lg:-top-4 md:-top-10 absolute items-center justify-center">
-                        <Image src={QuizAppImage} alt='Quiz App' className='lg:w-52 xl:w-64 md:h-auto md:w-44 w-24 xsm:w-28 sm:w-32 h-1/2' />
+                        <Image src="/images/question-image-colorful.png" alt='Quiz App' width={100} height={100} className='lg:w-52 xl:w-64 md:h-auto md:w-44 w-24 xsm:w-28 sm:w-32 h-1/2' />
                     </div>
                 </div>
             </Wrapper>

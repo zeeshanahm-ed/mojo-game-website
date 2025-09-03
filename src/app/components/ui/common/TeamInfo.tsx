@@ -77,7 +77,7 @@ function TeamInfo({ gameName, handleGameName, teams, errors, handleTeamNameChang
                 </div>
 
                 <div className="relative w-24 h-24 flex items-center justify-center">
-                    <Image src="/images/vs.png" alt='vs' className='w-28 h-36' />
+                    <Image src="/images/vs.png" alt='vs' className='w-28 h-36' width={100} height={100} />
                 </div>
 
                 {/* Second Team Card */}

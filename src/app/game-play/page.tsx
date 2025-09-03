@@ -16,13 +16,7 @@ import CustomModal from '../components/modals/custom-modal';
 import { useTranslation } from 'react-i18next';
 import LifelineCard from './components/LifeLinesCard';
 import Image from 'next/image';
-//icons
-import HoleIcon from '/images/icons/hole-icon.svg';
-import SecondChanceIcon from '/images/icons/second-chance-icon.svg';
-import CallAFriendIcon from '/images/icons/callAFriend-icon.svg';
-import CallAFriendImage from "/images/call-image.png"
-import SecondChanceImage from "/images/second-chance-image.png"
-import ScoreStealImage from "/images/score-steal-image.png"
+
 
 
 type Lifeline = 'scoreSteal' | 'secondChance' | 'callAFriend';
@@ -52,7 +46,7 @@ function GamePlay() {
             description: "callFriendNote",
             bgColor: "bg-[#862CF3]",
             textColor: "text-[#862CF3]",
-            icon: <Image src={CallAFriendImage} alt={t("callFriend")} className='w-20 md:w-24 h-1/2 object-contain' />
+            icon: <Image src="/images/call-image.png" alt={t("callFriend")} className='w-20 md:w-24 h-1/2 object-contain' width={100} height={100} />
             ,
         },
         {
@@ -61,7 +55,7 @@ function GamePlay() {
             description: "secondChanceNote2",
             textColor: "text-[#F3682C]",
             bgColor: "bg-[#F3682C]",
-            icon: <Image src={SecondChanceImage} alt={t("secondChance")} className='w-20 md:w-24 h-1/2 object-contain' />
+            icon: <Image src="/images/second-chance-image.png" alt={t("secondChance")} className='w-20 md:w-24 h-1/2 object-contain' width={100} height={100} />
 
         },
         {
@@ -70,7 +64,7 @@ function GamePlay() {
             description: "secondChanceNote2",
             textColor: "text-[#2CA7F3]",
             bgColor: "bg-[#2CA7F3]",
-            icon: <Image src={ScoreStealImage} alt={t("scoreSteal")} className='w-20 md:w-24 h-1/2 object-contain' />
+            icon: <Image src="/images/score-steal-image.png" alt={t("scoreSteal")} className='w-20 md:w-24 h-1/2 object-contain' width={100} height={100} />
         },
     ];
 
@@ -96,13 +90,13 @@ function GamePlay() {
         let iconSvg;
         switch (iconType) {
             case 'scoreSteal':
-                iconSvg = <HoleIcon className={iconClasses} />;
+                iconSvg = <Image src="/images/score-steal-image.png" alt='score-steal-image' width={100} height={100} className={iconClasses} />;
                 break;
             case 'secondChance':
-                iconSvg = <SecondChanceIcon className={iconClasses} />;
+                iconSvg = <Image src="/images/second-chance-image.png" alt='second-chance-icon' width={100} height={100} className={iconClasses} />;
                 break;
             case 'callAFriend':
-                iconSvg = <CallAFriendIcon className={iconClasses} />;
+                iconSvg = <Image src="/images/call-image.png" alt='callAFriend-icon' width={100} height={100} className={iconClasses} />;
                 break;
         }
 

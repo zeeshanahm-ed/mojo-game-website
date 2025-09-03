@@ -7,9 +7,6 @@ import Image from "next/image";
 import { useTranslation } from "react-i18next";
 import { useDirection } from "@/app/hooks/useGetDirection";
 //icons
-import UploadImageIcon from "/images/icons/upload-image-icon.svg";
-import VideoIcon from "/images/icons/video-icon.svg";
-import AudioIcon from "/images/icons/audio-icon.svg";
 import { MdDelete } from "react-icons/md";
 
 interface QuestionNAnswerProps {
@@ -244,15 +241,15 @@ const QuestionNAnswer = ({ editQuestionData, setQuestionsData, goBack, mode }: Q
                                         <span className="border-r h-full pe-4 flex-centered border-border-gray text-lg text-center ">Upload Media</span>
                                         <div className='flex items-center justify-between flex-1 px-8'>
                                             <button className='flex-centered gap-x-4 hover:text-light-gray transition-colors duration-300' onClick={() => triggerQuestionFileInput("image")}>
-                                                <UploadImageIcon />
+                                                <Image src="/images/icons/upload-image-icon.svg" alt='image-icon' width={20} height={20} />
                                                 <span className="text-base ">Image</span>
                                             </button>
                                             <button className='flex-centered gap-x-4 hover:text-light-gray transition-colors duration-300' onClick={() => triggerQuestionFileInput("video")}>
-                                                <VideoIcon />
+                                                <Image src="/images/icons/video-icon.svg" alt='video-icon' width={20} height={20} />
                                                 <span className="text-base ">Video</span>
                                             </button>
                                             <button className='flex-centered gap-x-4 hover:text-light-gray transition-colors duration-300' onClick={() => triggerQuestionFileInput("audio")}>
-                                                <AudioIcon />
+                                                <Image src="/images/icons/audio-icon.svg" alt='audio-icon' width={20} height={20} />
                                                 <span className="text-base ">Audio</span>
                                             </button>
                                         </div>
@@ -326,15 +323,16 @@ const QuestionNAnswer = ({ editQuestionData, setQuestionsData, goBack, mode }: Q
                                         <span className="border-r h-full pe-4 flex-centered border-border-gray text-lg text-center ">Upload Media</span>
                                         <div className='flex items-center justify-between flex-1 px-8'>
                                             <button className='flex-centered gap-x-4 hover:text-light-gray transition-colors duration-300' onClick={() => triggerAnswerFileInput("image")}>
-                                                <UploadImageIcon />
+                                                <Image src="/images/icons/upload-image-icon.svg" alt='image-icon' width={20} height={20} />
+
                                                 <span className="text-base ">Image</span>
                                             </button>
                                             <button className='flex-centered gap-x-4 hover:text-light-gray transition-colors duration-300' onClick={() => triggerAnswerFileInput("video")}>
-                                                <VideoIcon />
+                                                <Image src="/images/icons/video-icon.svg" alt='video-icon' width={20} height={20} />
                                                 <span className="text-base ">Video</span>
                                             </button>
                                             <button className='flex-centered gap-x-4 hover:text-light-gray transition-colors duration-300' onClick={() => triggerAnswerFileInput("audio")}>
-                                                <AudioIcon />
+                                                <Image src="/images/icons/audio-icon.svg" alt='audio-icon' width={20} height={20} />
                                                 <span className="text-base ">Audio</span>
                                             </button>
                                         </div>

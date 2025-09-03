@@ -9,13 +9,7 @@ import Banner from './components/Banner';
 import Input from '@/app/components/ui/common/Input';
 import Button from '@/app/components/ui/common/Button';
 import Select from '../components/ui/common/Select';
-
-
-//icons
-import CountryCodeIcon from '/images/icons/country-code-icon.svg';
-import EmailIcon from '/images/icons/email-icon.svg';
-import ContactIcon from '/images/icons/contact-icon.svg';
-import UserIcon from '/images/icons/user-icon.svg';
+import Image from 'next/image';
 
 
 function ContactUS() {
@@ -53,7 +47,7 @@ function ContactUS() {
                     <form onSubmit={handleSubmit} className="flex flex-col items-center sm:p-6 space-y-6 w-full">
                         {/* First Name Input */}
                         <Input
-                            icon={<UserIcon />}
+                            icon={<Image src="/images/icons/user-icon.svg" alt='user-icon' width={24} height={24} />}
                             type="text"
                             placeholder={t("fullName")}
                             className="sm:w-[450px] lg:w-2/3 w-full mb-0"
@@ -65,7 +59,7 @@ function ContactUS() {
 
                         {/* Email Input */}
                         <Input
-                            icon={<EmailIcon />}
+                            icon={<Image src="/images/icons/email-icon.svg" alt='email-icon' width={24} height={24} />}
                             type="email"
                             placeholder={t("emailPlaceholder")}
                             className="sm:w-[450px] lg:w-2/3 w-full"
@@ -76,7 +70,7 @@ function ContactUS() {
                         />
 
                         <Select
-                            icon={<CountryCodeIcon />}
+                            icon={<Image src="/images/icons/country-code-icon.svg" alt='country-code-icon' width={24} height={24} />}
                             name="countryCode"
                             direction={direction}
                             isCountrySelect={true}
@@ -89,7 +83,7 @@ function ContactUS() {
 
                         {/* Contact Number Input */}
                         <Input
-                            icon={<ContactIcon />}
+                            icon={<Image src="/images/icons/contact-icon.svg" alt='contact-icon' width={24} height={24} />}
                             type="number"
                             placeholder={t("phoneNumber")}
                             className="sm:w-[450px] lg:w-2/3 w-full"

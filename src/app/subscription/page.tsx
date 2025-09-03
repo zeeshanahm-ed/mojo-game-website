@@ -5,9 +5,9 @@ import Wrapper from '@/app/components/ui/common/Wrapper';
 import Banner from './components/Banner';
 import Button from '../components/ui/common/Button';
 import PaymentOptionModal from '../components/modals/payment-options-modal';
+import Image from 'next/image';
 
 //icons
-import CrownIcon from "/images/icons/crown-icon.svg";
 import { MdOutlineInfo } from "react-icons/md";
 
 
@@ -22,7 +22,7 @@ function Subscription() {
                 <div className='flex items-center justify-center flex-col h-auto py-10 pb-20 px-4 md:px-10'>
                     <div className="font-secondary">
                         <div className="flex justify-start mb-4">
-                            <CrownIcon className="md:w-16 md:h-16 w-10 h-10" />
+                            <Image src="/images/icons/crown-icon.svg" alt='crown-icon' width={100} height={100} className="md:w-16 md:h-16 w-10 h-10" />
                         </div>
 
                         <h2 className="text-4xl md:text-6xl font-primary">

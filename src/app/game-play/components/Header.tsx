@@ -3,9 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { useGameSession } from '@/app/store/gameSession';
 import { useDirection } from '@/app/hooks/useGetDirection';
 import Wrapper from '@/app/components/ui/common/Wrapper';
-//icons
-import GameOverIcon from '/images/icons/gameover-icon.svg';
-import ExitIcon from '/images/icons/exit-icon.svg';
+import Image from 'next/image';
 
 interface HeaderProps {
     handleScreenChange?: (value: string) => void;
@@ -36,14 +34,14 @@ const Header: React.FC<HeaderProps> = ({ handleScreenChange, handleOpenExitModal
                             className={`flex items-center text-white text-4xl gap-5 bg-red py-2 ${direction === "rtl" ? "lg:py-2" : "lg:pt-2 lg:py-0"} md:boxShadow-custom px-2 md:px-4 transform skew-custom md:-skew-x-12 border-2 border-black shadow-lg `}
                         >
 
-                            <ExitIcon className={`${direction === "rtl" ? "lg:mb-0" : "lg:mb-2"}  md:h-5 w-5 h-4 md:w-6`} />
+                            <Image src="/images/icons/exit-icon.svg" alt='exit-icon' width={100} height={100} className={`${direction === "rtl" ? "lg:mb-0" : "lg:mb-2"} md:h-5 w-4 h-4 md:w-5`} />
                             <span className='hidden lg:block'>{t("exitGame")}</span>
                         </button>
                         <button
                             onClick={() => handleScreenChange?.("congratulation")}
                             className={`flex items-center text-white text-4xl gap-5 bg-fanta py-2 ${direction === "rtl" ? "lg:py-2" : "lg:pt-2 lg:py-0"} md:boxShadow-custom px-2 md:px-4 transform skew-custom md:-skew-x-12 border-2 border-black shadow-lg `}
                         >
-                            <GameOverIcon className={`${direction === "rtl" ? "lg:mb-0" : "lg:mb-2"} md:h-5 w-4 h-4 md:w-5`} />
+                            <Image src="/images/icons/gameover-icon.svg" alt='gameover-icon' width={100} height={100} className={`${direction === "rtl" ? "lg:mb-0" : "lg:mb-2"} md:h-5 w-4 h-4 md:w-5`} />
                             <span className='hidden lg:block'>{t("gameOver")}</span>
                         </button>
                     </div>
