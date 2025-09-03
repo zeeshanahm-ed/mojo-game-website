@@ -26,8 +26,8 @@ const KnowledgeSection = () => {
                         <h2 className="text-6xl md:text-7xl text-black mb-2 uppercase">
                             {t("testKnowledge")}
                         </h2>
-                        <p className="text-sm font-secondary md:text-base  text-black max-w-xl">
-                            {t("playingModeseDescription")}
+                        <p className={`text-sm md:text-base  text-black max-w-xl ${direction === "rtl" ? "font-arabic" : "font-secondary "}`}>
+                            {t("knowledgeModeseDescription")}
                         </p>
                         <Button className='my-10 w-44 md:w-64 lg:w-72 text-2xl sm:text-3xl md:text-4xl ' onClick={() => handleOPenModal()}>
                             {t("createGame")}

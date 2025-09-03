@@ -2,11 +2,13 @@ import React from 'react';
 import Image from 'next/image';
 import Wrapper from '@/app/components/ui/common/Wrapper';
 import { useTranslation } from 'react-i18next';
+import { useDirection } from '@/app/hooks/useGetDirection';
 
 
 
 const Banner: React.FC = () => {
     const { t } = useTranslation();
+    const direction = useDirection();
 
     return (
         <div className="w-full bg-black py-10 px-4 md:px-10 flex flex-col items-center justify-center relative overflow-hidden border-b-4 border-black">
@@ -21,7 +23,7 @@ const Banner: React.FC = () => {
                         <h2 className="text-6xl md:text-8xl leading-tight mb-4 uppercase ">
                             {t("contactUs")}
                         </h2>
-                        <p className="text-sm font-secondary sm:text-base text-white">
+                        <p className={`text-sm ${direction === "rtl" ? "font-arabic" : "font-secondary"} sm:text-base text-white`}>
                             {t("playLocalNote")}
                         </p>
                     </div>

@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import Button from './Button';
+import { useDirection } from '@/app/hooks/useGetDirection';
 
 interface PaginationProps {
     totalPages?: number;
@@ -11,6 +12,7 @@ interface PaginationProps {
 const Pagination: React.FC<PaginationProps> = ({ totalPages = 10 }) => {
     const [currentPage, setCurrentPage] = useState(1);
     const { t } = useTranslation();
+    const direction = useDirection();
 
     const getPagination = () => {
         const pages: (number | string)[] = [];
@@ -54,7 +56,7 @@ const Pagination: React.FC<PaginationProps> = ({ totalPages = 10 }) => {
         <div className="w-full bg-white mt-20 gap-8 flex items-center justify-center flex-col md:flex-row">
             {/* Prev */}
             <button
-                className="font-secondary text-xl md:mr-5 cursor-pointer hover:text-dark-gray"
+                className={`${direction === "rtl" ? "font-arabic" : "font-secondary"} text-xl md:mr-5 cursor-pointer hover:text-dark-gray`}
                 onClick={() => currentPage > 1 && setCurrentPage((prev) => prev - 1)}
             >
                 {t("prev")}
@@ -81,7 +83,7 @@ const Pagination: React.FC<PaginationProps> = ({ totalPages = 10 }) => {
 
             {/* Next */}
             <button
-                className="font-secondary text-xl md:ml-5 cursor-pointer hover:text-dark-gray"
+                className={`${direction === "rtl" ? "font-arabic" : "font-secondary"} text-xl md:ml-5 cursor-pointer hover:text-dark-gray`}
                 onClick={() => currentPage < totalPages && setCurrentPage((prev) => prev + 1)}
             >
                 {t("next")}

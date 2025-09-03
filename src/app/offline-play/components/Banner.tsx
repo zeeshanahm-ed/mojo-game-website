@@ -2,10 +2,12 @@ import React from 'react';
 import Image from 'next/image';
 import Wrapper from '@/app/components/ui/common/Wrapper';
 import { useTranslation } from 'react-i18next';
+import { useDirection } from '@/app/hooks/useGetDirection';
 
 const Banner: React.FC = () => {
 
     const { t } = useTranslation();
+    const direction = useDirection();
 
     return (
         <section className="w-full bg-yellow py-16 px-1 md:px-10 flex flex-col items-center justify-center relative overflow-hidden border-b-4 border-black">
@@ -21,11 +23,11 @@ const Banner: React.FC = () => {
                     </div>
 
                     {/* Middle Section - Heading and Description */}
-                    <div className="flex flex-col text-center items-center lg:w-2/4 px-4">
-                        <h2 className="text-6xl md:text-8xl  leading-tight uppercase ">
+                    <div className="flex flex-col text-center items-center px-4">
+                        <h2 className={` text-nowrap leading-tight uppercase ${direction === "rtl" ? "text-4xl md:text-6xl" : "text-6xl md:text-8xl"}`}>
                             {t("playLocal")}
                         </h2>
-                        <p className="text-sm font-secondary sm:text-base max-w-xl">
+                        <p className={`text-sm ${direction === "rtl" ? "font-arabic mt-7" : "font-secondary"} sm:text-base max-w-xl`}>
                             {t("playLocalNote")}
                         </p>
                     </div>

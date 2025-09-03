@@ -41,9 +41,9 @@ export default function Banner() {
     }
 
     return (
-        <section dir={direction} className="w-full bg-red text-white px-4 md:px-10 py-8 md:py-8 xl:py-10 pb-0 sm:pb-8">
+        <section dir={direction} className={`w-full bg-red text-white px-4 md:px-10 py-8  xl:py-10  ${direction === "rtl" ? "pb-5 sm:pb-8" : "pb-0 sm:pb-8"}`}>
             <Wrapper>
-                <div className='relative h-[18rem] sm:h-[18rem] xl:h-[20rem] flex flex-col justify-center'>
+                <div className={`${direction === "rtl" ? "h-[18rem] sm:h-auto xl:h-[23rem]" : "h-[18rem] sm:h-[18rem] xl:h-[20rem]"} relative flex flex-col justify-center`}>
                     <div className="hidden 580px:block md:-end-40 -end-36 -top-5  absolute w-[250px] h-[200px] md:w-[250px] md:h-[250px]">
                         <Image
                             src="/images/world-imag.png"
@@ -56,18 +56,26 @@ export default function Banner() {
                     <div className="hidden 580px:block xsm:start-64 start-52 sm:start-[60%] md:start-[65%] lg:start-[60%] -top-2  relative sm:w-8 sm:h-8 w-5 h-5">
                         <Image src="/images/star.png" width={100} height={100} alt='Star' className='w-full h-full object-contain' />
                     </div>
-                    <h1 className="text-6xl -mt-8 text-start sm:text-[4.5rem] md:text-[5.5rem] xl:text-[6.5rem]  !leading-[0.85] uppercase max-w-[20rem] sm:max-w-[25rem] md:max-w-[35rem] xl:max-w-[44rem]">
-                        {t("slogan_line_1")}
-                        <span className="text-yellow"> {t("slogan_line_2")}</span>  {t("withUltimate")}  {t("quizExperience")}
-                    </h1>
-                    <p className="text-sm md:text-base text-start font-secondary">{t("slogan_sub")}</p>
+                    {direction === "ltr" ?
+                        <h1 className="text-6xl -mt-8 text-start sm:text-[4.5rem] md:text-[5.5rem] xl:text-[6.5rem]  !leading-[0.85] uppercase max-w-[20rem] sm:max-w-[28rem] md:max-w-[35rem] xl:max-w-[44rem]">
+                            Challenge Your
+                            <span className="text-yellow"> Mind </span>
+                            With Ultimate Quiz Experience
+                        </h1> :
+                        <h1 className="text-6xl -mt-8 text-start sm:text-[4.5rem] md:text-[5.5rem] xl:text-[6rem]  !leading-[1.1] uppercase max-w-[20rem] sm:max-w-[25rem] md:max-w-[35rem] xl:max-w-[44rem]">
+                            اعصر مخك <br />
+                            مع أقو ى أسئلة
+                        </h1>
 
-                    <div className={`mt-5 md:mt-10 flex ${direction === "rtl" ? "font-bold" : ""} flex-row justify-start items-center`}>
+                    }
+                    <p className={`text-sm md:text-base text-start ${direction === "rtl" ? "font-arabic md:mt-10" : "font-secondary "}`}>{t("slogan_sub")}</p>
+
+                    <div className={`mt-5 md:mt-10 flex flex-row justify-start items-center`}>
 
                         <button
                             role='button'
                             onClick={() => handleGoTo("createAGame")}
-                            className={`relative cursor-pointer text-black skew-custom pt-3 px-6 border-[2px] md:border-[4px] border-black bg-yellow items-center  flex justify-center`}>
+                            className={`relative cursor-pointer text-black skew-custom ${direction === "rtl" ? "py-2" : "pt-3"}  px-6 border-[2px] md:border-[4px] border-black bg-yellow items-center  flex justify-center`}>
                             <div className=' text-4xl sm:text-5xl skew-x-3 md:text-6xl uppercase'>{t("create")}</div>
                             <div className='text-nowrap w-full flex skew-x-3 mt-3 ml-2 items-center justify-between text-2xl sm:3xl md:text-[40px] uppercase'>
                                 {t("aGame")}

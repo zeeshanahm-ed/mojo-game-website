@@ -13,6 +13,7 @@ import AuthModal from '@/app/auth/AuthModal';
 import Image from 'next/image';
 import LanguageSwitcher from '../Language-Switcher';
 import useGetUserProfile from '@/app/profile/core/hooks/useGetUserProfile';
+import { useDirection } from '@/app/hooks/useGetDirection';
 //icons
 import { FaPlus } from "react-icons/fa";
 import { FiMenu } from "react-icons/fi";
@@ -28,6 +29,7 @@ const Header: React.FC = () => {
     const [openWalletModal, setOpenWalletModal] = useState(false);
     const { userData } = useGetUserProfile();
     const { t } = useTranslation();
+    const direction = useDirection();
 
     const handleAuthModal = () => {
         openModal("signin");
@@ -93,13 +95,13 @@ const Header: React.FC = () => {
                         <div className='md:hidden' role='button' onClick={() => setIsDrawerOpen(true)}>
                             <FiMenu className='text-3xl sm:text-4xl' />
                         </div>
-                        <Link href="/" className="text-3xl sm:text-4xl ml-3 md:ml-0 md:text-5xl text-gray-900 font-bulletproof mt-1 uppercase cursor-pointer">
+                        <Link href="/" className={`${direction === "rtl" ? "font-arabic font-bold" : "font-bulletproof mt-1"} text-3xl sm:text-4xl ml-3 md:ml-0 md:text-5xl text-gray-900  uppercase cursor-pointer`}>
                             {t("mojo")}
                         </Link>
                     </div>
 
                     {/* Right section: Navigation links */}
-                    <div className="flex-1 hidden justify-end md:flex items-center space-x-2 font-secondary md:space-x-4  text-gray-800 text-sm sm:text-base md:text-lg font-medium w-fit text-nowrap">
+                    <div className={`${direction === "rtl" ? "font-arabic" : "font-secondary"} flex-1 hidden justify-end md:flex items-center space-x-2  md:space-x-4  text-gray-800 text-sm sm:text-base md:text-lg font-medium w-fit text-nowrap`}>
                         <div className='hidden md:block'><LanguageSwitcher /></div>
                         <Link href="/my-games" className="hover:text-dark-gray transition-colors">{t("myGames")}</Link>
                         <Link href="/subscription" className="hover:text-dark-gray transition-colors">{t("subscription")}</Link>

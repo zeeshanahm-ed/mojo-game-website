@@ -63,7 +63,7 @@ const Select: React.FC<SelectProps> = ({
                     required={required}
                     value={value}
                     onChange={onChange}
-                    className={`w-full pl-2 font-secondary md:ps-8 pe-10 py-2 h-full bg-white text-base md:text-lg border-none focus:outline-none appearance-none cursor-pointer ${selectClassName}`}
+                    className={`w-full pl-2 ${direction === "rtl" ? "font-arabic" : "font-secondary"} md:ps-8 pe-10 py-2 h-full bg-white text-base md:text-lg border-none focus:outline-none appearance-none cursor-pointer ${selectClassName}`}
                 >
                     {/* Placeholder option */}
                     <option value="" disabled hidden className="text-gray-500">

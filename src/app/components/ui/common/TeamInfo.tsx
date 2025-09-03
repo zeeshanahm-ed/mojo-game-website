@@ -21,10 +21,10 @@ function TeamInfo({ gameName, handleGameName, teams, errors, handleTeamNameChang
     return (
 
         <div className="text-center flex flex-col items-center justify-center mt-10">
-            <h2 className="md:text-6xl text-5xl text-black mb-2 uppercase">
+            <h2 className={`text-black mb-2 uppercase ${direction === "rtl" ? "text-3xl md:text-5xl" : "md:text-6xl text-5xl"}`}>
                 {t("teamInfoTitle")}
             </h2>
-            <p className="text-sm font-secondary sm:text-base leading-6 text-black max-w-2xl">
+            <p className={`text-sm ${direction === "rtl" ? "font-arabic mt-3" : "font-secondary"} sm:text-base leading-6 text-black max-w-2xl`}>
                 {t("playLocalNote")}
             </p>
             <div className='w-full flex flex-col items-center'>
@@ -36,15 +36,15 @@ function TeamInfo({ gameName, handleGameName, teams, errors, handleTeamNameChang
                     inputClassName='text-center pl-0'
                     onChange={(e): void => handleGameName(e.target.value)}
                 />
-                <p className="text-sm font-secondary sm:text-base mt-1 text-red">{errors?.gameName}</p>
+                <p className={`text-sm ${direction === "rtl" ? "font-arabic mt-1" : "font-secondary"} sm:text-base mt-1 text-red`}>{errors?.gameName}</p>
             </div>
-            <div className="py-10 flex flex-col md:flex-row items-center justify-center space-y-20 md:space-y-0 md:space-x-12 lg:space-x-20 w-full">
+            <div className={`py-10 flex flex-col md:flex-row items-center justify-center space-y-20 md:space-y-0 md:space-x-12 lg:space-x-20 w-full `}>
                 {/* First Team Card */}
-                <div className="w-72 font-secondary -skew-x-3 md:-skew-x-6 bg-red border-4 border-black flex flex-col items-center py-6 pb-4">
-                    <h3 className="text-white font-primary text-5xl uppercase mb-4 ">
+                <div className="w-72 -skew-x-3 md:-skew-x-6 bg-red border-4 border-black flex flex-col items-center py-6 pb-4">
+                    <h3 className={`text-white uppercase mb-4 ${direction === "rtl" ? "font-arabic text-3xl" : "font-primary text-5xl"}`}>
                         {t("firstTeam")}
                     </h3>
-                    <div className="w-full bg-white border-y-2 border-black p-2 mb-4">
+                    <div className={`w-full bg-white border-y-2 border-black p-2 mb-4 ${direction === "rtl" ? "font-arabic" : "font-secondary"}`}>
                         <input
                             type="text"
                             placeholder={t("yourTeamName")}
@@ -54,7 +54,7 @@ function TeamInfo({ gameName, handleGameName, teams, errors, handleTeamNameChang
                             dir={direction}
                             onChange={(e) => handleTeamNameChange("first", e.target.value)}
                         />
-                        <p className="text-sm sm:text-base mt-1 text-red">{errors?.firstTeam}</p>
+                        <p className={`text-sm sm:text-base mt-1 text-red`}>{errors?.firstTeam}</p>
                     </div>
                     {/* Player Count Controls */}
                     <div className="flex items-center justify-center w-full space-x-2 px-6">
@@ -64,7 +64,7 @@ function TeamInfo({ gameName, handleGameName, teams, errors, handleTeamNameChang
                             type="plus"
                             team="first"
                         />
-                        <span className="text-white text-lg flex-grow text-center">
+                        <span className={`text-white text-lg flex-grow text-center ${direction === "rtl" ? "font-arabic" : "font-secondary"}`}>
                             {t("players", { count: teams.first.players })}
                         </span>
                         <CustomButton
@@ -81,11 +81,11 @@ function TeamInfo({ gameName, handleGameName, teams, errors, handleTeamNameChang
                 </div>
 
                 {/* Second Team Card */}
-                <div className="w-72 bg-blue font-secondary -skew-x-3 md:-skew-x-6 border-4 border-black flex flex-col items-center py-6 pb-4">
-                    <h3 className="text-white font-primary text-5xl uppercase mb-4 ">
+                <div className="w-72 bg-blue -skew-x-3 md:-skew-x-6 border-4 border-black flex flex-col items-center py-6 pb-4">
+                    <h3 className={`text-white uppercase mb-4 ${direction === "rtl" ? "font-arabic text-3xl " : "font-primary text-5xl "}`}>
                         {t("secondTeam")}
                     </h3>
-                    <div className="w-full bg-white border-y-2 border-black p-2 mb-4">
+                    <div className={`w-full bg-white border-y-2 border-black p-2 mb-4 ${direction === "rtl" ? "font-arabic" : "font-secondary"}`}>
                         <input
                             type="text"
                             dir={direction}
@@ -105,7 +105,7 @@ function TeamInfo({ gameName, handleGameName, teams, errors, handleTeamNameChang
                             type="plus"
                             team="second"
                         />
-                        <span className="text-white text-lg flex-grow text-center">
+                        <span className={`text-white text-lg flex-grow text-center ${direction === "rtl" ? "font-arabic" : "font-secondary"}`}>
                             {t("players", { count: teams.second.players })}
                         </span>
                         <CustomButton

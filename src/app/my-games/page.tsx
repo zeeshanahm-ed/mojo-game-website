@@ -6,11 +6,14 @@ import Input from '@/app/components/ui/common/Input';
 import Image from 'next/image';
 import Pagination from '../components/ui/common/Pagination';
 import { useTranslation } from 'react-i18next';
+import { useDirection } from '../hooks/useGetDirection';
+import { TFunction } from 'i18next';
 
 function MyGames() {
     const [searchByName, setSearchByName] = useState('');
     const [searchByCategory, setSearchByCategory] = useState('');
     const { t } = useTranslation();
+    const direction = useDirection();
 
     return (
         <section>
@@ -38,12 +41,7 @@ function MyGames() {
                         </div>
                     </div>
                     <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-6 place-items-center'>
-                        <GameCard />
-                        <GameCard />
-                        <GameCard />
-                        <GameCard />
-                        <GameCard />
-                        <GameCard />
+                        <GameCard t={t} direction={direction} />
                     </div>
                     <Pagination totalPages={10} />
                 </div>
@@ -54,9 +52,12 @@ function MyGames() {
 
 export default MyGames;
 
+interface GameCardProps {
+    t: TFunction<"translation", undefined>;
+    direction: string;
+}
 
-const GameCard = () => {
-    const { t } = useTranslation();
+const GameCard = ({ t, direction }: GameCardProps) => {
     return (
         <div className="relative flex flex-col items-center justify-center w-64 sm:w-56 md:w-64 lg:w-72 h-80 p-2 px-2 lg:p-4 bg-white border-[6px] border-black -skew-x-1 md:-skew-x-3 shadow-md">
             {/* Badge */}
@@ -70,10 +71,10 @@ const GameCard = () => {
             <div className="flex flex-col items-center text-center gap-y-4 md:gap-y-1 lg:mt-4">
                 <Image src="/images/quiz-app.png" alt="Game Icon" width={100} height={80} className='w-20 md:w-28' />
 
-                <h2 className="text-5xl lg:text-7xl  text-dark-blue">GAME 12</h2>
+                <h2 className={` text-dark-blue ${direction === "rtl" ? "text-3xl md:text-5xl my-2" : "text-5xl lg:text-7xl"}`}>{t("game", { count: 12 })}</h2>
 
-                <p className="text-sm text-black font-secondary">
-                    {"Answer correctly, and deduct the number of points you won from the other team's points."}
+                <p className={`text-sm text-black ${direction === "rtl" ? "font-arabic" : "font-secondary"}`}>
+                    {t("gameDescription")}
                 </p>
             </div>
         </div>

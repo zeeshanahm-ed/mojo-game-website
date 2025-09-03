@@ -1,7 +1,7 @@
 export interface GamesCategoryInterface {
     name: string;
-    icon: string;
-    id: string;
+    photo: string;
+    _id?: string;
     selected?: boolean;
 }
 export interface currencyOptionsInterface {

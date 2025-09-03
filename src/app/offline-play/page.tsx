@@ -4,14 +4,16 @@ import Banner from './components/Banner'
 import Wrapper from '@/app/components/ui/common/Wrapper';
 import CategoriesSection from '@/app/components/ui/common/CategoriesSection';
 import Button from '@/app/components/ui/common/Button';
+import TeamInfo from '../components/ui/common/TeamInfo';
 //HOOKS & UTILS
 import { showErrorMessage } from '../utils/messageUtils';
 import { useTranslation } from 'react-i18next';
 import { useRouter } from 'next/navigation';
-import { categories } from '@/app/constants/constant';
 import { GamesCategoryInterface } from '../utils/Interfaces';
 import { useGameSession } from '../store/gameSession';
-import TeamInfo from '../components/ui/common/TeamInfo';
+import { useDirection } from '../hooks/useGetDirection';
+import { getLanguage } from '../helpers/helpers-functions';
+import useGetAllCategories from '../game-play/core/hooks/useGetAllCategories';
 
 
 interface TeamState {
@@ -26,6 +28,9 @@ function OfflineMode() {
     const [errors, setErrors] = useState<{ [key: string]: string } | null>(null);
     const router = useRouter();
     const { t } = useTranslation();
+    const direction = useDirection();
+    const lang = getLanguage();
+    const { categoriesData } = useGetAllCategories(lang);
 
     const [teams, setTeams] = useState<TeamState>({
         first: { name: '', players: 1 },
@@ -125,7 +130,7 @@ function OfflineMode() {
             <Wrapper>
                 <div className='flex items-center justify-center flex-col h-auto pb-16 px-4 md:px-10'>
                     <CategoriesSection
-                        data={categories}
+                        data={categoriesData || []}
                         suggestCategoryNQuestions={true}
                         selectedCategories={selectedCategories}
                         setSelectedCategories={setSelectedCategories}
@@ -139,7 +144,7 @@ function OfflineMode() {
                         handlePlayerChange={handlePlayerChange}
                         handleGameName={handleGameName}
                     />
-                    <Button className='text-white md:w-80 sm:w-64 my-16 sm:text-4xl  md:text-4xl lg:w-[450px] w-64 text-3xl lg:text-5xl' onClick={() => handleStartGame()}>{t("startPlaying")}</Button>
+                    <Button className={`text-white md:w-80 sm:w-64 my-16  ${direction === "rtl" ? "py-4 text-3xl md:text-4xl" : " text-3xl sm:text-4xl md:text-4xl lg:text-5xl"}  lg:w-[450px] w-64`} onClick={() => handleStartGame()}>{t("startPlaying")}</Button>
                 </div>
             </Wrapper>
         </section >

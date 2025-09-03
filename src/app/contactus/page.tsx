@@ -94,7 +94,7 @@ function ContactUS() {
                         />
 
                         <textarea
-                            className="sm:w-[450px] font-secondary lg:w-2/3 w-full h-28 outline-none resize-none bg-white border-2 border-black -skew-x-[4deg] md:-skew-x-[8deg] p-4 text-base md:text-lg"
+                            className={`sm:w-[450px] ${direction === "rtl" ? "font-arabic" : "font-secondary"} lg:w-2/3 w-full h-28 outline-none resize-none bg-white border-2 border-black -skew-x-[4deg] md:-skew-x-[8deg] p-4 text-base md:text-lg`}
                             placeholder={t("yourMessage")}
                             name="message"
                             dir={direction}

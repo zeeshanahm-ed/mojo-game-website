@@ -4,6 +4,7 @@ import Select from '../ui/common/Select';
 import { useTranslation } from 'react-i18next';
 import { Currency_Options } from '@/app/constants/constant';
 import Link from 'next/link';
+import { useDirection } from '@/app/hooks/useGetDirection';
 
 //icons
 import { MdClose } from 'react-icons/md';
@@ -16,6 +17,7 @@ interface WalletModalProps {
 
 function WalletModal({ open, onClose }: WalletModalProps) {
     const { t } = useTranslation();
+    const direction = useDirection();
     const [currency, setCurrency] = useState('SAR');
 
     const handleCurrencyChange = (value: string) => {
@@ -24,9 +26,9 @@ function WalletModal({ open, onClose }: WalletModalProps) {
 
     return (
         <dialog id="wallet_modal" className={` modal ${open ? 'modal-open' : ''}`}>
-            <div className="max-w-4xl font-primary modal-box customModalStyle bg-white items-center rounded-none border-2 border-black">
+            <div className="max-w-4xl modal-box bg-white items-center rounded-none border-2 border-black">
                 <form method="dialog " className="flex items-center justify-center relative">
-                    <h2 className="text-5xl md:text-6xl  uppercase">
+                    <h2 className="text-5xl md:text-6xl uppercase">
                         {t("wallet")}
                     </h2>
                     <button
@@ -50,10 +52,10 @@ function WalletModal({ open, onClose }: WalletModalProps) {
                         </div>
 
                         <div className='space-y-2 w-full'>
-                            <h3 className="text-4xl md:text-5xl">
-                                {t("credits")}
-                            </h3>
-                            <p className="text-sm max-w-xs font-secondary">
+                            <h2 className={`${direction === "rtl" ? "font-semibold text-2xl md:text-3xl" : "text-4xl md:text-5xl "}`}>
+                                {t("credits", { count: 10 })}
+                            </h2>
+                            <p className={`text-sm max-w-xs ${direction === "rtl" ? "font-arabic" : "font-secondary"}`}>
                                 {t("creditsInfo")}
                             </p>
                             {/* <Button className='text-2xl sm:text-3xl w-36 sm:w-48' onClick={() => handleNavigate("recharge")}>
@@ -69,10 +71,10 @@ function WalletModal({ open, onClose }: WalletModalProps) {
                         </div>
 
                         <div className='space-y-2 w-full'>
-                            <h3 className="text-4xl md:text-5xl">
+                            <h3 className={`${direction === "rtl" ? "font-semibold text-2xl md:text-3xl" : "text-4xl md:text-5xl "}`}>
                                 SAR
                             </h3>
-                            <p className="text-sm font-secondary max-w-xs">
+                            <p className={`text-sm ${direction === "rtl" ? "font-arabic" : "font-secondary"} max-w-xs`}>
                                 {t("currencyInfo")}
                             </p>
 
@@ -95,10 +97,10 @@ function WalletModal({ open, onClose }: WalletModalProps) {
                         </div>
 
                         <div className='space-y-2 w-full'>
-                            <h3 className="text-4xl md:text-5xl">
+                            <h3 className={`${direction === "rtl" ? "font-semibold text-2xl md:text-3xl" : "text-4xl md:text-5xl "}`}>
                                 {t("history")}
                             </h3>
-                            <p className="text-sm font-secondary max-w-xs">
+                            <p className={`text-sm ${direction === "rtl" ? "font-arabic" : "font-secondary"} max-w-xs`}>
                                 {t("purchaseHistory")}
                             </p>
                             {/* <Button className={`text-2xl ${direction === "rtl" ? "" : "md:!mt-1"} sm:text-3xl w-36 sm:w-48`} onClick={() => handleNavigate("history")}>
@@ -107,7 +109,7 @@ function WalletModal({ open, onClose }: WalletModalProps) {
                             <Link
                                 href='/profile'
                                 onClick={onClose}
-                                className='boxShadow-custom bg-purple text-white flex-centered pt-2 w-36 sm:w-48 text-4xl px-4 transform font-primary -skew-x-6 md:-skew-x-12 border-2 border-black shadow-lg '>
+                                className={`boxShadow-custom bg-purple text-white flex-centered w-36 sm:w-52 transform ${direction === "rtl" ? "py-2 text-2xl" : "pt-2 text-4xl"} text-nowrap -skew-x-6 md:-skew-x-12 border-2 border-black shadow-lg `}>
                                 {t("viewHistory")}
                             </Link>
 

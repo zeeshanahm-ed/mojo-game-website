@@ -36,17 +36,28 @@ function CreateGameModal() {
                 <div className="flex items-center w-full justify-evenly md:px-10 py-5 px-5 sm:px-10 gap-5">
                     <Link href="/offline-play" onClick={closeModal} className="md:w-64 w-64 cursor-pointer skew-custom bg-green border-4 sm:border-[6px]  border-black flex flex-col items-center justify-center px-6 py-2 md:py-5 gap-5">
                         <Image src="/images/offlinemode-image.png" alt='Offline Mode' className='sm:w-20 w-16 sm:h-20 md:w-20 md:h-20' width={100} height={100} />
-                        <p dir={direction} className="text-black text-5xl md:text-6xl uppercase">
-                            {t('offline')} <span className="text-3xl md:text-4xl block text-end -mt-3 md:text-start md:inline-block md:mt-0"> {t('play')}</span>
-                        </p>
+                        {direction === "ltr" ?
+                            <p dir={direction} className="text-black text-5xl md:text-6xl uppercase">
+                                {t('offline')} <span className="text-3xl md:text-4xl block text-end -mt-3 md:text-start md:inline-block md:mt-0"> {t('play')}</span>
+                            </p>
+                            :
+                            <p dir={direction} className="text-black text-nowrap text-2xl md:text-4xl uppercase">
+                                لعب أوفلاين
+                            </p>
+                        }
                     </Link>
 
                     {/* Online Play Card */}
                     <Link href="/online-play" onClick={closeModal} className="md:w-64 w-64 cursor-pointer skew-custom bg-yellow  border-4 sm:border-[6px] border-black flex flex-col items-center justify-center px-6 py-2  md:py-5 gap-5">
                         <Image src="/images/onlinemode-image.png" alt='Online Mode' className='sm:w-20 w-16 sm:h-20 md:w-20 md:h-20' width={100} height={100} />
-                        <p dir={direction} className="text-black  text-5xl md:text-6xl uppercase" >
-                            {t('online')} <span className="text-3xl md:text-4xl block text-end -mt-3 md:text-start md:inline-block md:mt-0"> {t('play')}</span>
-                        </p>
+                        {direction === "ltr" ?
+                            <p dir={direction} className="text-black  text-5xl md:text-6xl uppercase" >
+                                {t('online')} <span className="text-3xl md:text-4xl block text-end -mt-3 md:text-start md:inline-block md:mt-0"> {t('play')}</span>
+                            </p> :
+                            <p dir={direction} className="text-black text-nowrap text-2xl md:text-4xl uppercase" >
+                                لعب أونلاين
+                            </p>
+                        }
                     </Link>
                 </div>
             </div>

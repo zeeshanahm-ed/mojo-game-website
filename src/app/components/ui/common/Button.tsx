@@ -41,7 +41,7 @@ const Button = forwardRef<HTMLButtonElement, IButtonProps>(
                 type={type}
                 {...rest}
                 disabled={disabled || loading}
-                className={`${variant} ${className} ${bgClass ? bgClass : "bg-purple"} ${textClass ? textClass : "text-white"} ${boxShadow ? "boxShadow-custom" : "shadow-none"} ${direction === "ltr" ? " pt-2 " : "py-2"} px-4 transform font-primary -skew-x-6 md:-skew-x-12 border-2 border-black shadow-lg `}
+                className={`${variant} ${className} ${bgClass ? bgClass : "bg-purple"} ${textClass ? textClass : "text-white"} ${boxShadow ? "boxShadow-custom" : "shadow-none"} ${direction === "ltr" ? " pt-2 font-primary" : "py-2 font-arabic"} px-4 transform -skew-x-6 md:-skew-x-12 border-2 border-black shadow-lg `}
                 aria-label="Button"
             >
                 {prefixElement}

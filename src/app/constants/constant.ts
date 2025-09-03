@@ -1,31 +1,10 @@
-import { currencyOptionsInterface, GamesCategoryInterface } from "../utils/Interfaces";
-
-export const categories: GamesCategoryInterface[] = [
-    { id: "1", name: 'Horror Movies', icon: '/images/categories-images/horror-movies.png' },
-    { id: "2", name: 'Cinema', icon: '/images/categories-images/cinema.png' },
-    { id: "3", name: 'Wrestling', icon: '/images/categories-images/wrestling.png' },
-    { id: "4", name: 'Currency', icon: '/images/categories-images/currency.png' },
-    { id: "5", name: 'Qatar', icon: '/images/categories-images/qatar.png' },
-    { id: "6", name: 'Cars', icon: '/images/categories-images/cars.png' },
-    { id: "7", name: 'Moto Bikes', icon: '/images/categories-images/motor-bike.png' },
-    { id: "8", name: 'Football', icon: '/images/categories-images/football.png' },
-    { id: "9", name: 'Fast Food', icon: '/images/categories-images/fast-food.png' },
-    { id: "10", name: 'Saudi Arabia', icon: '/images/categories-images/saudi-arabia.png' },
-    { id: "11", name: 'Basket Ball', icon: '/images/categories-images/basket-ball.png' },
-    { id: "12", name: 'General Info', icon: '/images/categories-images/general-info.png' },
-    { id: "13", name: 'Music', icon: '/images/categories-images/music.png' },
-    { id: "14", name: 'E Gaming', icon: '/images/categories-images/e-gaming.png' },
-    { id: "15", name: 'Pro Boxing', icon: '/images/categories-images/pro-boxing.png' },
-    { id: "16", name: 'Animal Planet', icon: '/images/categories-images/animal-planet.png' }
-];
+import { currencyOptionsInterface } from "../utils/Interfaces";
 
 export const Currency_Options: currencyOptionsInterface[] = [
     { label: 'Kuwaiti Dinar', value: 'KWD', icon: '/images/kuwait.png' },
     { label: 'Saudi Riyal', value: 'SAR', icon: '/images/saudia.png' },
     { label: 'Qatari Riyal', value: 'QAR', icon: '/images/qatar.png' },
     { label: 'Omani Rial', value: 'OMR', icon: '/images/oman.png' },
-    // { label: 'Bahraini Dinar', value: 'BHD', flag: '🇧🇭' },
-    // { label: 'UAE Dirham', value: 'AED', flag: '🇦🇪' }
 ];
 
 

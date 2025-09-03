@@ -1,9 +1,11 @@
 import Image from 'next/image';
 import Wrapper from '../common/Wrapper';
 import { useTranslation } from 'react-i18next';
+import { useDirection } from '@/app/hooks/useGetDirection';
 
 export default function AboutMojoSection() {
     const { t } = useTranslation();
+    const direction = useDirection();
     return (
         <section className="relative w-full bg-white py-10 overflow-hidden">
             <div className="relative w-full">
@@ -12,15 +14,12 @@ export default function AboutMojoSection() {
                         <div className="relative skew-y-[1deg] w-full">
                             {/* Left Text */}
                             <div className=" flex items-center justify-between flex-col 580px:flex-row">
-                                <div className='text-center 580px:text-left'>
-                                    <h2 className="text-6xl md:text-7xl uppercase  text-black mb-2">
+                                <div className='text-center 580px:text-start' dir={direction}>
+                                    <h2 className="text-6xl md:text-7xl uppercase  text-black">
                                         {t("aboutMojo")}
                                     </h2>
-                                    <p className="max-w-full 580px:max-w-xs md:max-w-md lg:max-w-xl text-sm font-secondary md:text-base text-black leading-6 ">
-                                        Lorem ipsum dolor sit amet consectetur. Magna convallis magna
-                                        pretium morbi at ut ut adipiscing. Posuere iaculis iaculis etiam
-                                        ultrices lectus. Morbi in at blandit potenti vulputate
-                                        scelerisque metus imperdiet purus. Lacus mauris pharetra gravida.
+                                    <p className={`max-w-full 580px:max-w-xs md:max-w-md lg:max-w-xl text-sm ${direction === "rtl" ? "font-arabic mt-5" : "font-secondary "} md:text-base text-black leading-6`}>
+                                        {t("aboutMojoDescription")}
                                     </p>
                                 </div>
 

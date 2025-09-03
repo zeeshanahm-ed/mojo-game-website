@@ -7,7 +7,8 @@
     "ramadan": "Ramadan",
     "private_game": "Private Game",
     "kids_quest": "Kids Quest",
-    "game": "Game",
+    "game": "Game {{count}}",
+    "gameDescription": "Answer correctly, and deduct the number of points you won from the other team's points.",
     "students_label": "Students",
     "kids_label": "Kids",
     "ramadan_label": "Ramadan",
@@ -21,6 +22,8 @@
     "quizExperience": "Quiz Experience",
     "testKnowledge": "Test Your Knowledge",
     "playingModeseDescription": "It is a fun cultural game suitable for all ages, testing your group's knowledge. The game includes all types of questions according to the selected category.",
+    "knowledgeModeseDescription": "It is a fun cultural game suitable for all ages, testing your group's knowledge. The game includes all types of questions according to the selected category.",
+    "aboutMojoDescription": "Lorem ipsum dolor sit amet consectetur. Magna convallis magna pretium morbi at ut ut adipiscing. Posuere iaculis iaculis etiam ultrices lectus. Morbi in at blandit potenti vulputate scelerisque metus imperdiet purus. Lacus mauris pharetra gravida.",
     "createGame": "Create A Game",
     "playingModes": "Playing Modes",
     "lifeLines": "Life Lines",
@@ -65,7 +68,7 @@
     "yes": "Yes",
     "wallet": "Wallet",
     "history": "History",
-    "credits": "10 game credits",
+    "credits": "Game credits {{count}}",
     "rechargeWallet": "Recharge Wallet",
     "viewHistory": "View History",
     "creditsInfo": "These game credits will be used for creating games.",
@@ -239,5 +242,9 @@
     "userSignedIn": "User signed in successfully.",
     "confirmPasswordRequired": "Confirm password is required.",
     "userSignedUp": "User signed up successfully.",
-    "secondChanceNote2": "You want to take 2 turns in case of any doubt or wrong answer? Use this."
+    "secondChanceNote2": "You want to take 2 turns in case of any doubt or wrong answer? Use this.",
+    "freeModeTitle": "You’re on Free Mode",
+    "freeModeSubtitle": "Upgrade to Premium for unlimited games & fun!",
+    "upgrade": "Upgrade",
+    "information": "Information"
 }
