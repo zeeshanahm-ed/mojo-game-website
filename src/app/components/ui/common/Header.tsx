@@ -1,5 +1,5 @@
 'use client'
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useAuth } from '@/app/context/AuthContext';
 import { useAuthModalStore } from '@/app/store/useAuthModalStore';
@@ -12,9 +12,11 @@ import MobileDrawer from '../MobileDrawer';
 import AuthModal from '@/app/auth/AuthModal';
 import Image from 'next/image';
 import LanguageSwitcher from '../Language-Switcher';
+import useGetUserProfile from '@/app/profile/core/hooks/useGetUserProfile';
 //icons
 import { FaPlus } from "react-icons/fa";
 import { FiMenu } from "react-icons/fi";
+import { useUserProfile } from '@/app/store/userProfile';
 
 
 
@@ -24,11 +26,21 @@ const Header: React.FC = () => {
     const [isDrawerOpen, setIsDrawerOpen] = useState(false);
     const [openNewGameModal, setOpenNewGameModal] = useState(false);
     const [openWalletModal, setOpenWalletModal] = useState(false);
+    const { userData } = useGetUserProfile();
     const { t } = useTranslation();
 
     const handleAuthModal = () => {
         openModal("signin");
     };
+
+    const { setUserProfile } = useUserProfile();
+    const { userProfile } = useUserProfile();
+
+    useEffect(() => {
+        if (userData) {
+            setUserProfile(userData);
+        }
+    }, [userData]);
 
     return (
         <header className="w-full font-sans h-20 flex items-center px-4 lg:px-10 md:px-6">
@@ -37,17 +49,17 @@ const Header: React.FC = () => {
                     {/* Left section: User avatar and name */}
                     <div className="flex-1 items-center gap-2 lg:gap-5 hidden md:flex">
                         <div className='flex items-center'>
-                            {user ?
+                            {user && userProfile ?
                                 <Link href="/profile" className='w-44 flex items-center'>
-                                    <div className="w-10 h-10 overflow-hidden border border-black skew-custom">
+                                    <div className="w-10 h-10 flex-centered overflow-hidden border border-black skew-custom">
                                         <Image
-                                            src="/images/fallback-profile-image.jpg"
-                                            width={40}
-                                            height={40}
+                                            src={userProfile?.imageUrl ? userProfile.imageUrl : "/images/fallback-profile-image.jpg"}
+                                            width={30}
+                                            height={30}
                                             alt="User Avatar"
-                                            className="w-full h-full object-cover" />
+                                            className="object-contain" />
                                     </div>
-                                    <span className="text-gray-800 text-lg font-semibold ml-3 max-w-[90%] truncate">{user.data.firstName} {user.data.lastName}</span>
+                                    <span className="text-gray-800 text-lg font-semibold ml-3 max-w-[90%] truncate">{userProfile?.firstName} {userProfile?.lastName}</span>
                                 </Link>
                                 :
                                 <button className="skew-custom">

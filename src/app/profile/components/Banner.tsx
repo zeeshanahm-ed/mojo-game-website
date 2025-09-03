@@ -17,10 +17,10 @@ const Banner: React.FC = () => {
                     </div>
 
                     <div className="flex flex-col text-center items-center lg:w-2/4 px-4 text-white">
-                        <h2 className="text-6xl md:text-8xl lg:text-9xl leading-tight mb-4 uppercase ">
+                        <h2 className="text-6xl md:text-8xl uppercase ">
                             {t("myAccount")}
                         </h2>
-                        <p className="text-base font-secondary text-white md:text-lg">
+                        <p className="text-sm font-secondary sm:text-base text-white md:text-lg">
                             {t("profileDescription")}
                         </p>
                     </div>

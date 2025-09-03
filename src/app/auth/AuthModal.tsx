@@ -61,14 +61,16 @@ export default function AuthModal() {
         <dialog id="auth_modal" className={` modal ${open ? 'modal-open' : ''}`}>
             <div className="modal-box font-primary bg-white max-w-2xl items-center rounded-none border-2 border-black w-full customModalStyle">
                 <form method="dialog " className="flex items-center justify-center relative">
-                    {mode != "signin" && mode != "signup" && <button
-                        type="button"
-                        className="absolute left-3 -top-0 bg-light-gray focus:outline-none w-5 h-5 md:w-8 md:h-8 flex items-center justify-center rounded-full text-white hover:bg-dark-gray transition-colors duration-300"
-                        onClick={goBack}
-                        aria-label="Close"
-                    >
-                        <MdArrowBack className='text-base md:text-2xl' />
-                    </button>}
+                    {["forgotPassword", "verifyOtp", "resetPassword"].includes(mode) && (
+                        <button
+                            type="button"
+                            className="absolute left-3 -top-0 bg-light-gray focus:outline-none w-5 h-5 md:w-8 md:h-8 flex items-center justify-center rounded-full text-white hover:bg-dark-gray transition-colors duration-300"
+                            onClick={goBack}
+                            aria-label="Close"
+                        >
+                            <MdArrowBack className='text-base md:text-2xl' />
+                        </button>
+                    )}
                     <h2 className="text-5xl md:text-6xl uppercase ">
                         {getTitle()}
                     </h2>

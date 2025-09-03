@@ -3,6 +3,7 @@
 import api from '@/app/services/api/api';
 import authApi from '@/app/services/api/authApi';
 import { IChangePasswordForm, IForgotPasswordForm, ISignInForm, IVerifyOtpRequestBody } from './_models';
+import { getDeviceId } from '@/app/utils/deviceId';
 
 const SIGNIN_URL = '/auth/login';
 const SIGNUP_URL = '/auth/register';
@@ -11,8 +12,13 @@ const VERIFY_OTP = '/auth/verify-otp';
 const VERIFY_TOKEN_URL = '/auth/verify-token';
 const RESET_PASS_CODE = '/auth/reset-password';
 
-export function signIn(body: ISignInForm) {
-    return api.post(SIGNIN_URL, body);
+export async function signIn(body: ISignInForm) {
+    const fingerprint = await getDeviceId();
+    return api.post(SIGNIN_URL, body, {
+        headers: {
+            "x-device-fingerprint": fingerprint || ""
+        },
+    });
 }
 
 export function signUp(body: FormData) {
@@ -33,9 +39,13 @@ export function verifyOtp(body: IVerifyOtpRequestBody) {
 export function resetPassword(body: IChangePasswordForm) {
     return api.post(RESET_PASS_CODE, body);
 }
-export function getUserByToken(token: string) {
+export async function getUserByToken(token: string) {
+    const fingerprint = await getDeviceId();
     return authApi.get(VERIFY_TOKEN_URL, {
-        headers: { Authorization: `Bearer ${token}` },
+        headers: {
+            Authorization: `Bearer ${token}`,
+            "x-device-fingerprint": fingerprint || ""
+        },
     }
     );
 }

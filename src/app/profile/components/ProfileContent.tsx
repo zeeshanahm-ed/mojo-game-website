@@ -1,5 +1,5 @@
 "use client"
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { AxiosError } from 'axios';
 
 import Input from '@/app/components/ui/common/Input';
@@ -14,6 +14,9 @@ import { showErrorMessage, showSuccessMessage } from '@/app/utils/messageUtils';
 import useUpdateUserProfile from '../core/hooks/useUpdateUserProfile';
 import { useAuthModalStore } from '@/app/store/useAuthModalStore';
 import { useDirection } from '@/app/hooks/useGetDirection';
+import useGetUserProfile from '../core/hooks/useGetUserProfile';
+import { useAuth } from '@/app/context/AuthContext';
+import { useUserProfile } from '@/app/store/userProfile';
 
 
 interface FormState {
@@ -31,8 +34,9 @@ function ProfileContent() {
     const { t } = useTranslation();
     const direction = useDirection();
     const { mutateUpdateUserProfile } = useUpdateUserProfile();
+    const { userData } = useGetUserProfile();
     const [profilePicObj, setProfilePicObj] = useState<File | null>(null);
-
+    const { setUserProfile } = useUserProfile();
     const [formState, setFormState] = useState<FormState>({
         firstName: '',
         lastName: '',
@@ -42,23 +46,34 @@ function ProfileContent() {
         countryCode: '',
     });
 
-    // useEffect(() => {
-    //     if (user) {
-    //         setFormState(prev => (
-    //             {
-    //                 ...prev,
-    //                 firstName: user.data.firstName,
-    //                 lastName: user.data.lastName,
-    //                 email: user.data.email,
-    //                 avatar: user.data.imageUrl,
-    //                 phoneNumber: user.data.phoneNumber
-    //             }
-    //         ));
-    //     }
-    //     else {
-    //         router.push("/")
-    //     }
-    // }, [user, router])
+    useEffect(() => {
+        if (userData) {
+            setFormState(prev => (
+                {
+                    ...prev,
+                    firstName: userData.firstName,
+                    lastName: userData.lastName,
+                    email: userData.email,
+                    avatar: userData.imageUrl,
+                    phoneNumber: userData.phoneNumber.split("-")[1],
+                    countryCode: userData.phoneNumber.split("-")[0]
+                }
+            ));
+        }
+        else {
+            setFormState(prev => (
+                {
+                    ...prev,
+                    firstName: "",
+                    lastName: "",
+                    email: "",
+                    avatar: "",
+                    phoneNumber: "",
+                    countryCode: ""
+                }
+            ));
+        }
+    }, [userData])
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
         setFormState({ ...formState, [e.target.name]: e.target.value });
@@ -69,15 +84,22 @@ function ProfileContent() {
         formData.append("firstName", formState.firstName);
         formData.append("lastName", formState.lastName);
         formData.append("email", formState.email);
-        formData.append("phoneNumber", formState.countryCode + formState.phoneNumber);
+        formData.append("phoneNumber", formState.countryCode + "-" + formState.phoneNumber);
 
-        if (formState.avatar && profilePicObj instanceof File) {
+        if (profilePicObj) {
             formData.append("avatar", profilePicObj);
         }
 
         mutateUpdateUserProfile(formData, {
-            onSuccess: async () => {
+            onSuccess: async (data: any) => {
                 showSuccessMessage('Profile update successful.');
+                const localUserData = JSON.parse(localStorage.getItem("user") || "{}");
+                const updatedUserData = {
+                    ...localUserData,
+                    ...data.data.data
+                }
+                localStorage.setItem("user", JSON.stringify(updatedUserData));
+                setUserProfile(data.data.data);
             },
             onError: (error: unknown) => {
                 if (error instanceof AxiosError) {
@@ -87,9 +109,20 @@ function ProfileContent() {
         });
     };
 
+    const validateFile = (file: File) => {
+        if (!["image/jpeg", "image/png", "image/jpg", "image/webp"].includes(file.type)) {
+            showErrorMessage('File type must be jpeg, png, jpg or webp');
+            return false;
+        }
+        return true;
+    };
+
     const handleProfilePictureChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const file = event.target.files?.[0];
         if (file) {
+            if (!validateFile(file)) {
+                return;
+            }
             setProfilePicObj(file);
             const reader = new FileReader();
             reader.onloadend = () => {
@@ -114,6 +147,34 @@ function ProfileContent() {
         value: country.dialCode,
     }));
 
+    const buttonDisabled = () => {
+        // Check if any required field is empty
+        if (
+            !formState.firstName ||
+            !formState.lastName ||
+            !formState.email ||
+            !formState.phoneNumber ||
+            !formState.countryCode
+        ) {
+            return true;
+        }
+
+        // If userProfile is not loaded yet, disable button
+        if (!userData) {
+            return true;
+        }
+
+        // Check if all fields are the same as the original userProfile data
+        const isSame =
+            formState.firstName === userData.firstName &&
+            formState.lastName === userData.lastName &&
+            formState.email === userData.email &&
+            formState.phoneNumber === userData.phoneNumber &&
+            formState.countryCode === (userData as any).countryCode; // countryCode may not exist on userProfile, adjust as needed
+
+        return isSame;
+    }
+
     return (
         <div className='h-auto pt-10 px-4 md:px-10 flex md:flex-row flex-col items-center justify-evenly'>
             <div className='flex flex-col items-center justify-center space-y-4 mb-10'>
@@ -130,15 +191,15 @@ function ProfileContent() {
                     <Image
                         src={formState.avatar || "/images/fallback-profile-image.jpg"}
                         alt="User Profile"
-                        className="w-full h-full object-cover"
-                        width={160}
-                        height={160}
+                        className="object-contain"
+                        width={120}
+                        height={120}
                     />
                     <div
                         className="absolute -top-2 -right-2 bg-black rounded-full p-1 border-2 border-white cursor-pointer"
                         onClick={triggerFileInput}
                     >
-                        <Image src="/images/icons/edit-icon.svg" alt='edit-icon' width={18} height={18} className=" w-4 h-4 fill-white" />
+                        <Image src="/images/icons/edit-icon-white.svg" alt='edit-icon' width={18} height={18} className=" w-4 h-4" />
 
                     </div>
                 </div>
@@ -159,6 +220,7 @@ function ProfileContent() {
                         type="text"
                         value={formState.firstName}
                         name='firstName'
+                        onChange={handleChange}
                         placeholder={t("firstName")}
                         className="flex-1 input h-full rounded-none input-bordered  pl-2 md:pl-8 pr-2 text-lg bg-white text-gray-800 border-none focus:outline-none"
                         autoComplete="off"
@@ -168,6 +230,7 @@ function ProfileContent() {
                         type="text"
                         value={formState.lastName}
                         name='lastName'
+                        onChange={handleChange}
                         placeholder={t("lastName")}
                         className="flex-1 input h-full rounded-none input-bordered  pl-2 md:pl-8 pr-2 text-lg bg-white text-gray-800 border-none focus:outline-none border-l border-gray-300"
                         autoComplete="off"
@@ -205,14 +268,14 @@ function ProfileContent() {
                     placeholder={t("phoneNumber")}
                     className="sm:w-[450px] lg:w-full w-full"
                     required
-                    name="contact"
+                    name="phoneNumber"
                     onChange={handleChange}
                     value={formState.phoneNumber}
                 />
 
                 {/* SignUp Button */}
                 <div className='flex items-center justify-center mt-10'>
-                    <Button onClick={handleProfileChange} aria-label="Save" className="w-52" boxShadow={false}>
+                    <Button disabled={buttonDisabled()} onClick={handleProfileChange} aria-label="Save" className="w-52" boxShadow={false}>
                         <span className="inline-block transform tracking-wider text-4xl uppercase ">{t("saveChanges")}</span>
                     </Button>
                 </div>

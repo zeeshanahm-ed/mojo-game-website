@@ -68,7 +68,7 @@ export default function SignUpForm({ setLoading, loading }: SignUpFormProps) {
             { key: "password", value: formState.password },
             { key: "age", value: formState.age },
             { key: "gender", value: formState.gender },
-            { key: "phoneNumber", value: formState.countryCode + formState.phoneNumber }
+            { key: "phoneNumber", value: formState.countryCode + "-" + formState.phoneNumber }
         ];
 
         fields.forEach(field => formData.append(field.key, field.value));

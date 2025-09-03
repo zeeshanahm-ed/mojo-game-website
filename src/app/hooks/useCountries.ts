@@ -52,7 +52,12 @@ export const useCountries = () => {
 
     useEffect(() => {
         fetchCountries()
-            .then(setCountries)
+            .then(response => {
+                const sorted = [...response].sort((a, b) =>
+                    a.name.localeCompare(b.name, 'en', { sensitivity: 'base' })
+                );
+                setCountries(sorted);
+            })
             .catch((err) => {
                 console.error(err);
                 setError('Failed to fetch countries');

@@ -14,7 +14,6 @@ export default function Logout() {
 
     const handleLogout = () => {
         removeAuth();
-        router.push("/");
         window.location.reload();
         closeModal();
     };
