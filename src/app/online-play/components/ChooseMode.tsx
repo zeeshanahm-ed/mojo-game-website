@@ -1,4 +1,5 @@
 import Wrapper from '@/app/components/ui/common/Wrapper';
+import { useDirection } from '@/app/hooks/useGetDirection';
 import React from 'react'
 import { useTranslation } from 'react-i18next';
 
@@ -29,15 +30,16 @@ const modes: ModeOption[] = [
 
 function ChooseMode({ selectedMode, handleModeSelect }: Props) {
     const { t } = useTranslation();
+    const direction = useDirection();
     return (
         <div className='w-full flex flex-col items-center justify-center border-b-2 border-border-gray my-10'>
             <Wrapper>
                 <div className="flex flex-col items-center justify-center w-full text-center">
                     <div className="flex flex-col text-center items-center lg:w-3/4 px-4">
-                        <h2 className="text-6xl md:text-7xl leading-tight mb-4 uppercase ">
+                        <h2 className={`uppercase ${direction === "rtl" ? "text-4xl md:text-5xl" : "text-6xl md:text-7xl"}`}>
                             {t("joinRoom")}
                         </h2>
-                        <p className="text-sm font-secondary sm:text-base">
+                        <p className={`text-sm ${direction === "rtl" ? "font-arabic mt-3" : "font-secondary"} sm:text-base`}>
                             {t("playGlobalDescription")}
                         </p>
                     </div>
@@ -58,7 +60,7 @@ function ChooseMode({ selectedMode, handleModeSelect }: Props) {
                                 </div>
 
                                 {/* Mode Title */}
-                                <h2 className={` text-3xl md:text-[2.5rem] uppercase ${selectedMode === mode.id ? 'text-black' : 'text-gray-800'}`}>
+                                <h2 className={` ${direction === "rtl" ? "text-xl md:text-2xl " : "text-3xl md:text-[2.5rem] "} uppercase ${selectedMode === mode.id ? 'text-black' : 'text-gray-800'}`}>
                                     {t(mode.title)}
                                 </h2>
                             </div>

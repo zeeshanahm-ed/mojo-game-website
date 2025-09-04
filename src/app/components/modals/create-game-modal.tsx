@@ -33,28 +33,35 @@ function CreateGameModal() {
                 </form>
                 <div className="divider before:bg-light-gray after:bg-light-gray m-0"></div>
                 {/* Playing Mode Cards */}
-                <div className="flex items-center w-full justify-evenly md:px-10 py-5 px-5 sm:px-10 gap-5">
-                    <Link href="/offline-play" onClick={closeModal} className="md:w-64 w-64 cursor-pointer skew-custom bg-green border-4 sm:border-[6px]  border-black flex flex-col items-center justify-center px-6 py-2 md:py-5 gap-5">
-                        <Image src="/images/offlinemode-image.png" alt='Offline Mode' className='sm:w-20 w-16 sm:h-20 md:w-20 md:h-20' width={100} height={100} />
+                <div className="flex flex-row justify-center items-center gap-5 p-5">
+                    <Link href="/offline-play" className="w-36 xsm:w-44 sm:w-56 cursor-pointer skew-custom h-44 sm:h-48 bg-green border-[4px] sm:border-[6px]  border-black flex flex-col items-center justify-center px-4 md:px-6 gap-5">
+                        <Image src="/images/offlinemode-image.png" width={100} height={100} alt='Offline Mode' className='w-16 md:w-20 h-auto' />
                         {direction === "ltr" ?
-                            <p dir={direction} className="text-black text-5xl md:text-6xl uppercase">
-                                {t('offline')} <span className="text-3xl md:text-4xl block text-end -mt-3 md:text-start md:inline-block md:mt-0"> {t('play')}</span>
+                            <p dir={direction} className="text-black text-5xl md:text-6xl xl:text-7xl uppercase flex">
+                                Offline
+                                <span className="sm:text-4xl text-3xl md:text-4xl xl:text-5xl mt-2 ml-2 md:mt-4">
+                                    Play
+                                </span>
                             </p>
                             :
-                            <p dir={direction} className="text-black text-nowrap text-2xl md:text-4xl uppercase">
+                            <p dir={direction} className="text-nowrap text-black text-2xl md:text-3xl uppercase flex">
                                 لعب أوفلاين
                             </p>
                         }
                     </Link>
 
                     {/* Online Play Card */}
-                    <Link href="/online-play" onClick={closeModal} className="md:w-64 w-64 cursor-pointer skew-custom bg-yellow  border-4 sm:border-[6px] border-black flex flex-col items-center justify-center px-6 py-2  md:py-5 gap-5">
-                        <Image src="/images/onlinemode-image.png" alt='Online Mode' className='sm:w-20 w-16 sm:h-20 md:w-20 md:h-20' width={100} height={100} />
+                    <Link href="/online-play" className="w-36 xsm:w-44 sm:w-56 cursor-pointer h-44 sm:h-48 skew-custom bg-yellow  border-[4px] sm:border-[6px] border-black flex flex-col items-center justify-center px-4 md:px-6 gap-5">
+                        <Image src="/images/onlinemode-image.png" width={100} height={100} alt='Online Mode' className='sm:w-20 w-16 h-auto md:w-20' />
                         {direction === "ltr" ?
-                            <p dir={direction} className="text-black  text-5xl md:text-6xl uppercase" >
-                                {t('online')} <span className="text-3xl md:text-4xl block text-end -mt-3 md:text-start md:inline-block md:mt-0"> {t('play')}</span>
-                            </p> :
-                            <p dir={direction} className="text-black text-nowrap text-2xl md:text-4xl uppercase" >
+                            <p dir={direction} className="text-black text-5xl md:text-6xl xl:text-7xl uppercase flex">
+                                Online
+                                <span className="sm:text-4xl text-3xl md:text-4xl xl:text-5xl mt-2 ml-2 md:mt-4">
+                                    Play
+                                </span>
+                            </p>
+                            :
+                            <p dir={direction} className=" text-nowrap text-black text-2xl md:text-3xl uppercase flex">
                                 لعب أونلاين
                             </p>
                         }

@@ -257,5 +257,6 @@
     "price": "{{count}} Rivals",
     "monthly": "Monthly",
     "buyNow": "Buy now",
-    "billingOfSubscriptions": "Billing of Subscriptions"
+    "billingOfSubscriptions": "Billing of Subscriptions",
+    "answer": "Answer"
 }

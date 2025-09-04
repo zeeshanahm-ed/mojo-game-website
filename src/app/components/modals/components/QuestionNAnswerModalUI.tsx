@@ -175,7 +175,7 @@ const QuestionNAnswer = ({ editQuestionData, setQuestionsData, goBack, mode }: Q
     };
 
     return (
-        <div className='w-full pb-10 pt-5  space-y-5 h-auto max-h-[800px] font-secondary'>
+        <div className={`w-full pb-10 pt-5  space-y-5 h-auto max-h-[800px] ${direction === "rtl" ? "font-arabic" : "font-secondary"}`}>
             <div className='px-4 md:px-10 space-y-5 overflow-y-auto h-auto max-h-[600px]'>
                 {/* Question */}
                 <div>
@@ -376,7 +376,7 @@ const QuestionNAnswer = ({ editQuestionData, setQuestionsData, goBack, mode }: Q
             </div>
             <Divider />
             <div className='flex-centered mt-5'>
-                <Button className='w-80 text-4xl' onClick={handleAddQuestion}>
+                <Button className={`${direction === "rtl" ? "text-xl md:text-2xl" : "md:text-4xl text-2xl"} w-80`} onClick={handleAddQuestion}>
                     {t("addQuestion")}
                 </Button>
             </div>

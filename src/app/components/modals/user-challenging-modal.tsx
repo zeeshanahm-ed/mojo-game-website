@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import Button from '../ui/common/Button';
 import Image from 'next/image';
 import Divider from '../ui/common/Divider';
+import { useDirection } from '@/app/hooks/useGetDirection';
 
 
 interface UserChallengModalProps {
@@ -13,12 +14,13 @@ interface UserChallengModalProps {
 
 function UserChallengModal({ open, onClose }: UserChallengModalProps) {
     const { t } = useTranslation();
+    const direction = useDirection();
 
     return (
         <dialog id="user-challenge_modal" className={` modal ${open ? 'modal-open' : ''}`}>
-            <div className="modal-box px-0 pb-0 font-primary  bg-white items-center max-w-3xl rounded-none border border-black">
+            <div className="modal-box customModalStyle bg-white items-center max-w-3xl rounded-none border border-black">
                 <form method="dialog " className="px-4 md:px-10 flex items-center justify-center relative">
-                    <h2 className="text-4xl sm:text-5xl md:text-6xl  uppercase flex flex-row sm:flex-row sm:items-center ">
+                    <h2 className={`${direction === "rtl" ? "text-3xl md:text-4xl " : "text-4xl sm:text-5xl md:text-6xl "}  uppercase flex flex-row sm:flex-row sm:items-center my-2`}>
                         {t("usersChallenging")}
                     </h2>
                     <button
@@ -40,7 +42,7 @@ function UserChallengModal({ open, onClose }: UserChallengModalProps) {
                             </span>
                             <p className='text-lg font-secondary truncate max-w-[80%]'>User15992 User15992 User15992 User15992</p>
                         </div>
-                        <Button bgClass='bg-[#10CD65]' className='md:w-32 w-fit text-2xl md:text-4xl !skew-x-6 md:!skew-x-12'>{t("play")}</Button>
+                        <Button bgClass='bg-[#10CD65]' className={`md:w-32 w-fit ${direction === "rtl" ? "text-xl" : "text-2xl md:text-4xl"} !skew-x-6 md:!skew-x-12`}>{t("play")}</Button>
                     </div>
                 </div>
             </div>

@@ -132,7 +132,7 @@ export default function SignInForm({ setLoading, loading }: SignInFormProps) {
     return (
         <section>
             {/* Modal Body */}
-            <div className="tracking-normal font-secondary md:px-20 sm:px-10 px-5 py-10 space-y-6" dir={direction}>
+            <div className={`tracking-normal ${direction === "rtl" ? "font-arabic" : "font-secondary"} md:px-20 sm:px-10 px-5 py-10 space-y-6`} dir={direction}>
                 {/* Email Input */}
                 <div>
                     <div className="flex items-center h-12 md:h-14 w-full transform -skew-x-12 border-2 border-black overflow-hidden">
@@ -179,14 +179,14 @@ export default function SignInForm({ setLoading, loading }: SignInFormProps) {
                         {t('createAccount')}
                     </button>
                     <button onClick={handleForgotPassword} className="w-fit text-start font-normal font-Product_sans text-sm md:text-base -ml-2 hover:underline">
-                        {t("forgotPassword")}?
+                        {t("forgotPassword")}
                     </button>
                 </div>
 
                 <div className='flex items-center justify-center'>
                     {/* Login Button */}
-                    <Button disabled={loading} type="button" onClick={handleSignIn} aria-label="Login" className="w-40 md:w-52 tracking-wider">
-                        <span className="inline-block transform skew-x-6 text-4xl uppercase ">{t('login')}</span>
+                    <Button disabled={loading} type="button" onClick={handleSignIn} aria-label="Login" className={`w-40 md:w-52 tracking-wider ${direction === "rtl" ? "text-xl md:text-2xl" : "text-4xl"}`}>
+                        <span className="inline-block transform skew-x-6 uppercase ">{t('login')}</span>
                     </Button>
                 </div>
             </div>

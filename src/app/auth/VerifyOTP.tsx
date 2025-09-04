@@ -6,6 +6,7 @@ import { useTranslation } from 'react-i18next';
 import { showErrorMessage, showSuccessMessage } from '../utils/messageUtils';
 import { forgotPassCode, verifyOtp } from './core/_requests';
 import { AxiosError } from 'axios';
+import { useDirection } from '../hooks/useGetDirection';
 
 
 interface ForgotPasswordProps {
@@ -23,7 +24,7 @@ export default function VerifyOTP({ setLoading, loading }: ForgotPasswordProps) 
     const [timer, setTimer] = useState<number>(60);
     const [canResend, setCanResend] = useState<boolean>(false);
     const forgotEmail = localStorage.getItem('forgotEmail');
-
+    const direction = useDirection();
 
     const inputRefs = useRef<HTMLInputElement[] | undefined>([]);
 
@@ -166,17 +167,17 @@ export default function VerifyOTP({ setLoading, loading }: ForgotPasswordProps) 
                                 onChange={(e) => handleChange(index, e.target.value)}
                                 onKeyDown={(e) => handleKeyDown(index, e)}
                                 onPaste={(e) => handlePaste(e)}
-                                className={`w-14 font-secondary bg-gray-200 h-14 rounded-lg text-center text-lg focus:outline-none focus:border-dark-gray focus:border-2`}
+                                className={`w-14 ${direction === "rtl" ? "font-arabic" : "font-secondary"} bg-gray-200 h-14 rounded-lg text-center text-lg focus:outline-none focus:border-dark-gray focus:border-2`}
                             />
                         ))}
                     </div>
-                    {error && <p className='text-red font-secondary'>{error}</p>}
+                    {error && <p className={`${direction === "rtl" ? "font-arabic" : "font-secondary"} text-red`}>{error}</p>}
 
                 </div>
-                <p className='font-secondary'>{t("enterOtp")}</p>
+                <p className={`${direction === "rtl" ? "font-arabic" : "font-secondary"}`}>{t("enterOtp")}</p>
                 <div className='flex gap-x-6 items-center justify-center'>
-                    <Button disabled={loading} className='md:text-4xl text-2xl w-32 md:w-44' onClick={handleVerifyOtp}>{t("submit")}</Button>
-                    <Button className={`${timer ? "cursor-not-allowed pointer-events-none" : ""} md:text-4xl text-2xl w-32 md:w-44`} onClick={handleResendOTP}>{timer ? timer : t("resendOtp")}</Button>
+                    <Button disabled={loading} className={`${direction === "rtl" ? "text-xl md:text-2xl" : "md:text-4xl text-2xl"} w-32 md:w-44`} onClick={handleVerifyOtp}>{t("submit")}</Button>
+                    <Button className={`${timer ? "cursor-not-allowed pointer-events-none" : ""} ${direction === "rtl" ? "text-xl md:text-2xl w-fit " : "md:text-4xl text-2xl w-32 md:w-44"} `} onClick={handleResendOTP}>{timer ? timer : t("resendOtp")}</Button>
                 </div>
             </div>
         </section>

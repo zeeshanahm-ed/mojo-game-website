@@ -6,6 +6,7 @@ import Divider from '../ui/common/Divider';
 import Image from 'next/image';
 import QuestionNAnswer from './components/QuestionNAnswerModalUI';
 import { useTranslation } from 'react-i18next';
+import { useDirection } from '@/app/hooks/useGetDirection';
 //icon
 import { IoIosAddCircleOutline } from "react-icons/io";
 import { MdDelete } from "react-icons/md";
@@ -34,6 +35,7 @@ export interface OfflineQuestionNAnswerData {
 function SuggestCategoryNQuestionModal({ open, onClose, mode }: SuggestCategoryNQuestionModalProps) {
     const [categoryName, setCategoryName] = useState("");
     const { t } = useTranslation();
+    const direction = useDirection();
     const [file, setFile] = useState<string>("");
     const [fileObj, setFileObj] = useState<File | null>(null);
     const [step, setStep] = useState(1);
@@ -91,7 +93,7 @@ function SuggestCategoryNQuestionModal({ open, onClose, mode }: SuggestCategoryN
 
     return (
         <dialog id="user-challenge_modal" className={` modal ${open ? 'modal-open' : ''}`}>
-            <div className="modal-box px-0 pb-0 font-primary  bg-white items-center max-w-3xl rounded-none border border-black">
+            <div className={`modal-box px-0 pb-0 ${direction === "rtl" ? "font-arabic" : "font-primary"}  bg-white items-center max-w-3xl rounded-none border border-black`}>
                 <form method="dialog " className="px-4 md:px-10 flex items-center justify-center relative">
                     {step === 2 &&
                         <button
@@ -102,7 +104,7 @@ function SuggestCategoryNQuestionModal({ open, onClose, mode }: SuggestCategoryN
                         >
                             <MdArrowBack className='text-base md:text-2xl' />
                         </button>}
-                    <h2 className="text-4xl sm:text-5xl md:text-6xl  uppercase flex flex-row sm:flex-row sm:items-center ">
+                    <h2 className={`${direction === "rtl" ? "text-3xl md:text-4xl mb-2" : "text-4xl sm:text-5xl md:text-6xl"} uppercase flex flex-row sm:flex-row sm:items-center `}>
                         {t("suggestCategoryQuestion")}
                     </h2>
                     <button
@@ -117,7 +119,7 @@ function SuggestCategoryNQuestionModal({ open, onClose, mode }: SuggestCategoryN
                 <Divider />
                 {/* Main content */}
                 {step === 1 ?
-                    <div className="w-full pb-10 pt-5  space-y-5 h-auto max-h-[800px] font-secondary">
+                    <div className={`w-full pb-10 pt-5  space-y-5 h-auto max-h-[800px] ${direction === "rtl" ? "font-arabic" : "font-secondary"}`}>
                         <div className="flex md:flex-row flex-col gap-6 px-4 md:px-10">
                             {/* Upload Photo */}
                             <div className="flex flex-1 flex-col gap-4">
@@ -198,7 +200,7 @@ function SuggestCategoryNQuestionModal({ open, onClose, mode }: SuggestCategoryN
                         <Divider />
                         {/* Foooter */}
                         <div className='flex-centered'>
-                            <Button className='md:w-80 w-64 text-3xl md:text-4xl'>
+                            <Button className={`${direction === "rtl" ? "text-xl md:text-2xl" : "md:text-4xl text-2xl"}  w-64 md:w-80`}>
                                 {t("submitSuggestion")}
                             </Button>
                         </div>

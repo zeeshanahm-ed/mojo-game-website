@@ -4,6 +4,7 @@ import Input from '../ui/common/Input';
 //icons
 import { MdClose } from 'react-icons/md';
 import { useTranslation } from 'react-i18next';
+import { useDirection } from '@/app/hooks/useGetDirection';
 
 interface JoinRoomModalProps {
     open: boolean;
@@ -14,12 +15,13 @@ function JoinRoomModal({ open, onClose }: JoinRoomModalProps) {
     const [roomCode, setRoomCode] = useState("");
     const [teamName, setTeamName] = useState("");
     const { t } = useTranslation();
+    const direction = useDirection();
 
     return (
         <dialog id="create_game_modal" className={` modal ${open ? 'modal-open' : ''}`}>
-            <div className="modal-box customModalStyle bg-white items-center rounded-none border-2 border-black">
+            <div className="modal-box customModalStyle bg-white items-center max-w-3xl rounded-none border-2 border-black">
                 <form method="dialog " className="flex items-center justify-center relative">
-                    <h2 className="text-5xl md:text-6xl  uppercase">
+                    <h2 className={` uppercase ${direction === "rtl" ? "text-4xl md:text-5xl my-2" : "text-5xl md:text-6xl "}`}>
                         {t("joinRoom")}
                     </h2>
                     <button
@@ -34,7 +36,7 @@ function JoinRoomModal({ open, onClose }: JoinRoomModalProps) {
                 <div className="divider before:bg-light-gray after:bg-light-gray m-0"></div>
                 {/* Main content */}
                 <div className="flex items-center flex-col w-full justify-between py-5 px-5 md:px-10">
-                    <p className='text-lg font-secondary text-black'>{t("roomModalNote")}</p>
+                    <p className={`text-lg ${direction === "rtl" ? "font-arabic" : "font-secondary"} text-black`}>{t("roomModalNote")}</p>
                     <Input
                         type="text"
                         placeholder={t("enterRoomCode")}
@@ -43,7 +45,7 @@ function JoinRoomModal({ open, onClose }: JoinRoomModalProps) {
                         inputClassName='text-center pl-0'
                         onChange={(e) => setRoomCode(e.target.value)}
                     />
-                    <p className='text-lg font-secondary text-black'>{t("enterTeamName")}</p>
+                    <p className={`text-lg ${direction === "rtl" ? "font-arabic" : "font-secondary"} text-black`}>{t("enterTeamName")}</p>
                     <Input
                         type="text"
                         placeholder={t("teamName")}
@@ -52,7 +54,7 @@ function JoinRoomModal({ open, onClose }: JoinRoomModalProps) {
                         inputClassName='text-center pl-0'
                         onChange={(e) => setTeamName(e.target.value)}
                     />
-                    <Button className='text-4xl w-64 tracking-wide'>{t("joinNow")}</Button>
+                    <Button className={`w-64 ${direction === "rtl" ? "text-2xl" : "text-4xl"}`}>{t("joinNow")}</Button>
                 </div>
             </div>
         </dialog>

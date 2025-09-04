@@ -20,10 +20,10 @@ const Banner: React.FC = () => {
                     </div>
 
                     <div className="flex flex-col text-center items-center lg:w-2/4 px-4 text-white">
-                        <h2 className="text-6xl md:text-8xl leading-tight mb-4 uppercase ">
+                        <h2 className={` text-nowrap leading-tight uppercase ${direction === "rtl" ? "text-4xl md:text-7xl" : "text-6xl md:text-8xl"}`}>
                             {t("contactUs")}
                         </h2>
-                        <p className={`text-sm ${direction === "rtl" ? "font-arabic" : "font-secondary"} sm:text-base text-white`}>
+                        <p className={`text-sm ${direction === "rtl" ? "font-arabic mt-3" : "font-secondary"} sm:text-base text-white`}>
                             {t("playLocalNote")}
                         </p>
                     </div>

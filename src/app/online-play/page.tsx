@@ -1,5 +1,5 @@
 "use client"
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Wrapper from '@/app/components/ui/common/Wrapper';
 import CategoriesSection from '@/app/components/ui/common/CategoriesSection';
 import ChooseMode from './components/ChooseMode';
@@ -16,6 +16,7 @@ import { GamesCategoryInterface } from '../utils/Interfaces';
 import { useTranslation } from 'react-i18next';
 import { getLanguage } from '../helpers/helpers-functions';
 import useGetAllCategories from '../game-play/core/hooks/useGetAllCategories';
+import { useDirection } from '../hooks/useGetDirection';
 
 type GameMode = 'friendly' | 'challenge' | null;
 type WhoCanAnswer = 'bothTeams' | 'oneTeamPerTurn' | null;
@@ -41,10 +42,20 @@ function OnlinePlay() {
     const [selectedCategories, setSelectedCategories] = useState<GamesCategoryInterface[]>([]);
     const [currentPlayer, setCurrentPlayer] = useState<1 | 2>(1);
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const lang = getLanguage();
-    const { categoriesData } = useGetAllCategories(lang);
+    const direction = useDirection();
+    const [params, setParams] = useState<{ [key: string]: string }>({
+        lang: "",
+    });
+    const { categoriesData, isLoading } = useGetAllCategories(params);
 
 
+
+    useEffect(() => {
+        const lang = getLanguage();
+        setParams({
+            lang: lang,
+        });
+    }, [direction]);
 
     // handle turn switching
     const handleTurnSwitch = () => {
@@ -115,11 +126,11 @@ function OnlinePlay() {
                                 roomCode={roomCode}
                             />
                             :
-                            <Button className='w-64 md:w-80 text-3xl sm:text-4xl md:text-[2.5rem]' onClick={() => setIsModalOpen(true)}>
+                            <Button className={`w-64 md:w-80  ${direction === "rtl" ? "text-xl md:text-2xl" : " text-3xl sm:text-4xl md:text-[2.5rem] "}`} onClick={() => setIsModalOpen(true)}>
                                 {t("joinChallenge")}
                             </Button>
                         }
-                        <div className="font-secondary flex mt-20 flex-col sm:flex-row items-center justify-evenly w-full space-y-14 sm:space-y-0">
+                        <div className={`${direction === "rtl" ? "font-arabic" : "font-secondary"} flex mt-20 flex-col sm:flex-row items-center justify-evenly w-full space-y-14 sm:space-y-0`}>
                             <div className="flex flex-col items-center text-center">
                                 <div className="skew-custom md:w-40 md:h-40 w-36 h-36 overflow-hidden border-4 border-black flex items-center justify-center mb-4">
                                     <Image
@@ -151,7 +162,7 @@ function OnlinePlay() {
                                 <p className="text-gray-600 text-base ">{t("searchingNote")}</p>
                             </div>
                         </div>
-                        <Button boxShadow={false} className='text-white w-64 md:w-80 my-16 text-4xl' bgClass="bg-black">{t("searchPlayers")}</Button>
+                        <Button boxShadow={false} className={`text-white w-64 md:w-80 my-16 ${direction === "rtl" ? "text-xl md:text-2xl" : "text-4xl"}`} bgClass="bg-black">{t("searchPlayers")}</Button>
                         <CategoriesSection
                             data={categoriesData || []}
                             selectedCategories={selectedCategories}
@@ -160,6 +171,7 @@ function OnlinePlay() {
                             mode="online"
                             currentPlayer={currentPlayer}
                             onSelect={handleTurnSwitch}
+                            isLoading={isLoading}
                         />
                         <div className='flex items-center md:flex-row flex-col gap-8  justify-between my-10'>
                             {selectedMode === "friendly" ?
@@ -192,9 +204,9 @@ function OnlinePlay() {
                                 <Timer showTime={true} />
                             }
                             <div>
-                                <Button disabled={selectedCategories.length < 6} className=' text-white md:w-72 md:text-4xl lg:w-[450px] w-64 text-3xl lg:text-6xl' onClick={handleStartGame}>{t("createGame")}</Button>
+                                <Button disabled={selectedCategories.length < 6} className={` text-white md:w-72 ${direction === "rtl" ? "md:text-2xl lg:text-3xl" : "md:text-4xl lg:text-6xl"} lg:w-96 w-64`} onClick={handleStartGame}>{t("createGame")}</Button>
                                 {selectedMode === "challenge" &&
-                                    <p className="text-base mt-3 font-secondary md:text-lg text-red text-start md:text-center">
+                                    <p className={`text-base mt-3 ${direction === "rtl" ? "font-arabic" : "font-secondary"} md:text-lg text-red text-start md:text-center`}>
                                         <strong className='ms-5 text-black'>{t("note")} </strong> {t("creditInfo")}
                                     </p>
                                 }

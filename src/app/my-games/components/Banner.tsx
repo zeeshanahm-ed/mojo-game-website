@@ -25,14 +25,14 @@ const Banner: React.FC = () => {
 
                     {/* Middle Section - Heading and Description */}
                     <div className="flex flex-col text-center items-center lg:w-2/4">
-                        <h2 className="text-6xl text-white  md:text-8xl leading-tight uppercase ">
+                        <h2 className={` text-nowrap leading-tight uppercase ${direction === "rtl" ? "text-4xl md:text-7xl" : "text-6xl md:text-8xl"} text-white`}>
                             {t("myGames")}
                         </h2>
                         <p className={`text-sm ${direction === "rtl" ? "font-arabic mt-10" : "font-secondary"} sm:text-base text-white max-w-lg`}>
                             {t("playLocalNote")}
                         </p>
                         <div className='w-full mt-10 mb-5'>
-                            <Button onClick={openModal} className='md:text-4xl w-44 sm:w-52 md:w-72 text-3xl' bgClass="bg-yellow" boxShadow={false} textClass="text-black">
+                            <Button onClick={openModal} className={`w-44 sm:w-52 md:w-72  ${direction === "rtl" ? "text-2xl " : "text-3xl md:text-4xl "}`} bgClass="bg-yellow" boxShadow={false} textClass="text-black">
                                 {t("newGame")}
                             </Button>
                         </div>

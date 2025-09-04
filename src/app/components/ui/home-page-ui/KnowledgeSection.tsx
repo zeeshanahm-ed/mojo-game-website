@@ -29,7 +29,7 @@ const KnowledgeSection = () => {
                         <p className={`text-sm md:text-base  text-black max-w-xl ${direction === "rtl" ? "font-arabic" : "font-secondary "}`}>
                             {t("knowledgeModeseDescription")}
                         </p>
-                        <Button className='my-10 w-44 md:w-64 lg:w-72 text-2xl sm:text-3xl md:text-4xl ' onClick={() => handleOPenModal()}>
+                        <Button className='my-10 w-44 !py-2 md:w-64 lg:w-72 text-2xl sm:text-3xl md:text-4xl ' onClick={() => handleOPenModal()}>
                             {t("createGame")}
                         </Button>
                     </div>

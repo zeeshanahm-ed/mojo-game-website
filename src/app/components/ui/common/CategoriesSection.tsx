@@ -129,7 +129,7 @@ function CategoriesSection({ isLoading, data, year, suggestCategoryNQuestions, o
                 </p>}
                 {suggestCategoryNQuestions &&
                     <Button
-                        className={`text-white md:w-80 w-64 sm:w-72 my-8 ${direction === "rtl" ? "text-2xl h-12 md:h-16 md:text-[2rem]" : "text-3xl sm:text-4xl md:h-16 h-12 md:text-[2.5rem]"}`}
+                        className={`text-white md:w-80 w-64 sm:w-72 my-8 ${direction === "rtl" ? " text-xl md:text-2xl" : "text-3xl sm:text-4xl md:text-[2.5rem]"}`}
                         onClick={() => handleSuggestCategoryModal()}>{t("suggestCategory")}
                     </Button>
                 }

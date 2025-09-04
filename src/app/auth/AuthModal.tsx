@@ -8,6 +8,7 @@ import SignUpForm from './SignUpForm';
 import ForgotPassword from './ForgotPassword';
 import FallbackLoader from '../components/ui/common/FallbackLoader';
 import VerifyOTP from './VerifyOTP';
+import { useDirection } from '../hooks/useGetDirection';
 // Icons
 import { MdClose, MdArrowBack } from 'react-icons/md';
 import ResetPassword from './ResetPassword';
@@ -17,6 +18,7 @@ export default function AuthModal() {
     const { mode, goBack } = useAuthModalStore((state) => state);
     const closeModal = useAuthModalStore((state) => state.closeModal);
     const { t } = useTranslation();
+    const direction = useDirection();
     const [loading, setLoading] = useState(false);
 
     const getModalContent = () => {
@@ -59,7 +61,7 @@ export default function AuthModal() {
 
     return (
         <dialog id="auth_modal" className={` modal ${open ? 'modal-open' : ''}`}>
-            <div className="modal-box font-primary bg-white max-w-2xl items-center rounded-none border-2 border-black w-full customModalStyle">
+            <div className="modal-box bg-white max-w-2xl items-center rounded-none border-2 border-black w-full customModalStyle">
                 <form method="dialog " className="flex items-center justify-center relative">
                     {["forgotPassword", "verifyOtp", "resetPassword"].includes(mode) && (
                         <button
@@ -71,7 +73,7 @@ export default function AuthModal() {
                             <MdArrowBack className='text-base md:text-2xl' />
                         </button>
                     )}
-                    <h2 className="text-5xl md:text-6xl uppercase ">
+                    <h2 className={`${direction === "rtl" ? "text-3xl md:text-4xl mb-2" : "text-5xl md:text-6xl"} uppercase`}>
                         {getTitle()}
                     </h2>
                     <button

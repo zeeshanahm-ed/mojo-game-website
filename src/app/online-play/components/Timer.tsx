@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import Image from 'next/image';
+import { useDirection } from '@/app/hooks/useGetDirection';
 
 interface Props {
     showTime: boolean;
@@ -10,6 +11,7 @@ function Timer({ showTime }: Props) {
     const { t } = useTranslation();
     const [timer, setTimer] = useState(20);
     const timerRef = useRef<NodeJS.Timeout | null>(null);
+    const direction = useDirection();
     useEffect(() => {
         if (!showTime) return;
         if (timer === 0) {
@@ -27,11 +29,11 @@ function Timer({ showTime }: Props) {
     return (
         <div className='flex items-center flex-col gap-2 justify-center'>
             <div className='flex items-center gap-2 justify-center'>
-                <div className="-skew-x-12 bg-white border border-dark-orange sm:h-12 h-10 text-white flex gap-2 md:gap-5 items-center w-20 sm:w-24  md:w-32">
+                <div className="-skew-x-12 bg-white border border-dark-orange sm:h-12 h-10 text-white flex gap-2 items-center w-20 sm:w-24  md:w-32">
                     <span className=" text-lg bg-dark-orange w-8 sm:w-10 h-full flex-center">
-                        <Image src="/images/icons/clock-icon.svg" alt='clock-icon' width={100} height={100} className="w-4 h-4 sm:w-6 sm:h-6" />
+                        <Image src="/images/icons/clock-icon.svg" alt='clock-icon' width={24} height={24} className="w-4 h-4 sm:w-6 sm:h-6" />
                     </span>
-                    <span className=" text-xl sm:text-2xl md:text-3xl text-black mt-2">{timer < 10 ? `00:0${timer}` : `00:${timer}`}</span>
+                    <span className={`text-black ${direction === "rtl" ? "text-xl  mt-1" : "text-2xl sm:text-3xl md:text-4xl  mt-2"}`}>{timer < 10 ? `00:0${timer}` : `00:${timer}`}</span>
                 </div>
                 {/* <div
                     role="button"
@@ -40,7 +42,7 @@ function Timer({ showTime }: Props) {
                     <span className="md:text-4xl text-xl sm:text-3xl">{t("setTime")}</span>
                 </div> */}
             </div>
-            <p className="text-base font-secondary md:text-lg max-w-3xl tracking-normal mt-5">
+            <p className={`text-base ${direction === "rtl" ? "font-arabic" : "font-secondary"} md:text-lg max-w-3xl tracking-normal mt-5`}>
                 {t("refundIfTeamNotJoined")}
             </p>
         </div>

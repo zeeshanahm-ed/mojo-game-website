@@ -8,6 +8,7 @@ import { showErrorMessage, showSuccessMessage } from '../utils/messageUtils';
 import { resetPassword } from './core/_requests';
 import { AxiosError } from 'axios';
 import Image from 'next/image';
+import { useDirection } from '../hooks/useGetDirection';
 
 
 interface ForgotPasswordProps {
@@ -26,6 +27,7 @@ export default function ResetPassword({ setLoading, loading }: ForgotPasswordPro
     const [formErrors, setFormErrors] = useState<ValidationErrors>({});
     const forgotEmail = localStorage.getItem('forgotEmail');
     const verifiedOtp = localStorage.getItem('verifiedOtp');
+    const direction = useDirection();
 
     const passwordValidation = () => {
         const errors: ValidationErrors = {};
@@ -89,14 +91,14 @@ export default function ResetPassword({ setLoading, loading }: ForgotPasswordPro
         <section>
             <div className="text-center md:px-20 sm:px-10 px-5 py-10 space-y-6">
                 <div >
-                    <Input name="newPassword" onChange={handleInputChange} icon={<Image src="/images/icons/email-icon.svg" alt='email-icon' width={20} height={20} />} type='password' placeholder={t("newPassword")} />
-                    {formErrors.newPassword && <p className='font-secondary text-start text-red mt-1'>{formErrors.newPassword}</p>}
+                    <Input name="newPassword" onChange={handleInputChange} icon={<Image src="/images/icons/password-icon.svg" alt='email-icon' width={20} height={20} />} type='password' placeholder={t("newPassword")} />
+                    {formErrors.newPassword && <p className={`${direction === "rtl" ? "font-arabic" : "font-secondary"} text-start text-red mt-1`}>{formErrors.newPassword}</p>}
                 </div>
                 <div>
-                    <Input name="confirmPassword" onChange={handleInputChange} icon={<Image src="/images/icons/email-icon.svg" alt='email-icon' width={20} height={20} />} type='password' placeholder={t("confirmPassword")} />
-                    {formErrors.confirmPassword && <p className='font-secondary text-start text-red mt-1'>{formErrors.confirmPassword}</p>}
+                    <Input name="confirmPassword" onChange={handleInputChange} icon={<Image src="/images/icons/password-icon.svg" alt='email-icon' width={20} height={20} />} type='password' placeholder={t("confirmPassword")} />
+                    {formErrors.confirmPassword && <p className={`${direction === "rtl" ? "font-arabic" : "font-secondary"} text-start text-red mt-1`}>{formErrors.confirmPassword}</p>}
                 </div>
-                <Button disabled={loading} className='md:text-4xl text-2xl w-32 md:w-52' onClick={handleChangePass}>{t("changePassword")}</Button>
+                <Button disabled={loading} className={`${direction === "rtl" ? "text-xl md:text-2xl w-fit" : "md:text-4xl text-2xl w-32 md:w-52"} `} onClick={handleChangePass}>{t("changePassword")}</Button>
             </div>
         </section>
     );

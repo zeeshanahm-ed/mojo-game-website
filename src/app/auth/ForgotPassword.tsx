@@ -8,6 +8,7 @@ import { showErrorMessage, showSuccessMessage } from '../utils/messageUtils';
 import { forgotPassCode } from './core/_requests';
 import { AxiosError } from 'axios';
 import Image from 'next/image';
+import { useDirection } from '../hooks/useGetDirection';
 
 
 interface ForgotPasswordProps {
@@ -24,6 +25,7 @@ export default function ForgotPassword({ setLoading, loading }: ForgotPasswordPr
     const { t } = useTranslation();
     const [values, setValues] = useState({ email: '' });
     const [formErrors, setFormErrors] = useState<ValidationErrors>({});
+    const direction = useDirection();
 
     const emailValidation = () => {
         const errors: ValidationErrors = {};
@@ -80,15 +82,15 @@ export default function ForgotPassword({ setLoading, loading }: ForgotPasswordPr
                     <Input
                         name="email"
                         onChange={handleInputChange}
-                        icon={<Image src="/images/icons/email-icon.svg"
+                        icon={<Image src="/images/icons/password-icon.svg"
                             alt='email-icon' width={20} height={20} />}
                         type='email'
                         placeholder={t('emailPlaceholder')}
                     />
-                    {formErrors.email && <p className='font-secondary text-start text-red mt-1'>{formErrors.email}</p>}
+                    {formErrors.email && <p className={`${direction === "rtl" ? "font-arabic" : "font-secondary"} text-start text-red mt-1`}>{formErrors.email}</p>}
                 </div>
-                <p className='font-secondary'>{t("resetPasswordNote")}</p>
-                <Button disabled={loading} className='md:text-4xl text-2xl w-32 md:w-44' onClick={handleSendEmail}>{t("send")}</Button>
+                <p className={`${direction === "rtl" ? "font-arabic" : "font-secondary"}`}>{t("resetPasswordNote")}</p>
+                <Button disabled={loading} className={`${direction === "rtl" ? "text-xl md:text-2xl" : "md:text-4xl text-2xl"} w-32 md:w-44`} onClick={handleSendEmail}>{t("send")}</Button>
             </div>
         </section>
     );

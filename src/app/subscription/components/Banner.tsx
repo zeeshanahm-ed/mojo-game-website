@@ -23,7 +23,7 @@ const Banner: React.FC = () => {
                         <p className={`text-sm text-light-gray  sm:text-base lg:text-lg ${direction === "rtl" ? "font-arabic" : "font-secondary"}`}>
                             {t("exploreOur")}
                         </p>
-                        <h2 className={`text-6xl text-black md:text-8xl  leading-tight uppercase`}>
+                        <h2 className={` text-nowrap leading-tight uppercase ${direction === "rtl" ? "text-4xl md:text-7xl" : "text-6xl md:text-8xl"}`}>
                             {t("subscription")}
                         </h2>
                         <p className={`text-sm text-black sm:text-base ${direction === "rtl" ? "font-arabic mt-3" : "font-secondary"}`}>

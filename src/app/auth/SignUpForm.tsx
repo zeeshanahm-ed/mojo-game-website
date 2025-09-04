@@ -181,7 +181,7 @@ export default function SignUpForm({ setLoading, loading }: SignUpFormProps) {
 
     return (
         <section>
-            <div className="tracking-normal font-secondary md:px-20 sm:px-10 px-5 py-10 space-y-6" dir={direction}>
+            <div className={`tracking-normal ${direction === "rtl" ? "font-arabic" : "font-secondary"} md:px-20 sm:px-10 px-5 py-10 space-y-6`} dir={direction}>
                 {/* Upload Picture Section */}
                 <div className="flex items-center justify-center mb-6 gap-5">
                     <span className="text-gray-400 text-base md:text-lg mb-2">{t("uploadPicture")}</span>
@@ -353,8 +353,8 @@ export default function SignUpForm({ setLoading, loading }: SignUpFormProps) {
 
                 {/* SignUp Button */}
                 <div className='flex items-center justify-center mt-10'>
-                    <Button disabled={loading} type="button" aria-label="Login" boxShadow={true} className="w-40 md:w-52 tracking-wider" onClick={() => handleSignUp()}>
-                        <span className="inline-block  transform skew-x-6 text-4xl uppercase ">{t("signUp")}</span>
+                    <Button disabled={loading} type="button" aria-label="Login" boxShadow={true} className={`w-40 md:w-52 tracking-wider ${direction === "rtl" ? "text-xl md:text-2xl" : "text-4xl"}`} onClick={() => handleSignUp()}>
+                        <span className="inline-block  transform skew-x-6  uppercase ">{t("signUp")}</span>
                     </Button>
                 </div>
 

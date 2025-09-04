@@ -261,5 +261,6 @@
     "price": "{{count}} ريال",
     "monthly": "شهريا",
     "buyNow": "اشتري الآن",
-    "billingOfSubscriptions": "فواتير الاشتراكات"
+    "billingOfSubscriptions": "فواتير الاشتراكات",
+    "answer": "الإجابة"
 }
