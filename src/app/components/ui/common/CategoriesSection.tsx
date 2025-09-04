@@ -9,6 +9,7 @@ import { useDirection } from '@/app/hooks/useGetDirection';
 import Button from './Button';
 import SuggestCategoryNQuestionModal from '../../modals/suggest-category-N-question-modal';
 import { showSuccessMessage } from '@/app/utils/messageUtils';
+import FallbackLoader from './FallbackLoader';
 
 interface CategoriesSectionProps {
     data: GamesCategoryInterface[];
@@ -22,10 +23,11 @@ interface CategoriesSectionProps {
     showInput?: boolean;
     suggestCategoryNQuestions?: boolean;
     year?: string;
+    isLoading?: boolean;
 }
 
 
-function CategoriesSection({ data, year, suggestCategoryNQuestions, onSelect, selectedCategories, setSelectedCategories, mode, currentPlayer, title = true, subTitle = true, showInput = true }: CategoriesSectionProps) {
+function CategoriesSection({ isLoading, data, year, suggestCategoryNQuestions, onSelect, selectedCategories, setSelectedCategories, mode, currentPlayer, title = true, subTitle = true, showInput = true }: CategoriesSectionProps) {
     const [suggestCategoryModal, setsuggestCategoryModal] = useState(false);
     const { t } = useTranslation();
     const direction = useDirection();
@@ -127,20 +129,25 @@ function CategoriesSection({ data, year, suggestCategoryNQuestions, onSelect, se
                 </p>}
                 {suggestCategoryNQuestions &&
                     <Button
-                        className={`text-white md:w-80 w-64 h-16 sm:w-72 my-8 ${direction === "rtl" ? "text-3xl md:text-[2rem]" : "text-3xl sm:text-4xl md:text-[2.5rem]"}`}
-                        onClick={() => handleSuggestCategoryModal()}>{t("suggestCategory")}</Button>}
-
+                        className={`text-white md:w-80 w-64 sm:w-72 my-8 ${direction === "rtl" ? "text-2xl h-12 md:h-16 md:text-[2rem]" : "text-3xl sm:text-4xl md:h-16 h-12 md:text-[2.5rem]"}`}
+                        onClick={() => handleSuggestCategoryModal()}>{t("suggestCategory")}
+                    </Button>
+                }
             </div>
             {year &&
                 <div dir={direction} className={`border-2 ${direction === "rtl" ? "font-arabic" : "font-secondary"} flex-center text-xl md:text-2xl border-black h-12 w-40 md:h-16 md:w-48 my-10 -skew-x-6`}>
                     {`${year} ${t("years")}`}
                 </div>}
             <div className='my-14 w-full h-auto'>
-                <div className="flex-center flex-wrap  gap-6 gap-y-10">
-                    {filteredCategories?.map((cat, idx) => (
-                        <CategoryCard key={idx} category={cat} handleCategoriesClick={handleCategoriesClick} isDisabled={isCategoryDisabled(cat)} />
-                    ))}
-                </div>
+                {isLoading ?
+                    <FallbackLoader isModal={false} />
+                    :
+                    <div className="flex-center flex-wrap  gap-6 gap-y-10">
+                        {filteredCategories?.map((cat, idx) => (
+                            <CategoryCard key={idx} category={cat} handleCategoriesClick={handleCategoriesClick} isDisabled={isCategoryDisabled(cat)} />
+                        ))}
+                    </div>
+                }
             </div>
             {suggestCategoryNQuestions && <SuggestCategoryNQuestionModal mode={mode} open={suggestCategoryModal} onClose={() => setsuggestCategoryModal(false)} />}
 
@@ -159,11 +166,14 @@ interface Props {
 const CategoryCard = ({ category, handleCategoriesClick, isDisabled }: Props) => {
     const direction = useDirection();
     return (
-        <div role='button' className={`w-32 xsm:w-40 sm:w-52 xl:w-64 flex cursor-pointer flex-col justify-center items-center ${isDisabled ? 'opacity-50 pointer-events-none' : ''}`} onClick={() => handleCategoriesClick(category)}>
+        <div role='button' className={`w-[45%] xsm:w-40 sm:w-52 xl:w-64 flex cursor-pointer flex-col justify-center items-center ${isDisabled ? 'opacity-50 pointer-events-none' : ''}`} onClick={() => handleCategoriesClick(category)}>
             <div className={`relative w-28 h-28 sm:w-36 sm:h-36 md:w-36 md:h-36 rounded-full border-[8px]  lg:border-[12px] border-orange ${category.selected ? "border-red" : "border-orange"} flex items-center justify-center`}>
-                <Image src={category?.photo} alt={category.name} width={100} height={100} className='w-1/2 h-1/2' />
+                <Image src={category?.photo} alt={category.name} width={100} height={100} className='w-1/2 h-1/2 object-contain' />
             </div>
-            <div dir={direction} data-tip={category.name} className={`tooltip-neutral tooltip w-full mt-4 relative text-center text-white truncate  ${direction === "rtl" ? "text-2xl md:text-3xl py-2 px-4 text-nowrap" : "text-2xl md:text-3xl xl:text-4xl pb-0 pt-1"} uppercase ${category.selected ? " bg-red before:bg-red" : " bg-orange before:bg-orange"} before:w-2 lg:before:w-3 before:h-6 before:absolute before:-top-5 before:left-[48%] `}>
+
+            <div className={`${category.selected ? " bg-red" : "bg-orange"} w-2 lg:w-3 h-3 md:h- `} ></div>
+
+            <div dir={direction} className={`${category.selected ? " bg-red" : "bg-orange"} relative w-full text-center text-white truncate  ${direction === "rtl" ? "text-xl md:text-2xl py-2 px-4 text-nowrap" : "text-2xl md:text-3xl xl:text-4xl pb-0 pt-1"} uppercase `} >
                 {category.name}
                 {/* Left Triangle */}
                 <div className="absolute -top-[3px] -left-[10px]  md:-top-[3px] lg:-top-[5px] md:-left-[10px] lg:-left-[15px] w-0 h-0 -rotate-[45deg] lg:border-l-[20px] lg:border-r-[20px] lg:border-b-[20px] border-l-[15px] border-r-[15px] border-b-[15px] border-l-transparent border-r-transparent border-b-white" />

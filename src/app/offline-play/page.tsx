@@ -1,5 +1,5 @@
 "use client"
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Banner from './components/Banner'
 import Wrapper from '@/app/components/ui/common/Wrapper';
 import CategoriesSection from '@/app/components/ui/common/CategoriesSection';
@@ -29,13 +29,22 @@ function OfflineMode() {
     const router = useRouter();
     const { t } = useTranslation();
     const direction = useDirection();
-    const lang = getLanguage();
-    const { categoriesData } = useGetAllCategories(lang);
+    const [params, setParams] = useState<{ [key: string]: string }>({
+        lang: "",
+    });
+    const { categoriesData, isLoading } = useGetAllCategories(params);
 
     const [teams, setTeams] = useState<TeamState>({
         first: { name: '', players: 1 },
         second: { name: '', players: 1 },
     });
+
+    useEffect(() => {
+        const lang = getLanguage();
+        setParams({
+            lang: lang,
+        });
+    }, [direction]);
 
     const handlePlayerChange = (team: 'first' | 'second', type: 'plus' | 'minus') => {
         setTeams((prev) => {
@@ -135,6 +144,7 @@ function OfflineMode() {
                         selectedCategories={selectedCategories}
                         setSelectedCategories={setSelectedCategories}
                         mode="offline"
+                        isLoading={isLoading}
                     />
                     <TeamInfo
                         teams={teams}

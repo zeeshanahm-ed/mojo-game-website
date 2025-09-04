@@ -18,7 +18,7 @@ const Banner: React.FC = () => {
                     <div className="hidden md:flex left-10 -top-10 absolute items-center justify-center flex-col lg:justify-start space-x-4 mb-8 lg:mb-0">
                         <Image src="/images/black-star.png" alt='Star' className='w-8 h-8 mr-10 object-contain' width={100} height={100} />
                     </div>
-                    <div className="flex items-start left-0 -top-5 md:top-10 absolute justify-end">
+                    <div className="flex items-start left-0 -top-16 md:top-10 absolute justify-end">
                         <Image src="/images/offlinemode-image.png" alt='Offline Play' className='w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24' width={100} height={100} />
                     </div>
 
@@ -27,13 +27,13 @@ const Banner: React.FC = () => {
                         <h2 className={` text-nowrap leading-tight uppercase ${direction === "rtl" ? "text-4xl md:text-6xl" : "text-6xl md:text-8xl"}`}>
                             {t("playLocal")}
                         </h2>
-                        <p className={`text-sm ${direction === "rtl" ? "font-arabic mt-7" : "font-secondary"} sm:text-base max-w-xl`}>
+                        <p className={`text-sm ${direction === "rtl" ? "font-arabic mt-3 md:mt-7" : "font-secondary"} sm:text-base max-w-xl`}>
                             {t("playLocalNote")}
                         </p>
                     </div>
 
                     {/* Right Side - Question Mark Icon */}
-                    <div className="flex right-0 sm:-top-10 md:-top-5 top-0  absolute items-center justify-end lg:w-36 lg:h-36 md:w-32 md:h-32 sm:w-24 sm:h-24 w-16 h-16">
+                    <div className={`flex right-0 ${direction === "rtl" ? "sm:top-10 md:-top-5 top-[4.7rem] " : "sm:top-10 md:-top-5 top-[6.8rem] "}  absolute items-center justify-end lg:w-36 lg:h-36 md:w-32 md:h-32 sm:w-24 sm:h-24 w-16 h-16`}>
                         <Image src="/images/quiz-app-image.png" alt='Quiz App' className='w-full h-full' width={100} height={100} />
                     </div>
                 </div>
