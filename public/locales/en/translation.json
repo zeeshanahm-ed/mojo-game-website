@@ -246,5 +246,16 @@
     "freeModeTitle": "You’re on Free Mode",
     "freeModeSubtitle": "Upgrade to Premium for unlimited games & fun!",
     "upgrade": "Upgrade",
-    "information": "Information"
+    "information": "Information",
+    "subscriptionDescription": "One simple plan giving you full access to every premium feature.",
+    "exploreOur": "Explore our",
+    "loremText": "Lorem ipsum dolor sit amet consectetur. Nisi scelerisque vitae viverrami. Elit dictum sollicitudin massa eget egestas sed.",
+    "playAnytime": "Play as many games as you want, anytime.",
+    "unlockPremium": "Unlock premium-level questions not available in the free version.",
+    "autoRenewal": "Auto-renewal keeps quizzes going nonstop.",
+    "earlyAccess": "Be the first to try new features and updates.",
+    "price": "{{count}} Rivals",
+    "monthly": "Monthly",
+    "buyNow": "Buy now",
+    "billingOfSubscriptions": "Billing of Subscriptions"
 }

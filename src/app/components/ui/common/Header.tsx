@@ -14,10 +14,11 @@ import Image from 'next/image';
 import LanguageSwitcher from '../Language-Switcher';
 import useGetUserProfile from '@/app/profile/core/hooks/useGetUserProfile';
 import { useDirection } from '@/app/hooks/useGetDirection';
+import { useUserProfile } from '@/app/store/userProfile';
+import { useCountriesData } from '@/app/store/countriesData';
 //icons
 import { FaPlus } from "react-icons/fa";
 import { FiMenu } from "react-icons/fi";
-import { useUserProfile } from '@/app/store/userProfile';
 
 
 
@@ -28,15 +29,20 @@ const Header: React.FC = () => {
     const [openNewGameModal, setOpenNewGameModal] = useState(false);
     const [openWalletModal, setOpenWalletModal] = useState(false);
     const { userData } = useGetUserProfile();
+    const { getCountriesData } = useCountriesData();
     const { t } = useTranslation();
     const direction = useDirection();
+    const { setUserProfile } = useUserProfile();
+    const { userProfile } = useUserProfile();
 
     const handleAuthModal = () => {
         openModal("signin");
     };
 
-    const { setUserProfile } = useUserProfile();
-    const { userProfile } = useUserProfile();
+    useEffect(() => {
+        getCountriesData();
+    }, []);
+
 
     useEffect(() => {
         if (userData) {
@@ -59,7 +65,7 @@ const Header: React.FC = () => {
                                             width={30}
                                             height={30}
                                             alt="User Avatar"
-                                            className="object-contain" />
+                                            className="object-contain w-auto h-auto" />
                                     </div>
                                     <span className="text-gray-800 text-lg font-semibold ml-3 max-w-[90%] truncate">{userProfile?.firstName} {userProfile?.lastName}</span>
                                 </Link>

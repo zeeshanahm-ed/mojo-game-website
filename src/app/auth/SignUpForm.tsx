@@ -9,7 +9,7 @@ import { useTranslation } from 'react-i18next';
 import useSignUp from './core/hooks/useSignUp';
 import { showErrorMessage, showSuccessMessage } from '../utils/messageUtils';
 import Select from '../components/ui/common/Select';
-import { useCountries } from '../hooks/useCountries';
+import { useCountriesData } from '../store/countriesData';
 import { AxiosError } from 'axios';
 //icons
 import { IoEye, IoEyeOff } from "react-icons/io5";
@@ -25,7 +25,7 @@ interface SignUpFormProps {
 }
 
 export default function SignUpForm({ setLoading, loading }: SignUpFormProps) {
-    const { countries } = useCountries();
+    const { countriesData } = useCountriesData();
     const { openModal } = useAuthModalStore();
     const direction = useDirection();
     const { t } = useTranslation();
@@ -160,7 +160,7 @@ export default function SignUpForm({ setLoading, loading }: SignUpFormProps) {
     };
 
 
-    const CountriesList = countries?.map((country) => ({
+    const CountriesList = countriesData?.map((country) => ({
         label: country.name,
         value: country.dialCode,
     }));

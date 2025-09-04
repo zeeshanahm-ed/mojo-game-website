@@ -1,9 +1,14 @@
 import React from 'react';
 import Image from 'next/image';
 import Wrapper from '@/app/components/ui/common/Wrapper';
+import { useTranslation } from 'react-i18next';
+import { useDirection } from '@/app/hooks/useGetDirection';
 
 
 const Banner: React.FC = () => {
+
+    const { t } = useTranslation();
+    const direction = useDirection();
 
     return (
         <div className="w-full bg-white py-10 px-1 md:px-10 flex flex-col items-center justify-center relative overflow-hidden border-y-2 border-border-gray">
@@ -15,14 +20,14 @@ const Banner: React.FC = () => {
                     </div>
 
                     <div className="flex flex-col text-center items-center lg:w-2/4 px-4">
-                        <p className="text-sm text-light-gray font-secondary sm:text-base lg:text-lg">
-                            Explore our
+                        <p className={`text-sm text-light-gray  sm:text-base lg:text-lg ${direction === "rtl" ? "font-arabic" : "font-secondary"}`}>
+                            {t("exploreOur")}
                         </p>
-                        <h2 className="text-6xl text-black md:text-8xl leading-tight uppercase ">
-                            Subscription
+                        <h2 className={`text-6xl text-black md:text-8xl  leading-tight uppercase`}>
+                            {t("subscription")}
                         </h2>
-                        <p className="text-sm text-black font-secondary sm:text-base ">
-                            One simple plan giving you full access to every premium feature.
+                        <p className={`text-sm text-black sm:text-base ${direction === "rtl" ? "font-arabic mt-3" : "font-secondary"}`}>
+                            {t("subscriptionDescription")}
                         </p>
                     </div>
                     <div className="md:w-24 w-16 flex -right-0 -top-0  absolute items-center justify-center">

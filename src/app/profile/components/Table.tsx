@@ -1,4 +1,5 @@
 import React from 'react';
+import { useDirection } from '@/app/hooks/useGetDirection';
 import { useTranslation } from 'react-i18next';
 
 interface TableColumn {
@@ -37,8 +38,9 @@ const DynamicTable: React.FC<DynamicTableProps> = ({
     className = ""
 }) => {
     const { t } = useTranslation();
+    const direction = useDirection();
     return (
-        <div className={`font-secondary ${className}`}>
+        <div className={`${direction === "rtl" ? "font-arabic" : "font-secondary"} ${className}`}>
             {/* Header */}
             <div className="py-6 px-4 md:px-10 border-b border-black">
                 <h2 className="md:text-4xl text-xl font-semibold">{t(title)}</h2>

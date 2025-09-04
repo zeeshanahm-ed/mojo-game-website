@@ -1,6 +1,6 @@
 "use client"
 import React, { useState } from 'react'
-import { useCountries } from '../hooks/useCountries';
+import { useCountriesData } from '../store/countriesData';
 import { useTranslation } from 'react-i18next';
 import { useDirection } from '../hooks/useGetDirection';
 
@@ -13,7 +13,7 @@ import Image from 'next/image';
 
 
 function ContactUS() {
-    const { countries } = useCountries();
+    const { countriesData } = useCountriesData();
     const { t } = useTranslation();
     const direction = useDirection();
 
@@ -34,7 +34,7 @@ function ContactUS() {
         console.log(form);
     };
 
-    const CountriesList = countries?.map((country) => ({
+    const CountriesList = countriesData?.map((country) => ({
         label: country.name,
         value: country.dialCode,
     }));

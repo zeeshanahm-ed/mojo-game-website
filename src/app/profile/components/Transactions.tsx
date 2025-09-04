@@ -53,7 +53,7 @@ function TransactionsContent() {
     return (
         <div>
             <DynamicTable
-                title="transactionHistory"
+                title="billingOfSubscriptions"
                 columns={transactionColumns}
                 data={transactionData}
             />

@@ -1,3 +1,4 @@
+import { useDirection } from "@/app/hooks/useGetDirection";
 import { useTranslation } from "react-i18next";
 
 type Tab = {
@@ -13,9 +14,10 @@ type TabSwitcherProps = {
 
 function TabSwitcher({ selectedTab, onSelectTab, tabs, }: TabSwitcherProps) {
     const { t } = useTranslation();
+    const direction = useDirection();
 
     return (
-        <div className='flex justify-between font-secondary relative text-center border-b border-border-gray'>
+        <div className={`flex justify-between ${direction === "rtl" ? "font-arabic" : "font-secondary"} relative text-center border-b border-border-gray`}>
             {tabs.map((tab, index) => (
                 <div key={index} className='flex-1 relative'>
                     <button

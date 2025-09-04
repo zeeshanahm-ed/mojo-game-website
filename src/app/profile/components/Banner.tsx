@@ -2,13 +2,15 @@ import React from 'react';
 import Image from 'next/image';
 import Wrapper from '@/app/components/ui/common/Wrapper';
 import { useTranslation } from 'react-i18next';
+import { useDirection } from '@/app/hooks/useGetDirection';
 
 
 const Banner: React.FC = () => {
     const { t } = useTranslation();
+    const direction = useDirection();
 
     return (
-        <div className="w-full bg-black py-16 px-4 md:px-10 flex flex-col items-center justify-center relative overflow-hidden border-b-4 border-black">
+        <div className="w-full bg-black py-10 px-4 md:px-10 flex flex-col items-center justify-center relative overflow-hidden border-b-4 border-black">
             {/* Main Content */}
             <Wrapper>
                 <div className="relative z-10 flex flex-row items-center justify-center w-full text-center ">
@@ -20,7 +22,7 @@ const Banner: React.FC = () => {
                         <h2 className="text-6xl md:text-8xl uppercase ">
                             {t("myAccount")}
                         </h2>
-                        <p className="text-sm font-secondary sm:text-base text-white md:text-lg">
+                        <p className={`text-sm ${direction === "rtl" ? "font-arabic mt-5" : "font-secondary"} sm:text-base text-white md:text-lg`}>
                             {t("profileDescription")}
                         </p>
                     </div>

@@ -8,14 +8,13 @@ import Select from '@/app/components/ui/common/Select';
 import Image from 'next/image';
 
 //hooks
-import { useCountries } from '../../hooks/useCountries';
 import { useTranslation } from 'react-i18next';
 import { showErrorMessage, showSuccessMessage } from '@/app/utils/messageUtils';
 import useUpdateUserProfile from '../core/hooks/useUpdateUserProfile';
 import { useAuthModalStore } from '@/app/store/useAuthModalStore';
 import { useDirection } from '@/app/hooks/useGetDirection';
-import useGetUserProfile from '../core/hooks/useGetUserProfile';
 import { useUserProfile } from '@/app/store/userProfile';
+import { useCountriesData } from '@/app/store/countriesData';
 
 
 interface FormState {
@@ -28,14 +27,13 @@ interface FormState {
 }
 
 function ProfileContent() {
-    const { countries } = useCountries();
+    const { countriesData } = useCountriesData();
     const { openModal } = useAuthModalStore();
     const { t } = useTranslation();
     const direction = useDirection();
     const { mutateUpdateUserProfile } = useUpdateUserProfile();
-    const { userData } = useGetUserProfile();
     const [profilePicObj, setProfilePicObj] = useState<File | null>(null);
-    const { setUserProfile } = useUserProfile();
+    const { setUserProfile, userProfile } = useUserProfile();
     const [formState, setFormState] = useState<FormState>({
         firstName: '',
         lastName: '',
@@ -46,16 +44,16 @@ function ProfileContent() {
     });
 
     useEffect(() => {
-        if (userData) {
+        if (userProfile) {
             setFormState(prev => (
                 {
                     ...prev,
-                    firstName: userData.firstName,
-                    lastName: userData.lastName,
-                    email: userData.email,
-                    avatar: userData.imageUrl,
-                    phoneNumber: userData.phoneNumber.split("-")[1],
-                    countryCode: userData.phoneNumber.split("-")[0]
+                    firstName: userProfile.firstName,
+                    lastName: userProfile.lastName,
+                    email: userProfile.email,
+                    avatar: userProfile.imageUrl,
+                    phoneNumber: userProfile.phoneNumber.split("-")[1],
+                    countryCode: userProfile.phoneNumber.split("-")[0]
                 }
             ));
         }
@@ -72,7 +70,7 @@ function ProfileContent() {
                 }
             ));
         }
-    }, [userData])
+    }, [userProfile])
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
         setFormState({ ...formState, [e.target.name]: e.target.value });
@@ -141,7 +139,7 @@ function ProfileContent() {
         fileInputRef.current?.click();
     };
 
-    const CountriesList = countries?.map((country) => ({
+    const CountriesList = countriesData?.map((country) => ({
         label: country.name,
         value: country.dialCode,
     }));
@@ -159,18 +157,18 @@ function ProfileContent() {
         }
 
         // If userProfile is not loaded yet, disable button
-        if (!userData) {
+        if (!userProfile) {
             return true;
         }
 
         // Check if all fields are the same as the original userProfile data
         const isSame =
-            formState.firstName === userData.firstName &&
-            formState.lastName === userData.lastName &&
-            formState.email === userData.email &&
-            formState.phoneNumber === userData.phoneNumber &&
+            formState.firstName === userProfile.firstName &&
+            formState.lastName === userProfile.lastName &&
+            formState.email === userProfile.email &&
+            formState.phoneNumber === userProfile.phoneNumber &&
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            formState.countryCode === (userData as any).countryCode; // countryCode may not exist on userProfile, adjust as needed
+            formState.countryCode === (userProfile as any).countryCode; // countryCode may not exist on userProfile, adjust as needed
 
         return isSame;
     }
@@ -203,9 +201,9 @@ function ProfileContent() {
 
                     </div>
                 </div>
-                <p className="font-secondary text-lg font-semibold">{t("yourAvatar")}</p>
-                <Button boxShadow={false} className="w-52" onClick={handleLogoutModal}>
-                    <span className="inline-block  transform tracking-wider text-4xl uppercase ">{t("logout")}</span>
+                <p className={`${direction === "rtl" ? "font-arabic" : "font-secondary"} text-lg font-semibold`}>{t("yourAvatar")}</p>
+                <Button boxShadow={false} className={`w-fit px-5  ${direction === "rtl" ? "text-2xl" : "text-4xl"}`} onClick={handleLogoutModal}>
+                    <span className="inline-block  transform tracking-wider  uppercase ">{t("logout")}</span>
                 </Button>
             </div>
 
@@ -275,8 +273,8 @@ function ProfileContent() {
 
                 {/* SignUp Button */}
                 <div className='flex items-center justify-center mt-10'>
-                    <Button disabled={buttonDisabled()} onClick={handleProfileChange} aria-label="Save" className="w-52" boxShadow={false}>
-                        <span className="inline-block transform tracking-wider text-4xl uppercase ">{t("saveChanges")}</span>
+                    <Button disabled={buttonDisabled()} onClick={handleProfileChange} aria-label="Save" className={`w-fit px-5  ${direction === "rtl" ? "text-2xl" : "text-4xl"}`} boxShadow={false}>
+                        <span className="inline-block transform tracking-wider uppercase ">{t("saveChanges")}</span>
                     </Button>
                 </div>
             </div>

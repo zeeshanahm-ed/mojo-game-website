@@ -75,11 +75,11 @@ export default function Banner() {
                         <button
                             role='button'
                             onClick={() => handleGoTo("createAGame")}
-                            className={`relative cursor-pointer text-black skew-custom ${direction === "rtl" ? "py-2" : "pt-3"}  px-6 border-[2px] md:border-[4px] border-black bg-yellow items-center  flex justify-center`}>
-                            <div className=' text-4xl sm:text-5xl skew-x-3 md:text-6xl uppercase'>{t("create")}</div>
-                            <div className='text-nowrap w-full flex skew-x-3 mt-3 ml-2 items-center justify-between text-2xl sm:3xl md:text-[40px] uppercase'>
+                            className={`relative cursor-pointer text-black skew-custom ${direction === "rtl" ? "py-3" : "pt-3"}  px-6 border-[2px] md:border-[4px] border-black bg-yellow items-center  flex justify-center`}>
+                            <div className={` skew-x-3 uppercase ${direction === "rtl" ? "text-4xl sm:text-5xl" : "text-4xl sm:text-5xl md:text-6xl"}`}>{t("create")}</div>
+                            <div className={`text-nowrap w-full flex skew-x-3 mt-3 ml-2 items-center justify-between uppercase ${direction === "rtl" ? "text-2xl sm:3xl md:text-[32px]" : "text-2xl sm:3xl md:text-[40px]"}`}>
                                 {t("aGame")}
-                                <Image src="/images/create-game.png" width={100} height={100} alt="CREATE" className=" ml-2 mb-1 w-5 h-5 sm:w-6 sm:h-6" />
+                                <Image src="/images/create-game.png" width={100} height={100} alt="CREATE" className="ms-2 mb-1 w-5 h-5 sm:w-6 sm:h-6" />
                             </div>
                         </button>
 
