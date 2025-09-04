@@ -41,7 +41,7 @@ const Header: React.FC = () => {
 
     useEffect(() => {
         getCountriesData();
-    }, []);
+    }, [getCountriesData]);
 
 
     useEffect(() => {

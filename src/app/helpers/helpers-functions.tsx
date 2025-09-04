@@ -24,5 +24,8 @@ export function scrollToTop(behavior: ScrollBehavior = 'smooth') {
 };
 
 export function getLanguage() {
-    return window.localStorage.getItem("i18nextLng") || "en";
+    if (typeof window !== "undefined" && window.localStorage) {
+        return window.localStorage.getItem("i18nextLng") || "en";
+    }
+    return "en";
 }
