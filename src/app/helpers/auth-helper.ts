@@ -1,15 +1,13 @@
 import axios from 'axios';
 import Cookies from "js-cookie";
 import { IAuthModel, IUserModel } from '../auth/core/_models';
+import { AUTH_LOCAL_STORAGE_KEY, USER_LOCAL_STORAGE_KEY } from '../constants/constant';
 
-
-const NEXT_PUBLIC_AUTH_LOCAL_STORAGE_KEY = process.env.NEXT_PUBLIC_AUTH_LOCAL_STORAGE_KEY as string;
-const NEXT_PUBLIC_USER_LOCAL_STORAGE_KEY = process.env.NEXT_PUBLIC_USER_LOCAL_STORAGE_KEY as string;
 
 
 const getAuth = (): IAuthModel | undefined => {
     try {
-        const lsValue = localStorage.getItem(NEXT_PUBLIC_AUTH_LOCAL_STORAGE_KEY);
+        const lsValue = localStorage.getItem(AUTH_LOCAL_STORAGE_KEY);
         if (!lsValue) return undefined;
 
         const auth = JSON.parse(lsValue) as IAuthModel;
@@ -31,7 +29,7 @@ const setAuth = (user: IAuthModel) => {
 
         // ✅ Save in localStorage
         localStorage.setItem(
-            process.env.NEXT_PUBLIC_AUTH_LOCAL_STORAGE_KEY!,
+            AUTH_LOCAL_STORAGE_KEY,
             lsValue
         );
 
@@ -55,7 +53,7 @@ const getUser = (): IUserModel | undefined => {
         return;
     }
 
-    const lsValue: string | null = localStorage.getItem(NEXT_PUBLIC_USER_LOCAL_STORAGE_KEY);
+    const lsValue: string | null = localStorage.getItem(USER_LOCAL_STORAGE_KEY);
     if (!lsValue) {
         return;
     }
@@ -78,7 +76,7 @@ const setUser = (user: IUserModel) => {
 
     try {
         const lsValue = JSON.stringify(user);
-        localStorage.setItem(NEXT_PUBLIC_USER_LOCAL_STORAGE_KEY, lsValue);
+        localStorage.setItem(USER_LOCAL_STORAGE_KEY, lsValue);
     } catch (error) {
         console.error('AUTH LOCAL STORAGE SAVE ERROR', error);
     }
@@ -90,8 +88,8 @@ const removeAuth = () => {
     }
 
     try {
-        localStorage.removeItem(NEXT_PUBLIC_AUTH_LOCAL_STORAGE_KEY);
-        localStorage.removeItem(NEXT_PUBLIC_USER_LOCAL_STORAGE_KEY);
+        localStorage.removeItem(AUTH_LOCAL_STORAGE_KEY);
+        localStorage.removeItem(USER_LOCAL_STORAGE_KEY);
         Cookies.remove("authToken", { path: "/" });
     } catch (error) {
         console.error('AUTH LOCAL STORAGE REMOVE ERROR', error);
@@ -125,4 +123,4 @@ export function setupAxios() {
     );
 }
 
-export { getAuth, setUser, getUser, setAuth, removeAuth, NEXT_PUBLIC_AUTH_LOCAL_STORAGE_KEY };
+export { getAuth, setUser, getUser, setAuth, removeAuth, AUTH_LOCAL_STORAGE_KEY };
