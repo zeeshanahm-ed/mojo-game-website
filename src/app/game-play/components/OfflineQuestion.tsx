@@ -82,17 +82,19 @@ export default function OfflineQuestion({ question, handleScreenChange, setCurre
                 </div>
                 {/* Bottom bar */}
                 <div className="flex items-center justify-between py-2 rounded-b-lg flex-wrap gap-y-4">
-                    <div className="flex sm:h-12 px-2 md:px-5 py-1 sm:py-2 pt-2 sm:pt-4 items-center justify-between text-white bg-dark-orange ">
-                        <span className="md:text-4xl text-xl sm:text-3xl">{question?.category.toUpperCase()}</span>
-                        <span className="md:text-2xl text-base sm:text-xl ml-2 md:ml-10 uppercase">{question?.points} t{("points")}</span>
-                    </div>
+
+                    <button className={`flex sm:h-12 px-2 md:px-5 py-1 sm:py-2 pt-2  items-center justify-between text-white bg-dark-orange border-2 border-black ${direction === "rtl" ? "text-2xl" : "md:text-4xl text-xl sm:text-3xl sm:pt-4"}`}>
+                        {question?.category.toUpperCase()}
+                        <span className={`${direction === "rtl" ? "md:text-xl text-xl" : "md:text-2xl text-base sm:text-xl"} ml-2 md:ml-10 uppercase`}>{question?.points} {t("points")}</span>
+                    </button>
+
                     <div className="flex items-center gap-2">
                         {/* Timer */}
                         <div className="-skew-x-12 bg-white border border-dark-orange sm:h-12 h-10 text-white flex gap-2 items-center w-20 sm:w-24  md:w-32">
                             <span className=" text-lg bg-dark-orange w-8 sm:w-10 h-full flex-center">
                                 <Image src="/images/icons/clock-icon.svg" alt='clock-icon' width={100} height={100} className="w-4 h-4 sm:w-6 sm:h-6" />
                             </span>
-                            <span className=" text-xl sm:text-2xl md:text-3xl text-black mx-auto mt-2">{formatTime(timer)}</span>
+                            <span className={` text-black mx-auto ${direction === "rtl" ? "text-xl sm:text-2xl mt-1" : "text-xl sm:text-2xl md:text-3xl mt-2"}`}>{formatTime(timer)}</span>
                         </div>
                         {/* Timer controls */}
                         <div className="sm:h-12">
@@ -110,15 +112,15 @@ export default function OfflineQuestion({ question, handleScreenChange, setCurre
                             </button>
                         </div>
                     </div>
-                    <div
+                    <button
                         role="button"
                         onClick={() => {
                             setCurrentLifeline(undefined);
                             handleScreenChange("answer");
                         }}
-                        className={`w-full sm:w-auto cursor-pointer sm:h-12 flex px-2 md:px-5 py-1 sm:py-2 pt-2 ${direction === "ltr" && "sm:pt-4"} items-center justify-center  text-white bg-dark-green  border-2 border-black`}>
-                        <span className="md:text-4xl text-xl sm:text-3xl">{t("seeAnswer")}</span>
-                    </div>
+                        className={`w-full sm:w-auto cursor-pointer sm:h-12 flex px-2 md:px-5 py-1 sm:py-2 pt-2 ${direction === "rtl" ? "text-2xl" : "sm:pt-4 md:text-4xl text-xl sm:text-3xl"} items-center justify-center  text-white bg-dark-green  border-2 border-black`}>
+                        {t("seeAnswer")}
+                    </button>
                 </div>
             </div>
         </div>

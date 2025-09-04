@@ -60,16 +60,16 @@ export default function Answer({ answerType = "image", handleScreenChange, mode,
                     <button
                         role="button"
                         onClick={() => handleScreenChange("whoAnswered")}
-                        style={{ clipPath: "polygon(0 0, 92% 0%, 100% 100%, 0% 100%)" }}
-                        className={`${direction === "ltr" && "sm:pt-4"} flex h-12 px-2 md:px-5 py-2 items-center justify-between text-white bg-dark-orange `}>
-                        <span className="md:text-4xl text-3xl tracking-wider">{t("whoAnswered")} </span>
+                        // style={{ clipPath: "polygon(0 0, 92% 0%, 100% 100%, 0% 100%)" }}
+                        className={`${direction === "rtl" ? "text-2xl " : "sm:pt-4 md:text-4xl text-3xl "} border-2 border-black flex h-12 px-2 md:px-5 py-2 items-center justify-between text-white bg-dark-orange `}>
+                        {t("whoAnswered")}
                     </button>
                     <button
                         role="button"
                         onClick={() => handleScreenChange(mode === "online" ? "onlineQuestion" : "offlineQuestion")}
-                        style={{ clipPath: "polygon(8% 0, 100% 0%, 100% 100%, 0% 100%)" }}
-                        className={`${direction === "ltr" && "sm:pt-4"} cursor-pointer flex h-12 px-5 py-2  items-center justify-between text-white bg-red `}>
-                        <span className="md:text-3xl text-2xl tracking-wider">{t("backToQuestion")}</span>
+                        // style={{ clipPath: "polygon(8% 0, 100% 0%, 100% 100%, 0% 100%)" }}
+                        className={`${direction === "rtl" ? "text-2xl " : "sm:pt-4 md:text-3xl text-2xl "} border-2 border-black cursor-pointer flex h-12 px-5 py-2  items-center justify-between text-white bg-red `}>
+                        {t("backToQuestion")}
                     </button>
                 </div>
             </div>

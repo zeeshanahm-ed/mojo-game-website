@@ -16,6 +16,7 @@ import CustomModal from '../components/modals/custom-modal';
 import { useTranslation } from 'react-i18next';
 import LifelineCard from './components/LifeLinesCard';
 import Image from 'next/image';
+import { useDirection } from '../hooks/useGetDirection';
 
 
 
@@ -32,11 +33,12 @@ interface LifelineData {
 
 function GamePlay() {
     const { t } = useTranslation();
+    const direction = useDirection();
+    const router = useRouter();
     const { session } = useGameSession();
     const [showModal, setShowModal] = useState(false);
     const [screen, setScreen] = useState("questionsList");
     const [selectedQuestion, setSelectedQuestion] = useState<offlineQuestionsListInterface | null>(null);
-    const router = useRouter();
     const [currentLifeline, setCurrentLifeline] = useState<LifelineData | undefined>();
 
     const LifelinesData: LifelineData[] = [
@@ -225,7 +227,7 @@ function GamePlay() {
                             className="custom-clipPath-rightSide text-white px-4 md:-skew-x-6 -skew-x-3 lg:-skew-x-0 lg:px-5 lg:h-[200px] bg-red flex items-center justify-center lg:justify-start w-[250px] md:w-[320px] lg:flex-1 lg:border-none border-4 border-black">
                             <div className='flex lg:flex-row flex-col items-center justify-center  lg:justify-between w-full lg:md:w-3/4'>
                                 <div className=" lg:w-[60%]  w-full  flex flex-col items-center lg:items-start py-4 lg:py-0">
-                                    <h3 className="truncate max-w-[90%] text-4xl md:text-6xl lg:text-7xl  uppercase" >
+                                    <h3 className="truncate max-w-[90%] text-4xl md:text-6xl lg:text-7xl font-primary uppercase" >
                                         {session?.team1.name ?? t("team1")}
                                     </h3>
                                     <p className="text-lg md:text-3xl  uppercase !tracking-wider" >
@@ -234,7 +236,7 @@ function GamePlay() {
                                 </div>
                                 <div className='lg:hidden block w-full h-[1px] bg-white'></div>
                                 <div className="flex flex-col items-center lg:items-end py-4 lg:py-0">
-                                    <p className="text-base font-secondary sm:text-xl lg:text-2xl mb-2">{t("lifeLines")}</p>
+                                    <p className={`text-base ${direction === "rtl" ? "font-arabic text-xl" : "font-secondary sm:text-xl lg:text-2xl"} mb-2`}>{t("lifeLines")}</p>
                                     <div className="flex space-x-2">
                                         {renderLifelineIcon("scoreSteal", session?.team1.lifelines.scoreSteal, session?.team1.teamTurnOn)}
                                         {renderLifelineIcon("secondChance", session?.team1.lifelines.secondChance, session?.team1.teamTurnOn)}
@@ -251,7 +253,7 @@ function GamePlay() {
                         >
                             <div className='flex lg:flex-row flex-col-reverse items-center justify-center  w-full lg:justify-between lg:md:w-3/4'>
                                 <div className="flex flex-col items-center lg:items-start py-4 lg:py-0">
-                                    <p className="text-base font-secondary sm:text-xl lg:text-2xl mb-2">{t("lifeLines")}</p>
+                                    <p className={`text-base ${direction === "rtl" ? "font-arabic text-xl" : "font-secondary sm:text-xl lg:text-2xl"}  mb-2`}>{t("lifeLines")}</p>
                                     <div className="flex space-x-2">
                                         {renderLifelineIcon("scoreSteal", session?.team2.lifelines.scoreSteal, session?.team2.teamTurnOn)}
                                         {renderLifelineIcon("secondChance", session?.team2.lifelines.secondChance, session?.team2.teamTurnOn)}
@@ -260,7 +262,7 @@ function GamePlay() {
                                 </div>
                                 <div className='lg:hidden block w-full h-[1px] bg-white'></div>
                                 <div className="lg:w-[60%] w-full flex flex-col items-center  lg:items-end py-4 lg:py-0">
-                                    <h3 className="truncate max-w-[90%] text-center text-4xl md:text-6xl lg:text-7xl  uppercase" >
+                                    <h3 className="truncate max-w-[90%] text-center text-4xl md:text-6xl lg:text-7xl font-primary  uppercase" >
                                         {session?.team2.name ?? t("team2")}
                                     </h3>
                                     <p className="text-lg md:text-3xl  uppercase !tracking-wider" >
