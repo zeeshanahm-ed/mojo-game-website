@@ -1,5 +1,5 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Button from '../components/ui/common/Button';
 import { useAuthModalStore } from '../store/useAuthModalStore';
 import { useTranslation } from 'react-i18next';
@@ -14,18 +14,32 @@ import { useDirection } from '../hooks/useGetDirection';
 interface ForgotPasswordProps {
     setLoading: (loading: boolean) => void;
     loading: boolean;
+    resetState: boolean;
+    setResetState: (resetState: boolean) => void;
 }
 
 interface ValidationErrors {
     [key: string]: string;
 }
 
-export default function ForgotPassword({ setLoading, loading }: ForgotPasswordProps) {
+export default function ForgotPassword({ setLoading, loading, resetState: resetStateonClose, setResetState: setResetStateonClose }: ForgotPasswordProps) {
     const { openModal } = useAuthModalStore((state) => state);
     const { t } = useTranslation();
     const [values, setValues] = useState({ email: '' });
     const [formErrors, setFormErrors] = useState<ValidationErrors>({});
     const direction = useDirection();
+
+    useEffect(() => {
+        if (resetStateonClose) {
+            resetState();
+            setResetStateonClose(false);
+        }
+    }, [resetStateonClose]);
+
+    const resetState = () => {
+        setValues({ email: '' });
+        setFormErrors({});
+    }
 
     const emailValidation = () => {
         const errors: ValidationErrors = {};

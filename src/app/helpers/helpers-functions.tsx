@@ -28,4 +28,4 @@ export function getLanguage() {
         return window.localStorage.getItem("i18nextLng") || "en";
     }
     return "en";
-}
+};

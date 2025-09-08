@@ -19,22 +19,23 @@ export default function AuthModal() {
     const closeModal = useAuthModalStore((state) => state.closeModal);
     const { t } = useTranslation();
     const direction = useDirection();
+    const [resetState, setResetState] = useState(false);
     const [loading, setLoading] = useState(false);
 
     const getModalContent = () => {
         switch (mode) {
             case 'signin':
-                return <SignInForm loading={loading} setLoading={setLoading} />;
+                return <SignInForm loading={loading} setLoading={setLoading} resetState={resetState} setResetState={setResetState} />;
             case 'signup':
-                return <SignUpForm loading={loading} setLoading={setLoading} />;
+                return <SignUpForm loading={loading} setLoading={setLoading} resetState={resetState} setResetState={setResetState} />;
             case 'logout':
                 return <Logout />;
             case 'forgotPassword':
-                return <ForgotPassword loading={loading} setLoading={setLoading} />;
+                return <ForgotPassword loading={loading} setLoading={setLoading} resetState={resetState} setResetState={setResetState} />;
             case 'verifyOtp':
-                return <VerifyOTP loading={loading} setLoading={setLoading} />;
+                return <VerifyOTP loading={loading} setLoading={setLoading} resetState={resetState} setResetState={setResetState} />;
             case 'resetPassword':
-                return <ResetPassword loading={loading} setLoading={setLoading} />;
+                return <ResetPassword loading={loading} setLoading={setLoading} resetState={resetState} setResetState={setResetState} />;
             default:
                 return null;
         }
@@ -59,6 +60,11 @@ export default function AuthModal() {
         }
     };
 
+    const handleCloseModal = () => {
+        setResetState(true);
+        closeModal();
+    };
+
     return (
         <dialog id="auth_modal" className={` modal ${open ? 'modal-open' : ''}`}>
             <div className="modal-box bg-white max-w-2xl items-center rounded-none border-2 border-black w-full customModalStyle">
@@ -73,13 +79,13 @@ export default function AuthModal() {
                             <MdArrowBack className='text-base md:text-2xl' />
                         </button>
                     )}
-                    <h2 className={`${direction === "rtl" ? "text-3xl md:text-4xl mb-2" : "text-5xl md:text-6xl"} uppercase`}>
+                    <h2 className={`${direction === "rtl" ? "text-3xl md:text-4xl mb-2 font-arabic" : "text-5xl md:text-6xl font-primary"} uppercase`}>
                         {getTitle()}
                     </h2>
                     <button
                         type="button"
                         className="absolute right-3 -top-0 bg-light-gray focus:outline-none w-5 h-5 md:w-8 md:h-8 flex items-center justify-center rounded-full text-white hover:bg-dark-gray transition-colors duration-300"
-                        onClick={closeModal}
+                        onClick={handleCloseModal}
                         aria-label="Close"
                     >
                         <MdClose className='text-base md:text-2xl' />

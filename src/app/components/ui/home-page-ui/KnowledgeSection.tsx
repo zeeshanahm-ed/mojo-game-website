@@ -23,13 +23,13 @@ const KnowledgeSection = () => {
             <Wrapper>
                 <div className='flex items-center justify-center flex-col'>
                     <div className="text-center flex flex-col items-center justify-center">
-                        <h2 className="text-6xl md:text-7xl text-black mb-2 uppercase">
+                        <h2 className="text-5xl md:text-6xl text-black mb-2 uppercase">
                             {t("testKnowledge")}
                         </h2>
                         <p className={`text-sm md:text-base  text-black max-w-xl ${direction === "rtl" ? "font-arabic" : "font-secondary "}`}>
                             {t("knowledgeModeseDescription")}
                         </p>
-                        <Button className='my-10 w-44 !py-2 md:w-64 lg:w-72 text-2xl sm:text-3xl md:text-4xl ' onClick={() => handleOPenModal()}>
+                        <Button className={`my-10 w-44 !pt-2 md:w-64 lg:w-72  ${direction === "rtl" ? "!py-2 text-2xl md:text-3xl" : " text-2xl sm:text-3xl md:text-4xl"}`} onClick={() => handleOPenModal()}>
                             {t("createGame")}
                         </Button>
                     </div>

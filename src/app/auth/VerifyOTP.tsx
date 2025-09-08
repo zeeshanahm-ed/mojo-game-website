@@ -12,11 +12,13 @@ import { useDirection } from '../hooks/useGetDirection';
 interface ForgotPasswordProps {
     setLoading: (loading: boolean) => void;
     loading: boolean;
+    resetState: boolean;
+    setResetState: (resetState: boolean) => void;
 }
 
 const length = 6;
 
-export default function VerifyOTP({ setLoading, loading }: ForgotPasswordProps) {
+export default function VerifyOTP({ setLoading, loading, resetState: resetStateonClose, setResetState: setResetStateonClose }: ForgotPasswordProps) {
     const { openModal } = useAuthModalStore((state) => state);
     const { t } = useTranslation();
     const [otp, setOtp] = useState<string[]>(new Array(length).fill(''));
@@ -40,6 +42,20 @@ export default function VerifyOTP({ setLoading, loading }: ForgotPasswordProps) 
         }
         return () => clearInterval(interval);
     }, [timer, canResend]);
+
+    useEffect(() => {
+        if (resetStateonClose) {
+            resetState();
+            setResetStateonClose(false);
+        }
+    }, [resetStateonClose]);
+
+    const resetState = () => {
+        setOtp(new Array(length).fill(''));
+        setError('');
+        setTimer(60);
+        setCanResend(false);
+    }
 
     // Focus first input on mount
     useEffect(() => {

@@ -70,7 +70,7 @@ function Subscription() {
                             </p>
 
                             {/* Buy Now Button */}
-                            <Button onClick={() => setIsModalOpen(true)} boxShadow={false} className="!skew-x-0 text-3xl md:text-4xl w-fit px-5" bgClass='bg-dark-orange'>
+                            <Button onClick={() => setIsModalOpen(true)} boxShadow={false} className={`!skew-x-0 w-fit px-5 ${direction === "rtl" ? "text-2xl" : "text-3xl md:text-4xl"}`} bgClass='bg-dark-orange'>
                                 {t("buyNow")}
                             </Button>
                         </div>

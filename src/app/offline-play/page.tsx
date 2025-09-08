@@ -14,6 +14,8 @@ import { useGameSession } from '../store/gameSession';
 import { useDirection } from '../hooks/useGetDirection';
 import { getLanguage } from '../helpers/helpers-functions';
 import useGetAllCategories from '../game-play/core/hooks/useGetAllCategories';
+import useCreateGameSession from './core/hooks/useCreateGameSession';
+import { useAuth } from '../context/AuthContext';
 
 
 interface TeamState {
@@ -22,6 +24,7 @@ interface TeamState {
 }
 
 function OfflineMode() {
+    const { user } = useAuth();
     const setSession = useGameSession(state => state.setSession);
     const [selectedCategories, setSelectedCategories] = useState<GamesCategoryInterface[]>([]);
     const [gameName, setGameName] = useState("");
@@ -32,7 +35,9 @@ function OfflineMode() {
     const [params, setParams] = useState<{ [key: string]: string }>({
         lang: "",
     });
-    const { categoriesData, isLoading } = useGetAllCategories(params);
+    const { categoriesData, isLoading: isLoadingCategories } = useGetAllCategories(params);
+    const { createGameSessionMutate, isError, error, isLoading, isSuccess } = useCreateGameSession();
+
 
     const [teams, setTeams] = useState<TeamState>({
         first: { name: '', players: 1 },
@@ -80,6 +85,17 @@ function OfflineMode() {
         setErrors(null);
     };
 
+    const handleLoginValidation = (): boolean => {
+        if (!user) {
+            const loginButton = document.getElementById('login-button');
+            if (loginButton) {
+                loginButton.click();
+            }
+            return false;
+        }
+        return true;
+    };
+
     const handleValidation = () => {
         let error = false;
         if (selectedCategories.length < 6) {
@@ -101,36 +117,76 @@ function OfflineMode() {
     const handleStartGame = () => {
         const error = handleValidation();
         if (error) return;
-        const session = {
-            gameName: gameName || 'My Quiz',
-            mode: "offline",
-            selectedCategories: selectedCategories.map(c => c.name),
-            team1: {
-                name: teams.first.name,
-                players: teams.first.players,
-                score: 0,
-                teamTurnOn: true,
-                lifelines: {
-                    scoreSteal: true,
-                    secondChance: true,
-                    callAFriend: true,
-                },
-            },
-            team2: {
-                name: teams.second.name,
-                players: teams.second.players,
-                score: 0,
-                teamTurnOn: false,
-                lifelines: {
-                    scoreSteal: true,
-                    secondChance: true,
-                    callAFriend: true,
-                },
-            },
-        };
 
-        setSession(session);
-        router.push("/game-play");
+        if (!handleLoginValidation()) {
+            return;
+        }
+
+        handleCreateGameSession();
+    };
+
+    const handleCreateGameSession = () => {
+        const data = {
+            name: gameName || 'My Quiz',
+            mode: "offline",
+            selectedCategories: selectedCategories.map(c => c?._id),
+            teams: [{
+                name: teams.first.name,
+                playerCount: teams.first.players,
+            },
+            {
+                name: teams.second.name,
+                playerCount: teams.second.players,
+            }],
+        };
+        createGameSessionMutate(data, {
+            onSuccess: (res) => {
+                handleOk(res);
+            },
+            onError: (error) => {
+                showErrorMessage(error as string);
+            },
+        });
+    };
+
+    const handleOk = (res: any) => {
+        const data = res?.data;
+        localStorage.setItem("currentGameId", data?.gameId);
+        if (res?.message === "Success") {
+            const session = {
+                gameData: data,
+                gameName: data.name || 'My Quiz',
+                mode: "offline",
+                selectedCategories: selectedCategories.map(c => c?._id || ""),
+                team1: {
+                    name: teams.first.name,
+                    players: teams.first.players,
+                    score: 0,
+                    teamTurnOn: data?.currentTurnIndex === 0,
+                    lifelines: {
+                        scoreSteal: true,
+                        secondChance: true,
+                        callAFriend: true,
+                    },
+                },
+                team2: {
+                    name: teams.second.name,
+                    players: teams.second.players,
+                    score: 0,
+                    teamTurnOn: data?.currentTurnIndex === 1,
+                    lifelines: {
+                        scoreSteal: true,
+                        secondChance: true,
+                        callAFriend: true,
+                    },
+                },
+            };
+
+            setSession(session);
+            router.push(`/game-play?gameId=${data?.gameId}`);
+        } else {
+            showErrorMessage(error as string || res?.message);
+        }
     };
 
     return (
@@ -144,7 +200,7 @@ function OfflineMode() {
                         selectedCategories={selectedCategories}
                         setSelectedCategories={setSelectedCategories}
                         mode="offline"
-                        isLoading={isLoading}
+                        isLoading={isLoadingCategories}
                     />
                     <TeamInfo
                         teams={teams}

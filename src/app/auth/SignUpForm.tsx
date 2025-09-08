@@ -1,5 +1,5 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useAuthModalStore } from '../store/useAuthModalStore';
 import Button from '@/app/components/ui/common/Button';
 import Image from 'next/image';
@@ -22,9 +22,11 @@ interface ValidationErrors {
 interface SignUpFormProps {
     setLoading: (loading: boolean) => void;
     loading: boolean;
+    resetState: boolean;
+    setResetState: (resetState: boolean) => void;
 }
 
-export default function SignUpForm({ setLoading, loading }: SignUpFormProps) {
+export default function SignUpForm({ setLoading, loading, resetState: resetStateonClose, setResetState: setResetStateonClose }: SignUpFormProps) {
     const { countriesData } = useCountriesData();
     const { openModal } = useAuthModalStore();
     const direction = useDirection();
@@ -44,6 +46,13 @@ export default function SignUpForm({ setLoading, loading }: SignUpFormProps) {
         phoneNumber: "",
         avatar: "",
     });
+
+    useEffect(() => {
+        if (resetStateonClose) {
+            resetState();
+            setResetStateonClose(false);
+        }
+    }, [resetStateonClose]);
 
     const togglePasswordVisibility = () => setShowPassword(!showPassword);
 

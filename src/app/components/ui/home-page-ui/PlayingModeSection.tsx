@@ -14,7 +14,7 @@ const PlayingModeSection: React.FC = () => {
       <Wrapper>
         <div className='w-full py-10 px-4 md:px-10 flex flex-col items-center justify-center'>
           <div className="relative z-10 flex flex-col items-center max-w-4xl text-center">
-            <h2 className="text-black text-6xl md:text-7xl  mb-2 uppercase">
+            <h2 className="text-black text-5xl md:text-6xl  mb-2 uppercase">
               {t("playingModes")}
             </h2>
             <p className={`text-black ${direction === "rtl" ? "font-arabic mt-5" : "font-secondary "} text-sm md:text-base mb-12 max-w-2xl`}>

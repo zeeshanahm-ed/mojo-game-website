@@ -12,7 +12,7 @@ const LifeLineSection: React.FC = () => {
             <Wrapper>
                 <div className='py-10 px-4 md:px-10 flex flex-col items-center justify-center relative'>
                     <div className="relative z-10 flex flex-col items-center max-w-5xl text-center">
-                        <h2 className="text-black text-6xl md:text-7xl uppercase mb-2 ">
+                        <h2 className="text-black text-5xl md:text-6xl uppercase mb-2 ">
                             {t("lifeLines")}
                         </h2>
                         <p className={`text-black ${direction === "rtl" ? "font-arabic mt-2" : "font-secondary "} text-sm md:text-base mb-12`}>

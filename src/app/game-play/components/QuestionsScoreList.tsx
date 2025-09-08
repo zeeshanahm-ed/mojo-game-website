@@ -1,6 +1,8 @@
 import { useDirection } from "@/app/hooks/useGetDirection";
 import Image from "next/image";
 import { useTranslation } from "react-i18next";
+import useGetGameSessionCategories from "../core/hooks/useGetGameSessionCategories";
+import { useGameSession } from "@/app/store/gameSession";
 
 const categories = [
     "Horror Movies",
@@ -16,6 +18,8 @@ type QuestionsScoreListProp = {
 };
 
 const QuestionsScoreList: React.FC<QuestionsScoreListProp> = ({ onScoreClick }) => {
+    const gameId = useGameSession(state => state.session?.gameData?._id) || localStorage.getItem("currentGameId");
+    const { categoriesData } = useGetGameSessionCategories(gameId);
     const { t } = useTranslation();
     const direction = useDirection();
     return (
@@ -29,10 +33,10 @@ const QuestionsScoreList: React.FC<QuestionsScoreListProp> = ({ onScoreClick }) 
                 </p>
             </div>
             <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 gap-y-10 place-items-center'>
-                {categories.map((category) => (
+                {categoriesData?.map((category: any) => (
                     <ScoreCard
-                        key={category}
-                        title={category}
+                        key={category._id}
+                        category={category}
                         onScoreClick={onScoreClick}
                         direction={direction}
                     />
@@ -45,16 +49,16 @@ const QuestionsScoreList: React.FC<QuestionsScoreListProp> = ({ onScoreClick }) 
 export default QuestionsScoreList;
 
 type ScoreCardProps = {
-    title: string;
+    category: any;
     imageSrc?: string;
     onScoreClick?: (score: number, category: string) => void;
     direction?: string;
 };
 
-const ScoreCard: React.FC<ScoreCardProps> = ({ direction, title, onScoreClick }) => {
+const ScoreCard: React.FC<ScoreCardProps> = ({ direction, category, onScoreClick }) => {
 
     const handleClick = (score: number) => {
-        onScoreClick?.(score, title);
+        onScoreClick?.(score, category.name);
     };
 
 
@@ -76,12 +80,12 @@ const ScoreCard: React.FC<ScoreCardProps> = ({ direction, title, onScoreClick })
                     </div>
                 </div>
 
-                <div className="relative left-[75px] -top-[7.5rem] md:-top-[9rem] lg:-top-[12.2rem] md:left-[65px] lg:left-[85px] 2xl:left-[118px] w-fit flex cursor-pointer flex-col justify-center items-center">
+                <div className="relative left-[75px] -top-[7.5rem] md:-top-[9rem] lg:-top-[12.2rem] md:left-[65px] lg:left-[85px] 2xl:left-[118px] w-fit flex flex-col justify-center items-center">
                     <div className={`w-24 h-24 md:w-28 md:h-28 lg:w-40 lg:h-40 bg-white rounded-full lg:border-[12px] md:border-[8px] border-[6px] border-orange flex items-center justify-center`}>
-                        <Image src={"/images/quiz-app.png"} alt={title} width={100} height={100} className='w-1/2 h-1/2' />
+                        <Image src={"/images/quiz-app.png"} alt={category?.name} width={100} height={100} className='w-1/2 h-1/2' />
                     </div>
                     <div dir={direction} className={`relative truncate ${direction === "rtl" ? "font-arabic text-xl md:text-2xl text-nowrap" : "font-primary  text-xl md:text-2xl lg:text-3xl"} -mt-1 pb-0 w-full lg:w-40 2xl:w-52 md:pt-1 lg:pt-2 text-center text-white  uppercase bg-orange`}>
-                        العلوم والتكنولوجيا
+                        {category?.name}
                         <div className="absolute -top-[4px] -left-[15px] w-0 h-0 -rotate-[44deg] lg:border-l-[20px] lg:border-r-[20px] lg:border-b-[20px] md:border-l-[15px] md:border-r-[15px] md:border-b-[15px] border-l-transparent border-r-transparent border-b-white" />
                         <div className="absolute -top-[4px] rotate-[47deg] -right-[15px] w-0 h-0 lg:border-l-[20px] lg:border-r-[20px] lg:border-b-[20px]  md:border-l-[15px] md:border-r-[15px] md:border-b-[15px] border-l-transparent border-r-transparent border-b-white" />
                     </div>

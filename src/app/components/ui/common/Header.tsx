@@ -32,8 +32,7 @@ const Header: React.FC = () => {
     const { getCountriesData } = useCountriesData();
     const { t } = useTranslation();
     const direction = useDirection();
-    const { setUserProfile } = useUserProfile();
-    const { userProfile } = useUserProfile();
+    const { setUserProfile, userProfile } = useUserProfile();
 
     const handleAuthModal = () => {
         openModal("signin");
@@ -57,7 +56,7 @@ const Header: React.FC = () => {
                     {/* Left section: User avatar and name */}
                     <div className="flex-1 items-center gap-2 lg:gap-5 hidden md:flex">
                         <div className='flex items-center'>
-                            {user && userProfile ?
+                            {user ?
                                 <Link href="/profile" className='w-44 flex items-center'>
                                     <div className="w-10 h-10 flex-centered overflow-hidden border border-black skew-custom">
                                         <Image
@@ -67,14 +66,11 @@ const Header: React.FC = () => {
                                             alt="User Avatar"
                                             className="object-contain w-auto h-auto" />
                                     </div>
-                                    <span className="text-gray-800 text-lg font-semibold ml-3 max-w-[90%] truncate">{userProfile?.firstName} {userProfile?.lastName}</span>
+                                    <span className="text-gray-800 text-lg font-semibold ml-3 max-w-[90%] truncate">{user.data.firstName || userProfile?.firstName} {user.data.lastName || userProfile?.lastName}</span>
                                 </Link>
                                 :
-                                <button className="skew-custom">
-                                    <div
-                                        className="flex items-center gap-2 "
-                                        onClick={handleAuthModal}
-                                    >
+                                <button className="skew-custom" onClick={handleAuthModal} id='login-button'>
+                                    <div className="flex items-center gap-2 ">
                                         <div className="bg-yellow p-2 h-1/2 border border-black skew-custom   ">
                                             <Image src="/images/icons/login-icon.svg" alt='login-icon' width={20} height={20} />
                                         </div>

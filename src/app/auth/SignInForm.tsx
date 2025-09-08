@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useAuthModalStore } from '../store/useAuthModalStore';
 import Button from '../components/ui/common/Button';
 import { ISignInForm } from './core/_models';
@@ -10,6 +10,9 @@ import { showErrorMessage, showSuccessMessage } from '../utils/messageUtils';
 import useVerifyAuthToken from './core/hooks/useVerifyAuthToken';
 import { useAuth } from '../context/AuthContext';
 import { AxiosError } from 'axios';
+import { useUserProfile } from '../store/userProfile';
+import { useQueryClient } from 'react-query';
+import { QUERIES_KEYS } from '../utils/constant';
 //icons
 import { IoEye, IoEyeOff } from "react-icons/io5";
 import Image from 'next/image';
@@ -21,13 +24,16 @@ interface ValidationErrors {
 interface SignInFormProps {
     setLoading: (loading: boolean) => void;
     loading: boolean;
+    resetState: boolean;
+    setResetState: (resetState: boolean) => void;
 }
 
-export default function SignInForm({ setLoading, loading }: SignInFormProps) {
+export default function SignInForm({ setLoading, loading, resetState: resetStateonClose, setResetState: setResetStateonClose }: SignInFormProps) {
     const { t } = useTranslation();
     const direction = useDirection();
     const { setCurrentUser } = useAuth();
-
+    const { setUserProfile } = useUserProfile();
+    const queryClient = useQueryClient();
     const { openModal, closeModal } = useAuthModalStore();
     const [showPassword, setShowPassword] = useState(false);
     const togglePasswordVisibility = () => setShowPassword(!showPassword);
@@ -38,6 +44,13 @@ export default function SignInForm({ setLoading, loading }: SignInFormProps) {
         email: "",
         password: "",
     });
+
+    useEffect(() => {
+        if (resetStateonClose) {
+            resetState();
+            setResetStateonClose(false);
+        }
+    }, [resetStateonClose]);
 
     const handleNewAccount = () => {
         openModal("signup");
@@ -80,6 +93,7 @@ export default function SignInForm({ setLoading, loading }: SignInFormProps) {
                         mutateVerifyToken(apiToken, {
                             onSuccess: (res) => {
                                 showSuccessMessage(t('userSignedUp'));
+                                queryClient.invalidateQueries(QUERIES_KEYS.GET_USER_PROFILE);
                                 const authData = {
                                     api_token: apiToken,
                                     data: res?.data?.data?.data,

@@ -1,5 +1,5 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Button from '../components/ui/common/Button';
 import { useAuthModalStore } from '../store/useAuthModalStore';
 import { useTranslation } from 'react-i18next';
@@ -14,13 +14,15 @@ import { useDirection } from '../hooks/useGetDirection';
 interface ForgotPasswordProps {
     setLoading: (loading: boolean) => void;
     loading: boolean;
+    resetState: boolean;
+    setResetState: (resetState: boolean) => void;
 }
 
 interface ValidationErrors {
     [key: string]: string;
 }
 
-export default function ResetPassword({ setLoading, loading }: ForgotPasswordProps) {
+export default function ResetPassword({ setLoading, loading, resetState: resetStateonClose, setResetState: setResetStateonClose }: ForgotPasswordProps) {
     const { openModal } = useAuthModalStore((state) => state);
     const { t } = useTranslation();
     const [values, setValues] = useState({ newPassword: '', confirmPassword: "" });
@@ -28,6 +30,18 @@ export default function ResetPassword({ setLoading, loading }: ForgotPasswordPro
     const forgotEmail = localStorage.getItem('forgotEmail');
     const verifiedOtp = localStorage.getItem('verifiedOtp');
     const direction = useDirection();
+
+    useEffect(() => {
+        if (resetStateonClose) {
+            resetState();
+            setResetStateonClose(false);
+        }
+    }, [resetStateonClose]);
+
+    const resetState = () => {
+        setValues({ newPassword: '', confirmPassword: "" });
+        setFormErrors({});
+    }
 
     const passwordValidation = () => {
         const errors: ValidationErrors = {};

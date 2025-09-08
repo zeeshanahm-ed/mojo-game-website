@@ -21,7 +21,7 @@ export default function Logout() {
     return (
         <section>
             <div className="text-center md:px-20 sm:px-10 px-5 py-10 space-y-6">
-                <h2 className={`${direction === "rtl" ? "text-3xl md:text-4xl mb-2" : "text-4xl sm:text-5xl md:text-6xl"}`}>
+                <h2 className={`${direction === "rtl" ? "text-3xl md:text-4xl mb-2 font-arabic" : "text-4xl sm:text-5xl md:text-6xl font-primary"}`}>
                     {t("logoutTitle")}
                 </h2>
                 <div className='flex justify-evenly '>

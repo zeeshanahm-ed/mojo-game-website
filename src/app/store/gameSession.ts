@@ -17,6 +17,7 @@ type Team = {
 type teamType = 'team1' | 'team2';
 
 type GameSession = {
+    gameData: any;
     gameName: string;
     mode: string,
     selectedCategories: string[];
@@ -35,6 +36,7 @@ type GameSessionStore = {
 
 // Define initial values for reuse
 const initialSession: GameSession = {
+    gameData: null,
     gameName: '',
     mode: '',
     selectedCategories: [],
