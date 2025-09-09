@@ -16,6 +16,7 @@ import { getLanguage } from '../helpers/helpers-functions';
 import useGetAllCategories from '../game-play/core/hooks/useGetAllCategories';
 import useCreateGameSession from './core/hooks/useCreateGameSession';
 import { useAuth } from '../context/AuthContext';
+import FallbackLoader from '../components/ui/common/FallbackLoader';
 
 
 interface TeamState {
@@ -98,7 +99,7 @@ function OfflineMode() {
 
     const handleValidation = () => {
         let error = false;
-        if (selectedCategories.length < 6) {
+        if (false) {
             showErrorMessage(t("errors.maxCategories"));
             error = true;
         } else if (gameName.trim() === "") {
@@ -129,7 +130,7 @@ function OfflineMode() {
         const data = {
             name: gameName || 'My Quiz',
             mode: "offline",
-            selectedCategories: selectedCategories.map(c => c?._id),
+            selectedCategories: selectedCategories.map(c => c?._id || ""),
             teams: [{
                 name: teams.first.name,
                 playerCount: teams.first.players,
@@ -157,11 +158,11 @@ function OfflineMode() {
                 gameData: data,
                 gameName: data.name || 'My Quiz',
                 mode: "offline",
-                selectedCategories: selectedCategories.map(c => c?._id || ""),
                 team1: {
                     name: teams.first.name,
                     players: teams.first.players,
                     score: 0,
+                    teamId: '',
                     teamTurnOn: data?.currentTurnIndex === 0,
                     lifelines: {
                         scoreSteal: true,
@@ -173,6 +174,7 @@ function OfflineMode() {
                     name: teams.second.name,
                     players: teams.second.players,
                     score: 0,
+                    teamId: '',
                     teamTurnOn: data?.currentTurnIndex === 1,
                     lifelines: {
                         scoreSteal: true,
@@ -191,6 +193,9 @@ function OfflineMode() {
 
     return (
         <section>
+            {isLoading && <div className='absolute backdrop-blur-lg top-0 z-50 left-0 w-full h-full flex items-center justify-center'>
+                <FallbackLoader />
+            </div>}
             <Banner />
             <Wrapper>
                 <div className='flex items-center justify-center flex-col h-auto pb-16 px-4 md:px-10'>

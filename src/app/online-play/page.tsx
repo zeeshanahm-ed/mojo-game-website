@@ -84,8 +84,8 @@ function OnlinePlay() {
     const handleStartGame = () => {
         const session = {
             gameName: 'My Quiz',
+            gameData: null,
             mode: "online",
-            selectedCategories: selectedCategories.map(c => c.name),
             team1: {
                 name: "Zeeshan",
                 players: 1,
@@ -146,7 +146,7 @@ function OnlinePlay() {
                             </div>
 
                             {/* VS Icon */}
-                            <div className="relative sm:16 md:w-20 h-1/2 flex items-center justify-center">
+                            <div className="relative w-16 md:w-20 h-1/2 flex items-center justify-center">
                                 <Image src="/images/vs.png" alt='vs' className='w-full h-full' width={100} height={100} />
                             </div>
 
@@ -176,24 +176,24 @@ function OnlinePlay() {
                         <div className='flex items-center md:flex-row flex-col gap-8  justify-between my-10'>
                             {selectedMode === "friendly" ?
                                 <div className='flex-1 flex flex-col items-start'>
-                                    <h2 className="text-3xl md:text-5xl ">{t("whoCanAnswer")}</h2>
+                                    <h2 className={` ${direction === "rtl" ? "text-3xl md:text-4xl" : "text-3xl md:text-5xl"} text-center md:text-start w-full`}>{t("whoCanAnswer")}</h2>
                                     {/* Mode Selection */}
-                                    <div className="flex flex-row items-center justify-center gap-5 sm:gap-8 md:gap-16 mt-5 ">
+                                    <div className="flex flex-row flex-wrap items-center justify-center gap-5 mt-5 ">
                                         {WhoCanAnswerType.map((mode) => (
                                             <div
                                                 key={mode.id}
                                                 onClick={() => handleWhoCanAnswerSelect(mode.id as WhoCanAnswer)}
-                                                className={`px-4 py-2 pt-3 flex items-center gap-2 cursor-pointer group border border-black justify-center ${selectedWhoCanAnswer === mode.id ? 'bg-yellow' : ''}`}
+                                                className={` ${direction === "rtl" ? "py-3" : "py-2 pt-3"} px-4 flex items-center gap-2 cursor-pointer group border border-black justify-center ${selectedWhoCanAnswer === mode.id ? 'bg-yellow' : ''}`}
                                             >
                                                 {/* Checkbox */}
-                                                <div className={`w-6 h-6 border-2 p-1 border-black bg-white flex items-center justify-center mb-2`}>
+                                                <div className={`w-6 h-6 border-2 p-1 border-black bg-white flex items-center justify-center ${direction === "rtl" ? "-mb-2" : "mb-2"}`}>
                                                     {selectedWhoCanAnswer === mode.id && (
                                                         <div className="w-full h-full bg-black"></div>
                                                     )}
                                                 </div>
 
                                                 {/* Mode Title */}
-                                                <h2 className={` text-2xl md:text-3xl uppercase lg:text-4xl ${selectedMode === mode.id ? 'text-black' : 'text-gray-800'}`}>
+                                                <h2 className={` ${direction === "rtl" ? "text-2xl lg:text-3xl tracking-tighter" : "text-2xl md:text-3xl uppercase lg:text-4xl "} ${selectedMode === mode.id ? 'text-black' : 'text-gray-800'}`}>
                                                     {t(mode.title)}
                                                 </h2>
                                             </div>
@@ -203,8 +203,8 @@ function OnlinePlay() {
                                 :
                                 <Timer showTime={true} />
                             }
-                            <div>
-                                <Button disabled={selectedCategories.length < 6} className={` text-white md:w-72 ${direction === "rtl" ? "md:text-2xl lg:text-3xl" : "md:text-4xl lg:text-6xl"} lg:w-96 w-64`} onClick={handleStartGame}>{t("createGame")}</Button>
+                            <div className=' mt-auto '>
+                                <Button disabled={selectedCategories.length < 6} className={` text-white md:w-72 ${direction === "rtl" ? "text-2xl lg:text-3xl" : "md:text-4xl lg:text-6xl"} lg:w-96 w-64`} onClick={handleStartGame}>{t("createGame")}</Button>
                                 {selectedMode === "challenge" &&
                                     <p className={`text-base mt-3 ${direction === "rtl" ? "font-arabic" : "font-secondary"} md:text-lg text-red text-start md:text-center`}>
                                         <strong className='ms-5 text-black'>{t("note")} </strong> {t("creditInfo")}

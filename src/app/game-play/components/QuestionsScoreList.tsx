@@ -1,8 +1,6 @@
 import { useDirection } from "@/app/hooks/useGetDirection";
 import Image from "next/image";
 import { useTranslation } from "react-i18next";
-import useGetGameSessionCategories from "../core/hooks/useGetGameSessionCategories";
-import { useGameSession } from "@/app/store/gameSession";
 
 const categories = [
     "Horror Movies",
@@ -15,13 +13,13 @@ const categories = [
 
 type QuestionsScoreListProp = {
     onScoreClick?: (score: number, category: string) => void;
+    categoriesData: any[];
 };
 
-const QuestionsScoreList: React.FC<QuestionsScoreListProp> = ({ onScoreClick }) => {
-    const gameId = useGameSession(state => state.session?.gameData?._id) || localStorage.getItem("currentGameId");
-    const { categoriesData } = useGetGameSessionCategories(gameId);
+const QuestionsScoreList: React.FC<QuestionsScoreListProp> = ({ onScoreClick, categoriesData = [] }) => {
     const { t } = useTranslation();
     const direction = useDirection();
+
     return (
         <div className='flex justify-center flex-col'>
             <div className='text-center sm:text-start mb-10'>
@@ -33,9 +31,9 @@ const QuestionsScoreList: React.FC<QuestionsScoreListProp> = ({ onScoreClick }) 
                 </p>
             </div>
             <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 gap-y-10 place-items-center'>
-                {categoriesData?.map((category: any) => (
+                {categoriesData?.map((category: any, index: number) => (
                     <ScoreCard
-                        key={category._id}
+                        key={index}
                         category={category}
                         onScoreClick={onScoreClick}
                         direction={direction}

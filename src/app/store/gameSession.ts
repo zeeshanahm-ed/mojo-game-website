@@ -11,6 +11,7 @@ type Team = {
     players: number;
     lifelines: Lifelines;
     score: number;
+    teamId: string;
     teamTurnOn: boolean
 };
 
@@ -20,7 +21,6 @@ type GameSession = {
     gameData: any;
     gameName: string;
     mode: string,
-    selectedCategories: string[];
     team1: Team;
     team2: Team;
 };
@@ -39,12 +39,12 @@ const initialSession: GameSession = {
     gameData: null,
     gameName: '',
     mode: '',
-    selectedCategories: [],
     team1: {
         name: 'Team 1',
         players: 1,
         score: 0,
-        teamTurnOn: true,
+        teamId: '',
+        teamTurnOn: false,
         lifelines: {
             scoreSteal: true,
             secondChance: true,
@@ -55,6 +55,7 @@ const initialSession: GameSession = {
         name: 'Team 2',
         players: 1,
         score: 0,
+        teamId: '',
         teamTurnOn: false,
         lifelines: {
             scoreSteal: true,
