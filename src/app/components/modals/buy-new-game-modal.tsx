@@ -20,7 +20,7 @@ function BuyNewGameModal({ open, onClose }: NewGameModalProps) {
         <dialog id="buy_a_new_game_modal" className={` modal ${open ? 'modal-open' : ''}`}>
             <div className="modal-box px-0 pb-0 bg-white items-center max-w-xl rounded-none border-2 border-black">
                 <form method="dialog " className="px-4 md:px-10 flex items-center justify-center relative">
-                    <h2 className={`text-4xl  sm:text-5xl md:text-6xl  uppercase flex flex-row items-center ${direction === "rtl" ? "mb-2" : ""}`}>
+                    <h2 className={`text-4xl  sm:text-5xl md:text-6xl  uppercase flex flex-row items-center ${direction === "rtl" ? "mb-2 font-arabic" : "font-primary"}`}>
                         {t("information")}
                     </h2>
                     <button

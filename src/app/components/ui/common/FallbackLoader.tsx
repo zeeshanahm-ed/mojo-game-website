@@ -9,7 +9,7 @@ interface FallbackLoaderProps {
 const FallbackLoader = ({ isModal = false }: FallbackLoaderProps) => {
   return (
     <StyledWrapper className={`${isModal ? "absolute backdrop-blur-sm w-full h-full z-50 centered-xy flex justify-center items-center" : "flex poin justify-center items-center h-32"}`}>
-      <svg aria-label="loader being flipped clockwise and circled by three white curves fading in and out" role="img" height={56} width={56} viewBox="0 0 56 56" className={`loader ${isModal ? "w-20 h-20" : "w-40 h-40"}`}>
+      <svg aria-label="loader being flipped clockwise and circled by three white curves fading in and out" role="img" height={56} width={56} viewBox="0 0 56 56" className={`loader ${isModal ? "w-20 h-20" : "w-20 h-20 md:w-32 md:h-32"}`}>
         <clipPath id="sand-mound-top">
           <path d="M 14.613 13.087 C 15.814 12.059 19.3 8.039 20.3 6.539 C 21.5 4.789 21.5 2.039 21.5 2.039 L 3 2.039 C 3 2.039 3 4.789 4.2 6.539 C 5.2 8.039 8.686 12.059 9.887 13.087 C 11 14.039 12.25 14.039 12.25 14.039 C 12.25 14.039 13.5 14.039 14.613 13.087 Z" className="loader__sand-mound-top" />
         </clipPath>
