@@ -1,24 +1,18 @@
 import { useDirection } from "@/app/hooks/useGetDirection";
+import { useGameSession } from "@/app/store/gameSession";
 import Image from "next/image";
 import { useTranslation } from "react-i18next";
 
-const categories = [
-    "Horror Movies",
-    "Wrestling",
-    "History",
-    "Cricket",
-    "Boxing",
-    "Funny Memes"
-];
 
 type QuestionsScoreListProp = {
-    onScoreClick?: (score: number, category: string) => void;
+    onScoreClick?: (question: any) => void;
     categoriesData: any[];
 };
 
 const QuestionsScoreList: React.FC<QuestionsScoreListProp> = ({ onScoreClick, categoriesData = [] }) => {
     const { t } = useTranslation();
     const direction = useDirection();
+    const { session } = useGameSession();
 
     return (
         <div className='flex justify-center flex-col'>
@@ -49,14 +43,22 @@ export default QuestionsScoreList;
 type ScoreCardProps = {
     category: any;
     imageSrc?: string;
-    onScoreClick?: (score: number, category: string) => void;
+    onScoreClick?: (question: any) => void;
     direction?: string;
 };
 
 const ScoreCard: React.FC<ScoreCardProps> = ({ direction, category, onScoreClick }) => {
+    const { session } = useGameSession();
 
-    const handleClick = (score: number) => {
-        onScoreClick?.(score, category.name);
+    const answeredQuestionsIds = session?.gameData?.answers?.map((answer: any) => answer.questionId) || [];
+    // Mark each question with answered=true if its _id is in answeredQuestionsIds
+    category.questions = category.questions.map((question: any) => ({
+        ...question,
+        answered: answeredQuestionsIds.includes(question?.questionId)
+    }));
+
+    const handleClick = (question: any) => {
+        onScoreClick?.(question);
     };
 
 
@@ -64,18 +66,26 @@ const ScoreCard: React.FC<ScoreCardProps> = ({ direction, category, onScoreClick
         <div className=" flex items-center justify-center  w-[240px] h-[110px] md:h-[130px] lg:h-[180px] md:w-[240px] lg:w-[320px] 2xl:w-[440px]">
             <div className="relative w-full h-full font-primary">
                 <div className='w-full'>
-                    <div className='flex items-center justify-between'>
-                        <div className='border border-black w-[100px] md:h-10 lg:h-14 md:w-[120px] lg:w-[170px] 2xl:w-[200px] cursor-pointer hover:bg-gray-200 text-2xl  -skew-x-12  md:text-2xl lg:text-4xl flex items-center justify-start px-4' onClick={() => handleClick(200)}>200</div>
-                        <div className='border border-black w-[100px] md:h-10 lg:h-14 md:w-[120px] lg:w-[170px] 2xl:w-[200px] cursor-pointer hover:bg-gray-200 -skew-x-12 text-2xl  md:text-2xl lg:text-4xl flex items-center justify-end px-4' onClick={() => handleClick(200)}>200</div>
-                    </div>
-                    <div className='flex items-center justify-between'>
-                        <div className='border border-black w-[100px] md:h-10 lg:h-14 md:w-[120px] lg:w-[170px] 2xl:w-[200px] cursor-pointer hover:bg-gray-200  -skew-x-12 text-2xl  md:text-2xl lg:text-4xl flex items-center justify-start px-4' onClick={() => handleClick(400)}>400</div>
-                        <div className='border border-black w-[100px] md:h-10 lg:h-14 md:w-[120px] lg:w-[170px] 2xl:w-[200px] cursor-pointer hover:bg-gray-200 -skew-x-12 text-2xl  md:text-2xl lg:text-4xl flex items-center justify-end px-4' onClick={() => handleClick(400)}>400</div>
-                    </div>
-                    <div className='flex items-center justify-between'>
-                        <div className='border border-black w-[100px] md:h-10 lg:h-14 md:w-[120px] lg:w-[170px] 2xl:w-[200px] cursor-pointer  hover:bg-gray-200 -skew-x-12 text-2xl  md:text-2xl lg:text-4xl flex items-center justify-start px-4' onClick={() => handleClick(600)}>600</div>
-                        <div className='border border-black w-[100px] md:h-10 lg:h-14 md:w-[120px] lg:w-[170px] 2xl:w-[200px] cursor-pointer  hover:bg-gray-200 -skew-x-12 text-2xl  md:text-2xl lg:text-4xl flex items-center justify-end px-4' onClick={() => handleClick(600)}>600</div>
-                    </div>
+                    {[0, 2, 4].map((rowIdx) => (
+                        <div key={rowIdx} className='flex items-center justify-between'>
+                            {[0, 1].map((colIdx) => {
+                                const qIdx = rowIdx + colIdx;
+                                const question = category.questions[qIdx];
+                                return (
+                                    <div
+                                        key={qIdx}
+                                        className={
+                                            `${question?.answered ? "bg-gray-200 cursor-not-allowed pointer-events-none text-gray-500" : "bg-white cursor-pointer text-black"} border border-black w-[100px] md:h-10 lg:h-14 md:w-[120px] lg:w-[170px] 2xl:w-[200px] hover:bg-gray-200 -skew-x-12 text-2xl md:text-2xl lg:text-4xl flex items-center ` +
+                                            (colIdx === 0 ? "justify-start px-4" : "justify-end px-4")
+                                        }
+                                        onClick={() => handleClick(question)}
+                                    >
+                                        {question?.questionPoints}
+                                    </div>
+                                );
+                            })}
+                        </div>
+                    ))}
                 </div>
 
                 <div className="relative left-[75px] -top-[7.5rem] md:-top-[9rem] lg:-top-[12.2rem] md:left-[65px] lg:left-[85px] 2xl:left-[118px] w-fit flex flex-col justify-center items-center">
@@ -92,3 +102,20 @@ const ScoreCard: React.FC<ScoreCardProps> = ({ direction, category, onScoreClick
         </div>
     );
 };
+
+
+
+// <div className='w-full'>
+// <div className='flex items-center justify-between'>
+//     <div className='border border-black w-[100px] md:h-10 lg:h-14 md:w-[120px] lg:w-[170px] 2xl:w-[200px] cursor-pointer hover:bg-gray-200 text-2xl  -skew-x-12  md:text-2xl lg:text-4xl flex items-center justify-start px-4' onClick={() => handleClick(category.questions[0])}>{category.questions[0].questionPoints}</div>
+//     <div className='border border-black w-[100px] md:h-10 lg:h-14 md:w-[120px] lg:w-[170px] 2xl:w-[200px] cursor-pointer hover:bg-gray-200 -skew-x-12 text-2xl  md:text-2xl lg:text-4xl flex items-center justify-end px-4' onClick={() => handleClick(category.questions[1])}>{category.questions[1].questionPoints}</div>
+// </div>
+// <div className='flex items-center justify-between'>
+//     <div className='border border-black w-[100px] md:h-10 lg:h-14 md:w-[120px] lg:w-[170px] 2xl:w-[200px] cursor-pointer hover:bg-gray-200  -skew-x-12 text-2xl  md:text-2xl lg:text-4xl flex items-center justify-start px-4' onClick={() => handleClick(category.questions[2])}>{category.questions[2].questionPoints}</div>
+//     <div className='border border-black w-[100px] md:h-10 lg:h-14 md:w-[120px] lg:w-[170px] 2xl:w-[200px] cursor-pointer hover:bg-gray-200 -skew-x-12 text-2xl  md:text-2xl lg:text-4xl flex items-center justify-end px-4' onClick={() => handleClick(category.questions[3])}>{category.questions[3].questionPoints}</div>
+// </div>
+// <div className='flex items-center justify-between'>
+//     <div className='border border-black w-[100px] md:h-10 lg:h-14 md:w-[120px] lg:w-[170px] 2xl:w-[200px] cursor-pointer  hover:bg-gray-200 -skew-x-12 text-2xl  md:text-2xl lg:text-4xl flex items-center justify-start px-4' onClick={() => handleClick(category.questions[4])}>{category.questions[4].questionPoints}</div>
+//     <div className='border border-black w-[100px] md:h-10 lg:h-14 md:w-[120px] lg:w-[170px] 2xl:w-[200px] cursor-pointer  hover:bg-gray-200 -skew-x-12 text-2xl  md:text-2xl lg:text-4xl flex items-center justify-end px-4' onClick={() => handleClick(category.questions[5])}>{category.questions[5].questionPoints}</div>
+// </div>
+// </div>

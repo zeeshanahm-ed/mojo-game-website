@@ -1,6 +1,6 @@
 "use client"
-import React, { useEffect, useState } from 'react'
-import { useRouter } from 'next/navigation';
+import React, { useEffect, useRef, useState } from 'react'
+import { useSearchParams, useRouter } from 'next/navigation';
 //components
 import Wrapper from '@/app/components/ui/common/Wrapper';
 import Header from './components/Header';
@@ -10,15 +10,16 @@ import Answer from './components/Answer';
 import WhoAnsweredEvent from './components/WhoAnswered';
 import Congratulation from './components/Congratulation';
 import OnlineQuestion from './components/OnlineQuestion';
-import { offlineQuestionsList, offlineQuestionsListInterface } from '../constants/constant';
-import { useGameSession } from '../store/gameSession';
-import CustomModal from '../components/modals/custom-modal';
-import { useTranslation } from 'react-i18next';
 import LifelineCard from './components/LifeLinesCard';
 import Image from 'next/image';
-import { useDirection } from '../hooks/useGetDirection';
 import FallbackLoader from '../components/ui/common/FallbackLoader';
-import { gameStatus, getGameSessionCategories, getTurnIndex } from './core/_requests';
+import GameExitModal from '../components/modals/game-exit-modal';
+//Hooks and Constants and utils
+import { offlineQuestionsListInterface } from '../constants/constant';
+import { useGameSession } from '../store/gameSession';
+import { useTranslation } from 'react-i18next';
+import { useDirection } from '../hooks/useGetDirection';
+import { gameStatus, getCurrentQuestion, getGameSessionCategories, getTurnIndex } from './core/_requests';
 
 
 
@@ -47,6 +48,9 @@ interface StateTypes {
 
 function GamePlay() {
     const { t } = useTranslation();
+    const searchParams = useSearchParams();
+    const mode = localStorage.getItem("currentGameMode");
+    const questionId = searchParams.get("questionId");
     const direction = useDirection();
     const router = useRouter();
     const { session, setSession } = useGameSession();
@@ -54,7 +58,7 @@ function GamePlay() {
 
     const [state, setState] = useState<StateTypes>({
         currentLifeline: undefined,
-        screen: "questionsList",
+        screen: "",
         selectedQuestion: null,
         showModal: false,
         isLoading: false,
@@ -64,6 +68,25 @@ function GamePlay() {
     });
 
     const gameId = useGameSession(state => state.session?.gameData?._id) || localStorage.getItem("currentGameId");
+
+    useEffect(() => {
+        if (questionId) {
+            handleGetQuestion();
+        }
+    }, [questionId]);
+
+    const handleGetQuestion = async () => {
+        setState(prev => ({ ...prev, isLoading: true }))
+        const questionPromise = await getCurrentQuestion(questionId || "");
+        const questionData = await questionPromise.data;
+        setState(prev => ({
+            ...prev,
+            selectedQuestion: questionData.data,
+            isLoading: false,
+            screen: mode === "offline" ? "offlineQuestion" : "onlineQuestion"
+        }))
+    };
+
 
     const LifelinesData: LifelineData[] = [
         {
@@ -94,7 +117,6 @@ function GamePlay() {
         },
     ];
 
-
     // Helper function to render a lifeline icon with disabled state
     const renderLifelineIcon = (iconType: Lifeline, isEnabled: boolean | undefined, teamTurnOn: boolean | undefined) => {
         let isDisabled = false;
@@ -106,8 +128,7 @@ function GamePlay() {
         }
 
         const iconClasses = `w-5 h-5 sm:w-8 sm:h-8`;
-        const circleClasses = `w-12 h-12 rounded-full border-2 border-black flex items-center justify-center
-    ${isDisabled ? "cursor-not-allowed bg-gray-200 opacity-60" : "cursor-pointer bg-white"}`;
+        const circleClasses = `w-12 h-12 rounded-full border-2 border-black flex items-center justify-center ${isDisabled ? "cursor-not-allowed bg-gray-200 opacity-60" : "cursor-pointer bg-white"}`;
 
         let iconSvg;
         switch (iconType) {
@@ -134,31 +155,15 @@ function GamePlay() {
         setCurrentLifeline(CurrentLiflineData)
     };
 
-
     const handleScreenChange = (screen: string) => {
         setState(prev => ({ ...prev, screen: screen }))
     };
 
-    const getDifficultyByScore = (score: number): "easy" | "medium" | "hard" => {
-        if (score === 200) return "easy";
-        if (score === 400) return "medium";
+    const handleScoreClick = (question: any) => {
+        const params = new URLSearchParams(searchParams.toString());
+        params.set("questionId", question.questionId);
 
-        return "hard";
-    };
-
-    const handleScoreClick = (score: number, category: string) => {
-        const difficulty = getDifficultyByScore(score);
-        const categoryQuestions = offlineQuestionsList.filter(
-            (q) => q.category === category && q.difficulty === difficulty && !q.used
-        );
-
-        if (categoryQuestions.length > 0) {
-            const randomQuestion = categoryQuestions[Math.floor(Math.random() * categoryQuestions.length)];
-            setState(prev => ({ ...prev, selectedQuestion: randomQuestion }))
-            setState(prev => ({ ...prev, screen: session?.mode === "offline" ? "offlineQuestion" : "onlineQuestion" }))
-        } else {
-            alert("No more questions available for this category and difficulty.");
-        }
+        router.push(`/game-play?${params.toString()}`);
     };
 
     const getScreenContent = (screen: string | null) => {
@@ -183,16 +188,18 @@ function GamePlay() {
                 return (
                     <Answer
                         handleScreenChange={handleScreenChange}
-                        answerType={session?.mode === "online" ? "list" : "image"}
-                        mode={session?.mode}
+                        answerType={mode === "online" ? "list" : "image"}
+                        mode={mode || ""}
                         question={state.selectedQuestion}
                     />
                 );
             case "whoAnswered":
                 return (
                     <WhoAnsweredEvent
+                        setState={setState}
                         handleScreenChange={handleScreenChange}
                         question={state.selectedQuestion}
+                        gameId={gameId || ""}
                     />
                 );
             case "congratulation":
@@ -205,11 +212,6 @@ function GamePlay() {
         }
     };
 
-    const handleExitGame = () => {
-        const url = "/my-games";
-        router.push(url);
-    };
-
     const handleOpenExitModal = () => {
         setState(prev => ({ ...prev, showModal: true }))
     };
@@ -219,27 +221,67 @@ function GamePlay() {
         setCurrentLifeline(undefined);
     };
 
-    const handleMultiplePromises = (promises: Promise<any>[]) => {
+    const handleMultiplePromises = (promises: Promise<any>[], useLocalCategories: boolean, localCategories?: any) => {
         setState(prev => ({ ...prev, isLoading: true }))
-        Promise.all(promises).then(([categoriesData, gameStatusData, turnIndexData]) => {
-            setState(prev => ({ ...prev, categoriesData: categoriesData?.data?.categories, gameStatusData: gameStatusData?.data, turnIndexData: turnIndexData?.data }))
-            setState(prev => ({ ...prev, isLoading: false }))
-            handleSetSession({ ...gameStatusData?.data, ...turnIndexData?.data });
-        });
+        if (useLocalCategories && localCategories) {
+            // If using local categories, skip the categories API call
+            Promise.all(promises).then(([gameStatusData, turnIndexData]) => {
+                setState(prev => ({ ...prev, categoriesData: localCategories }));
+                handleSetSession({ ...gameStatusData?.data, ...turnIndexData?.data });
+            }).finally(() => {
+                setState(prev => ({ ...prev, isLoading: false }))
+            });
+        } else {
+            // If not using local categories, call all APIs including categories
+            Promise.all(promises).then(([categoriesData, gameStatusData, turnIndexData]) => {
+                setState(prev => ({ ...prev, categoriesData: categoriesData?.data?.categories }));
+                localStorage.setItem("currentGameCategoriesData", JSON.stringify(categoriesData?.data?.categories));
+                handleSetSession({ ...gameStatusData?.data, ...turnIndexData?.data });
+            }).finally(() => {
+                setState(prev => ({ ...prev, isLoading: false }))
+            });
+        }
     };
 
+    const isFirstLoad = useRef(true);
+
     useEffect(() => {
-        const categoriesPromise = getGameSessionCategories(gameId);
-        const gameStatusPromise = gameStatus(gameId);
-        const turnIndexPromise = getTurnIndex(gameId);
-        handleMultiplePromises([categoriesPromise, gameStatusPromise, turnIndexPromise]);
-    }, []);
+        const localCategoriesStr = localStorage.getItem("currentGameCategoriesData");
+        const localCategories = localCategoriesStr ? JSON.parse(localCategoriesStr) : null;
+
+        if (isFirstLoad.current) {
+            // On first load, check if categories exist in localStorage
+            const gameStatusPromise = gameStatus(gameId);
+            const turnIndexPromise = getTurnIndex(gameId);
+
+            if (localCategories) {
+                // Use local categories, skip categories API
+                handleMultiplePromises([gameStatusPromise, turnIndexPromise], true, localCategories);
+            } else {
+                // No local categories, call categories API
+                const categoriesPromise = getGameSessionCategories(gameId);
+                handleMultiplePromises([categoriesPromise, gameStatusPromise, turnIndexPromise], false);
+            }
+            isFirstLoad.current = false;
+        } else if (state.screen === "questionsList") {
+            // On subsequent renders, check again for local categories
+            const gameStatusPromise = gameStatus(gameId);
+            const turnIndexPromise = getTurnIndex(gameId);
+
+            if (localCategories) {
+                handleMultiplePromises([gameStatusPromise, turnIndexPromise], true, localCategories);
+            } else {
+                const categoriesPromise = getGameSessionCategories(gameId);
+                handleMultiplePromises([categoriesPromise, gameStatusPromise, turnIndexPromise], false);
+            }
+        }
+    }, [state.screen]);
 
     const handleSetSession = (sessionData: any) => {
         const newSession = {
-            gameData: { ...session?.gameData, ...sessionData?.gameStatusData?.data?.currentGame },
-            gameName: sessionData?.currentGame?.name || 'My Quiz',
-            mode: session?.mode || '',
+            gameData: { ...session?.gameData, ...sessionData },
+            gameName: sessionData?.currentGame?.gameName || 'My Quiz',
+            mode: mode || '',
             team1: {
                 name: sessionData.teams[0].name,
                 players: sessionData.teams[0].playerCount,
@@ -267,6 +309,15 @@ function GamePlay() {
         };
 
         setSession(newSession);
+        let currentScreen = "questionsList";
+        if (questionId) {
+            if (mode === "offline") {
+                currentScreen = "offlineQuestion";
+            } else if (mode === "online") {
+                currentScreen = "onlineQuestion";
+            }
+        }
+        handleScreenChange(currentScreen);
     };
 
     return (
@@ -274,7 +325,7 @@ function GamePlay() {
             {state.isLoading && <div className='absolute backdrop-blur-lg top-0 z-50 left-0 w-full h-full flex items-center justify-center'>
                 <FallbackLoader />
             </div>}
-            <Header handleScreenChange={(value: string) => setState(prev => ({ ...prev, screen: value }))} handleOpenExitModal={handleOpenExitModal} setCurrentLifeline={setCurrentLifeline} />
+            <Header handleScreenChange={(value: string) => setState(prev => ({ ...prev, screen: value }))} handleOpenExitModal={handleOpenExitModal} setCurrentLifeline={setCurrentLifeline} currenScreen={state.screen} />
             <Wrapper>
                 <div className='flex w-full h-auto gap-5 py-10 md:py-20 px-4 md:px-10'>
                     <div className='w-full'>
@@ -346,16 +397,9 @@ function GamePlay() {
                         </div>
                     </div> : <></>}
             </Wrapper>
-            <CustomModal
-                title={t('exit')}
-                subTitle={t("confirmExit")}
+            <GameExitModal
                 open={state.showModal}
                 closeModal={() => setState(prev => ({ ...prev, showModal: false }))}
-                onCancelButtonClick={() => setState(prev => ({ ...prev, showModal: false }))}
-                onConfirmButtonClick={handleExitGame}
-                showButton={true}
-                confirmButtonTile={t('yes')}
-                cancelButtonTitle={t('no')}
             />
         </section >
     )

@@ -8,8 +8,8 @@ import { useDirection } from "@/app/hooks/useGetDirection";
 import { BsQuestionCircle } from "react-icons/bs";
 
 interface AnswerProps {
-    question: offlineQuestionsListInterface | null;
-    mode: string | undefined;
+    question: any | null;
+    mode: string;
     answerType: "list" | "image";
     handleScreenChange: (screen: string) => void;
 }
@@ -29,13 +29,13 @@ export default function Answer({ answerType = "image", handleScreenChange, mode,
                     {/* Question Header */}
                     <div className={`${answerType === "list" ? "bg-black" : "bg-dark-orange"} text-white text-start py-2 px-2 flex items-center justify-center gap-2`}>
                         <BsQuestionCircle className="text-2xl" />
-                        <span className="text-base md:text-lg font-secondary">{question?.text}</span>
+                        <span className="text-base md:text-lg font-secondary">{question?.answerExplanation}</span>
                     </div>
 
                     {/* Options (audio/video/list) */}
                     <div className="flex flex-col items-center justify-center py-4 gap-2 h-[400px]">
-                        {answerType === "image" &&
-                            <Image src="/images/book.png" alt="book" width={100} height={100} className="w-full h-full object-contain" />
+                        {true &&
+                            <Image src={question?.answerMediaUrl || ""} alt="book" width={100} height={100} className="w-full h-full object-contain" />
                         }
                         {answerType === "list" &&
                             <div className="grid grid-cols-1 items-center justify-center py-4 gap-2 h-[400px]">
@@ -60,14 +60,12 @@ export default function Answer({ answerType = "image", handleScreenChange, mode,
                     <button
                         role="button"
                         onClick={() => handleScreenChange("whoAnswered")}
-                        // style={{ clipPath: "polygon(0 0, 92% 0%, 100% 100%, 0% 100%)" }}
                         className={`${direction === "rtl" ? "text-2xl " : "sm:pt-4 md:text-4xl text-3xl "} border-2 border-black flex h-12 px-2 md:px-5 py-2 items-center justify-between text-white bg-dark-orange `}>
                         {t("whoAnswered")}
                     </button>
                     <button
                         role="button"
                         onClick={() => handleScreenChange(mode === "online" ? "onlineQuestion" : "offlineQuestion")}
-                        // style={{ clipPath: "polygon(8% 0, 100% 0%, 100% 100%, 0% 100%)" }}
                         className={`${direction === "rtl" ? "text-2xl " : "sm:pt-4 md:text-3xl text-2xl "} border-2 border-black cursor-pointer flex h-12 px-5 py-2  items-center justify-between text-white bg-red `}>
                         {t("backToQuestion")}
                     </button>

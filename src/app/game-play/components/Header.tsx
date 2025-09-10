@@ -9,9 +9,10 @@ interface HeaderProps {
     handleScreenChange?: (value: string) => void;
     handleOpenExitModal?: () => void;
     setCurrentLifeline?: (v: undefined) => void;
+    currenScreen?: string | null;
 }
 
-const Header: React.FC<HeaderProps> = ({ handleScreenChange, handleOpenExitModal, setCurrentLifeline }) => {
+const Header: React.FC<HeaderProps> = ({ handleScreenChange, handleOpenExitModal, setCurrentLifeline, currenScreen }) => {
     const { session } = useGameSession();
     const { t } = useTranslation();
     const direction = useDirection();
@@ -21,14 +22,14 @@ const Header: React.FC<HeaderProps> = ({ handleScreenChange, handleOpenExitModal
     const handleChangeTeamTurn = () => {
         setCurrentLifeline?.(undefined)
         toggleTeamTurn(session?.team1.teamTurnOn ? 'team2' : session?.team2.teamTurnOn ? 'team1' : "team1");
-    }
+    };
 
     return (
         <header className="w-full bg-yellow relative z-40 border-b-2 md:border-b-4 border-black">
             <Wrapper>
                 <div className='py-4 px-4 md:px-10 flex items-center justify-between relative'>
                     {/* Left Section: Exit Game & Game Over Buttons */}
-                    <div className="flex items-center gap-x-2">
+                    {currenScreen !== "congratulation" && <div className="flex items-center gap-x-2">
                         <button
                             onClick={() => handleOpenExitModal?.()}
                             className={`flex items-center text-white gap-5 bg-red py-2 ${direction === "rtl" ? "text-2xl lg:py-2" : "text-4xl lg:pt-2 lg:py-0"} md:boxShadow-custom px-2 md:px-4 transform skew-custom md:-skew-x-12 border-2 border-black shadow-lg `}
@@ -43,7 +44,7 @@ const Header: React.FC<HeaderProps> = ({ handleScreenChange, handleOpenExitModal
                             <Image src="/images/icons/gameover-icon.svg" alt='gameover-icon' width={100} height={100} className={`${direction === "rtl" ? "lg:mb-0" : "lg:mb-2"} md:h-5 w-4 h-4 md:w-5`} />
                             <span className='hidden lg:block'>{t("gameOver")}</span>
                         </button>
-                    </div>
+                    </div>}
 
                     {/* Middle section: Icons and MOJO logo */}
                     <div className="items-center hidden sm:flex">

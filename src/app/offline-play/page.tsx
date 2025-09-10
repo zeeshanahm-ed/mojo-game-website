@@ -99,7 +99,7 @@ function OfflineMode() {
 
     const handleValidation = () => {
         let error = false;
-        if (false) {
+        if (selectedCategories.length < 6) {
             showErrorMessage(t("errors.maxCategories"));
             error = true;
         } else if (gameName.trim() === "") {
@@ -132,11 +132,11 @@ function OfflineMode() {
             mode: "offline",
             selectedCategories: selectedCategories.map(c => c?._id || ""),
             teams: [{
-                name: teams.first.name,
+                name: teams.first.name.trim(),
                 playerCount: teams.first.players,
             },
             {
-                name: teams.second.name,
+                name: teams.second.name.trim(),
                 playerCount: teams.second.players,
             }],
         };
@@ -153,13 +153,14 @@ function OfflineMode() {
     const handleOk = (res: any) => {
         const data = res?.data;
         localStorage.setItem("currentGameId", data?.gameId);
+        localStorage.setItem("currentGameMode", "offline");
         if (res?.message === "Success") {
             const session = {
                 gameData: data,
                 gameName: data.name || 'My Quiz',
                 mode: "offline",
                 team1: {
-                    name: teams.first.name,
+                    name: teams.first.name.trim(),
                     players: teams.first.players,
                     score: 0,
                     teamId: '',
@@ -171,7 +172,7 @@ function OfflineMode() {
                     },
                 },
                 team2: {
-                    name: teams.second.name,
+                    name: teams.second.name.trim(),
                     players: teams.second.players,
                     score: 0,
                     teamId: '',
@@ -215,7 +216,7 @@ function OfflineMode() {
                         handlePlayerChange={handlePlayerChange}
                         handleGameName={handleGameName}
                     />
-                    <Button className={`text-white md:w-80 sm:w-64 my-16  ${direction === "rtl" ? "py-4 text-3xl md:text-4xl" : " text-3xl sm:text-4xl md:text-4xl lg:text-5xl"}  lg:w-[450px] w-64`} onClick={() => handleStartGame()}>{t("startPlaying")}</Button>
+                    <Button className={`text-white md:w-80 sm:w-64 my-16  ${direction === "rtl" ? "py-4 text-3xl md:text-4xl" : "text-3xl sm:text-4xl md:text-[2.5rem]"}  lg:w-[450px] w-64`} onClick={() => handleStartGame()}>{t("startPlaying")}</Button>
                 </div>
             </Wrapper>
         </section >

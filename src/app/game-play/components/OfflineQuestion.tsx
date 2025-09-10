@@ -11,7 +11,7 @@ import { MdRestartAlt } from "react-icons/md";
 
 interface OfflineQuestionProps {
     questionType?: "audio" | "video" | "image" | "list";
-    question: offlineQuestionsListInterface | null;
+    question: any | null;
     handleScreenChange: (action: string) => void;
     setCurrentLifeline: (v: undefined) => void;
 }
@@ -56,7 +56,7 @@ export default function OfflineQuestion({ question, handleScreenChange, setCurre
                     {/* Question Header */}
                     <div className="bg-dark-orange text-white py-2 px-2 flex items-center justify-center gap-5">
                         <BsQuestionCircle className="text-2xl" />
-                        <span className="text-lg font-secondary">{question?.text}</span>
+                        <span className="text-lg font-secondary">{question?.questionText}</span>
                     </div>
 
                     {/* Options (audio/video/list) */}
@@ -73,20 +73,19 @@ export default function OfflineQuestion({ question, handleScreenChange, setCurre
                                 className="w-full h-full object-contain"
                             ></video>
                         )}
-                        {question?.mediaType === "image" && (
+                        {true && (
                             <Image src={question?.mediaUrl || ""} width={100} height={100} alt="Question Image" className="w-full h-full object-contain" />
                         )}
-
                     </div>
-
                 </div>
+
                 {/* Bottom bar */}
                 <div className="flex items-center justify-between py-2 rounded-b-lg flex-wrap gap-y-4">
 
-                    <button className={`flex sm:h-12 px-2 md:px-5 py-1 sm:py-2 pt-2  items-center justify-between text-white bg-dark-orange border-2 border-black ${direction === "rtl" ? "text-2xl" : "md:text-4xl text-xl sm:text-3xl sm:pt-4"}`}>
-                        {question?.category.toUpperCase()}
+                    <div className={`flex sm:h-12 px-2 md:px-5 py-1 sm:py-2 pt-2  items-center justify-between text-white bg-dark-orange border-2 border-black ${direction === "rtl" ? "text-2xl" : "md:text-4xl text-xl sm:text-3xl sm:pt-4"}`}>
+                        {question?.category?.name?.toUpperCase()}
                         <span className={`${direction === "rtl" ? "md:text-xl text-xl" : "md:text-2xl text-base sm:text-xl"} ml-2 md:ml-10 uppercase`}>{question?.points} {t("points")}</span>
-                    </button>
+                    </div>
 
                     <div className="flex items-center gap-2">
                         {/* Timer */}
