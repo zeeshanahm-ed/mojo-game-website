@@ -32,7 +32,6 @@ export default function SignInForm({ setLoading, loading, resetState: resetState
     const { t } = useTranslation();
     const direction = useDirection();
     const { setCurrentUser } = useAuth();
-    const { setUserProfile } = useUserProfile();
     const queryClient = useQueryClient();
     const { openModal, closeModal } = useAuthModalStore();
     const [showPassword, setShowPassword] = useState(false);
@@ -50,7 +49,7 @@ export default function SignInForm({ setLoading, loading, resetState: resetState
             resetState();
             setResetStateonClose(false);
         }
-    }, [resetStateonClose]);
+    }, [setResetStateonClose]);
 
     const handleNewAccount = () => {
         openModal("signup");

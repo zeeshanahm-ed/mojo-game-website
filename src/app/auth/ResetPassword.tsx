@@ -36,7 +36,7 @@ export default function ResetPassword({ setLoading, loading, resetState: resetSt
             resetState();
             setResetStateonClose(false);
         }
-    }, [resetStateonClose]);
+    }, [setResetStateonClose]);
 
     const resetState = () => {
         setValues({ newPassword: '', confirmPassword: "" });

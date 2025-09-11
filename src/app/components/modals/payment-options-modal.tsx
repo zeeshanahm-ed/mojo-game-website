@@ -24,25 +24,25 @@ const paymentMethods: PaymentMethod[] = [
     {
         id: 'knet',
         name: 'KNET',
-        icon: <Image src="/images/icons/knetPay-icon.svg" alt='knet-pay-icon' width={20} height={20} />,
+        icon: <Image src="/images/icons/knetPay-icon.svg" alt='knet-pay-icon' width={20} height={20} className='w-auto h-auto' />,
         route: '/payment/knet'
     },
     {
         id: 'credit-card',
         name: 'Credit Card',
-        icon: <Image src="/images/icons/creditCard-icon.svg" alt='credit-card-icon' width={20} height={20} />,
+        icon: <Image src="/images/icons/creditCard-icon.svg" alt='credit-card-icon' width={20} height={20} className='w-auto h-auto' />,
         route: '/payment/credit-card'
     },
     {
         id: 'apple-pay',
         name: 'Apple Pay',
-        icon: <Image src="/images/icons/applePay-icon.svg" alt='apple-pay-icon' width={20} height={20} />,
+        icon: <Image src="/images/icons/applePay-icon.svg" alt='apple-pay-icon' width={20} height={20} className='w-auto h-auto' />,
         route: '/payment/apple-pay'
     },
     {
         id: 'google-pay',
         name: 'Google Pay',
-        icon: <Image src="/images/icons/GooglePay-icon.svg" alt='google-pay-icon' width={20} height={20} />,
+        icon: <Image src="/images/icons/GooglePay-icon.svg" alt='google-pay-icon' width={20} height={20} className='w-auto h-auto' />,
         route: '/payment/google-pay'
     }
 ];

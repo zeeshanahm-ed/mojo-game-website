@@ -52,7 +52,7 @@ export default function SignUpForm({ setLoading, loading, resetState: resetState
             resetState();
             setResetStateonClose(false);
         }
-    }, [resetStateonClose]);
+    }, [setResetStateonClose]);
 
     const togglePasswordVisibility = () => setShowPassword(!showPassword);
 

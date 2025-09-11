@@ -34,7 +34,7 @@ export default function ForgotPassword({ setLoading, loading, resetState: resetS
             resetState();
             setResetStateonClose(false);
         }
-    }, [resetStateonClose]);
+    }, [setResetStateonClose]);
 
     const resetState = () => {
         setValues({ email: '' });

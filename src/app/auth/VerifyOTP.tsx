@@ -48,7 +48,7 @@ export default function VerifyOTP({ setLoading, loading, resetState: resetStateo
             resetState();
             setResetStateonClose(false);
         }
-    }, [resetStateonClose]);
+    }, [setResetStateonClose]);
 
     const resetState = () => {
         setOtp(new Array(length).fill(''));

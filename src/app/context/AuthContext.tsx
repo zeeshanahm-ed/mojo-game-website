@@ -7,7 +7,7 @@ import React, {
     ReactNode,
     useRef,
 } from 'react';
-import { getAuth, setAuth, setUser } from '../helpers/auth-helper';
+import { getAuth, removeAuth, setAuth, setUser } from '../helpers/auth-helper';
 import { IAuthModel } from '../auth/core/_models';
 import { getUserByToken } from '../auth/core/_requests';
 
@@ -58,10 +58,14 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
                 }
                 // eslint-disable-next-line @typescript-eslint/no-explicit-any
             } catch (error: any) {
-                console.log(error);
                 if (!didRequest.current) {
 
                 }
+                if (error.response.data.message === "Unauthorized") {
+                    removeAuth();
+                    window.location.href = "/";
+                }
+
             } finally {
                 setShowSplashScreen(false);
                 didRequest.current = true;

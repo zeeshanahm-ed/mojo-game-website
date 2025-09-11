@@ -202,7 +202,7 @@ function ProfileContent() {
                     </div>
                 </div>
                 <p className={`${direction === "rtl" ? "font-arabic" : "font-secondary"} text-lg font-semibold`}>{t("yourAvatar")}</p>
-                <Button boxShadow={false} className={`w-fit px-5  ${direction === "rtl" ? "text-2xl" : "text-4xl"}`} onClick={handleLogoutModal}>
+                <Button boxShadow={false} className={`w-full px-5  ${direction === "rtl" ? "text-2xl" : "text-4xl"}`} onClick={handleLogoutModal}>
                     <span className="inline-block  transform tracking-wider  uppercase ">{t("logout")}</span>
                 </Button>
             </div>
