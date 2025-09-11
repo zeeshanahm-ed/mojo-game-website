@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import { offlineQuestionsListInterface } from "@/app/constants/constant";
 import { useDirection } from "@/app/hooks/useGetDirection";
@@ -13,18 +13,23 @@ interface OfflineQuestionProps {
     questionType?: "audio" | "video" | "image" | "list";
     question: any | null;
     handleScreenChange: (action: string) => void;
-    setCurrentLifeline: (v: undefined) => void;
+    setCurrentLifelineType: (v: string) => void;
+    isDesibleAnswerBtn: boolean;
 }
 
-export default function OfflineQuestion({ question, handleScreenChange, setCurrentLifeline }: OfflineQuestionProps) {
+export default function OfflineQuestion({ isDesibleAnswerBtn, question, handleScreenChange, setCurrentLifelineType }: OfflineQuestionProps) {
     const [timer, setTimer] = useState(0);
     const [isPaused, setIsPaused] = useState(false);
     const { t } = useTranslation();
     const direction = useDirection();
     const timerRef = useRef<NodeJS.Timeout | null>(null);
 
+    useEffect(() => {
+        setIsPaused(isDesibleAnswerBtn)
+    }, [isDesibleAnswerBtn]);
+
     // Timer logic
-    React.useEffect(() => {
+    useEffect(() => {
         if (!isPaused) {
             timerRef.current = setTimeout(() => setTimer(timer + 1), 1000);
         }
@@ -113,8 +118,9 @@ export default function OfflineQuestion({ question, handleScreenChange, setCurre
                     </div>
                     <button
                         role="button"
+                        disabled={isDesibleAnswerBtn}
                         onClick={() => {
-                            setCurrentLifeline(undefined);
+                            setCurrentLifelineType("");
                             handleScreenChange("answer");
                         }}
                         className={`w-full sm:w-auto cursor-pointer sm:h-12 flex px-2 md:px-5 py-1 sm:py-2 pt-2 ${direction === "rtl" ? "text-2xl" : "sm:pt-4 md:text-4xl text-xl sm:text-3xl"} items-center justify-center  text-white bg-dark-green  border-2 border-black`}>

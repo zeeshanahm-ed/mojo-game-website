@@ -1,7 +1,6 @@
 import Button from "@/app/components/ui/common/Button";
 import Image from "next/image";
 import React from "react";
-import { offlineQuestionsListInterface } from "@/app/constants/constant";
 import { useTranslation } from "react-i18next";
 import { useDirection } from "@/app/hooks/useGetDirection";
 //icon

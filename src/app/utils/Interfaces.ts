@@ -18,3 +18,10 @@ export interface SelectedGamesPaymentDetailsInterface {
     position?: string;
     isSelected?: boolean;
 }
+
+export interface TeamLifelineDataInterface {
+    lifeLineId: string;
+    lifeLineName: string;
+    teamId: string;
+    used: boolean;
+}

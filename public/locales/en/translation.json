@@ -61,7 +61,8 @@
         "maxCategories": "Please select a maximum of 6 categories.",
         "gameNameRequired": "Game name cannot be empty.",
         "teamNameRequired": "Team name cannot be empty.",
-        "teamNameMaxLength": "Team name must not exceed 20 characters."
+        "teamNameMaxLength": "Team name must not exceed 20 characters.",
+        "teamsNameUnique": "Team names cannot be the same."
     },
     "logoutTitle": "Do you want to logout",
     "no": "No",
@@ -243,6 +244,7 @@
     "confirmPasswordRequired": "Confirm password is required.",
     "userSignedUp": "User signed up successfully.",
     "secondChanceNote2": "You want to take 2 turns in case of any doubt or wrong answer? Use this.",
+    "callFriendNote2": "You have one minute to call someone who might knows the answer.",
     "freeModeTitle": "You’re on Free Mode",
     "freeModeSubtitle": "Upgrade to Premium for unlimited games & fun!",
     "upgrade": "Upgrade",

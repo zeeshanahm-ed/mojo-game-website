@@ -28,7 +28,6 @@ export function giveAnswer(data: GiveAnswerData) {
 export function gameEnd(gameId: string) {
     return api.post(`${GAME_URL}/end`, { gameId }).then((response) => response.data);
 };
-
-
-
-
+export function lifelineUse(body: any) {
+    return api.post(`${GAME_URL}/lifeline-use`, body).then((response) => response.data);
+};

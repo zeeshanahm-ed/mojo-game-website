@@ -112,6 +112,18 @@ function OfflineMode() {
             setErrors({ ...errors, secondTeam: t("errors.teamNameRequired") });
             error = true;
         }
+        else if (teams.second.name.trim() === "") {
+            setErrors({ ...errors, secondTeam: t("errors.teamNameRequired") });
+            error = true;
+        }
+        else if (
+            teams.first.name.trim() !== "" &&
+            teams.second.name.trim() !== "" &&
+            teams.first.name.trim().toLowerCase() === teams.second.name.trim().toLowerCase()
+        ) {
+            setErrors({ ...errors, secondTeam: t("errors.teamsNameUnique") });
+            error = true;
+        }
         return error;
     };
 
@@ -165,11 +177,7 @@ function OfflineMode() {
                     score: 0,
                     teamId: '',
                     teamTurnOn: data?.currentTurnIndex === 0,
-                    lifelines: {
-                        scoreSteal: true,
-                        secondChance: true,
-                        callAFriend: true,
-                    },
+                    lifelines: [],
                 },
                 team2: {
                     name: teams.second.name.trim(),
@@ -177,11 +185,7 @@ function OfflineMode() {
                     score: 0,
                     teamId: '',
                     teamTurnOn: data?.currentTurnIndex === 1,
-                    lifelines: {
-                        scoreSteal: true,
-                        secondChance: true,
-                        callAFriend: true,
-                    },
+                    lifelines: [],
                 },
             };
 

@@ -4,4 +4,4 @@ export interface GiveAnswerData {
     answeredByTeamId: string | null | undefined;
     correctAnswer: boolean;
     points: number;
-}
+};

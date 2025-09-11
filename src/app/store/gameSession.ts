@@ -1,15 +1,22 @@
 import { create } from 'zustand';
 
-type Lifelines = {
-    scoreSteal: boolean;
-    secondChance: boolean;
-    callAFriend: boolean;
+type Lifeline = {
+    lifeLineId: string;
+    lifeLineName: string;
+    teamId: string;
+    used: boolean;
+};
+
+type Lifelines = Lifeline[] | {
+    scoreSteal?: boolean;
+    secondChance?: boolean;
+    callAFriend?: boolean;
 };
 
 type Team = {
     name: string;
     players: number;
-    lifelines: Lifelines;
+    lifelines?: Lifeline[];
     score: number;
     teamId: string;
     teamTurnOn: boolean
@@ -28,7 +35,7 @@ type GameSession = {
 type GameSessionStore = {
     session: GameSession | null;
     setSession: (session: GameSession) => void;
-    useLifeline: (team: teamType, lifeline: keyof Lifelines) => void;
+    useLifeline: (team: teamType, lifeline: Lifeline) => void;
     addScore: (team: teamType, score: number) => void;
     resetSession: () => void;
     toggleTeamTurn: (team: teamType) => void;
@@ -45,11 +52,7 @@ const initialSession: GameSession = {
         score: 0,
         teamId: '',
         teamTurnOn: false,
-        lifelines: {
-            scoreSteal: true,
-            secondChance: true,
-            callAFriend: true,
-        },
+        lifelines: [],
     },
     team2: {
         name: 'Team 2',
@@ -57,11 +60,7 @@ const initialSession: GameSession = {
         score: 0,
         teamId: '',
         teamTurnOn: false,
-        lifelines: {
-            scoreSteal: true,
-            secondChance: true,
-            callAFriend: true,
-        },
+        lifelines: [],
     },
 };
 
@@ -72,18 +71,22 @@ export const useGameSession = create<GameSessionStore>((set) => ({
         set((state) => {
             if (!state.session) return state;
 
-            const updatedTeam = {
-                ...state.session[team],
-                lifelines: {
-                    ...state.session[team].lifelines,
-                    [lifeline]: false,
-                },
-            };
+            // lifelines is now an array of lifeline objects, not an object
+            const updatedLifelines = Array.isArray(state.session[team].lifelines)
+                ? state.session[team].lifelines.map((l: Lifeline) =>
+                    l.lifeLineId === lifeline.lifeLineId
+                        ? { ...l, used: true }
+                        : l
+                )
+                : state.session[team].lifelines;
 
             return {
                 session: {
                     ...state.session,
-                    [team]: updatedTeam,
+                    [team]: {
+                        ...state.session[team],
+                        lifelines: updatedLifelines,
+                    },
                 },
             };
         }),

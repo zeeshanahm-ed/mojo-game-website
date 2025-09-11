@@ -8,11 +8,11 @@ import Image from 'next/image';
 interface HeaderProps {
     handleScreenChange?: (value: string) => void;
     handleOpenExitModal?: () => void;
-    setCurrentLifeline?: (v: undefined) => void;
+    setCurrentLifelineType?: (v: string) => void;
     currenScreen?: string | null;
 }
 
-const Header: React.FC<HeaderProps> = ({ handleScreenChange, handleOpenExitModal, setCurrentLifeline, currenScreen }) => {
+const Header: React.FC<HeaderProps> = ({ handleScreenChange, handleOpenExitModal, setCurrentLifelineType, currenScreen }) => {
     const { session } = useGameSession();
     const { t } = useTranslation();
     const direction = useDirection();
@@ -20,7 +20,7 @@ const Header: React.FC<HeaderProps> = ({ handleScreenChange, handleOpenExitModal
 
 
     const handleChangeTeamTurn = () => {
-        setCurrentLifeline?.(undefined)
+        setCurrentLifelineType?.("")
         toggleTeamTurn(session?.team1.teamTurnOn ? 'team2' : session?.team2.teamTurnOn ? 'team1' : "team1");
     };
 
