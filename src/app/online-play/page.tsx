@@ -90,23 +90,17 @@ function OnlinePlay() {
                 name: "Zeeshan",
                 players: 1,
                 score: 0,
+                teamId: '',
                 teamTurnOn: true,
-                lifelines: {
-                    scoreSteal: true,
-                    secondChance: true,
-                    callAFriend: true,
-                },
+                lifelines: [],
             },
             team2: {
                 name: "Adil Khan",
                 players: 1,
                 score: 0,
+                teamId: '',
                 teamTurnOn: false,
-                lifelines: {
-                    scoreSteal: true,
-                    secondChance: true,
-                    callAFriend: true,
-                },
+                lifelines: [],
             },
         };
 

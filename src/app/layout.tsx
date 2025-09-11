@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import "././styles/globals.css";
 import localFont from 'next/font/local';
-import { Noto_Sans_Arabic } from 'next/font/google';
 import Providers from './providers';
 
 const bulletproof = localFont({
@@ -34,11 +33,15 @@ const Product_sans = localFont({
   ],
   variable: '--font-product_sans',
 });
-
-const notoArabic = Noto_Sans_Arabic({
-  subsets: ['arabic'],
-  weight: ['400', '700'],
-  variable: '--font-arabic'
+const notoArabic = localFont({
+  src: [
+    {
+      path: './fonts/NotoSansArabic.ttf',
+      weight: '400',
+      style: 'normal',
+    },
+  ],
+  variable: '--font-arabic',
 });
 
 
